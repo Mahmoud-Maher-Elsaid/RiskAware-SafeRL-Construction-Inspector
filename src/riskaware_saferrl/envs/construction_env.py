@@ -54,7 +54,7 @@ class ConstructionInspectionEnv(gym.Env):
                 "map": spaces.Box(
                     low=0.0,
                     high=1.0,
-                    shape=(7, size, size),
+                    shape=(7 * size * size,),
                     dtype=np.float32,
                 ),
                 "state": spaces.Box(
@@ -172,7 +172,14 @@ class ConstructionInspectionEnv(gym.Env):
             dtype=np.float32,
         )
 
-        return {"map": grid, "state": state}
+        return {"map": grid.reshape(-1), "state": state}
+
+    def semantic_grid_from_observation(
+        self,
+        observation: dict[str, np.ndarray],
+    ) -> np.ndarray:
+        """Restore the flattened semantic map for plotting and debugging."""
+        return observation["map"].reshape(7, self.size, self.size)
 
     def _paint_local_risk(
         self,
