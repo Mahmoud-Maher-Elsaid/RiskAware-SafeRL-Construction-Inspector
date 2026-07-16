@@ -47,3 +47,20 @@ action executed by the environment after the policy proposes an action.
 It is not equivalent to constrained policy optimization. A separate adaptive
 Lagrangian experiment will evaluate whether the policy itself can learn to
 reduce semantic safety costs without relying entirely on runtime replacement.
+
+## Deadlock handling
+
+A semantic deadlock occurs when every task-valid action is unsafe.
+
+The shield resolves these states in this order:
+
+1. project onto a safe task-valid action
+2. use the safe inspect action as an emergency hold when movement is unsafe
+3. execute the least-unsafe task-valid action only when no safe action exists
+
+Emergency holds are not exposed to the policy action mask. They are internal
+runtime interventions. Unavoidable violations are explicitly recorded rather
+than causing training to crash.
+
+Inspection is considered unsafe when the current position already violates
+worker-proximity or restricted-zone constraints.

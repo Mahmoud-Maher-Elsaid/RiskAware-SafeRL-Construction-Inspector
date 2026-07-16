@@ -304,13 +304,28 @@ class ConstructionInspectionEnv(gym.Env):
 
     def action_safety_violations(self, action: int) -> tuple[str, ...]:
         if action == 4:
-            return ()
+            current_position = (
+                int(self.agent[0]),
+                int(self.agent[1]),
+            )
+            violations: list[str] = []
+
+            if current_position in self.restricted:
+                violations.append("restricted")
+
+            if self._near_worker(current_position):
+                violations.append("worker")
+
+            return tuple(violations)
 
         if action not in self.ACTION_TO_DELTA:
             return ("invalid_action",)
 
         candidate = self.agent + self.ACTION_TO_DELTA[action]
-        candidate_position = int(candidate[0]), int(candidate[1])
+        candidate_position = (
+            int(candidate[0]),
+            int(candidate[1]),
+        )
         violations: list[str] = []
 
         if not self._inside(candidate) or candidate_position in self.obstacles:

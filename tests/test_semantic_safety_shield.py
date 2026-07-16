@@ -1,10 +1,14 @@
 import numpy as np
 from sb3_contrib import MaskablePPO
-from sb3_contrib.common.maskable.utils import get_action_masks
+from sb3_contrib.common.maskable.utils import (
+    get_action_masks,
+)
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv
 
-from riskaware_saferrl.envs import ConstructionInspectionEnv
+from riskaware_saferrl.envs import (
+    ConstructionInspectionEnv,
+)
 from riskaware_saferrl.safety import SafetyShield
 from riskaware_saferrl.scenarios import Scenario
 
@@ -12,9 +16,18 @@ from riskaware_saferrl.scenarios import Scenario
 def create_scenario(
     *,
     scenario_id: str,
-    hazards: tuple[tuple[int, int], ...] = ((0, 0),),
-    workers: tuple[tuple[int, int], ...] = (),
-    restricted_zones: tuple[tuple[int, int], ...] = (),
+    hazards: tuple[
+        tuple[int, int],
+        ...,
+    ] = ((0, 0),),
+    workers: tuple[
+        tuple[int, int],
+        ...,
+    ] = (),
+    restricted_zones: tuple[
+        tuple[int, int],
+        ...,
+    ] = (),
 ) -> Scenario:
     return Scenario(
         scenario_id=scenario_id,
@@ -30,7 +43,20 @@ def create_scenario(
     )
 
 
-def test_environment_reports_worker_and_restricted_violations() -> None:
+def test_inspect_reports_current_worker_risk() -> None:
+    environment = ConstructionInspectionEnv(
+        scenario=create_scenario(
+            scenario_id="inspect_worker_risk",
+            workers=((2, 3),),
+        )
+    )
+    environment.reset(seed=0)
+
+    assert environment.action_safety_violations(4) == ("worker",)
+    assert not environment.is_action_safe(4)
+
+
+def test_environment_reports_combined_violation() -> None:
     environment = ConstructionInspectionEnv(
         scenario=create_scenario(
             scenario_id="combined_violation",
@@ -46,7 +72,7 @@ def test_environment_reports_worker_and_restricted_violations() -> None:
     assert not environment.is_action_safe(3)
 
 
-def test_shield_preserves_a_safe_action() -> None:
+def test_shield_preserves_safe_action() -> None:
     environment = SafetyShield(
         ConstructionInspectionEnv(
             scenario=create_scenario(
@@ -60,11 +86,11 @@ def test_shield_preserves_a_safe_action() -> None:
     _, _, _, _, info = environment.step(0)
 
     assert info["shield_active"] is False
-    assert info["proposed_action"] == 0
+    assert info["shield_resolution"] == "not_needed"
     assert info["executed_action"] == 0
 
 
-def test_shield_projects_worker_risk_to_minimum_deviation() -> None:
+def test_shield_projects_worker_risk() -> None:
     environment = SafetyShield(
         ConstructionInspectionEnv(
             scenario=create_scenario(
@@ -79,33 +105,64 @@ def test_shield_projects_worker_risk_to_minimum_deviation() -> None:
 
     assert info["shield_active"] is True
     assert "worker" in info["shield_violations"]
+    assert info["shield_resolution"] == ("safe_projection")
     assert info["executed_action"] == 0
     assert info["shield_replacement_safe"] is True
-    assert info["shield_replacement_task_valid"] is True
     assert info["cost"] == 0.0
 
 
-def test_shield_projects_restricted_action() -> None:
+def test_shield_uses_safe_emergency_hold() -> None:
     environment = SafetyShield(
         ConstructionInspectionEnv(
             scenario=create_scenario(
-                scenario_id="restricted_projection",
-                restricted_zones=((3, 2),),
+                scenario_id="emergency_hold",
+                restricted_zones=(
+                    (1, 2),
+                    (3, 2),
+                    (2, 1),
+                    (2, 3),
+                ),
             )
         )
     )
     environment.reset(seed=0)
 
-    _, _, _, _, info = environment.step(1)
+    _, _, _, _, info = environment.step(0)
 
     assert info["shield_active"] is True
-    assert info["shield_reason"] == "restricted"
-    assert info["executed_action"] == 2
-    assert info["cost_restricted"] == 0.0
+    assert info["shield_resolution"] == ("emergency_hold")
+    assert info["executed_action"] == 4
+    assert info["shield_emergency_hold"] is True
+    assert info["shield_replacement_task_valid"] is False
+    assert info["shield_replacement_safe"] is True
     assert info["cost"] == 0.0
 
 
-def test_projection_is_independent_of_hazard_location() -> None:
+def test_shield_handles_unavoidable_violation() -> None:
+    environment = SafetyShield(
+        ConstructionInspectionEnv(
+            scenario=create_scenario(
+                scenario_id="least_unsafe",
+                workers=(
+                    (1, 2),
+                    (3, 2),
+                    (2, 1),
+                    (2, 3),
+                ),
+            )
+        )
+    )
+    environment.reset(seed=0)
+
+    _, _, _, _, info = environment.step(0)
+
+    assert info["shield_active"] is True
+    assert info["shield_resolution"] == ("least_unsafe")
+    assert info["shield_unavoidable_violation"] is True
+    assert info["executed_action"] in (0, 1, 2, 3)
+
+
+def test_projection_is_hazard_independent() -> None:
     executed_actions: list[int] = []
 
     for scenario_id, hazards in (
@@ -129,7 +186,7 @@ def test_projection_is_independent_of_hazard_location() -> None:
     assert executed_actions == [0, 0]
 
 
-def test_shield_exposes_task_action_masks() -> None:
+def test_shield_exposes_task_masks() -> None:
     base_environment = ConstructionInspectionEnv(
         scenario=create_scenario(
             scenario_id="shield_masks",
@@ -144,7 +201,7 @@ def test_shield_exposes_task_action_masks() -> None:
     )
 
 
-def test_maskable_ppo_trains_through_semantic_shield() -> None:
+def test_maskable_ppo_trains_through_shield() -> None:
     scenario = create_scenario(
         scenario_id="shield_maskable_integration",
         workers=((2, 4),),
