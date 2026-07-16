@@ -36,3 +36,5 @@ data/expert/*
 # Webots generated files
 webots/controllers/**/__pycache__/
 *.wbproj
+artifacts/results/*
+!artifacts/results/.gitkeep
