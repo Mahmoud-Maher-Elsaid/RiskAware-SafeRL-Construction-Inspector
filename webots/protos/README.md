@@ -1,0 +1,1 @@
+Reusable Webots PROTO nodes for hazards, workers, machinery, and safety zones will be stored here.

@@ -1,0 +1,7 @@
+size: 12
+n_obstacles: 18
+n_hazards: 6
+n_workers: 4
+n_restricted: 8
+max_steps: 250
+vision_radius: 3

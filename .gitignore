@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Models and experiment outputs
+artifacts/models/*
+artifacts/plots/*
+artifacts/tensorboard/*
+runs/
+wandb/
+
+# Data
+data/raw/*
+data/processed/*
+data/expert/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/expert/.gitkeep
+
+# Webots generated files
+webots/controllers/**/__pycache__/
+*.wbproj
