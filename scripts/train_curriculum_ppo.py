@@ -22,6 +22,9 @@ from riskaware_saferrl.callbacks.action_diagnostics import (
 from riskaware_saferrl.callbacks.curriculum_progress import (
     CurriculumProgressCallback,
 )
+from riskaware_saferrl.callbacks.lagrangian_update import (
+    LagrangianUpdateCallback,
+)
 from riskaware_saferrl.callbacks.scenario_evaluation import (
     ScenarioEvaluationCallback,
 )
@@ -39,7 +42,11 @@ from riskaware_saferrl.evaluation.scenario_evaluator import (
     save_evaluation_results,
 )
 from riskaware_saferrl.models import SemanticMapExtractor
-from riskaware_saferrl.safety import SafetyShield
+from riskaware_saferrl.safety import (
+    CounterfactualLagrangianReward,
+    LagrangeMultiplier,
+    SafetyShield,
+)
 from riskaware_saferrl.scenario_dataset import load_scenarios
 
 
@@ -75,6 +82,27 @@ def parse_args() -> argparse.Namespace:
         default="auto",
     )
     parser.add_argument("--shield", action="store_true")
+    parser.add_argument("--lagrangian", action="store_true")
+    parser.add_argument(
+        "--lagrange-initial-value",
+        type=float,
+        default=0.0,
+    )
+    parser.add_argument(
+        "--lagrange-learning-rate",
+        type=float,
+        default=0.01,
+    )
+    parser.add_argument(
+        "--lagrange-maximum",
+        type=float,
+        default=100.0,
+    )
+    parser.add_argument(
+        "--proposed-cost-limit",
+        type=float,
+        default=5.0,
+    )
     parser.add_argument("--run-name", type=str, default=None)
     parser.add_argument("--resume-from", type=Path, default=None)
     parser.add_argument("--resume-completed-updates", type=int, default=0)
@@ -146,6 +174,18 @@ def validate_args(args: argparse.Namespace) -> None:
         raise ValueError("--checkpoint-every-updates must be positive.")
     if args.validation_limit < 1:
         raise ValueError("--validation-limit must be positive.")
+    if args.lagrangian and not args.shield:
+        raise ValueError("--lagrangian requires --shield.")
+    if args.lagrangian and args.algorithm != "maskable_ppo":
+        raise ValueError("--lagrangian requires --algorithm maskable_ppo.")
+    if args.lagrange_initial_value < 0.0:
+        raise ValueError("--lagrange-initial-value must be non-negative.")
+    if args.lagrange_learning_rate <= 0.0:
+        raise ValueError("--lagrange-learning-rate must be positive.")
+    if args.lagrange_maximum <= 0.0:
+        raise ValueError("--lagrange-maximum must be positive.")
+    if args.proposed_cost_limit < 0.0:
+        raise ValueError("--proposed-cost-limit must be non-negative.")
 
     if not args.smoke_test:
         total_scheduled_updates = args.resume_completed_updates + args.updates
@@ -162,16 +202,23 @@ def build_env(
     *,
     inspection_radius: int,
     use_shield: bool,
+    use_lagrangian: bool,
+    lagrange_multiplier: LagrangeMultiplier | None,
 ):
     def create_environment():
         environment = CurriculumConstructionInspectionEnv(
             scenario_tiers,
             inspection_radius=inspection_radius,
         )
-
         if use_shield:
             environment = SafetyShield(environment)
-
+        if use_lagrangian:
+            if lagrange_multiplier is None:
+                raise RuntimeError("Lagrangian training requires a shared multiplier.")
+            environment = CounterfactualLagrangianReward(
+                environment,
+                lagrange_multiplier,
+            )
         return Monitor(environment)
 
     return create_environment
@@ -304,6 +351,16 @@ def main() -> None:
         raise ValueError("--timesteps cannot be lower than the requested rollout updates.")
 
     use_action_masks = args.algorithm == "maskable_ppo"
+    lagrange_multiplier = (
+        LagrangeMultiplier(
+            value=args.lagrange_initial_value,
+            learning_rate=args.lagrange_learning_rate,
+            maximum=args.lagrange_maximum,
+        )
+        if args.lagrangian
+        else None
+    )
+    periodic_evaluation_shield = args.shield and not args.lagrangian
 
     if args.run_name is not None:
         run_name = args.run_name
@@ -332,6 +389,8 @@ def main() -> None:
                 scenario_tiers,
                 inspection_radius=inspection_radius,
                 use_shield=args.shield,
+                use_lagrangian=args.lagrangian,
+                lagrange_multiplier=lagrange_multiplier,
             )
             for _ in range(args.n_envs)
         ]
@@ -380,6 +439,12 @@ def main() -> None:
         "algorithm": args.algorithm,
         "action_masking": use_action_masks,
         "shield": args.shield,
+        "lagrangian": args.lagrangian,
+        "periodic_evaluation_shield": (periodic_evaluation_shield),
+        "lagrange_initial_value": (args.lagrange_initial_value),
+        "lagrange_learning_rate": (args.lagrange_learning_rate),
+        "lagrange_maximum": args.lagrange_maximum,
+        "proposed_cost_limit": (args.proposed_cost_limit),
         "selection_metric": args.selection_metric,
         "safety_cost_limit": args.safety_cost_limit,
         "resume_from": str(args.resume_from) if args.resume_from else None,
@@ -391,41 +456,57 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    callbacks = CallbackList(
-        [
-            CurriculumProgressCallback(
-                diagnostics_directory / "curriculum_progress.jsonl",
-                easy_updates=easy_updates,
-                medium_updates=medium_updates,
-                initial_completed_updates=args.resume_completed_updates,
-                verbose=1,
+    callback_items = [
+        CurriculumProgressCallback(
+            diagnostics_directory / "curriculum_progress.jsonl",
+            easy_updates=easy_updates,
+            medium_updates=medium_updates,
+            initial_completed_updates=args.resume_completed_updates,
+            verbose=1,
+        ),
+        CheckpointCallback(
+            save_freq=max(
+                checkpoint_every_updates * args.n_steps,
+                1,
             ),
-            CheckpointCallback(
-                save_freq=max(checkpoint_every_updates * args.n_steps, 1),
-                save_path=str(checkpoint_directory),
-                name_prefix=run_name,
-                verbose=2,
+            save_path=str(checkpoint_directory),
+            name_prefix=run_name,
+            verbose=2,
+        ),
+        ActionDiagnosticsCallback(
+            diagnostics_directory / "rollout_diagnostics.jsonl",
+            collapse_threshold=0.95,
+            collapse_patience=3,
+            verbose=1,
+        ),
+        ScenarioEvaluationCallback(
+            feasible_validation_scenarios[:validation_limit],
+            eval_freq=max(
+                eval_every_updates * args.n_steps,
+                1,
             ),
-            ActionDiagnosticsCallback(
-                diagnostics_directory / "rollout_diagnostics.jsonl",
-                collapse_threshold=0.95,
-                collapse_patience=3,
-                verbose=1,
-            ),
-            ScenarioEvaluationCallback(
-                feasible_validation_scenarios[:validation_limit],
-                eval_freq=max(eval_every_updates * args.n_steps, 1),
-                output_directory=evaluation_directory,
-                selection_metric=args.selection_metric,
-                safety_cost_limit=args.safety_cost_limit,
-                use_shield=args.shield,
-                use_action_masks=use_action_masks,
-                evaluate_at_start=True,
-                verbose=1,
-            ),
-        ]
-    )
+            output_directory=evaluation_directory,
+            selection_metric=args.selection_metric,
+            safety_cost_limit=args.safety_cost_limit,
+            use_shield=periodic_evaluation_shield,
+            use_action_masks=use_action_masks,
+            evaluate_at_start=True,
+            verbose=1,
+        ),
+    ]
 
+    if lagrange_multiplier is not None:
+        callback_items.insert(
+            3,
+            LagrangianUpdateCallback(
+                lagrange_multiplier,
+                cost_limit=args.proposed_cost_limit,
+                output_path=(diagnostics_directory / "lagrangian_diagnostics.jsonl"),
+                verbose=1,
+            ),
+        )
+
+    callbacks = CallbackList(callback_items)
     print(json.dumps(metadata, indent=2))
 
     try:
@@ -440,10 +521,11 @@ def main() -> None:
         final_model_path = run_directory / "final_model"
         model.save(final_model_path)
 
+        primary_evaluation_shield = args.shield and not args.lagrangian
         feasible_records, feasible_summary = evaluate_policy_on_scenarios(
             model,
             feasible_validation_scenarios[:final_validation_limit],
-            use_shield=args.shield,
+            use_shield=primary_evaluation_shield,
             use_action_masks=use_action_masks,
             deterministic=True,
         )
@@ -459,7 +541,7 @@ def main() -> None:
         full_records, full_summary = evaluate_policy_on_scenarios(
             model,
             validation_scenarios[:full_validation_limit],
-            use_shield=args.shield,
+            use_shield=primary_evaluation_shield,
             use_action_masks=use_action_masks,
             deterministic=True,
         )
@@ -471,6 +553,45 @@ def main() -> None:
             evaluation_directory,
             "final_full_validation",
         )
+
+        if args.lagrangian and args.shield:
+            (
+                shielded_feasible_records,
+                shielded_feasible_summary,
+            ) = evaluate_policy_on_scenarios(
+                model,
+                feasible_validation_scenarios[:final_validation_limit],
+                use_shield=True,
+                use_action_masks=use_action_masks,
+                deterministic=True,
+            )
+            shielded_feasible_summary["timesteps"] = int(model.num_timesteps)
+            shielded_feasible_summary["evaluation_type"] = "final_shielded_feasible_validation"
+            save_evaluation_results(
+                shielded_feasible_records,
+                shielded_feasible_summary,
+                evaluation_directory,
+                "final_shielded_feasible_validation",
+            )
+
+            (
+                shielded_full_records,
+                shielded_full_summary,
+            ) = evaluate_policy_on_scenarios(
+                model,
+                validation_scenarios[:full_validation_limit],
+                use_shield=True,
+                use_action_masks=use_action_masks,
+                deterministic=True,
+            )
+            shielded_full_summary["timesteps"] = int(model.num_timesteps)
+            shielded_full_summary["evaluation_type"] = "final_shielded_full_validation"
+            save_evaluation_results(
+                shielded_full_records,
+                shielded_full_summary,
+                evaluation_directory,
+                "final_shielded_full_validation",
+            )
     finally:
         environment.close()
 
