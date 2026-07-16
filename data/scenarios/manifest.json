@@ -1,0 +1,143 @@
+{
+  "dataset_name": "RiskAware Construction Scenario Dataset",
+  "dataset_version": "1.0.0",
+  "generator_seed": 20260716,
+  "splits": {
+    "stress": {
+      "config": {
+        "count": 300,
+        "grid_size": 12,
+        "hazard_range": [
+          8,
+          10
+        ],
+        "max_steps": 300,
+        "obstacle_range": [
+          27,
+          32
+        ],
+        "restricted_range": [
+          14,
+          18
+        ],
+        "vision_radius": 3,
+        "worker_range": [
+          6,
+          8
+        ]
+      },
+      "count": 300,
+      "path": "stress/stress.jsonl",
+      "sha256": "84e2de901d3f49bc63912a56d94b40cb9dbc76ec37f2e278cf64576cdf0b9456"
+    },
+    "test_seen": {
+      "config": {
+        "count": 200,
+        "grid_size": 12,
+        "hazard_range": [
+          5,
+          7
+        ],
+        "max_steps": 250,
+        "obstacle_range": [
+          14,
+          20
+        ],
+        "restricted_range": [
+          6,
+          10
+        ],
+        "vision_radius": 3,
+        "worker_range": [
+          3,
+          5
+        ]
+      },
+      "count": 200,
+      "path": "test_seen/test_seen.jsonl",
+      "sha256": "cfae31e7df769d50776c0654f7f4346513d18c165a6bf590b027cd7291280eb0"
+    },
+    "test_unseen": {
+      "config": {
+        "count": 200,
+        "grid_size": 12,
+        "hazard_range": [
+          7,
+          9
+        ],
+        "max_steps": 250,
+        "obstacle_range": [
+          21,
+          26
+        ],
+        "restricted_range": [
+          11,
+          15
+        ],
+        "vision_radius": 3,
+        "worker_range": [
+          5,
+          7
+        ]
+      },
+      "count": 200,
+      "path": "test_unseen/test_unseen.jsonl",
+      "sha256": "ea069639fe24b670ea74b72c83c1cd81311560ede0b502e317f1a940b5787af3"
+    },
+    "train": {
+      "config": {
+        "count": 1000,
+        "grid_size": 12,
+        "hazard_range": [
+          5,
+          7
+        ],
+        "max_steps": 250,
+        "obstacle_range": [
+          14,
+          20
+        ],
+        "restricted_range": [
+          6,
+          10
+        ],
+        "vision_radius": 3,
+        "worker_range": [
+          3,
+          5
+        ]
+      },
+      "count": 1000,
+      "path": "train/train.jsonl",
+      "sha256": "a37c26497168a377a1bc1d2bbecd172cf2fe22ff6b3566472b2e6b2d90df0bc5"
+    },
+    "validation": {
+      "config": {
+        "count": 200,
+        "grid_size": 12,
+        "hazard_range": [
+          5,
+          7
+        ],
+        "max_steps": 250,
+        "obstacle_range": [
+          14,
+          20
+        ],
+        "restricted_range": [
+          6,
+          10
+        ],
+        "vision_radius": 3,
+        "worker_range": [
+          3,
+          5
+        ]
+      },
+      "count": 200,
+      "path": "validation/validation.jsonl",
+      "sha256": "87e02d6379b9f52b0c2725d90997ba79509d35058e351392a69ee5e6e2d873ca"
+    }
+  },
+  "total_scenarios": 1900
+}
