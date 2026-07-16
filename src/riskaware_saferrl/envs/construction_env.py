@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+from collections.abc import Sequence
 from typing import Any
 
 import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
+
+from riskaware_saferrl.scenarios import Scenario
 
 
 class ConstructionInspectionEnv(gym.Env):
@@ -29,14 +32,37 @@ class ConstructionInspectionEnv(gym.Env):
         max_steps: int = 250,
         vision_radius: int = 3,
         render_mode: str | None = None,
+        scenario: Scenario | None = None,
+        scenarios: Sequence[Scenario] | None = None,
     ) -> None:
         super().__init__()
+
+        if scenario is not None and scenarios is not None:
+            raise ValueError("Provide either scenario or scenarios, not both.")
+
+        self.fixed_scenario = scenario
+        self.scenario_pool = tuple(scenarios) if scenarios is not None else ()
+        self.current_scenario: Scenario | None = None
+
+        configured_scenarios = (scenario,) if scenario is not None else self.scenario_pool
+
+        if configured_scenarios:
+            for configured_scenario in configured_scenarios:
+                configured_scenario.validate()
+
+            scenario_sizes = {
+                configured_scenario.grid_size for configured_scenario in configured_scenarios
+            }
+            if len(scenario_sizes) != 1:
+                raise ValueError("All scenarios in one environment must use the same grid size.")
+
+            size = configured_scenarios[0].grid_size
 
         if size < 6:
             raise ValueError("size must be at least 6")
 
         requested_cells = 1 + n_obstacles + n_hazards + n_workers + n_restricted
-        if requested_cells >= size * size:
+        if not configured_scenarios and requested_cells >= size * size:
             raise ValueError("Too many entities for the selected grid size")
 
         self.size = size
@@ -83,12 +109,77 @@ class ConstructionInspectionEnv(gym.Env):
     ) -> tuple[dict[str, np.ndarray], dict[str, Any]]:
         super().reset(seed=seed)
 
+        selected_scenario = self._select_scenario(options)
+
+        if selected_scenario is None:
+            self._generate_random_layout()
+        else:
+            self._load_scenario(selected_scenario)
+
+        self.inspected = set()
+        self.visited = {self.agent_position}
+        self.steps = 0
+
+        info = self._get_info(
+            collision_cost=0.0,
+            worker_cost=0.0,
+            restricted_cost=0.0,
+            new_hazard=False,
+        )
+        return self._get_obs(), info
+
+    def _select_scenario(self, options: dict[str, Any] | None) -> Scenario | None:
+        if self.fixed_scenario is not None:
+            return self.fixed_scenario
+
+        if not self.scenario_pool:
+            return None
+
+        if options is not None and "scenario_index" in options:
+            scenario_index = int(options["scenario_index"])
+            if not 0 <= scenario_index < len(self.scenario_pool):
+                raise IndexError(f"Scenario index is out of range: {scenario_index}")
+            return self.scenario_pool[scenario_index]
+
+        scenario_index = int(self.np_random.integers(0, len(self.scenario_pool)))
+        return self.scenario_pool[scenario_index]
+
+    def _load_scenario(self, scenario: Scenario) -> None:
+        if scenario.grid_size != self.size:
+            raise ValueError(
+                f"Scenario grid size {scenario.grid_size} does not match "
+                f"environment grid size {self.size}."
+            )
+
+        self.current_scenario = scenario
+        self.agent = np.array(scenario.agent_start, dtype=np.int32)
+        self.obstacles = set(scenario.obstacles)
+        self.hazards = set(scenario.hazards)
+        self.workers = set(scenario.workers)
+        self.restricted = set(scenario.restricted_zones)
+
+        self.n_obstacles = len(self.obstacles)
+        self.n_hazards = len(self.hazards)
+        self.n_workers = len(self.workers)
+        self.n_restricted = len(self.restricted)
+        self.max_steps = scenario.max_steps
+        self.vision_radius = scenario.vision_radius
+
+    def _generate_random_layout(self) -> None:
+        self.current_scenario = None
+
         positions = np.array(
             [(row, col) for row in range(self.size) for col in range(self.size)],
             dtype=np.int32,
         )
         count = 1 + self.n_obstacles + self.n_hazards + self.n_workers + self.n_restricted
-        selected = positions[self.np_random.choice(len(positions), size=count, replace=False)]
+        selected = positions[
+            self.np_random.choice(
+                len(positions),
+                size=count,
+                replace=False,
+            )
+        ]
 
         index = 0
         self.agent = selected[index].copy()
@@ -105,18 +196,6 @@ class ConstructionInspectionEnv(gym.Env):
 
         self.restricted = self._to_position_set(selected[index : index + self.n_restricted])
 
-        self.inspected = set()
-        self.visited = {self.agent_position}
-        self.steps = 0
-
-        info = self._get_info(
-            collision_cost=0.0,
-            worker_cost=0.0,
-            restricted_cost=0.0,
-            new_hazard=False,
-        )
-        return self._get_obs(), info
-
     @staticmethod
     def _to_position_set(values: np.ndarray) -> set[tuple[int, int]]:
         return {(int(row), int(col)) for row, col in values}
@@ -127,8 +206,7 @@ class ConstructionInspectionEnv(gym.Env):
 
     def _is_visible(self, position: tuple[int, int]) -> bool:
         return (
-            abs(position[0] - self.agent_position[0])
-            + abs(position[1] - self.agent_position[1])
+            abs(position[0] - self.agent_position[0]) + abs(position[1] - self.agent_position[1])
             <= self.vision_radius
         )
 
@@ -143,7 +221,8 @@ class ConstructionInspectionEnv(gym.Env):
             if self._is_visible(position):
                 grid[1, position[0], position[1]] = 1.0
                 grid[6, position[0], position[1]] = max(
-                    grid[6, position[0], position[1]], 0.7
+                    grid[6, position[0], position[1]],
+                    0.7,
                 )
 
         for position in self.workers:
@@ -187,7 +266,13 @@ class ConstructionInspectionEnv(gym.Env):
         center: tuple[int, int],
         value: float,
     ) -> None:
-        for row_delta, col_delta in ((0, 0), (-1, 0), (1, 0), (0, -1), (0, 1)):
+        for row_delta, col_delta in (
+            (0, 0),
+            (-1, 0),
+            (1, 0),
+            (0, -1),
+            (0, 1),
+        ):
             row = center[0] + row_delta
             col = center[1] + col_delta
             if 0 <= row < self.size and 0 <= col < self.size:
@@ -297,6 +382,7 @@ class ConstructionInspectionEnv(gym.Env):
         new_hazard: bool,
     ) -> dict[str, Any]:
         total_cost = collision_cost + worker_cost + restricted_cost
+
         return {
             "cost": float(total_cost),
             "cost_collision": float(collision_cost),
@@ -308,6 +394,12 @@ class ConstructionInspectionEnv(gym.Env):
             "hazard_recall": len(self.inspected) / max(1, self.n_hazards),
             "coverage": len(self.visited) / (self.size * self.size),
             "success": len(self.inspected) == self.n_hazards,
+            "scenario_id": (
+                self.current_scenario.scenario_id if self.current_scenario is not None else None
+            ),
+            "scenario_split": (
+                self.current_scenario.split if self.current_scenario is not None else None
+            ),
         }
 
     def render(self) -> str:
