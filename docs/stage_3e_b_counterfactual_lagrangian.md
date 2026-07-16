@@ -55,3 +55,12 @@ Additional shielded final evaluations measure deployment behavior separately.
 - no inspect-action collapse
 - lower runtime shield dependence
 - maximum hazard recall subject to the safety constraint
+
+## Calibration runs
+
+Full curriculum experiments require at least 100 rollout updates. Shorter
+diagnostic experiments must explicitly pass `--calibration-run`.
+
+Calibration mode preserves the requested update count and curriculum stage
+boundaries. It cannot be combined with `--smoke-test`, which always uses three
+fixed rollout updates.

@@ -119,6 +119,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--safety-cost-limit", type=float, default=5.0)
     parser.add_argument("--progress-bar", action="store_true")
     parser.add_argument("--smoke-test", action="store_true")
+    parser.add_argument(
+        "--calibration-run",
+        action="store_true",
+    )
     return parser.parse_args()
 
 
@@ -143,6 +147,8 @@ def get_git_commit() -> str | None:
 
 
 def validate_args(args: argparse.Namespace) -> None:
+    if args.smoke_test and args.calibration_run:
+        raise ValueError("--smoke-test and --calibration-run cannot be used together.")
     if args.device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA was requested but PyTorch cannot access the NVIDIA GPU.")
     if args.n_envs < 1:
@@ -187,8 +193,10 @@ def validate_args(args: argparse.Namespace) -> None:
     if args.proposed_cost_limit < 0.0:
         raise ValueError("--proposed-cost-limit must be non-negative.")
 
-    if not args.smoke_test:
+    if not args.calibration_run and (not args.smoke_test):
         total_scheduled_updates = args.resume_completed_updates + args.updates
+        if args.calibration_run and total_scheduled_updates < 3:
+            raise ValueError("Calibration requires at least 3 total rollout updates.")
         if total_scheduled_updates < 100:
             raise ValueError(
                 "Full curriculum training requires at least 100 total rollout updates."
@@ -450,6 +458,7 @@ def main() -> None:
         "resume_from": str(args.resume_from) if args.resume_from else None,
         "resume_completed_updates": args.resume_completed_updates,
         "smoke_test": args.smoke_test,
+        "calibration_run": args.calibration_run,
     }
     (run_directory / "run_metadata.json").write_text(
         json.dumps(metadata, indent=2) + "\n",
