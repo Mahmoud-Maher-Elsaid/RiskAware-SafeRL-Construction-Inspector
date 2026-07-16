@@ -326,6 +326,24 @@ class ConstructionInspectionEnv(gym.Env):
     def safe_actions(self) -> list[int]:
         return [action for action in range(self.action_space.n) if self.is_action_safe(action)]
 
+    def action_masks(self) -> np.ndarray:
+        masks = np.zeros(self.action_space.n, dtype=np.bool_)
+
+        for action, delta in self.ACTION_TO_DELTA.items():
+            candidate = self.agent + delta
+            candidate_position = int(candidate[0]), int(candidate[1])
+            masks[action] = self._inside(candidate) and candidate_position not in self.obstacles
+
+        masks[4] = bool(self.inspectable_hazards())
+
+        if not bool(np.any(masks)):
+            masks[4] = True
+
+        return masks
+
+    def task_valid_actions(self) -> list[int]:
+        return [action for action, is_valid in enumerate(self.action_masks()) if bool(is_valid)]
+
     def step(
         self,
         action: int,

@@ -18,7 +18,7 @@ class PredictivePolicy(Protocol):
     def predict(
         self,
         observation: dict[str, np.ndarray],
-        deterministic: bool = True,
+        **kwargs: Any,
     ) -> tuple[Any, Any]: ...
 
 
@@ -55,11 +55,33 @@ def summarize_values(values: Sequence[float]) -> dict[str, float]:
     }
 
 
+def action_masks_from_environment(environment: Any) -> np.ndarray:
+    base_environment = environment.unwrapped
+    mask_provider = getattr(base_environment, "action_masks", None)
+
+    if mask_provider is None or not callable(mask_provider):
+        raise AttributeError("The evaluation environment does not provide action_masks().")
+
+    masks = np.asarray(mask_provider(), dtype=np.bool_)
+
+    if masks.shape != (base_environment.action_space.n,):
+        raise ValueError(
+            "Unexpected action-mask shape: "
+            f"{masks.shape}; expected {(base_environment.action_space.n,)}."
+        )
+
+    if not bool(np.any(masks)):
+        raise ValueError("At least one action must remain valid.")
+
+    return masks
+
+
 def evaluate_policy_on_scenarios(
     model: PredictivePolicy,
     scenarios: Sequence[Scenario],
     *,
     use_shield: bool = False,
+    use_action_masks: bool = False,
     deterministic: bool = True,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     if not scenarios:
@@ -74,7 +96,6 @@ def evaluate_policy_on_scenarios(
             environment = SafetyShield(environment)
 
         observation, _ = environment.reset(seed=0)
-
         total_reward = 0.0
         total_cost = 0.0
         collision_cost = 0.0
@@ -83,26 +104,36 @@ def evaluate_policy_on_scenarios(
         shield_interventions = 0
         steps = 0
 
-        while True:
-            action, _ = model.predict(
-                observation,
-                deterministic=deterministic,
-            )
+        try:
+            while True:
+                prediction_kwargs: dict[str, Any] = {
+                    "deterministic": deterministic,
+                }
 
-            observation, reward, terminated, truncated, info = environment.step(
-                int(np.asarray(action).item())
-            )
+                if use_action_masks:
+                    prediction_kwargs["action_masks"] = action_masks_from_environment(environment)
 
-            total_reward += float(reward)
-            total_cost += float(info["cost"])
-            collision_cost += float(info["cost_collision"])
-            worker_cost += float(info["cost_worker"])
-            restricted_cost += float(info["cost_restricted"])
-            shield_interventions += int(info.get("shield_active", False))
-            steps += 1
+                action, _ = model.predict(
+                    observation,
+                    **prediction_kwargs,
+                )
 
-            if terminated or truncated:
-                break
+                observation, reward, terminated, truncated, info = environment.step(
+                    int(np.asarray(action).item())
+                )
+
+                total_reward += float(reward)
+                total_cost += float(info["cost"])
+                collision_cost += float(info["cost_collision"])
+                worker_cost += float(info["cost_worker"])
+                restricted_cost += float(info["cost_restricted"])
+                shield_interventions += int(info.get("shield_active", False))
+                steps += 1
+
+                if terminated or truncated:
+                    break
+        finally:
+            environment.close()
 
         records.append(
             {
@@ -121,12 +152,11 @@ def evaluate_policy_on_scenarios(
             }
         )
 
-        environment.close()
-
     summary = {
         "scenario_count": len(records),
         "split": scenarios[0].split,
         "shield": use_shield,
+        "action_masking": use_action_masks,
         "deterministic": deterministic,
         "metrics": {
             metric_name: summarize_values([float(record[metric_name]) for record in records])

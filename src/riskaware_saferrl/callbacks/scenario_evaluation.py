@@ -16,8 +16,6 @@ from riskaware_saferrl.scenarios import Scenario
 
 
 class ScenarioEvaluationCallback(BaseCallback):
-    """Evaluate on a fixed scenario subset and save the best policy."""
-
     def __init__(
         self,
         scenarios: Sequence[Scenario],
@@ -27,6 +25,7 @@ class ScenarioEvaluationCallback(BaseCallback):
         selection_metric: str,
         safety_cost_limit: float,
         use_shield: bool = False,
+        use_action_masks: bool = False,
         evaluate_at_start: bool = True,
         verbose: int = 1,
     ) -> None:
@@ -44,6 +43,7 @@ class ScenarioEvaluationCallback(BaseCallback):
         self.selection_metric = selection_metric
         self.safety_cost_limit = safety_cost_limit
         self.use_shield = use_shield
+        self.use_action_masks = use_action_masks
         self.evaluate_at_start = evaluate_at_start
         self.best_score = float("-inf")
 
@@ -69,6 +69,7 @@ class ScenarioEvaluationCallback(BaseCallback):
             self.model,
             self.scenarios,
             use_shield=self.use_shield,
+            use_action_masks=self.use_action_masks,
             deterministic=True,
         )
 
@@ -84,6 +85,7 @@ class ScenarioEvaluationCallback(BaseCallback):
         summary["safety_cost_limit"] = self.safety_cost_limit
 
         output_name = f"step_{self.num_timesteps:012d}"
+
         save_evaluation_results(
             records,
             summary,
@@ -92,6 +94,7 @@ class ScenarioEvaluationCallback(BaseCallback):
         )
 
         history_path = self.output_directory / "evaluation_history.jsonl"
+
         with history_path.open("a", encoding="utf-8") as file:
             file.write(json.dumps(summary) + "\n")
 
@@ -119,7 +122,6 @@ class ScenarioEvaluationCallback(BaseCallback):
 
         if score > self.best_score:
             self.best_score = score
-
             best_model_path = self.output_directory / "best_model" / "best_model"
             self.model.save(best_model_path)
 

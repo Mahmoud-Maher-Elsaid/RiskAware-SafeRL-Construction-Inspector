@@ -10,6 +10,7 @@ from typing import Any
 
 import numpy as np
 import torch
+from sb3_contrib import MaskablePPO
 from stable_baselines3 import PPO
 from stable_baselines3.common.callbacks import CallbackList, CheckpointCallback
 from stable_baselines3.common.monitor import Monitor
@@ -53,6 +54,11 @@ def parse_args() -> argparse.Namespace:
         "--curriculum-manifest",
         type=Path,
         default=Path("configs/curriculum/safe_viewpoint_radius2.json"),
+    )
+    parser.add_argument(
+        "--algorithm",
+        choices=["ppo", "maskable_ppo"],
+        default="ppo",
     )
     parser.add_argument("--updates", type=int, default=100)
     parser.add_argument("--easy-updates", type=int, default=25)
@@ -175,9 +181,11 @@ def create_model(
     args: argparse.Namespace,
     environment: DummyVecEnv,
     tensorboard_directory: Path,
-) -> PPO:
+) -> PPO | MaskablePPO:
+    algorithm_class = MaskablePPO if args.algorithm == "maskable_ppo" else PPO
+
     if args.resume_from is not None:
-        model = PPO.load(
+        model = algorithm_class.load(
             args.resume_from,
             env=environment,
             device=args.device,
@@ -186,8 +194,10 @@ def create_model(
 
         if model.n_steps != args.n_steps:
             raise ValueError("The resumed model n_steps does not match --n-steps.")
+
         if model.n_epochs != args.n_epochs:
             raise ValueError("The resumed model n_epochs does not match --n-epochs.")
+
         if model.batch_size != args.batch_size:
             raise ValueError("The resumed model batch_size does not match --batch-size.")
 
@@ -199,7 +209,7 @@ def create_model(
         "net_arch": {"pi": [128, 64], "vf": [128, 64]},
     }
 
-    return PPO(
+    return algorithm_class(
         policy="MultiInputPolicy",
         env=environment,
         learning_rate=3e-4,
@@ -293,12 +303,13 @@ def main() -> None:
     if not args.smoke_test and total_timesteps < rollout_size * args.updates:
         raise ValueError("--timesteps cannot be lower than the requested rollout updates.")
 
+    use_action_masks = args.algorithm == "maskable_ppo"
+
     if args.run_name is not None:
         run_name = args.run_name
-    elif args.shield:
-        run_name = f"ppo_safe_curriculum_shielded_seed{args.seed}"
     else:
-        run_name = f"ppo_safe_curriculum_seed{args.seed}"
+        shield_suffix = "_shielded" if args.shield else ""
+        run_name = f"{args.algorithm}_safe_curriculum{shield_suffix}_seed{args.seed}"
 
     run_directory = Path("artifacts/runs") / run_name
     checkpoint_directory = run_directory / "checkpoints"
@@ -366,6 +377,8 @@ def main() -> None:
         "total_optimization_epochs": effective_updates * args.n_epochs,
         "batch_size": args.batch_size,
         "total_timesteps": total_timesteps,
+        "algorithm": args.algorithm,
+        "action_masking": use_action_masks,
         "shield": args.shield,
         "selection_metric": args.selection_metric,
         "safety_cost_limit": args.safety_cost_limit,
@@ -393,7 +406,12 @@ def main() -> None:
                 name_prefix=run_name,
                 verbose=2,
             ),
-            ActionDiagnosticsCallback(diagnostics_directory / "rollout_diagnostics.jsonl"),
+            ActionDiagnosticsCallback(
+                diagnostics_directory / "rollout_diagnostics.jsonl",
+                collapse_threshold=0.95,
+                collapse_patience=3,
+                verbose=1,
+            ),
             ScenarioEvaluationCallback(
                 feasible_validation_scenarios[:validation_limit],
                 eval_freq=max(eval_every_updates * args.n_steps, 1),
@@ -401,6 +419,7 @@ def main() -> None:
                 selection_metric=args.selection_metric,
                 safety_cost_limit=args.safety_cost_limit,
                 use_shield=args.shield,
+                use_action_masks=use_action_masks,
                 evaluate_at_start=True,
                 verbose=1,
             ),
@@ -425,6 +444,7 @@ def main() -> None:
             model,
             feasible_validation_scenarios[:final_validation_limit],
             use_shield=args.shield,
+            use_action_masks=use_action_masks,
             deterministic=True,
         )
         feasible_summary["timesteps"] = int(model.num_timesteps)
@@ -440,6 +460,7 @@ def main() -> None:
             model,
             validation_scenarios[:full_validation_limit],
             use_shield=args.shield,
+            use_action_masks=use_action_masks,
             deterministic=True,
         )
         full_summary["timesteps"] = int(model.num_timesteps)
