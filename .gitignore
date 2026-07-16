@@ -38,3 +38,8 @@ webots/controllers/**/__pycache__/
 *.wbproj
 artifacts/results/*
 !artifacts/results/.gitkeep
+
+artifacts/runs/*
+!artifacts/runs/.gitkeep
+artifacts/checkpoints/*
+!artifacts/checkpoints/.gitkeep
