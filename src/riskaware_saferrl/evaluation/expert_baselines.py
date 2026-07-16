@@ -13,6 +13,7 @@ from riskaware_saferrl.evaluation.reward_audit import (
 from riskaware_saferrl.planners import (
     InspectionPlan,
     build_oracle_inspection_plan,
+    build_viewpoint_inspection_plan,
 )
 from riskaware_saferrl.scenarios import Scenario
 
@@ -26,8 +27,15 @@ def scenario_seed(scenario_id: str, base_seed: int) -> int:
 def run_action_sequence(
     scenario: Scenario,
     actions: Sequence[int],
+    *,
+    inspection_radius: int = 2,
 ) -> dict[str, Any]:
-    environment = RewardAuditWrapper(ConstructionInspectionEnv(scenario=scenario))
+    environment = RewardAuditWrapper(
+        ConstructionInspectionEnv(
+            scenario=scenario,
+            inspection_radius=inspection_radius,
+        )
+    )
 
     total_reward = 0.0
     total_cost = 0.0
@@ -71,6 +79,7 @@ def run_action_sequence(
         "coverage": float(final_info["coverage"]),
         "success": float(bool(final_info["success"])),
         "steps": float(executed_actions),
+        "inspection_radius": float(inspection_radius),
         **reward_components,
     }
 
@@ -82,6 +91,7 @@ def evaluate_plan(
     record = run_action_sequence(
         scenario,
         plan.actions,
+        inspection_radius=plan.inspection_radius,
     )
 
     record.update(
@@ -90,6 +100,7 @@ def evaluate_plan(
             "plan_complete": float(plan.complete),
             "planned_actions": float(len(plan.actions)),
             "planned_hazards": float(len(plan.visited_hazards)),
+            "planned_viewpoints": float(len(plan.viewpoints)),
             "unreachable_hazards": float(len(plan.unreachable_hazards)),
         }
     )
@@ -99,10 +110,13 @@ def evaluate_plan(
 
 def evaluate_inspect_only(
     scenario: Scenario,
+    *,
+    inspection_radius: int = 2,
 ) -> dict[str, Any]:
     record = run_action_sequence(
         scenario,
         [4] * scenario.max_steps,
+        inspection_radius=inspection_radius,
     )
     record["planner"] = "inspect_only"
     record["plan_complete"] = 0.0
@@ -113,6 +127,7 @@ def evaluate_random(
     scenario: Scenario,
     *,
     base_seed: int,
+    inspection_radius: int = 2,
 ) -> dict[str, Any]:
     generator = random.Random(
         scenario_seed(
@@ -126,6 +141,7 @@ def evaluate_random(
     record = run_action_sequence(
         scenario,
         actions,
+        inspection_radius=inspection_radius,
     )
     record["planner"] = "random"
     record["plan_complete"] = 0.0
@@ -136,27 +152,46 @@ def evaluate_all_baselines(
     scenarios: Sequence[Scenario],
     *,
     random_seed: int,
+    inspection_radius: int = 2,
 ) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
 
     for scenario in scenarios:
-        records.append(evaluate_inspect_only(scenario))
+        records.append(
+            evaluate_inspect_only(
+                scenario,
+                inspection_radius=inspection_radius,
+            )
+        )
         records.append(
             evaluate_random(
                 scenario,
                 base_seed=random_seed,
+                inspection_radius=inspection_radius,
             )
         )
 
         for safety_aware in (False, True):
-            plan = build_oracle_inspection_plan(
+            occupancy_plan = build_oracle_inspection_plan(
                 scenario,
                 safety_aware=safety_aware,
             )
             records.append(
                 evaluate_plan(
                     scenario,
-                    plan,
+                    occupancy_plan,
+                )
+            )
+
+            viewpoint_plan = build_viewpoint_inspection_plan(
+                scenario,
+                safety_aware=safety_aware,
+                inspection_radius=inspection_radius,
+            )
+            records.append(
+                evaluate_plan(
+                    scenario,
+                    viewpoint_plan,
                 )
             )
 

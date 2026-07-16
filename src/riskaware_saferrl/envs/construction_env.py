@@ -7,6 +7,7 @@ import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
 
+from riskaware_saferrl.inspection import inspectable_hazards_from
 from riskaware_saferrl.scenarios import Scenario
 
 
@@ -31,6 +32,7 @@ class ConstructionInspectionEnv(gym.Env):
         n_restricted: int = 8,
         max_steps: int = 250,
         vision_radius: int = 3,
+        inspection_radius: int = 2,
         render_mode: str | None = None,
         scenario: Scenario | None = None,
         scenarios: Sequence[Scenario] | None = None,
@@ -60,6 +62,8 @@ class ConstructionInspectionEnv(gym.Env):
 
         if size < 6:
             raise ValueError("size must be at least 6")
+        if inspection_radius < 0:
+            raise ValueError("inspection_radius must be non-negative.")
 
         requested_cells = 1 + n_obstacles + n_hazards + n_workers + n_restricted
         if not configured_scenarios and requested_cells >= size * size:
@@ -72,6 +76,7 @@ class ConstructionInspectionEnv(gym.Env):
         self.n_restricted = n_restricted
         self.max_steps = max_steps
         self.vision_radius = vision_radius
+        self.inspection_radius = inspection_radius
         self.render_mode = render_mode
 
         self.action_space = spaces.Discrete(5)
@@ -278,6 +283,25 @@ class ConstructionInspectionEnv(gym.Env):
             if 0 <= row < self.size and 0 <= col < self.size:
                 risk_map[row, col] = max(risk_map[row, col], value)
 
+    def inspectable_hazards(
+        self,
+        position: tuple[int, int] | None = None,
+        *,
+        include_inspected: bool = False,
+    ) -> frozenset[tuple[int, int]]:
+        viewpoint = self.agent_position if position is None else position
+        hazards = self.hazards
+
+        if not include_inspected:
+            hazards = hazards - self.inspected
+
+        return inspectable_hazards_from(
+            viewpoint,
+            hazards,
+            blockers=self.obstacles,
+            inspection_radius=self.inspection_radius,
+        )
+
     def is_action_safe(self, action: int) -> bool:
         if action == 4:
             return True
@@ -315,6 +339,7 @@ class ConstructionInspectionEnv(gym.Env):
         worker_cost = 0.0
         restricted_cost = 0.0
         new_hazard = False
+        new_hazard_count = 0
 
         if action in self.ACTION_TO_DELTA:
             candidate = self.agent + self.ACTION_TO_DELTA[action]
@@ -339,9 +364,12 @@ class ConstructionInspectionEnv(gym.Env):
                     reward -= 0.5
 
         elif action == 4:
-            if self.agent_position in self.hazards and self.agent_position not in self.inspected:
-                self.inspected.add(self.agent_position)
-                reward += 3.0
+            newly_inspected = self.inspectable_hazards()
+
+            if newly_inspected:
+                self.inspected.update(newly_inspected)
+                new_hazard_count = len(newly_inspected)
+                reward += 3.0 * new_hazard_count
                 new_hazard = True
             else:
                 reward -= 0.1
@@ -361,6 +389,7 @@ class ConstructionInspectionEnv(gym.Env):
             worker_cost=worker_cost,
             restricted_cost=restricted_cost,
             new_hazard=new_hazard,
+            new_hazard_count=new_hazard_count,
         )
         return self._get_obs(), float(reward), terminated, truncated, info
 
@@ -380,6 +409,7 @@ class ConstructionInspectionEnv(gym.Env):
         worker_cost: float,
         restricted_cost: float,
         new_hazard: bool,
+        new_hazard_count: int = 0,
     ) -> dict[str, Any]:
         total_cost = collision_cost + worker_cost + restricted_cost
 
@@ -389,6 +419,9 @@ class ConstructionInspectionEnv(gym.Env):
             "cost_worker": float(worker_cost),
             "cost_restricted": float(restricted_cost),
             "new_hazard": bool(new_hazard),
+            "new_hazards": int(new_hazard_count),
+            "inspectable_hazards": len(self.inspectable_hazards()),
+            "inspection_radius": self.inspection_radius,
             "hazards_inspected": len(self.inspected),
             "total_hazards": self.n_hazards,
             "hazard_recall": len(self.inspected) / max(1, self.n_hazards),

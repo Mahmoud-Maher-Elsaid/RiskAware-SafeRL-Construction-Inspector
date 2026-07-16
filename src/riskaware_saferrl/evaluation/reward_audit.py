@@ -31,7 +31,15 @@ class RewardAuditWrapper(gym.Wrapper):
         components = {
             "step_penalty": -0.01,
             "new_cell_reward": (0.05 if len(self.unwrapped.visited) > previous_coverage else 0.0),
-            "hazard_reward": (3.0 if bool(info.get("new_hazard", False)) else 0.0),
+            "hazard_reward": (
+                3.0
+                * int(
+                    info.get(
+                        "new_hazards",
+                        int(bool(info.get("new_hazard", False))),
+                    )
+                )
+            ),
             "completion_reward": 5.0 if terminated else 0.0,
             "collision_penalty": (-1.0 if float(info.get("cost_collision", 0.0)) > 0.0 else 0.0),
             "worker_penalty": (-0.5 if float(info.get("cost_worker", 0.0)) > 0.0 else 0.0),

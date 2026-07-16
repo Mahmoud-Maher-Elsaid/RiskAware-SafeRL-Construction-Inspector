@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 from riskaware_saferrl.planners import (
-    build_oracle_inspection_plan,
+    build_viewpoint_inspection_plan,
 )
 from riskaware_saferrl.scenario_dataset import load_scenarios
 
@@ -28,9 +28,14 @@ def parse_args() -> argparse.Namespace:
         default=None,
     )
     parser.add_argument(
+        "--inspection-radius",
+        type=int,
+        default=2,
+    )
+    parser.add_argument(
         "--output",
         type=Path,
-        default=Path("data/expert/train_oracle_plans.jsonl"),
+        default=Path("data/expert/train_safe_viewpoint_plans.jsonl"),
     )
     return parser.parse_args()
 
@@ -63,9 +68,10 @@ def main() -> None:
         newline="\n",
     ) as file:
         for scenario in scenarios:
-            plan = build_oracle_inspection_plan(
+            plan = build_viewpoint_inspection_plan(
                 scenario,
                 safety_aware=True,
+                inspection_radius=args.inspection_radius,
             )
 
             complete_count += int(plan.complete)
@@ -74,8 +80,10 @@ def main() -> None:
                 "scenario_id": scenario.scenario_id,
                 "split": scenario.split,
                 "planner": plan.planner_name,
+                "inspection_radius": plan.inspection_radius,
                 "actions": list(plan.actions),
-                "visited_hazards": [list(position) for position in plan.visited_hazards],
+                "viewpoints": [list(position) for position in plan.viewpoints],
+                "inspected_hazards": [list(position) for position in plan.visited_hazards],
                 "unreachable_hazards": [list(position) for position in plan.unreachable_hazards],
                 "complete": plan.complete,
             }
@@ -95,6 +103,7 @@ def main() -> None:
                 "scenario_count": len(scenarios),
                 "complete_plans": complete_count,
                 "completion_rate": (complete_count / len(scenarios)),
+                "inspection_radius": args.inspection_radius,
             },
             indent=2,
         )
