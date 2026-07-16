@@ -7,6 +7,7 @@ from riskaware_saferrl.planners.astar import (
 from riskaware_saferrl.planners.oracle_inspection import (
     InspectionPlan,
     build_oracle_inspection_plan,
+    build_viewpoint_inspection_plan,
 )
 
 __all__ = [
@@ -15,5 +16,6 @@ __all__ = [
     "InspectionPlan",
     "astar_path",
     "build_oracle_inspection_plan",
+    "build_viewpoint_inspection_plan",
     "path_to_actions",
 ]

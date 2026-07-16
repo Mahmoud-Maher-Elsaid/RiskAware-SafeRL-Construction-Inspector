@@ -38,6 +38,11 @@ def parse_args() -> argparse.Namespace:
         default=42,
     )
     parser.add_argument(
+        "--inspection-radius",
+        type=int,
+        default=2,
+    )
+    parser.add_argument(
         "--output-directory",
         type=Path,
         default=Path("artifacts/results/expert_baselines"),
@@ -115,6 +120,7 @@ def main() -> None:
     records = evaluate_all_baselines(
         scenarios,
         random_seed=args.random_seed,
+        inspection_radius=args.inspection_radius,
     )
     summary = summarize_records(records)
 
