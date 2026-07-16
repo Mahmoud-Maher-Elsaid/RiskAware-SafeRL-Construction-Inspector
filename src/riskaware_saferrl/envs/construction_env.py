@@ -302,26 +302,46 @@ class ConstructionInspectionEnv(gym.Env):
             inspection_radius=self.inspection_radius,
         )
 
-    def is_action_safe(self, action: int) -> bool:
+    def action_safety_violations(self, action: int) -> tuple[str, ...]:
         if action == 4:
-            return True
+            current_position = (
+                int(self.agent[0]),
+                int(self.agent[1]),
+            )
+            violations: list[str] = []
+
+            if current_position in self.restricted:
+                violations.append("restricted")
+
+            if self._near_worker(current_position):
+                violations.append("worker")
+
+            return tuple(violations)
 
         if action not in self.ACTION_TO_DELTA:
-            return False
+            return ("invalid_action",)
 
         candidate = self.agent + self.ACTION_TO_DELTA[action]
-        candidate_position = int(candidate[0]), int(candidate[1])
+        candidate_position = (
+            int(candidate[0]),
+            int(candidate[1]),
+        )
+        violations: list[str] = []
 
-        if not self._inside(candidate):
-            return False
-        if candidate_position in self.obstacles:
-            return False
+        if not self._inside(candidate) or candidate_position in self.obstacles:
+            violations.append("collision")
+            return tuple(violations)
+
         if candidate_position in self.restricted:
-            return False
-        if self._near_worker(candidate_position):
-            return False
+            violations.append("restricted")
 
-        return True
+        if self._near_worker(candidate_position):
+            violations.append("worker")
+
+        return tuple(violations)
+
+    def is_action_safe(self, action: int) -> bool:
+        return not self.action_safety_violations(action)
 
     def safe_actions(self) -> list[int]:
         return [action for action in range(self.action_space.n) if self.is_action_safe(action)]
