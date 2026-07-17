@@ -180,8 +180,6 @@ def validate_args(args: argparse.Namespace) -> None:
         raise ValueError("--checkpoint-every-updates must be positive.")
     if args.validation_limit < 1:
         raise ValueError("--validation-limit must be positive.")
-    if args.lagrangian and not args.shield:
-        raise ValueError("--lagrangian requires --shield.")
     if args.lagrangian and args.algorithm != "maskable_ppo":
         raise ValueError("--lagrangian requires --algorithm maskable_ppo.")
     if args.lagrange_initial_value < 0.0:
@@ -563,7 +561,7 @@ def main() -> None:
             "final_full_validation",
         )
 
-        if args.lagrangian and args.shield:
+        if args.lagrangian:
             (
                 shielded_feasible_records,
                 shielded_feasible_summary,
