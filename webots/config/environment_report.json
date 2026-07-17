@@ -1,0 +1,15 @@
+{
+    "generated_at":  "2026-07-17T17:26:57.0958219+03:00",
+    "branch":  "stage-4a-webots-foundation",
+    "commit":  "ed35f9a9a19e1b5a6ca510914c610917ad52f648",
+    "python_executable":  "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\.venv\\Scripts\\python.exe",
+    "python_version":  "Python 3.11.0",
+    "native_webots_available":  true,
+    "native_webots_candidates":  [
+                                     "C:\\Program Files\\Webots\\msys64\\mingw64\\bin\\webots.exe"
+                                 ],
+    "webots_command":  "",
+    "preferred_webots_executable":  "C:\\Program Files\\Webots\\msys64\\mingw64\\bin\\webots.exe",
+    "docker_available":  false,
+    "docker_command":  ""
+}
