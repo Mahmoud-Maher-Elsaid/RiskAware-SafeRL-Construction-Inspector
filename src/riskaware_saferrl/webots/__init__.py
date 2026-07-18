@@ -17,6 +17,10 @@ from riskaware_saferrl.webots.motion_primitives import (
     MotionPrimitive,
     WheelCommand,
 )
+from riskaware_saferrl.webots.policy_dry_run import (
+    PolicyDryRunEngine,
+    PolicyProposal,
+)
 
 __all__ = [
     "ACTION_TO_DELTA",
@@ -32,4 +36,6 @@ __all__ = [
     "SemanticScene",
     "WebotsSensorSnapshot",
     "WheelCommand",
+    "PolicyDryRunEngine",
+    "PolicyProposal",
 ]
