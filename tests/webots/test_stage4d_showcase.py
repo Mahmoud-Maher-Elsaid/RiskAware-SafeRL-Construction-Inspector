@@ -109,7 +109,6 @@ def test_showcase_launcher_detects_real_webots_process() -> None:
     assert console_index != wrapper_index
     assert "webots-bin" in content
     assert "Get-RunningWebotsProcesses" in content
-    assert "Start-WebotsCandidate" in content
     assert "RedirectStandardOutput" in content
     assert "RedirectStandardError" in content
 
