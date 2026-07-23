@@ -3,7 +3,9 @@ from riskaware_saferrl.safety import SafetyShield
 
 
 def test_shield_replaces_known_unsafe_action() -> None:
-    base_env = ConstructionInspectionEnv(size=6, n_obstacles=1, n_hazards=1, n_workers=1, n_restricted=1)
+    base_env = ConstructionInspectionEnv(
+        size=6, n_obstacles=1, n_hazards=1, n_workers=1, n_restricted=1
+    )
     env = SafetyShield(base_env)
     env.reset(seed=1)
 

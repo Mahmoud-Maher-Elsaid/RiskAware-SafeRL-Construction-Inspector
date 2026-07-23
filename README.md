@@ -16,11 +16,11 @@ Can semantic risk observations, constrained objectives, and action shielding imp
 - [x] Rule-based action shield
 - [x] Unit tests and GitHub Actions
 - [ ] PPO-Lagrangian
-- [ ] Expert A* / frontier baseline
-- [ ] Partial-observation recurrent agent
-- [ ] Webots integration
-- [ ] Semantic perception module
-- [ ] Domain randomization
+- [x] Expert A* baselines with deterministic tie-breaking
+- [ ] Partial-observation recurrent agent training and evaluation (GRU module and reset tests exist)
+- [x] Webots Stage 5A camera and deterministic Stage 5A3 closed-loop validation
+- [x] Modular semantic perception interface (production model artifact unavailable)
+- [x] Deterministic domain-randomization sampler
 - [ ] Full benchmark and research paper
 
 ## Environment
@@ -58,6 +58,7 @@ Safety costs:
 .\.venv\Scripts\python.exe scripts\evaluate_random.py --episodes 20
 .\.venv\Scripts\python.exe scripts\train_ppo.py --timesteps 100000 --device cuda
 .\.venv\Scripts\python.exe scripts\train_ppo.py --timesteps 100000 --device cuda --shield
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_stage5a3_closed_loop_mission.ps1 -Mode Validation
 ```
 
 ## Tests
@@ -75,3 +76,7 @@ Safety costs:
 ## Repository policy
 
 Generated datasets, model checkpoints, and experiment logs are ignored by Git. Only code, configs, documentation, and small reproducibility artifacts should be committed.
+
+## Verified Webots boundary
+
+Stage 5A validates scripted 640 x 360 camera acquisition. Stage 5A3 validates a deterministic GPS/compass closed-loop waypoint controller. Neither stage uses CV detections or an RL policy to control motors. The repository does not establish real-world safety and makes no absolute safety guarantee.

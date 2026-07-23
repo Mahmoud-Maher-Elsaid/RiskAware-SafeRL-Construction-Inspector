@@ -1,0 +1,22 @@
+{
+  "backend": "disabled",
+  "model_path": null,
+  "device": "auto",
+  "confidence_threshold": 0.4,
+  "class_names": [
+    "Person",
+    "Hardhat",
+    "No Hardhat",
+    "Safety Vest",
+    "No Safety Vest",
+    "Gloves",
+    "No Gloves",
+    "Goggles",
+    "No Goggles",
+    "Mask",
+    "No Mask",
+    "Ladder",
+    "Safety Cone",
+    "Fall Detected"
+  ]
+}

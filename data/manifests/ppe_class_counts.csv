@@ -1,0 +1,15 @@
+class_id,class_name,instance_count,image_count
+0,Fall-Detected,4498,4497
+1,Gloves,4669,2112
+2,Goggles,4188,3799
+3,Hardhat,42428,15477
+4,Ladder,1039,970
+5,Mask,2872,1379
+6,NO-Gloves,6135,2795
+7,NO-Goggles,4092,3261
+8,NO-Hardhat,12965,4925
+9,NO-Mask,2300,1583
+10,NO-Safety Vest,2022,975
+11,Person,1449,967
+12,Safety Cone,14456,1678
+13,Safety Vest,6448,3044

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "experiment_type": "fresh_full_dataset_yolo26s_100_epoch_production_candidate",
+  "environment_lock": {
+    "python_major_minor": "3.11",
+    "torch": "2.11.0+cu128",
+    "torch_cuda": "12.8",
+    "ultralytics": "8.4.103"
+  },
+  "training_policy": {
+    "resume": false,
+    "allow_pilot_checkpoints": false,
+    "allow_historical_custom_ppe_checkpoint": false,
+    "allow_official_generic_pretrained_weights": true,
+    "overwrite_existing_runs": false,
+    "test_split_allowed": false,
+    "final_production_model_selected_by_this_stage": false
+  },
+  "model": {
+    "name": "yolo26s",
+    "generic_weights": "artifacts/models/perception/generic_pretrained/yolo26s.pt",
+    "expected_sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b"
+  },
+  "training": {
+    "epochs": 100,
+    "image_size": 640,
+    "batch_gpu_fraction": 0.70,
+    "device": 0,
+    "workers": 2,
+    "amp": true,
+    "cache": false,
+    "deterministic": true,
+    "seed": 42,
+    "optimizer": "auto",
+    "patience": 100,
+    "save": true,
+    "save_period": 5,
+    "plots": true,
+    "validation": true,
+    "fraction": 1.0,
+    "cosine_learning_rate": true,
+    "multi_scale": 0.25,
+    "mosaic": 1.0,
+    "close_mosaic": 15,
+    "class_weight_power": 0.35
+  },
+  "final_validation": {
+    "batch_size": 8,
+    "image_size": 640,
+    "workers": 2
+  },
+  "benchmark": {
+    "image_count": 100,
+    "warmup_count": 10,
+    "confidence": 0.25
+  },
+  "safety_priority_classes": [
+    "Fall-Detected",
+    "NO-Hardhat",
+    "NO-Safety Vest",
+    "Person"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "stage": "5A3",
+  "route_name": "southwest_closed_loop_inspection_route",
+  "description": "A conservative U-shaped inspection route positioned around the validated Stage 4D safe walkway.",
+  "coordinate_frame": "Webots world XZ plane",
+  "arrival_tolerance_meters": 0.35,
+  "heading_tolerance_degrees": 7.0,
+  "scan_angle_degrees": 45.0,
+  "minimum_capture_count": 240,
+  "capture_interval_seconds": 0.25,
+  "maximum_simulation_time_seconds": 480.0,
+  "waypoints": [
+    {
+      "name": "HOME_START",
+      "x": -8.3,
+      "z": -5.4,
+      "scan": false,
+      "evidence": true
+    },
+    {
+      "name": "SAFE_WALKWAY_ENTRY",
+      "x": -6.7,
+      "z": -5.4,
+      "scan": false,
+      "evidence": true
+    },
+    {
+      "name": "SOUTH_INSPECTION_POINT",
+      "x": -5.0,
+      "z": -5.4,
+      "scan": true,
+      "evidence": true
+    },
+    {
+      "name": "EAST_INSPECTION_POINT",
+      "x": -4.6,
+      "z": -5.4,
+      "scan": true,
+      "evidence": true
+    },
+    {
+      "name": "NORTH_TURN_POINT",
+      "x": -4.6,
+      "z": -3.8,
+      "scan": false,
+      "evidence": true
+    },
+    {
+      "name": "NORTH_INSPECTION_POINT",
+      "x": -5.0,
+      "z": -3.8,
+      "scan": true,
+      "evidence": true
+    },
+    {
+      "name": "WEST_INSPECTION_POINT",
+      "x": -6.7,
+      "z": -3.8,
+      "scan": true,
+      "evidence": true
+    },
+    {
+      "name": "HOME_RETURN",
+      "x": -8.3,
+      "z": -5.4,
+      "scan": false,
+      "evidence": true
+    }
+  ]
+}

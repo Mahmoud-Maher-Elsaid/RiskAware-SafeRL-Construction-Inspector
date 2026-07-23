@@ -1,0 +1,59 @@
+{
+    "schema_version":  1,
+    "created_at":  "2026-07-22T21:33:23.9484711Z",
+    "pilot_status":  "PASS",
+    "experiment_scope":  "one_epoch_stratified_subset_viability",
+    "final_production_model_selected":  false,
+    "test_split_used":  false,
+    "historical_custom_checkpoint_resumed":  false,
+    "candidate_priority_for_full_dataset_screening":  [
+                                                          "yolo26s",
+                                                          "yolo26n"
+                                                      ],
+    "rationale":  [
+                      "YOLO26s produced higher pilot recall.",
+                      "YOLO26s produced higher pilot mAP50.",
+                      "YOLO26n produced higher pilot precision.",
+                      "YOLO26n produced marginally higher pilot mAP50-95.",
+                      "Measured native latency was nearly equal.",
+                      "One epoch on a subset is insufficient for final model selection."
+                  ],
+    "candidates":  [
+                       {
+                           "name":  "yolo26n",
+                           "batch_size":  8,
+                           "precision":  0.66088213379442362,
+                           "recall":  0.099694941294343559,
+                           "map50":  0.065682029714762835,
+                           "map50_95":  0.0357769459586399,
+                           "latency_mean_ms":  20.579169975826517,
+                           "best_model":  "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_pilots\\yolo26n_20260722_211614_epoch1_batch8\\weights\\best.pt",
+                           "best_model_sha256":  "d208c280e4bf4facd8a57a3e5e2bf8323dd2e97b43c723ae31855b7740ba6e4b"
+                       },
+                       {
+                           "name":  "yolo26s",
+                           "batch_size":  4,
+                           "precision":  0.43332826581922962,
+                           "recall":  0.13272406457847016,
+                           "map50":  0.084765469387570527,
+                           "map50_95":  0.034880443074827,
+                           "latency_mean_ms":  20.758409996051341,
+                           "best_model":  "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_pilots\\yolo26s_20260722_211614_epoch1_batch4\\weights\\best.pt",
+                           "best_model_sha256":  "a10695f412a5fc21f4d5ad878b12deed724891669a425a59aeadfa7fe1b07808"
+                       }
+                   ],
+    "next_stage":  {
+                       "name":  "full_dataset_candidate_screening",
+                       "epochs":  5,
+                       "image_size":  640,
+                       "candidates":  [
+                                          "yolo26n",
+                                          "yolo26s"
+                                      ],
+                       "use_train_split":  true,
+                       "use_validation_split":  true,
+                       "use_test_split":  false,
+                       "resume_pilot_checkpoints":  false,
+                       "initialization":  "official_generic_pretrained"
+                   }
+}

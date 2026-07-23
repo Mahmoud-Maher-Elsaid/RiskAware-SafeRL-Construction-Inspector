@@ -1,0 +1,15 @@
+{
+  "policy_controls_motors": false,
+  "verified_motor_runtime": false,
+  "checkpoint_sha256": "172437CAE45B69031F443C0707FB0795D2F1860D3B95594BE281645D8A173FE7",
+  "deterministic": true,
+  "mandatory_order": [
+    "observation",
+    "MaskablePPO",
+    "task-valid action mask",
+    "policy proposal",
+    "semantic safety shield",
+    "deadlock-safe fallback",
+    "executed action"
+  ]
+}

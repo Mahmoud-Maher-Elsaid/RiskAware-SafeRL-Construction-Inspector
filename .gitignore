@@ -11,6 +11,8 @@ htmlcov/
 
 # Environments
 .venv/
+.venv.invalid.*/
+.python311/
 .env
 .env.*
 
@@ -43,3 +45,28 @@ artifacts/runs/*
 !artifacts/runs/.gitkeep
 artifacts/checkpoints/*
 !artifacts/checkpoints/.gitkeep
+
+# Local PPE dataset and source archive
+/Personal Protective Equipment - Combined Model.v1i.yolov8/
+/Personal Protective Equipment - Combined Model.v1i.yolov8.zip
+# Local perception pilot datasets, models, and runs
+/artifacts/perception/
+/artifacts/models/perception/
+/artifacts/runs/perception_pilots/
+# Local generic detector weights created by framework checks
+/yolo26n.pt
+/yolo26s.pt
+# Local 100-epoch PPE production training artifacts
+/artifacts/perception/production_100e/
+/artifacts/runs/perception_production_100e/
+# Local optimized 100-epoch perception run
+/artifacts/runs/perception_production_optimized_100e/
+
+# Local weak-class fine-tuning artifacts
+/artifacts/perception/weak_class_fine_tuning/
+/artifacts/runs/perception_weak_class_fine_tuning/
+
+# Local fast targeted PPE training artifacts
+/artifacts/perception/targeted_fast_100e/
+/artifacts/runs/perception_targeted_fast_100e/
+reports/perception/**/active_run.json
