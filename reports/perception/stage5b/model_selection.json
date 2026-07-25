@@ -1,0 +1,25 @@
+{
+  "eligible_candidate_count": 3,
+  "schema_version": 1,
+  "selected_metrics": {
+    "benchmark_original_rank": 2,
+    "class_counts": {
+      "hardhat": 3,
+      "safety cone": 2,
+      "safety vest": 2
+    },
+    "detected_class_diversity": 3,
+    "important_class_diversity": 3,
+    "mean_confidence": 0.3589670402663095,
+    "mean_inference_ms": 12.082222727423703,
+    "p95_inference_ms": 18.440760014345866,
+    "theoretical_fps": 82.76622791684211,
+    "total_detections": 7
+  },
+  "selected_model_relative_path": "artifacts/runs/perception_production_100e/yolo26s_100e_seed42_20260722_214549/weights/best.pt",
+  "selected_model_sha256": "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550",
+  "selection_policy": "Maximize important class diversity, then detections, then confidence, under a 20 ms mean latency gate.",
+  "selection_status": "selected",
+  "source_benchmark": "F:\\AI\\My_Project\\RiskAware-SafeRL-Stage5B-Benchmark\\stage5b1_20260726_010517\\stage5b1_model_benchmark.json",
+  "stage": "5B2"
+}
