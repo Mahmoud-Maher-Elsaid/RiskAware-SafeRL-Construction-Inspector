@@ -6,11 +6,11 @@ import math
 import pathlib
 import time
 from collections import Counter
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Any, Sequence
+from typing import Any
 
 import numpy as np
-
 
 EXPECTED_PPE_CLASSES = (
     "Fall-Detected",
