@@ -120,7 +120,9 @@ try {
     & powershell.exe `
         -NoProfile `
         -ExecutionPolicy Bypass `
-        -File $Stage5A3Launcher
+        -File $Stage5A3Launcher `
+        -Mode Interactive `
+        -TimeoutSeconds 900
 
     $MissionExitCode = $LASTEXITCODE
 }
@@ -146,7 +148,47 @@ while ($true) {
 }
 
 $SidecarProcess.WaitForExit()
-$SidecarExitCode = $SidecarProcess.ExitCode
+$SidecarProcess.Refresh()
+
+$SidecarExitCode = $null
+
+try {
+    $SidecarExitCode = $SidecarProcess.ExitCode
+}
+catch {
+    $SidecarExitCode = $null
+}
+
+if ($null -eq $SidecarExitCode) {
+    $SidecarSummaryPath = Join-Path `
+        $OutputRoot `
+        "perception_summary.json"
+
+    if (Test-Path -LiteralPath $SidecarSummaryPath -PathType Leaf) {
+        $SidecarSummary = Get-Content `
+            -LiteralPath $SidecarSummaryPath `
+            -Raw |
+        ConvertFrom-Json
+
+        $SummaryVerified = (
+            $SidecarSummary.runtime_verified -eq $true -and
+            $SidecarSummary.cv_model_connected -eq $true -and
+            [int]$SidecarSummary.failure_count -eq 0
+        )
+
+        if ($SummaryVerified) {
+            $SidecarExitCode = 0
+        }
+        else {
+            $SidecarExitCode = 1
+        }
+    }
+    else {
+        $SidecarExitCode = 1
+    }
+}
+
+Write-Host "Resolved Stage 5B3 sidecar exit code: $SidecarExitCode"
 
 Write-Host ""
 Write-Host "============================================================"

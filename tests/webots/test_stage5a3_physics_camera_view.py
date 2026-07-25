@@ -49,7 +49,9 @@ def test_camera_and_viewpoint_are_available() -> None:
     content = WORLD_PATH.read_text(encoding="utf-8")
 
     assert 'name "inspection camera"' in content
-    assert "translation 0.38 0.46 0" in content
+    assert "translation 0.38 0.60 0" in content
+    assert "rotation -0.052264 -0.997265 -0.052264 1.573535" in content
+    assert "fieldOfView 1.20" in content
     assert "width 640" in content
     assert "height 360" in content
     assert 'follow "professional construction inspection robot"' in content
