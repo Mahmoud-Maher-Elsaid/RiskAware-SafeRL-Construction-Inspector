@@ -63,7 +63,7 @@ def test_human_level_camera_and_mounted_viewpoint() -> None:
             "near 0.05",
             "far 70",
             "antiAliasing TRUE",
-            "orientation 0 0 1 0",
+            "orientation 0 1 0 -1.5708",
             "position -7.95 1.67 -5.4",
             ('follow "professional construction inspection robot"'),
             'followType "Mounted Shot"',
