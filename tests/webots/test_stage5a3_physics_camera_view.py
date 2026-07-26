@@ -6,6 +6,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 WORLD_PATH = (
     PROJECT_ROOT / "webots" / "worlds" / "construction_site_stage5a3_closed_loop_mission.wbt"
 )
+SOURCE_WORLD_PATH = PROJECT_ROOT / "webots" / "worlds" / "construction_site_stage5a_live_camera.wbt"
 CONTROLLER_PATH = (
     PROJECT_ROOT
     / "webots"
@@ -45,17 +46,33 @@ def test_corrected_world_physics() -> None:
     assert "rollingFriction [" not in content
 
 
-def test_camera_and_viewpoint_are_available() -> None:
-    content = WORLD_PATH.read_text(encoding="utf-8")
+def test_human_level_camera_and_mounted_viewpoint() -> None:
+    for world_path in (
+        SOURCE_WORLD_PATH,
+        WORLD_PATH,
+    ):
+        content = world_path.read_text(encoding="utf-8")
 
-    assert 'name "inspection camera"' in content
-    assert "translation 0.38 0.60 0" in content
-    assert "rotation 0 1 0 -1.5708" in content
-    assert "fieldOfView 1.05" in content
-    assert "width 640" in content
-    assert "height 360" in content
-    assert 'follow "professional construction inspection robot"' in content
-    assert "followOrientation FALSE" in content
+        required_tokens = (
+            'name "inspection camera"',
+            "translation 0.35 1.55 0",
+            "rotation 1 0 0 -1.5708",
+            "fieldOfView 1.05",
+            "width 640",
+            "height 360",
+            "near 0.05",
+            "far 70",
+            "antiAliasing TRUE",
+            "orientation 0 0 1 0",
+            "position -7.95 1.67 -5.4",
+            ('follow "professional construction inspection robot"'),
+            'followType "Mounted Shot"',
+        )
+
+        for token in required_tokens:
+            assert token in content
+
+        assert "followOrientation" not in content
 
 
 def test_controller_has_stability_control_and_preview() -> None:

@@ -23,12 +23,14 @@ WorldInfo {
 }
 
 Viewpoint {
-  orientation -0.57735 0.57735 0.57735 2.0944
-  position -3.8 4.1 -0.9
-  fieldOfView 0.88
+  orientation 0 0 1 0
+  position -7.95 1.67 -5.4
+  fieldOfView 1.05
+  near 0.05
+  far 70
+  exposure 1
   follow "professional construction inspection robot"
-  followSmoothness 0.25
-  followOrientation FALSE
+  followType "Mounted Shot"
 }
 
 Background {
@@ -3843,12 +3845,15 @@ DEF SHOWCASE_ROBOT Robot {
       name "compass"
     }
     Camera {
-      translation 0.38 0.60 0
-      rotation 0 1 0 -1.5708
+      translation 0.35 1.55 0
+      rotation 1 0 0 -1.5708
       name "inspection camera"
       fieldOfView 1.05
       width 640
       height 360
+      near 0.05
+      far 70
+      antiAliasing TRUE
     }
     Pose {
       translation 0 0.18 0

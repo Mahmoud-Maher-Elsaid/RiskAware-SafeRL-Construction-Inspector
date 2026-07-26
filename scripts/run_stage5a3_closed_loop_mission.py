@@ -84,9 +84,13 @@ def read_log(path: Path) -> str:
 
 def stream_output(process: subprocess.Popen[str], log_handle: TextIO) -> None:
     assert process.stdout is not None
+
     for line in process.stdout:
-        log_handle.write(line)
-        log_handle.flush()
+        try:
+            log_handle.write(line)
+            log_handle.flush()
+        except ValueError:
+            return
 
 
 def run(project: Path, mode: str, timeout: int, launch_check_only: bool = False) -> int:
@@ -202,8 +206,16 @@ def run(project: Path, mode: str, timeout: int, launch_check_only: bool = False)
             (output / "launcher_record.json").write_text(
                 json.dumps(launch_record, indent=2), encoding="utf-8"
             )
-            if mode == "validation" or launch_check_only:
+
+            mission_finished = (output / "stage5a3_complete.marker").exists()
+
+            if mode == "validation" or launch_check_only or mission_finished:
+                if mode == "interactive" and mission_finished:
+                    time.sleep(3.0)
+
                 stop_webots_processes()
+
+            output_thread.join(timeout=5.0)
 
     if launch_check_only:
         return 0
