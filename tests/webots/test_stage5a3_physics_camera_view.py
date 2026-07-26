@@ -50,8 +50,8 @@ def test_camera_and_viewpoint_are_available() -> None:
 
     assert 'name "inspection camera"' in content
     assert "translation 0.38 0.60 0" in content
-    assert "rotation -0.052264 -0.997265 -0.052264 1.573535" in content
-    assert "fieldOfView 1.20" in content
+    assert "rotation 0 1 0 -1.5708" in content
+    assert "fieldOfView 1.05" in content
     assert "width 640" in content
     assert "height 360" in content
     assert 'follow "professional construction inspection robot"' in content

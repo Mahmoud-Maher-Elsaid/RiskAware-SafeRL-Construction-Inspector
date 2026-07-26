@@ -3844,9 +3844,9 @@ DEF SHOWCASE_ROBOT Robot {
     }
     Camera {
       translation 0.38 0.60 0
-      rotation -0.052264 -0.997265 -0.052264 1.573535
+      rotation 0 1 0 -1.5708
       name "inspection camera"
-      fieldOfView 1.20
+      fieldOfView 1.05
       width 640
       height 360
     }
