@@ -80,3 +80,16 @@ Generated datasets, model checkpoints, and experiment logs are ignored by Git. O
 ## Verified Webots boundary
 
 Stage 5A validates scripted 640 x 360 camera acquisition. Stage 5A3 validates a deterministic GPS/compass closed-loop waypoint controller. Neither stage uses CV detections or an RL policy to control motors. The repository does not establish real-world safety and makes no absolute safety guarantee.
+
+<!-- STAGE5B4_FINAL_SHOWCASE -->
+
+## Final stabilized camera showcase
+
+The permanent camera skew was removed, and the verified Stage 5B3
+mission now produces a repository-ready CUDA perception demonstration.
+
+![Stage 5B4 final live perception](docs/assets/stage5b4_final_live_perception.gif)
+
+The motor source remains the closed-loop waypoint controller.
+Perception does not control the motors, and no collision-free or
+real-world safety claim is made.

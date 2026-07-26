@@ -19,8 +19,8 @@
     "zero_sidecar_failures": true
   },
   "class_counts": {
-    "hardhat": 2,
-    "safety cone": 1
+    "hardhat": 3,
+    "safety vest": 1
   },
   "collision_free_claimed": false,
   "controller_synchronized_evidence": true,
@@ -31,12 +31,12 @@
   "failure_count": 0,
   "failures": [],
   "inference_count": 22,
-  "maximum_inference_ms": 50.12529995292425,
-  "mean_inference_ms": 18.2454863415015,
+  "maximum_inference_ms": 71.64679991547018,
+  "mean_inference_ms": 34.79313635563647,
   "mission_capture_count": 1596,
   "model_sha256": "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550",
   "motor_motion_source": "closed_loop_waypoint_controller",
-  "p95_inference_ms": 26.463190012145787,
+  "p95_inference_ms": 67.35010501579382,
   "perception_can_stop_robot": false,
   "perception_in_motor_control_loop": false,
   "perception_live_during_mission": true,
@@ -45,15 +45,14 @@
   "policy_controls_motors": false,
   "returned_to_start": true,
   "risk_counts": {
-    "none_observed": 21,
-    "observed": 1
+    "none_observed": 22
   },
   "route_completed": true,
   "runtime_verified": true,
   "schema_version": 1,
   "stage": "5B3",
   "stage5a3_report": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\stage5a3_validation_report.json",
-  "total_detections": 3,
+  "total_detections": 4,
   "waypoints_total": 8,
   "waypoints_visited": 8
 }
