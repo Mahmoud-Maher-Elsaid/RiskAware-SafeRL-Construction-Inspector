@@ -58,3 +58,20 @@ commits for the final research benchmark release. Times use UTC.
   Gymnasium, determinism, space, mask, and serialization validator.
 - Evidence:
   - `reports/final_submission/stage1_grid_environment/validation.json`
+
+## 2026-07-29T16:25:00Z — Stage 2 planner baselines
+
+- Stage: 2
+- Commands:
+  - `.venv\Scripts\python.exe -m pytest -q tests\baselines\test_final_planners.py`
+  - `.venv\Scripts\python.exe scripts\evaluate_planner_baselines.py`
+- Failure: the first 90-episode evaluation exceeded the five-minute timeout.
+- Root cause: a separate A* search ran for every candidate viewpoint on every step.
+- Repair: replace repeated searches with one deterministic multi-target
+  uniform-cost search and bounded nearest-first replanning.
+- Result: seven planner tests passed. The optimized 90-episode evaluation
+  completed in 3.67 seconds with 90 unique runs. Risk-aware A* and nearest-risk
+  revisit achieved 30/30 successes; frontier exploration achieved 28/30.
+- Evidence:
+  - `reports/final_submission/stage2_planner_baselines/raw_results.csv`
+  - `reports/final_submission/stage2_planner_baselines/summary.json`

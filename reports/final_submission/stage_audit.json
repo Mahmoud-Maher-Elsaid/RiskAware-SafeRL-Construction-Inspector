@@ -36,13 +36,13 @@
     {
       "stage": 2,
       "name": "Expert planner baselines",
-      "status": "PARTIAL",
-      "source_files": ["src/riskaware_saferrl/planners/astar.py", "src/riskaware_saferrl/planners/oracle_inspection.py"],
-      "tests": ["tests/test_astar_planner.py", "tests/test_oracle_inspection.py"],
-      "runtime_entry_point": "scripts/evaluate_expert_baselines.py",
-      "evidence_path": "artifacts/results/project_completion_expert_benchmark",
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Implement frontier and nearest-risk baselines, risk-aware replanning, unified telemetry, and final results."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/baselines/planners.py", "src/riskaware_saferrl/planners/astar.py"],
+      "tests": ["tests/baselines/test_final_planners.py", "tests/test_astar_planner.py"],
+      "runtime_entry_point": "scripts/evaluate_planner_baselines.py",
+      "evidence_path": "reports/final_submission/stage2_planner_baselines",
+      "last_verified_commit": "pending Stage 2 commit",
+      "remaining_work": "None for the defined planner-baseline gate."
     },
     {
       "stage": 3,

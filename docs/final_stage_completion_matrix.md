@@ -7,7 +7,7 @@ numbers. This matrix is updated only after implementation and validation.
 |---|---|---|---|
 | 0 — Foundation | Stage 0 plus accumulated documentation/CI | PARTIAL | Documentation, links, static checks, tests, production regression |
 | 1 — Grid benchmark | Historical Stages 1–2 | VERIFIED_COMPLETE | Gymnasium checker and deterministic scenario suite passed |
-| 2 — Expert planners | Historical Stages 3A–3B | PARTIAL | Three planners run with real metrics |
+| 2 — Expert planners | Historical Stages 3A–3B | VERIFIED_COMPLETE | Three planners produced 90 real evaluation records |
 | 3 — PPO and SAC | Historical Stages 2D–3D | PARTIAL | Both checkpoints load and deterministic evaluation passes |
 | 4 — RiskShield-PPO | Historical Stages 3E-B/3E-C | PARTIAL | Constrained objective affects training and comparisons execute |
 | 5 — Predictive shield | Historical Stage 3E and Stage 5C shield | PARTIAL | Structured k-step decisions and benchmark pass |

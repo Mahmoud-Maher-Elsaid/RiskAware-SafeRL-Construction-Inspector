@@ -1,0 +1,42 @@
+{
+  "status": "PASSED",
+  "run_count": 90,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "algorithms": {
+    "risk_aware_astar": {
+      "episodes": 30,
+      "success_rate": 1.0,
+      "mean_hazard_recall": 1.0,
+      "mean_coverage": 0.19269122023809526,
+      "mean_collisions": 0.0,
+      "mean_safety_violations": 3.966666666666667
+    },
+    "frontier_exploration": {
+      "episodes": 30,
+      "success_rate": 0.9333333333333333,
+      "mean_hazard_recall": 0.9900000000000001,
+      "mean_coverage": 0.5604505739795919,
+      "mean_collisions": 0.0,
+      "mean_safety_violations": 9.433333333333334
+    },
+    "nearest_risk_revisit": {
+      "episodes": 30,
+      "success_rate": 1.0,
+      "mean_hazard_recall": 1.0,
+      "mean_coverage": 0.36422948554421775,
+      "mean_collisions": 0.0,
+      "mean_safety_violations": 6.1
+    }
+  }
+}
