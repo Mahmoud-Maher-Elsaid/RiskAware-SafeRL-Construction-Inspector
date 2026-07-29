@@ -53,7 +53,9 @@ def test_partial_observation_and_semantic_channels() -> None:
     visible = observation["map"][9]
     assert 1 <= int(visible.sum()) <= 5
     assert observation["map"].shape[0] == len(environment.CHANNEL_NAMES)
+    assert observation["map"].shape[1:] == (16, 16)
     assert observation["state"][2] == environment.orientation / 3.0
+    assert observation["state"][9] == environment.size / 16
 
 
 def test_reward_cost_collision_restricted_and_near_miss() -> None:

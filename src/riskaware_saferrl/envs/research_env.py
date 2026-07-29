@@ -26,10 +26,13 @@ class GridEnvironmentConfig:
     inspection_radius: int = 2
     max_steps: int = 250
     dynamic_obstacles: bool = True
+    observation_size: int = 16
 
     def validate(self) -> None:
         if self.size < 6:
             raise ValueError("size must be at least 6")
+        if self.observation_size < self.size:
+            raise ValueError("observation_size must be at least size")
         for name in (
             "obstacle_density",
             "hazard_density",
@@ -111,10 +114,14 @@ class ResearchConstructionEnv(gym.Env[dict[str, np.ndarray], int]):
                 "map": spaces.Box(
                     low=0.0,
                     high=1.0,
-                    shape=(len(self.CHANNEL_NAMES), self.size, self.size),
+                    shape=(
+                        len(self.CHANNEL_NAMES),
+                        self.config.observation_size,
+                        self.config.observation_size,
+                    ),
                     dtype=np.float32,
                 ),
-                "state": spaces.Box(low=0.0, high=1.0, shape=(9,), dtype=np.float32),
+                "state": spaces.Box(low=0.0, high=1.0, shape=(10,), dtype=np.float32),
             }
         )
         self.agent: Position = (0, 0)
@@ -205,7 +212,14 @@ class ResearchConstructionEnv(gym.Env[dict[str, np.ndarray], int]):
         return bool(self.np_random.random() >= self.config.perception_false_negative_rate)
 
     def _observation(self) -> dict[str, np.ndarray]:
-        grid = np.zeros((len(self.CHANNEL_NAMES), self.size, self.size), dtype=np.float32)
+        grid = np.zeros(
+            (
+                len(self.CHANNEL_NAMES),
+                self.config.observation_size,
+                self.config.observation_size,
+            ),
+            dtype=np.float32,
+        )
         for row in range(self.size):
             for column in range(self.size):
                 if self._visible((row, column)):
@@ -249,6 +263,7 @@ class ResearchConstructionEnv(gym.Env[dict[str, np.ndarray], int]):
                 min(1.0, self.cumulative_cost / 10.0),
                 len(self.dynamic_hazards) / max(1, self.size * self.size),
                 self.config.perception_false_negative_rate,
+                self.size / self.config.observation_size,
             ],
             dtype=np.float32,
         )

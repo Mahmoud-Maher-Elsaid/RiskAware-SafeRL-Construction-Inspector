@@ -18,12 +18,13 @@ without changing the observation schema used by existing trained checkpoints.
 
 The observation is a typed `gymnasium.spaces.Dict`.
 
-- `map`: ten `float32` semantic channels in `[0, 1]`: obstacles, uninspected
-  hazards, workers, restricted zones, visited cells, robot position, fused risk,
-  dynamic hazards, PPE-risk zones, and visibility.
-- `state`: nine normalized values: row, column, orientation, elapsed fraction,
+- `map`: ten `float32` semantic channels in `[0, 1]`, zero-padded to a stable
+  16×16 tensor: obstacles, uninspected hazards, workers, restricted zones,
+  visited cells, robot position, fused risk, dynamic hazards, PPE-risk zones,
+  and visibility.
+- `state`: ten normalized values: row, column, orientation, elapsed fraction,
   hazard recall, coverage, accumulated cost, dynamic density, and perception
-  false-negative rate.
+  false-negative rate, and active site size.
 
 Ground truth remains in environment state. Perception noise affects only
 observable semantic channels, never labels or evaluation truth.
