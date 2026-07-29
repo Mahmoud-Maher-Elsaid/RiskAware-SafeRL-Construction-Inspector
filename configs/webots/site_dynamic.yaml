@@ -1,0 +1,9 @@
+name: site_dynamic
+title: RiskShield-PPO Dynamic Construction Site
+environment_size_m: [28.0, 22.0]
+hazard_density: 0.45
+worker_density: 0.30
+dynamic_obstacles: true
+expected_inspection_targets: 8
+initial_robot_pose: [-7.95, 0.18, -5.4]
+first_person_eye_height_m: 1.67

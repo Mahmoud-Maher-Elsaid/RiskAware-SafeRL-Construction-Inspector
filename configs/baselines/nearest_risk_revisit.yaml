@@ -1,0 +1,4 @@
+algorithm: nearest_risk_revisit
+risk_weight: 4.0
+deterministic_tie_breaking: true
+replan_every_step: true

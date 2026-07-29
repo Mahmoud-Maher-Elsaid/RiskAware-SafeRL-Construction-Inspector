@@ -1,0 +1,25 @@
+{
+  "status": "PASSED",
+  "run_count": 60,
+  "deterministic": true,
+  "algorithms": {
+    "PPO": {
+      "episodes": 30,
+      "mean_return": -67.63166666666643,
+      "mean_safety_cost": 55.13333333333333,
+      "mean_coverage": 0.007406994047619048,
+      "mean_hazard_recall": 0.06111111111111111,
+      "collision_rate": 0.1,
+      "success_rate": 0.0
+    },
+    "SAC": {
+      "episodes": 30,
+      "mean_return": -174.86166666666622,
+      "mean_safety_cost": 192.68333333333334,
+      "mean_coverage": 0.06516082057823129,
+      "mean_hazard_recall": 0.09222222222222223,
+      "collision_rate": 0.8,
+      "success_rate": 0.0
+    }
+  }
+}

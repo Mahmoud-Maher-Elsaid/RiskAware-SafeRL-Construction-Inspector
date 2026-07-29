@@ -1,0 +1,4 @@
+algorithm: frontier_exploration
+risk_weight: 3.0
+deterministic_tie_breaking: true
+replan_every_step: true

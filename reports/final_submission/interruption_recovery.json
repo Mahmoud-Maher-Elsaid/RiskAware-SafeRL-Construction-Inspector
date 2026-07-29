@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "recovered_at": "2026-07-29T19:00:00+03:00",
+  "branch": "final/research-benchmark-release",
+  "HEAD": "1059a4e4213de1b27a54ddc3a2a87e1557219f76",
+  "remote_branch_HEAD": "1059a4e4213de1b27a54ddc3a2a87e1557219f76",
+  "staged_files": [],
+  "unstaged_files": [
+    "pyproject.toml"
+  ],
+  "untracked_files": [
+    "configs/benchmarks/full_matrix.yaml",
+    "reports/final_submission/stage9_benchmark/aggregated_results.csv",
+    "reports/final_submission/stage9_benchmark/benchmark_summary.json",
+    "reports/final_submission/stage9_benchmark/cache/00c9e254facff9e7135720d45cb612ca38cb04c243cfdd2bf3b38d2ed370a23b.json",
+    "reports/final_submission/stage9_benchmark/cache/48565fb11b23ebbf9a518dfc4073a73109d86b237fbdb99f743984d839cfaee8.json",
+    "reports/final_submission/stage9_benchmark/cache/5fc8e1285d6445447caf827aa695d2d5b145cb07ecdb886b2edbec70e3c37928.json",
+    "reports/final_submission/stage9_benchmark/cache/671c2cd7210fd5d29f2c716e32d630b2faa05d6bec96d02f9bc0206ec316eb94.json",
+    "reports/final_submission/stage9_benchmark/cache/ec9f316f52ca3a1f3a54839c4f94b570e70b1d5e56a85813242762e1797ccc51.json",
+    "reports/final_submission/stage9_benchmark/failed_runs.jsonl",
+    "reports/final_submission/stage9_benchmark/raw_results.csv",
+    "reports/final_submission/stage9_benchmark/raw_results.parquet",
+    "reports/final_submission/stage9_benchmark/resume_state.json",
+    "reports/final_submission/stage9_benchmark/run_manifest.json",
+    "reports/final_submission/stage9_benchmark/statistical_analysis.json",
+    "scripts/run_full_research_benchmark.ps1",
+    "scripts/run_full_research_benchmark.py",
+    "src/riskaware_saferrl/benchmarking/__init__.py",
+    "src/riskaware_saferrl/benchmarking/harness.py",
+    "tests/benchmarking/test_benchmark_harness.py"
+  ],
+  "completed_stages_discovered": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "incomplete_stage_discovered": 9,
+  "reusable_experiment_artifacts": {
+    "stage9_smoke_cache_records": 5,
+    "stage9_smoke_algorithms": [
+      "risk_aware_astar"
+    ],
+    "stage8_unique_runs": 320,
+    "ppo_checkpoint": "artifacts/final_submission/ppo/best_model.zip",
+    "sac_checkpoint": "artifacts/final_submission/sac/best_model.zip",
+    "riskshield_ppo_checkpoint": "artifacts/final_submission/riskshield_ppo/best_model.zip"
+  },
+  "invalid_or_missing_artifacts": [
+    "The five-algorithm adapter gate had not run.",
+    "The full 1350-run primary matrix had not run.",
+    "Ablation results, final statistics, figures, and tables were missing.",
+    "Smoke records used a preliminary schema and required migration or rerun after harness hardening."
+  ],
+  "dependency_validation": {
+    "pyarrow": "21.0.0",
+    "scipy": "1.17.1"
+  },
+  "syntax_validation": "PASSED",
+  "exact_resume_point": "Harden the valid unfinished Stage 9 benchmark harness, preserve the existing smoke cache for provenance, then run unit, resume, deterministic, failure, timeout, Parquet, and five-algorithm adapter gates before committing and pushing the harness."
+}

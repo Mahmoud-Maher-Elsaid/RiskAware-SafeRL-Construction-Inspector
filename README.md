@@ -1,100 +1,114 @@
 # RiskAware-SafeRL Construction Inspector
 
-A research-oriented reinforcement learning project for autonomous inspection of dynamic construction sites.
+RiskAware-SafeRL is a reproducible simulation research project for autonomous
+construction-site inspection under safety constraints and perception
+uncertainty.
 
-## Research question
+## Objective and contribution
 
-Can semantic risk observations, constrained objectives, and action shielding improve hazard discovery while reducing collisions, worker near-misses, and restricted-zone violations?
+The project separates task reward from safety cost and compares expert
+planners, PPO, SAC, and RiskShield-PPO. RiskShield-PPO is PPO-Lagrangian with an
+auxiliary cost-value estimator; it is not renamed ordinary PPO. A predictive
+Safety Shield can replace an unsafe proposal before the final Webots wheel
+command. Live CUDA perception updates the semantic risk state.
 
-## Current stage
+```mermaid
+flowchart LR
+  C[Webots camera] --> V[CUDA CV detector]
+  V --> M[Semantic risk map]
+  S[Sensors] --> O[Observation adapter]
+  M --> O
+  O --> P[RL policy]
+  P --> H[Predictive Safety Shield]
+  H --> W[Wheel motor commands]
+  W --> S
+```
 
-- [x] Reproducible Python project
-- [x] Gymnasium construction-inspection benchmark
-- [x] Explicit safety cost signals
-- [x] Random-policy baseline
-- [x] PPO baseline
-- [x] Rule-based action shield
-- [x] Unit tests and GitHub Actions
-- [ ] PPO-Lagrangian
-- [x] Expert A* baselines with deterministic tie-breaking
-- [ ] Partial-observation recurrent agent training and evaluation (GRU module and reset tests exist)
-- [x] Webots Stage 5A camera and deterministic Stage 5A3 closed-loop validation
-- [x] Production PPE perception model with verified CUDA inference
-- [x] Deterministic domain-randomization sampler
-- [x] Stage 5B3 controller-synchronized live perception and verified first-person viewport
-- [x] Stage 5C MaskablePPO-to-SafetyShield-to-Webots motor runtime
-- [ ] Full benchmark and research paper
+## Verified capabilities
 
-## Environment
+- Deterministic Gymnasium research environment with semantic channels, dynamic
+  hazards, workers, restricted zones, PPE risks, masks, reward, and safety cost.
+- Risk-aware A*, frontier exploration, and nearest-risk revisit planners.
+- Genuine PPO, SAC, and RiskShield-PPO checkpoints with hashes and metadata.
+- Three validated Webots R2025a worlds with level first-person rendering.
+- Live 14-class CV checkpoint inference on CUDA and semantic state changes.
+- 320 uncertainty episodes across 64 controlled conditions.
+- 1,350 unique primary benchmark episodes, 180 ablations, statistics, figures,
+  and source data.
+- Stage 5C evidence that policy proposals pass through the Safety Shield and
+  reach Webots wheel commands without manual or fallback control.
 
-The agent operates in a partially observable grid construction site.
+## Honest limitations
 
-Actions:
+PPO, SAC, and RiskShield-PPO achieved zero complete-mission success in the final
+grid benchmark. RiskShield-PPO reduced PPO's mean safety cost from 49.39 to
+17.13 but its multiplier saturated. Validation is simulation-only and bounded;
+the detector class list is limited; no recurrent checkpoint exists; and no
+real-world safety guarantee is made.
 
-- `0`: move up
-- `1`: move down
-- `2`: move left
-- `3`: move right
-- `4`: inspect the current cell
+## Installation
 
-Observation channels:
-
-1. obstacles
-2. hazards
-3. workers
-4. restricted zones
-5. visited cells
-6. agent position
-7. semantic risk map
-
-Safety costs:
-
-- collision cost
-- worker near-miss cost
-- restricted-zone cost
-
-## Setup
+Requirements: Windows 10/11, Python 3.11, Webots R2025a, and an NVIDIA GPU for
+the accepted CUDA runtime.
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\check_env.py
-.\.venv\Scripts\python.exe scripts\evaluate_random.py --episodes 20
-.\.venv\Scripts\python.exe scripts\train_ppo.py --timesteps 100000 --device cuda
-.\.venv\Scripts\python.exe scripts\train_ppo.py --timesteps 100000 --device cuda --shield
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_stage5a3_closed_loop_mission.ps1 -Mode Validation
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_complete_autonomous_inspection.ps1
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -e ".[dev,vision]"
+.\.venv\Scripts\python.exe -c "import torch; print(torch.cuda.is_available())"
+```
+
+Large checkpoints and datasets remain outside Git. Their expected paths and
+hashes are documented in [MODEL_CARD.md](MODEL_CARD.md) and
+[DATA_CARD.md](DATA_CARD.md).
+
+## One-command runtime
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File "F:\AI\My_Project\RiskAware-SafeRL-Construction-Inspector\scripts\run_complete_autonomous_inspection.ps1"
+```
+
+## One-command benchmark
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File "F:\AI\My_Project\RiskAware-SafeRL-Construction-Inspector\scripts\run_full_research_benchmark.ps1"
+```
+
+## Final acceptance
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File "F:\AI\My_Project\RiskAware-SafeRL-Construction-Inspector\scripts\run_final_acceptance.ps1"
 ```
 
 ## Tests
 
 ```powershell
+.\.venv\Scripts\python.exe -m compileall -q src scripts tests
+.\.venv\Scripts\python.exe -m ruff format --check .
+.\.venv\Scripts\python.exe -m ruff check .
 .\.venv\Scripts\python.exe -m pytest
 ```
 
-## TensorBoard
+## Results
 
-```powershell
-.\.venv\Scripts\tensorboard.exe --logdir artifacts\tensorboard
-```
+Frontier exploration achieved 0.967 success and 0.998 hazard recall. Risk-aware
+A* achieved 1.0 success and recall with lower coverage. Full metrics,
+confidence intervals, and ablations are in
+`reports/final_submission/stage9_benchmark`.
 
-## Repository policy
+## Paper and repository
 
-Generated datasets, model checkpoints, and experiment logs are ignored by Git. Only code, configs, documentation, and small reproducibility artifacts should be committed.
+The compiled paper is [paper/main.pdf](paper/main.pdf). Architecture,
+methodology, reproducibility, demo, and troubleshooting guides are under
+`docs/`. Source code is under `src/riskaware_saferrl`, entry points under
+`scripts/`, Webots assets under `webots/`, configurations under `configs/`,
+tests under `tests/`, and evidence under `reports/`.
 
-## Verified Webots control boundaries
+## Citation and license
 
-Stage 5A validates scripted 640 x 360 camera acquisition. Stage 5A3 validates a deterministic GPS/compass closed-loop waypoint controller. Neither stage uses CV detections or an RL policy to control motors. The repository does not establish real-world safety and makes no absolute safety guarantee.
-
-Stage 5C is a separate bounded runtime. It loads the verified MaskablePPO checkpoint, applies task-valid masks and the runtime SafetyShield, converts the executed action to differential-drive commands, and sends those commands to the Webots wheel motors. Live CUDA perception updates the semantic risk observation before policy inference. The accepted Stage 5C run used neither manual control nor a fallback controller.
-
-<!-- STAGE5B4_FINAL_SHOWCASE -->
-
-## Final stabilized camera showcase
-
-The permanent camera skew was removed, and the verified Stage 5B3
-mission now produces a repository-ready CUDA perception demonstration.
-
-![Stage 5B4 final live perception](docs/assets/stage5b4_final_live_perception.gif)
-
-The Stage 5B showcase motor source remains the closed-loop waypoint controller.
-The separate Stage 5C runtime is the only accepted RL motor-control path.
-No collision-free or real-world safety claim is made.
+Use [CITATION.cff](CITATION.cff) for citation metadata. The software is
+available under the [MIT License](LICENSE); dataset and model licenses must be
+checked separately as documented in the cards.

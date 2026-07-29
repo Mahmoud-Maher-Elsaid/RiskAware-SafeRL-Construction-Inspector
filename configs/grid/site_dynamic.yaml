@@ -1,0 +1,13 @@
+name: site_dynamic
+size: 16
+obstacle_density: 0.14
+hazard_density: 0.06
+worker_density: 0.04
+restricted_density: 0.05
+dynamic_hazard_density: 0.04
+ppe_risk_density: 0.03
+perception_false_negative_rate: 0.2
+vision_radius: 4
+inspection_radius: 2
+max_steps: 400
+dynamic_obstacles: true

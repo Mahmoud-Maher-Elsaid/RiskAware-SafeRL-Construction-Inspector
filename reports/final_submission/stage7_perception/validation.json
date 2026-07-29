@@ -1,0 +1,35 @@
+{
+  "status": "PASSED",
+  "model_sha256": "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550",
+  "expected_classes": [
+    "Fall-Detected",
+    "Gloves",
+    "Goggles",
+    "Hardhat",
+    "Ladder",
+    "Mask",
+    "NO-Gloves",
+    "NO-Goggles",
+    "NO-Hardhat",
+    "NO-Mask",
+    "NO-Safety Vest",
+    "Person",
+    "Safety Cone",
+    "Safety Vest"
+  ],
+  "class_count": 14,
+  "device": "cuda:0",
+  "cuda_inference_verified": true,
+  "inference_count": 10,
+  "failure_count": 0,
+  "annotated_frame_count": 10,
+  "perception_affects_runtime_state": true,
+  "perception_state_change_count": 9,
+  "unsupported_cv_classes": [
+    "hole",
+    "machine",
+    "restricted_sign",
+    "scaffolding_state"
+  ],
+  "unsupported_class_source": "simulator_ground_truth_only"
+}

@@ -1,0 +1,47 @@
+{
+  "status": "PASSED",
+  "run_count": 5,
+  "expected_run_count": 5,
+  "unique_run_ids": 5,
+  "duplicate_run_count": 0,
+  "missing_run_count": 0,
+  "failed_run_count": 0,
+  "configuration_hash_count": 5,
+  "algorithms": {
+    "PPO": {
+      "runs": 1,
+      "mean_hazard_recall": 0.3333333333333333,
+      "mean_coverage": 0.01,
+      "mean_safety_cost": 0.0,
+      "success_rate": 0.0
+    },
+    "RiskShield-PPO": {
+      "runs": 1,
+      "mean_hazard_recall": 0.3333333333333333,
+      "mean_coverage": 0.01,
+      "mean_safety_cost": 0.0,
+      "success_rate": 0.0
+    },
+    "SAC": {
+      "runs": 1,
+      "mean_hazard_recall": 0.0,
+      "mean_coverage": 0.05,
+      "mean_safety_cost": 1.0,
+      "success_rate": 0.0
+    },
+    "frontier_exploration": {
+      "runs": 1,
+      "mean_hazard_recall": 1.0,
+      "mean_coverage": 0.41,
+      "mean_safety_cost": 0.0,
+      "success_rate": 1.0
+    },
+    "risk_aware_astar": {
+      "runs": 1,
+      "mean_hazard_recall": 1.0,
+      "mean_coverage": 0.17,
+      "mean_safety_cost": 1.0,
+      "success_rate": 1.0
+    }
+  }
+}
