@@ -310,3 +310,7 @@ commits for the final research benchmark release. Times use UTC.
   multiline Python `-c` evidence validator.
 - Repair: move evidence validation into
   `scripts/validate_final_evidence.py` and invoke it as a normal file.
+- Follow-up failure: a historical Stage 6 PowerShell-generated JSON report
+  contains a UTF-8 BOM.
+- Repair: read evidence JSON with `utf-8-sig`, which accepts both BOM and
+  BOM-free UTF-8 without altering evidence.

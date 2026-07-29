@@ -7,7 +7,7 @@ import pandas as pd
 
 
 def read_json(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
 def main() -> None:
@@ -17,7 +17,14 @@ def main() -> None:
     assert read_json(root / "stage3_rl_baselines/summary.json")["status"] == "PASSED"
     assert read_json(root / "stage4_riskshield_ppo/comparison_summary.json")["status"] == "PASSED"
     assert read_json(root / "stage5_safety_shield/summary.json")["status"] == "PASSED"
-    assert read_json(root / "stage6_webots/world_smoke_summary.json")["status"] == "PASSED"
+    worlds = read_json(root / "stage6_webots/world_smoke_summary.json")
+    assert len(worlds) == 3
+    assert all(
+        world["runtime_verified"]
+        and world["mission_completed"]
+        and world["physics_stable"]
+        for world in worlds
+    )
     assert read_json(root / "stage7_perception/validation.json")["status"] == "PASSED"
     assert read_json(root / "stage8_uncertainty/summary.json")["run_count"] == 320
     benchmark = read_json(root / "stage9_benchmark/benchmark_summary.json")
