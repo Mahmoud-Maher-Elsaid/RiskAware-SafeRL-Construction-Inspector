@@ -1,0 +1,73 @@
+{
+  "backend": "ultralytics_yolo",
+  "enabled": true,
+  "model": {
+    "expected_classes": [
+      "Fall-Detected",
+      "Gloves",
+      "Goggles",
+      "Hardhat",
+      "Ladder",
+      "Mask",
+      "NO-Gloves",
+      "NO-Goggles",
+      "NO-Hardhat",
+      "NO-Mask",
+      "NO-Safety Vest",
+      "Person",
+      "Safety Cone",
+      "Safety Vest"
+    ],
+    "relative_path": "artifacts/runs/perception_production_100e/yolo26s_100e_seed42_20260722_214549/weights/best.pt",
+    "sha256": "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550"
+  },
+  "runtime": {
+    "confidence_threshold": 0.25,
+    "device": "cuda:0",
+    "fail_closed": true,
+    "image_size": 640,
+    "inference_every_steps": 8,
+    "maximum_consecutive_failures": 3,
+    "require_cuda": true,
+    "save_annotated_evidence": true
+  },
+  "safety": {
+    "absence_of_detection_is_not_a_safety_claim": true,
+    "compliance_classes": [
+      "Gloves",
+      "Goggles",
+      "Hardhat",
+      "Mask",
+      "Safety Vest"
+    ],
+    "context_classes": [
+      "Person",
+      "Ladder",
+      "Safety Cone"
+    ],
+    "perception_can_stop_robot": false,
+    "policy_controls_motors": false,
+    "violation_classes": [
+      "Fall-Detected",
+      "NO-Gloves",
+      "NO-Goggles",
+      "NO-Hardhat",
+      "NO-Mask",
+      "NO-Safety Vest"
+    ]
+  },
+  "schema_version": 1,
+  "selection": {
+    "benchmark_original_rank": 2,
+    "benchmark_path": "reports/perception/stage5b/benchmark_20260726/stage5b1_model_benchmark.json",
+    "important_class_diversity": 3,
+    "maximum_mean_latency_ms": 20.0,
+    "mean_inference_ms": 12.082222727423703,
+    "original_live_readiness_score": 0.40151717649426544,
+    "p95_inference_ms": 18.440760014345866,
+    "policy": "semantic_diversity_before_latency",
+    "theoretical_fps": 82.76622791684211,
+    "total_detections": 7
+  },
+  "stage": "5B"
+}

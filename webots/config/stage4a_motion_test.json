@@ -1,0 +1,38 @@
+{
+  "basic_time_step_ms": 32,
+  "forward_velocity": 3.0,
+  "turn_velocity": 2.0,
+  "sensor_sample_interval_steps": 10,
+  "segments": [
+    {
+      "name": "STOP_INITIAL",
+      "duration_seconds": 1.0
+    },
+    {
+      "name": "MOVE_FORWARD",
+      "duration_seconds": 2.0
+    },
+    {
+      "name": "STOP_AFTER_FORWARD",
+      "duration_seconds": 0.5
+    },
+    {
+      "name": "TURN_LEFT",
+      "duration_seconds": 1.2
+    },
+    {
+      "name": "STOP_AFTER_LEFT",
+      "duration_seconds": 0.5
+    },
+    {
+      "name": "TURN_RIGHT",
+      "duration_seconds": 1.2
+    },
+    {
+      "name": "STOP_FINAL",
+      "duration_seconds": 0.5
+    }
+  ],
+  "supervisor_reset_time_seconds": 7.0,
+  "simulation_quit_time_seconds": 8.5
+}

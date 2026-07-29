@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "experiment_type": "fresh_generic_pretrained_pilot",
+  "training_policy": {
+    "resume": false,
+    "allow_historical_custom_ppe_checkpoint": false,
+    "allow_official_generic_pretrained_weights": true,
+    "overwrite_existing_runs": false,
+    "test_split_allowed": false
+  },
+  "subset": {
+    "seed": 42,
+    "train_images": 1400,
+    "validation_images": 500,
+    "minimum_train_images_per_class": 50,
+    "minimum_validation_images_per_class": 15
+  },
+  "training": {
+    "epochs": 1,
+    "image_size": 640,
+    "device": 0,
+    "workers": 2,
+    "amp": true,
+    "cache": false,
+    "deterministic": true,
+    "seed": 42,
+    "optimizer": "auto",
+    "patience": 0,
+    "save": true,
+    "save_period": 1,
+    "plots": true,
+    "validation": true
+  },
+  "candidates": [
+    {
+      "name": "yolo26n",
+      "weights": "yolo26n.pt",
+      "initial_batch_size": 8
+    },
+    {
+      "name": "yolo26s",
+      "weights": "yolo26s.pt",
+      "initial_batch_size": 4
+    }
+  ]
+}

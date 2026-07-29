@@ -1,0 +1,87 @@
+{
+  "audit_date": "2026-07-29",
+  "branch": "final/project-completion",
+  "baseline_commit": "d87ebdc368bd27fd4cca9841490d38ac78476e92",
+  "source_branch": "stage-5b-live-perception-integration",
+  "source_commit": "650da2be9332935c246f3536445b2b9abe3ade2d",
+  "environment": {
+    "operating_system": "Windows 10.0.26200",
+    "python": "3.11.0",
+    "python_executable": ".venv/Scripts/python.exe",
+    "pytorch": "2.11.0+cu128",
+    "pytorch_cuda": "12.8",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "stable_baselines3": "2.9.0",
+    "sb3_contrib": "2.9.0",
+    "ultralytics": "8.4.103",
+    "webots": "R2025a"
+  },
+  "models": {
+    "selected_rl_checkpoint": {
+      "path": "artifacts/runs/maskable_ppo_deadlock_safe_shield_seed42_u100/evaluations/best_model/best_model.zip",
+      "sha256": "172437CAE45B69031F443C0707FB0795D2F1860D3B95594BE281645D8A173FE7",
+      "availability": "available",
+      "runtime_motor_compatibility": "not_yet_verified"
+    },
+    "selected_cv_checkpoint": {
+      "sha256": "4BD2190A3C99FFA5D1A7F57A37683C908C044E91485CD01E44CA4E199BDE8550",
+      "availability": "available",
+      "previous_cuda_runtime_evidence": "present",
+      "current_acceptance_runtime": "not_yet_rerun"
+    }
+  },
+  "dataset": {
+    "configuration": "configs/perception/ppe_dataset.yaml",
+    "local_root": "Personal Protective Equipment - Combined Model.v1i.yolov8",
+    "class_count": 14,
+    "availability": "available",
+    "git_tracked": false
+  },
+  "quality": {
+    "pytest_collection": {
+      "status": "passed",
+      "tests_collected": 207
+    },
+    "full_pytest": {
+      "status": "passed",
+      "tests_passed": 207
+    },
+    "py_compile": "passed",
+    "ruff_check_before_migrated_script_format": "failed_one_fixable_import_order_issue",
+    "ruff_migrated_script_fix": "completed",
+    "type_check": "not_configured"
+  },
+  "implementation_state": {
+    "stage_5a_camera_acquisition": "implemented_and_previously_runtime_verified",
+    "stage_5a3_closed_loop_navigation": "implemented_deterministic_waypoint_controller_not_rl",
+    "stage_5b_live_cv": "connected_and_previously_cuda_verified_but_current_acceptance_runtime_pending",
+    "first_person_view": "partially_implemented_current_visual_acceptance_pending",
+    "rl_policy_inference": "dry_run_only",
+    "rl_policy_motor_control": "missing",
+    "safety_shield": "implemented_in_grid_policy_pipeline_not_connected_to_verified_webots_motor_runtime",
+    "cv_effect_on_navigation_or_safety": "missing",
+    "fallback_controller": "present",
+    "production_one_command_launcher": "missing"
+  },
+  "truth_flags": {
+    "policy_loaded": false,
+    "policy_controls_motors": false,
+    "safety_shield_active_in_webots_motor_loop": false,
+    "cv_model_connected_in_prior_stage5b_runtime": true,
+    "cuda_inference_verified_in_prior_stage5b_runtime": true,
+    "perception_live_during_prior_mission": true,
+    "perception_affects_runtime_state": false,
+    "manual_control_used": false,
+    "fallback_controller_used_in_final_accepted_run": null,
+    "final_runtime_verified": false
+  },
+  "obsolete_or_generated": {
+    "parent_stage5b_backups_and_previews": "removed_after_remote_safety_snapshot",
+    "repository_caches": "removed",
+    "stale_webots_logs": "removed",
+    "invalid_virtual_environment": "removed",
+    "external_absolute_benchmark_reference": "migrated_and_repaired"
+  },
+  "baseline_result": "PARTIAL"
+}

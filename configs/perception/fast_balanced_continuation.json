@@ -1,0 +1,34 @@
+{
+    "schema_version":  1,
+    "experiment_type":  "fast_balanced_yolo26s_continuation",
+    "source_run":  "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_production_100e\\yolo26s_100e_seed42_20260722_214549",
+    "source_checkpoint":  "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_production_100e\\yolo26s_100e_seed42_20260722_214549\\weights\\last.pt",
+    "source_checkpoint_sha256":  "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550",
+    "runtime_data_yaml":  "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\perception\\production_100e\\runtime_datasets\\20260722_214549\\data.yaml",
+    "training":  {
+                     "epochs":  35,
+                     "image_size":  512,
+                     "batch":  -1,
+                     "device":  0,
+                     "workers":  4,
+                     "amp":  true,
+                     "cache":  false,
+                     "deterministic":  true,
+                     "seed":  42,
+                     "optimizer":  "auto",
+                     "patience":  8,
+                     "cosine_learning_rate":  true,
+                     "multi_scale":  0,
+                     "mosaic":  1,
+                     "close_mosaic":  5,
+                     "save_period":  5,
+                     "validation":  true,
+                     "fraction":  1
+                 },
+    "policy":  {
+                   "resume_original_run":  false,
+                   "initialize_from_current_checkpoint":  true,
+                   "overwrite_previous_run":  false,
+                   "test_split_used":  false
+               }
+}

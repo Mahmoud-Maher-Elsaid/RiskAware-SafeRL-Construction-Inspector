@@ -1,0 +1,8 @@
+ruff format --check .: PASS (147 files formatted)
+ruff check .: PASS
+python -m py_compile tracked Python files: PASS
+pytest -q: PASS (228 passed)
+Stage 5B Webots/CUDA runtime: PASS
+Stage 5B automated visual validation: PASS
+Stage 5C Webots RL/CV/SafetyShield motor runtime: PASS
+Exact production PowerShell launcher: PASS

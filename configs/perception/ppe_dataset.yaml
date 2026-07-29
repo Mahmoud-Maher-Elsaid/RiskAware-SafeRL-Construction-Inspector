@@ -1,0 +1,23 @@
+schema_version: 1
+dataset:
+  environment_variable: RISK_AWARE_PPE_DATASET_ROOT
+  default_relative_root: Personal Protective Equipment - Combined Model.v1i.yolov8
+  data_yaml: data.yaml
+  local_only: true
+  git_tracked: false
+  splits:
+    train:
+      images: train/images
+      labels: train/labels
+    valid:
+      images: valid/images
+      labels: valid/labels
+    test:
+      images: test/images
+      labels: test/labels
+validation:
+  required_audit_status: PASS
+  audit_manifest: data/manifests/ppe_dataset_audit.json
+  class_schema: configs/perception/class_schema.json
+  expected_class_count: 14
+  lock_dataset_class_order: true
