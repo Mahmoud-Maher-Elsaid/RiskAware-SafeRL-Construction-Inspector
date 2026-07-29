@@ -16,6 +16,48 @@ class PolicyOutput:
     recurrent_state: Tensor
 
 
+class SemanticMapEncoder(nn.Module):
+    """CNN spatial tokens with global positional attention."""
+
+    def __init__(self, map_channels: int) -> None:
+        super().__init__()
+        self.convolution = nn.Sequential(
+            nn.Conv2d(map_channels, 32, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=1),
+            nn.ReLU(),
+        )
+        self.class_token = nn.Parameter(torch.zeros(1, 1, 64))
+        self.position_embedding = nn.Parameter(torch.zeros(1, 17, 64))
+        layer = nn.TransformerEncoderLayer(
+            d_model=64,
+            nhead=4,
+            dim_feedforward=192,
+            dropout=0.0,
+            activation="gelu",
+            batch_first=True,
+            norm_first=True,
+        )
+        self.attention = nn.TransformerEncoder(layer, num_layers=2, enable_nested_tensor=False)
+        self.projection = nn.Sequential(
+            nn.LayerNorm(64),
+            nn.Linear(64, 128),
+            nn.ReLU(),
+        )
+        nn.init.trunc_normal_(self.class_token, std=0.02)
+        nn.init.trunc_normal_(self.position_embedding, std=0.02)
+
+    def forward(self, maps: Tensor) -> Tensor:
+        tokens = self.convolution(maps).flatten(2).transpose(1, 2)
+        if tokens.shape[1] != 16:
+            raise ValueError(f"Expected 4x4 spatial tokens, got {tokens.shape[1]}")
+        class_token = self.class_token.expand(tokens.shape[0], -1, -1)
+        attended = self.attention(torch.cat((class_token, tokens), dim=1) + self.position_embedding)
+        return self.projection(attended[:, 0])
+
+
 class RecurrentMaskedPolicy(nn.Module):
     """CNN/MLP/GRU actor with independent reward and cost value heads."""
 
@@ -34,18 +76,7 @@ class RecurrentMaskedPolicy(nn.Module):
         self.action_count = action_count
         self.subgoal_count = subgoal_count
         self.recurrent_hidden_size = recurrent_hidden_size
-        self.map_encoder = nn.Sequential(
-            nn.Conv2d(map_channels, 32, kernel_size=3, padding=1),
-            nn.ReLU(),
-            nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
-            nn.ReLU(),
-            nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=1),
-            nn.ReLU(),
-            nn.AdaptiveAvgPool2d((2, 2)),
-            nn.Flatten(),
-            nn.Linear(256, 128),
-            nn.ReLU(),
-        )
+        self.map_encoder = SemanticMapEncoder(map_channels)
         self.state_encoder = nn.Sequential(
             nn.Linear(state_features, 64),
             nn.LayerNorm(64),

@@ -117,7 +117,11 @@ def test_unreachable_target_falls_back_to_exploration() -> None:
 def test_explores_frontier_when_no_target_known() -> None:
     decision = CausalObservationExpert().decide(observation())
     assert decision.target_type == "frontier"
-    assert decision.reason in {"navigate_to_frontier", "expand_discovered_map"}
+    assert decision.reason in {
+        "navigate_to_frontier",
+        "expand_discovered_map",
+        "systematic_unvisited_sweep",
+    }
 
 
 def test_inspects_valid_observed_target_in_range() -> None:

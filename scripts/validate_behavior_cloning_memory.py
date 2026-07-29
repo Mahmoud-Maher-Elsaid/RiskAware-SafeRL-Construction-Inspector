@@ -120,7 +120,7 @@ def validate(args: argparse.Namespace) -> dict:
         "source_dataset_sha256": dataset.cache_metadata["dataset_sha256"],
         "active_mmap_chunks": dataset.chunk_cache.active_chunks,
     }
-    report_path = Path("reports/strong_policy_upgrade/imitation_learning/memory_smoke_test.json")
+    report_path = args.report_path
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     return report
@@ -146,6 +146,11 @@ def main() -> None:
     parser.add_argument("--max-growth-mb", type=float, default=1024)
     parser.add_argument("--max-plateau-growth-mb", type=float, default=64)
     parser.add_argument("--seed", type=int, default=20260729)
+    parser.add_argument(
+        "--report-path",
+        type=Path,
+        default=Path("reports/strong_policy_upgrade/imitation_learning/memory_smoke_test.json"),
+    )
     args = parser.parse_args()
     report = validate(args)
     print(f"BEHAVIOR_CLONING_MEMORY_GATE={report['status']}")

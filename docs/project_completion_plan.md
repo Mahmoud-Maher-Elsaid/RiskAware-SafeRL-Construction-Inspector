@@ -7,13 +7,13 @@ Last updated: 2026-07-29
 | Field | Current value |
 |---|---|
 | Current task | Strong-policy upgrade: causal expert correction dataset |
-| Current state | Causal expert passed; separate 250,008-transition causal dataset and bounded mmap cache generated and hash-validated |
-| Evidence collected | Original dataset SHA-256 and 13 chunk hashes; causal recovery report; bounded mmap profile; causal expert evaluation; 26 causal chunk hashes and dataset manifest |
-| Files changed | Causal expert/generator, contract and dataset tests, evaluation harness, generalized mmap loader, causal manifest/reports, and docs |
-| Tests run | Repository Ruff and 302-test causal-expert baseline; causal generator/cache tests; 1,440 environment evaluation episodes |
-| Runtime result | Expert gates passed; causal dataset 250,008 transitions, 200 seeds, zero invalid actions, dataset SHA-256 `9d4c603d...03a29` |
-| Remaining work | Mix datasets; pass three-seed causal Behavior Cloning; DAgger; HRMPPO v2; CV/Webots/benchmark/paper/final acceptance |
-| Blockers | None at the mixed imitation dataset stage |
+| Current state | Systematic causal dataset and three-seed causal Behavior Cloning passed all gates |
+| Evidence collected | Preserved original hashes; two causal manifests; systematic expert evaluation; mixed-mode comparison; three-seed BC metrics, checkpoint hashes, and CUDA memory gate |
+| Files changed | Causal expert/generator/mixer, attention recurrent policy, episode-state trainer, generalized mmap loader, tests, manifests, reports, and docs |
+| Tests run | Repository Ruff/full pytest; causal expert/generator/mixer/cache tests; 1,440-episode systematic expert evaluation; 1,000-batch CUDA memory gate |
+| Runtime result | Systematic dataset 250,128 transitions (`52784529...c7756f`); BC mean 91.07%, best 91.39%, minimum recall 84.13%, zero invalid actions/leakage |
+| Remaining work | Three DAgger iterations; HRMPPO v2; CV/Webots/benchmark/paper/final acceptance |
+| Blockers | None at the DAgger stage |
 
 ## Phase checklist
 
@@ -38,6 +38,8 @@ Last updated: 2026-07-29
 - [x] Implement and validate a policy-observation-only causal expert.
 - [x] Pass causal expert solvability gates across 1,440 environment episodes.
 - [x] Generate and hash-validate the separate causal correction dataset.
+- [x] Compare causal-only, privileged-pretraining, and confidence-filtered modes.
+- [x] Pass three-seed causal Behavior Cloning and CUDA memory gates.
 - [ ] Complete three genuine DAgger iterations.
 - [ ] Train and accept RiskShield-HRMPPO v2 against all replacement gates.
 - [ ] Complete CV audit, three-world Webots validation, benchmark-v2, ablations, paper, and Git acceptance.

@@ -14,7 +14,7 @@ import numpy as np
 import psutil
 import torch
 from torch import nn
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import DataLoader, Dataset, Sampler
 
 from riskaware_saferrl.policies import RecurrentMaskedPolicy
 
@@ -167,11 +167,13 @@ class DemonstrationSequences(Dataset):
         *,
         max_cached_chunks: int = 2,
         rotation_augmentation: bool = False,
+        row_weights: dict[int, dict[int, float]] | None = None,
     ) -> None:
         self.dataset_dir = dataset_dir
         self.split = split
         self.sequence_length = sequence_length
         self.rotation_augmentation = rotation_augmentation
+        self.row_weights = row_weights
         self.cache_metadata = build_mmap_cache(dataset_dir)
         self.action_key = self.cache_metadata["action_key"]
         self.chunk_cache = MmapChunkCache(
@@ -220,8 +222,20 @@ class DemonstrationSequences(Dataset):
                             ]
                         ):
                             raise ValueError("Invalid masked teacher action in source dataset")
+                        if row_weights is None:
+                            counted_actions = selected_actions
+                        else:
+                            chunk_weights = row_weights.get(chunk_id, {})
+                            accepted = np.asarray(
+                                [
+                                    chunk_weights.get(row_index, 0.0) > 0.0
+                                    for row_index in range(valid_start, stop)
+                                ],
+                                dtype=np.bool_,
+                            )
+                            counted_actions = selected_actions[accepted]
                         self.action_counts += np.bincount(
-                            selected_actions, minlength=len(self.action_counts)
+                            counted_actions, minlength=len(self.action_counts)
                         )
                         previous_stop = stop
                 row = episode_stop
@@ -274,7 +288,18 @@ class DemonstrationSequences(Dataset):
             "sequence_stop": record.stop,
             "chunk_id": record.chunk,
             "loss_mask": torch.arange(record.start, record.stop) >= record.valid_start,
+            "sample_weights": torch.ones(record.stop - record.start),
         }
+        if self.row_weights is not None:
+            chunk_weights = self.row_weights.get(record.chunk, {})
+            result["sample_weights"] = torch.tensor(
+                [
+                    chunk_weights.get(row_index, 0.0)
+                    for row_index in range(record.start, record.stop)
+                ],
+                dtype=torch.float32,
+            )
+            result["loss_mask"] &= result["sample_weights"] > 0
         if rotation:
             remaps = torch.tensor(
                 (
@@ -314,6 +339,32 @@ class DemonstrationSequences(Dataset):
             result["states"][:, 2] = torch.sin(angles)
             result["states"][:, 3] = torch.cos(angles)
         return result
+
+
+class EpisodeSequenceBatchSampler(Sampler[list[int]]):
+    """Interleave ordered episode blocks so recurrent state can carry safely."""
+
+    def __init__(self, dataset: DemonstrationSequences, batch_size: int) -> None:
+        if dataset.rotation_augmentation:
+            raise ValueError("Episode-state training and rotation expansion cannot be combined")
+        self.batch_size = batch_size
+        groups: dict[str, list[int]] = {}
+        for index, sequence in enumerate(dataset.sequences):
+            groups.setdefault(sequence.episode_id, []).append(index)
+        self.groups = list(groups.values())
+        self.batches: list[list[int]] = []
+        max_blocks = max((len(group) for group in self.groups), default=0)
+        for block_index in range(max_blocks):
+            wave = [group[block_index] for group in self.groups if block_index < len(group)]
+            self.batches.extend(
+                wave[start : start + batch_size] for start in range(0, len(wave), batch_size)
+            )
+
+    def __iter__(self):
+        return iter(self.batches)
+
+    def __len__(self) -> int:
+        return len(self.batches)
 
 
 @dataclass
@@ -482,11 +533,21 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     if args.device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA requested but unavailable")
     device = torch.device(args.device)
+    row_weights: dict[int, dict[int, float]] | None = None
+    if args.sample_index is not None:
+        row_weights = {}
+        with args.sample_index.open("r", encoding="utf-8") as stream:
+            for line in stream:
+                reference = json.loads(line)
+                row_weights.setdefault(int(reference["chunk_index"]), {})[int(reference["row"])] = (
+                    float(reference["weight"])
+                )
     training = DemonstrationSequences(
         args.dataset_dir,
         "train",
         args.sequence_length,
         rotation_augmentation=args.rotation_augmentation,
+        row_weights=row_weights,
     )
     validation = DemonstrationSequences(args.dataset_dir, "validation", args.sequence_length)
     held_out = DemonstrationSequences(args.dataset_dir, "test", args.sequence_length)
@@ -497,7 +558,16 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         "pin_memory": False,
     }
     generator = torch.Generator().manual_seed(args.seed)
-    training_loader = DataLoader(training, shuffle=True, generator=generator, **loader_options)
+    if args.recurrent_training_state:
+        training_loader = DataLoader(
+            training,
+            batch_sampler=EpisodeSequenceBatchSampler(training, args.batch_size),
+            num_workers=args.num_workers,
+            persistent_workers=args.num_workers > 0,
+            pin_memory=False,
+        )
+    else:
+        training_loader = DataLoader(training, shuffle=True, generator=generator, **loader_options)
     evaluation_options = {
         **loader_options,
         "batch_size": 1,
@@ -527,10 +597,10 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         if "scaler_state_dict" in checkpoint:
             scaler.load_state_dict(checkpoint["scaler_state_dict"])
         start_epoch = int(checkpoint["epoch"]) + 1
-    guard = MemoryGuard(
-        args.max_memory_gb,
-        Path("reports/strong_policy_upgrade/imitation_learning/memory_profile.json"),
-    )
+    elif args.initial_checkpoint is not None:
+        checkpoint = torch.load(args.initial_checkpoint, map_location=device, weights_only=True)
+        policy.load_state_dict(checkpoint["model_state_dict"])
+    guard = MemoryGuard(args.max_memory_gb, args.report_dir / "memory_profile.json")
     history: list[dict[str, Any]] = []
     best_score = -float("inf")
     remaining_patience = args.patience
@@ -538,6 +608,7 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     processed = 0
     for epoch in range(start_epoch, args.epochs + 1):
         policy.train()
+        recurrent_cache: dict[str, tuple[torch.Tensor, int, int]] = {}
         loss_sum = 0.0
         batches = 0
         for batch_number, batch in enumerate(training_loader, 1):
@@ -550,19 +621,47 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
                 device_type=device.type,
                 enabled=args.mixed_precision and device.type == "cuda",
             ):
-                output = policy(maps, states, masks)
+                recurrent_state = None
+                if args.recurrent_training_state:
+                    hidden_states: list[torch.Tensor] = []
+                    for item_index, episode_id in enumerate(batch["episode_id"]):
+                        cached = recurrent_cache.get(episode_id)
+                        start = int(batch["sequence_start"][item_index])
+                        chunk = int(batch["chunk_id"][item_index])
+                        contiguous = cached is not None and (
+                            (chunk == cached[1] and start == cached[2])
+                            or (chunk != cached[1] and start == 0)
+                        )
+                        hidden_states.append(
+                            cached[0] if contiguous else policy.initial_state(1, device)
+                        )
+                    recurrent_state = torch.cat(hidden_states, dim=1)
+                output = policy(maps, states, masks, recurrent_state)
                 loss = nn.functional.cross_entropy(
                     output.distribution.logits.reshape(-1, policy.action_count),
                     actions.reshape(-1),
                     weight=class_weights,
                     reduction="none",
                 )
-                loss = loss[batch["loss_mask"].to(device).reshape(-1)].mean()
+                selected = batch["loss_mask"].to(device).reshape(-1)
+                if not torch.any(selected):
+                    continue
+                sample_weights = batch["sample_weights"].to(device).reshape(-1)[selected]
+                loss = (loss[selected] * sample_weights).sum() / sample_weights.sum().clamp_min(
+                    1e-8
+                )
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
             nn.utils.clip_grad_norm_(policy.parameters(), 1.0)
             scaler.step(optimizer)
             scaler.update()
+            if args.recurrent_training_state:
+                for item_index, episode_id in enumerate(batch["episode_id"]):
+                    recurrent_cache[episode_id] = (
+                        output.recurrent_state[:, item_index : item_index + 1].detach(),
+                        int(batch["chunk_id"][item_index]),
+                        int(batch["sequence_stop"][item_index]),
+                    )
             loss_sum += float(loss.detach())
             batches += 1
             processed += maps.shape[0]
@@ -661,7 +760,7 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         "history": history,
     }
     _write_json(args.output_dir / "behavior_cloning_summary.json", summary)
-    report_dir = Path("reports/strong_policy_upgrade/imitation_learning")
+    report_dir = args.report_dir
     _write_json(report_dir / "behavior_cloning_summary.json", summary)
     report_dir.mkdir(parents=True, exist_ok=True)
     with (report_dir / "confusion_matrix.csv").open("w", newline="", encoding="utf-8") as stream:
@@ -686,6 +785,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("artifacts/strong_policy_upgrade/imitation_learning"),
     )
+    parser.add_argument(
+        "--report-dir",
+        type=Path,
+        default=Path("reports/strong_policy_upgrade/imitation_learning"),
+    )
     parser.add_argument("--epochs", type=int, default=30)
     parser.add_argument("--sequence-length", type=int, default=32)
     parser.add_argument("--batch-size", type=int, default=8)
@@ -695,10 +799,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--patience", type=int, default=6)
     parser.add_argument("--seed", type=int, default=20260729)
     parser.add_argument("--resume", type=str)
+    parser.add_argument("--initial-checkpoint", type=Path)
+    parser.add_argument("--sample-index", type=Path)
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
     parser.add_argument("--mixed-precision", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument(
         "--rotation-augmentation", action=argparse.BooleanOptionalAction, default=False
+    )
+    parser.add_argument(
+        "--recurrent-training-state",
+        action=argparse.BooleanOptionalAction,
+        default=False,
     )
     return parser.parse_args()
 

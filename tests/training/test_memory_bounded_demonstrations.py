@@ -14,6 +14,7 @@ from torch.utils.data import DataLoader
 from scripts.generate_expert_demonstrations import generate
 from scripts.train_behavior_cloning_v2 import (
     DemonstrationSequences,
+    EpisodeSequenceBatchSampler,
     SequenceIndex,
     build_mmap_cache,
 )
@@ -112,6 +113,22 @@ def test_tail_windows_count_each_covered_transition_once(tmp_path: Path) -> None
             assert (record.chunk, row) not in covered
             covered.add((record.chunk, row))
     assert len(covered) == int(dataset.action_counts.sum())
+
+
+def test_episode_batch_sampler_preserves_block_order(tmp_path: Path) -> None:
+    root = _dataset(tmp_path)
+    dataset = DemonstrationSequences(root, "train", 8)
+    sampler = EpisodeSequenceBatchSampler(dataset, batch_size=4)
+    last_stop: dict[str, int] = {}
+    for batch in sampler:
+        episodes_in_batch: set[str] = set()
+        for index in batch:
+            record = dataset.sequences[index]
+            assert record.episode_id not in episodes_in_batch
+            episodes_in_batch.add(record.episode_id)
+            if record.episode_id in last_stop and record.start >= last_stop[record.episode_id]:
+                assert record.start == last_stop[record.episode_id]
+            last_stop[record.episode_id] = record.stop
 
 
 def test_source_hashes_unchanged_and_cache_rebuild_is_deterministic(tmp_path: Path) -> None:

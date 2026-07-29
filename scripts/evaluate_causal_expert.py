@@ -50,13 +50,14 @@ def run_episode(
     profile: str,
     seed: int,
     split: str,
+    planning_strategy: str = "systematic",
 ) -> dict[str, Any]:
     hazard_multiplier, worker_multiplier, noise = PROFILES[profile]
     environment = ResearchConstructionEnvV2(
         load_config(world, hazard_multiplier, worker_multiplier, noise)
     )
     observation, _ = environment.reset(seed=seed)
-    expert = CausalObservationExpert()
+    expert = CausalObservationExpert(planning_strategy=planning_strategy)
     invalid_actions = 0
     shield_interventions = 0
     proposed_counts = np.zeros(5, dtype=np.int64)
@@ -80,6 +81,7 @@ def run_episode(
         "world": world,
         "profile": profile,
         "seed": seed,
+        "planning_strategy": planning_strategy,
         "hazard_multiplier": hazard_multiplier,
         "worker_multiplier": worker_multiplier,
         "perception_false_negative_rate": noise,
@@ -130,13 +132,25 @@ def aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def evaluate(output_dir: Path, seed_ranges: dict[str, tuple[int, int]]) -> dict[str, Any]:
+def evaluate(
+    output_dir: Path,
+    seed_ranges: dict[str, tuple[int, int]],
+    planning_strategy: str = "systematic",
+) -> dict[str, Any]:
     rows: list[dict[str, Any]] = []
     for split, (start, count) in seed_ranges.items():
         for seed in range(start, start + count):
             for world in WORLDS:
                 for profile in PROFILES:
-                    rows.append(run_episode(world, profile, seed, split))
+                    rows.append(
+                        run_episode(
+                            world,
+                            profile,
+                            seed,
+                            split,
+                            planning_strategy,
+                        )
+                    )
     output_dir.mkdir(parents=True, exist_ok=True)
     csv_path = output_dir / "evaluation.csv"
     scalar_fields = [key for key, value in rows[0].items() if not isinstance(value, list)]
@@ -165,6 +179,7 @@ def evaluate(output_dir: Path, seed_ranges: dict[str, tuple[int, int]]) -> dict[
     summary = {
         "status": "PASSED" if passed else "FAILED",
         "observation_only_contract": True,
+        "planning_strategy": planning_strategy,
         "seed_ranges": {
             split: {"start": start, "count": count} for split, (start, count) in seed_ranges.items()
         },
@@ -224,13 +239,18 @@ def main() -> None:
     parser.add_argument("--train-seeds", type=int, default=100)
     parser.add_argument("--validation-seeds", type=int, default=30)
     parser.add_argument("--test-seeds", type=int, default=30)
+    parser.add_argument(
+        "--planning-strategy",
+        choices=("systematic", "risk_astar"),
+        default="systematic",
+    )
     args = parser.parse_args()
     seed_ranges = {
         "train": (0, args.train_seeds),
         "validation": (1000, args.validation_seeds),
         "test": (2000, args.test_seeds),
     }
-    summary = evaluate(args.output_dir, seed_ranges)
+    summary = evaluate(args.output_dir, seed_ranges, args.planning_strategy)
     print(f"CAUSAL_EXPERT_GATE={summary['status']}")
     if summary["status"] != "PASSED":
         raise SystemExit(1)

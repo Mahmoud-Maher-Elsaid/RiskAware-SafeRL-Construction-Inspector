@@ -3,6 +3,7 @@ from __future__ import annotations
 import heapq
 from dataclasses import dataclass
 from itertools import count
+from typing import Literal
 
 import numpy as np
 from numpy.typing import NDArray
@@ -36,10 +37,12 @@ class CausalObservationExpert:
         inspection_radius: int = 2,
         risk_weight: float = 5.0,
         shield_threshold: float = 1.0,
+        planning_strategy: Literal["risk_astar", "systematic"] = "systematic",
     ) -> None:
         self.inspection_radius = inspection_radius
         self.risk_weight = risk_weight
         self.shield_threshold = shield_threshold
+        self.planning_strategy = planning_strategy
         self.reset()
 
     def reset(self) -> None:
@@ -242,6 +245,39 @@ class CausalObservationExpert:
             return min(candidates)[2]
         return int(np.flatnonzero(mask)[0])
 
+    def _systematic_action(
+        self,
+        position: Position,
+        mask: NDArray[np.bool_],
+    ) -> tuple[int, str]:
+        row, column = position
+        sweep_action = 3 if row % 2 == 0 else 2
+        opposite = 2 if sweep_action == 3 else 3
+        order = (sweep_action, 1, opposite, 0)
+        available = [action for action in order if mask[action]]
+        if not available:
+            return int(np.flatnonzero(mask)[0]), "valid_mask_fallback"
+        unvisited: list[int] = []
+        for action in available:
+            delta = ACTION_DELTAS[action]
+            candidate = row + delta[0], column + delta[1]
+            if not self._visited[candidate]:
+                unvisited.append(action)
+        if unvisited:
+            return unvisited[0], "systematic_unvisited_sweep"
+        recent = set(self._recent_positions[-8:])
+
+        def revisit_score(action: int) -> tuple[int, int, int]:
+            delta = ACTION_DELTAS[action]
+            candidate = row + delta[0], column + delta[1]
+            return (
+                int(self._visit_counts[candidate]),
+                int(candidate in recent),
+                order.index(action),
+            )
+
+        return min(available, key=revisit_score), "systematic_least_visited"
+
     def _shield(
         self,
         proposed: int,
@@ -284,6 +320,9 @@ class CausalObservationExpert:
                 if np.any(remaining_targets)
                 else "inspect_mask_permitted_target"
             )
+        elif self.planning_strategy == "systematic":
+            proposed, reason = self._systematic_action(position, mask)
+            target_type = "frontier"
         else:
             result = self._path_to_any(position, self._visible_target_viewpoints(size), size)
             if result is not None and result[1] != 4:

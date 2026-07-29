@@ -1,6 +1,7 @@
 {
   "status": "PASSED",
   "observation_only_contract": true,
+  "planning_strategy": "systematic",
   "seed_ranges": {
     "train": {
       "start": 0,
@@ -39,296 +40,296 @@
   },
   "overall": {
     "episodes": 1440,
-    "success_rate": 0.9708333333333333,
-    "hazard_recall": 0.9926317000230044,
-    "inspection_coverage": 0.9926317000230044,
-    "explored_area_coverage": 0.2693441530257937,
+    "success_rate": 0.8215277777777777,
+    "hazard_recall": 0.9754622440763746,
+    "inspection_coverage": 0.9754622440763746,
+    "explored_area_coverage": 0.5824585414895125,
     "collision_rate": 0.0,
-    "mean_safety_cost": 10.303993055555555,
-    "constraint_violations": 26970,
-    "mean_path_length": 71.22430555555556,
+    "mean_safety_cost": 39.12065972222222,
+    "constraint_violations": 92281,
+    "mean_path_length": 195.6875,
     "invalid_actions": 0,
     "shield_interventions": 0,
     "proposed_action_counts": [
-      31764,
-      32350,
-      18993,
-      19456,
-      15312
+      42002,
+      39544,
+      99985,
+      100259,
+      15022
     ],
     "executed_action_counts": [
-      31764,
-      32350,
-      18993,
-      19456,
-      15312
+      42002,
+      39544,
+      99985,
+      100259,
+      15022
     ]
   },
   "groups": {
     "profile:high": {
       "episodes": 480,
-      "success_rate": 0.9479166666666666,
-      "hazard_recall": 0.987240338164251,
-      "inspection_coverage": 0.987240338164251,
-      "explored_area_coverage": 0.3326302814094388,
+      "success_rate": 0.7791666666666667,
+      "hazard_recall": 0.9726962560386474,
+      "inspection_coverage": 0.9726962560386474,
+      "explored_area_coverage": 0.6112392644557824,
       "collision_rate": 0.0,
-      "mean_safety_cost": 16.765104166666667,
-      "constraint_violations": 14448,
-      "mean_path_length": 92.77708333333334,
+      "mean_safety_cost": 46.6078125,
+      "constraint_violations": 37615,
+      "mean_path_length": 204.06666666666666,
       "invalid_actions": 0,
       "shield_interventions": 0,
       "proposed_action_counts": [
-        13811,
-        13949,
-        8333,
-        8440,
-        7547
+        14847,
+        13792,
+        34560,
+        34753,
+        7465
       ],
       "executed_action_counts": [
-        13811,
-        13949,
-        8333,
-        8440,
-        7547
+        14847,
+        13792,
+        34560,
+        34753,
+        7465
       ]
     },
     "profile:low": {
       "episodes": 480,
-      "success_rate": 0.9854166666666667,
-      "hazard_recall": 0.9943700396825397,
-      "inspection_coverage": 0.9943700396825397,
-      "explored_area_coverage": 0.2141441127232143,
+      "success_rate": 0.8520833333333333,
+      "hazard_recall": 0.9749751984126984,
+      "inspection_coverage": 0.9749751984126984,
+      "explored_area_coverage": 0.554788212159864,
       "collision_rate": 0.0,
-      "mean_safety_cost": 4.938541666666667,
-      "constraint_violations": 4520,
-      "mean_path_length": 52.51875,
+      "mean_safety_cost": 33.0890625,
+      "constraint_violations": 25218,
+      "mean_path_length": 187.84375,
       "invalid_actions": 0,
       "shield_interventions": 0,
       "proposed_action_counts": [
-        7862,
-        8106,
-        4389,
-        4852,
-        3379
+        13200,
+        12587,
+        32106,
+        32272,
+        3281
       ],
       "executed_action_counts": [
-        7862,
-        8106,
-        4389,
-        4852,
-        3379
+        13200,
+        12587,
+        32106,
+        32272,
+        3281
       ]
     },
     "profile:medium": {
       "episodes": 480,
-      "success_rate": 0.9791666666666666,
-      "hazard_recall": 0.9962847222222223,
-      "inspection_coverage": 0.9962847222222223,
-      "explored_area_coverage": 0.2612580649447279,
+      "success_rate": 0.8333333333333334,
+      "hazard_recall": 0.9787152777777778,
+      "inspection_coverage": 0.9787152777777778,
+      "explored_area_coverage": 0.5813481478528911,
       "collision_rate": 0.0,
-      "mean_safety_cost": 9.208333333333334,
-      "constraint_violations": 8002,
-      "mean_path_length": 68.37708333333333,
+      "mean_safety_cost": 37.665104166666666,
+      "constraint_violations": 29448,
+      "mean_path_length": 195.15208333333334,
       "invalid_actions": 0,
       "shield_interventions": 0,
       "proposed_action_counts": [
-        10091,
-        10295,
-        6271,
-        6164,
-        4386
+        13955,
+        13165,
+        33319,
+        33234,
+        4276
       ],
       "executed_action_counts": [
-        10091,
-        10295,
-        6271,
-        6164,
-        4386
+        13955,
+        13165,
+        33319,
+        33234,
+        4276
       ]
     },
     "split:test": {
       "episodes": 270,
-      "success_rate": 0.9481481481481482,
-      "hazard_recall": 0.9862499041484549,
-      "inspection_coverage": 0.9862499041484549,
-      "explored_area_coverage": 0.2669089427437642,
+      "success_rate": 0.8111111111111111,
+      "hazard_recall": 0.972784679089027,
+      "inspection_coverage": 0.972784679089027,
+      "explored_area_coverage": 0.5957927059712774,
       "collision_rate": 0.0,
-      "mean_safety_cost": 10.415740740740741,
-      "constraint_violations": 5118,
-      "mean_path_length": 73.81111111111112,
+      "mean_safety_cost": 39.16388888888889,
+      "constraint_violations": 17356,
+      "mean_path_length": 196.9111111111111,
       "invalid_actions": 0,
       "shield_interventions": 0,
       "proposed_action_counts": [
-        6326,
-        6383,
-        3544,
-        3676,
-        3021
+        7873,
+        7383,
+        18984,
+        18926,
+        2977
       ],
       "executed_action_counts": [
-        6326,
-        6383,
-        3544,
-        3676,
-        3021
+        7873,
+        7383,
+        18984,
+        18926,
+        2977
       ]
     },
     "split:train": {
       "episodes": 900,
-      "success_rate": 0.9722222222222222,
-      "hazard_recall": 0.9935692431561998,
-      "inspection_coverage": 0.9935692431561998,
-      "explored_area_coverage": 0.27242777069161,
+      "success_rate": 0.8344444444444444,
+      "hazard_recall": 0.9777597193466759,
+      "inspection_coverage": 0.9777597193466759,
+      "explored_area_coverage": 0.5822616532029479,
       "collision_rate": 0.0,
-      "mean_safety_cost": 10.503333333333334,
-      "constraint_violations": 17096,
-      "mean_path_length": 72.57555555555555,
+      "mean_safety_cost": 38.78944444444444,
+      "constraint_violations": 57180,
+      "mean_path_length": 194.63,
       "invalid_actions": 0,
       "shield_interventions": 0,
       "proposed_action_counts": [
-        20096,
-        20540,
-        12249,
-        12433,
-        9647
+        26109,
+        24578,
+        62129,
+        62351,
+        9463
       ],
       "executed_action_counts": [
-        20096,
-        20540,
-        12249,
-        12433,
-        9647
+        26109,
+        24578,
+        62129,
+        62351,
+        9463
       ]
     },
     "split:validation": {
       "episodes": 270,
-      "success_rate": 0.9888888888888889,
-      "hazard_recall": 0.9958883521202362,
-      "inspection_coverage": 0.9958883521202362,
-      "explored_area_coverage": 0.261500637755102,
+      "success_rate": 0.7888888888888889,
+      "hazard_recall": 0.9704815581627174,
+      "inspection_coverage": 0.9704815581627174,
+      "explored_area_coverage": 0.5697806712962963,
       "collision_rate": 0.0,
-      "mean_safety_cost": 9.527777777777779,
-      "constraint_violations": 4756,
-      "mean_path_length": 64.13333333333334,
+      "mean_safety_cost": 40.181481481481484,
+      "constraint_violations": 17745,
+      "mean_path_length": 197.98888888888888,
       "invalid_actions": 0,
       "shield_interventions": 0,
       "proposed_action_counts": [
-        5342,
-        5427,
-        3200,
-        3347,
-        2644
+        8020,
+        7583,
+        18872,
+        18982,
+        2582
       ],
       "executed_action_counts": [
-        5342,
-        5427,
-        3200,
-        3347,
-        2644
+        8020,
+        7583,
+        18872,
+        18982,
+        2582
       ]
     },
     "world:site_dynamic": {
       "episodes": 480,
-      "success_rate": 0.9583333333333334,
-      "hazard_recall": 0.9913722826086957,
-      "inspection_coverage": 0.9913722826086957,
-      "explored_area_coverage": 0.31593424479166665,
+      "success_rate": 0.6729166666666667,
+      "hazard_recall": 0.9558559782608695,
+      "inspection_coverage": 0.9558559782608695,
+      "explored_area_coverage": 0.654541015625,
       "collision_rate": 0.0,
-      "mean_safety_cost": 20.1609375,
-      "constraint_violations": 17499,
-      "mean_path_length": 113.825,
+      "mean_safety_cost": 72.6953125,
+      "constraint_violations": 57429,
+      "mean_path_length": 313.81666666666666,
       "invalid_actions": 0,
       "shield_interventions": 0,
       "proposed_action_counts": [
-        16412,
-        16507,
-        10705,
-        11012,
-        8584
+        23258,
+        21873,
+        52715,
+        52786,
+        8323
       ],
       "executed_action_counts": [
-        16412,
-        16507,
-        10705,
-        11012,
-        8584
+        23258,
+        21873,
+        52715,
+        52786,
+        8323
       ]
     },
     "world:site_medium": {
       "episodes": 480,
-      "success_rate": 0.9666666666666667,
-      "hazard_recall": 0.9915575396825396,
-      "inspection_coverage": 0.9915575396825396,
-      "explored_area_coverage": 0.27834821428571427,
+      "success_rate": 0.8,
+      "hazard_recall": 0.9731349206349207,
+      "inspection_coverage": 0.9731349206349207,
+      "explored_area_coverage": 0.6094387755102041,
       "collision_rate": 0.0,
-      "mean_safety_cost": 8.902604166666666,
-      "constraint_violations": 7844,
-      "mean_path_length": 74.12708333333333,
+      "mean_safety_cost": 36.14114583333333,
+      "constraint_violations": 28225,
+      "mean_path_length": 204.65625,
       "invalid_actions": 0,
       "shield_interventions": 0,
       "proposed_action_counts": [
-        11345,
-        11552,
-        6301,
-        6383,
-        4749
+        14292,
+        13477,
+        35180,
+        35286,
+        4704
       ],
       "executed_action_counts": [
-        11345,
-        11552,
-        6301,
-        6383,
-        4749
+        14292,
+        13477,
+        35180,
+        35286,
+        4704
       ]
     },
     "world:site_small": {
       "episodes": 480,
-      "success_rate": 0.9875,
-      "hazard_recall": 0.9949652777777778,
-      "inspection_coverage": 0.9949652777777778,
-      "explored_area_coverage": 0.21375,
+      "success_rate": 0.9916666666666667,
+      "hazard_recall": 0.9973958333333334,
+      "inspection_coverage": 0.9973958333333334,
+      "explored_area_coverage": 0.48339583333333336,
       "collision_rate": 0.0,
-      "mean_safety_cost": 1.8484375,
-      "constraint_violations": 1627,
-      "mean_path_length": 25.720833333333335,
+      "mean_safety_cost": 8.525520833333333,
+      "constraint_violations": 6627,
+      "mean_path_length": 68.58958333333334,
       "invalid_actions": 0,
       "shield_interventions": 0,
       "proposed_action_counts": [
-        4007,
-        4291,
-        1987,
-        2061,
-        1979
+        4452,
+        4194,
+        12090,
+        12187,
+        1995
       ],
       "executed_action_counts": [
-        4007,
-        4291,
-        1987,
-        2061,
-        1979
+        4452,
+        4194,
+        12090,
+        12187,
+        1995
       ]
     }
   },
   "gates": {
     "small_world_success": {
       "required": 0.9,
-      "observed": 0.9875
+      "observed": 0.9916666666666667
     },
     "medium_world_success": {
       "required": 0.8,
-      "observed": 0.9666666666666667
+      "observed": 0.8
     },
     "dynamic_world_success": {
       "required": 0.65,
-      "observed": 0.9583333333333334
+      "observed": 0.6729166666666667
     },
     "hazard_recall": {
       "required": 0.8,
-      "observed": 0.9926317000230044
+      "observed": 0.9754622440763746
     },
     "inspection_coverage": {
       "required": 0.8,
-      "observed": 0.9926317000230044
+      "observed": 0.9754622440763746
     },
     "invalid_actions": {
       "required": 0,

@@ -143,12 +143,15 @@ def generate(
     chunk_size: int,
     seeds: int,
     minimum_unique_seeds: int,
+    planning_strategy: str = "systematic",
 ) -> dict[str, Any]:
     if (
         output_dir.resolve()
         == Path("artifacts/strong_policy_upgrade/expert_demonstrations").resolve()
     ):
         raise ValueError("Causal demonstrations must not overwrite the original dataset")
+    if any((output_dir / "chunks").glob("*.npz")):
+        raise FileExistsError(f"Refusing to overwrite immutable causal chunks in {output_dir}")
     writer = CausalChunkWriter(output_dir / "chunks", chunk_size)
     conditions = [
         (scenario, hazard, worker, noise)
@@ -179,7 +182,7 @@ def generate(
             )
         )
         observation, _ = environment.reset(seed=seed)
-        expert = CausalObservationExpert()
+        expert = CausalObservationExpert(planning_strategy=planning_strategy)
         episode_id = (
             f"causal:{scenario}:h{hazard_multiplier}:w{worker_multiplier}:"
             f"n{noise}:s{seed}:e{episode_index}"
@@ -266,6 +269,7 @@ def generate(
     return {
         "status": "PASSED" if passed else "FAILED",
         "observation_only_contract": True,
+        "planning_strategy": planning_strategy,
         "policy_observation_keys": ["map", "state", "action_mask"],
         "hidden_state_stored_or_consumed": False,
         "transitions": writer.total,
@@ -300,6 +304,16 @@ def main() -> None:
     parser.add_argument("--chunk-size", type=int, default=10_000)
     parser.add_argument("--seeds", type=int, default=200)
     parser.add_argument("--minimum-unique-seeds", type=int, default=200)
+    parser.add_argument(
+        "--planning-strategy",
+        choices=("systematic", "risk_astar"),
+        default="systematic",
+    )
+    parser.add_argument(
+        "--report-dir",
+        type=Path,
+        default=Path("reports/strong_policy_upgrade/causal_expert_dataset"),
+    )
     args = parser.parse_args()
     summary = generate(
         args.output_dir,
@@ -307,6 +321,7 @@ def main() -> None:
         chunk_size=args.chunk_size,
         seeds=args.seeds,
         minimum_unique_seeds=args.minimum_unique_seeds,
+        planning_strategy=args.planning_strategy,
     )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     manifest = dict(summary)
@@ -314,7 +329,7 @@ def main() -> None:
     (args.output_dir / "manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
-    report_dir = Path("reports/strong_policy_upgrade/causal_expert_dataset")
+    report_dir = args.report_dir
     report_dir.mkdir(parents=True, exist_ok=True)
     (report_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(f"CAUSAL_EXPERT_DATASET={summary['status']}")

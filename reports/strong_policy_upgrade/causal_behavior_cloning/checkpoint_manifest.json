@@ -1,0 +1,45 @@
+{
+  "status": "PASSED",
+  "checkpoints": [
+    {
+      "mode": "causal_only",
+      "seed": 20260730,
+      "path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/systematic_causal_only_attention_seed_20260730/best_behavior_cloning.pt",
+      "bytes": 6067159,
+      "sha256": "ba33d7463f7f2ace3f95f81a7c0197ba9d2c39da46f60ba84cd2738a5249fca9",
+      "verified": true
+    },
+    {
+      "mode": "causal_only",
+      "seed": 20260731,
+      "path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/systematic_causal_only_attention_seed_20260731/best_behavior_cloning.pt",
+      "bytes": 6067159,
+      "sha256": "b50100ec3bcaac41737092eddb21538b1e6c54a680dcf0db598462c6a53170c7",
+      "verified": true
+    },
+    {
+      "mode": "causal_only",
+      "seed": 20260732,
+      "path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/systematic_causal_only_attention_seed_20260732/best_behavior_cloning.pt",
+      "bytes": 6067159,
+      "sha256": "574643a8323bc5d394fb9df2ee905da48dfa0ff99bbe56a1efef46bca3901475",
+      "verified": true
+    },
+    {
+      "mode": "causal_plus_privileged_pretraining",
+      "seed": 20260730,
+      "path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/mode_privileged_pretraining_seed_20260730/best_behavior_cloning.pt",
+      "bytes": 6067159,
+      "sha256": "86ef2860233735fc6ffb4b8ac5af25cd8842e85b72b70c57cfc890d3f654bcb8",
+      "verified": true
+    },
+    {
+      "mode": "causal_plus_privileged_distillation_with_confidence_filter",
+      "seed": 20260730,
+      "path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/mode_systematic_confidence_distillation_seed_20260730/best_behavior_cloning.pt",
+      "bytes": 6067159,
+      "sha256": "30372fc525a1cabd9cdf93c8ded1e5bb56ae306fe78123245d7d79111ba6448b",
+      "verified": true
+    }
+  ]
+}
