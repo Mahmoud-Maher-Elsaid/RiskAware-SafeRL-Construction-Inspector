@@ -1,0 +1,17 @@
+{
+  "benchmark_csv": "F:\\AI\\My_Project\\RiskAware-SafeRL-Stage5B-Benchmark\\stage5b1_20260726_010517\\stage5b1_model_benchmark.csv",
+  "benchmark_json": "F:\\AI\\My_Project\\RiskAware-SafeRL-Stage5B-Benchmark\\stage5b1_20260726_010517\\stage5b1_model_benchmark.json",
+  "schema_version": 1,
+  "selected_class_counts": {
+    "safety vest": 5
+  },
+  "selected_live_readiness_score": 0.4040016861387994,
+  "selected_mean_inference_ms": 9.564777270001782,
+  "selected_model_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_fast_balanced\\yolo26s_fast512_35e_seed42_20260723_000121\\weights\\best.pt",
+  "selected_model_sha256": "62fa9405a54ae780beee9e1d3623da442a20123623a31b1af71bdfbd2ec059e5",
+  "selected_p95_inference_ms": 10.648784978548065,
+  "selected_theoretical_fps": 104.55026518352096,
+  "selected_total_detections": 5,
+  "selection_status": "selected",
+  "stage": "5B1"
+}

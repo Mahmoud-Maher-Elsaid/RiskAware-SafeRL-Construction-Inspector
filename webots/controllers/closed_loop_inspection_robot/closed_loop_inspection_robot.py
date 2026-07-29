@@ -58,6 +58,7 @@ STATE_NAVIGATE = "NAVIGATE"
 STATE_DWELL = "DWELL"
 STATE_SCAN = "SCAN"
 STATE_RECOVERY = "RECOVERY"
+STATE_FINAL_ALIGN = "FINAL_ALIGN"
 STATE_COMPLETE = "COMPLETE"
 
 
@@ -959,22 +960,42 @@ def main() -> None:
 
                 if simulation_time >= dwell_until:
                     if target_waypoint_index >= len(waypoints) - 1:
-                        state = STATE_COMPLETE
-                        route_completed = True
-                        route_completed_at = simulation_time
-
-                        print(
-                            "STAGE5A3_ROUTE_COMPLETE "
-                            f"waypoints={len(visited_waypoint_names)}/"
-                            f"{len(waypoints)} "
-                            f"path_length={path_length:.3f}",
-                            flush=True,
-                        )
+                        state = STATE_FINAL_ALIGN
+                        state_started_at = simulation_time
                     else:
                         target_waypoint_index += 1
                         state = STATE_NAVIGATE
                         best_distance_to_target = float("inf")
                         last_progress_time = simulation_time
+
+            elif state == STATE_FINAL_ALIGN:
+                final_heading_error = normalize_angle(-current_world_heading)
+
+                if abs(final_heading_error) <= heading_tolerance:
+                    left_command = 0.0
+                    right_command = 0.0
+                    state = STATE_COMPLETE
+                    route_completed = True
+                    route_completed_at = simulation_time
+
+                    print(
+                        "STAGE5A3_ROUTE_COMPLETE "
+                        f"waypoints={len(visited_waypoint_names)}/"
+                        f"{len(waypoints)} "
+                        f"path_length={path_length:.3f} "
+                        f"final_heading={math.degrees(current_world_heading):.2f}",
+                        flush=True,
+                    )
+                else:
+                    final_turn = turn_command_sign * float(
+                        np.clip(
+                            1.8 * final_heading_error * maximum_motor_velocity,
+                            -turn_velocity_limit,
+                            turn_velocity_limit,
+                        )
+                    )
+                    left_command = -final_turn
+                    right_command = final_turn
 
             elif state == STATE_COMPLETE:
                 left_command = 0.0

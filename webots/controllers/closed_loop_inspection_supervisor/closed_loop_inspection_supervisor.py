@@ -14,6 +14,8 @@ EYE_HEIGHT_METERS = 1.55
 FORWARD_OFFSET_METERS = 0.35
 YAW_SMOOTHING_ALPHA = 0.45
 FINAL_VIEW_SECONDS = 3.0
+VIEWPOINT_FORWARD_AXIS_OFFSET_RADIANS = 0.0
+VIEWPOINT_LEVELING_RADIANS = -math.pi / 2.0
 
 
 def project_root() -> Path:
@@ -143,10 +145,41 @@ def viewpoint_yaw_from_forward(
     forward_x: float,
     forward_z: float,
 ) -> float:
-    return math.atan2(
-        -forward_z,
-        forward_x,
+    return normalize_angle(
+        math.atan2(
+            -forward_z,
+            forward_x,
+        )
+        + VIEWPOINT_FORWARD_AXIS_OFFSET_RADIANS
     )
+
+
+def viewpoint_orientation_from_yaw(yaw: float) -> list[float]:
+    half_yaw = yaw / 2.0
+    half_leveling = VIEWPOINT_LEVELING_RADIANS / 2.0
+    yaw_w = math.cos(half_yaw)
+    yaw_y = math.sin(half_yaw)
+    level_w = math.cos(half_leveling)
+    level_x = math.sin(half_leveling)
+
+    quaternion_w = yaw_w * level_w
+    quaternion_x = yaw_w * level_x
+    quaternion_y = yaw_y * level_w
+    quaternion_z = -yaw_y * level_x
+    vector_norm = math.sqrt(
+        quaternion_x * quaternion_x + quaternion_y * quaternion_y + quaternion_z * quaternion_z
+    )
+
+    if vector_norm < 1e-8:
+        return [0.0, 0.0, 1.0, 0.0]
+
+    angle = 2.0 * math.atan2(vector_norm, quaternion_w)
+    return [
+        quaternion_x / vector_norm,
+        quaternion_y / vector_norm,
+        quaternion_z / vector_norm,
+        normalize_angle(angle),
+    ]
 
 
 def update_human_view(
@@ -178,14 +211,7 @@ def update_human_view(
         ]
     )
 
-    orientation_field.setSFRotation(
-        [
-            0.0,
-            1.0,
-            0.0,
-            resolved_yaw,
-        ]
-    )
+    orientation_field.setSFRotation(viewpoint_orientation_from_yaw(resolved_yaw))
 
     return resolved_yaw
 
@@ -257,6 +283,8 @@ def main() -> None:
 
     current_yaw: float | None = None
     initial_exported = False
+    left_turn_exported = False
+    right_turn_exported = False
     middle_exported = False
     completion_seen_at: float | None = None
 
@@ -362,6 +390,26 @@ def main() -> None:
             )
 
             initial_exported = True
+
+        active_scan_view = str(record.get("active_scan_view", "")) if record else ""
+
+        if not left_turn_exported and active_scan_view == "left":
+            export_view(
+                supervisor,
+                mission_output,
+                "first_person_left_turn.jpg",
+            )
+
+            left_turn_exported = True
+
+        if not right_turn_exported and active_scan_view == "right":
+            export_view(
+                supervisor,
+                mission_output,
+                "first_person_right_turn.jpg",
+            )
+
+            right_turn_exported = True
 
         if not middle_exported and frames >= 700:
             export_view(

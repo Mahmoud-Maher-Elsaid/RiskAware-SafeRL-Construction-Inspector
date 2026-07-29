@@ -82,6 +82,11 @@ def read_log(path: Path) -> str:
         return ""
 
 
+def remove_stale_world_project(world_path: Path) -> None:
+    project_path = world_path.with_name(f".{world_path.stem}.wbproj")
+    project_path.unlink(missing_ok=True)
+
+
 def stream_output(process: subprocess.Popen[str], log_handle: TextIO) -> None:
     assert process.stdout is not None
 
@@ -95,6 +100,7 @@ def stream_output(process: subprocess.Popen[str], log_handle: TextIO) -> None:
 
 def run(project: Path, mode: str, timeout: int, launch_check_only: bool = False) -> int:
     world = project / "webots" / "worlds" / WORLD_NAME
+    remove_stale_world_project(world)
     output = project / "webots" / "logs" / "stage5a3_closed_loop"
     python = project / ".venv" / "Scripts" / "python.exe"
     webots_home = Path(os.environ.get("WEBOTS_HOME", r"C:\Program Files\Webots"))

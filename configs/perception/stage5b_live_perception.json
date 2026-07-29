@@ -59,7 +59,7 @@
   "schema_version": 1,
   "selection": {
     "benchmark_original_rank": 2,
-    "benchmark_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Stage5B-Benchmark\\stage5b1_20260726_010517\\stage5b1_model_benchmark.json",
+    "benchmark_path": "reports/perception/stage5b/benchmark_20260726/stage5b1_model_benchmark.json",
     "important_class_diversity": 3,
     "maximum_mean_latency_ms": 20.0,
     "mean_inference_ms": 12.082222727423703,
