@@ -82,6 +82,11 @@ def read_log(path: Path) -> str:
         return ""
 
 
+def remove_stale_world_project(world_path: Path) -> None:
+    project_path = world_path.with_name(f".{world_path.stem}.wbproj")
+    project_path.unlink(missing_ok=True)
+
+
 def stream_output(process: subprocess.Popen[str], log_handle: TextIO) -> None:
     assert process.stdout is not None
 
@@ -95,6 +100,7 @@ def stream_output(process: subprocess.Popen[str], log_handle: TextIO) -> None:
 
 def run(project: Path, mode: str, timeout: int, launch_check_only: bool = False) -> int:
     world = project / "webots" / "worlds" / WORLD_NAME
+    remove_stale_world_project(world)
     output = project / "webots" / "logs" / "stage5a3_closed_loop"
     python = project / ".venv" / "Scripts" / "python.exe"
     webots_home = Path(os.environ.get("WEBOTS_HOME", r"C:\Program Files\Webots"))
@@ -159,6 +165,7 @@ def run(project: Path, mode: str, timeout: int, launch_check_only: bool = False)
         mission_deadline = time.monotonic() + timeout
         title_verified = False
         markers_verified = False
+        completion_detected = False
         try:
             while time.monotonic() < mission_deadline:
                 titles = visible_window_titles()
@@ -194,6 +201,11 @@ def run(project: Path, mode: str, timeout: int, launch_check_only: bool = False)
                 if (output / "stage5a3_failure.marker").exists():
                     raise RuntimeError("The Stage 5A3 controller reported a runtime failure.")
                 if (output / "stage5a3_complete.marker").exists():
+                    completion_detected = True
+
+                    if mode == "interactive":
+                        time.sleep(3.5)
+
                     break
                 if process.poll() is not None:
                     raise RuntimeError(f"Webots exited early with code {process.returncode}.")
@@ -206,13 +218,7 @@ def run(project: Path, mode: str, timeout: int, launch_check_only: bool = False)
             (output / "launcher_record.json").write_text(
                 json.dumps(launch_record, indent=2), encoding="utf-8"
             )
-
-            mission_finished = (output / "stage5a3_complete.marker").exists()
-
-            if mode == "validation" or launch_check_only or mission_finished:
-                if mode == "interactive" and mission_finished:
-                    time.sleep(3.0)
-
+            if mode == "validation" or launch_check_only or completion_detected:
                 stop_webots_processes()
 
             output_thread.join(timeout=5.0)

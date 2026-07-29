@@ -1,0 +1,1991 @@
+{
+  "benchmark_name": "webots_evidence_model_qualification",
+  "candidate_count": 6,
+  "confidence_threshold": 0.25,
+  "cuda_device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "device": "cuda:0",
+  "evidence_image_count": 22,
+  "evidence_root": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames",
+  "failed_candidate_count": 0,
+  "image_size": 640,
+  "passed_candidate_count": 6,
+  "ranked_results": [
+    {
+      "class_count": 14,
+      "class_counts": {
+        "safety vest": 5
+      },
+      "confidence_threshold": 0.25,
+      "cuda_peak_memory_bytes": 115762176,
+      "cuda_peak_memory_megabytes": 110.399,
+      "detected_class_diversity": 1,
+      "detection_frame_ratio": 0.22727272727272727,
+      "device": "cuda:0",
+      "error": null,
+      "frames_with_detections": 5,
+      "frames_with_person": 0,
+      "frames_with_violation": 0,
+      "image_count": 22,
+      "image_size": 640,
+      "important_class_counts": {
+        "safety vest": 5
+      },
+      "important_class_diversity": 1,
+      "live_readiness_score": 0.4040016861387994,
+      "load_seconds": 0.16192720003891736,
+      "maximum_confidence": 0.8872115015983582,
+      "maximum_inference_ms": 11.119100032374263,
+      "mean_confidence": 0.6185378015041352,
+      "mean_detections_per_frame": 0.22727272727272727,
+      "mean_inference_ms": 9.564777270001782,
+      "minimum_confidence": 0.31573864817619324,
+      "model_classes": {
+        "0": "Fall-Detected",
+        "1": "Gloves",
+        "2": "Goggles",
+        "3": "Hardhat",
+        "4": "Ladder",
+        "5": "Mask",
+        "6": "NO-Gloves",
+        "7": "NO-Goggles",
+        "8": "NO-Hardhat",
+        "9": "NO-Mask",
+        "10": "NO-Safety Vest",
+        "11": "Person",
+        "12": "Safety Cone",
+        "13": "Safety Vest"
+      },
+      "model_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_fast_balanced\\yolo26s_fast512_35e_seed42_20260723_000121\\weights\\best.pt",
+      "model_sha256": "62fa9405a54ae780beee9e1d3623da442a20123623a31b1af71bdfbd2ec059e5",
+      "model_size_bytes": 60261667,
+      "model_size_megabytes": 57.47,
+      "normalized_model_classes": [
+        "fall-detected",
+        "gloves",
+        "goggles",
+        "hardhat",
+        "ladder",
+        "mask",
+        "no-gloves",
+        "no-goggles",
+        "no-hardhat",
+        "no-mask",
+        "no-safety vest",
+        "person",
+        "safety cone",
+        "safety vest"
+      ],
+      "p95_inference_ms": 10.648784978548065,
+      "per_frame_records": [
+        {
+          "class_counts": {
+            "safety vest": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 13,
+              "class_name": "Safety Vest",
+              "confidence": 0.8872115015983582,
+              "normalized_class_name": "safety vest",
+              "xyxy": [
+                423.7078857421875,
+                90.50025177001953,
+                522.553955078125,
+                257.5933837890625
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_center.png",
+          "inference_ms": 9.970199898816645
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_left.png",
+          "inference_ms": 9.528999915346503
+        },
+        {
+          "class_counts": {
+            "safety vest": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 13,
+              "class_name": "Safety Vest",
+              "confidence": 0.7604008913040161,
+              "normalized_class_name": "safety vest",
+              "xyxy": [
+                418.4916687011719,
+                0.0,
+                517.6148071289062,
+                136.62899780273438
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_recenter.png",
+          "inference_ms": 10.55919995997101
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_right.png",
+          "inference_ms": 11.119100032374263
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\home_return_center.png",
+          "inference_ms": 10.448200046084821
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_final.png",
+          "inference_ms": 10.524900048039854
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_first.png",
+          "inference_ms": 10.653499979525805
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_middle.png",
+          "inference_ms": 9.88809997215867
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_center.png",
+          "inference_ms": 9.859099984169006
+        },
+        {
+          "class_counts": {
+            "safety vest": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 13,
+              "class_name": "Safety Vest",
+              "confidence": 0.31573864817619324,
+              "normalized_class_name": "safety vest",
+              "xyxy": [
+                441.7568054199219,
+                40.10386657714844,
+                542.20166015625,
+                228.60171508789062
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_left.png",
+          "inference_ms": 9.348900057375431
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_recenter.png",
+          "inference_ms": 9.305600076913834
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_right.png",
+          "inference_ms": 9.39650007057935
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_turn_point_center.png",
+          "inference_ms": 9.143500006757677
+        },
+        {
+          "class_counts": {
+            "safety vest": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 13,
+              "class_name": "Safety Vest",
+              "confidence": 0.6262986660003662,
+              "normalized_class_name": "safety vest",
+              "xyxy": [
+                422.2349548339844,
+                65.49613952636719,
+                523.1033325195312,
+                237.4031219482422
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\safe_walkway_entry_center.png",
+          "inference_ms": 9.289699955843389
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_center.png",
+          "inference_ms": 9.18739999178797
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_left.png",
+          "inference_ms": 8.538200054317713
+        },
+        {
+          "class_counts": {
+            "safety vest": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 13,
+              "class_name": "Safety Vest",
+              "confidence": 0.5030393004417419,
+              "normalized_class_name": "safety vest",
+              "xyxy": [
+                389.9665832519531,
+                207.4957275390625,
+                480.79034423828125,
+                352.2567443847656
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_recenter.png",
+          "inference_ms": 8.964800043031573
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_right.png",
+          "inference_ms": 8.824800024740398
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_center.png",
+          "inference_ms": 9.31180000770837
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_left.png",
+          "inference_ms": 9.226899943314493
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_recenter.png",
+          "inference_ms": 8.656499907374382
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_right.png",
+          "inference_ms": 8.67919996380806
+        }
+      ],
+      "person_frame_ratio": 0.0,
+      "ppe_class_counts": {
+        "safety vest": 5
+      },
+      "rank": 1,
+      "status": "passed",
+      "theoretical_fps": 104.55026518352096,
+      "total_detections": 5,
+      "violation_class_counts": {},
+      "violation_frame_ratio": 0.0,
+      "warmup_seconds": 0.1106210999423638
+    },
+    {
+      "class_count": 14,
+      "class_counts": {
+        "hardhat": 3,
+        "safety cone": 2,
+        "safety vest": 2
+      },
+      "confidence_threshold": 0.25,
+      "cuda_peak_memory_bytes": 115800576,
+      "cuda_peak_memory_megabytes": 110.436,
+      "detected_class_diversity": 3,
+      "detection_frame_ratio": 0.3181818181818182,
+      "device": "cuda:0",
+      "error": null,
+      "frames_with_detections": 7,
+      "frames_with_person": 0,
+      "frames_with_violation": 0,
+      "image_count": 22,
+      "image_size": 640,
+      "important_class_counts": {
+        "hardhat": 3,
+        "safety cone": 2,
+        "safety vest": 2
+      },
+      "important_class_diversity": 3,
+      "live_readiness_score": 0.40151717649426544,
+      "load_seconds": 0.1516716000624001,
+      "maximum_confidence": 0.49889588356018066,
+      "maximum_inference_ms": 21.49960002861917,
+      "mean_confidence": 0.3589670402663095,
+      "mean_detections_per_frame": 0.3181818181818182,
+      "mean_inference_ms": 12.082222727423703,
+      "minimum_confidence": 0.28203126788139343,
+      "model_classes": {
+        "0": "Fall-Detected",
+        "1": "Gloves",
+        "2": "Goggles",
+        "3": "Hardhat",
+        "4": "Ladder",
+        "5": "Mask",
+        "6": "NO-Gloves",
+        "7": "NO-Goggles",
+        "8": "NO-Hardhat",
+        "9": "NO-Mask",
+        "10": "NO-Safety Vest",
+        "11": "Person",
+        "12": "Safety Cone",
+        "13": "Safety Vest"
+      },
+      "model_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_production_100e\\yolo26s_100e_seed42_20260722_214549\\weights\\best.pt",
+      "model_sha256": "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550",
+      "model_size_bytes": 60281250,
+      "model_size_megabytes": 57.489,
+      "normalized_model_classes": [
+        "fall-detected",
+        "gloves",
+        "goggles",
+        "hardhat",
+        "ladder",
+        "mask",
+        "no-gloves",
+        "no-goggles",
+        "no-hardhat",
+        "no-mask",
+        "no-safety vest",
+        "person",
+        "safety cone",
+        "safety vest"
+      ],
+      "p95_inference_ms": 18.440760014345866,
+      "per_frame_records": [
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_center.png",
+          "inference_ms": 11.287400033324957
+        },
+        {
+          "class_counts": {
+            "hardhat": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.3237011134624481,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                141.7421875,
+                167.31581115722656,
+                231.3643341064453,
+                238.93568420410156
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_left.png",
+          "inference_ms": 13.248699950054288
+        },
+        {
+          "class_counts": {
+            "safety vest": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 13,
+              "class_name": "Safety Vest",
+              "confidence": 0.33607757091522217,
+              "normalized_class_name": "safety vest",
+              "xyxy": [
+                418.3538513183594,
+                0.0,
+                520.0460205078125,
+                133.3543243408203
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_recenter.png",
+          "inference_ms": 13.612300041131675
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_right.png",
+          "inference_ms": 17.003600019961596
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\home_return_center.png",
+          "inference_ms": 21.49960002861917
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_final.png",
+          "inference_ms": 12.720099999569356
+        },
+        {
+          "class_counts": {
+            "hardhat": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.28203126788139343,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                98.91046905517578,
+                248.37744140625,
+                208.10855102539062,
+                337.8974609375
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_first.png",
+          "inference_ms": 11.359199997968972
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_middle.png",
+          "inference_ms": 10.025400086306036
+        },
+        {
+          "class_counts": {
+            "safety cone": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 12,
+              "class_name": "Safety Cone",
+              "confidence": 0.49889588356018066,
+              "normalized_class_name": "safety cone",
+              "xyxy": [
+                548.1566162109375,
+                0.0,
+                589.5053100585938,
+                114.44967651367188
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_center.png",
+          "inference_ms": 10.245800018310547
+        },
+        {
+          "class_counts": {
+            "safety vest": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 13,
+              "class_name": "Safety Vest",
+              "confidence": 0.40761131048202515,
+              "normalized_class_name": "safety vest",
+              "xyxy": [
+                444.5228271484375,
+                41.29486083984375,
+                542.0083618164062,
+                226.28721618652344
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_left.png",
+          "inference_ms": 11.299900012090802
+        },
+        {
+          "class_counts": {
+            "safety cone": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 12,
+              "class_name": "Safety Cone",
+              "confidence": 0.3347955644130707,
+              "normalized_class_name": "safety cone",
+              "xyxy": [
+                402.5671691894531,
+                0.0,
+                433.4949035644531,
+                60.640541076660156
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_recenter.png",
+          "inference_ms": 9.839999955147505
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_right.png",
+          "inference_ms": 9.896299918182194
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_turn_point_center.png",
+          "inference_ms": 9.648800012655556
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\safe_walkway_entry_center.png",
+          "inference_ms": 10.092500015161932
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_center.png",
+          "inference_ms": 9.651499916799366
+        },
+        {
+          "class_counts": {
+            "hardhat": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.32965657114982605,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                127.34132385253906,
+                225.48231506347656,
+                222.02825927734375,
+                301.8409423828125
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_left.png",
+          "inference_ms": 9.995399974286556
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_recenter.png",
+          "inference_ms": 9.637600043788552
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_right.png",
+          "inference_ms": 11.715799919329584
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_center.png",
+          "inference_ms": 11.354200076311827
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_left.png",
+          "inference_ms": 11.552499956451356
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_recenter.png",
+          "inference_ms": 11.605900013819337
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_right.png",
+          "inference_ms": 18.516400014050305
+        }
+      ],
+      "person_frame_ratio": 0.0,
+      "ppe_class_counts": {
+        "hardhat": 3,
+        "safety vest": 2
+      },
+      "rank": 2,
+      "status": "passed",
+      "theoretical_fps": 82.76622791684211,
+      "total_detections": 7,
+      "violation_class_counts": {},
+      "violation_frame_ratio": 0.0,
+      "warmup_seconds": 0.07833429996389896
+    },
+    {
+      "class_count": 14,
+      "class_counts": {
+        "hardhat": 7
+      },
+      "confidence_threshold": 0.25,
+      "cuda_peak_memory_bytes": 67780096,
+      "cuda_peak_memory_megabytes": 64.64,
+      "detected_class_diversity": 1,
+      "detection_frame_ratio": 0.13636363636363635,
+      "device": "cuda:0",
+      "error": null,
+      "frames_with_detections": 3,
+      "frames_with_person": 0,
+      "frames_with_violation": 0,
+      "image_count": 22,
+      "image_size": 640,
+      "important_class_counts": {
+        "hardhat": 7
+      },
+      "important_class_diversity": 1,
+      "live_readiness_score": 0.37058837771261494,
+      "load_seconds": 0.08002450002823025,
+      "maximum_confidence": 0.466871976852417,
+      "maximum_inference_ms": 19.64449998922646,
+      "mean_confidence": 0.3795264576162611,
+      "mean_detections_per_frame": 0.3181818181818182,
+      "mean_inference_ms": 9.757363650185818,
+      "minimum_confidence": 0.27366945147514343,
+      "model_classes": {
+        "0": "Fall-Detected",
+        "1": "Gloves",
+        "2": "Goggles",
+        "3": "Hardhat",
+        "4": "Ladder",
+        "5": "Mask",
+        "6": "NO-Gloves",
+        "7": "NO-Goggles",
+        "8": "NO-Hardhat",
+        "9": "NO-Mask",
+        "10": "NO-Safety Vest",
+        "11": "Person",
+        "12": "Safety Cone",
+        "13": "Safety Vest"
+      },
+      "model_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_pilots\\yolo26n_20260722_211614_epoch1_batch8\\weights\\best.pt",
+      "model_sha256": "d208c280e4bf4facd8a57a3e5e2bf8323dd2e97b43c723ae31855b7740ba6e4b",
+      "model_size_bytes": 5391365,
+      "model_size_megabytes": 5.142,
+      "normalized_model_classes": [
+        "fall-detected",
+        "gloves",
+        "goggles",
+        "hardhat",
+        "ladder",
+        "mask",
+        "no-gloves",
+        "no-goggles",
+        "no-hardhat",
+        "no-mask",
+        "no-safety vest",
+        "person",
+        "safety cone",
+        "safety vest"
+      ],
+      "p95_inference_ms": 13.49515499314293,
+      "per_frame_records": [
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_center.png",
+          "inference_ms": 19.64449998922646
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_left.png",
+          "inference_ms": 13.6824999935925
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_recenter.png",
+          "inference_ms": 9.540800005197525
+        },
+        {
+          "class_counts": {
+            "hardhat": 1
+          },
+          "detection_count": 1,
+          "detections": [
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.27366945147514343,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                342.9391784667969,
+                53.06929016113281,
+                399.8793640136719,
+                131.88970947265625
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_right.png",
+          "inference_ms": 9.93559998460114
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\home_return_center.png",
+          "inference_ms": 9.024100028909743
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_final.png",
+          "inference_ms": 9.070200030691922
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_first.png",
+          "inference_ms": 8.85410001501441
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_middle.png",
+          "inference_ms": 9.192999918013811
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_center.png",
+          "inference_ms": 9.300800040364265
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_left.png",
+          "inference_ms": 8.545699995011091
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_recenter.png",
+          "inference_ms": 8.832900086417794
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_right.png",
+          "inference_ms": 9.737899992614985
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_turn_point_center.png",
+          "inference_ms": 9.356499998830259
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\safe_walkway_entry_center.png",
+          "inference_ms": 8.935500052757561
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_center.png",
+          "inference_ms": 8.633100078441203
+        },
+        {
+          "class_counts": {
+            "hardhat": 3
+          },
+          "detection_count": 3,
+          "detections": [
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.466871976852417,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                164.96343994140625,
+                228.0513916015625,
+                219.29566955566406,
+                286.3369445800781
+              ]
+            },
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.40842628479003906,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                126.58987426757812,
+                225.60447692871094,
+                185.6495361328125,
+                308.46734619140625
+              ]
+            },
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.3519529402256012,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                129.1287384033203,
+                226.3241729736328,
+                184.00717163085938,
+                306.3093566894531
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_left.png",
+          "inference_ms": 8.886799914762378
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_recenter.png",
+          "inference_ms": 8.262700052000582
+        },
+        {
+          "class_counts": {
+            "hardhat": 3
+          },
+          "detection_count": 3,
+          "detections": [
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.4222356379032135,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                347.0107421875,
+                122.65373229980469,
+                400.76812744140625,
+                193.773681640625
+              ]
+            },
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.39352819323539734,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                348.5060729980469,
+                123.94271850585938,
+                399.6267395019531,
+                193.1734619140625
+              ]
+            },
+            {
+              "class_id": 3,
+              "class_name": "Hardhat",
+              "confidence": 0.340000718832016,
+              "normalized_class_name": "hardhat",
+              "xyxy": [
+                350.85528564453125,
+                122.56341552734375,
+                400.1993103027344,
+                188.69052124023438
+              ]
+            }
+          ],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_right.png",
+          "inference_ms": 8.527400088496506
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_center.png",
+          "inference_ms": 9.230999974533916
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_left.png",
+          "inference_ms": 9.934100089594722
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_recenter.png",
+          "inference_ms": 9.211799944750965
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_right.png",
+          "inference_ms": 8.321000030264258
+        }
+      ],
+      "person_frame_ratio": 0.0,
+      "ppe_class_counts": {
+        "hardhat": 7
+      },
+      "rank": 3,
+      "status": "passed",
+      "theoretical_fps": 102.48669987624743,
+      "total_detections": 7,
+      "violation_class_counts": {},
+      "violation_frame_ratio": 0.0,
+      "warmup_seconds": 0.1552508999593556
+    },
+    {
+      "class_count": 14,
+      "class_counts": {},
+      "confidence_threshold": 0.25,
+      "cuda_peak_memory_bytes": 114096640,
+      "cuda_peak_memory_megabytes": 108.811,
+      "detected_class_diversity": 0,
+      "detection_frame_ratio": 0.0,
+      "device": "cuda:0",
+      "error": null,
+      "frames_with_detections": 0,
+      "frames_with_person": 0,
+      "frames_with_violation": 0,
+      "image_count": 22,
+      "image_size": 640,
+      "important_class_counts": {},
+      "important_class_diversity": 0,
+      "live_readiness_score": 0.2863236886211036,
+      "load_seconds": 0.21880439994856715,
+      "maximum_confidence": 0.0,
+      "maximum_inference_ms": 10.747099993750453,
+      "mean_confidence": 0.0,
+      "mean_detections_per_frame": 0.0,
+      "mean_inference_ms": 9.11754091926427,
+      "minimum_confidence": 0.0,
+      "model_classes": {
+        "0": "Fall-Detected",
+        "1": "Gloves",
+        "2": "Goggles",
+        "3": "Hardhat",
+        "4": "Ladder",
+        "5": "Mask",
+        "6": "NO-Gloves",
+        "7": "NO-Goggles",
+        "8": "NO-Hardhat",
+        "9": "NO-Mask",
+        "10": "NO-Safety Vest",
+        "11": "Person",
+        "12": "Safety Cone",
+        "13": "Safety Vest"
+      },
+      "model_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_weak_class_fine_tuning\\yolo26s_weak_class_20e_20260723_151531\\weights\\best.pt",
+      "model_sha256": "b6277966e969ac9037cc8fad4f5e62db2b7e61d21ae0d48f040c8a729a3fa6fc",
+      "model_size_bytes": 80439429,
+      "model_size_megabytes": 76.713,
+      "normalized_model_classes": [
+        "fall-detected",
+        "gloves",
+        "goggles",
+        "hardhat",
+        "ladder",
+        "mask",
+        "no-gloves",
+        "no-goggles",
+        "no-hardhat",
+        "no-mask",
+        "no-safety vest",
+        "person",
+        "safety cone",
+        "safety vest"
+      ],
+      "p95_inference_ms": 9.98449504841119,
+      "per_frame_records": [
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_center.png",
+          "inference_ms": 9.59490006789565
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_left.png",
+          "inference_ms": 10.747099993750453
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_recenter.png",
+          "inference_ms": 9.17550001759082
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_right.png",
+          "inference_ms": 9.083000011742115
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\home_return_center.png",
+          "inference_ms": 9.284700034186244
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_final.png",
+          "inference_ms": 8.844100055284798
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_first.png",
+          "inference_ms": 8.931600023061037
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_middle.png",
+          "inference_ms": 8.983400068245828
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_center.png",
+          "inference_ms": 8.85260000359267
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_left.png",
+          "inference_ms": 10.005000047385693
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_recenter.png",
+          "inference_ms": 8.88789992313832
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_right.png",
+          "inference_ms": 8.762000012211502
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_turn_point_center.png",
+          "inference_ms": 8.88360000681132
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\safe_walkway_entry_center.png",
+          "inference_ms": 8.92499997280538
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_center.png",
+          "inference_ms": 8.6495999712497
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_left.png",
+          "inference_ms": 9.084800025448203
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_recenter.png",
+          "inference_ms": 9.30020003579557
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_right.png",
+          "inference_ms": 9.521899977698922
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_center.png",
+          "inference_ms": 8.558199973776937
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_left.png",
+          "inference_ms": 9.290499961934984
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_recenter.png",
+          "inference_ms": 8.740499964915216
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_right.png",
+          "inference_ms": 8.479800075292587
+        }
+      ],
+      "person_frame_ratio": 0.0,
+      "ppe_class_counts": {},
+      "rank": 4,
+      "status": "passed",
+      "theoretical_fps": 109.67869613692876,
+      "total_detections": 0,
+      "violation_class_counts": {},
+      "violation_frame_ratio": 0.0,
+      "warmup_seconds": 1.3642565000336617
+    },
+    {
+      "class_count": 14,
+      "class_counts": {},
+      "confidence_threshold": 0.25,
+      "cuda_peak_memory_bytes": 115800576,
+      "cuda_peak_memory_megabytes": 110.436,
+      "detected_class_diversity": 0,
+      "detection_frame_ratio": 0.0,
+      "device": "cuda:0",
+      "error": null,
+      "frames_with_detections": 0,
+      "frames_with_person": 0,
+      "frames_with_violation": 0,
+      "image_count": 22,
+      "image_size": 640,
+      "important_class_counts": {},
+      "important_class_diversity": 0,
+      "live_readiness_score": 0.2853074249615681,
+      "load_seconds": 0.08923600008711219,
+      "maximum_confidence": 0.0,
+      "maximum_inference_ms": 12.435600045137107,
+      "mean_confidence": 0.0,
+      "mean_detections_per_frame": 0.0,
+      "mean_inference_ms": 9.79505002562126,
+      "minimum_confidence": 0.0,
+      "model_classes": {
+        "0": "Fall-Detected",
+        "1": "Gloves",
+        "2": "Goggles",
+        "3": "Hardhat",
+        "4": "Ladder",
+        "5": "Mask",
+        "6": "NO-Gloves",
+        "7": "NO-Goggles",
+        "8": "NO-Hardhat",
+        "9": "NO-Mask",
+        "10": "NO-Safety Vest",
+        "11": "Person",
+        "12": "Safety Cone",
+        "13": "Safety Vest"
+      },
+      "model_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_production_optimized_100e\\yolo26s_gpu90_fixed640_100e_seed42_20260723_003324\\weights\\best.pt",
+      "model_sha256": "23f916b8b7c99471955e4a64d820568c8b746bc0dbccd9dd0636122185aa0123",
+      "model_size_bytes": 20343173,
+      "model_size_megabytes": 19.401,
+      "normalized_model_classes": [
+        "fall-detected",
+        "gloves",
+        "goggles",
+        "hardhat",
+        "ladder",
+        "mask",
+        "no-gloves",
+        "no-goggles",
+        "no-hardhat",
+        "no-mask",
+        "no-safety vest",
+        "person",
+        "safety cone",
+        "safety vest"
+      ],
+      "p95_inference_ms": 10.619595105526969,
+      "per_frame_records": [
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_center.png",
+          "inference_ms": 10.19070006441325
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_left.png",
+          "inference_ms": 10.624400107190013
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_recenter.png",
+          "inference_ms": 10.528300073929131
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_right.png",
+          "inference_ms": 10.400299914181232
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\home_return_center.png",
+          "inference_ms": 12.435600045137107
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_final.png",
+          "inference_ms": 9.22579993493855
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_first.png",
+          "inference_ms": 10.059099993668497
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_middle.png",
+          "inference_ms": 10.437399963848293
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_center.png",
+          "inference_ms": 10.453799972310662
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_left.png",
+          "inference_ms": 9.404000011272728
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_recenter.png",
+          "inference_ms": 9.655500063672662
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_right.png",
+          "inference_ms": 10.525600053369999
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_turn_point_center.png",
+          "inference_ms": 10.508700041100383
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\safe_walkway_entry_center.png",
+          "inference_ms": 9.388200007379055
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_center.png",
+          "inference_ms": 9.288599947467446
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_left.png",
+          "inference_ms": 9.23780002631247
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_recenter.png",
+          "inference_ms": 9.076300077140331
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_right.png",
+          "inference_ms": 9.28690005093813
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_center.png",
+          "inference_ms": 9.268500027246773
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_left.png",
+          "inference_ms": 8.58460005838424
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_recenter.png",
+          "inference_ms": 8.567600045353174
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_right.png",
+          "inference_ms": 8.343400084413588
+        }
+      ],
+      "person_frame_ratio": 0.0,
+      "ppe_class_counts": {},
+      "rank": 5,
+      "status": "passed",
+      "theoretical_fps": 102.09238313068994,
+      "total_detections": 0,
+      "violation_class_counts": {},
+      "violation_frame_ratio": 0.0,
+      "warmup_seconds": 0.0791257000528276
+    },
+    {
+      "class_count": 14,
+      "class_counts": {},
+      "confidence_threshold": 0.25,
+      "cuda_peak_memory_bytes": 115800576,
+      "cuda_peak_memory_megabytes": 110.436,
+      "detected_class_diversity": 0,
+      "detection_frame_ratio": 0.0,
+      "device": "cuda:0",
+      "error": null,
+      "frames_with_detections": 0,
+      "frames_with_person": 0,
+      "frames_with_violation": 0,
+      "image_count": 22,
+      "image_size": 640,
+      "important_class_counts": {},
+      "important_class_diversity": 0,
+      "live_readiness_score": 0.2814830863827162,
+      "load_seconds": 0.10474920005071908,
+      "maximum_confidence": 0.0,
+      "maximum_inference_ms": 19.776699948124588,
+      "mean_confidence": 0.0,
+      "mean_detections_per_frame": 0.0,
+      "mean_inference_ms": 12.344609078189189,
+      "minimum_confidence": 0.0,
+      "model_classes": {
+        "0": "Fall-Detected",
+        "1": "Gloves",
+        "2": "Goggles",
+        "3": "Hardhat",
+        "4": "Ladder",
+        "5": "Mask",
+        "6": "NO-Gloves",
+        "7": "NO-Goggles",
+        "8": "NO-Hardhat",
+        "9": "NO-Mask",
+        "10": "NO-Safety Vest",
+        "11": "Person",
+        "12": "Safety Cone",
+        "13": "Safety Vest"
+      },
+      "model_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_pilots\\yolo26s_20260722_211614_epoch1_batch4\\weights\\best.pt",
+      "model_sha256": "a10695f412a5fc21f4d5ad878b12deed724891669a425a59aeadfa7fe1b07808",
+      "model_size_bytes": 20325765,
+      "model_size_megabytes": 19.384,
+      "normalized_model_classes": [
+        "fall-detected",
+        "gloves",
+        "goggles",
+        "hardhat",
+        "ladder",
+        "mask",
+        "no-gloves",
+        "no-goggles",
+        "no-hardhat",
+        "no-mask",
+        "no-safety vest",
+        "person",
+        "safety cone",
+        "safety vest"
+      ],
+      "p95_inference_ms": 15.160474932054056,
+      "per_frame_records": [
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_center.png",
+          "inference_ms": 12.276800000108778
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_left.png",
+          "inference_ms": 12.227799976244569
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_recenter.png",
+          "inference_ms": 13.08840001001954
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_right.png",
+          "inference_ms": 13.480399968102574
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\home_return_center.png",
+          "inference_ms": 12.677100021392107
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_final.png",
+          "inference_ms": 13.3983000414446
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_first.png",
+          "inference_ms": 13.070499990135431
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_middle.png",
+          "inference_ms": 13.213299913331866
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_center.png",
+          "inference_ms": 12.570899911224842
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_left.png",
+          "inference_ms": 11.099600000306964
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_recenter.png",
+          "inference_ms": 10.941799962893128
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_right.png",
+          "inference_ms": 10.706400033086538
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_turn_point_center.png",
+          "inference_ms": 10.180799989029765
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\safe_walkway_entry_center.png",
+          "inference_ms": 10.161199956201017
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_center.png",
+          "inference_ms": 13.163299998268485
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_left.png",
+          "inference_ms": 11.58319995738566
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_recenter.png",
+          "inference_ms": 10.715999989770353
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_right.png",
+          "inference_ms": 10.756800067611039
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_center.png",
+          "inference_ms": 10.713000083342195
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_left.png",
+          "inference_ms": 10.530199971981347
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_recenter.png",
+          "inference_ms": 19.776699948124588
+        },
+        {
+          "class_counts": {},
+          "detection_count": 0,
+          "detections": [],
+          "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_right.png",
+          "inference_ms": 15.248899930156767
+        }
+      ],
+      "person_frame_ratio": 0.0,
+      "ppe_class_counts": {},
+      "rank": 6,
+      "status": "passed",
+      "theoretical_fps": 81.00702044642539,
+      "total_detections": 0,
+      "violation_class_counts": {},
+      "violation_frame_ratio": 0.0,
+      "warmup_seconds": 0.10952170006930828
+    }
+  ],
+  "schema_version": 1,
+  "selected_model": {
+    "class_count": 14,
+    "class_counts": {
+      "safety vest": 5
+    },
+    "confidence_threshold": 0.25,
+    "cuda_peak_memory_bytes": 115762176,
+    "cuda_peak_memory_megabytes": 110.399,
+    "detected_class_diversity": 1,
+    "detection_frame_ratio": 0.22727272727272727,
+    "device": "cuda:0",
+    "error": null,
+    "frames_with_detections": 5,
+    "frames_with_person": 0,
+    "frames_with_violation": 0,
+    "image_count": 22,
+    "image_size": 640,
+    "important_class_counts": {
+      "safety vest": 5
+    },
+    "important_class_diversity": 1,
+    "live_readiness_score": 0.4040016861387994,
+    "load_seconds": 0.16192720003891736,
+    "maximum_confidence": 0.8872115015983582,
+    "maximum_inference_ms": 11.119100032374263,
+    "mean_confidence": 0.6185378015041352,
+    "mean_detections_per_frame": 0.22727272727272727,
+    "mean_inference_ms": 9.564777270001782,
+    "minimum_confidence": 0.31573864817619324,
+    "model_classes": {
+      "0": "Fall-Detected",
+      "1": "Gloves",
+      "2": "Goggles",
+      "3": "Hardhat",
+      "4": "Ladder",
+      "5": "Mask",
+      "6": "NO-Gloves",
+      "7": "NO-Goggles",
+      "8": "NO-Hardhat",
+      "9": "NO-Mask",
+      "10": "NO-Safety Vest",
+      "11": "Person",
+      "12": "Safety Cone",
+      "13": "Safety Vest"
+    },
+    "model_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\perception_fast_balanced\\yolo26s_fast512_35e_seed42_20260723_000121\\weights\\best.pt",
+    "model_sha256": "62fa9405a54ae780beee9e1d3623da442a20123623a31b1af71bdfbd2ec059e5",
+    "model_size_bytes": 60261667,
+    "model_size_megabytes": 57.47,
+    "normalized_model_classes": [
+      "fall-detected",
+      "gloves",
+      "goggles",
+      "hardhat",
+      "ladder",
+      "mask",
+      "no-gloves",
+      "no-goggles",
+      "no-hardhat",
+      "no-mask",
+      "no-safety vest",
+      "person",
+      "safety cone",
+      "safety vest"
+    ],
+    "p95_inference_ms": 10.648784978548065,
+    "per_frame_records": [
+      {
+        "class_counts": {
+          "safety vest": 1
+        },
+        "detection_count": 1,
+        "detections": [
+          {
+            "class_id": 13,
+            "class_name": "Safety Vest",
+            "confidence": 0.8872115015983582,
+            "normalized_class_name": "safety vest",
+            "xyxy": [
+              423.7078857421875,
+              90.50025177001953,
+              522.553955078125,
+              257.5933837890625
+            ]
+          }
+        ],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_center.png",
+        "inference_ms": 9.970199898816645
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_left.png",
+        "inference_ms": 9.528999915346503
+      },
+      {
+        "class_counts": {
+          "safety vest": 1
+        },
+        "detection_count": 1,
+        "detections": [
+          {
+            "class_id": 13,
+            "class_name": "Safety Vest",
+            "confidence": 0.7604008913040161,
+            "normalized_class_name": "safety vest",
+            "xyxy": [
+              418.4916687011719,
+              0.0,
+              517.6148071289062,
+              136.62899780273438
+            ]
+          }
+        ],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_recenter.png",
+        "inference_ms": 10.55919995997101
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\east_inspection_point_right.png",
+        "inference_ms": 11.119100032374263
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\home_return_center.png",
+        "inference_ms": 10.448200046084821
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_final.png",
+        "inference_ms": 10.524900048039854
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_first.png",
+        "inference_ms": 10.653499979525805
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\mission_middle.png",
+        "inference_ms": 9.88809997215867
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_center.png",
+        "inference_ms": 9.859099984169006
+      },
+      {
+        "class_counts": {
+          "safety vest": 1
+        },
+        "detection_count": 1,
+        "detections": [
+          {
+            "class_id": 13,
+            "class_name": "Safety Vest",
+            "confidence": 0.31573864817619324,
+            "normalized_class_name": "safety vest",
+            "xyxy": [
+              441.7568054199219,
+              40.10386657714844,
+              542.20166015625,
+              228.60171508789062
+            ]
+          }
+        ],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_left.png",
+        "inference_ms": 9.348900057375431
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_recenter.png",
+        "inference_ms": 9.305600076913834
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_inspection_point_right.png",
+        "inference_ms": 9.39650007057935
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\north_turn_point_center.png",
+        "inference_ms": 9.143500006757677
+      },
+      {
+        "class_counts": {
+          "safety vest": 1
+        },
+        "detection_count": 1,
+        "detections": [
+          {
+            "class_id": 13,
+            "class_name": "Safety Vest",
+            "confidence": 0.6262986660003662,
+            "normalized_class_name": "safety vest",
+            "xyxy": [
+              422.2349548339844,
+              65.49613952636719,
+              523.1033325195312,
+              237.4031219482422
+            ]
+          }
+        ],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\safe_walkway_entry_center.png",
+        "inference_ms": 9.289699955843389
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_center.png",
+        "inference_ms": 9.18739999178797
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_left.png",
+        "inference_ms": 8.538200054317713
+      },
+      {
+        "class_counts": {
+          "safety vest": 1
+        },
+        "detection_count": 1,
+        "detections": [
+          {
+            "class_id": 13,
+            "class_name": "Safety Vest",
+            "confidence": 0.5030393004417419,
+            "normalized_class_name": "safety vest",
+            "xyxy": [
+              389.9665832519531,
+              207.4957275390625,
+              480.79034423828125,
+              352.2567443847656
+            ]
+          }
+        ],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_recenter.png",
+        "inference_ms": 8.964800043031573
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\south_inspection_point_right.png",
+        "inference_ms": 8.824800024740398
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_center.png",
+        "inference_ms": 9.31180000770837
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_left.png",
+        "inference_ms": 9.226899943314493
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_recenter.png",
+        "inference_ms": 8.656499907374382
+      },
+      {
+        "class_counts": {},
+        "detection_count": 0,
+        "detections": [],
+        "image": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\logs\\stage5a3_closed_loop\\evidence_frames\\west_inspection_point_right.png",
+        "inference_ms": 8.67919996380806
+      }
+    ],
+    "person_frame_ratio": 0.0,
+    "ppe_class_counts": {
+      "safety vest": 5
+    },
+    "rank": 1,
+    "status": "passed",
+    "theoretical_fps": 104.55026518352096,
+    "total_detections": 5,
+    "violation_class_counts": {},
+    "violation_frame_ratio": 0.0,
+    "warmup_seconds": 0.1106210999423638
+  },
+  "stage": "5B1",
+  "torch_cuda_version": "12.8",
+  "torch_version": "2.11.0+cu128"
+}

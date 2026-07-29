@@ -3,7 +3,7 @@
 WorldInfo {
   coordinateSystem "EUN"
   basicTimeStep 32
-  title "RiskAware SafeRL Stage 5A Live Camera Acquisition"
+  title "RiskAware SafeRL Stage 5C RL Motor Runtime"
   contactProperties [
     ContactProperties {
       material1 "driveWheel"
@@ -3831,7 +3831,7 @@ DEF SHOWCASE_ROBOT Robot {
   translation -8.3 0.12 -5.4
   rotation 0 1 0 0
   name "professional construction inspection robot"
-  controller "live_camera_robot"
+  controller "rl_autonomous_inspection_robot"
   children [
     GPS {
       name "gps"
@@ -4130,5 +4130,5 @@ DEF SHOWCASE_ROBOT Robot {
 Robot {
   name "professional showcase supervisor"
   supervisor TRUE
-  controller "live_camera_supervisor"
+  controller "rl_autonomous_inspection_supervisor"
 }
