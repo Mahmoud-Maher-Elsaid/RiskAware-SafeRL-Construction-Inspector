@@ -274,3 +274,19 @@ commits for the final research benchmark release. Times use UTC.
 - Evidence:
   - `paper/main.pdf`
   - `reports/final_submission/paper_result.json`
+
+## 2026-07-29T21:10:00+03:00 — Stage 0 release foundation
+
+- Stage: 0
+- Commands:
+  - `.venv\Scripts\python.exe -m compileall -q src scripts tests`
+  - `.venv\Scripts\python.exe -m ruff format --check .`
+  - `.venv\Scripts\python.exe -m ruff check .`
+  - `.venv\Scripts\python.exe -m pytest`
+- Failure: Ruff's format gate identified the Stage 9 harness and an earlier
+  Stage 3 continuous-action adapter.
+- Repair: apply Ruff's mechanical formatter to those two files.
+- Result: 272 tests passed; compilation, Ruff check, and Ruff format passed.
+  Final architecture, reproducibility, demo, troubleshooting, methodology,
+  cards, release notes, security policy, acceptance script, and release
+  manifest builder were completed.

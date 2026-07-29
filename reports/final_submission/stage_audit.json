@@ -14,13 +14,13 @@
     {
       "stage": 0,
       "name": "GitHub foundation",
-      "status": "PARTIAL",
-      "source_files": ["README.md", "pyproject.toml", ".github/workflows/ci.yml"],
-      "tests": [],
-      "runtime_entry_point": null,
-      "evidence_path": "reports/final_project_completion/final_completion_report.md",
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Complete final documentation, link validation, model/data cards, and release workflow."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["README.md", "pyproject.toml", ".github/workflows/ci.yml", "MODEL_CARD.md", "DATA_CARD.md", "BENCHMARK_CARD.md"],
+      "tests": ["full pytest suite", "Ruff check", "Ruff format", "Python compilation", "PowerShell parser validation"],
+      "runtime_entry_point": "scripts/run_final_acceptance.ps1",
+      "evidence_path": "reports/final_submission/final_test_results.txt",
+      "last_verified_commit": "pending final release commit",
+      "remaining_work": "Final acceptance, merge, and post-merge regression remain workflow gates."
     },
     {
       "stage": 1,

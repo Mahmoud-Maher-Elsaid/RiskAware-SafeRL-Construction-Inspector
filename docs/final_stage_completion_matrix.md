@@ -5,7 +5,7 @@ numbers. This matrix is updated only after implementation and validation.
 
 | Final stage | Historical mapping | Initial status | Completion gate |
 |---|---|---|---|
-| 0 — Foundation | Stage 0 plus accumulated documentation/CI | PARTIAL | Documentation, links, static checks, tests, production regression |
+| 0 — Foundation | Stage 0 plus accumulated documentation/CI | VERIFIED_COMPLETE | Release docs, cards, CI, static gates, acceptance and manifest tooling complete |
 | 1 — Grid benchmark | Historical Stages 1–2 | VERIFIED_COMPLETE | Gymnasium checker and deterministic scenario suite passed |
 | 2 — Expert planners | Historical Stages 3A–3B | VERIFIED_COMPLETE | Three planners produced 90 real evaluation records |
 | 3 — PPO and SAC | Historical Stages 2D–3D | VERIFIED_COMPLETE | Both genuine checkpoints loaded; 60 deterministic evaluations completed |

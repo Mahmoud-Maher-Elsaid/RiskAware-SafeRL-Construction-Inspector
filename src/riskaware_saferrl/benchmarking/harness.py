@@ -434,9 +434,7 @@ def run_benchmark(
 
     planner_runs = [run for run in pending if run.algorithm in PLANNER_ALGORITHMS]
     with ThreadPoolExecutor(max_workers=int(settings["planner_workers"])) as executor:
-        futures = {
-            executor.submit(evaluate_planner, run): run for run in planner_runs
-        }
+        futures = {executor.submit(evaluate_planner, run): run for run in planner_runs}
         for future in as_completed(futures):
             run = futures[future]
             try:
