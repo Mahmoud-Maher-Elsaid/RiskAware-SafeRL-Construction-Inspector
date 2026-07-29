@@ -79,7 +79,10 @@ def test_identical_requests_are_deterministic_and_episode_bounded(tmp_path: Path
     first = dataset[0]
     second = dataset[0]
     for name in first:
-        torch.testing.assert_close(first[name], second[name])
+        if isinstance(first[name], torch.Tensor):
+            torch.testing.assert_close(first[name], second[name])
+        else:
+            assert first[name] == second[name]
     record = dataset.sequences[0]
     arrays = dataset.chunk_cache.get(record.chunk)
     assert np.unique(arrays["episode_ids"][record.start : record.stop]).size == 1
@@ -96,6 +99,19 @@ def test_no_split_leakage_and_all_teacher_actions_are_valid(tmp_path: Path) -> N
             batch = dataset[dataset.sequences.index(record)]
             assert torch.all(batch["masks"].gather(-1, batch["actions"].unsqueeze(-1)).squeeze(-1))
     assert all(len(splits) == 1 for splits in episode_splits.values())
+
+
+def test_tail_windows_count_each_covered_transition_once(tmp_path: Path) -> None:
+    root = _dataset(tmp_path)
+    dataset = DemonstrationSequences(root, "train", 8)
+    covered: set[tuple[int, int]] = set()
+    for index, record in enumerate(dataset.sequences):
+        item = dataset[index]
+        valid_rows = torch.arange(record.start, record.stop)[item["loss_mask"]]
+        for row in valid_rows.tolist():
+            assert (record.chunk, row) not in covered
+            covered.add((record.chunk, row))
+    assert len(covered) == int(dataset.action_counts.sum())
 
 
 def test_source_hashes_unchanged_and_cache_rebuild_is_deterministic(tmp_path: Path) -> None:

@@ -109,6 +109,7 @@ class SequenceIndex:
     chunk: int
     start: int
     stop: int
+    valid_start: int
     split: str
     episode_id: str
 
@@ -161,10 +162,12 @@ class DemonstrationSequences(Dataset):
         sequence_length: int,
         *,
         max_cached_chunks: int = 2,
+        rotation_augmentation: bool = False,
     ) -> None:
         self.dataset_dir = dataset_dir
         self.split = split
         self.sequence_length = sequence_length
+        self.rotation_augmentation = rotation_augmentation
         self.cache_metadata = build_mmap_cache(dataset_dir)
         self.chunk_cache = MmapChunkCache(
             dataset_dir / "mmap_cache", self.cache_metadata, max_cached_chunks
@@ -186,23 +189,47 @@ class DemonstrationSequences(Dataset):
                 ):
                     episode_stop += 1
                 if str(splits[row]) == split and np.all(splits[row:episode_stop] == split):
-                    for start in range(row, episode_stop - sequence_length + 1, sequence_length):
+                    starts = list(range(row, episode_stop - sequence_length + 1, sequence_length))
+                    if starts and starts[-1] + sequence_length < episode_stop:
+                        starts.append(episode_stop - sequence_length)
+                    previous_stop = row
+                    for start in starts:
                         stop = start + sequence_length
                         self.sequences.append(
-                            SequenceIndex(chunk_id, start, stop, split, str(episode_ids[start]))
+                            SequenceIndex(
+                                chunk_id,
+                                start,
+                                stop,
+                                max(start, previous_stop),
+                                split,
+                                str(episode_ids[start]),
+                            )
                         )
-                        selected_actions = actions[start:stop]
-                        selected_masks = masks[start:stop]
+                        valid_start = max(start, previous_stop)
+                        selected_actions = actions[valid_start:stop]
+                        selected_masks = masks[valid_start:stop]
                         if not np.all(
                             selected_masks[
-                                np.arange(sequence_length), selected_actions.astype(np.int64)
+                                np.arange(len(selected_actions)),
+                                selected_actions.astype(np.int64),
                             ]
                         ):
                             raise ValueError("Invalid masked teacher action in source dataset")
                         self.action_counts += np.bincount(
                             selected_actions, minlength=len(self.action_counts)
                         )
+                        previous_stop = stop
                 row = episode_stop
+        if self.rotation_augmentation:
+            original_counts = self.action_counts.copy()
+            self.action_counts.fill(0)
+            for mapping in (
+                np.array((0, 1, 2, 3, 4)),
+                np.array((2, 3, 1, 0, 4)),
+                np.array((1, 0, 3, 2, 4)),
+                np.array((3, 2, 0, 1, 4)),
+            ):
+                self.action_counts[mapping] += original_counts
         self._write_index()
 
     def _write_index(self) -> None:
@@ -221,21 +248,67 @@ class DemonstrationSequences(Dataset):
         _write_json(path, payload)
 
     def __len__(self) -> int:
-        return len(self.sequences)
+        return len(self.sequences) * (4 if self.rotation_augmentation else 1)
 
-    def __getitem__(self, index: int) -> dict[str, torch.Tensor]:
-        record = self.sequences[index]
+    def __getitem__(self, index: int) -> dict[str, torch.Tensor | str | int]:
+        rotation = index % 4 if self.rotation_augmentation else 0
+        base_index = index // 4 if self.rotation_augmentation else index
+        record = self.sequences[base_index]
         arrays = self.chunk_cache.get(record.chunk)
         selected = slice(record.start, record.stop)
         # Copy only this sequence so tensors are contiguous, writable, and independent of mmap lifetime.
-        return {
+        result = {
             "maps": torch.from_numpy(np.array(arrays["maps"][selected], copy=True)).float(),
             "states": torch.from_numpy(np.array(arrays["states"][selected], copy=True)).float(),
             "masks": torch.from_numpy(np.array(arrays["action_masks"][selected], copy=True)).bool(),
             "actions": torch.from_numpy(
                 np.array(arrays["teacher_executed_actions"][selected], copy=True)
             ).long(),
+            "episode_id": record.episode_id,
+            "sequence_start": record.start,
+            "sequence_stop": record.stop,
+            "chunk_id": record.chunk,
+            "loss_mask": torch.arange(record.start, record.stop) >= record.valid_start,
         }
+        if rotation:
+            remaps = torch.tensor(
+                (
+                    (0, 1, 2, 3, 4),
+                    (2, 3, 1, 0, 4),
+                    (1, 0, 3, 2, 4),
+                    (3, 2, 0, 1, 4),
+                ),
+                dtype=torch.long,
+            )
+            mapping = remaps[rotation]
+            result["maps"] = torch.rot90(result["maps"], rotation, dims=(-2, -1))
+            remapped_masks = torch.zeros_like(result["masks"])
+            remapped_masks[:, mapping] = result["masks"]
+            result["masks"] = remapped_masks
+            result["actions"] = mapping[result["actions"]]
+            old_row = result["states"][:, 0].clone()
+            old_column = result["states"][:, 1].clone()
+            if rotation == 1:
+                result["states"][:, 0] = 1.0 - old_column
+                result["states"][:, 1] = old_row
+            elif rotation == 2:
+                result["states"][:, 0] = 1.0 - old_row
+                result["states"][:, 1] = 1.0 - old_column
+            else:
+                result["states"][:, 0] = old_column
+                result["states"][:, 1] = 1.0 - old_row
+            previous = result["states"][:, 10:15].clone()
+            result["states"][:, 10:15] = 0.0
+            result["states"][:, 10:15][:, mapping] = previous
+            orientation_angle = torch.atan2(result["states"][:, 2], result["states"][:, 3])
+            orientation = torch.remainder(
+                torch.round(orientation_angle / (torch.pi / 2.0)).long(), 4
+            )
+            rotated_direction = mapping[orientation]
+            angles = rotated_direction.float() * (torch.pi / 2.0)
+            result["states"][:, 2] = torch.sin(angles)
+            result["states"][:, 3] = torch.cos(angles)
+        return result
 
 
 @dataclass
@@ -306,29 +379,53 @@ class MemoryGuard:
 def evaluate(
     policy: RecurrentMaskedPolicy, loader: DataLoader, device: torch.device
 ) -> tuple[dict[str, Any], np.ndarray]:
+    if loader.batch_size != 1:
+        raise ValueError("Recurrent evaluation requires batch_size=1")
     policy.eval()
     confusion = np.zeros((policy.action_count, policy.action_count), dtype=np.int64)
     invalid = 0
     loss_sum = 0.0
     examples = 0
+    recurrent_state: torch.Tensor | None = None
+    previous_episode: str | None = None
+    previous_stop: int | None = None
+    previous_chunk: int | None = None
     with torch.no_grad():
         for batch in loader:
             maps = batch["maps"].to(device)
             states = batch["states"].to(device)
             masks = batch["masks"].to(device)
             actions = batch["actions"].to(device)
-            output = policy(maps, states, masks)
+            episode = batch["episode_id"][0]
+            start = int(batch["sequence_start"][0])
+            chunk = int(batch["chunk_id"][0])
+            contiguous = (
+                episode == previous_episode and chunk == previous_chunk and start == previous_stop
+            )
+            if not contiguous:
+                recurrent_state = None
+            output = policy(maps, states, masks, recurrent_state)
+            recurrent_state = output.recurrent_state
+            previous_episode = episode
+            previous_stop = int(batch["sequence_stop"][0])
+            previous_chunk = chunk
             loss = nn.functional.cross_entropy(
                 output.distribution.logits.reshape(-1, policy.action_count),
                 actions.reshape(-1),
-                reduction="sum",
+                reduction="none",
             )
             predicted = output.distribution.probs.argmax(-1)
-            invalid += int((~masks.gather(-1, predicted.unsqueeze(-1)).squeeze(-1)).sum())
-            target_cpu = actions.reshape(-1).cpu().numpy()
-            predicted_cpu = predicted.reshape(-1).cpu().numpy()
+            loss_mask = batch["loss_mask"].to(device).reshape(-1)
+            invalid += int(
+                (
+                    ~masks.gather(-1, predicted.unsqueeze(-1)).squeeze(-1)
+                    & batch["loss_mask"].to(device)
+                ).sum()
+            )
+            target_cpu = actions.reshape(-1)[loss_mask].cpu().numpy()
+            predicted_cpu = predicted.reshape(-1)[loss_mask].cpu().numpy()
             np.add.at(confusion, (target_cpu, predicted_cpu), 1)
-            loss_sum += float(loss)
+            loss_sum += float(loss[loss_mask].sum())
             examples += len(target_cpu)
     true_positive = np.diag(confusion)
     support = confusion.sum(axis=1)
@@ -380,7 +477,12 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     if args.device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA requested but unavailable")
     device = torch.device(args.device)
-    training = DemonstrationSequences(args.dataset_dir, "train", args.sequence_length)
+    training = DemonstrationSequences(
+        args.dataset_dir,
+        "train",
+        args.sequence_length,
+        rotation_augmentation=args.rotation_augmentation,
+    )
     validation = DemonstrationSequences(args.dataset_dir, "validation", args.sequence_length)
     held_out = DemonstrationSequences(args.dataset_dir, "test", args.sequence_length)
     loader_options = {
@@ -391,8 +493,12 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     }
     generator = torch.Generator().manual_seed(args.seed)
     training_loader = DataLoader(training, shuffle=True, generator=generator, **loader_options)
-    validation_loader = DataLoader(validation, shuffle=False, **loader_options)
-    test_loader = DataLoader(held_out, shuffle=False, **loader_options)
+    evaluation_options = {
+        **loader_options,
+        "batch_size": 1,
+    }
+    validation_loader = DataLoader(validation, shuffle=False, **evaluation_options)
+    test_loader = DataLoader(held_out, shuffle=False, **evaluation_options)
     policy = RecurrentMaskedPolicy().to(device)
     counts = training.action_counts.astype(np.float64)
     weights = counts.sum() / np.maximum(counts, 1.0)
@@ -411,6 +517,8 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         policy.load_state_dict(checkpoint["model_state_dict"])
         if "optimizer_state_dict" in checkpoint:
             optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+            for parameter_group in optimizer.param_groups:
+                parameter_group["lr"] = args.learning_rate
         if "scaler_state_dict" in checkpoint:
             scaler.load_state_dict(checkpoint["scaler_state_dict"])
         start_epoch = int(checkpoint["epoch"]) + 1
@@ -442,7 +550,9 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
                     output.distribution.logits.reshape(-1, policy.action_count),
                     actions.reshape(-1),
                     weight=class_weights,
+                    reduction="none",
                 )
+                loss = loss[batch["loss_mask"].to(device).reshape(-1)].mean()
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
             nn.utils.clip_grad_norm_(policy.parameters(), 1.0)
@@ -582,6 +692,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--resume", type=str)
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
     parser.add_argument("--mixed-precision", action=argparse.BooleanOptionalAction, default=False)
+    parser.add_argument(
+        "--rotation-augmentation", action=argparse.BooleanOptionalAction, default=False
+    )
     return parser.parse_args()
 
 

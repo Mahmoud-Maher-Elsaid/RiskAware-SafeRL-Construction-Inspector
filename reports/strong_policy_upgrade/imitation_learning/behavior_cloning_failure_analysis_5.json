@@ -1,0 +1,12 @@
+{
+  "status": "REJECTED",
+  "held_out_accuracy": 0.7018640350877193,
+  "invalid_action_predictions": 0,
+  "diagnosis": "Hand-engineered semantic centroids did not improve the recurrent learner. The original compact CNN remains the best verified architecture.",
+  "changes_for_next_iteration": [
+    "Restore the original compact CNN/MLP/GRU architecture.",
+    "Apply deterministic rotations to training sequences only.",
+    "Remap directional actions, masks, agent coordinates, orientation, and previous-action state consistently.",
+    "Leave validation and test observations unchanged and keep all acceptance thresholds."
+  ]
+}

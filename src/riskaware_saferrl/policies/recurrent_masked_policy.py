@@ -64,7 +64,8 @@ class RecurrentMaskedPolicy(nn.Module):
         if maps.ndim != 5 or states.ndim != 3:
             raise ValueError("Expected maps [B,T,C,H,W] and states [B,T,F]")
         batch, sequence = maps.shape[:2]
-        map_features = self.map_encoder(maps.reshape(batch * sequence, *maps.shape[2:]))
+        flat_maps = maps.reshape(batch * sequence, *maps.shape[2:])
+        map_features = self.map_encoder(flat_maps)
         state_features = self.state_encoder(states.reshape(batch * sequence, states.shape[-1]))
         return torch.cat((map_features, state_features), dim=-1).reshape(batch, sequence, -1)
 
