@@ -1,0 +1,342 @@
+{
+  "status": "PASSED",
+  "observation_only_contract": true,
+  "seed_ranges": {
+    "train": {
+      "start": 0,
+      "count": 100
+    },
+    "validation": {
+      "start": 1000,
+      "count": 30
+    },
+    "test": {
+      "start": 2000,
+      "count": 30
+    }
+  },
+  "worlds": [
+    "site_small",
+    "site_medium",
+    "site_dynamic"
+  ],
+  "profiles": {
+    "low": {
+      "hazard_multiplier": 0.75,
+      "worker_multiplier": 0.75,
+      "perception_false_negative_rate": 0.0
+    },
+    "medium": {
+      "hazard_multiplier": 1.0,
+      "worker_multiplier": 1.0,
+      "perception_false_negative_rate": 0.1
+    },
+    "high": {
+      "hazard_multiplier": 1.5,
+      "worker_multiplier": 1.5,
+      "perception_false_negative_rate": 0.2
+    }
+  },
+  "overall": {
+    "episodes": 1440,
+    "success_rate": 0.9708333333333333,
+    "hazard_recall": 0.9926317000230044,
+    "inspection_coverage": 0.9926317000230044,
+    "explored_area_coverage": 0.2693441530257937,
+    "collision_rate": 0.0,
+    "mean_safety_cost": 10.303993055555555,
+    "constraint_violations": 26970,
+    "mean_path_length": 71.22430555555556,
+    "invalid_actions": 0,
+    "shield_interventions": 0,
+    "proposed_action_counts": [
+      31764,
+      32350,
+      18993,
+      19456,
+      15312
+    ],
+    "executed_action_counts": [
+      31764,
+      32350,
+      18993,
+      19456,
+      15312
+    ]
+  },
+  "groups": {
+    "profile:high": {
+      "episodes": 480,
+      "success_rate": 0.9479166666666666,
+      "hazard_recall": 0.987240338164251,
+      "inspection_coverage": 0.987240338164251,
+      "explored_area_coverage": 0.3326302814094388,
+      "collision_rate": 0.0,
+      "mean_safety_cost": 16.765104166666667,
+      "constraint_violations": 14448,
+      "mean_path_length": 92.77708333333334,
+      "invalid_actions": 0,
+      "shield_interventions": 0,
+      "proposed_action_counts": [
+        13811,
+        13949,
+        8333,
+        8440,
+        7547
+      ],
+      "executed_action_counts": [
+        13811,
+        13949,
+        8333,
+        8440,
+        7547
+      ]
+    },
+    "profile:low": {
+      "episodes": 480,
+      "success_rate": 0.9854166666666667,
+      "hazard_recall": 0.9943700396825397,
+      "inspection_coverage": 0.9943700396825397,
+      "explored_area_coverage": 0.2141441127232143,
+      "collision_rate": 0.0,
+      "mean_safety_cost": 4.938541666666667,
+      "constraint_violations": 4520,
+      "mean_path_length": 52.51875,
+      "invalid_actions": 0,
+      "shield_interventions": 0,
+      "proposed_action_counts": [
+        7862,
+        8106,
+        4389,
+        4852,
+        3379
+      ],
+      "executed_action_counts": [
+        7862,
+        8106,
+        4389,
+        4852,
+        3379
+      ]
+    },
+    "profile:medium": {
+      "episodes": 480,
+      "success_rate": 0.9791666666666666,
+      "hazard_recall": 0.9962847222222223,
+      "inspection_coverage": 0.9962847222222223,
+      "explored_area_coverage": 0.2612580649447279,
+      "collision_rate": 0.0,
+      "mean_safety_cost": 9.208333333333334,
+      "constraint_violations": 8002,
+      "mean_path_length": 68.37708333333333,
+      "invalid_actions": 0,
+      "shield_interventions": 0,
+      "proposed_action_counts": [
+        10091,
+        10295,
+        6271,
+        6164,
+        4386
+      ],
+      "executed_action_counts": [
+        10091,
+        10295,
+        6271,
+        6164,
+        4386
+      ]
+    },
+    "split:test": {
+      "episodes": 270,
+      "success_rate": 0.9481481481481482,
+      "hazard_recall": 0.9862499041484549,
+      "inspection_coverage": 0.9862499041484549,
+      "explored_area_coverage": 0.2669089427437642,
+      "collision_rate": 0.0,
+      "mean_safety_cost": 10.415740740740741,
+      "constraint_violations": 5118,
+      "mean_path_length": 73.81111111111112,
+      "invalid_actions": 0,
+      "shield_interventions": 0,
+      "proposed_action_counts": [
+        6326,
+        6383,
+        3544,
+        3676,
+        3021
+      ],
+      "executed_action_counts": [
+        6326,
+        6383,
+        3544,
+        3676,
+        3021
+      ]
+    },
+    "split:train": {
+      "episodes": 900,
+      "success_rate": 0.9722222222222222,
+      "hazard_recall": 0.9935692431561998,
+      "inspection_coverage": 0.9935692431561998,
+      "explored_area_coverage": 0.27242777069161,
+      "collision_rate": 0.0,
+      "mean_safety_cost": 10.503333333333334,
+      "constraint_violations": 17096,
+      "mean_path_length": 72.57555555555555,
+      "invalid_actions": 0,
+      "shield_interventions": 0,
+      "proposed_action_counts": [
+        20096,
+        20540,
+        12249,
+        12433,
+        9647
+      ],
+      "executed_action_counts": [
+        20096,
+        20540,
+        12249,
+        12433,
+        9647
+      ]
+    },
+    "split:validation": {
+      "episodes": 270,
+      "success_rate": 0.9888888888888889,
+      "hazard_recall": 0.9958883521202362,
+      "inspection_coverage": 0.9958883521202362,
+      "explored_area_coverage": 0.261500637755102,
+      "collision_rate": 0.0,
+      "mean_safety_cost": 9.527777777777779,
+      "constraint_violations": 4756,
+      "mean_path_length": 64.13333333333334,
+      "invalid_actions": 0,
+      "shield_interventions": 0,
+      "proposed_action_counts": [
+        5342,
+        5427,
+        3200,
+        3347,
+        2644
+      ],
+      "executed_action_counts": [
+        5342,
+        5427,
+        3200,
+        3347,
+        2644
+      ]
+    },
+    "world:site_dynamic": {
+      "episodes": 480,
+      "success_rate": 0.9583333333333334,
+      "hazard_recall": 0.9913722826086957,
+      "inspection_coverage": 0.9913722826086957,
+      "explored_area_coverage": 0.31593424479166665,
+      "collision_rate": 0.0,
+      "mean_safety_cost": 20.1609375,
+      "constraint_violations": 17499,
+      "mean_path_length": 113.825,
+      "invalid_actions": 0,
+      "shield_interventions": 0,
+      "proposed_action_counts": [
+        16412,
+        16507,
+        10705,
+        11012,
+        8584
+      ],
+      "executed_action_counts": [
+        16412,
+        16507,
+        10705,
+        11012,
+        8584
+      ]
+    },
+    "world:site_medium": {
+      "episodes": 480,
+      "success_rate": 0.9666666666666667,
+      "hazard_recall": 0.9915575396825396,
+      "inspection_coverage": 0.9915575396825396,
+      "explored_area_coverage": 0.27834821428571427,
+      "collision_rate": 0.0,
+      "mean_safety_cost": 8.902604166666666,
+      "constraint_violations": 7844,
+      "mean_path_length": 74.12708333333333,
+      "invalid_actions": 0,
+      "shield_interventions": 0,
+      "proposed_action_counts": [
+        11345,
+        11552,
+        6301,
+        6383,
+        4749
+      ],
+      "executed_action_counts": [
+        11345,
+        11552,
+        6301,
+        6383,
+        4749
+      ]
+    },
+    "world:site_small": {
+      "episodes": 480,
+      "success_rate": 0.9875,
+      "hazard_recall": 0.9949652777777778,
+      "inspection_coverage": 0.9949652777777778,
+      "explored_area_coverage": 0.21375,
+      "collision_rate": 0.0,
+      "mean_safety_cost": 1.8484375,
+      "constraint_violations": 1627,
+      "mean_path_length": 25.720833333333335,
+      "invalid_actions": 0,
+      "shield_interventions": 0,
+      "proposed_action_counts": [
+        4007,
+        4291,
+        1987,
+        2061,
+        1979
+      ],
+      "executed_action_counts": [
+        4007,
+        4291,
+        1987,
+        2061,
+        1979
+      ]
+    }
+  },
+  "gates": {
+    "small_world_success": {
+      "required": 0.9,
+      "observed": 0.9875
+    },
+    "medium_world_success": {
+      "required": 0.8,
+      "observed": 0.9666666666666667
+    },
+    "dynamic_world_success": {
+      "required": 0.65,
+      "observed": 0.9583333333333334
+    },
+    "hazard_recall": {
+      "required": 0.8,
+      "observed": 0.9926317000230044
+    },
+    "inspection_coverage": {
+      "required": 0.8,
+      "observed": 0.9926317000230044
+    },
+    "invalid_actions": {
+      "required": 0,
+      "observed": 0
+    },
+    "collision_rate": {
+      "required_maximum": 0.02,
+      "observed": 0.0
+    }
+  }
+}

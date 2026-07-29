@@ -6,14 +6,14 @@ Last updated: 2026-07-29
 
 | Field | Current value |
 |---|---|
-| Current task | Strong-policy upgrade: memory-safe Behavior Cloning |
-| Current state | Memory gate passed; Behavior Cloning is blocked below acceptance after seven analyzed attempts (best observed held-out accuracy 82.05%) |
-| Evidence collected | Original dataset SHA-256 and 13 chunk hashes; external interrupted-work backup; bounded mmap index profile; 1,000-batch CUDA forward/backward memory smoke |
-| Files changed | Recurrent masked policy, recurrent reward/cost rollout buffer, Behavior Cloning loader/trainer, memory validator, regression tests, recovery report, and docs |
-| Tests run | Targeted Ruff; 11 loader/policy/buffer tests; real 1,000-batch CUDA memory smoke with checkpoint round trip |
-| Runtime result | Memory remains bounded with two mmap chunks; zero invalid predictions; best held-out action accuracy 82.05% versus the unchanged 85% requirement |
-| Remaining work | Complete architecture-stage verification/commit, Behavior Cloning held-out gate, three DAgger iterations, RiskShield-HRMPPO v2 training/evaluation, CV/Webots/benchmark/paper/final acceptance |
-| Blockers | Privileged A* labels depend on hidden environment truth absent from stored observations. Clearing the unchanged 85% causal gate requires authorization for an additional observation-consistent correction dataset or a revised observation contract. |
+| Current task | Strong-policy upgrade: causal expert correction dataset |
+| Current state | Observation-only causal expert contract implemented and passed the 1,440-episode solvability matrix |
+| Evidence collected | Original dataset SHA-256 and 13 chunk hashes; causal recovery report; bounded mmap profile; 1,000-batch CUDA memory smoke; causal expert CSV/JSON evaluation |
+| Files changed | Causal observation expert, contract tests and documentation, deterministic evaluation harness, recurrent policy/loader recovery artifacts, and reports |
+| Tests run | Repository Ruff and 292-test recovery baseline; 10 focused causal-contract tests; 1,440 real research-environment causal expert episodes |
+| Runtime result | Small success 98.75%; medium 96.67%; dynamic 95.83%; hazard recall/coverage 99.26%; collision rate 0; invalid actions 0 |
+| Remaining work | Generate causal demonstrations; mix datasets; pass three-seed causal Behavior Cloning; DAgger; HRMPPO v2; CV/Webots/benchmark/paper/final acceptance |
+| Blockers | None at the causal expert dataset generation stage |
 
 ## Phase checklist
 
@@ -35,6 +35,9 @@ Last updated: 2026-07-29
 - [x] Replace copied in-memory sequences with a two-chunk LRU mmap cache and compact index.
 - [x] Pass the 1,000-batch CUDA Behavior Cloning memory regression gate.
 - [ ] Pass Behavior Cloning held-out accuracy and per-action recall gates.
+- [x] Implement and validate a policy-observation-only causal expert.
+- [x] Pass causal expert solvability gates across 1,440 environment episodes.
+- [ ] Generate and hash-validate the separate causal correction dataset.
 - [ ] Complete three genuine DAgger iterations.
 - [ ] Train and accept RiskShield-HRMPPO v2 against all replacement gates.
 - [ ] Complete CV audit, three-world Webots validation, benchmark-v2, ablations, paper, and Git acceptance.
