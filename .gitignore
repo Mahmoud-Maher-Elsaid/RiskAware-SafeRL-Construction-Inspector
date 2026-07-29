@@ -55,6 +55,15 @@ artifacts/checkpoints/*
 /reports/final_submission/stage9_benchmark/recovery/preliminary_smoke_cache/
 /reports/final_submission/stage9_benchmark/recovery/preliminary_smoke_outputs/
 
+# LaTeX build intermediates (the final paper PDF remains tracked)
+/paper/*.aux
+/paper/*.bbl
+/paper/*.blg
+/paper/*.fdb_latexmk
+/paper/*.fls
+/paper/*.log
+/paper/*.out
+
 # Local PPE dataset and source archive
 /Personal Protective Equipment - Combined Model.v1i.yolov8/
 /Personal Protective Equipment - Combined Model.v1i.yolov8.zip

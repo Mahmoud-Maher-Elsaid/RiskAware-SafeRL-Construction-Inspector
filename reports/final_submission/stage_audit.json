@@ -124,13 +124,13 @@
     {
       "stage": 10,
       "name": "Paper and release",
-      "status": "PARTIAL",
+      "status": "VERIFIED_COMPLETE",
       "source_files": ["paper/main.tex", "paper/references.bib"],
-      "tests": [],
-      "runtime_entry_point": null,
-      "evidence_path": null,
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Write the paper from real results and complete release/acceptance artifacts."
+      "tests": ["native pdflatex/bibtex compilation", "rendered PDF page inspection"],
+      "runtime_entry_point": "paper/README.md",
+      "evidence_path": "reports/final_submission/paper_result.json",
+      "last_verified_commit": "pending Stage 10 completion commit",
+      "remaining_work": "Final repository acceptance and release integration remain separate Stage 0 gates."
     }
   ]
 }

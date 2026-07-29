@@ -15,7 +15,7 @@ numbers. This matrix is updated only after implementation and validation.
 | 7 — Perception | Historical Stage 5B plus Stage 5C integration | VERIFIED_COMPLETE | Hash/CUDA/live state change and typed mapping tests passed |
 | 8 — Uncertainty | Domain-randomization utility | VERIFIED_COMPLETE | 320 unique deterministic episodes and robustness analysis completed |
 | 9 — Benchmark | Existing isolated evaluations | VERIFIED_COMPLETE | 1,350 unique primary runs, 180 ablations, statistics, 13 figures, and tables passed |
-| 10 — Paper/release | Paper skeleton | PARTIAL | Paper values derive from outputs; final acceptance and release pass |
+| 10 — Paper/release | Paper skeleton | VERIFIED_COMPLETE | Four-page cited PDF compiled from real benchmark outputs; release acceptance remains Stage 0 |
 
 The accepted Stage 5C path remains a protected regression baseline throughout
 this work. New research components do not replace its motor-control path unless

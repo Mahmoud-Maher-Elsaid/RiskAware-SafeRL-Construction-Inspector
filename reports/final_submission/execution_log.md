@@ -256,3 +256,21 @@ commits for the final research benchmark release. Times use UTC.
   - `reports/final_submission/stage9_benchmark/statistical_analysis.md`
   - `reports/final_submission/stage9_benchmark/ablation_summary.json`
   - `reports/final_submission/stage9_benchmark/figures`
+
+## 2026-07-29T20:50:00+03:00 — Stage 10 paper
+
+- Stage: 10
+- Commands:
+  - `latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex`
+  - `pdflatex; bibtex; pdflatex; pdflatex`
+  - `pdftoppm -png -r 120 paper/main.pdf <temporary-prefix>`
+  - `pdfinfo paper/main.pdf`
+- Failure: `latexmk` could not start because MiKTeX had no Perl script engine.
+- Repair: use the installed native `pdflatex` and `bibtex` sequence.
+- Result: a four-page IEEE PDF compiled with seven resolved citations, two
+  data-generated tables, and four data-generated figures. Rendered pages passed
+  manual visual inspection. Learned-policy failures and simulation limitations
+  are stated explicitly.
+- Evidence:
+  - `paper/main.pdf`
+  - `reports/final_submission/paper_result.json`
