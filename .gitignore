@@ -46,6 +46,12 @@ artifacts/runs/*
 artifacts/checkpoints/*
 !artifacts/checkpoints/.gitkeep
 /artifacts/final_submission/
+/artifacts/strong_policy_upgrade/expert_demonstrations/chunks/
+/artifacts/strong_policy_upgrade/imitation_learning/
+/artifacts/strong_policy_upgrade/training_runs/
+/artifacts/strong_policy_upgrade/expert_demonstrations/chunks/
+/artifacts/strong_policy_upgrade/imitation_learning/
+/artifacts/strong_policy_upgrade/training_runs/
 
 # Resumable research benchmark per-run caches (summaries remain tracked)
 /reports/final_submission/stage9_benchmark/cache/

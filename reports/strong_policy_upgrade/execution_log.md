@@ -24,3 +24,18 @@
 - Repair: inspection coverage and explored-area coverage are separate metrics
 - Validation: original and v2 environment suites passed (14 tests)
 - Validation: Gymnasium checker and deterministic step/reset checks passed
+- Commit: `32457f7`
+
+## 2026-07-29 — Expert demonstrations
+
+- Generator: `scripts/generate_expert_demonstrations.py`
+- Failed attempt 2: 120,099 transitions, 64.4% attempted success; rejected because shield outputs contradicted masks
+- Failed attempt 3: 120,142 transitions, 76.8% attempted success; rejected because incomplete episodes entered the data
+- Repair: episode-atomic admission retains only complete successful expert trajectories
+- Final dataset: 120,144 transitions from 200 deterministic seeds
+- Stored trajectory success: 100%
+- Invalid stored actions: 0
+- Failed-episode transitions rejected: 144,400
+- Dataset SHA-256: `06f872d819241563d3bf735d97c203d3de9633fbbc9cb3e5e99f95a1edbb1285`
+- Large chunks: retained locally under ignored `artifacts/strong_policy_upgrade/expert_demonstrations/chunks/`
+- Reproducibility metadata: tracked manifest and dataset summary
