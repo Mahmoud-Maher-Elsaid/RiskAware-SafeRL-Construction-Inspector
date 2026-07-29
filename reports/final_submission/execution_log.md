@@ -190,3 +190,45 @@ commits for the final research benchmark release. Times use UTC.
   - `reports/final_submission/stage8_uncertainty/raw_results.csv`
   - `reports/final_submission/stage8_uncertainty/aggregated_results.csv`
   - `reports/final_submission/stage8_uncertainty/summary.json`
+
+## 2026-07-29T19:00:00+03:00 — Interrupted Stage 9 recovery
+
+- Stage: 9 recovery
+- Commands:
+  - `git status --short --branch`
+  - `git status --porcelain=v2 -uall`
+  - `git branch -a -vv`
+  - `git log --oneline --decorate --graph -30`
+  - `git diff --stat`
+  - `git diff --cached --stat`
+  - `git ls-files --others --exclude-standard`
+  - `.venv\Scripts\python.exe -c "import pyarrow, scipy; ..."`
+  - `.venv\Scripts\python.exe -m py_compile ...`
+- Decision: preserve the coherent unfinished Stage 9 source and five valid
+  risk-aware A* smoke-cache records. Continue in place without resetting,
+  cleaning, stashing, or recreating the branch.
+- Result: local and remote branch heads both resolve to `1059a4e4213de1b27a54ddc3a2a87e1557219f76`.
+  No staged changes were present. PyArrow 21.0.0 and SciPy 1.17.1 imported
+  successfully. The unfinished Python files compiled successfully.
+- Resume point: harden the benchmark record/cache schema and recovery behavior,
+  then execute the five-algorithm adapter gate before committing the harness.
+- Evidence: `reports/final_submission/interruption_recovery.json`
+
+## 2026-07-29T19:20:00+03:00 — Stage 9 benchmark harness gate
+
+- Stage: 9
+- Commands:
+  - `.venv\Scripts\python.exe -m ruff check scripts\run_full_research_benchmark.py src\riskaware_saferrl\benchmarking tests\benchmarking`
+  - `.venv\Scripts\python.exe -m pytest -q tests\benchmarking`
+  - `.venv\Scripts\python.exe scripts\run_full_research_benchmark.py --validate-only`
+  - `.venv\Scripts\python.exe scripts\run_full_research_benchmark.py --one-per-algorithm --output reports\final_submission\stage9_benchmark\validation\five_algorithm_gate`
+- Decision: make run identifiers immutable with canonical configuration and
+  checkpoint hashes; write per-run caches and resume state atomically; serialize
+  GPU policy evaluation while parallelizing planners.
+- Result: five benchmark tests passed. The configuration produced exactly 1,350
+  unique manifest entries. One real episode completed through each of the five
+  algorithm adapters, and a second invocation resumed all five records without
+  rewriting cache files.
+- Evidence:
+  - `reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/benchmark_summary.json`
+  - `reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/raw_results.csv`

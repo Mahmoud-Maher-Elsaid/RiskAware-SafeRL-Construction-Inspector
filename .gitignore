@@ -47,6 +47,10 @@ artifacts/checkpoints/*
 !artifacts/checkpoints/.gitkeep
 /artifacts/final_submission/
 
+# Resumable research benchmark per-run caches (summaries remain tracked)
+/reports/final_submission/stage9_benchmark/cache/
+/reports/final_submission/stage9_benchmark/validation/*/cache/
+
 # Local PPE dataset and source archive
 /Personal Protective Equipment - Combined Model.v1i.yolov8/
 /Personal Protective Equipment - Combined Model.v1i.yolov8.zip

@@ -1,0 +1,25 @@
+schema_version: 1
+environment_sizes:
+  small: 10
+  medium: 14
+  large: 16
+hazard_densities:
+  low: 0.03
+  medium: 0.05
+  high: 0.07
+perception_noise_levels: [0.0, 0.1, 0.2]
+algorithms:
+  - risk_aware_astar
+  - frontier_exploration
+  - PPO
+  - SAC
+  - RiskShield-PPO
+evaluation_seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+expected_primary_runs: 1350
+episode_timeout_seconds: 15
+planner_workers: 4
+predictive_shield_horizon: 3
+checkpoints:
+  PPO: artifacts/final_submission/ppo/best_model.zip
+  SAC: artifacts/final_submission/sac/best_model.zip
+  RiskShield-PPO: artifacts/final_submission/riskshield_ppo/best_model.zip
