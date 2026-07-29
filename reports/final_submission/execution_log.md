@@ -290,3 +290,13 @@ commits for the final research benchmark release. Times use UTC.
   Final architecture, reproducibility, demo, troubleshooting, methodology,
   cards, release notes, security policy, acceptance script, and release
   manifest builder were completed.
+
+## 2026-07-29T21:15:00+03:00 — Final acceptance attempt 1
+
+- Command: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\run_final_acceptance.ps1`
+- Failure: the backup-file gate included `.python311` Jupyter package schema
+  files whose upstream filenames end in `.orig`.
+- Root cause: the repository hygiene scan did not exclude ignored local Python
+  environments.
+- Repair: exclude `.venv` and `.python311` from filesystem backup discovery;
+  tracked-file hygiene remains enforced separately through Git.

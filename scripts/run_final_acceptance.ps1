@@ -14,7 +14,12 @@ Write-Host "ACCEPTANCE_REPOSITORY=RUNNING"
 $TrackedNoise = git ls-files | Select-String -Pattern '(^|/)(__pycache__|\.pytest_cache|\.ruff_cache)(/|$)|\.bak$|\.pyc$'
 if ($TrackedNoise) { throw "Generated cache or backup content is tracked." }
 $BackupFiles = Get-ChildItem -LiteralPath $RepoRoot -Recurse -File -ErrorAction Stop |
-    Where-Object { $_.FullName -notlike "$RepoRoot\.git\*" -and $_.Name -match '\.(bak|orig)$' }
+    Where-Object {
+        $_.FullName -notlike "$RepoRoot\.git\*" -and
+        $_.FullName -notlike "$RepoRoot\.venv\*" -and
+        $_.FullName -notlike "$RepoRoot\.python311\*" -and
+        $_.Name -match '\.(bak|orig)$'
+    }
 if ($BackupFiles) { throw "Backup files remain in the repository." }
 Write-Host "ACCEPTANCE_REPOSITORY=PASSED"
 
