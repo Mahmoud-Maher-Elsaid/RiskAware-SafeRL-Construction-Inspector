@@ -91,13 +91,13 @@
     {
       "stage": 7,
       "name": "Perception and semantic risk mapping",
-      "status": "PARTIAL",
-      "source_files": ["src/riskaware_saferrl/live_perception.py", "src/riskaware_saferrl/perception.py"],
-      "tests": ["tests/test_live_perception.py", "tests/test_perception.py"],
-      "runtime_entry_point": "scripts/run_complete_autonomous_inspection.ps1",
-      "evidence_path": "reports/final_project_completion/final_runtime_summary.json",
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Finalize typed detections, projection/map semantics, stale-frame handling, and documented model class scope."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/live_perception.py", "src/riskaware_saferrl/perception_mapping.py"],
+      "tests": ["tests/perception/test_semantic_risk_mapping.py", "tests/test_live_perception.py"],
+      "runtime_entry_point": "scripts/validate_final_perception.py",
+      "evidence_path": "reports/final_submission/stage7_perception",
+      "last_verified_commit": "pending Stage 7 commit",
+      "remaining_work": "Real-world accuracy remains unestablished and unsupported CV classes use labeled simulator ground truth only."
     },
     {
       "stage": 8,

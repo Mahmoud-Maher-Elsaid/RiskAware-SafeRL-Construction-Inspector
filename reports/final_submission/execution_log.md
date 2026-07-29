@@ -157,3 +157,19 @@ commits for the final research benchmark release. Times use UTC.
   - `reports/final_submission/stage6_webots/world_smoke_summary.json`
   - `reports/final_submission/stage6_webots/visual_validation.json`
   - per-world runtime summaries and first-person frames
+
+## 2026-07-29T18:00:00Z — Stage 7 perception and semantic risk mapping
+
+- Stage: 7
+- Commands:
+  - `.venv\Scripts\python.exe -m pytest -q tests\perception ...`
+  - `.venv\Scripts\python.exe scripts\validate_final_perception.py`
+  - `Get-FileHash -Algorithm SHA256 <production checkpoint>`
+- Failure: a test compared a `float32` risk value with exact decimal equality.
+- Repair: use a numerical tolerance without changing runtime calculations.
+- Result: 22 perception tests passed. The production checkpoint hash matched;
+  CUDA inference, live mission perception, semantic state changes, ten
+  annotations, and zero failures were verified from the accepted runtime.
+- Evidence:
+  - `reports/final_submission/stage7_perception/validation.json`
+  - `reports/final_submission/stage7_perception/selected_runtime_annotation.png`
