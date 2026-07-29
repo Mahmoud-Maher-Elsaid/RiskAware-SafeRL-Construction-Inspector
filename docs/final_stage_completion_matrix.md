@@ -11,7 +11,7 @@ numbers. This matrix is updated only after implementation and validation.
 | 3 — PPO and SAC | Historical Stages 2D–3D | VERIFIED_COMPLETE | Both genuine checkpoints loaded; 60 deterministic evaluations completed |
 | 4 — RiskShield-PPO | Historical Stages 3E-B/3E-C | VERIFIED_COMPLETE | Constraint affected training; 120-run comparison completed with instability documented |
 | 5 — Predictive shield | Historical Stage 3E and Stage 5C shield | VERIFIED_COMPLETE | Structured k-step tests and 90-run shield benchmark passed |
-| 6 — Three Webots worlds | Historical Stages 4A–5C | PARTIAL | Three worlds load, move, render, and shut down cleanly |
+| 6 — Three Webots worlds | Historical Stages 4A–5C | VERIFIED_COMPLETE | Three real autonomous runtime and visual gates passed |
 | 7 — Perception | Historical Stage 5B plus Stage 5C integration | PARTIAL | Live typed detection changes semantic runtime state |
 | 8 — Uncertainty | Domain-randomization utility | MISSING | Required deterministic conditions produce raw/summary results |
 | 9 — Benchmark | Existing isolated evaluations | MISSING | Exactly 1,350 unique primary runs plus ablations and statistics |

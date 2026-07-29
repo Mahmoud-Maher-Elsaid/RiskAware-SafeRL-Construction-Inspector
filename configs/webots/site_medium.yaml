@@ -1,0 +1,9 @@
+name: site_medium
+title: RiskShield-PPO Medium Construction Site
+environment_size_m: [26.0, 20.0]
+hazard_density: 0.35
+worker_density: 0.20
+dynamic_obstacles: false
+expected_inspection_targets: 8
+initial_robot_pose: [-7.95, 0.18, -5.4]
+first_person_eye_height_m: 1.67

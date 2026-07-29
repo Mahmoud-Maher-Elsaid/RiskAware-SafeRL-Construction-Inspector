@@ -80,13 +80,13 @@
     {
       "stage": 6,
       "name": "Webots construction environments",
-      "status": "PARTIAL",
-      "source_files": ["webots/worlds/construction_site_stage5c_rl_motor_runtime.wbt"],
-      "tests": ["tests/webots/test_stage5c_rl_motor_assets.py"],
-      "runtime_entry_point": "scripts/run_stage5c_rl_motor_runtime.ps1",
-      "evidence_path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence",
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Build and smoke-test exactly three final parameterized environments."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["scripts/build_final_webots_worlds.py", "webots/worlds/site_small.wbt", "webots/worlds/site_medium.wbt", "webots/worlds/site_dynamic.wbt"],
+      "tests": ["tests/webots/test_final_worlds.py", "tests/webots/test_stage5c_rl_motor_assets.py"],
+      "runtime_entry_point": "scripts/run_final_world_smoke.ps1",
+      "evidence_path": "reports/final_submission/stage6_webots",
+      "last_verified_commit": "pending Stage 6 commit",
+      "remaining_work": "None for the three-world simulation gate."
     },
     {
       "stage": 7,

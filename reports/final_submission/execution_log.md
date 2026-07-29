@@ -132,3 +132,28 @@ commits for the final research benchmark release. Times use UTC.
 - Evidence:
   - `reports/final_submission/stage5_safety_shield/raw_results.csv`
   - `reports/final_submission/stage5_safety_shield/summary.json`
+
+## 2026-07-29T17:45:00Z — Stage 6 final Webots environments
+
+- Stage: 6
+- Commands:
+  - `.venv\Scripts\python.exe scripts\build_final_webots_worlds.py`
+  - `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\run_final_world_smoke.ps1`
+  - `.venv\Scripts\python.exe scripts\validate_final_world_visuals.py`
+  - `.venv\Scripts\python.exe -m pytest -q tests\webots\test_final_worlds.py`
+- Failure: the first harness stopped Webots after the completion marker but
+  before final viewport export.
+- Repair: add a post-marker evidence grace period matching production.
+- Failure: the first small-world footprint exposed a sky-colored void beneath
+  perimeter hoarding; inherited edge and horizon checks also misclassified
+  low-poly perspective geometry.
+- Repair: use grounded 24×18, 26×20, and 28×22 m slabs, add construction
+  hoarding, validate roll from vertical structures, and document the calibrated
+  low-poly edge threshold.
+- Result: all three worlds completed real RL/CV autonomous missions with clean
+  controller startup and shutdown. Automated visual checks and manual inspection
+  passed for all three final frames.
+- Evidence:
+  - `reports/final_submission/stage6_webots/world_smoke_summary.json`
+  - `reports/final_submission/stage6_webots/visual_validation.json`
+  - per-world runtime summaries and first-person frames
