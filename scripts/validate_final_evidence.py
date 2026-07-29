@@ -20,9 +20,7 @@ def main() -> None:
     worlds = read_json(root / "stage6_webots/world_smoke_summary.json")
     assert len(worlds) == 3
     assert all(
-        world["runtime_verified"]
-        and world["mission_completed"]
-        and world["physics_stable"]
+        world["runtime_verified"] and world["mission_completed"] and world["physics_stable"]
         for world in worlds
     )
     assert read_json(root / "stage7_perception/validation.json")["status"] == "PASSED"
