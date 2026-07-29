@@ -434,14 +434,14 @@ def run_benchmark(
 
     planner_runs = [run for run in pending if run.algorithm in PLANNER_ALGORITHMS]
     with ThreadPoolExecutor(max_workers=int(settings["planner_workers"])) as executor:
-        futures = {}
-        for run in planner_runs:
-            started = time.perf_counter()
-            futures[executor.submit(evaluate_planner, run)] = (run, started)
+        futures = {
+            executor.submit(evaluate_planner, run): run for run in planner_runs
+        }
         for future in as_completed(futures):
-            run, started = futures[future]
+            run = futures[future]
             try:
-                persist(run, future.result(), time.perf_counter() - started)
+                record = future.result()
+                persist(run, record, float(record["mission_duration"]))
             except Exception as exc:
                 failures.append(
                     {
