@@ -22,15 +22,13 @@ WorldInfo {
   ]
 }
 
-Viewpoint {
-  orientation 0 1 0 -1.5708
+DEF HUMAN_VIEWPOINT Viewpoint {
+  orientation 0 0 1 0
   position -7.95 1.67 -5.4
   fieldOfView 1.05
   near 0.05
   far 70
   exposure 1
-  follow "professional construction inspection robot"
-  followType "Mounted Shot"
 }
 
 Background {
@@ -3844,7 +3842,7 @@ DEF SHOWCASE_ROBOT Robot {
     Compass {
       name "compass"
     }
-    Camera {
+        Camera {
       translation 0.35 1.55 0
       rotation 1 0 0 -1.5708
       name "inspection camera"
