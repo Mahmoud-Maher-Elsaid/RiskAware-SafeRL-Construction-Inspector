@@ -1,8 +1,8 @@
 {
   "status": "PASSED",
-  "generated_at": "2026-07-29T18:03:53.933704+00:00",
-  "branch": "final/research-benchmark-release",
-  "commit": "dbb9b50ef5e1bec9a4ed2827997cbafde432b67f",
+  "generated_at": "2026-07-29T18:08:33.215812+00:00",
+  "branch": "main",
+  "commit": "dfbedb880ea18d29dfa922941fe498187f3411c7",
   "stages": {
     "0": "VERIFIED_COMPLETE",
     "1": "VERIFIED_COMPLETE",
@@ -50,7 +50,7 @@
     "motor_command_change_count": 14,
     "manual_control_used": false,
     "fallback_controller_used": false,
-    "warmup_ms": 494.54649997642264,
+    "warmup_ms": 515.9786000149325,
     "mission_completed": true
   },
   "primary_benchmark_runs": 1350,

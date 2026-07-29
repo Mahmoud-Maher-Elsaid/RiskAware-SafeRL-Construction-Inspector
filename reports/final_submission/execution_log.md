@@ -327,3 +327,20 @@ commits for the final research benchmark release. Times use UTC.
 - Evidence:
   - `reports/final_submission/final_test_results.txt`
   - `reports/final_submission/final_runtime_summary.json`
+
+## 2026-07-29T21:45:00+03:00 — Normal merges and post-merge gates
+
+- Git:
+  - merged `final/research-benchmark-release` into
+    `stage-5b-live-perception-integration` with `--no-ff`;
+  - pushed the integration branch;
+  - reran final acceptance successfully;
+  - merged the integration branch into `main` with `--no-ff`;
+  - pushed `main`.
+- Post-main commands:
+  - `scripts/run_complete_autonomous_inspection.ps1`
+  - `scripts/run_full_research_benchmark.ps1`
+  - `scripts/run_final_acceptance.ps1`
+- Result: production, benchmark integrity, and complete acceptance all passed
+  on merged `main`. The accepted runtime summary was refreshed with the
+  measured warmup latency from the final run.

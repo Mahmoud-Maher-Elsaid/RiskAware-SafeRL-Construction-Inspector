@@ -1,7 +1,7 @@
 ﻿{
     "schema_version":  1,
-    "generated_at":  "2026-07-29T21:03:54.8779715+03:00",
-    "git_commit":  "dbb9b50ef5e1bec9a4ed2827997cbafde432b67f",
+    "generated_at":  "2026-07-29T21:08:35.8641194+03:00",
+    "git_commit":  "dfbedb880ea18d29dfa922941fe498187f3411c7",
     "tracked_file_count":  493,
     "files":  [
                   {
@@ -16,8 +16,8 @@
                   },
                   {
                       "path":  ".gitignore",
-                      "bytes":  2295,
-                      "sha256":  "e626bde25b695d02cfcc88ac85a11fb963bc87c051c9d95a1865956681494158"
+                      "bytes":  2315,
+                      "sha256":  "aa55f28f6d340bde6a0e6e673b81dea3048c924cecfe8e8b4cfd3125c78d72af"
                   },
                   {
                       "path":  ".pre-commit-config.yaml",
@@ -36,8 +36,8 @@
                   },
                   {
                       "path":  "CITATION.cff",
-                      "bytes":  262,
-                      "sha256":  "3b022ffd21d476fee46c5e0b8ac8fe7d27b01b8889fce5ff98e22c15cf51e51b"
+                      "bytes":  271,
+                      "sha256":  "a5a940905a3de21102bb391e68f729603e94e078f66d1cf511f4c6b203067f77"
                   },
                   {
                       "path":  "DATA_CARD.md",
@@ -576,28 +576,28 @@
                   },
                   {
                       "path":  "paper/main.tex",
-                      "bytes":  12109,
-                      "sha256":  "c43f7101a053c4c8f1b093b3091d8ca5547f5da0efb090d358d621c80c674bc9"
+                      "bytes":  12363,
+                      "sha256":  "6fe0bbf40389a64dec79db8fa163604ccb2d5ae95e62a14ae84488fd63cbd69e"
                   },
                   {
                       "path":  "paper/references.bib",
-                      "bytes":  2429,
-                      "sha256":  "14fc261b71094b4c5f1451002f10933e99a3eaf5c82a88e1e838e3985e60c7fd"
+                      "bytes":  2498,
+                      "sha256":  "00194520110774ef154192a133677edb4f1c4b3ce77ca1d4305691e3923a9022"
                   },
                   {
                       "path":  "paper/tables/ablation_summary.tex",
-                      "bytes":  595,
-                      "sha256":  "2e14cb8e03d116fc97e9cf18de3b4e7927a59120ec1f3badfd0acba78745ae76"
+                      "bytes":  607,
+                      "sha256":  "b5edaa0d2df7734f9c7e3645c4968b6b07c300a1e7d468dc7498ed3bd3e9cd4c"
                   },
                   {
                       "path":  "paper/tables/algorithm_summary.tex",
-                      "bytes":  541,
-                      "sha256":  "131bbb59f02057af2d3a7917795d8977cbf6f3d2942a00f9988bb0324582a5be"
+                      "bytes":  552,
+                      "sha256":  "019f558f066ec373f6cb7245393f818a503fd6d598bb4429e611a0109ca5e233"
                   },
                   {
                       "path":  "pyproject.toml",
-                      "bytes":  1100,
-                      "sha256":  "edb3d50c650f4274c5fb4f364f9dc6ab1a0ae35bfec5c727e217ba2ef90e64e5"
+                      "bytes":  1158,
+                      "sha256":  "382c32abd2757bdbac03bdc05a6d27b614de9244a2bb16337afb934d5b38cfc8"
                   },
                   {
                       "path":  "reports/final_project_completion/baseline_audit.json",
@@ -636,8 +636,8 @@
                   },
                   {
                       "path":  "reports/final_project_completion/final_runtime_summary.json",
-                      "bytes":  1167,
-                      "sha256":  "ba7d6115e69e05126836c75a3c6bad125ed87525bfbdedab7c5380a04444398c"
+                      "bytes":  1166,
+                      "sha256":  "8a465af00f4e49746df225668738670cf6821b0530b47440f3aca534345bbec4"
                   },
                   {
                       "path":  "reports/final_project_completion/final_test_results.txt",
@@ -741,13 +741,13 @@
                   },
                   {
                       "path":  "reports/final_submission/execution_log.md",
-                      "bytes":  16908,
-                      "sha256":  "fe753cc37c33bd5660a4d1057440e657e7026c4a2636fe63d74702f4c17af6af"
+                      "bytes":  17608,
+                      "sha256":  "25167d7d6017de2c02db3c9ec396be55b87dafa251281b748f78d10f3d86a94d"
                   },
                   {
                       "path":  "reports/final_submission/final_artifact_manifest.json",
                       "bytes":  1513,
-                      "sha256":  "360ebb7f80361accc3d7f657507d17c6d795c174ad0bbfc144cb5b8941fd8b85"
+                      "sha256":  "2a34624e472680ad3e56b30fbbc26be9c4ddee3151fd887209282d808fce271b"
                   },
                   {
                       "path":  "reports/final_submission/final_benchmark_summary.json",
@@ -761,8 +761,8 @@
                   },
                   {
                       "path":  "reports/final_submission/final_git_history.txt",
-                      "bytes":  4663,
-                      "sha256":  "1ab8e21d518ce811bdd09eaa44bb242e1e2d426999e11a1256269afcdaa52f45"
+                      "bytes":  4537,
+                      "sha256":  "ffd2acdb710aa4baeed896b84710d0f17928d33ee1554a57d9b060c982bdf02e"
                   },
                   {
                       "path":  "reports/final_submission/final_limitations.md",
@@ -771,18 +771,18 @@
                   },
                   {
                       "path":  "reports/final_submission/final_runtime_summary.json",
-                      "bytes":  1167,
-                      "sha256":  "ba7d6115e69e05126836c75a3c6bad125ed87525bfbdedab7c5380a04444398c"
+                      "bytes":  1166,
+                      "sha256":  "8a465af00f4e49746df225668738670cf6821b0530b47440f3aca534345bbec4"
                   },
                   {
                       "path":  "reports/final_submission/final_submission_report.json",
-                      "bytes":  4192,
-                      "sha256":  "e8c11e69ebbb81cbe2a9a2363aa9258e8efc03967d7667d8a1dd0af746bf64b9"
+                      "bytes":  4163,
+                      "sha256":  "bb2a2db0e174a7996e34ed1b0f46764dfab06edc8b415b3936cecfaf1ae65978"
                   },
                   {
                       "path":  "reports/final_submission/final_submission_report.md",
-                      "bytes":  800,
-                      "sha256":  "f207466b1e76158e8b6cd6593320ed1910bfcede9beff22e61ee8c0957637257"
+                      "bytes":  772,
+                      "sha256":  "e45baa53b379f0c8dfd5578251b739e27be5705cf487b4679520ce426412c354"
                   },
                   {
                       "path":  "reports/final_submission/final_test_results.txt",
@@ -806,8 +806,8 @@
                   },
                   {
                       "path":  "reports/final_submission/release_manifest.json",
-                      "bytes":  128560,
-                      "sha256":  "98cfac6344b7f595af06bcab14c57addaf35ad3029db20a03872088bf3b125c9"
+                      "bytes":  129034,
+                      "sha256":  "75936dc48a40f448f811659a57b111a01c2c1ace5b74b03d5fa89b0225687cac"
                   },
                   {
                       "path":  "reports/final_submission/stage1_grid_environment/validation.json",
@@ -821,8 +821,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage2_planner_baselines/summary.json",
-                      "bytes":  935,
-                      "sha256":  "f201256590c47f30d371cd8e06406f70a0581d817fdf98e2c6b949e4a00035d9"
+                      "bytes":  893,
+                      "sha256":  "3e195ec92e5d42955add12401e21c36064a41b374756a16e6a64a39ebf935092"
                   },
                   {
                       "path":  "reports/final_submission/stage3_rl_baselines/collisions.png",
@@ -856,13 +856,13 @@
                   },
                   {
                       "path":  "reports/final_submission/stage3_rl_baselines/ppo_checkpoint_metadata.json",
-                      "bytes":  590,
-                      "sha256":  "fa6b9ac6882ca5717bcf608e2c1d8b5d46c5578b6a605da6e7a810043b9f3bed"
+                      "bytes":  574,
+                      "sha256":  "75c68082bac8c423534dd29689f6bf9a509441eafe4cff0a262e17add909fbe7"
                   },
                   {
                       "path":  "reports/final_submission/stage3_rl_baselines/sac_checkpoint_metadata.json",
-                      "bytes":  672,
-                      "sha256":  "0c854dfe6ab0f2b3e8570bb7ce0f9f416177b1a5cd319efe903bbea8bb4f6e6a"
+                      "bytes":  655,
+                      "sha256":  "d387dcd579a981fbc9e38326da8acf3575f02d1293b3fa8fd96435824b6c7f86"
                   },
                   {
                       "path":  "reports/final_submission/stage3_rl_baselines/safety_cost.png",
@@ -876,8 +876,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage3_rl_baselines/summary.json",
-                      "bytes":  671,
-                      "sha256":  "90b81f3624de980fc36ac8d242a034e4a66631b802a633279d1fde40d53508f1"
+                      "bytes":  646,
+                      "sha256":  "c27454dd2b67681b8bfa932a122f4cc0eef9c97ebe607e5c19ecb3860334bf86"
                   },
                   {
                       "path":  "reports/final_submission/stage3_rl_baselines/training_metrics.csv",
@@ -886,8 +886,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage4_riskshield_ppo/checkpoint_metadata.json",
-                      "bytes":  944,
-                      "sha256":  "ac372ba52de107929ae93a449505ecd03ae515a69315cde45b49fd3fb091cfbf"
+                      "bytes":  923,
+                      "sha256":  "803bf83959f1964bd24cd6f5c7cb3e01da031f2c7b94f25625f6169eceeea24a"
                   },
                   {
                       "path":  "reports/final_submission/stage4_riskshield_ppo/comparison_results.csv",
@@ -896,8 +896,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage4_riskshield_ppo/comparison_summary.json",
-                      "bytes":  1271,
-                      "sha256":  "53505a0c6f07c27b6917263411546a3165dc81163e4b053974cdae25fa24767e"
+                      "bytes":  1229,
+                      "sha256":  "6b9f1ae9fbf955c7b9f584c2ccdf1aa2be552a712dd2b8278cfa17182eb8a9b8"
                   },
                   {
                       "path":  "reports/final_submission/stage4_riskshield_ppo/constraint_training_metrics.csv",
@@ -916,8 +916,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage5_safety_shield/summary.json",
-                      "bytes":  1275,
-                      "sha256":  "c1ac5b7380e14b321e7d075996781b35a5da955863c1f924539f6749cd080458"
+                      "bytes":  1236,
+                      "sha256":  "7fccf81cdfe32d4448dae36039eca0cc4a71a73f62e905b637cc1758fce13f05"
                   },
                   {
                       "path":  "reports/final_submission/stage6_webots/site_dynamic/first_person_final.png",
@@ -931,8 +931,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage6_webots/site_dynamic/stage5c_runtime_summary.json",
-                      "bytes":  1166,
-                      "sha256":  "30a74fb14b7046b7a8c4ebceb3be20945d544912daae1412f0790eeac2e2f85a"
+                      "bytes":  1138,
+                      "sha256":  "c04ac281d29ea36a7fa75e4c4b546facf4d0afd91ab83b5a34b72fc7d555e4d9"
                   },
                   {
                       "path":  "reports/final_submission/stage6_webots/site_dynamic/webots_stderr.log",
@@ -956,8 +956,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage6_webots/site_medium/stage5c_runtime_summary.json",
-                      "bytes":  1166,
-                      "sha256":  "336751d25208088a742428ea9365219f16453e9fb2802b03e398646a3c885141"
+                      "bytes":  1138,
+                      "sha256":  "b4c725c46a57363f4d2f11ea267a029168c95496f93dbd37259df540a4be3eeb"
                   },
                   {
                       "path":  "reports/final_submission/stage6_webots/site_medium/webots_stderr.log",
@@ -981,8 +981,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage6_webots/site_small/stage5c_runtime_summary.json",
-                      "bytes":  1164,
-                      "sha256":  "ed93a6687f8c2ad519ac17b28ee42a89cd3b11e609ad44051abb615da7c32c15"
+                      "bytes":  1136,
+                      "sha256":  "6bd3b5cfdaca69d94d40ebf22caf39cc5c1842f058a5cc701a4044856a8802d8"
                   },
                   {
                       "path":  "reports/final_submission/stage6_webots/site_small/webots_stderr.log",
@@ -996,13 +996,13 @@
                   },
                   {
                       "path":  "reports/final_submission/stage6_webots/visual_validation.json",
-                      "bytes":  2686,
-                      "sha256":  "61eec9506a6c4aebb3f2c10ad385229f7ea60af27fd3e3ec1f1d6bbabe029696"
+                      "bytes":  2605,
+                      "sha256":  "0312f9f28e92162a7062625e0c5b60f884351d3a9d03bdbf4102bebbbc4aa7eb"
                   },
                   {
                       "path":  "reports/final_submission/stage6_webots/world_smoke_summary.json",
-                      "bytes":  932,
-                      "sha256":  "3e9fb2cfdd6c51854de822d4232b39e63c13167c0aeb46fdca4f64914fe6a043"
+                      "bytes":  903,
+                      "sha256":  "37449cbd57be20a7641b2a16e8927f37aded5ecfb0a8728af1c3b25c5ffa42de"
                   },
                   {
                       "path":  "reports/final_submission/stage7_perception/selected_runtime_annotation.png",
@@ -1011,8 +1011,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage7_perception/validation.json",
-                      "bytes":  815,
-                      "sha256":  "c6235452238c2721e77254dcf5b544e01ea1b24cb65915fd39b3b862f434b3af"
+                      "bytes":  780,
+                      "sha256":  "c124d62580c7117276c5d9c15e4b4afece89a5242ebcd9433f05df66da637c9b"
                   },
                   {
                       "path":  "reports/final_submission/stage8_uncertainty/aggregated_results.csv",
@@ -1026,13 +1026,13 @@
                   },
                   {
                       "path":  "reports/final_submission/stage8_uncertainty/summary.json",
-                      "bytes":  539,
-                      "sha256":  "8ecfc05fb3d7a80e5676fda3e57ae2aae02fd8e9c5c68a8e9d7bb2c3d8697ac3"
+                      "bytes":  522,
+                      "sha256":  "e8176145b0d3236c57aca0338a2b6a6e49cd21c674f47572d1182d36b3a0ebbf"
                   },
                   {
                       "path":  "reports/final_submission/stage9_benchmark/ablation_manifest.json",
-                      "bytes":  2329,
-                      "sha256":  "9864741d73a971c51f5136ea73d45985b1480ceece82bf26ea40311ddadc2c03"
+                      "bytes":  2253,
+                      "sha256":  "3879688a7942e9611e26c07aab592777482076db64d3aa419c39e124b9e18805"
                   },
                   {
                       "path":  "reports/final_submission/stage9_benchmark/ablation_results.csv",
@@ -1041,8 +1041,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage9_benchmark/ablation_summary.json",
-                      "bytes":  4307,
-                      "sha256":  "0952991f3cc10a76cf3409c443741dcce0ebe429393aff9cbeee3a189533ca35"
+                      "bytes":  4197,
+                      "sha256":  "9830ca17932d607453eaecf7d10ebccc3db3373d95c6e80f49b9b4a2a6efe0a4"
                   },
                   {
                       "path":  "reports/final_submission/stage9_benchmark/aggregated_results.csv",
@@ -1246,8 +1246,8 @@
                   },
                   {
                       "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/benchmark_summary.json",
-                      "bytes":  1125,
-                      "sha256":  "d0543f263bade800efbb0c29f71ef9fc0c57a21e035456e5a6ff30b85cbc8156"
+                      "bytes":  1078,
+                      "sha256":  "3d74314fcba5bc2be318a631f4f6b69c33a51f9987f74288c0d4a7ed78de91d7"
                   },
                   {
                       "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/failed_runs.jsonl",
@@ -1266,13 +1266,13 @@
                   },
                   {
                       "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/resume_state.json",
-                      "bytes":  75,
-                      "sha256":  "4cd0241f28950d81b26641024d2538aafd8b607d3c20d3e65503450fc9860ea3"
+                      "bytes":  69,
+                      "sha256":  "1614ac35673993204876bfde77f2f11d126a1214847b455da8e2a2b41e3316b7"
                   },
                   {
                       "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/statistical_analysis.json",
-                      "bytes":  4,
-                      "sha256":  "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+                      "bytes":  3,
+                      "sha256":  "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
                   },
                   {
                       "path":  "reports/final_submission/stage_audit.json",
@@ -1381,8 +1381,8 @@
                   },
                   {
                       "path":  "scripts/build_final_release.ps1",
-                      "bytes":  1067,
-                      "sha256":  "bea72ceacc058d520230a4d8823e2630a261a0123a19501f0325a47dbca3ba9b"
+                      "bytes":  1096,
+                      "sha256":  "5ba40035601d7e32bb4f8dde679b48695dbef44c5d33a7762f54929f6140d29d"
                   },
                   {
                       "path":  "scripts/build_final_webots_worlds.py",
@@ -1516,18 +1516,18 @@
                   },
                   {
                       "path":  "scripts/run_final_acceptance.ps1",
-                      "bytes":  3026,
-                      "sha256":  "12ec3c7cec3c52ab8cbc652e3528af6652a359758a7ec9d3531b6b25daeca6a5"
+                      "bytes":  3096,
+                      "sha256":  "b6699ade14cc9115e230c053b99a2b90395b89ae4f3037852b3f90f288fc5ab8"
                   },
                   {
                       "path":  "scripts/run_final_world_smoke.ps1",
-                      "bytes":  4767,
-                      "sha256":  "6119f4318068aed6df47fa331701aeaafda67d960d28eb1efd12849976dfe28d"
+                      "bytes":  4862,
+                      "sha256":  "b4dc153736e91587c18c804125adfc375c6bd407227af46a76f96369a05bdded"
                   },
                   {
                       "path":  "scripts/run_full_research_benchmark.ps1",
-                      "bytes":  2039,
-                      "sha256":  "2d955f67633105524325a9e830f48bbba8062abfeee17f2560fa070b14895c7b"
+                      "bytes":  2075,
+                      "sha256":  "4f7d454a5a14a9fbd52ed90b0b99f07f75940fdf147288e12ec595f381550411"
                   },
                   {
                       "path":  "scripts/run_full_research_benchmark.py",
@@ -2456,18 +2456,18 @@
                   },
                   {
                       "path":  "webots/worlds/site_dynamic.wbt",
-                      "bytes":  73695,
-                      "sha256":  "e28b407919bde31b8432abf0240e79fa83d90f5df2348dbaacc61235652f238d"
+                      "bytes":  77882,
+                      "sha256":  "3835109840b53a4b66318e451ad0905307c693b67b593d5df16ea60622fd8ec2"
                   },
                   {
                       "path":  "webots/worlds/site_medium.wbt",
-                      "bytes":  73328,
-                      "sha256":  "9d275ed1f4201af718367bf889fcf11da196c4533a018f99d56e5c1ddc050d7f"
+                      "bytes":  77500,
+                      "sha256":  "debebfa1241ce77bb17bd724391ebd6d03797ce2e7f54f6bd06a449d2e64ab71"
                   },
                   {
                       "path":  "webots/worlds/site_small.wbt",
-                      "bytes":  72797,
-                      "sha256":  "4428847b21b5836e4d8828e66278ba041bdcc89a0b33e2136c57e5633dbaee9a"
+                      "bytes":  76946,
+                      "sha256":  "59f6700dac5c6618f2b76c503ce6bbdaf3210716769df0071578e9a53d948b19"
                   }
               ]
 }
