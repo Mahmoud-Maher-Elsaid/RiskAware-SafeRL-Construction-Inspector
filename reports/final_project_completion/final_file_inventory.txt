@@ -77,6 +77,12 @@ pyproject.toml
 reports/final_project_completion/baseline_audit.json
 reports/final_project_completion/baseline_audit.md
 reports/final_project_completion/execution_log.md
+reports/final_project_completion/final_completion_report.json
+reports/final_project_completion/final_completion_report.md
+reports/final_project_completion/final_file_inventory.txt
+reports/final_project_completion/final_git_history.txt
+reports/final_project_completion/final_runtime_summary.json
+reports/final_project_completion/final_test_results.txt
 reports/final_project_completion/stage5b_visual_evidence/final_first_person.png
 reports/final_project_completion/stage5b_visual_evidence/initial_first_person.png
 reports/final_project_completion/stage5b_visual_evidence/left_turn_first_person.png
@@ -130,8 +136,10 @@ scripts/evaluate_random.py
 scripts/evaluate_scenarios.py
 scripts/fine_tune_ppe_weak_classes.py
 scripts/generate_expert_plans.py
+scripts/generate_final_completion_reports.py
 scripts/generate_scenarios.py
 scripts/plot_benchmark_results.py
+scripts/run_complete_autonomous_inspection.ps1
 scripts/run_ppe_detector_pilots.py
 scripts/run_stage4b2_runtime.ps1
 scripts/run_stage4c_live_policy_dry_run.ps1

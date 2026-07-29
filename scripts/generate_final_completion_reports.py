@@ -158,8 +158,9 @@ def main() -> None:
 
 **PASSED**
 
-Project: `{PROJECT_ROOT}`  
-Branch: `{branch}`  
+Project: `{PROJECT_ROOT}`
+
+Branch: `{branch}`
 Commit at report generation: `{commit}`
 
 ## Cleanup and preservation
@@ -180,9 +181,11 @@ Inside the repository, the invalid virtual environment, Python/test/lint caches,
 
 Stage 5C recorded 10 policy decisions, two distinct policy actions, three SafetyShield restricted-zone interventions, three distinct wheel-command pairs, 14 motor-command changes, 10 successful CUDA perception inferences, and nine CV-driven observation changes. Manual control and fallback control were false.
 
-RL checkpoint: `{report["models"]["rl_checkpoint"]}`  
-RL SHA-256: `{report["models"]["rl_sha256"]}`  
-CV checkpoint: `{report["models"]["cv_checkpoint"]}`  
+RL checkpoint: `{report["models"]["rl_checkpoint"]}`
+
+RL SHA-256: `{report["models"]["rl_sha256"]}`
+
+CV checkpoint: `{report["models"]["cv_checkpoint"]}`
 CV SHA-256: `{report["models"]["cv_sha256"]}`
 
 ## Verification
@@ -240,8 +243,10 @@ CV SHA-256: `{report["models"]["cv_sha256"]}`
         + "\n",
         encoding="utf-8",
     )
+    history = run_git("log", "--oneline", "--decorate", "--graph", "--all", "-n", "200")
+    normalized_history = "\n".join(line.rstrip() for line in history.splitlines()) + "\n"
     (OUTPUT / "final_git_history.txt").write_text(
-        run_git("log", "--oneline", "--decorate", "--graph", "--all", "-n", "200"),
+        normalized_history,
         encoding="utf-8",
     )
 

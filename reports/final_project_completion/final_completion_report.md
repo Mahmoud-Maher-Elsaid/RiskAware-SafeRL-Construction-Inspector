@@ -4,9 +4,10 @@
 
 **PASSED**
 
-Project: `F:\AI\My_Project\RiskAware-SafeRL-Construction-Inspector`  
-Branch: `final/project-completion`  
-Commit at report generation: `85871af9b9e8fc00cc1d9e853e6c5154a692e451`
+Project: `F:\AI\My_Project\RiskAware-SafeRL-Construction-Inspector`
+
+Branch: `final/project-completion`
+Commit at report generation: `54be495c82f0568fbe6262227a6252997860cc0d`
 
 ## Cleanup and preservation
 
@@ -26,9 +27,11 @@ Inside the repository, the invalid virtual environment, Python/test/lint caches,
 
 Stage 5C recorded 10 policy decisions, two distinct policy actions, three SafetyShield restricted-zone interventions, three distinct wheel-command pairs, 14 motor-command changes, 10 successful CUDA perception inferences, and nine CV-driven observation changes. Manual control and fallback control were false.
 
-RL checkpoint: `artifacts\runs\maskable_ppo_deadlock_safe_shield_seed42_u100\evaluations\best_model\best_model.zip`  
-RL SHA-256: `172437cae45b69031f443c0707fb0795d2f1860d3b95594be281645d8a173fe7`  
-CV checkpoint: `artifacts\runs\perception_production_100e\yolo26s_100e_seed42_20260722_214549\weights\best.pt`  
+RL checkpoint: `artifacts\runs\maskable_ppo_deadlock_safe_shield_seed42_u100\evaluations\best_model\best_model.zip`
+
+RL SHA-256: `172437cae45b69031f443c0707fb0795d2f1860d3b95594be281645d8a173fe7`
+
+CV checkpoint: `artifacts\runs\perception_production_100e\yolo26s_100e_seed42_20260722_214549\weights\best.pt`
 CV SHA-256: `4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550`
 
 ## Verification
