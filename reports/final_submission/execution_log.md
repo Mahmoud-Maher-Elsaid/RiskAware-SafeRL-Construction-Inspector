@@ -314,3 +314,16 @@ commits for the final research benchmark release. Times use UTC.
   contains a UTF-8 BOM.
 - Repair: read evidence JSON with `utf-8-sig`, which accepts both BOM and
   BOM-free UTF-8 without altering evidence.
+
+## 2026-07-29T21:30:00+03:00 — Final acceptance passed
+
+- Command: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\run_final_acceptance.ps1`
+- Result: repository hygiene, Python compilation, Ruff format, Ruff check, 272
+  tests, three grid configs, all stage evidence, the 1,350-run benchmark, 180
+  ablations, CUDA, Webots R2025a, Stage 5C policy-to-motor control, live
+  perception, Safety Shield integration, and clean process completion passed.
+- Runtime flags: policy, motors, shield, CV, CUDA, live perception, and
+  perception state effects were true; manual and fallback control were false.
+- Evidence:
+  - `reports/final_submission/final_test_results.txt`
+  - `reports/final_submission/final_runtime_summary.json`

@@ -1,0 +1,105 @@
+{
+  "status": "PASSED",
+  "generated_at": "2026-07-29T18:02:22.593899+00:00",
+  "branch": "final/research-benchmark-release",
+  "commit": "c4bd2a9a4e611f599f23cbf1f138263c4dae7836",
+  "stages": {
+    "0": "VERIFIED_COMPLETE",
+    "1": "VERIFIED_COMPLETE",
+    "2": "VERIFIED_COMPLETE",
+    "3": "VERIFIED_COMPLETE",
+    "4": "VERIFIED_COMPLETE",
+    "5": "VERIFIED_COMPLETE",
+    "6": "VERIFIED_COMPLETE",
+    "7": "VERIFIED_COMPLETE",
+    "8": "VERIFIED_COMPLETE",
+    "9": "VERIFIED_COMPLETE",
+    "10": "VERIFIED_COMPLETE"
+  },
+  "tests": {
+    "passed": 272,
+    "failed": 0,
+    "warnings": 1
+  },
+  "ruff_check": "PASSED",
+  "ruff_format": "PASSED",
+  "python_compilation": "PASSED",
+  "production_runtime": {
+    "schema_version": 1,
+    "stage": "5C",
+    "runtime_verified": true,
+    "policy_loaded": true,
+    "policy_controls_motors": true,
+    "checkpoint_path": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\runs\\maskable_ppo_deadlock_safe_shield_seed42_u100\\evaluations\\best_model\\best_model.zip",
+    "checkpoint_sha256": "172437CAE45B69031F443C0707FB0795D2F1860D3B95594BE281645D8A173FE7",
+    "policy_device": "cuda",
+    "safety_shield_active": true,
+    "safety_shield_interventions": 3,
+    "restricted_zone_metrics_recorded": true,
+    "cv_model_connected": true,
+    "cv_model_sha256": "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550",
+    "cuda_inference_verified": true,
+    "perception_live_during_mission": true,
+    "perception_affects_runtime_state": true,
+    "perception_state_change_count": 9,
+    "inference_count": 10,
+    "failure_count": 0,
+    "annotated_frame_count": 10,
+    "policy_decision_count": 10,
+    "unique_policy_action_count": 2,
+    "motor_command_change_count": 14,
+    "manual_control_used": false,
+    "fallback_controller_used": false,
+    "warmup_ms": 494.54649997642264,
+    "mission_completed": true
+  },
+  "primary_benchmark_runs": 1350,
+  "primary_benchmark_unique_runs": 1350,
+  "primary_benchmark_missing_runs": 0,
+  "primary_benchmark_failed_runs": 0,
+  "ablation_runs": 180,
+  "uncertainty_runs": 320,
+  "paper": {
+    "status": "PASSED",
+    "title": "RiskShield-PPO: Risk-Aware Safe Reinforcement Learning for Autonomous Construction-Site Inspection under Perception Uncertainty",
+    "source": "paper/main.tex",
+    "pdf": "paper/main.pdf",
+    "page_count": 4,
+    "citation_count": 7,
+    "undefined_citations": 0,
+    "missing_figures": 0,
+    "missing_tables": 0,
+    "placeholder_count": 0,
+    "compilation": {
+      "latexmk": "UNAVAILABLE_MISSING_PERL_ENGINE",
+      "pdflatex_bibtex_sequence": "PASSED"
+    },
+    "visual_validation": "PASSED",
+    "data_sources": [
+      "reports/final_submission/stage9_benchmark/raw_results.csv",
+      "reports/final_submission/stage9_benchmark/ablation_results.csv",
+      "reports/final_submission/stage9_benchmark/tables",
+      "reports/final_submission/stage9_benchmark/figures"
+    ],
+    "truthful_negative_results": [
+      "PPO, SAC, and RiskShield-PPO achieved zero full-mission success.",
+      "RiskShield-PPO's Lagrangian multiplier saturated.",
+      "One-step shielding outperformed k=3 on safety cost in the limited ablation.",
+      "The evidence is simulation-only and provides no real-world safety guarantee."
+    ]
+  },
+  "checkpoints": {
+    "ppo_sha256": "7c54226fc8927d7ef7fcdc7d5f3ff29b11fa8d1463293a9d8e3b6bebad84cc11",
+    "sac_sha256": "78fe38fcc78df0ba8f98bd07af373848833876e7ec5ddf1486cec9a3cd9ba44c",
+    "riskshield_ppo_sha256": "d6c91caeb9bb10db866cbfe947ef1cc3db0ea8dc7470d098c9af6298ab75c812",
+    "cv_sha256": "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550"
+  },
+  "limitations": [
+    "PPO, SAC, and RiskShield-PPO achieved zero full-mission success.",
+    "Validation is simulation-only and Stage 5C is bounded.",
+    "The detector supports only its recorded 14 classes.",
+    "No trained recurrent checkpoint or recurrent ablation exists.",
+    "Evaluation covers one Windows/Webots/laptop-GPU hardware scope.",
+    "No real-world safety guarantee is provided."
+  ]
+}
