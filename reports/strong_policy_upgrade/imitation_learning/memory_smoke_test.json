@@ -6,422 +6,422 @@
   "sequence_length": 32,
   "num_workers": 0,
   "pin_memory": false,
-  "initial_rss_bytes": 718512128,
-  "peak_rss_bytes": 1580855296,
-  "final_rss_bytes": 1581109248,
-  "rss_growth_bytes": 862343168,
+  "initial_rss_bytes": 718467072,
+  "peak_rss_bytes": 1582915584,
+  "final_rss_bytes": 1583136768,
+  "rss_growth_bytes": 864448512,
   "rss_growth_limit_bytes": 1073741824,
-  "second_half_rss_growth_bytes": 831488,
+  "second_half_rss_growth_bytes": 1241088,
   "second_half_rss_growth_limit_bytes": 67108864,
   "rss_samples": [
     {
       "batch": 10,
-      "rss_bytes": 1564602368
+      "rss_bytes": 1566097408
     },
     {
       "batch": 20,
-      "rss_bytes": 1564835840
+      "rss_bytes": 1566343168
     },
     {
       "batch": 30,
-      "rss_bytes": 1564823552
+      "rss_bytes": 1566359552
     },
     {
       "batch": 40,
-      "rss_bytes": 1565020160
+      "rss_bytes": 1566527488
     },
     {
       "batch": 50,
-      "rss_bytes": 1565179904
+      "rss_bytes": 1566715904
     },
     {
       "batch": 60,
-      "rss_bytes": 1565028352
+      "rss_bytes": 1566568448
     },
     {
       "batch": 70,
-      "rss_bytes": 1565184000
+      "rss_bytes": 1566724096
     },
     {
       "batch": 80,
-      "rss_bytes": 1565143040
+      "rss_bytes": 1566683136
     },
     {
       "batch": 90,
-      "rss_bytes": 1565409280
+      "rss_bytes": 1566957568
     },
     {
       "batch": 100,
-      "rss_bytes": 1565265920
+      "rss_bytes": 1566806016
     },
     {
       "batch": 110,
-      "rss_bytes": 1565294592
+      "rss_bytes": 1566838784
     },
     {
       "batch": 120,
-      "rss_bytes": 1565458432
+      "rss_bytes": 1567006720
     },
     {
       "batch": 130,
-      "rss_bytes": 1565364224
+      "rss_bytes": 1566920704
     },
     {
       "batch": 140,
-      "rss_bytes": 1565433856
+      "rss_bytes": 1566957568
     },
     {
       "batch": 150,
-      "rss_bytes": 1565556736
+      "rss_bytes": 1567076352
     },
     {
       "batch": 160,
-      "rss_bytes": 1565478912
+      "rss_bytes": 1566998528
     },
     {
       "batch": 170,
-      "rss_bytes": 1565597696
+      "rss_bytes": 1567100928
     },
     {
       "batch": 180,
-      "rss_bytes": 1565618176
+      "rss_bytes": 1567125504
     },
     {
       "batch": 190,
-      "rss_bytes": 1565523968
+      "rss_bytes": 1567035392
     },
     {
       "batch": 200,
-      "rss_bytes": 1565540352
+      "rss_bytes": 1567059968
     },
     {
       "batch": 210,
-      "rss_bytes": 1565671424
+      "rss_bytes": 1567203328
     },
     {
       "batch": 220,
-      "rss_bytes": 1565597696
+      "rss_bytes": 1567121408
     },
     {
       "batch": 230,
-      "rss_bytes": 1565605888
+      "rss_bytes": 1567125504
     },
     {
       "batch": 240,
-      "rss_bytes": 1565728768
+      "rss_bytes": 1567268864
     },
     {
       "batch": 250,
-      "rss_bytes": 1565847552
+      "rss_bytes": 1567383552
     },
     {
       "batch": 260,
-      "rss_bytes": 1565753344
+      "rss_bytes": 1567297536
     },
     {
       "batch": 270,
-      "rss_bytes": 1565663232
+      "rss_bytes": 1567203328
     },
     {
       "batch": 280,
-      "rss_bytes": 1565769728
+      "rss_bytes": 1567309824
     },
     {
       "batch": 290,
-      "rss_bytes": 1565667328
+      "rss_bytes": 1567215616
     },
     {
       "batch": 300,
-      "rss_bytes": 1565675520
+      "rss_bytes": 1567219712
     },
     {
       "batch": 310,
-      "rss_bytes": 1565683712
+      "rss_bytes": 1567232000
     },
     {
       "batch": 320,
-      "rss_bytes": 1565675520
+      "rss_bytes": 1567227904
     },
     {
       "batch": 330,
-      "rss_bytes": 1565679616
+      "rss_bytes": 1567232000
     },
     {
       "batch": 340,
-      "rss_bytes": 1565794304
+      "rss_bytes": 1567371264
     },
     {
       "batch": 350,
-      "rss_bytes": 1565687808
+      "rss_bytes": 1567260672
     },
     {
       "batch": 360,
-      "rss_bytes": 1565728768
+      "rss_bytes": 1567268864
     },
     {
       "batch": 370,
-      "rss_bytes": 1565736960
+      "rss_bytes": 1567268864
     },
     {
       "batch": 380,
-      "rss_bytes": 1565839360
+      "rss_bytes": 1567391744
     },
     {
       "batch": 390,
-      "rss_bytes": 1565949952
+      "rss_bytes": 1567502336
     },
     {
       "batch": 400,
-      "rss_bytes": 1579851776
+      "rss_bytes": 1581518848
     },
     {
       "batch": 410,
-      "rss_bytes": 1579851776
+      "rss_bytes": 1581518848
     },
     {
       "batch": 420,
-      "rss_bytes": 1579970560
+      "rss_bytes": 1581617152
     },
     {
       "batch": 430,
-      "rss_bytes": 1579872256
+      "rss_bytes": 1581522944
     },
     {
       "batch": 440,
-      "rss_bytes": 1579880448
+      "rss_bytes": 1581543424
     },
     {
       "batch": 450,
-      "rss_bytes": 1580011520
+      "rss_bytes": 1581666304
     },
     {
       "batch": 460,
-      "rss_bytes": 1580023808
+      "rss_bytes": 1581674496
     },
     {
       "batch": 470,
-      "rss_bytes": 1579921408
+      "rss_bytes": 1581568000
     },
     {
       "batch": 480,
-      "rss_bytes": 1579950080
+      "rss_bytes": 1581584384
     },
     {
       "batch": 490,
-      "rss_bytes": 1579941888
+      "rss_bytes": 1581572096
     },
     {
       "batch": 500,
-      "rss_bytes": 1579950080
+      "rss_bytes": 1581592576
     },
     {
       "batch": 510,
-      "rss_bytes": 1579941888
+      "rss_bytes": 1581588480
     },
     {
       "batch": 520,
-      "rss_bytes": 1579941888
+      "rss_bytes": 1581588480
     },
     {
       "batch": 530,
-      "rss_bytes": 1579945984
+      "rss_bytes": 1581592576
     },
     {
       "batch": 540,
-      "rss_bytes": 1579941888
+      "rss_bytes": 1581588480
     },
     {
       "batch": 550,
-      "rss_bytes": 1580048384
+      "rss_bytes": 1581703168
     },
     {
       "batch": 560,
-      "rss_bytes": 1579945984
+      "rss_bytes": 1581604864
     },
     {
       "batch": 570,
-      "rss_bytes": 1579945984
+      "rss_bytes": 1581604864
     },
     {
       "batch": 580,
-      "rss_bytes": 1579962368
+      "rss_bytes": 1581600768
     },
     {
       "batch": 590,
-      "rss_bytes": 1579970560
+      "rss_bytes": 1581608960
     },
     {
       "batch": 600,
-      "rss_bytes": 1580072960
+      "rss_bytes": 1581715456
     },
     {
       "batch": 610,
-      "rss_bytes": 1579974656
+      "rss_bytes": 1581613056
     },
     {
       "batch": 620,
-      "rss_bytes": 1579974656
+      "rss_bytes": 1581608960
     },
     {
       "batch": 630,
-      "rss_bytes": 1579974656
+      "rss_bytes": 1581608960
     },
     {
       "batch": 640,
-      "rss_bytes": 1579974656
+      "rss_bytes": 1581608960
     },
     {
       "batch": 650,
-      "rss_bytes": 1580183552
+      "rss_bytes": 1581817856
     },
     {
       "batch": 660,
-      "rss_bytes": 1579986944
+      "rss_bytes": 1581617152
     },
     {
       "batch": 670,
-      "rss_bytes": 1579982848
+      "rss_bytes": 1581613056
     },
     {
       "batch": 680,
-      "rss_bytes": 1580097536
+      "rss_bytes": 1581723648
     },
     {
       "batch": 690,
-      "rss_bytes": 1579995136
+      "rss_bytes": 1581621248
     },
     {
       "batch": 700,
-      "rss_bytes": 1580105728
+      "rss_bytes": 1581719552
     },
     {
       "batch": 710,
-      "rss_bytes": 1580101632
+      "rss_bytes": 1581719552
     },
     {
       "batch": 720,
-      "rss_bytes": 1579999232
+      "rss_bytes": 1581633536
     },
     {
       "batch": 730,
-      "rss_bytes": 1580003328
+      "rss_bytes": 1581654016
     },
     {
       "batch": 740,
-      "rss_bytes": 1580015616
+      "rss_bytes": 1582084096
     },
     {
       "batch": 750,
-      "rss_bytes": 1580109824
+      "rss_bytes": 1582178304
     },
     {
       "batch": 760,
-      "rss_bytes": 1580126208
+      "rss_bytes": 1582194688
     },
     {
       "batch": 770,
-      "rss_bytes": 1580015616
+      "rss_bytes": 1582104576
     },
     {
       "batch": 780,
-      "rss_bytes": 1580118016
+      "rss_bytes": 1582206976
     },
     {
       "batch": 790,
-      "rss_bytes": 1580560384
+      "rss_bytes": 1582637056
     },
     {
       "batch": 800,
-      "rss_bytes": 1580560384
+      "rss_bytes": 1582641152
     },
     {
       "batch": 810,
-      "rss_bytes": 1580761088
+      "rss_bytes": 1582841856
     },
     {
       "batch": 820,
-      "rss_bytes": 1580556288
+      "rss_bytes": 1582637056
     },
     {
       "batch": 830,
-      "rss_bytes": 1580670976
+      "rss_bytes": 1582751744
     },
     {
       "batch": 840,
-      "rss_bytes": 1580560384
+      "rss_bytes": 1582645248
     },
     {
       "batch": 850,
-      "rss_bytes": 1580568576
+      "rss_bytes": 1582645248
     },
     {
       "batch": 860,
-      "rss_bytes": 1580576768
+      "rss_bytes": 1582653440
     },
     {
       "batch": 870,
-      "rss_bytes": 1580580864
+      "rss_bytes": 1582653440
     },
     {
       "batch": 880,
-      "rss_bytes": 1580584960
+      "rss_bytes": 1582657536
     },
     {
       "batch": 890,
-      "rss_bytes": 1580687360
+      "rss_bytes": 1582755840
     },
     {
       "batch": 900,
-      "rss_bytes": 1580593152
+      "rss_bytes": 1582653440
     },
     {
       "batch": 910,
-      "rss_bytes": 1580695552
+      "rss_bytes": 1582755840
     },
     {
       "batch": 920,
-      "rss_bytes": 1580593152
+      "rss_bytes": 1582649344
     },
     {
       "batch": 930,
-      "rss_bytes": 1580593152
+      "rss_bytes": 1582649344
     },
     {
       "batch": 940,
-      "rss_bytes": 1580732416
+      "rss_bytes": 1582788608
     },
     {
       "batch": 950,
-      "rss_bytes": 1580625920
+      "rss_bytes": 1582682112
     },
     {
       "batch": 960,
-      "rss_bytes": 1580630016
+      "rss_bytes": 1582686208
     },
     {
       "batch": 970,
-      "rss_bytes": 1580838912
+      "rss_bytes": 1582903296
     },
     {
       "batch": 980,
-      "rss_bytes": 1580855296
+      "rss_bytes": 1582915584
     },
     {
       "batch": 990,
-      "rss_bytes": 1580748800
+      "rss_bytes": 1582813184
     },
     {
       "batch": 1000,
-      "rss_bytes": 1580642304
+      "rss_bytes": 1582706688
     }
   ],
-  "minimum_available_physical_bytes": 19606396928,
+  "minimum_available_physical_bytes": 19339718656,
   "gpu_allocated_bytes": 35929600,
   "gpu_reserved_bytes": 111149056,
-  "elapsed_seconds": 25.712170000000697,
-  "sequences_per_second": 311.13670106764647,
+  "elapsed_seconds": 25.683519300000626,
+  "sequences_per_second": 311.48378415419086,
   "checkpoint_path": "artifacts/strong_policy_upgrade/imitation_learning/memory_smoke_checkpoint.pt",
-  "checkpoint_sha256": "245123cef0c2ee6127d7b4b741a667dc5cdd67f509c320969d12948c464687c8",
+  "checkpoint_sha256": "1b0aabd524837c416b24c5f84b488229c9c9ceaca7394c94d4e5219b290c5a88",
   "checkpoint_round_trip_verified": true,
   "source_dataset_sha256": "06f872d819241563d3bf735d97c203d3de9633fbbc9cb3e5e99f95a1edbb1285",
   "active_mmap_chunks": 2

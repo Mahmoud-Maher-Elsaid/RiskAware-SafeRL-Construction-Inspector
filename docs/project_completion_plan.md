@@ -7,13 +7,13 @@ Last updated: 2026-07-29
 | Field | Current value |
 |---|---|
 | Current task | Strong-policy upgrade: memory-safe Behavior Cloning |
-| Current state | Memory gate passed; Behavior Cloning remains below acceptance after six analyzed improvement attempts (best observed held-out accuracy 82.05%) |
+| Current state | Memory gate passed; Behavior Cloning is blocked below acceptance after seven analyzed attempts (best observed held-out accuracy 82.05%) |
 | Evidence collected | Original dataset SHA-256 and 13 chunk hashes; external interrupted-work backup; bounded mmap index profile; 1,000-batch CUDA forward/backward memory smoke |
 | Files changed | Recurrent masked policy, recurrent reward/cost rollout buffer, Behavior Cloning loader/trainer, memory validator, regression tests, recovery report, and docs |
 | Tests run | Targeted Ruff; 11 loader/policy/buffer tests; real 1,000-batch CUDA memory smoke with checkpoint round trip |
 | Runtime result | Memory remains bounded with two mmap chunks; zero invalid predictions; best held-out action accuracy 82.05% versus the unchanged 85% requirement |
 | Remaining work | Complete architecture-stage verification/commit, Behavior Cloning held-out gate, three DAgger iterations, RiskShield-HRMPPO v2 training/evaluation, CV/Webots/benchmark/paper/final acceptance |
-| Blockers | Privileged A* labels depend on hidden environment truth absent from stored observations; causal observation-only A* reaches 52.3%, and Behavior Cloning has not cleared 85% |
+| Blockers | Privileged A* labels depend on hidden environment truth absent from stored observations. Clearing the unchanged 85% causal gate requires authorization for an additional observation-consistent correction dataset or a revised observation contract. |
 
 ## Phase checklist
 
