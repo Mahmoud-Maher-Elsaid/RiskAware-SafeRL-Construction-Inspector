@@ -173,3 +173,20 @@ commits for the final research benchmark release. Times use UTC.
 - Evidence:
   - `reports/final_submission/stage7_perception/validation.json`
   - `reports/final_submission/stage7_perception/selected_runtime_annotation.png`
+
+## 2026-07-29T18:20:00Z — Stage 8 uncertainty experiments
+
+- Stage: 8
+- Commands:
+  - `.venv\Scripts\python.exe -m pytest -q tests\uncertainty`
+  - `.venv\Scripts\python.exe scripts\run_uncertainty_experiments.py`
+- Decision: perturb only agent observations while preserving clean simulator
+  truth for metrics and shield prediction.
+- Result: four tests passed. All 320 expected episodes completed with 320 unique
+  run identifiers across 64 conditions. Mean robustness score was 0.8893 under
+  the documented normalization; baseline mission success was zero and therefore
+  contributes a neutral ratio rather than an invented improvement.
+- Evidence:
+  - `reports/final_submission/stage8_uncertainty/raw_results.csv`
+  - `reports/final_submission/stage8_uncertainty/aggregated_results.csv`
+  - `reports/final_submission/stage8_uncertainty/summary.json`

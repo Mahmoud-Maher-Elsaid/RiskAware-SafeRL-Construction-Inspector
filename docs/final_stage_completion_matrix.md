@@ -13,7 +13,7 @@ numbers. This matrix is updated only after implementation and validation.
 | 5 — Predictive shield | Historical Stage 3E and Stage 5C shield | VERIFIED_COMPLETE | Structured k-step tests and 90-run shield benchmark passed |
 | 6 — Three Webots worlds | Historical Stages 4A–5C | VERIFIED_COMPLETE | Three real autonomous runtime and visual gates passed |
 | 7 — Perception | Historical Stage 5B plus Stage 5C integration | VERIFIED_COMPLETE | Hash/CUDA/live state change and typed mapping tests passed |
-| 8 — Uncertainty | Domain-randomization utility | MISSING | Required deterministic conditions produce raw/summary results |
+| 8 — Uncertainty | Domain-randomization utility | VERIFIED_COMPLETE | 320 unique deterministic episodes and robustness analysis completed |
 | 9 — Benchmark | Existing isolated evaluations | MISSING | Exactly 1,350 unique primary runs plus ablations and statistics |
 | 10 — Paper/release | Paper skeleton | PARTIAL | Paper values derive from outputs; final acceptance and release pass |
 

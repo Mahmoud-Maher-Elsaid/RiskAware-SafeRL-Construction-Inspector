@@ -1,0 +1,17 @@
+{
+  "status": "PASSED",
+  "run_count": 320,
+  "expected_run_count": 320,
+  "conditions": 64,
+  "baseline": {
+    "hazard_recall": 0.2,
+    "collision_rate": 0.0,
+    "near_miss_rate": 0.0032,
+    "constraint_violation_rate": 0.0032,
+    "coverage": 0.02638888888888889,
+    "shield_interventions": 4.2,
+    "mission_success": 0.0
+  },
+  "robustness_definition": "0.5*mean(relative recall, coverage, success) + 0.5*mean(1/(1+positive safety degradation)), clipped to [0,1]",
+  "mean_robustness_score": 0.8892919755271225
+}

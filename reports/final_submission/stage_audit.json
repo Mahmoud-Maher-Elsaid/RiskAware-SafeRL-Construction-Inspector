@@ -102,13 +102,13 @@
     {
       "stage": 8,
       "name": "Uncertainty experiments",
-      "status": "MISSING",
-      "source_files": ["src/riskaware_saferrl/domain_randomization.py"],
-      "tests": ["tests/test_domain_randomization.py"],
-      "runtime_entry_point": null,
-      "evidence_path": null,
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Implement deterministic perception, visual, density, and unseen-layout perturbations and run experiments."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/uncertainty/injection.py", "src/riskaware_saferrl/domain_randomization.py"],
+      "tests": ["tests/uncertainty/test_uncertainty_injection.py", "tests/test_domain_randomization.py"],
+      "runtime_entry_point": "scripts/run_uncertainty_experiments.py",
+      "evidence_path": "reports/final_submission/stage8_uncertainty",
+      "last_verified_commit": "pending Stage 8 commit",
+      "remaining_work": "Baseline learned-policy success is zero and is explicitly handled as a neutral robustness component."
     },
     {
       "stage": 9,
