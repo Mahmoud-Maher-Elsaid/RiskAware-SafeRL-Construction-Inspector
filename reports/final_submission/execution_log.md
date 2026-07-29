@@ -118,3 +118,17 @@ commits for the final research benchmark release. Times use UTC.
   - `reports/final_submission/stage4_riskshield_ppo/comparison_results.csv`
   - `reports/final_submission/stage4_riskshield_ppo/comparison_summary.json`
   - `reports/final_submission/stage4_riskshield_ppo/constraint_training_metrics.csv`
+
+## 2026-07-29T17:20:00Z — Stage 5 predictive Safety Shield
+
+- Stage: 5
+- Commands:
+  - `.venv\Scripts\python.exe -m pytest -q tests\safety\test_predictive_safety_shield.py`
+  - `.venv\Scripts\python.exe scripts\benchmark_predictive_shield.py`
+- Decision: keep the research k-step shield isolated from the verified
+  production Stage 5C implementation.
+- Result: unit, boundary, moving-hazard, k-step, and emergency-stop tests passed.
+  Disabled, one-step, and three-step modes completed 90 deterministic episodes.
+- Evidence:
+  - `reports/final_submission/stage5_safety_shield/raw_results.csv`
+  - `reports/final_submission/stage5_safety_shield/summary.json`

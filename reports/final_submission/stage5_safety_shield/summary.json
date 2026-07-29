@@ -1,0 +1,39 @@
+{
+  "status": "PASSED",
+  "run_count": 90,
+  "modes": {
+    "disabled": {
+      "episodes": 30,
+      "collision_rate": 0.03333333333333333,
+      "mean_constraint_violations": 27.533333333333335,
+      "mean_safety_cost": 27.933333333333334,
+      "mean_hazard_recall": 0.06333333333333332,
+      "success_rate": 0.0,
+      "mean_interventions": 0.0,
+      "unnecessary_intervention_rate_immediate_proxy": 0.0,
+      "mean_latency_ms": 0.0
+    },
+    "1_step": {
+      "episodes": 30,
+      "collision_rate": 0.0,
+      "mean_constraint_violations": 2.6666666666666665,
+      "mean_safety_cost": 2.6666666666666665,
+      "mean_hazard_recall": 0.13611111111111113,
+      "success_rate": 0.0,
+      "mean_interventions": 16.166666666666668,
+      "unnecessary_intervention_rate_immediate_proxy": 0.0,
+      "mean_latency_ms": 0.006331543525178589
+    },
+    "3_step": {
+      "episodes": 30,
+      "collision_rate": 0.0,
+      "mean_constraint_violations": 5.9,
+      "mean_safety_cost": 5.9,
+      "mean_hazard_recall": 0.12111111111111113,
+      "success_rate": 0.0,
+      "mean_interventions": 30.6,
+      "unnecessary_intervention_rate_immediate_proxy": 0.6710239651416122,
+      "mean_latency_ms": 0.011241522331180965
+    }
+  }
+}

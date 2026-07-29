@@ -69,13 +69,13 @@
     {
       "stage": 5,
       "name": "Predictive Safety Shield",
-      "status": "PARTIAL",
-      "source_files": ["src/riskaware_saferrl/safety/shield.py", "src/riskaware_saferrl/webots/runtime_control.py"],
-      "tests": ["tests/test_safety_shield.py", "tests/webots/test_stage5c_runtime_control.py"],
-      "runtime_entry_point": "scripts/run_complete_autonomous_inspection.ps1",
-      "evidence_path": "reports/final_project_completion/final_runtime_summary.json",
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Add structured k-step prediction, moving-worker forecasts, emergency cases, and latency benchmark."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/safety/predictive_shield.py", "src/riskaware_saferrl/webots/runtime_control.py"],
+      "tests": ["tests/safety/test_predictive_safety_shield.py", "tests/webots/test_stage5c_runtime_control.py"],
+      "runtime_entry_point": "scripts/benchmark_predictive_shield.py",
+      "evidence_path": "reports/final_submission/stage5_safety_shield",
+      "last_verified_commit": "pending Stage 5 commit",
+      "remaining_work": "Research shield is intentionally isolated from the already verified production shield."
     },
     {
       "stage": 6,
