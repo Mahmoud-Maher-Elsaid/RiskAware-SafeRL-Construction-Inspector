@@ -6,14 +6,14 @@ Last updated: 2026-07-29
 
 | Field | Current value |
 |---|---|
-| Current task | Final acceptance, reporting, and Git integration |
-| Current state | Stage 5B first-person CUDA perception and Stage 5C RL motor-control runtime passed |
-| Evidence collected | Webots R2025a; PyTorch `2.11.0+cu128`; CUDA 12.8; RTX 3070 Ti; verified RL/CV hashes; curated visual, action, shield, motor, and perception evidence |
-| Files changed | Stage 5 builders, worlds, controllers, launcher, validators, tests, configs, perception, policy gate, recurrent/domain modules, CI, README, paper, and docs |
-| Tests run | Ruff lint/format; 228-test full pytest suite; Python compilation; real Stage 5B and Stage 5C Webots/CUDA runs; exact production launcher |
-| Runtime result | Stage 5B: 8/8 deterministic waypoints, 22/22 CV frames, valid first-person views. Stage 5C: 10 RL decisions, three shield interventions, 14 motor-command changes, 10/10 CUDA CV inferences |
-| Remaining work | Trained recurrent-policy comparison, comprehensive all-policy publication benchmark, and paper completion |
-| Blockers | No trained recurrent checkpoint or approved publication experiment budget/protocol exists; these are research expansions beyond the named Stage 5C runtime gate |
+| Current task | Strong-policy upgrade: memory-safe Behavior Cloning |
+| Current state | Interrupted working tree recovered; immutable 120,144-transition expert dataset verified; mmap-backed loader and recurrent architecture memory gate passed |
+| Evidence collected | Original dataset SHA-256 and 13 chunk hashes; external interrupted-work backup; bounded mmap index profile; 1,000-batch CUDA forward/backward memory smoke |
+| Files changed | Recurrent masked policy, recurrent reward/cost rollout buffer, Behavior Cloning loader/trainer, memory validator, regression tests, recovery report, and docs |
+| Tests run | Targeted Ruff; 11 loader/policy/buffer tests; real 1,000-batch CUDA memory smoke with checkpoint round trip |
+| Runtime result | Batch size 8, sequence length 32, workers 0; two active mmap chunks; second-half RSS growth about 0.2 MiB; original dataset hash unchanged |
+| Remaining work | Complete architecture-stage verification/commit, Behavior Cloning held-out gate, three DAgger iterations, RiskShield-HRMPPO v2 training/evaluation, CV/Webots/benchmark/paper/final acceptance |
+| Blockers | None at the current memory-safe Behavior Cloning recovery stage |
 
 ## Phase checklist
 
@@ -30,6 +30,14 @@ Last updated: 2026-07-29
 - [x] Preserve existing reproducible benchmark JSON/CSV artifacts and migrate the Stage 5B benchmark into the repository.
 - [x] Complete Ruff, full pytest, CI/test markers, documentation, and paper alignment.
 - [x] Commit and push stage-specific completion work.
+- [x] Recover and externally back up the interrupted strong-policy working tree.
+- [x] Preserve and hash-verify the accepted 120,144 expert transitions.
+- [x] Replace copied in-memory sequences with a two-chunk LRU mmap cache and compact index.
+- [x] Pass the 1,000-batch CUDA Behavior Cloning memory regression gate.
+- [ ] Pass Behavior Cloning held-out accuracy and per-action recall gates.
+- [ ] Complete three genuine DAgger iterations.
+- [ ] Train and accept RiskShield-HRMPPO v2 against all replacement gates.
+- [ ] Complete CV audit, three-world Webots validation, benchmark-v2, ablations, paper, and Git acceptance.
 
 ## Safety evidence
 

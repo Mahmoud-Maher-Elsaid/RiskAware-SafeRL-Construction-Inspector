@@ -1,0 +1,132 @@
+{
+  "status": "FAILED",
+  "device": "cuda",
+  "cuda_device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "training_sequences": 2153,
+  "validation_sequences": 242,
+  "test_sequences": 247,
+  "sequence_length": 32,
+  "epochs_completed": 2,
+  "checkpoint_path": "artifacts/strong_policy_upgrade/imitation_learning/best_behavior_cloning.pt",
+  "checkpoint_sha256": "eb14dc40a527b513a4c0ae06c54be77066f80e9c0603748931e361a86b51799e",
+  "validation": {
+    "loss": 0.9545433819293976,
+    "accuracy": 0.6275826446280992,
+    "invalid_action_predictions": 0,
+    "per_action_precision": [
+      0.6060606060606061,
+      0.5946380697050938,
+      0.6535117056856188,
+      0.5992608236536431,
+      0.819376026272578
+    ],
+    "per_action_recall": [
+      0.6185567010309279,
+      0.5955961331901182,
+      0.5501126126126126,
+      0.6434240362811792,
+      1.0
+    ],
+    "per_action_support": [
+      1843,
+      1862,
+      1776,
+      1764,
+      499
+    ],
+    "examples": 7744
+  },
+  "held_out_test": {
+    "loss": 0.9318308085203171,
+    "accuracy": 0.6291751012145749,
+    "invalid_action_predictions": 0,
+    "per_action_precision": [
+      0.6427304964539007,
+      0.6681034482758621,
+      0.5624502784407319,
+      0.5127118644067796,
+      0.8817204301075269
+    ],
+    "per_action_recall": [
+      0.6694367497691598,
+      0.6485355648535565,
+      0.47164776517678453,
+      0.559445178335535,
+      1.0
+    ],
+    "per_action_support": [
+      2166,
+      2151,
+      1499,
+      1514,
+      574
+    ],
+    "examples": 7904
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "training_loss": 1.0264343549223507,
+      "validation": {
+        "loss": 1.0721724480390549,
+        "accuracy": 0.5556559917355371,
+        "invalid_action_predictions": 0,
+        "per_action_precision": [
+          0.5127420998980632,
+          0.4702207413577676,
+          0.5665458311755567,
+          0.5916575192096597,
+          0.819376026272578
+        ],
+        "per_action_recall": [
+          0.272924579489962,
+          0.6063372717508055,
+          0.615990990990991,
+          0.6111111111111112,
+          1.0
+        ],
+        "per_action_support": [
+          1843,
+          1862,
+          1776,
+          1764,
+          499
+        ],
+        "examples": 7744
+      },
+      "selection_score": 0.6238871366080276
+    },
+    {
+      "epoch": 2,
+      "training_loss": 0.8860354213153615,
+      "validation": {
+        "loss": 0.9545433819293976,
+        "accuracy": 0.6275826446280992,
+        "invalid_action_predictions": 0,
+        "per_action_precision": [
+          0.6060606060606061,
+          0.5946380697050938,
+          0.6535117056856188,
+          0.5992608236536431,
+          0.819376026272578
+        ],
+        "per_action_recall": [
+          0.6185567010309279,
+          0.5955961331901182,
+          0.5501126126126126,
+          0.6434240362811792,
+          1.0
+        ],
+        "per_action_support": [
+          1843,
+          1862,
+          1776,
+          1764,
+          499
+        ],
+        "examples": 7744
+      },
+      "selection_score": 0.7651107977812523
+    }
+  ]
+}
