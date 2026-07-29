@@ -131,8 +131,9 @@ COMPLETE_AUTONOMOUS_INSPECTION=PASSED
 """,
         encoding="utf-8",
     )
+    history = git("log", "--oneline", "--decorate", "--graph", "-60")
     (REPORTS / "final_git_history.txt").write_text(
-        git("log", "--oneline", "--decorate", "--graph", "-60") + "\n",
+        "\n".join(line.rstrip() for line in history.splitlines()) + "\n",
         encoding="utf-8",
     )
     tracked = git("ls-files").splitlines()
