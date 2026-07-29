@@ -14,3 +14,13 @@
 - Failure: PPO, SAC, and RiskShield-PPO v1 achieved zero mission success in the existing benchmark
 - Root causes: unused action masks, flattened spatial inputs, missing recurrent memory, insufficient training, saturated Lagrange multiplier, duplicated safety penalties, and non-mission-aware early stopping
 - Evidence: `failure_diagnosis.json`, `failure_diagnosis.md`, `v1_diagnostic_traces.json`, and `diagnosis_planners/`
+- Commit: `af59974`
+
+## 2026-07-29 — V2 environment and objective
+
+- Decision: preserve `ResearchConstructionEnv` unchanged and add a versioned `ResearchConstructionEnvV2`
+- Repair: persistent semantic evidence, explicit action-mask observation, cyclic orientation, recurrent context fields, and stable episode-level perception sampling
+- Repair: task reward and safety cost are independent; progress uses discounted potential shaping
+- Repair: inspection coverage and explored-area coverage are separate metrics
+- Validation: original and v2 environment suites passed (14 tests)
+- Validation: Gymnasium checker and deterministic step/reset checks passed
