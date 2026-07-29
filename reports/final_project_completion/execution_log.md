@@ -78,3 +78,16 @@
 - Fixed two validator implementation defects found by its tests: OpenCV Hough-line output reshaping and unequal shifted-sequence `zip` handling.
 - Replaced an inaccurate HSV sky classifier that mislabeled gray construction surfaces with a dominant quantized-background ratio; retained independent ground, edge, and horizon gates.
 - Stage 5B runtime and visual validation passed. Policy motor control remained truthfully false for this deterministic waypoint baseline.
+
+## 2026-07-29 — Stage 5C RL motor-control integration
+
+- Selected the compatible deadlock-safe shield MaskablePPO checkpoint with SHA-256 `172437CAE45B69031F443C0707FB0795D2F1860D3B95594BE281645D8A173FE7`.
+- Added a dedicated Stage 5C Webots robot controller, supervisor, generated world, runtime SafetyShield adapter, launcher, tests, and evidence pipeline.
+- The first runtime failed because Webots resolved Python outside the venv and the reused Stage 5A supervisor consumed a stale completion marker.
+- Fixed Webots controller Python resolution by prepending the venv Scripts directory to PATH.
+- Replaced the reused supervisor with a Stage 5C-specific first-person supervisor and marker lifecycle.
+- Real runtime passed with policy inference on CUDA, 10 decisions, two distinct policy actions, three distinct wheel-command pairs, and 14 motor-command changes.
+- SafetyShield recorded three real restricted-zone interventions; emergency-stop behavior is covered by executable tests.
+- PPE perception ran 10 CUDA inferences with zero failures and produced 10 annotations.
+- Perception changed the checkpoint-compatible risk observation in nine decisions before policy inference.
+- Manual control and fallback controller use were both false.
