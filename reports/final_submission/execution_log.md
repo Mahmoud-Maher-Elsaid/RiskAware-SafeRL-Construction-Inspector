@@ -96,3 +96,25 @@ commits for the final research benchmark release. Times use UTC.
   - `reports/final_submission/stage3_rl_baselines/summary.json`
   - `reports/final_submission/stage3_rl_baselines/evaluation_results.csv`
   - `reports/final_submission/stage3_rl_baselines/training_metrics.csv`
+
+## 2026-07-29T17:10:00Z — Stage 4 RiskShield-PPO
+
+- Stage: 4
+- Commands:
+  - `.venv\Scripts\python.exe -m pytest -q tests\algorithms\test_riskshield_ppo.py`
+  - `.venv\Scripts\python.exe scripts\train_riskshield_ppo.py`
+  - `.venv\Scripts\python.exe scripts\evaluate_riskshield_ppo.py`
+- Decision: implement PPO-Lagrangian with a learned auxiliary cost-value
+  function. Keep the predictive shield separable and disabled during training.
+- Result: the constraint altered the optimized reward, the cost critic updated,
+  and the multiplier rose from zero to its cap. Early stopping activated at
+  15,300 steps after 50 non-improving episodes. Four configurations completed
+  120 deterministic evaluation episodes.
+- Negative result: no learned policy completed the full inspection task.
+  RiskShield-PPO reduced unshielded mean safety cost from PPO's 55.13 to 27.93;
+  the k-step shield reduced both policies to approximately six cost units and
+  eliminated observed collisions in this evaluation.
+- Evidence:
+  - `reports/final_submission/stage4_riskshield_ppo/comparison_results.csv`
+  - `reports/final_submission/stage4_riskshield_ppo/comparison_summary.json`
+  - `reports/final_submission/stage4_riskshield_ppo/constraint_training_metrics.csv`

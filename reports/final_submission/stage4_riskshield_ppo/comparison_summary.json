@@ -1,0 +1,42 @@
+{
+  "status": "PASSED",
+  "run_count": 120,
+  "comparisons": {
+    "ppo_without_shield": {
+      "episodes": 30,
+      "mean_return": -67.63166666666643,
+      "mean_safety_cost": 55.13333333333333,
+      "mean_hazard_recall": 0.06111111111111111,
+      "collision_rate": 0.1,
+      "mean_shield_interventions": 0.0,
+      "success_rate": 0.0
+    },
+    "ppo_with_shield": {
+      "episodes": 30,
+      "mean_return": -31.68166666666656,
+      "mean_safety_cost": 5.5,
+      "mean_hazard_recall": 0.11000000000000001,
+      "collision_rate": 0.0,
+      "mean_shield_interventions": 38.96666666666667,
+      "success_rate": 0.0
+    },
+    "riskshield_without_shield": {
+      "episodes": 30,
+      "mean_return": -44.37999999999992,
+      "mean_safety_cost": 27.933333333333334,
+      "mean_hazard_recall": 0.06333333333333332,
+      "collision_rate": 0.03333333333333333,
+      "mean_shield_interventions": 0.0,
+      "success_rate": 0.0
+    },
+    "riskshield_with_shield": {
+      "episodes": 30,
+      "mean_return": -31.298333333333233,
+      "mean_safety_cost": 5.9,
+      "mean_hazard_recall": 0.12111111111111113,
+      "collision_rate": 0.0,
+      "mean_shield_interventions": 30.6,
+      "success_rate": 0.0
+    }
+  }
+}

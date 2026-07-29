@@ -58,13 +58,13 @@
     {
       "stage": 4,
       "name": "RiskShield-PPO",
-      "status": "PARTIAL",
-      "source_files": ["src/riskaware_saferrl/safety/lagrangian.py"],
-      "tests": ["tests/test_lagrangian.py"],
-      "runtime_entry_point": "scripts/train_curriculum_ppo.py",
-      "evidence_path": "artifacts/runs/dual_critic_maskable_ppo_calibration_seed42_u20",
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Create the final constrained method, verify cost objective influence, and run four-way comparison."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/algorithms/riskshield_ppo.py", "src/riskaware_saferrl/safety/lagrangian.py"],
+      "tests": ["tests/algorithms/test_riskshield_ppo.py", "tests/test_lagrangian.py"],
+      "runtime_entry_point": "scripts/evaluate_riskshield_ppo.py",
+      "evidence_path": "reports/final_submission/stage4_riskshield_ppo",
+      "last_verified_commit": "pending Stage 4 commit",
+      "remaining_work": "Multiplier saturation and zero learned-policy success are documented limitations."
     },
     {
       "stage": 5,

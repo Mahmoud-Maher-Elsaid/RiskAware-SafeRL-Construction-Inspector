@@ -106,6 +106,14 @@ class EpisodeMetricsCallback(BaseCallback):
                     "constraint_violations": int(info.get("near_misses", 0))
                     + int(info.get("restricted_violations", 0)),
                     "success": bool(info.get("success", False)),
+                    "cost_value_loss": float(info.get("cost_value_loss", 0.0)),
+                    "lagrangian_multiplier": float(
+                        info.get("lagrangian_multiplier", 0.0)
+                    ),
+                    "safety_budget": float(info.get("safety_budget", 0.0)),
+                    "shield_interventions": int(
+                        bool(info.get("shield_intervention", False))
+                    ),
                 }
             )
             safety_adjusted_return = float(self.episode_reward[index] - self.episode_cost[index])
