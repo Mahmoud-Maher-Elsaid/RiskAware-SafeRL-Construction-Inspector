@@ -50,6 +50,10 @@ artifacts/checkpoints/*
 # Resumable research benchmark per-run caches (summaries remain tracked)
 /reports/final_submission/stage9_benchmark/cache/
 /reports/final_submission/stage9_benchmark/validation/*/cache/
+/reports/final_submission/stage9_benchmark/validation/*/run_manifest.json
+/reports/final_submission/stage9_benchmark/monitor/
+/reports/final_submission/stage9_benchmark/recovery/preliminary_smoke_cache/
+/reports/final_submission/stage9_benchmark/recovery/preliminary_smoke_outputs/
 
 # Local PPE dataset and source archive
 /Personal Protective Equipment - Combined Model.v1i.yolov8/

@@ -9,15 +9,15 @@ do not match the final research roadmap. The mapping below is evidence-based.
 | Final stage | Existing repository work | Audit status | Remaining work |
 |---|---|---|---|
 | 0 — Foundation | Packaging, CI, README, Git history, release tag | PARTIAL | Final architecture, methodology, reproducibility, demo, troubleshooting, changelog, link validation |
-| 1 — Grid benchmark | `ConstructionInspectionEnv`, scenarios, masks, semantic channels, tests | PARTIAL | Orientation, dynamic hazards, PPE risk, configurable noise, typed schema, configs, serialization and checker gate |
-| 2 — Expert planners | A*, oracle inspection, baseline evaluator | PARTIAL | Frontier and nearest-risk planners, risk-aware cost, replanning telemetry, final evaluation |
-| 3 — PPO and SAC | Genuine PPO/MaskablePPO training and checkpoints | PARTIAL | SAC adapter/training/checkpoint, unified deterministic evaluation and final plots |
-| 4 — RiskShield-PPO | Lagrange multiplier and prior constrained experiments | PARTIAL | Benchmark-ready constrained training path, cost telemetry, comparisons, documented objective |
-| 5 — Predictive shield | One-step semantic `SafetyShield`; Stage 5C motor-loop shield | PARTIAL | Structured k-step prediction, moving-worker prediction, latency and shield ablations |
-| 6 — Three Webots worlds | Six historical worlds; verified Stage 5C world | PARTIAL | Exactly three parameterized final worlds and smoke/visual/physics evidence |
-| 7 — Perception | Live YOLO CUDA inference, temporal state integration, model hash | PARTIAL | Final typed semantic-risk mapper, model card, stale-frame and projection validation |
-| 8 — Uncertainty | Basic domain randomization only | MISSING | Deterministic FN, visual, density, unseen-layout protocol and experiments |
-| 9 — Research benchmark | Historical scenario evaluations | MISSING | Resumable 1,350-run matrix, statistics, figures, ablations |
+| 1 — Grid benchmark | Research environment, scenarios, masks, semantic channels, tests | VERIFIED_COMPLETE | None |
+| 2 — Expert planners | Risk-aware A*, frontier exploration, nearest-risk revisit | VERIFIED_COMPLETE | None |
+| 3 — PPO and SAC | Genuine PPO and SAC training, checkpoints, deterministic evaluation | VERIFIED_COMPLETE | Learned-policy mission success is a documented negative result |
+| 4 — RiskShield-PPO | PPO-Lagrangian, learned cost value, multiplier telemetry | VERIFIED_COMPLETE | Multiplier saturation and zero mission success remain limitations |
+| 5 — Predictive shield | Structured k-step research shield and Stage 5C motor-loop shield | VERIFIED_COMPLETE | None for simulator scope |
+| 6 — Three Webots worlds | Parameterized small, medium, and dynamic worlds | VERIFIED_COMPLETE | None for simulation gate |
+| 7 — Perception | Live YOLO CUDA inference and typed semantic risk mapping | VERIFIED_COMPLETE | Detector classes and real-world validity remain limited |
+| 8 — Uncertainty | Deterministic false-negative, visual, density, and layout perturbations | VERIFIED_COMPLETE | 320 unique episodes completed |
+| 9 — Research benchmark | Five algorithms across 27 conditions and ten paired seeds | VERIFIED_COMPLETE | 1,350 unique primary runs and 180 ablations completed with no unresolved failures |
 | 10 — Paper and release | Skeleton IEEE LaTeX file | PARTIAL | Real results, verified references, complete sections, release/acceptance tooling |
 
 ## Verified baseline facts
@@ -29,10 +29,13 @@ do not match the final research roadmap. The mapping below is evidence-based.
   `perception_affects_runtime_state` are true in the accepted runtime summary.
 - `manual_control_used` and `fallback_controller_used` are false.
 - The production RL checkpoint is a genuine 102,400-step MaskablePPO checkpoint.
-- Existing constrained runs contain Lagrange metadata and telemetry, but the final
-  RiskShield-PPO method has not yet passed the requested comparisons.
-- No SAC checkpoint or full research matrix exists at audit time.
-- The paper is a section skeleton and its bibliography contains no references.
+- RiskShield-PPO's constrained objective changed training, but its multiplier
+  saturated and it did not solve complete missions.
+- PPO, SAC, and RiskShield-PPO all achieved zero full-mission success in the
+  final grid matrix; planner success was substantially stronger.
+- The Stage 9 matrix contains 1,350 unique primary records, zero missing runs,
+  zero unresolved failures, and 180 paired ablation records.
+- Stage 10 remains incomplete until the paper and release gates pass.
 
 ## Classification vocabulary
 

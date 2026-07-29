@@ -1,0 +1,61 @@
+{
+  "method": {
+    "design": "Repeated measures by site size, hazard density, noise, and seed.",
+    "omnibus_test": "Friedman rank test because bounded and zero-inflated metrics need not be normal.",
+    "planned_pair": "Paired Wilcoxon signed-rank: RiskShield-PPO versus PPO.",
+    "multiple_comparison_correction": "Holm family-wise correction across six planned metrics.",
+    "effect_size": "Standardized paired mean difference; zero when paired differences have zero variance.",
+    "confidence_intervals": "Two-sided 95% Student-t intervals over ten evaluation seeds in each aggregate cell.",
+    "missing_data_policy": "No imputation; Stage 9 fails if any primary run is missing."
+  },
+  "metrics": {
+    "hazard_recall": {
+      "friedman_statistic": 959.1984519458177,
+      "friedman_p_value": 2.480194281994298e-206,
+      "riskshield_vs_ppo_standardized_paired_mean_difference": 0.5533082880899644,
+      "wilcoxon_raw_p_value": 7.367385228572195e-17,
+      "paired_sample_count": 270,
+      "wilcoxon_holm_adjusted_p_value": 2.946954091428878e-16
+    },
+    "inspection_coverage": {
+      "friedman_statistic": 977.0342349158309,
+      "friedman_p_value": 3.3843826157207614e-210,
+      "riskshield_vs_ppo_standardized_paired_mean_difference": 0.7715776374010361,
+      "wilcoxon_raw_p_value": 5.212873274259378e-29,
+      "paired_sample_count": 270,
+      "wilcoxon_holm_adjusted_p_value": 3.127723964555627e-28
+    },
+    "collision_rate": {
+      "friedman_statistic": 783.7004405286341,
+      "friedman_p_value": 2.6051852319372423e-168,
+      "riskshield_vs_ppo_standardized_paired_mean_difference": -0.2823184437894621,
+      "wilcoxon_raw_p_value": 7.74421643104407e-06,
+      "paired_sample_count": 270,
+      "wilcoxon_holm_adjusted_p_value": 1.548843286208814e-05
+    },
+    "constraint_violations": {
+      "friedman_statistic": 488.35445100835204,
+      "friedman_p_value": 2.2113550792321978e-104,
+      "riskshield_vs_ppo_standardized_paired_mean_difference": -0.3443584813454438,
+      "wilcoxon_raw_p_value": 2.8088105534258406e-14,
+      "paired_sample_count": 270,
+      "wilcoxon_holm_adjusted_p_value": 8.426431660277522e-14
+    },
+    "safety_cost": {
+      "friedman_statistic": 622.111751839332,
+      "friedman_p_value": 2.5373588312186867e-133,
+      "riskshield_vs_ppo_standardized_paired_mean_difference": -0.4182544560684464,
+      "wilcoxon_raw_p_value": 1.6619697043721576e-18,
+      "paired_sample_count": 270,
+      "wilcoxon_holm_adjusted_p_value": 8.309848521860788e-18
+    },
+    "success_rate": {
+      "friedman_statistic": 1056.539325842696,
+      "friedman_p_value": 1.9910283221147088e-227,
+      "riskshield_vs_ppo_standardized_paired_mean_difference": 0.0,
+      "wilcoxon_raw_p_value": 1.0,
+      "paired_sample_count": 270,
+      "wilcoxon_holm_adjusted_p_value": 1.0
+    }
+  }
+}

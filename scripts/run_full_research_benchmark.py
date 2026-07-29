@@ -133,10 +133,13 @@ def statistical_analysis(frame: pd.DataFrame) -> dict[str, object]:
         differences = riskshield - ppo
         difference_sd = float(np.std(differences, ddof=1))
         effect_size = float(np.mean(differences) / difference_sd) if difference_sd > 0 else 0.0
-        try:
-            pair_p = float(stats.wilcoxon(riskshield, ppo).pvalue)
-        except ValueError:
+        if np.allclose(differences, 0.0):
             pair_p = 1.0
+        else:
+            try:
+                pair_p = float(stats.wilcoxon(riskshield, ppo).pvalue)
+            except ValueError:
+                pair_p = 1.0
         raw_pair_p_values.append(pair_p)
         analyses[metric] = {
             "friedman_statistic": float(friedman_statistic),
@@ -210,7 +213,7 @@ def write_outputs(
     analysis = statistical_analysis(frame) if final_matrix else {}
     atomic_text(
         output / "statistical_analysis.json",
-        json.dumps(analysis, indent=2) + "\n",
+        json.dumps(analysis, indent=2, allow_nan=False) + "\n",
     )
     if final_matrix:
         atomic_text(output / "statistical_analysis.md", analysis_markdown(analysis))

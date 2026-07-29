@@ -14,7 +14,7 @@ numbers. This matrix is updated only after implementation and validation.
 | 6 — Three Webots worlds | Historical Stages 4A–5C | VERIFIED_COMPLETE | Three real autonomous runtime and visual gates passed |
 | 7 — Perception | Historical Stage 5B plus Stage 5C integration | VERIFIED_COMPLETE | Hash/CUDA/live state change and typed mapping tests passed |
 | 8 — Uncertainty | Domain-randomization utility | VERIFIED_COMPLETE | 320 unique deterministic episodes and robustness analysis completed |
-| 9 — Benchmark | Existing isolated evaluations | MISSING | Exactly 1,350 unique primary runs plus ablations and statistics |
+| 9 — Benchmark | Existing isolated evaluations | VERIFIED_COMPLETE | 1,350 unique primary runs, 180 ablations, statistics, 13 figures, and tables passed |
 | 10 — Paper/release | Paper skeleton | PARTIAL | Paper values derive from outputs; final acceptance and release pass |
 
 The accepted Stage 5C path remains a protected regression baseline throughout

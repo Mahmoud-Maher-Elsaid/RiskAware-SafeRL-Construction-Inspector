@@ -113,13 +113,13 @@
     {
       "stage": 9,
       "name": "Full research benchmark",
-      "status": "MISSING",
-      "source_files": [],
-      "tests": [],
-      "runtime_entry_point": null,
-      "evidence_path": null,
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Implement and execute the resumable 1,350-run matrix, statistics, figures, and ablations."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/benchmarking/harness.py", "scripts/run_full_research_benchmark.py", "scripts/run_stage9_ablations.py", "scripts/generate_final_figures.py"],
+      "tests": ["tests/benchmarking/test_benchmark_harness.py", "tests/benchmarking/test_stage9_ablations.py"],
+      "runtime_entry_point": "scripts/run_full_research_benchmark.ps1",
+      "evidence_path": "reports/final_submission/stage9_benchmark",
+      "last_verified_commit": "pending Stage 9 completion commit",
+      "remaining_work": "None for the defined benchmark gate; learned-policy zero mission success remains a reported negative result."
     },
     {
       "stage": 10,

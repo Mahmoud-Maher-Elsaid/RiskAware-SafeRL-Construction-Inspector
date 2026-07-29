@@ -232,3 +232,27 @@ commits for the final research benchmark release. Times use UTC.
 - Evidence:
   - `reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/benchmark_summary.json`
   - `reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/raw_results.csv`
+
+## 2026-07-29T20:25:00+03:00 — Stage 9 full benchmark
+
+- Stage: 9
+- Commands:
+  - `.venv\Scripts\python.exe scripts\run_full_research_benchmark.py`
+  - `.venv\Scripts\python.exe scripts\run_stage9_ablations.py`
+  - `.venv\Scripts\python.exe scripts\generate_final_figures.py`
+  - `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\run_full_research_benchmark.ps1`
+- Failure: SciPy returned a non-finite Wilcoxon p-value for paired success
+  arrays that were identically zero.
+- Root cause: PPO and RiskShield-PPO both had zero success in all paired cells,
+  so the signed-rank statistic is undefined.
+- Repair: explicitly assign p=1.0 only when every paired difference is zero and
+  reject non-finite JSON values.
+- Result: 1,350 expected and unique primary runs completed, with zero duplicate,
+  missing, or unresolved failed runs. CSV and Parquet counts match. Six
+  ablations completed 180 paired episodes. Thirteen figures and their source
+  CSV files plus four final tables were generated from real records.
+- Evidence:
+  - `reports/final_submission/stage9_benchmark/benchmark_summary.json`
+  - `reports/final_submission/stage9_benchmark/statistical_analysis.md`
+  - `reports/final_submission/stage9_benchmark/ablation_summary.json`
+  - `reports/final_submission/stage9_benchmark/figures`

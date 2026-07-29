@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pandas as pd
 import pytest
 import yaml
 
@@ -83,3 +84,18 @@ def test_timeout_is_recorded_as_unresolved_failure(tmp_path: Path) -> None:
     ]
     assert len(failures) == 1
     assert "TimeoutError" in failures[0]["failure_reason"]
+
+
+def test_final_primary_evidence_is_complete_when_present() -> None:
+    output = Path("reports/final_submission/stage9_benchmark")
+    raw_path = output / "raw_results.csv"
+    if not raw_path.is_file():
+        pytest.skip("Final benchmark evidence has not been generated")
+    raw = pd.read_csv(raw_path)
+    parquet = pd.read_parquet(output / "raw_results.parquet")
+    summary = json.loads((output / "benchmark_summary.json").read_text(encoding="utf-8"))
+    assert len(raw) == len(parquet) == 1350
+    assert raw["run_id"].nunique() == 1350
+    assert summary["missing_run_count"] == 0
+    assert summary["failed_run_count"] == 0
+    assert not (output / "failed_runs.jsonl").read_text(encoding="utf-8")

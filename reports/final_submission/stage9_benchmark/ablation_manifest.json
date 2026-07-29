@@ -1,0 +1,76 @@
+{
+  "variants": [
+    {
+      "name": "riskshield_ppo_full",
+      "checkpoint": "riskshield",
+      "shield_horizon": 3,
+      "cv_risk_injection": true,
+      "action_masking": true,
+      "constrained_cost_objective": true,
+      "difference": "Reference: constrained checkpoint, k=3 shield, semantic risk observations, action-mask projection."
+    },
+    {
+      "name": "without_predictive_safety_shield",
+      "checkpoint": "riskshield",
+      "shield_horizon": 0,
+      "cv_risk_injection": true,
+      "action_masking": true,
+      "constrained_cost_objective": true,
+      "difference": "Predictive Safety Shield disabled; all other reference mechanisms retained."
+    },
+    {
+      "name": "without_cv_risk_injection",
+      "checkpoint": "riskshield",
+      "shield_horizon": 3,
+      "cv_risk_injection": false,
+      "action_masking": true,
+      "constrained_cost_objective": true,
+      "difference": "Agent perception false-negative rate set to 1.0; simulator truth remains available to metrics and shield."
+    },
+    {
+      "name": "without_action_masking",
+      "checkpoint": "riskshield",
+      "shield_horizon": 3,
+      "cv_risk_injection": true,
+      "action_masking": false,
+      "constrained_cost_objective": true,
+      "difference": "Invalid-action projection disabled; predictive shield and semantic risk retained."
+    },
+    {
+      "name": "without_constrained_cost_objective",
+      "checkpoint": "ppo",
+      "shield_horizon": 3,
+      "cv_risk_injection": true,
+      "action_masking": true,
+      "constrained_cost_objective": false,
+      "difference": "Ordinary PPO checkpoint replaces RiskShield-PPO; inference shield, risk observations, and mask retained."
+    },
+    {
+      "name": "one_step_shield",
+      "checkpoint": "riskshield",
+      "shield_horizon": 1,
+      "cv_risk_injection": true,
+      "action_masking": true,
+      "constrained_cost_objective": true,
+      "difference": "Predictive shield horizon reduced from k=3 to k=1."
+    }
+  ],
+  "scenarios": [
+    "configs/grid/site_small.yaml",
+    "configs/grid/site_medium.yaml",
+    "configs/grid/site_dynamic.yaml"
+  ],
+  "evaluation_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "expected_runs": 180
+}
