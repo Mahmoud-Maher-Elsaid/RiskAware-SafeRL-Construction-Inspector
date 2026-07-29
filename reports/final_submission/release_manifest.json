@@ -1,8 +1,8 @@
 ﻿{
     "schema_version":  1,
-    "generated_at":  "2026-07-29T21:02:23.6746036+03:00",
-    "git_commit":  "c4bd2a9a4e611f599f23cbf1f138263c4dae7836",
-    "tracked_file_count":  482,
+    "generated_at":  "2026-07-29T21:03:54.8779715+03:00",
+    "git_commit":  "dbb9b50ef5e1bec9a4ed2827997cbafde432b67f",
+    "tracked_file_count":  493,
     "files":  [
                   {
                       "path":  ".gitattributes",
@@ -741,8 +741,53 @@
                   },
                   {
                       "path":  "reports/final_submission/execution_log.md",
-                      "bytes":  16165,
-                      "sha256":  "236ec229e44965c39e05a0c96349123292dc229743cf94efcbb4633746b75b84"
+                      "bytes":  16908,
+                      "sha256":  "fe753cc37c33bd5660a4d1057440e657e7026c4a2636fe63d74702f4c17af6af"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_artifact_manifest.json",
+                      "bytes":  1513,
+                      "sha256":  "360ebb7f80361accc3d7f657507d17c6d795c174ad0bbfc144cb5b8941fd8b85"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_benchmark_summary.json",
+                      "bytes":  1329,
+                      "sha256":  "c87f1b24cf9de26141067f89db1364e2053aa14aa8aebfe1412755d60395f764"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_file_inventory.txt",
+                      "bytes":  24340,
+                      "sha256":  "3bd19e810b6dc7c28dd5775904cf7330e19f5af92e0dcd4c671d1f2454114d4f"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_git_history.txt",
+                      "bytes":  4663,
+                      "sha256":  "1ab8e21d518ce811bdd09eaa44bb242e1e2d426999e11a1256269afcdaa52f45"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_limitations.md",
+                      "bytes":  685,
+                      "sha256":  "32a91ef27f941f04cd473f7fb7951a96b621f807d1ebc5363c0bba76fd119910"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_runtime_summary.json",
+                      "bytes":  1167,
+                      "sha256":  "ba7d6115e69e05126836c75a3c6bad125ed87525bfbdedab7c5380a04444398c"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_submission_report.json",
+                      "bytes":  4192,
+                      "sha256":  "e8c11e69ebbb81cbe2a9a2363aa9258e8efc03967d7667d8a1dd0af746bf64b9"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_submission_report.md",
+                      "bytes":  800,
+                      "sha256":  "f207466b1e76158e8b6cd6593320ed1910bfcede9beff22e61ee8c0957637257"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_test_results.txt",
+                      "bytes":  391,
+                      "sha256":  "91c7cdfc0dd9bf5171868a0dedc3f883a90017eeadc3ea3525d681e00e0ab6fb"
                   },
                   {
                       "path":  "reports/final_submission/interruption_recovery.json",
@@ -758,6 +803,11 @@
                       "path":  "reports/final_submission/paper_result.md",
                       "bytes":  720,
                       "sha256":  "3d2f5e63ed37d2ee9ce8f9e752c7f37e02e593ed48d9a529b1b38d0ec785403b"
+                  },
+                  {
+                      "path":  "reports/final_submission/release_manifest.json",
+                      "bytes":  128560,
+                      "sha256":  "98cfac6344b7f595af06bcab14c57addaf35ad3029db20a03872088bf3b125c9"
                   },
                   {
                       "path":  "reports/final_submission/stage1_grid_environment/validation.json",
@@ -1443,6 +1493,11 @@
                       "path":  "scripts/generate_final_figures.py",
                       "bytes":  7145,
                       "sha256":  "645b522cb69096695dfb011426830ec9a30e9babbe72489cf0f92155f22532e1"
+                  },
+                  {
+                      "path":  "scripts/generate_final_submission_reports.py",
+                      "bytes":  6818,
+                      "sha256":  "bc21a49183f0a1655f9060e0788d5d8f123bf98559a9aedde6485c9f502a6829"
                   },
                   {
                       "path":  "scripts/generate_scenarios.py",
