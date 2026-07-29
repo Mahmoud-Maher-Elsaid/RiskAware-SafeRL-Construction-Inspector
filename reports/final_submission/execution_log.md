@@ -300,3 +300,13 @@ commits for the final research benchmark release. Times use UTC.
   environments.
 - Repair: exclude `.venv` and `.python311` from filesystem backup discovery;
   tracked-file hygiene remains enforced separately through Git.
+
+## 2026-07-29T21:20:00+03:00 — Final acceptance attempt 2
+
+- Command: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\run_final_acceptance.ps1`
+- Result before failure: repository hygiene, compilation, Ruff, 272 tests,
+  grid validation, and benchmark configuration validation passed.
+- Failure: PowerShell native argument parsing stripped quotes inside the
+  multiline Python `-c` evidence validator.
+- Repair: move evidence validation into
+  `scripts/validate_final_evidence.py` and invoke it as a normal file.
