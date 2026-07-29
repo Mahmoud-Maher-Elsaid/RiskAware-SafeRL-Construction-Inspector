@@ -1,0 +1,71 @@
+* 85871af (HEAD -> final/project-completion, origin/final/project-completion) Integrate Stage 5C RL motor control
+* c130c9b Complete Stage 5B first-person perception runtime
+* d87ebdc (origin/final/pre-cleanup-safety-20260729, final/pre-cleanup-safety-20260729) Preserve pre-cleanup Stage 5B working state
+* 650da2b (origin/stage-5b-live-perception-integration, stage-5b-live-perception-integration) Correct first-person Webots viewpoint axis
+* c7c991f Correct first-person Webots viewpoint axis
+* 89bf5d9 Fix human-level camera and mounted Webots view
+* 0f195c5 Record final camera and perception showcase
+* 89760bb Finalize level camera view and showcase tooling
+* ecfc57e Record repaired Stage 5B3 runtime validation
+* 7f5c4e8 Fix Stage 5B3 camera view and process status
+* 414bf3f Complete Stage 5B3 live perception integration
+* ba2fb80 Add Stage 5B3 perception sidecar core
+* 8667ef9 Fix Stage 5B perception imports
+* e436134 Add Stage 5B live PPE perception backend
+* 2adf1ab (origin/stage-5a-live-camera-acquisition, stage-5a-live-camera-acquisition) Add perception pipeline and Stage 5A closed-loop inspection
+* 98138dc (origin/stage-4d-professional-showcase, stage-4d-professional-showcase) Fix Stage 4D launcher regression test
+* 9c6dc22 Add professional Webots construction showcase
+* 3c4efc6 (origin/stage-4c-policy-inference-dry-run, stage-4c-policy-inference-dry-run) Add live Webots policy inference dry run
+* 233cd49 Add MaskablePPO policy dry-run engine
+* 0a72b9f (origin/stage-4b2-live-webots-sensors, stage-4b2-live-webots-sensors) Add live Webots sensor bridge and runtime validation
+* 43164b7 (origin/stage-4b-observation-action-bridge, stage-4b-observation-action-bridge) Add Webots observation and action bridge
+| *   8f9488e (refs/stash) On stage-4a-webots-foundation: Stage 4A showcase draft before Stage 4B
+|/|\  
+| | * d2a6d4a untracked files on stage-4a-webots-foundation: 8840b37 Add self-contained Webots robot and runtime validation
+| * 031a08e index on stage-4a-webots-foundation: 8840b37 Add self-contained Webots robot and runtime validation
+|/  
+* 8840b37 (origin/stage-4a-webots-foundation, stage-4a-webots-foundation) Add self-contained Webots robot and runtime validation
+* ed35f9a (tag: v1.0.0-safe-shielded, origin/main, origin/HEAD, main) Finalize shielded Safe RL deployment baseline
+| * 775be42 (origin/stage-3e-c-dual-critic-ppo-lagrangian, stage-3e-c-dual-critic-ppo-lagrangian) Add dual-critic PPO-Lagrangian safety training
+| * 70d3749 (origin/stage-3e-b-lagrangian-constrained-ppo, stage-3e-b-lagrangian-constrained-ppo) Document transition-aligned Lagrangian instability
+| * e300df8 Add short Lagrangian calibration mode
+| * efb5c8d Add counterfactual Lagrangian safety training
+|/  
+*   e7ce87b Merge pull request #7 from Mahmoud-Maher-Elsaid/stage-3e-semantic-safety-control
+|\  
+| * 63301db (origin/stage-3e-semantic-safety-control, stage-3e-semantic-safety-control) Document Stage 3E shield dependency audit
+| * 73657cd Handle semantic shield deadlocks safely
+| * 7468fdd Add semantic safety shield for masked PPO
+|/  
+*   5a35a55 Merge pull request #6 from Mahmoud-Maher-Elsaid/stage-3d-maskable-ppo
+|\  
+| * b7ae064 (origin/stage-3d-maskable-ppo, stage-3d-maskable-ppo) Add masked policy evaluation and final results
+| * eff36cb Add task-valid masks and MaskablePPO training
+|/  
+*   cd57e4f Merge pull request #5 from Mahmoud-Maher-Elsaid/stage-3c-safe-curriculum-training
+|\  
+| * 062c360 (origin/stage-3c-safe-curriculum-training, stage-3c-safe-curriculum-training) Document unmasked PPO action collapse
+| * bfc2a99 Add safe curriculum PPO training pipeline
+|/  
+*   e6b1b2f Merge pull request #4 from Mahmoud-Maher-Elsaid/stage-3b-safe-viewpoint-inspection
+|\  
+| * 8127e80 (origin/stage-3b-safe-viewpoint-inspection, stage-3b-safe-viewpoint-inspection) Add safe viewpoint inspection and feasibility analysis
+|/  
+*   9c1787b Merge pull request #3 from Mahmoud-Maher-Elsaid/stage-3a-expert-baselines
+|\  
+| * 7425809 (origin/stage-3a-expert-baselines, stage-3a-expert-baselines) Add expert planners and reward feasibility audit
+|/  
+*   b567b0a Merge pull request #2 from Mahmoud-Maher-Elsaid/stage-2d-training-diagnostics
+|\  
+| * c513819 (origin/stage-2d-training-diagnostics, stage-2d-training-diagnostics) Add PPO diagnostics checkpoints and validation callbacks
+|/  
+*   16abe21 (stage-2-observation-evaluation) Merge pull request #1 from Mahmoud-Maher-Elsaid/stage-2-observation-evaluation
+|\  
+| * 616f44e (origin/stage-2-observation-evaluation) Integrate scenario dataset with training and evaluation
+| * f6d99a4 Stabilize scenario dataset hashes across platforms
+| * 56324e8 Version construction scenario benchmark splits
+| * 0971cad Add scenario dataset generation and validation
+| * e19ffd4 Add semantic feature extractor for PPO policies
+| * 3dc985f Flatten semantic observation for RL policies
+|/  
+* 89acf31 Initialize RiskAware SafeRL research project

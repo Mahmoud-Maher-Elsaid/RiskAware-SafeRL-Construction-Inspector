@@ -91,3 +91,14 @@
 - PPE perception ran 10 CUDA inferences with zero failures and produced 10 annotations.
 - Perception changed the checkpoint-compatible risk observation in nine decisions before policy inference.
 - Manual control and fallback controller use were both false.
+
+## 2026-07-29 — Production integration and final gates
+
+- Added `scripts/run_complete_autonomous_inspection.ps1` as the single production entry point.
+- The first exact-command run failed during CUDA preflight because PowerShell mangled a multiline Python `-c` argument. No Webots process was started and no final summary was written.
+- Replaced the fragile multiline argument with a single Python expression and reran the exact command.
+- The exact production command passed environment, CUDA, model-hash, Webots, Stage 5C runtime, truth-flag, motor-change, shield-intervention, and final-view gates.
+- Final full-suite result: 228 pytest tests passed.
+- Ruff format, Ruff check, and Python compilation passed.
+- Manually inspected the final Stage 5C first-person frame and accepted its level perspective rendering.
+- Generated the final Markdown/JSON report, file inventory, test results, Git history, and runtime summary.
