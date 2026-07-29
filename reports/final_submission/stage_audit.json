@@ -25,13 +25,13 @@
     {
       "stage": 1,
       "name": "Gymnasium grid prototype",
-      "status": "PARTIAL",
-      "source_files": ["src/riskaware_saferrl/envs/construction_env.py"],
-      "tests": ["tests/test_env_api.py", "tests/test_action_masks.py"],
-      "runtime_entry_point": "scripts/check_env.py",
-      "evidence_path": null,
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Add orientation, dynamics, PPE risk, noise, final configurations, typed schema, and comprehensive validation."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/envs/construction_env.py", "src/riskaware_saferrl/envs/research_env.py"],
+      "tests": ["tests/test_env_api.py", "tests/test_action_masks.py", "tests/envs/test_research_grid_environment.py"],
+      "runtime_entry_point": "scripts/validate_grid_environment.py",
+      "evidence_path": "reports/final_submission/stage1_grid_environment/validation.json",
+      "last_verified_commit": "pending Stage 1 commit",
+      "remaining_work": "None for the defined grid-environment gate."
     },
     {
       "stage": 2,

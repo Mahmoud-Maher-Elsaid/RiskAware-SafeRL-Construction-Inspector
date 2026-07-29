@@ -39,3 +39,22 @@ commits for the final research benchmark release. Times use UTC.
   - `reports/final_submission/stage_audit.md`
   - `reports/final_submission/stage_audit.json`
   - `docs/final_stage_completion_matrix.md`
+
+## 2026-07-29T16:10:00Z — Stage 1 grid benchmark
+
+- Stage: 1
+- Commands:
+  - `.venv\Scripts\python.exe -m pytest -q tests\envs\test_research_grid_environment.py`
+  - `.venv\Scripts\python.exe scripts\validate_grid_environment.py`
+  - `.venv\Scripts\python.exe -m ruff check ...`
+- Decision: preserve the historical checkpoint-compatible environment and add a
+  research extension with a typed, richer observation schema.
+- Failure: the first isolated collision test inherited randomized risks, and the
+  false-negative validation bound rejected a deliberate 100% dropout test.
+- Root cause: incomplete fixture isolation and a shared density bound.
+- Repair: clear unrelated risks in the fixture and validate perception dropout
+  independently over `[0, 1]`.
+- Result: seven targeted tests passed; all three configurations passed the
+  Gymnasium, determinism, space, mask, and serialization validator.
+- Evidence:
+  - `reports/final_submission/stage1_grid_environment/validation.json`
