@@ -47,13 +47,13 @@
     {
       "stage": 3,
       "name": "PPO and SAC baselines",
-      "status": "PARTIAL",
-      "source_files": ["scripts/train_ppo.py", "scripts/train_curriculum_ppo.py"],
-      "tests": ["tests/test_maskable_ppo_integration.py"],
-      "runtime_entry_point": "scripts/train_ppo.py",
-      "evidence_path": "artifacts/runs/maskable_ppo_deadlock_safe_shield_seed42_u100",
-      "last_verified_commit": "40dee1e",
-      "remaining_work": "Implement and train SAC, standardize metadata/evaluation, and generate comparative plots."
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["scripts/train_ppo.py", "scripts/train_ppo_research.py", "scripts/train_sac.py"],
+      "tests": ["tests/test_maskable_ppo_integration.py", "tests/algorithms/test_rl_training_adapters.py"],
+      "runtime_entry_point": "scripts/evaluate_rl_baselines.py",
+      "evidence_path": "reports/final_submission/stage3_rl_baselines",
+      "last_verified_commit": "pending Stage 3 commit",
+      "remaining_work": "Performance is a documented negative result; longer multi-seed training is optional future work."
     },
     {
       "stage": 4,

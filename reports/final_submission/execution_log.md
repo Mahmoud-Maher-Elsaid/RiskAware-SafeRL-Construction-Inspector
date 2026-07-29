@@ -75,3 +75,24 @@ commits for the final research benchmark release. Times use UTC.
 - Evidence:
   - `reports/final_submission/stage2_planner_baselines/raw_results.csv`
   - `reports/final_submission/stage2_planner_baselines/summary.json`
+
+## 2026-07-29T16:50:00Z — Stage 3 PPO and SAC baselines
+
+- Stage: 3
+- Commands:
+  - `.venv\Scripts\python.exe scripts\train_ppo_research.py`
+  - `.venv\Scripts\python.exe scripts\train_sac.py`
+  - `.venv\Scripts\python.exe scripts\evaluate_rl_baselines.py`
+- Failure: the first evaluator passed PPO's NumPy action array directly to the
+  discrete environment.
+- Root cause: the training vector wrapper normalized the action type, but the
+  direct deterministic evaluation environment did not.
+- Repair: explicitly convert PPO predictions to scalar discrete actions while
+  retaining the continuous SAC array.
+- Result: PPO trained for 30,208 steps and SAC for 10,000 steps on CUDA. Both
+  checkpoints loaded and completed 60 deterministic cross-site episodes.
+  Neither solved the full task; the negative results are retained.
+- Evidence:
+  - `reports/final_submission/stage3_rl_baselines/summary.json`
+  - `reports/final_submission/stage3_rl_baselines/evaluation_results.csv`
+  - `reports/final_submission/stage3_rl_baselines/training_metrics.csv`

@@ -45,6 +45,7 @@ artifacts/runs/*
 !artifacts/runs/.gitkeep
 artifacts/checkpoints/*
 !artifacts/checkpoints/.gitkeep
+/artifacts/final_submission/
 
 # Local PPE dataset and source archive
 /Personal Protective Equipment - Combined Model.v1i.yolov8/
