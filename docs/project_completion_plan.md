@@ -7,13 +7,13 @@ Last updated: 2026-07-29
 | Field | Current value |
 |---|---|
 | Current task | Strong-policy upgrade: causal expert correction dataset |
-| Current state | Observation-only causal expert contract implemented and passed the 1,440-episode solvability matrix |
-| Evidence collected | Original dataset SHA-256 and 13 chunk hashes; causal recovery report; bounded mmap profile; 1,000-batch CUDA memory smoke; causal expert CSV/JSON evaluation |
-| Files changed | Causal observation expert, contract tests and documentation, deterministic evaluation harness, recurrent policy/loader recovery artifacts, and reports |
-| Tests run | Repository Ruff and 292-test recovery baseline; 10 focused causal-contract tests; 1,440 real research-environment causal expert episodes |
-| Runtime result | Small success 98.75%; medium 96.67%; dynamic 95.83%; hazard recall/coverage 99.26%; collision rate 0; invalid actions 0 |
-| Remaining work | Generate causal demonstrations; mix datasets; pass three-seed causal Behavior Cloning; DAgger; HRMPPO v2; CV/Webots/benchmark/paper/final acceptance |
-| Blockers | None at the causal expert dataset generation stage |
+| Current state | Causal expert passed; separate 250,008-transition causal dataset and bounded mmap cache generated and hash-validated |
+| Evidence collected | Original dataset SHA-256 and 13 chunk hashes; causal recovery report; bounded mmap profile; causal expert evaluation; 26 causal chunk hashes and dataset manifest |
+| Files changed | Causal expert/generator, contract and dataset tests, evaluation harness, generalized mmap loader, causal manifest/reports, and docs |
+| Tests run | Repository Ruff and 302-test causal-expert baseline; causal generator/cache tests; 1,440 environment evaluation episodes |
+| Runtime result | Expert gates passed; causal dataset 250,008 transitions, 200 seeds, zero invalid actions, dataset SHA-256 `9d4c603d...03a29` |
+| Remaining work | Mix datasets; pass three-seed causal Behavior Cloning; DAgger; HRMPPO v2; CV/Webots/benchmark/paper/final acceptance |
+| Blockers | None at the mixed imitation dataset stage |
 
 ## Phase checklist
 
@@ -37,7 +37,7 @@ Last updated: 2026-07-29
 - [ ] Pass Behavior Cloning held-out accuracy and per-action recall gates.
 - [x] Implement and validate a policy-observation-only causal expert.
 - [x] Pass causal expert solvability gates across 1,440 environment episodes.
-- [ ] Generate and hash-validate the separate causal correction dataset.
+- [x] Generate and hash-validate the separate causal correction dataset.
 - [ ] Complete three genuine DAgger iterations.
 - [ ] Train and accept RiskShield-HRMPPO v2 against all replacement gates.
 - [ ] Complete CV audit, three-world Webots validation, benchmark-v2, ablations, paper, and Git acceptance.

@@ -18,11 +18,10 @@ from torch.utils.data import DataLoader, Dataset
 
 from riskaware_saferrl.policies import RecurrentMaskedPolicy
 
-REQUIRED_ARRAYS = (
+BASE_REQUIRED_ARRAYS = (
     "maps",
     "states",
     "action_masks",
-    "teacher_executed_actions",
     "episode_ids",
     "splits",
 )
@@ -45,6 +44,8 @@ def _write_json(path: Path, payload: Any) -> None:
 def build_mmap_cache(dataset_dir: Path, *, force: bool = False) -> dict[str, Any]:
     """Derive deterministic mmap-compatible NPY arrays from immutable NPZ chunks."""
     source_manifest = json.loads((dataset_dir / "manifest.json").read_text(encoding="utf-8"))
+    action_key = source_manifest.get("action_key", "teacher_executed_actions")
+    required_arrays = (*BASE_REQUIRED_ARRAYS, action_key)
     cache_dir = dataset_dir / "mmap_cache"
     metadata_path = cache_dir / "cache_manifest.json"
     expected_sources = {
@@ -56,10 +57,12 @@ def build_mmap_cache(dataset_dir: Path, *, force: bool = False) -> dict[str, Any
             metadata.get("format_version") == CACHE_FORMAT_VERSION
             and metadata.get("dataset_sha256") == source_manifest["dataset_sha256"]
             and metadata.get("sources") == expected_sources
+            and metadata.get("required_arrays") == list(required_arrays)
+            and metadata.get("action_key") == action_key
             and all(
                 (cache_dir / chunk["cache_directory"] / f"{name}.npy").is_file()
                 for chunk in metadata.get("chunks", [])
-                for name in REQUIRED_ARRAYS
+                for name in required_arrays
             )
         ):
             return metadata
@@ -75,7 +78,7 @@ def build_mmap_cache(dataset_dir: Path, *, force: bool = False) -> dict[str, Any
         chunk_dir.mkdir(parents=True, exist_ok=True)
         arrays: dict[str, dict[str, Any]] = {}
         with np.load(source_path, allow_pickle=False) as payload:
-            for name in REQUIRED_ARRAYS:
+            for name in required_arrays:
                 destination = chunk_dir / f"{name}.npy"
                 np.save(destination, payload[name], allow_pickle=False)
                 arrays[name] = {
@@ -97,7 +100,8 @@ def build_mmap_cache(dataset_dir: Path, *, force: bool = False) -> dict[str, Any
         "format_version": CACHE_FORMAT_VERSION,
         "dataset_sha256": source_manifest["dataset_sha256"],
         "sources": expected_sources,
-        "required_arrays": list(REQUIRED_ARRAYS),
+        "required_arrays": list(required_arrays),
+        "action_key": action_key,
         "chunks": chunks,
     }
     _write_json(metadata_path, metadata)
@@ -136,7 +140,7 @@ class MmapChunkCache:
                 mmap_mode="r",
                 allow_pickle=False,
             )
-            for name in REQUIRED_ARRAYS
+            for name in self.metadata["required_arrays"]
         }
         self._chunks[chunk_id] = arrays
         while len(self._chunks) > self.max_chunks:
@@ -169,6 +173,7 @@ class DemonstrationSequences(Dataset):
         self.sequence_length = sequence_length
         self.rotation_augmentation = rotation_augmentation
         self.cache_metadata = build_mmap_cache(dataset_dir)
+        self.action_key = self.cache_metadata["action_key"]
         self.chunk_cache = MmapChunkCache(
             dataset_dir / "mmap_cache", self.cache_metadata, max_cached_chunks
         )
@@ -178,7 +183,7 @@ class DemonstrationSequences(Dataset):
             arrays = self.chunk_cache.get(chunk_id)
             episode_ids = arrays["episode_ids"]
             splits = arrays["splits"]
-            actions = arrays["teacher_executed_actions"]
+            actions = arrays[self.action_key]
             masks = arrays["action_masks"]
             row = 0
             while row < len(episode_ids):
@@ -262,7 +267,7 @@ class DemonstrationSequences(Dataset):
             "states": torch.from_numpy(np.array(arrays["states"][selected], copy=True)).float(),
             "masks": torch.from_numpy(np.array(arrays["action_masks"][selected], copy=True)).bool(),
             "actions": torch.from_numpy(
-                np.array(arrays["teacher_executed_actions"][selected], copy=True)
+                np.array(arrays[self.action_key][selected], copy=True)
             ).long(),
             "episode_id": record.episode_id,
             "sequence_start": record.start,
