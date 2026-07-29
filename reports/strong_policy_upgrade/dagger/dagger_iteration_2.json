@@ -1,0 +1,78 @@
+{
+  "iteration": 2,
+  "beta": 0.5,
+  "new_visited_state_transitions": 12000,
+  "episodes": 60,
+  "disagreement_count": 1301,
+  "disagreement_rate": 0.10841666666666666,
+  "corrected_deadlocks": 2,
+  "invalid_actions": 0,
+  "action_counts": [
+    1765,
+    1558,
+    3957,
+    4171,
+    549
+  ],
+  "chunks": [
+    {
+      "path": "artifacts/strong_policy_upgrade/dagger/iteration_2/chunks/dagger_corrections_00000.npz",
+      "rows": 4000,
+      "bytes": 209248,
+      "sha256": "c9d22aee94f38b5d1a18a78cf20ce0c94248e221c7feacbb9e5ea9636c91b839"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/dagger/iteration_2/chunks/dagger_corrections_00001.npz",
+      "rows": 4000,
+      "bytes": 207978,
+      "sha256": "5759a6bd341f9c8b362edd77a965feb459ef45f81aa537c3aec819552a764e82"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/dagger/iteration_2/chunks/dagger_corrections_00002.npz",
+      "rows": 4000,
+      "bytes": 207039,
+      "sha256": "3d9a461a385dc6efb174ed6914c3b4c90b02c66479b07927f607ef5705a8738c"
+    }
+  ],
+  "collection_success_rate": 0.7833333333333333,
+  "collection_hazard_recall": 0.9669306418219462,
+  "collection_coverage": 0.9669306418219462,
+  "collection_safety_cost": 37.13333333333333,
+  "collection_collision_rate": 0.0,
+  "cumulative_dataset_manifest": "artifacts/strong_policy_upgrade/dagger/iteration_2/cumulative_dataset/manifest.json",
+  "cumulative_transitions": 274128,
+  "checkpoint_path": "artifacts/strong_policy_upgrade/dagger/iteration_2/training/best_behavior_cloning.pt",
+  "checkpoint_sha256": "397a786c185e3a086297a41b2393e4cf473eb81d864d31668690e5fa3ae1a6da",
+  "held_out_success": 0.8555555555555555,
+  "held_out_hazard_recall": 0.9697412008281573,
+  "held_out_coverage": 0.9697412008281573,
+  "held_out_safety_cost": 38.8,
+  "held_out_collision_rate": 0.0,
+  "held_out": {
+    "episodes": 90,
+    "held_out_seeds": [
+      3000,
+      3001,
+      3002,
+      3003,
+      3004,
+      3005,
+      3006,
+      3007,
+      3008,
+      3009
+    ],
+    "success_rate": 0.8555555555555555,
+    "world_success": {
+      "site_small": 1.0,
+      "site_medium": 0.8333333333333334,
+      "site_dynamic": 0.7333333333333333
+    },
+    "hazard_recall": 0.9697412008281573,
+    "coverage": 0.9697412008281573,
+    "mean_safety_cost": 38.8,
+    "collision_rate": 0.0,
+    "constraint_violations": 5747,
+    "invalid_actions": 0
+  }
+}
