@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "audit_commit": "40dee1e4d44225eeb0a4212ce6b3abc4e55542fa",
+  "production_regression": {
+    "status": "VERIFIED_COMPLETE",
+    "entry_point": "scripts/run_complete_autonomous_inspection.ps1",
+    "evidence": "reports/final_project_completion/final_runtime_summary.json",
+    "tests": [
+      "tests/webots/test_stage5c_runtime_control.py",
+      "tests/webots/test_stage5c_rl_motor_assets.py"
+    ]
+  },
+  "stages": [
+    {
+      "stage": 0,
+      "name": "GitHub foundation",
+      "status": "PARTIAL",
+      "source_files": ["README.md", "pyproject.toml", ".github/workflows/ci.yml"],
+      "tests": [],
+      "runtime_entry_point": null,
+      "evidence_path": "reports/final_project_completion/final_completion_report.md",
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Complete final documentation, link validation, model/data cards, and release workflow."
+    },
+    {
+      "stage": 1,
+      "name": "Gymnasium grid prototype",
+      "status": "PARTIAL",
+      "source_files": ["src/riskaware_saferrl/envs/construction_env.py"],
+      "tests": ["tests/test_env_api.py", "tests/test_action_masks.py"],
+      "runtime_entry_point": "scripts/check_env.py",
+      "evidence_path": null,
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Add orientation, dynamics, PPE risk, noise, final configurations, typed schema, and comprehensive validation."
+    },
+    {
+      "stage": 2,
+      "name": "Expert planner baselines",
+      "status": "PARTIAL",
+      "source_files": ["src/riskaware_saferrl/planners/astar.py", "src/riskaware_saferrl/planners/oracle_inspection.py"],
+      "tests": ["tests/test_astar_planner.py", "tests/test_oracle_inspection.py"],
+      "runtime_entry_point": "scripts/evaluate_expert_baselines.py",
+      "evidence_path": "artifacts/results/project_completion_expert_benchmark",
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Implement frontier and nearest-risk baselines, risk-aware replanning, unified telemetry, and final results."
+    },
+    {
+      "stage": 3,
+      "name": "PPO and SAC baselines",
+      "status": "PARTIAL",
+      "source_files": ["scripts/train_ppo.py", "scripts/train_curriculum_ppo.py"],
+      "tests": ["tests/test_maskable_ppo_integration.py"],
+      "runtime_entry_point": "scripts/train_ppo.py",
+      "evidence_path": "artifacts/runs/maskable_ppo_deadlock_safe_shield_seed42_u100",
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Implement and train SAC, standardize metadata/evaluation, and generate comparative plots."
+    },
+    {
+      "stage": 4,
+      "name": "RiskShield-PPO",
+      "status": "PARTIAL",
+      "source_files": ["src/riskaware_saferrl/safety/lagrangian.py"],
+      "tests": ["tests/test_lagrangian.py"],
+      "runtime_entry_point": "scripts/train_curriculum_ppo.py",
+      "evidence_path": "artifacts/runs/dual_critic_maskable_ppo_calibration_seed42_u20",
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Create the final constrained method, verify cost objective influence, and run four-way comparison."
+    },
+    {
+      "stage": 5,
+      "name": "Predictive Safety Shield",
+      "status": "PARTIAL",
+      "source_files": ["src/riskaware_saferrl/safety/shield.py", "src/riskaware_saferrl/webots/runtime_control.py"],
+      "tests": ["tests/test_safety_shield.py", "tests/webots/test_stage5c_runtime_control.py"],
+      "runtime_entry_point": "scripts/run_complete_autonomous_inspection.ps1",
+      "evidence_path": "reports/final_project_completion/final_runtime_summary.json",
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Add structured k-step prediction, moving-worker forecasts, emergency cases, and latency benchmark."
+    },
+    {
+      "stage": 6,
+      "name": "Webots construction environments",
+      "status": "PARTIAL",
+      "source_files": ["webots/worlds/construction_site_stage5c_rl_motor_runtime.wbt"],
+      "tests": ["tests/webots/test_stage5c_rl_motor_assets.py"],
+      "runtime_entry_point": "scripts/run_stage5c_rl_motor_runtime.ps1",
+      "evidence_path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence",
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Build and smoke-test exactly three final parameterized environments."
+    },
+    {
+      "stage": 7,
+      "name": "Perception and semantic risk mapping",
+      "status": "PARTIAL",
+      "source_files": ["src/riskaware_saferrl/live_perception.py", "src/riskaware_saferrl/perception.py"],
+      "tests": ["tests/test_live_perception.py", "tests/test_perception.py"],
+      "runtime_entry_point": "scripts/run_complete_autonomous_inspection.ps1",
+      "evidence_path": "reports/final_project_completion/final_runtime_summary.json",
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Finalize typed detections, projection/map semantics, stale-frame handling, and documented model class scope."
+    },
+    {
+      "stage": 8,
+      "name": "Uncertainty experiments",
+      "status": "MISSING",
+      "source_files": ["src/riskaware_saferrl/domain_randomization.py"],
+      "tests": ["tests/test_domain_randomization.py"],
+      "runtime_entry_point": null,
+      "evidence_path": null,
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Implement deterministic perception, visual, density, and unseen-layout perturbations and run experiments."
+    },
+    {
+      "stage": 9,
+      "name": "Full research benchmark",
+      "status": "MISSING",
+      "source_files": [],
+      "tests": [],
+      "runtime_entry_point": null,
+      "evidence_path": null,
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Implement and execute the resumable 1,350-run matrix, statistics, figures, and ablations."
+    },
+    {
+      "stage": 10,
+      "name": "Paper and release",
+      "status": "PARTIAL",
+      "source_files": ["paper/main.tex", "paper/references.bib"],
+      "tests": [],
+      "runtime_entry_point": null,
+      "evidence_path": null,
+      "last_verified_commit": "40dee1e",
+      "remaining_work": "Write the paper from real results and complete release/acceptance artifacts."
+    }
+  ]
+}

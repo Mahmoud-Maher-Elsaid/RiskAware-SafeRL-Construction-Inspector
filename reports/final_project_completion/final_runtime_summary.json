@@ -24,6 +24,6 @@
   "motor_command_change_count": 14,
   "manual_control_used": false,
   "fallback_controller_used": false,
-  "warmup_ms": 532.6376999728382,
+  "warmup_ms": 569.1606000182219,
   "mission_completed": true
 }
