@@ -1,0 +1,29 @@
+﻿[
+    {
+        "world":  "site_small",
+        "runtime_verified":  true,
+        "mission_completed":  true,
+        "policy_controls_motors":  true,
+        "cv_model_connected":  true,
+        "physics_stable":  true,
+        "first_person_evidence":  "site_small/first_person_final.png"
+    },
+    {
+        "world":  "site_medium",
+        "runtime_verified":  true,
+        "mission_completed":  true,
+        "policy_controls_motors":  true,
+        "cv_model_connected":  true,
+        "physics_stable":  true,
+        "first_person_evidence":  "site_medium/first_person_final.png"
+    },
+    {
+        "world":  "site_dynamic",
+        "runtime_verified":  true,
+        "mission_completed":  true,
+        "policy_controls_motors":  true,
+        "cv_model_connected":  true,
+        "physics_stable":  true,
+        "first_person_evidence":  "site_dynamic/first_person_final.png"
+    }
+]

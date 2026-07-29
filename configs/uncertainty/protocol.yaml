@@ -1,0 +1,23 @@
+false_negative_rates: [0.0, 0.1, 0.2, 0.3]
+visual_perturbations:
+  - normal
+  - low_light
+  - motion_blur
+  - camera_noise
+environment_perturbations:
+  low:
+    dynamic_hazard_density: 0.01
+    size: 12
+  medium:
+    dynamic_hazard_density: 0.03
+    size: 14
+  high:
+    dynamic_hazard_density: 0.06
+    size: 16
+  unseen_layout:
+    dynamic_hazard_density: 0.045
+    size: 15
+    obstacle_density: 0.18
+evaluation_seeds: [0, 1, 2, 3, 4]
+algorithm: RiskShield-PPO
+predictive_shield_horizon: 3

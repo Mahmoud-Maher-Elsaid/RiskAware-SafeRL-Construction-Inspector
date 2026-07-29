@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "audit_commit": "40dee1e4d44225eeb0a4212ce6b3abc4e55542fa",
+  "production_regression": {
+    "status": "VERIFIED_COMPLETE",
+    "entry_point": "scripts/run_complete_autonomous_inspection.ps1",
+    "evidence": "reports/final_project_completion/final_runtime_summary.json",
+    "tests": [
+      "tests/webots/test_stage5c_runtime_control.py",
+      "tests/webots/test_stage5c_rl_motor_assets.py"
+    ]
+  },
+  "stages": [
+    {
+      "stage": 0,
+      "name": "GitHub foundation",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["README.md", "pyproject.toml", ".github/workflows/ci.yml", "MODEL_CARD.md", "DATA_CARD.md", "BENCHMARK_CARD.md"],
+      "tests": ["full pytest suite", "Ruff check", "Ruff format", "Python compilation", "PowerShell parser validation"],
+      "runtime_entry_point": "scripts/run_final_acceptance.ps1",
+      "evidence_path": "reports/final_submission/final_test_results.txt",
+      "last_verified_commit": "pending final release commit",
+      "remaining_work": "Final acceptance, merge, and post-merge regression remain workflow gates."
+    },
+    {
+      "stage": 1,
+      "name": "Gymnasium grid prototype",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/envs/construction_env.py", "src/riskaware_saferrl/envs/research_env.py"],
+      "tests": ["tests/test_env_api.py", "tests/test_action_masks.py", "tests/envs/test_research_grid_environment.py"],
+      "runtime_entry_point": "scripts/validate_grid_environment.py",
+      "evidence_path": "reports/final_submission/stage1_grid_environment/validation.json",
+      "last_verified_commit": "pending Stage 1 commit",
+      "remaining_work": "None for the defined grid-environment gate."
+    },
+    {
+      "stage": 2,
+      "name": "Expert planner baselines",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/baselines/planners.py", "src/riskaware_saferrl/planners/astar.py"],
+      "tests": ["tests/baselines/test_final_planners.py", "tests/test_astar_planner.py"],
+      "runtime_entry_point": "scripts/evaluate_planner_baselines.py",
+      "evidence_path": "reports/final_submission/stage2_planner_baselines",
+      "last_verified_commit": "pending Stage 2 commit",
+      "remaining_work": "None for the defined planner-baseline gate."
+    },
+    {
+      "stage": 3,
+      "name": "PPO and SAC baselines",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["scripts/train_ppo.py", "scripts/train_ppo_research.py", "scripts/train_sac.py"],
+      "tests": ["tests/test_maskable_ppo_integration.py", "tests/algorithms/test_rl_training_adapters.py"],
+      "runtime_entry_point": "scripts/evaluate_rl_baselines.py",
+      "evidence_path": "reports/final_submission/stage3_rl_baselines",
+      "last_verified_commit": "pending Stage 3 commit",
+      "remaining_work": "Performance is a documented negative result; longer multi-seed training is optional future work."
+    },
+    {
+      "stage": 4,
+      "name": "RiskShield-PPO",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/algorithms/riskshield_ppo.py", "src/riskaware_saferrl/safety/lagrangian.py"],
+      "tests": ["tests/algorithms/test_riskshield_ppo.py", "tests/test_lagrangian.py"],
+      "runtime_entry_point": "scripts/evaluate_riskshield_ppo.py",
+      "evidence_path": "reports/final_submission/stage4_riskshield_ppo",
+      "last_verified_commit": "pending Stage 4 commit",
+      "remaining_work": "Multiplier saturation and zero learned-policy success are documented limitations."
+    },
+    {
+      "stage": 5,
+      "name": "Predictive Safety Shield",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/safety/predictive_shield.py", "src/riskaware_saferrl/webots/runtime_control.py"],
+      "tests": ["tests/safety/test_predictive_safety_shield.py", "tests/webots/test_stage5c_runtime_control.py"],
+      "runtime_entry_point": "scripts/benchmark_predictive_shield.py",
+      "evidence_path": "reports/final_submission/stage5_safety_shield",
+      "last_verified_commit": "pending Stage 5 commit",
+      "remaining_work": "Research shield is intentionally isolated from the already verified production shield."
+    },
+    {
+      "stage": 6,
+      "name": "Webots construction environments",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["scripts/build_final_webots_worlds.py", "webots/worlds/site_small.wbt", "webots/worlds/site_medium.wbt", "webots/worlds/site_dynamic.wbt"],
+      "tests": ["tests/webots/test_final_worlds.py", "tests/webots/test_stage5c_rl_motor_assets.py"],
+      "runtime_entry_point": "scripts/run_final_world_smoke.ps1",
+      "evidence_path": "reports/final_submission/stage6_webots",
+      "last_verified_commit": "pending Stage 6 commit",
+      "remaining_work": "None for the three-world simulation gate."
+    },
+    {
+      "stage": 7,
+      "name": "Perception and semantic risk mapping",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/live_perception.py", "src/riskaware_saferrl/perception_mapping.py"],
+      "tests": ["tests/perception/test_semantic_risk_mapping.py", "tests/test_live_perception.py"],
+      "runtime_entry_point": "scripts/validate_final_perception.py",
+      "evidence_path": "reports/final_submission/stage7_perception",
+      "last_verified_commit": "pending Stage 7 commit",
+      "remaining_work": "Real-world accuracy remains unestablished and unsupported CV classes use labeled simulator ground truth only."
+    },
+    {
+      "stage": 8,
+      "name": "Uncertainty experiments",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/uncertainty/injection.py", "src/riskaware_saferrl/domain_randomization.py"],
+      "tests": ["tests/uncertainty/test_uncertainty_injection.py", "tests/test_domain_randomization.py"],
+      "runtime_entry_point": "scripts/run_uncertainty_experiments.py",
+      "evidence_path": "reports/final_submission/stage8_uncertainty",
+      "last_verified_commit": "pending Stage 8 commit",
+      "remaining_work": "Baseline learned-policy success is zero and is explicitly handled as a neutral robustness component."
+    },
+    {
+      "stage": 9,
+      "name": "Full research benchmark",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["src/riskaware_saferrl/benchmarking/harness.py", "scripts/run_full_research_benchmark.py", "scripts/run_stage9_ablations.py", "scripts/generate_final_figures.py"],
+      "tests": ["tests/benchmarking/test_benchmark_harness.py", "tests/benchmarking/test_stage9_ablations.py"],
+      "runtime_entry_point": "scripts/run_full_research_benchmark.ps1",
+      "evidence_path": "reports/final_submission/stage9_benchmark",
+      "last_verified_commit": "pending Stage 9 completion commit",
+      "remaining_work": "None for the defined benchmark gate; learned-policy zero mission success remains a reported negative result."
+    },
+    {
+      "stage": 10,
+      "name": "Paper and release",
+      "status": "VERIFIED_COMPLETE",
+      "source_files": ["paper/main.tex", "paper/references.bib"],
+      "tests": ["native pdflatex/bibtex compilation", "rendered PDF page inspection"],
+      "runtime_entry_point": "paper/README.md",
+      "evidence_path": "reports/final_submission/paper_result.json",
+      "last_verified_commit": "pending Stage 10 completion commit",
+      "remaining_work": "Final repository acceptance and release integration remain separate Stage 0 gates."
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "status": "PASSED",
+  "manual_inspection_completed": true,
+  "worlds": {
+    "site_small": {
+      "width": 1954,
+      "height": 1063,
+      "brightness_standard_deviation": 55.50144780804265,
+      "dominant_color_ratio": 0.6125659693168655,
+      "edge_density": 0.00742380489740032,
+      "sky_ratio": 0.6125659693168655,
+      "ground_structure_ratio": 0.41285852810121515,
+      "horizon_angle_degrees": -9.950626687951598,
+      "horizontal_line_count": 15,
+      "checks": {
+        "not_blank": true,
+        "not_almost_uniform": true,
+        "sufficient_edges": true,
+        "not_mostly_sky": true,
+        "plausible_ground_region": true,
+        "horizon_detected": true,
+        "horizon_level": true
+      },
+      "passed": true,
+      "roll_deviation_degrees": 0.0,
+      "vertical_line_count": 4,
+      "viewpoint_changed": true,
+      "initial_final_mean_difference": 32.8546267828927
+    },
+    "site_medium": {
+      "width": 1954,
+      "height": 1063,
+      "brightness_standard_deviation": 55.7692728649365,
+      "dominant_color_ratio": 0.5898126331783418,
+      "edge_density": 0.00733040553617492,
+      "sky_ratio": 0.5898126331783418,
+      "ground_structure_ratio": 0.440554751771958,
+      "horizon_angle_degrees": -11.13766666864477,
+      "horizontal_line_count": 13,
+      "checks": {
+        "not_blank": true,
+        "not_almost_uniform": true,
+        "sufficient_edges": true,
+        "not_mostly_sky": true,
+        "plausible_ground_region": true,
+        "horizon_detected": true,
+        "horizon_level": true
+      },
+      "passed": true,
+      "roll_deviation_degrees": 0.0,
+      "vertical_line_count": 6,
+      "viewpoint_changed": true,
+      "initial_final_mean_difference": 31.76583785164779
+    },
+    "site_dynamic": {
+      "width": 1954,
+      "height": 1063,
+      "brightness_standard_deviation": 55.7715629011558,
+      "dominant_color_ratio": 0.5619935852933559,
+      "edge_density": 0.0077868106621629555,
+      "sky_ratio": 0.5619935852933559,
+      "ground_structure_ratio": 0.44224397996013576,
+      "horizon_angle_degrees": -11.06487075406558,
+      "horizontal_line_count": 19,
+      "checks": {
+        "not_blank": true,
+        "not_almost_uniform": true,
+        "sufficient_edges": true,
+        "not_mostly_sky": true,
+        "plausible_ground_region": true,
+        "horizon_detected": true,
+        "horizon_level": true
+      },
+      "passed": true,
+      "roll_deviation_degrees": 0.0,
+      "vertical_line_count": 5,
+      "viewpoint_changed": true,
+      "initial_final_mean_difference": 29.09700310015268
+    }
+  }
+}

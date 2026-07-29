@@ -1,0 +1,4 @@
+algorithm: risk_aware_astar
+risk_weight: 5.0
+deterministic_tie_breaking: true
+replan_every_step: true

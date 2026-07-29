@@ -1,0 +1,29 @@
+{
+  "status": "PASSED",
+  "title": "RiskShield-PPO: Risk-Aware Safe Reinforcement Learning for Autonomous Construction-Site Inspection under Perception Uncertainty",
+  "source": "paper/main.tex",
+  "pdf": "paper/main.pdf",
+  "page_count": 4,
+  "citation_count": 7,
+  "undefined_citations": 0,
+  "missing_figures": 0,
+  "missing_tables": 0,
+  "placeholder_count": 0,
+  "compilation": {
+    "latexmk": "UNAVAILABLE_MISSING_PERL_ENGINE",
+    "pdflatex_bibtex_sequence": "PASSED"
+  },
+  "visual_validation": "PASSED",
+  "data_sources": [
+    "reports/final_submission/stage9_benchmark/raw_results.csv",
+    "reports/final_submission/stage9_benchmark/ablation_results.csv",
+    "reports/final_submission/stage9_benchmark/tables",
+    "reports/final_submission/stage9_benchmark/figures"
+  ],
+  "truthful_negative_results": [
+    "PPO, SAC, and RiskShield-PPO achieved zero full-mission success.",
+    "RiskShield-PPO's Lagrangian multiplier saturated.",
+    "One-step shielding outperformed k=3 on safety cost in the limited ablation.",
+    "The evidence is simulation-only and provides no real-world safety guarantee."
+  ]
+}

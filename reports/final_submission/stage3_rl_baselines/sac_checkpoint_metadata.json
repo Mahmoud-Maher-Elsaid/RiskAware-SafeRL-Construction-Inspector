@@ -1,0 +1,17 @@
+{
+  "algorithm": "SAC",
+  "created_at_utc": "2026-07-29T15:48:54.113545+00:00",
+  "git_commit": "1dd143c0fac65f653065b12940f2e92a43925c98",
+  "seed": 42,
+  "timesteps": 10000,
+  "device": "cuda",
+  "torch_version": "2.11.0+cu128",
+  "cuda_available": true,
+  "observation_space": "Box(0.0, 1.0, (2570,), float32)",
+  "action_space": "Box(-1.0, 1.0, (1,), float32)",
+  "continuous_action_adapter": "five equal bins over [-1, 1]",
+  "checkpoint": "artifacts\\final_submission\\sac\\best_model.zip",
+  "checkpoint_sha256": "78fe38fcc78df0ba8f98bd07af373848833876e7ec5ddf1486cec9a3cd9ba44c",
+  "config": "configs\\training\\sac.yaml",
+  "smoke_test": false
+}

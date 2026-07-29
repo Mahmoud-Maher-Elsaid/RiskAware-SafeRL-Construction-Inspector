@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-29T18:03:53.993194+00:00",
+  "git_commit": "dbb9b50ef5e1bec9a4ed2827997cbafde432b67f",
+  "artifacts": [
+    {
+      "path": "reports/final_submission/final_runtime_summary.json",
+      "bytes": 1167,
+      "sha256": "ba7d6115e69e05126836c75a3c6bad125ed87525bfbdedab7c5380a04444398c"
+    },
+    {
+      "path": "reports/final_submission/final_benchmark_summary.json",
+      "bytes": 1329,
+      "sha256": "c87f1b24cf9de26141067f89db1364e2053aa14aa8aebfe1412755d60395f764"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/raw_results.csv",
+      "bytes": 715382,
+      "sha256": "9ea32f5543aca4e8a5772b71eed1e30a4ad4060a6716fbd200aee539707aa2b3"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/raw_results.parquet",
+      "bytes": 222937,
+      "sha256": "c16abd6ad13916031e9fa4f5796250eea7446ee4b2d17112eb3c439409f53eb9"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/ablation_results.csv",
+      "bytes": 51886,
+      "sha256": "16cb46764e9a2ba4707ca684588fc541497da7f828943737393271797a8cdeb1"
+    },
+    {
+      "path": "reports/final_submission/stage8_uncertainty/raw_results.csv",
+      "bytes": 35610,
+      "sha256": "2a64b86522751eb5e7687f49b4fa4f3353d6624e9d2ef9d70ff9e1a55fd94f70"
+    },
+    {
+      "path": "paper/main.pdf",
+      "bytes": 253121,
+      "sha256": "10645df2bec9eaf74964bff6dc3a8a7fc446c5912840b7160c0e3f77b0c6dbae"
+    }
+  ]
+}

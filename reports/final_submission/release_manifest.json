@@ -1,0 +1,2473 @@
+﻿{
+    "schema_version":  1,
+    "generated_at":  "2026-07-29T21:03:54.8779715+03:00",
+    "git_commit":  "dbb9b50ef5e1bec9a4ed2827997cbafde432b67f",
+    "tracked_file_count":  493,
+    "files":  [
+                  {
+                      "path":  ".gitattributes",
+                      "bytes":  150,
+                      "sha256":  "f3a3a092668e12a377595c7bf82985b1a67d20487ca5de764b98f0abc0d9f822"
+                  },
+                  {
+                      "path":  ".github/workflows/ci.yml",
+                      "bytes":  497,
+                      "sha256":  "819040f59d10c7384b712bbbad395cf512c56169c3d1187b8e0ee7a2c0480f92"
+                  },
+                  {
+                      "path":  ".gitignore",
+                      "bytes":  2295,
+                      "sha256":  "e626bde25b695d02cfcc88ac85a11fb963bc87c051c9d95a1865956681494158"
+                  },
+                  {
+                      "path":  ".pre-commit-config.yaml",
+                      "bytes":  158,
+                      "sha256":  "15cc3cf893245c2d5035a5185aad8bf2522a67861fff7ecc76b17ca85498dcea"
+                  },
+                  {
+                      "path":  "BENCHMARK_CARD.md",
+                      "bytes":  627,
+                      "sha256":  "7d46f1ec69964dddd3a4256ad3aaf7d0389993c56cd459607b1b9af2bd51db4f"
+                  },
+                  {
+                      "path":  "CHANGELOG.md",
+                      "bytes":  533,
+                      "sha256":  "4bb52d38c6448028c6a70561372cd1e0ad7bb38611b0efffa879dfab77711ddf"
+                  },
+                  {
+                      "path":  "CITATION.cff",
+                      "bytes":  262,
+                      "sha256":  "3b022ffd21d476fee46c5e0b8ac8fe7d27b01b8889fce5ff98e22c15cf51e51b"
+                  },
+                  {
+                      "path":  "DATA_CARD.md",
+                      "bytes":  686,
+                      "sha256":  "540fe5c0d5c4e5c898255fd1ea8fc2a35c938b11b5230ccf0932a36c49ea817b"
+                  },
+                  {
+                      "path":  "LICENSE",
+                      "bytes":  672,
+                      "sha256":  "de6121a786de2429b0b21f471c9451deeb779ff1b3422c340f651a0770eb9099"
+                  },
+                  {
+                      "path":  "MODEL_CARD.md",
+                      "bytes":  1373,
+                      "sha256":  "a59b2067dcc5ed439cb9dcac8af66725e2d85f9991db1c9f766c6c697d7c7f7a"
+                  },
+                  {
+                      "path":  "README.md",
+                      "bytes":  4217,
+                      "sha256":  "2c9ff54b69f11282b64273b48747c20e82f0bfbd5cc9a0ffab5fed23e1ebc8fc"
+                  },
+                  {
+                      "path":  "RELEASE_NOTES.md",
+                      "bytes":  465,
+                      "sha256":  "a37172e8e640933e6c6fd7e3ccf0aa68bb1ca53df35a3753e6ffd99ed0476a50"
+                  },
+                  {
+                      "path":  "SECURITY.md",
+                      "bytes":  483,
+                      "sha256":  "f482067e63f705bd51155cbb015dca18f9117f7b8455c5aa0ac927a4964f2179"
+                  },
+                  {
+                      "path":  "artifacts/checkpoints/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "artifacts/results/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "configs/baselines/frontier_exploration.yaml",
+                      "bytes":  106,
+                      "sha256":  "1a2183019ecab9dc2797cd95025ab2d1b4399c5d86af7c8ad5cfddff15fe9eaf"
+                  },
+                  {
+                      "path":  "configs/baselines/nearest_risk_revisit.yaml",
+                      "bytes":  106,
+                      "sha256":  "b88c3a51032195d680dd2520099e46c2cbba86588645635bea624f63adafe8e4"
+                  },
+                  {
+                      "path":  "configs/baselines/risk_aware_astar.yaml",
+                      "bytes":  102,
+                      "sha256":  "ae571e81c9672a87384d70545cfc313321c8806f0dfbaa91438a3b9a486d92e7"
+                  },
+                  {
+                      "path":  "configs/benchmarks/full_matrix.yaml",
+                      "bytes":  613,
+                      "sha256":  "7e3d3288eeac97d1f4967b98444b6c5d2d95e41453b112fdffb3bd3f81f2e1ae"
+                  },
+                  {
+                      "path":  "configs/curriculum/safe_viewpoint_radius2.json",
+                      "bytes":  601774,
+                      "sha256":  "b981931ff11808b181cbe5ada511457e9ca12fb51899e34092a76f91bbcd59d0"
+                  },
+                  {
+                      "path":  "configs/env/grid.yaml",
+                      "bytes":  98,
+                      "sha256":  "1597cc087755063736046f97df7a686336a0277ea1b21105670a3b29bc211536"
+                  },
+                  {
+                      "path":  "configs/grid/site_dynamic.yaml",
+                      "bytes":  283,
+                      "sha256":  "afce83aa97f67fb0c70a1e31dd8fe4b2400e4d8082bbff084ad60afab43d4ea4"
+                  },
+                  {
+                      "path":  "configs/grid/site_medium.yaml",
+                      "bytes":  283,
+                      "sha256":  "d057c29ae734c96db268c3812c409214e248d257dc771e087dcb11670d090d1d"
+                  },
+                  {
+                      "path":  "configs/grid/site_small.yaml",
+                      "bytes":  281,
+                      "sha256":  "389cf0378d321545993c65b3593d2f20d43123e512ae5e2b6ec5d939432f9d05"
+                  },
+                  {
+                      "path":  "configs/perception/class_schema.json",
+                      "bytes":  6191,
+                      "sha256":  "9510d76a155639b2573705f34e318361b304d8b26e8afafd915165cca3d14959"
+                  },
+                  {
+                      "path":  "configs/perception/fast_balanced_continuation.json",
+                      "bytes":  1707,
+                      "sha256":  "3702618b9b4442b13ad2b0ab94e9254d4d73a24f82be423ce479d6655e66202f"
+                  },
+                  {
+                      "path":  "configs/perception/pilot_training.json",
+                      "bytes":  1009,
+                      "sha256":  "3ca0c9ce28a92d3c3e5a0b2b601f877e1c61ba26842161f7bd10890b2cde574f"
+                  },
+                  {
+                      "path":  "configs/perception/ppe_dataset.yaml",
+                      "bytes":  638,
+                      "sha256":  "6b2548b23d24d080bead43c0512891902287e6a4176e1459b350b42923f9ef86"
+                  },
+                  {
+                      "path":  "configs/perception/production_candidate_100e.json",
+                      "bytes":  1581,
+                      "sha256":  "cf1b58be4b49c0a2c59f949fb475b4e2e6ae9a6c8f3435e9e50478ace4f6c28e"
+                  },
+                  {
+                      "path":  "configs/perception/stage5b_live_perception.json",
+                      "bytes":  1870,
+                      "sha256":  "0f3b1dbb83276e700c214a319baa168162503f4dde0828ea56c27a088d028889"
+                  },
+                  {
+                      "path":  "configs/train/ppo.yaml",
+                      "bytes":  181,
+                      "sha256":  "7fda3976cf4f1124899ae677fc5167eb7641f4fd61c621b76eb85eeaba0eea18"
+                  },
+                  {
+                      "path":  "configs/training/ppo.yaml",
+                      "bytes":  360,
+                      "sha256":  "d888e8d6d502f5a4580a471473ec5113457588d362b9a5b14994edb4c02c44ee"
+                  },
+                  {
+                      "path":  "configs/training/riskshield_ppo.yaml",
+                      "bytes":  559,
+                      "sha256":  "b9bdf26bd379f0cd11159024ddf2eedb93875ba0fcc3960a0aeef919b69f9214"
+                  },
+                  {
+                      "path":  "configs/training/sac.yaml",
+                      "bytes":  406,
+                      "sha256":  "eb531402ca209661f155145874460361f7c52969159b55edde44567479d4e7a2"
+                  },
+                  {
+                      "path":  "configs/uncertainty/protocol.yaml",
+                      "bytes":  493,
+                      "sha256":  "50049365ff0234c64c074f54fb48079cf4ff853d83b7f13cba8dbf40c1583eee"
+                  },
+                  {
+                      "path":  "configs/webots/policy_control.json",
+                      "bytes":  610,
+                      "sha256":  "8516f7d344ca88b9310286f85482c8381c3bc1400f1d59ecd9960fba310d8fab"
+                  },
+                  {
+                      "path":  "configs/webots/semantic_perception.json",
+                      "bytes":  357,
+                      "sha256":  "7df3cfde1d214d6f3bdb80d3f4af8d2264c2dffd9ed62da9b853750cd27d0553"
+                  },
+                  {
+                      "path":  "configs/webots/site_dynamic.yaml",
+                      "bytes":  269,
+                      "sha256":  "86be3afb3c5b5611f05fb681c7d8c28ee813abf49baff23d514ad35be62c1d43"
+                  },
+                  {
+                      "path":  "configs/webots/site_medium.yaml",
+                      "bytes":  268,
+                      "sha256":  "eda3e992e37b718237b11d7cd77dfb346c609da08b11caf0aff8ebf8e3b94d1e"
+                  },
+                  {
+                      "path":  "configs/webots/site_small.yaml",
+                      "bytes":  266,
+                      "sha256":  "3ba6dee2a9f749b862e09e948668ade4ad56f836068a3447c2a3c00337ffaad1"
+                  },
+                  {
+                      "path":  "configs/webots/stage5a3_closed_loop_route.json",
+                      "bytes":  1509,
+                      "sha256":  "dae7218246d081e936ce243c6093420afe0231b13c0785fb472c08f7ea98d3ec"
+                  },
+                  {
+                      "path":  "data/expert/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "data/manifests/ppe_class_counts.csv",
+                      "bytes":  370,
+                      "sha256":  "65fe284f8062bd02c5dd7d87ad944ec87303e048cf4557e4c0f82617712f8ec4"
+                  },
+                  {
+                      "path":  "data/manifests/ppe_dataset_audit.json",
+                      "bytes":  4217,
+                      "sha256":  "7515f66a0b453ac7aa424d9210f202b4df29917c8a86f30df32b5b9b7b1130b0"
+                  },
+                  {
+                      "path":  "data/manifests/ppe_dataset_integration_validation.json",
+                      "bytes":  2343,
+                      "sha256":  "e21ac6899307db5caaef89304b8a71c3bcb9c26f8f6762f8b1bd9369d89dcb73"
+                  },
+                  {
+                      "path":  "data/manifests/ppe_dataset_manifest.json",
+                      "bytes":  2413,
+                      "sha256":  "6f9ff266bdeed581ec33481cc6aeef104c594f81e5d21a73e2903df56eb5d273"
+                  },
+                  {
+                      "path":  "data/processed/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "data/raw/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "data/scenarios/README.md",
+                      "bytes":  657,
+                      "sha256":  "f53ef46d6f5f60ab0dd0b37d4a8041eeba78fb02c0c0bea9ae61b4b4c1a3fce5"
+                  },
+                  {
+                      "path":  "data/scenarios/manifest.json",
+                      "bytes":  2942,
+                      "sha256":  "4ce0e98d2f55aebdf977013ea8030a2fda5ece0d30b876d2a657963d30d07f07"
+                  },
+                  {
+                      "path":  "data/scenarios/stress/stress.jsonl",
+                      "bytes":  170115,
+                      "sha256":  "84e2de901d3f49bc63912a56d94b40cb9dbc76ec37f2e278cf64576cdf0b9456"
+                  },
+                  {
+                      "path":  "data/scenarios/test_seen/test_seen.jsonl",
+                      "bytes":  81157,
+                      "sha256":  "cfae31e7df769d50776c0654f7f4346513d18c165a6bf590b027cd7291280eb0"
+                  },
+                  {
+                      "path":  "data/scenarios/test_unseen/test_unseen.jsonl",
+                      "bytes":  101203,
+                      "sha256":  "ea069639fe24b670ea74b72c83c1cd81311560ede0b502e317f1a940b5787af3"
+                  },
+                  {
+                      "path":  "data/scenarios/train/train.jsonl",
+                      "bytes":  398046,
+                      "sha256":  "a37c26497168a377a1bc1d2bbecd172cf2fe22ff6b3566472b2e6b2d90df0bc5"
+                  },
+                  {
+                      "path":  "data/scenarios/validation/validation.jsonl",
+                      "bytes":  80938,
+                      "sha256":  "87e02d6379b9f52b0c2725d90997ba79509d35058e351392a69ee5e6e2d873ca"
+                  },
+                  {
+                      "path":  "docs/architecture/final_system_architecture.md",
+                      "bytes":  642,
+                      "sha256":  "ec17ecb5d362f70fc1e985fd56e645a31b505ae8ad9f6401012adefb06535474"
+                  },
+                  {
+                      "path":  "docs/assets/stage5b4_final_live_perception.gif",
+                      "bytes":  513061,
+                      "sha256":  "a0da9e68e3e52c84638082383d01285e44ac68551e7536049a20b84c538dd6d7"
+                  },
+                  {
+                      "path":  "docs/baselines/expert_planners.md",
+                      "bytes":  1279,
+                      "sha256":  "736c3daa11dec601a173a6c036062199e0d41b3fc9475557ed6a16d7fdf88691"
+                  },
+                  {
+                      "path":  "docs/benchmarks/full_research_benchmark.md",
+                      "bytes":  1670,
+                      "sha256":  "95fe447619911e74df476b68d99ef4523c2c14b5ae48a681a551601f5da85bf0"
+                  },
+                  {
+                      "path":  "docs/benchmarks/grid_environment.md",
+                      "bytes":  1959,
+                      "sha256":  "9e02c20d0e66c32cb84413ffe433ac88c35ca6ffab388bb9487967b2128e982d"
+                  },
+                  {
+                      "path":  "docs/experiment_protocol.md",
+                      "bytes":  510,
+                      "sha256":  "39017c6cf61253bb44880d2a00c8fb0f8f31e8e6cae5f696be9fe0c53c52829e"
+                  },
+                  {
+                      "path":  "docs/experiments/uncertainty_protocol.md",
+                      "bytes":  1316,
+                      "sha256":  "756193cfe780c570b8b6ecda845172e63f4174c2cb919d37caa87e8d001a15b0"
+                  },
+                  {
+                      "path":  "docs/final_demo.md",
+                      "bytes":  484,
+                      "sha256":  "11368b2b7dd361f4ab64f808947f9314ebc748b95b4fc11a831cef6350575774"
+                  },
+                  {
+                      "path":  "docs/final_safe_rl_system.md",
+                      "bytes":  6300,
+                      "sha256":  "6f643d87d9f533daaf280704e46a3aa9a05b674ea42bd239044bce52fb68c688"
+                  },
+                  {
+                      "path":  "docs/final_stage_completion_matrix.md",
+                      "bytes":  2101,
+                      "sha256":  "7d0ec13289d0458aef5f14e6e5ffb4a5d4e640c4cd9a7832a2ed5e2d18d4b2bf"
+                  },
+                  {
+                      "path":  "docs/methods/riskshield_ppo.md",
+                      "bytes":  1389,
+                      "sha256":  "525ae0c11ad022d2511dba3234e7e6410b1132cc6204dbd598c623c3120e3fed"
+                  },
+                  {
+                      "path":  "docs/perception/final_perception_pipeline.md",
+                      "bytes":  1343,
+                      "sha256":  "dbb0eb184b7c4502ee02b6c48fc003d42b941e7fbd7cbcc3806d6ba2bf6e8b39"
+                  },
+                  {
+                      "path":  "docs/perception/model_card.md",
+                      "bytes":  1067,
+                      "sha256":  "f4f3e6e2e06a45305182b87e26395b9e9d8d620393a4ebb0d8b6d3423a6664c5"
+                  },
+                  {
+                      "path":  "docs/perception_dataset.md",
+                      "bytes":  1765,
+                      "sha256":  "c0d97be201b231ab55bf3fa6a1f956c84dcbf480b1cf94dc1a69d952b6ed93d2"
+                  },
+                  {
+                      "path":  "docs/perception_production_training.md",
+                      "bytes":  1998,
+                      "sha256":  "cddc64324d694c60812eb0a9e747ff68453be0dd781dee9a9d119b69c6533d1c"
+                  },
+                  {
+                      "path":  "docs/perception_training.md",
+                      "bytes":  1483,
+                      "sha256":  "b88aee51313e2ec386e777605e3aa0a7cff87fef6e0bd051308b49409150698f"
+                  },
+                  {
+                      "path":  "docs/problem_formulation.md",
+                      "bytes":  640,
+                      "sha256":  "98977ae515ea58e395b7ce1ba45e6805f4a0c832dc6e3982c77743c17a59ba44"
+                  },
+                  {
+                      "path":  "docs/project_completion_plan.md",
+                      "bytes":  3278,
+                      "sha256":  "433c9f3fac26fbfcddad50994bf61f4eab7fbe6563956e41e1fc0c2a4fe1a1a1"
+                  },
+                  {
+                      "path":  "docs/reproducibility.md",
+                      "bytes":  516,
+                      "sha256":  "26a4bb22cd52f0cdfbb3c9f7b6baec6ba3c6d4a2a2fca99c58e41197a8fc8859"
+                  },
+                  {
+                      "path":  "docs/research_methodology.md",
+                      "bytes":  625,
+                      "sha256":  "8fbe300ba3f37691a919ad4522d36e3078f3793a094770a203c2132a6fa70bf3"
+                  },
+                  {
+                      "path":  "docs/safety/predictive_safety_shield.md",
+                      "bytes":  1415,
+                      "sha256":  "a705d6adfb4e8aeb7e0d2732a2a3d25c36b08cba783a92dd0ed0e5a9155d7311"
+                  },
+                  {
+                      "path":  "docs/stage_2c_scenario_integration.md",
+                      "bytes":  1164,
+                      "sha256":  "c044ac9a721b2cc0fd3221f5ff7845d5fddf3bf7b17f94876adbb47ab04259dd"
+                  },
+                  {
+                      "path":  "docs/stage_2d_training_diagnostics.md",
+                      "bytes":  1311,
+                      "sha256":  "5c7a3790f1bcf7bf0f8d6eec2e9461183c4e9b4fabc40a6387c986d74455dd69"
+                  },
+                  {
+                      "path":  "docs/stage_3a_expert_baselines.md",
+                      "bytes":  1145,
+                      "sha256":  "1ab197951ce9f0c85e88bc3ceee9af77c252a25d56a402796e0319338e8b655e"
+                  },
+                  {
+                      "path":  "docs/stage_3a_results.md",
+                      "bytes":  1192,
+                      "sha256":  "475cd1191349b6f5dff20be4752a2cbffd0fef93cc02eb1e6564500d9f1f8d6b"
+                  },
+                  {
+                      "path":  "docs/stage_3b_results.md",
+                      "bytes":  1544,
+                      "sha256":  "aaf57a67d265c2fd1d74a134322091f27c01996ea8307811f8ef2db8c6bd7c65"
+                  },
+                  {
+                      "path":  "docs/stage_3b_safe_viewpoint_inspection.md",
+                      "bytes":  1475,
+                      "sha256":  "1ded96ea869b3d60f496545afa2e64db9fdc9ccf1463353b7939af75c03f4846"
+                  },
+                  {
+                      "path":  "docs/stage_3c_results.md",
+                      "bytes":  2204,
+                      "sha256":  "4c35fb618de822c63b8a9d6b9819a8ec29b422e36f27755c9a0f4a7c76dada0e"
+                  },
+                  {
+                      "path":  "docs/stage_3c_safe_curriculum_training.md",
+                      "bytes":  1878,
+                      "sha256":  "705027d1d4ebc9a35bca14dd41fd8a86d21239aafdeaf930944db83ad8621c87"
+                  },
+                  {
+                      "path":  "docs/stage_3d_maskable_ppo.md",
+                      "bytes":  1632,
+                      "sha256":  "b98fb26745bc11f281b6370af100b4c9c1ffdabb127ddc620901e2a8e3aa83c4"
+                  },
+                  {
+                      "path":  "docs/stage_3d_results.md",
+                      "bytes":  2058,
+                      "sha256":  "22f521cb706b76834ecc5befab3bf8ed442fbf3b24a3262ca0d136dc29a672ed"
+                  },
+                  {
+                      "path":  "docs/stage_3d_smoke_results.md",
+                      "bytes":  1696,
+                      "sha256":  "e865fce25457b80be98ef769bae8065be89088ce86ec60c6147f429c6c39b84c"
+                  },
+                  {
+                      "path":  "docs/stage_3e_a_checkpoint_audit.md",
+                      "bytes":  2347,
+                      "sha256":  "46f97aad728194c02dc5011a7d8877ef1c9b841a335bc0462aa3e61b0066d837"
+                  },
+                  {
+                      "path":  "docs/stage_3e_a_deadlock_validation.md",
+                      "bytes":  1440,
+                      "sha256":  "bf3bf2011da5fb07bc3ae370f9f9dfa27d20bbbede5cfff56ee5e274d7399773"
+                  },
+                  {
+                      "path":  "docs/stage_3e_a_smoke_results.md",
+                      "bytes":  1459,
+                      "sha256":  "ffb54eb9f7849577b0e0399baa01b56c29b69b0f83a1ae09658c19515aac55d0"
+                  },
+                  {
+                      "path":  "docs/stage_3e_semantic_safety_shield.md",
+                      "bytes":  2413,
+                      "sha256":  "29745e1d9313b8ef74bceb19bc0ba6ea9e69657d40321943b34863e4dcf7dcbe"
+                  },
+                  {
+                      "path":  "docs/stage_4_webots_integration.md",
+                      "bytes":  4858,
+                      "sha256":  "14a416170f27f18f3e68d576d09177bf78114ac23d99ab61fef08079752f2b5c"
+                  },
+                  {
+                      "path":  "docs/stage_4a_runtime_validation.md",
+                      "bytes":  1739,
+                      "sha256":  "e8b23d0357a5d4cf0e181a7eedeefe0a6f06c1f565931b4949427ac88156bf99"
+                  },
+                  {
+                      "path":  "docs/stage_4b2_live_webots_sensors.md",
+                      "bytes":  2177,
+                      "sha256":  "f7dabba7ba7208eb41f7606fc5e81192c1a124d7cbe55dc5ebe701edcd3d22c9"
+                  },
+                  {
+                      "path":  "docs/stage_4b2_runtime_evidence.md",
+                      "bytes":  1653,
+                      "sha256":  "ae0a779e14c667e706ecbd0f95e4f8b47aec5a842cf7f2c6dbbbfe39ca9ddaf5"
+                  },
+                  {
+                      "path":  "docs/stage_4b_observation_action_bridge.md",
+                      "bytes":  1807,
+                      "sha256":  "399292bfc9fea53f4fde783911a729c320906455d75e4ddc10323a47ab7bafea"
+                  },
+                  {
+                      "path":  "docs/stage_4c1b_runtime_evidence.md",
+                      "bytes":  1775,
+                      "sha256":  "c9d0aaec07efef246fb56b91e99cff17191c95933da60de67ee4f377fa254725"
+                  },
+                  {
+                      "path":  "docs/stage_4c_policy_inference_dry_run.md",
+                      "bytes":  2451,
+                      "sha256":  "8c16fda06748698ee56521c209c475f1b41899bca5ced01d5470c6a2c1b2e701"
+                  },
+                  {
+                      "path":  "docs/stage_4d_professional_showcase.md",
+                      "bytes":  1608,
+                      "sha256":  "6ecec6152631a79ba4ca7db852ce5bd0ff0dd1c4199cb4c4f62e959e578ce3cf"
+                  },
+                  {
+                      "path":  "docs/stage_5a3_closed_loop_inspection_mission.md",
+                      "bytes":  5955,
+                      "sha256":  "c55c286604977adee5c369b2288d0cde0da0fe6b42c7e7221d1b69e1c7d98093"
+                  },
+                  {
+                      "path":  "docs/stage_5a_live_camera_acquisition.md",
+                      "bytes":  2427,
+                      "sha256":  "1f2a098d71c6c22b198795e3968ed43869795434ba31e490879f6c0b4ad8bcb0"
+                  },
+                  {
+                      "path":  "docs/stage_5b3_controller_synchronized_perception.md",
+                      "bytes":  1026,
+                      "sha256":  "ec63318e656e613bc3e0c935fa50055e631c5230e5a0f842966371e0854e1d0f"
+                  },
+                  {
+                      "path":  "docs/stage_5b4_final_camera_showcase.md",
+                      "bytes":  1070,
+                      "sha256":  "c4df568154670b6e838f0fc2ee39366c044a9ee47b6d909eba1a777005127490"
+                  },
+                  {
+                      "path":  "docs/stage_5b_live_perception_integration.md",
+                      "bytes":  1979,
+                      "sha256":  "5d7b47587a631dfa89cf035ec77b674a852ad9089f8ca8598adcca611d167c0b"
+                  },
+                  {
+                      "path":  "docs/stage_5c_rl_motor_control.md",
+                      "bytes":  1144,
+                      "sha256":  "a6fbcd0bd7d39fc101b5cd9ae8988c03ee0793f1e1f410f694531ba30d50f2cf"
+                  },
+                  {
+                      "path":  "docs/training/ppo_sac_baselines.md",
+                      "bytes":  1482,
+                      "sha256":  "863c988865a4e063268d01f8215c8189113afe585882c7cf5fb6ad070df7406e"
+                  },
+                  {
+                      "path":  "docs/troubleshooting.md",
+                      "bytes":  646,
+                      "sha256":  "208ffe6f62f1e53de2a28d1010eef5333bde647a22e72ffcdbfbdf6197580e31"
+                  },
+                  {
+                      "path":  "docs/webots/environments.md",
+                      "bytes":  1538,
+                      "sha256":  "7a6afc68c9c1c0c5fb5d045a63fe6af3d33abba3e8e220f630e8d21f5cef9915"
+                  },
+                  {
+                      "path":  "paper/README.md",
+                      "bytes":  414,
+                      "sha256":  "38874958c61237096dbc049bba85564cc8ad6a00e5d0ecb526b5d3b1dd2fb4fd"
+                  },
+                  {
+                      "path":  "paper/figures/learning_curves.png",
+                      "bytes":  61307,
+                      "sha256":  "5b16df8341327e84f4573686a54c31ad3bbb767f2b80c4b3c8354324c5079b5a"
+                  },
+                  {
+                      "path":  "paper/figures/safety_cost_curves.png",
+                      "bytes":  123898,
+                      "sha256":  "a58bfb8cc564b71c9d8580736c2e8e056e24a3b7262548a6edb028c8f5df265b"
+                  },
+                  {
+                      "path":  "paper/figures/safety_performance_pareto.png",
+                      "bytes":  61345,
+                      "sha256":  "5c1020817faa4a7ea52e54f010ed993d5cb330fdd0eadcfb54ba4bf219100d0f"
+                  },
+                  {
+                      "path":  "paper/figures/uncertainty_degradation.png",
+                      "bytes":  57420,
+                      "sha256":  "3f28d41d13759446c9412f47c7b57f8c220adece722c4817e9426788e1e181a0"
+                  },
+                  {
+                      "path":  "paper/main.pdf",
+                      "bytes":  253121,
+                      "sha256":  "10645df2bec9eaf74964bff6dc3a8a7fc446c5912840b7160c0e3f77b0c6dbae"
+                  },
+                  {
+                      "path":  "paper/main.tex",
+                      "bytes":  12109,
+                      "sha256":  "c43f7101a053c4c8f1b093b3091d8ca5547f5da0efb090d358d621c80c674bc9"
+                  },
+                  {
+                      "path":  "paper/references.bib",
+                      "bytes":  2429,
+                      "sha256":  "14fc261b71094b4c5f1451002f10933e99a3eaf5c82a88e1e838e3985e60c7fd"
+                  },
+                  {
+                      "path":  "paper/tables/ablation_summary.tex",
+                      "bytes":  595,
+                      "sha256":  "2e14cb8e03d116fc97e9cf18de3b4e7927a59120ec1f3badfd0acba78745ae76"
+                  },
+                  {
+                      "path":  "paper/tables/algorithm_summary.tex",
+                      "bytes":  541,
+                      "sha256":  "131bbb59f02057af2d3a7917795d8977cbf6f3d2942a00f9988bb0324582a5be"
+                  },
+                  {
+                      "path":  "pyproject.toml",
+                      "bytes":  1100,
+                      "sha256":  "edb3d50c650f4274c5fb4f364f9dc6ab1a0ae35bfec5c727e217ba2ef90e64e5"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/baseline_audit.json",
+                      "bytes":  3454,
+                      "sha256":  "ff08a364d85a1106ad78ec07fdb167f8411c85ff220ae4c69b4e0879d64bf355"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/baseline_audit.md",
+                      "bytes":  2318,
+                      "sha256":  "e92d306ef5c8283cd276206cf85cbdc88a0d52761ad0b835958586a853c31bb6"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/execution_log.md",
+                      "bytes":  9616,
+                      "sha256":  "67f46a168059ce4f7406177411f8d6ed38f59024f6569c1e918ed1496231a40c"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/final_completion_report.json",
+                      "bytes":  9161,
+                      "sha256":  "519392b5e407b7c06df3b0db0b5848d9c86ce61077279a88a24f957bd0d1922c"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/final_completion_report.md",
+                      "bytes":  3064,
+                      "sha256":  "f0623bfe6b8d5c4fbeadf18ad2a4c6d80a068d2c58e5527549682dbcf916a50d"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/final_file_inventory.txt",
+                      "bytes":  13688,
+                      "sha256":  "526aae9928fd16184dee192a8e72d9ed6b0caba6338a79d7d2861b47593ac6cc"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/final_git_history.txt",
+                      "bytes":  5030,
+                      "sha256":  "89988712d0c377c208637b0720906d3eb73e97722ed6aee528f0b3b9b0122bc4"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/final_runtime_summary.json",
+                      "bytes":  1167,
+                      "sha256":  "ba7d6115e69e05126836c75a3c6bad125ed87525bfbdedab7c5380a04444398c"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/final_test_results.txt",
+                      "bytes":  330,
+                      "sha256":  "9a3cdb86d67b7f6b58af8e0531a36099670da482136a503f60f960d8817489e5"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stage5b_visual_evidence/final_first_person.png",
+                      "bytes":  536103,
+                      "sha256":  "5e7ef99579cf26c0c17fbb2d5cbe715599379eaf8462d3bf324ecf650c350092"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stage5b_visual_evidence/initial_first_person.png",
+                      "bytes":  585116,
+                      "sha256":  "027a98fcdbedcf1323be9bec5bf792a7c8929c278bd652791ec523c1be705b80"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stage5b_visual_evidence/left_turn_first_person.png",
+                      "bytes":  507004,
+                      "sha256":  "061504a23cb3ea82f06219184174481a591ce158161393c2c6ce14a0821a778e"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stage5b_visual_evidence/middle_first_person.png",
+                      "bytes":  661745,
+                      "sha256":  "40b6b310fbe3eb8782cf3c79b22f27ae722635bcf8898d6822ddbfafdd3544e6"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stage5b_visual_evidence/right_turn_first_person.png",
+                      "bytes":  917406,
+                      "sha256":  "c413acabcc985cee29ea5c8db8645679445a01532ae7ce1e3f84a4731a199f60"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stage5b_visual_evidence/selected_cv_annotated_frame.png",
+                      "bytes":  39521,
+                      "sha256":  "54aaa763efd9a288f402c286c1336e4842592694a5f5d19dd4e53d2c37de0ef6"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stage5b_visual_evidence/stage5b_runtime_summary.json",
+                      "bytes":  4235,
+                      "sha256":  "47de05ae5f4a05ad74e204da494f71f07207c2daa9ee360662cdac4b7c118680"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5b-live-perception-integration/plan.md",
+                      "bytes":  546,
+                      "sha256":  "8d048f056de43bc11e694708590cc1826769002d316c58103c964b20b3ea4c27"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5b-live-perception-integration/result.json",
+                      "bytes":  924,
+                      "sha256":  "d60d37d743fd2ea8b1fbf28067619ea68a4cc526655d76f6e2756ea024a4dce0"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5b-live-perception-integration/result.md",
+                      "bytes":  1108,
+                      "sha256":  "9ced48ab8065ba3c24dca87aee28eb5d82f7624a48f08c39628403ac2100b129"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/action_trace.jsonl",
+                      "bytes":  7596,
+                      "sha256":  "287086ff1b40e48531518e0ae2675b6f1fb7042ef4522cfe291c05b89d73b970"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/annotated_000.png",
+                      "bytes":  58918,
+                      "sha256":  "ffa6089efa2f0a3c1a8fa5b851fe6a00357a9f7dc5ee2af9ec1e516a6f43d642"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/first_person_final.png",
+                      "bytes":  6242463,
+                      "sha256":  "753751e7fd348d6ef11f3123f92dd47163866d80032c7f53ad64dfc17554d293"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/first_person_initial.png",
+                      "bytes":  6242463,
+                      "sha256":  "3c8544e8663ec1150c4f06fde92b31eb3dd7f34b563fde16e9fcbc71104c514a"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/motor_commands.jsonl",
+                      "bytes":  47746,
+                      "sha256":  "60f1e031271c83f3a31939e5f898f119f0db36f9840ad13ac7c3bf0b88b2e0d0"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/stage5c_runtime_summary.json",
+                      "bytes":  1139,
+                      "sha256":  "a5a9dcd6e2a028957c358f66eab735f8dab1fad570f468374e0fec743dc95449"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5c-rl-motor-control/plan.md",
+                      "bytes":  810,
+                      "sha256":  "9bf9cd10ca5e7fd3e8933b16b8d8866fb4e0ee0ef5573642c7108d86ee8898f0"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5c-rl-motor-control/result.json",
+                      "bytes":  966,
+                      "sha256":  "5d1750677ce35b50e504e54a3fcde7c9d923c5fd8af5b1794776be6d120672f3"
+                  },
+                  {
+                      "path":  "reports/final_project_completion/stages/stage-5c-rl-motor-control/result.md",
+                      "bytes":  1177,
+                      "sha256":  "b2de4967c2ab5de7935487b3572ea80a99ccc851b419b59c4d31cf178f31e9b4"
+                  },
+                  {
+                      "path":  "reports/final_submission/execution_log.md",
+                      "bytes":  16908,
+                      "sha256":  "fe753cc37c33bd5660a4d1057440e657e7026c4a2636fe63d74702f4c17af6af"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_artifact_manifest.json",
+                      "bytes":  1513,
+                      "sha256":  "360ebb7f80361accc3d7f657507d17c6d795c174ad0bbfc144cb5b8941fd8b85"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_benchmark_summary.json",
+                      "bytes":  1329,
+                      "sha256":  "c87f1b24cf9de26141067f89db1364e2053aa14aa8aebfe1412755d60395f764"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_file_inventory.txt",
+                      "bytes":  24340,
+                      "sha256":  "3bd19e810b6dc7c28dd5775904cf7330e19f5af92e0dcd4c671d1f2454114d4f"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_git_history.txt",
+                      "bytes":  4663,
+                      "sha256":  "1ab8e21d518ce811bdd09eaa44bb242e1e2d426999e11a1256269afcdaa52f45"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_limitations.md",
+                      "bytes":  685,
+                      "sha256":  "32a91ef27f941f04cd473f7fb7951a96b621f807d1ebc5363c0bba76fd119910"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_runtime_summary.json",
+                      "bytes":  1167,
+                      "sha256":  "ba7d6115e69e05126836c75a3c6bad125ed87525bfbdedab7c5380a04444398c"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_submission_report.json",
+                      "bytes":  4192,
+                      "sha256":  "e8c11e69ebbb81cbe2a9a2363aa9258e8efc03967d7667d8a1dd0af746bf64b9"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_submission_report.md",
+                      "bytes":  800,
+                      "sha256":  "f207466b1e76158e8b6cd6593320ed1910bfcede9beff22e61ee8c0957637257"
+                  },
+                  {
+                      "path":  "reports/final_submission/final_test_results.txt",
+                      "bytes":  391,
+                      "sha256":  "91c7cdfc0dd9bf5171868a0dedc3f883a90017eeadc3ea3525d681e00e0ab6fb"
+                  },
+                  {
+                      "path":  "reports/final_submission/interruption_recovery.json",
+                      "bytes":  3067,
+                      "sha256":  "a9e51b21f7c81d3971e6656ae79cc01ac08f5daa525e207fc51b08168cd6969d"
+                  },
+                  {
+                      "path":  "reports/final_submission/paper_result.json",
+                      "bytes":  1120,
+                      "sha256":  "1ea847ac376275ef876212d5b7fced6f02dce97a7b69d826eb90f0660bd5f927"
+                  },
+                  {
+                      "path":  "reports/final_submission/paper_result.md",
+                      "bytes":  720,
+                      "sha256":  "3d2f5e63ed37d2ee9ce8f9e752c7f37e02e593ed48d9a529b1b38d0ec785403b"
+                  },
+                  {
+                      "path":  "reports/final_submission/release_manifest.json",
+                      "bytes":  128560,
+                      "sha256":  "98cfac6344b7f595af06bcab14c57addaf35ad3029db20a03872088bf3b125c9"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage1_grid_environment/validation.json",
+                      "bytes":  916,
+                      "sha256":  "43571e8369565a0c00e6cb901474c274b867175442901109bc31b553a722972d"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage2_planner_baselines/raw_results.csv",
+                      "bytes":  17025,
+                      "sha256":  "ebaea7aed1e3d3b1d18090624fa4068f80741d004da7838b3ef89015bdf948b2"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage2_planner_baselines/summary.json",
+                      "bytes":  935,
+                      "sha256":  "f201256590c47f30d371cd8e06406f70a0581d817fdf98e2c6b949e4a00035d9"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/collisions.png",
+                      "bytes":  81929,
+                      "sha256":  "627ddc5462229bfd6deca23844b24a1de6beec2a56133e3899b341158ded718e"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/constraint_violations.png",
+                      "bytes":  113259,
+                      "sha256":  "3adfdf301040bca91252bdca750d3d1542b0e74edc7d8e1163d86ad17d6150a7"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/coverage.png",
+                      "bytes":  95966,
+                      "sha256":  "db2198167036397c105f88efc6399d01a97550adf18f4e6fb76c071b38182fd6"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/episodic_return.png",
+                      "bytes":  103701,
+                      "sha256":  "314eec7e4dfcb81562842742b72405457086bbc656dab85c2a5e56638ed77821"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/evaluation_results.csv",
+                      "bytes":  7982,
+                      "sha256":  "1298c56468a15c9d719bcd040717f8640cdd725c4fb217c904fb4dfe758208e5"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/hazard_recall.png",
+                      "bytes":  103824,
+                      "sha256":  "264c20ed2a2d14effd6d065f0bb5462dc8a3288b715b8ae6e23dd3db84c1ab63"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/ppo_checkpoint_metadata.json",
+                      "bytes":  590,
+                      "sha256":  "fa6b9ac6882ca5717bcf608e2c1d8b5d46c5578b6a605da6e7a810043b9f3bed"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/sac_checkpoint_metadata.json",
+                      "bytes":  672,
+                      "sha256":  "0c854dfe6ab0f2b3e8570bb7ce0f9f416177b1a5cd319efe903bbea8bb4f6e6a"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/safety_cost.png",
+                      "bytes":  98948,
+                      "sha256":  "99c868d2dadf05d4774441d5080016de149da693a22a01257504e9e00583a3de"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/success.png",
+                      "bytes":  28621,
+                      "sha256":  "7fecd35dc180eb9f3299d2b670fb898212c7d103926f49779a3ae5c9fde6e560"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/summary.json",
+                      "bytes":  671,
+                      "sha256":  "90b81f3624de980fc36ac8d242a034e4a66631b802a633279d1fde40d53508f1"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage3_rl_baselines/training_metrics.csv",
+                      "bytes":  10411,
+                      "sha256":  "cba38ee8b06db3ebb3737cb6849778127d15ddd25038312fd912a2aedb7efeb4"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage4_riskshield_ppo/checkpoint_metadata.json",
+                      "bytes":  944,
+                      "sha256":  "ac372ba52de107929ae93a449505ecd03ae515a69315cde45b49fd3fb091cfbf"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage4_riskshield_ppo/comparison_results.csv",
+                      "bytes":  17736,
+                      "sha256":  "b41cd4f297e92d3e584196e530aea849e5274555daece1050886c31fed2bc2db"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage4_riskshield_ppo/comparison_summary.json",
+                      "bytes":  1271,
+                      "sha256":  "53505a0c6f07c27b6917263411546a3165dc81163e4b053974cdae25fa24767e"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage4_riskshield_ppo/constraint_training_metrics.csv",
+                      "bytes":  5641,
+                      "sha256":  "8f2c1346371ec7a45cb194ae04dfcb3515ca17f15d97801dc5f5491548dcbe40"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage4_riskshield_ppo/ppo_training_diagnostics.csv",
+                      "bytes":  6049,
+                      "sha256":  "685fe3b5996eccdb107cf4cc4c5fa718d1cb605c10c475b8632a0d9cdff41823"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage5_safety_shield/raw_results.csv",
+                      "bytes":  9631,
+                      "sha256":  "9171b6ff942069d51d20c8a15cdb457ddc2c4843af4240ae32749c98311ac2c1"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage5_safety_shield/summary.json",
+                      "bytes":  1275,
+                      "sha256":  "c1ac5b7380e14b321e7d075996781b35a5da955863c1f924539f6749cd080458"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_dynamic/first_person_final.png",
+                      "bytes":  6242463,
+                      "sha256":  "ac85c296ce03e15812ae5d54f3fd2ab5b53a351928ed21663f13e82ff6002b96"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_dynamic/first_person_initial.png",
+                      "bytes":  6242463,
+                      "sha256":  "cb64e2c85b20746a6bb4381559a3bfdbc09e3fac66aa2cbdee63e75443eee9e9"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_dynamic/stage5c_runtime_summary.json",
+                      "bytes":  1166,
+                      "sha256":  "30a74fb14b7046b7a8c4ebceb3be20945d544912daae1412f0790eeac2e2f85a"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_dynamic/webots_stderr.log",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_dynamic/webots_stdout.log",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_medium/first_person_final.png",
+                      "bytes":  6242463,
+                      "sha256":  "1963e508b3ce3d5acf01362baad11202c3738576488ad77249d71d0672667c8a"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_medium/first_person_initial.png",
+                      "bytes":  6242463,
+                      "sha256":  "6d9e33c4b47e6940fe0aaa5f036380e64e6687787125fd45cc1a67709c139983"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_medium/stage5c_runtime_summary.json",
+                      "bytes":  1166,
+                      "sha256":  "336751d25208088a742428ea9365219f16453e9fb2802b03e398646a3c885141"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_medium/webots_stderr.log",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_medium/webots_stdout.log",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_small/first_person_final.png",
+                      "bytes":  6242463,
+                      "sha256":  "d4ef7805b3f4acb3de1edf02e5a16cfbdb0c647dec07f0cb944d46ba11c136c8"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_small/first_person_initial.png",
+                      "bytes":  6242463,
+                      "sha256":  "2ab6f5345d8b4d7bab32a647ec44e518f764b3d9d509bd3b7ba33f31f1463a31"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_small/stage5c_runtime_summary.json",
+                      "bytes":  1164,
+                      "sha256":  "ed93a6687f8c2ad519ac17b28ee42a89cd3b11e609ad44051abb615da7c32c15"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_small/webots_stderr.log",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/site_small/webots_stdout.log",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/visual_validation.json",
+                      "bytes":  2686,
+                      "sha256":  "61eec9506a6c4aebb3f2c10ad385229f7ea60af27fd3e3ec1f1d6bbabe029696"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage6_webots/world_smoke_summary.json",
+                      "bytes":  932,
+                      "sha256":  "3e9fb2cfdd6c51854de822d4232b39e63c13167c0aeb46fdca4f64914fe6a043"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage7_perception/selected_runtime_annotation.png",
+                      "bytes":  58918,
+                      "sha256":  "ffa6089efa2f0a3c1a8fa5b851fe6a00357a9f7dc5ee2af9ec1e516a6f43d642"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage7_perception/validation.json",
+                      "bytes":  815,
+                      "sha256":  "c6235452238c2721e77254dcf5b544e01ea1b24cb65915fd39b3b862f434b3af"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage8_uncertainty/aggregated_results.csv",
+                      "bytes":  6955,
+                      "sha256":  "623b016c3e6b797c44e5d958ca413bd1024c57d8912daa5f16c221cbd4f9d56b"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage8_uncertainty/raw_results.csv",
+                      "bytes":  35610,
+                      "sha256":  "2a64b86522751eb5e7687f49b4fa4f3353d6624e9d2ef9d70ff9e1a55fd94f70"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage8_uncertainty/summary.json",
+                      "bytes":  539,
+                      "sha256":  "8ecfc05fb3d7a80e5676fda3e57ae2aae02fd8e9c5c68a8e9d7bb2c3d8697ac3"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/ablation_manifest.json",
+                      "bytes":  2329,
+                      "sha256":  "9864741d73a971c51f5136ea73d45985b1480ceece82bf26ea40311ddadc2c03"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/ablation_results.csv",
+                      "bytes":  51886,
+                      "sha256":  "16cb46764e9a2ba4707ca684588fc541497da7f828943737393271797a8cdeb1"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/ablation_summary.json",
+                      "bytes":  4307,
+                      "sha256":  "0952991f3cc10a76cf3409c443741dcce0ebe429393aff9cbeee3a189533ca35"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/aggregated_results.csv",
+                      "bytes":  261053,
+                      "sha256":  "a5dae6bdf1a1513695fa82a4afa6d5a547c0b401b7a46b43ab9284bf1362ba48"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/benchmark_summary.json",
+                      "bytes":  1329,
+                      "sha256":  "c87f1b24cf9de26141067f89db1364e2053aa14aa8aebfe1412755d60395f764"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/failed_runs.jsonl",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/collision_comparison.png",
+                      "bytes":  45983,
+                      "sha256":  "9579e1e71c5ca0a6869a8e1294b82222e651ee53c8385384f9bd036e3cae5236"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/constraint_violation_comparison.png",
+                      "bytes":  46220,
+                      "sha256":  "6f17d5a6a4415160d76cb66d7b90a8351e15dff1921f2b6ec0f31a3837b73f94"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/energy_comparison.png",
+                      "bytes":  46175,
+                      "sha256":  "a19c1daac2386f13433eab3cfe340759a8f286c23583c35817763c1118b40aa8"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/hazard_recall_comparison.png",
+                      "bytes":  44617,
+                      "sha256":  "714878bf12cb421bb0187290dbeccf8e86540fa711a8281d38569020688aaa5c"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/inspection_coverage_comparison.png",
+                      "bytes":  48397,
+                      "sha256":  "f9aa964450ac9dd6f09d3bf1decfa84ea8eff6a4f5352417817b2d16d716d691"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/learning_curves.png",
+                      "bytes":  61307,
+                      "sha256":  "5b16df8341327e84f4573686a54c31ad3bbb767f2b80c4b3c8354324c5079b5a"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/robustness_comparison.png",
+                      "bytes":  47068,
+                      "sha256":  "e14f4ee6ba7a6f584a6b9ab1d1db06b985bed3b08c69459610beb73ae17532e1"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/safety_cost_curves.png",
+                      "bytes":  123898,
+                      "sha256":  "a58bfb8cc564b71c9d8580736c2e8e056e24a3b7262548a6edb028c8f5df265b"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/safety_performance_pareto.png",
+                      "bytes":  61345,
+                      "sha256":  "5c1020817faa4a7ea52e54f010ed993d5cb330fdd0eadcfb54ba4bf219100d0f"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/safety_shield_interventions.png",
+                      "bytes":  43890,
+                      "sha256":  "20b9a19568c445649ad5c554f0b6b20f0bb945aeae2c36feba77dff8b049f4f5"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/collision_comparison.csv",
+                      "bytes":  204,
+                      "sha256":  "607c0d03f95bc4a5a7f3cf71b1d737cdf901fab0c2c7966e98471aa70c0b75f0"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/constraint_violation_comparison.csv",
+                      "bytes":  284,
+                      "sha256":  "63a6dd3b05e801fd2aa1f5c3a44569855f5144647eadeebefed4914b0624c084"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/energy_comparison.csv",
+                      "bytes":  275,
+                      "sha256":  "6172a13273406f1b90abd035d1c1017a9f7e60aeaff9768a755818966c1bcc7b"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/hazard_recall_comparison.csv",
+                      "bytes":  268,
+                      "sha256":  "09aca64297d42c59f999237dc31bb4fc388866f702c498f1305be88bb906ebc2"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/inspection_coverage_comparison.csv",
+                      "bytes":  304,
+                      "sha256":  "4f202f7243becb25bed0368b8aec28fdcefb910488b7c3d333afa42becc70d28"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/learning_curves.csv",
+                      "bytes":  6032,
+                      "sha256":  "1ed5d3db64f09f09d8fb3f8408939e2bce9fc4e64a17207e1afad3a7b257e8de"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/robustness_comparison.csv",
+                      "bytes":  298,
+                      "sha256":  "38496f65d16966bc02121632860ba00fe05e30d6fae84333637345c9c8f3e85d"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/safety_cost_curves.csv",
+                      "bytes":  3537,
+                      "sha256":  "462920f9c9a9a82aec2144de53a279d58ed6bbe67b89126b949225c4a0927e4c"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/safety_performance_pareto.csv",
+                      "bytes":  289,
+                      "sha256":  "3ce69bf81ca3426d15061fb17eb368a68d3eff760c3996183bad0513ed28fc5a"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/safety_shield_interventions.csv",
+                      "bytes":  171,
+                      "sha256":  "e89833d92f7c0fa7c1b305504be27ec5fcf464404417bfdff1c6d5e815bfb52b"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/success_rate_comparison.csv",
+                      "bytes":  172,
+                      "sha256":  "bafd3121e57234d7ca9258834835258781817363653b8fd72546607291ec479d"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/time_to_inspect_comparison.csv",
+                      "bytes":  284,
+                      "sha256":  "1a2430aaec07af78ad573a8baf154bfba1579a6dbc26989d0d4ed871fbcfd3a2"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/source_data/uncertainty_degradation.csv",
+                      "bytes":  852,
+                      "sha256":  "32fb2fae6b2ccc63e36d5765bd1f27f27ef1cf8cc3c18a58649040c36611682c"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/success_rate_comparison.png",
+                      "bytes":  44211,
+                      "sha256":  "0295e5461d482c530569e0c29399033994f30390a1a44dc1175ea096326fdb0e"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/time_to_inspect_comparison.png",
+                      "bytes":  45861,
+                      "sha256":  "7a4ec412d0ab62f2700a5516d027b41545f8d0856b511b101ebc0a7e95a621a8"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/figures/uncertainty_degradation.png",
+                      "bytes":  57420,
+                      "sha256":  "3f28d41d13759446c9412f47c7b57f8c220adece722c4817e9426788e1e181a0"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/raw_results.csv",
+                      "bytes":  715382,
+                      "sha256":  "9ea32f5543aca4e8a5772b71eed1e30a4ad4060a6716fbd200aee539707aa2b3"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/raw_results.parquet",
+                      "bytes":  222937,
+                      "sha256":  "c16abd6ad13916031e9fa4f5796250eea7446ee4b2d17112eb3c439409f53eb9"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/resume_state.json",
+                      "bytes":  81,
+                      "sha256":  "1e20374d71c880e5ca95a86966a4a559ad621477d6a351e653a59d383e527460"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/run_manifest.json",
+                      "bytes":  882815,
+                      "sha256":  "2acfa040a53745244fd696945e63504620a9904cc4a5d0a1abbd2edb585fb071"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/statistical_analysis.json",
+                      "bytes":  2900,
+                      "sha256":  "04d9862ce517b41edc760f0e3cc7aea62b95291142a2ddc2c6677424bf87e682"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/statistical_analysis.md",
+                      "bytes":  1270,
+                      "sha256":  "4bf8a1506dd5977beb9b923a80ce69bedc114b928ee08ae26c8a20f9ba9b5da0"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/tables/ablation_summary.csv",
+                      "bytes":  652,
+                      "sha256":  "a5fa1f18b29129548a10c3c7e427654c6b115c9f1387ccd568e6cfc13db7f562"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/tables/ablation_summary.tex",
+                      "bytes":  659,
+                      "sha256":  "e6f6b305f4a1bdf891e6920986d9c4c35e85eb813688503a501aaca26dcb7a9f"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/tables/algorithm_summary.csv",
+                      "bytes":  637,
+                      "sha256":  "ba3487ad61e73a3ca730209d3d6f163c9d3a19b222ea93d49c17af3043927062"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/tables/algorithm_summary.tex",
+                      "bytes":  584,
+                      "sha256":  "79e35b8afc45e44aa36bb1250a31ce7a8748abbd9cc1b2e435ce3b4066a05d35"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/aggregated_results.csv",
+                      "bytes":  7107,
+                      "sha256":  "1d670685cfa5acc5d3f3f82c18c0ee2b278c95ca9245f82be5ffdc95a0d1a3b2"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/benchmark_summary.json",
+                      "bytes":  1125,
+                      "sha256":  "d0543f263bade800efbb0c29f71ef9fc0c57a21e035456e5a6ff30b85cbc8156"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/failed_runs.jsonl",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/raw_results.csv",
+                      "bytes":  3197,
+                      "sha256":  "6d3ecd799857db98bb7ab64eb71f4c7be0e6920449079a2e7383d8c6e8dd5af2"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/raw_results.parquet",
+                      "bytes":  26507,
+                      "sha256":  "34d054f88eda531b43ca626abeaff02d05544e66fc51941f5f7b56e8ce18d996"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/resume_state.json",
+                      "bytes":  75,
+                      "sha256":  "4cd0241f28950d81b26641024d2538aafd8b607d3c20d3e65503450fc9860ea3"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/statistical_analysis.json",
+                      "bytes":  4,
+                      "sha256":  "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage_audit.json",
+                      "bytes":  7518,
+                      "sha256":  "febe0bd8d9d6abd925bc7c7ceb8e554573644d8edf7b51d3f696783241cfeb1a"
+                  },
+                  {
+                      "path":  "reports/final_submission/stage_audit.md",
+                      "bytes":  3419,
+                      "sha256":  "aabfa1f1baa4c1f741e90882d11c2b0ad97d1a3c5f6c4dd02ccc8b2d8fe10e72"
+                  },
+                  {
+                      "path":  "reports/perception/pilot_runs/latest_pilot_summary.json",
+                      "bytes":  9317,
+                      "sha256":  "4f687111710939829dc64385cad77d8adba1219208ecabbabef6322f8c3cb6ec"
+                  },
+                  {
+                      "path":  "reports/perception/pilot_runs/pilot_summary_20260722_211614.csv",
+                      "bytes":  1314,
+                      "sha256":  "06b66eb186e75c381291a1a3e630f9165282c2de57139eed838d8715cde3f5a4"
+                  },
+                  {
+                      "path":  "reports/perception/pilot_runs/pilot_summary_20260722_211614.json",
+                      "bytes":  9317,
+                      "sha256":  "4f687111710939829dc64385cad77d8adba1219208ecabbabef6322f8c3cb6ec"
+                  },
+                  {
+                      "path":  "reports/perception/pilot_runs/pilot_viability_decision.json",
+                      "bytes":  3249,
+                      "sha256":  "eb0c51448eb00df6111b9624d1ca78033c2850398ac520442621749dec600840"
+                  },
+                  {
+                      "path":  "reports/perception/production_training_optimized/latest_summary.json",
+                      "bytes":  2246,
+                      "sha256":  "31e6378724488295aec2099a3ea9f9647426b3f333bcd6d4265b72589bab973d"
+                  },
+                  {
+                      "path":  "reports/perception/production_training_optimized/summary_20260723_003324.json",
+                      "bytes":  2246,
+                      "sha256":  "31e6378724488295aec2099a3ea9f9647426b3f333bcd6d4265b72589bab973d"
+                  },
+                  {
+                      "path":  "reports/perception/stage5b/benchmark_20260726/benchmark_stage5b_models.py",
+                      "bytes":  20224,
+                      "sha256":  "a447b3d2582aa403ca471c641632ee41c314982520327a68d9603062c1a7e068"
+                  },
+                  {
+                      "path":  "reports/perception/stage5b/benchmark_20260726/stage5b1_console_output.txt",
+                      "bytes":  5334,
+                      "sha256":  "e82ff36d0d41df178b2a44b6fcce46c9cd21031e7b0f070bc8082b3048d3974c"
+                  },
+                  {
+                      "path":  "reports/perception/stage5b/benchmark_20260726/stage5b1_model_benchmark.csv",
+                      "bytes":  2460,
+                      "sha256":  "c01d8c4d07b9cf590cf5064b4a5d92ef1c9d5b67c508c89b2858df5759571253"
+                  },
+                  {
+                      "path":  "reports/perception/stage5b/benchmark_20260726/stage5b1_model_benchmark.json",
+                      "bytes":  76519,
+                      "sha256":  "58285ddf8994be794645883083f5a36f3e92959256e2f2eb512c8334119fe4ad"
+                  },
+                  {
+                      "path":  "reports/perception/stage5b/benchmark_20260726/stage5b1_selected_model.json",
+                      "bytes":  929,
+                      "sha256":  "a8a96d1d7b3fd18df4773200b72f1ac337c0e5c121ed4bb0517d94b48daa3c6e"
+                  },
+                  {
+                      "path":  "reports/perception/stage5b/model_selection.json",
+                      "bytes":  996,
+                      "sha256":  "7e2403c09c6402e2c8b2c4c5b10762d00e5454e95cba544a8fab701e0c627b67"
+                  },
+                  {
+                      "path":  "reports/perception/stage5b/stage5b3_runtime_validation.json",
+                      "bytes":  2121,
+                      "sha256":  "3adb2990f5c339debd31cbff9301117a4155067f86399993a66c49803f0514cc"
+                  },
+                  {
+                      "path":  "reports/perception/stage5b/stage5b4_final_showcase.json",
+                      "bytes":  1312,
+                      "sha256":  "31e1737cfc5d457add21fd58a2eb6eac24fb121d1a24b0a56618824b4a843bb8"
+                  },
+                  {
+                      "path":  "reports/perception/training_environment.json",
+                      "bytes":  3768,
+                      "sha256":  "ab3a57cbde76bce1978a337bec64a23479869e37ac7300d7158f0c819d67b7ef"
+                  },
+                  {
+                      "path":  "reports/webots/stage5c_rl_motor_readiness.json",
+                      "bytes":  902,
+                      "sha256":  "fd506e0f40f241919129c6cdd2dba65d7386a743164b0008451b583276204523"
+                  },
+                  {
+                      "path":  "scripts/audit_ppe_dataset.py",
+                      "bytes":  19770,
+                      "sha256":  "f57a0ca3a5685ae9fe38eb3fe94a684eca98fd703d2990f47d0b5de6566751d0"
+                  },
+                  {
+                      "path":  "scripts/audit_viewpoint_feasibility.py",
+                      "bytes":  3098,
+                      "sha256":  "f1ad742c35352c516e57c2aa60ce13aa05078b351a7dca8961cd5f3533fc772d"
+                  },
+                  {
+                      "path":  "scripts/benchmark_predictive_shield.py",
+                      "bytes":  5064,
+                      "sha256":  "31da6d1a68b5f0e9d505e358e15da81d10faf05ad36f4baa0650cc540941854f"
+                  },
+                  {
+                      "path":  "scripts/build_final_release.ps1",
+                      "bytes":  1067,
+                      "sha256":  "bea72ceacc058d520230a4d8823e2630a261a0123a19501f0325a47dbca3ba9b"
+                  },
+                  {
+                      "path":  "scripts/build_final_webots_worlds.py",
+                      "bytes":  3715,
+                      "sha256":  "be65064369655460a81a8abb97b44988d97c1572c443703a4e845500e80c9216"
+                  },
+                  {
+                      "path":  "scripts/build_safe_curriculum.py",
+                      "bytes":  2458,
+                      "sha256":  "403e66ac5af2c1f5d5e62afeb4d5487efa41bff4f36973d7804fd7895aa98abe"
+                  },
+                  {
+                      "path":  "scripts/build_stage4b_live_world.py",
+                      "bytes":  5243,
+                      "sha256":  "b6c4e4fad81d4ae8b9bcfd3c8f1e7e3f927b5a6f232bcf7337161a34c126fe2f"
+                  },
+                  {
+                      "path":  "scripts/build_stage4d_showcase.py",
+                      "bytes":  22411,
+                      "sha256":  "ed290a174096a7b705edd5840478cb5897b6bba853fd8599b932e99a526748d2"
+                  },
+                  {
+                      "path":  "scripts/build_stage5a3_closed_loop_world.py",
+                      "bytes":  4797,
+                      "sha256":  "d747cd0b69d543fecd687e306d69f1d99215c269ad2ac11441cec83db1723712"
+                  },
+                  {
+                      "path":  "scripts/build_stage5a_live_camera_world.py",
+                      "bytes":  11600,
+                      "sha256":  "d7730dd56c4ddb9d53c3fcf53f78f432837a342a15fa0d7c362d05d166150289"
+                  },
+                  {
+                      "path":  "scripts/build_stage5c_rl_motor_world.py",
+                      "bytes":  1467,
+                      "sha256":  "a0a5b1b40dca72e79ddb8f3ff8228fdac32c62a02317b1a464f56c21c9f3627e"
+                  },
+                  {
+                      "path":  "scripts/check_env.py",
+                      "bytes":  926,
+                      "sha256":  "9f9fb3aeaf87baadb52d4061421538df9b1142ac2b89ceca8a7c1f8bad8eb499"
+                  },
+                  {
+                      "path":  "scripts/check_perception_training_environment.py",
+                      "bytes":  6157,
+                      "sha256":  "4f65be7551d403a54800a0568ab51e678cd94ff2ebf50d8b5ed3147d5fde4965"
+                  },
+                  {
+                      "path":  "scripts/configure_ppe_dataset.py",
+                      "bytes":  5608,
+                      "sha256":  "21d0a5e4de667e1f7ece388cfc4fe23c1a3d1685f8080fda57cb8361b0fa14ed"
+                  },
+                  {
+                      "path":  "scripts/create_stage5b4_final_showcase.py",
+                      "bytes":  6040,
+                      "sha256":  "bb2bd00d2387273ff0d21c5e7379550ec6bc2bcf5dc8180541477b3b080b8277"
+                  },
+                  {
+                      "path":  "scripts/evaluate_expert_baselines.py",
+                      "bytes":  3858,
+                      "sha256":  "9c1687eb9b2f61c637ada7a68ccc0023b4a6f964f23bc7d58e09b51314331427"
+                  },
+                  {
+                      "path":  "scripts/evaluate_model.py",
+                      "bytes":  1693,
+                      "sha256":  "8466e8dfba9c22949c03b47411b32ef20ebf6d35ac7d79aee041278fce84c8b7"
+                  },
+                  {
+                      "path":  "scripts/evaluate_planner_baselines.py",
+                      "bytes":  4818,
+                      "sha256":  "77295a2c1889ccc467eee76b8e5e63e85930a1c55ab96aacd168dbae42ee804e"
+                  },
+                  {
+                      "path":  "scripts/evaluate_random.py",
+                      "bytes":  2047,
+                      "sha256":  "a79dd5737503f3b72e8e700f918a8b79e17015e8cbc47bdd0a5f7e6f2184aad5"
+                  },
+                  {
+                      "path":  "scripts/evaluate_riskshield_ppo.py",
+                      "bytes":  6499,
+                      "sha256":  "d9edb99a2bef14366a7df264f72c83e9368d89d98d188c4c5ff484d8783990bb"
+                  },
+                  {
+                      "path":  "scripts/evaluate_rl_baselines.py",
+                      "bytes":  6304,
+                      "sha256":  "14b44d127152662a86493c498a9f0e3198f967c95dbd4a7eb35f332a218ad7d5"
+                  },
+                  {
+                      "path":  "scripts/evaluate_scenarios.py",
+                      "bytes":  3818,
+                      "sha256":  "64df17a208cd10400e02bc8d3f53b6f38a767a770e6e7eb516cf53c99a066d26"
+                  },
+                  {
+                      "path":  "scripts/fine_tune_ppe_weak_classes.py",
+                      "bytes":  16877,
+                      "sha256":  "cf36ae001b1c1d98683533edf6bc635b5e7044bd9527ddff712bc5eed4a85a29"
+                  },
+                  {
+                      "path":  "scripts/generate_expert_plans.py",
+                      "bytes":  2872,
+                      "sha256":  "42fabd52fee385133471ac121f2e4cf2c9f9cf55cd66db65edadb963c4ef903e"
+                  },
+                  {
+                      "path":  "scripts/generate_final_completion_reports.py",
+                      "bytes":  9843,
+                      "sha256":  "b19690a5a2505faac9569793d6cb58736b23c6b9d1c26fa6c3627dacb0902e7d"
+                  },
+                  {
+                      "path":  "scripts/generate_final_figures.py",
+                      "bytes":  7145,
+                      "sha256":  "645b522cb69096695dfb011426830ec9a30e9babbe72489cf0f92155f22532e1"
+                  },
+                  {
+                      "path":  "scripts/generate_final_submission_reports.py",
+                      "bytes":  6818,
+                      "sha256":  "bc21a49183f0a1655f9060e0788d5d8f123bf98559a9aedde6485c9f502a6829"
+                  },
+                  {
+                      "path":  "scripts/generate_scenarios.py",
+                      "bytes":  799,
+                      "sha256":  "11f4372afd99b0b036e875395f88ba0c5b5551f4e0f61fe4fa6ff6acfc21db10"
+                  },
+                  {
+                      "path":  "scripts/plot_benchmark_results.py",
+                      "bytes":  1321,
+                      "sha256":  "09e2b593e333b03c754aef21f91fbede6fcbdf37fe42f55edb3bd0f233bdd21f"
+                  },
+                  {
+                      "path":  "scripts/run_complete_autonomous_inspection.ps1",
+                      "bytes":  2861,
+                      "sha256":  "b80344637217c6d3f1c50164b63b594135bd5cf1c3d06d1944616b3ac39de8b6"
+                  },
+                  {
+                      "path":  "scripts/run_final_acceptance.ps1",
+                      "bytes":  3026,
+                      "sha256":  "12ec3c7cec3c52ab8cbc652e3528af6652a359758a7ec9d3531b6b25daeca6a5"
+                  },
+                  {
+                      "path":  "scripts/run_final_world_smoke.ps1",
+                      "bytes":  4767,
+                      "sha256":  "6119f4318068aed6df47fa331701aeaafda67d960d28eb1efd12849976dfe28d"
+                  },
+                  {
+                      "path":  "scripts/run_full_research_benchmark.ps1",
+                      "bytes":  2039,
+                      "sha256":  "2d955f67633105524325a9e830f48bbba8062abfeee17f2560fa070b14895c7b"
+                  },
+                  {
+                      "path":  "scripts/run_full_research_benchmark.py",
+                      "bytes":  10644,
+                      "sha256":  "0dc9254f44990e020020eaa4b9f18bbf97beedc342602c3cf456c0a1e5a5d88d"
+                  },
+                  {
+                      "path":  "scripts/run_ppe_detector_pilots.py",
+                      "bytes":  30344,
+                      "sha256":  "9c1e654bc99c34fd9265046841d99a81632050a16ffe76ffbbc4c8bbf86e2eaf"
+                  },
+                  {
+                      "path":  "scripts/run_stage4b2_runtime.ps1",
+                      "bytes":  10736,
+                      "sha256":  "b020e15ceb2d6f474a6633adc11dc48927d9fb9d17bf15e44d6c226393de6760"
+                  },
+                  {
+                      "path":  "scripts/run_stage4c_live_policy_dry_run.ps1",
+                      "bytes":  10382,
+                      "sha256":  "0d53fb2d00d2682c91890517b30ac499c1b9f50f4d211ba90e76eb67e6b84149"
+                  },
+                  {
+                      "path":  "scripts/run_stage4d_showcase.ps1",
+                      "bytes":  6347,
+                      "sha256":  "4532cf03e53e33c52e4e60215d2ebf6bab507d253d0897c092386067b4f030eb"
+                  },
+                  {
+                      "path":  "scripts/run_stage5a3_closed_loop_mission.ps1",
+                      "bytes":  816,
+                      "sha256":  "21453f545a7f14ec468cc68f7be4f186c5d46e66b3090189fd9c39f51bc36a6d"
+                  },
+                  {
+                      "path":  "scripts/run_stage5a3_closed_loop_mission.py",
+                      "bytes":  9402,
+                      "sha256":  "cb7374b081468a37bb0dd61978cb2ed86695dd360741f0ca52a137cd5bd25ba4"
+                  },
+                  {
+                      "path":  "scripts/run_stage5a_live_camera.ps1",
+                      "bytes":  6683,
+                      "sha256":  "b65750c4ab8986484e44ec128ab00060579f1404ddf1a29c8fa052552201d5f3"
+                  },
+                  {
+                      "path":  "scripts/run_stage5b3_live_perception_mission.ps1",
+                      "bytes":  6827,
+                      "sha256":  "5ca8a9734170992ad425b71c6b14ab78440693690667fe989bc305ffc385eee8"
+                  },
+                  {
+                      "path":  "scripts/run_stage5b3_live_perception_sidecar.py",
+                      "bytes":  3482,
+                      "sha256":  "0b924a796af4bfacb45d28c41b83ea87b7bf1d5a759bd6cea3afc8cbeb2b1837"
+                  },
+                  {
+                      "path":  "scripts/run_stage5c_rl_motor_runtime.ps1",
+                      "bytes":  4835,
+                      "sha256":  "534fb25851fec4ba5a1c67f623bbc454bb71be2eeb98564ffe1426c239f2fd7d"
+                  },
+                  {
+                      "path":  "scripts/run_stage9_ablations.py",
+                      "bytes":  8738,
+                      "sha256":  "daa6334cc9f945dac88aaf8af9b9748a3b9a3faf3cc53062e1ea5bdbdf0de2b7"
+                  },
+                  {
+                      "path":  "scripts/run_uncertainty_experiments.py",
+                      "bytes":  6679,
+                      "sha256":  "51c00ab5fcff9e629a0400c94bdbc909fd95d51319ed9b367e3322b2808fda7d"
+                  },
+                  {
+                      "path":  "scripts/run_verified_human_first_person_stage5b3.ps1",
+                      "bytes":  752,
+                      "sha256":  "89fb2ad4eebef74fc0c527f0f0001763b8acb66bc5505a5424066c4cd284499e"
+                  },
+                  {
+                      "path":  "scripts/stage4c_live_policy_sidecar.py",
+                      "bytes":  10783,
+                      "sha256":  "af6a1400e429a6192f6d94b12f727eec3ed3170e7ce175f865a7ca2bdf62725b"
+                  },
+                  {
+                      "path":  "scripts/summarize_training_run.py",
+                      "bytes":  6153,
+                      "sha256":  "08a2b86555a8f28140ef0113a2224771166652c3082edbd60b9bed8d73275ee1"
+                  },
+                  {
+                      "path":  "scripts/train_curriculum_ppo.py",
+                      "bytes":  17355,
+                      "sha256":  "8c4678829fe9d798ba0db3c19b84dc30f2dff525f0b9e0358d9e025f5222cce8"
+                  },
+                  {
+                      "path":  "scripts/train_ppe_fast_balanced.py",
+                      "bytes":  9461,
+                      "sha256":  "a256faebac415b8a5541653bc6710eb7b6bac648d5451b8fd7a9c8e4f6cfe60c"
+                  },
+                  {
+                      "path":  "scripts/train_ppe_targeted_fast_100e.py",
+                      "bytes":  22779,
+                      "sha256":  "46a06df87f9e2e885cb9e70194ffa28ca29b54b00f3b8c70a2549e4577b8c78d"
+                  },
+                  {
+                      "path":  "scripts/train_ppe_yolo26s_100e.py",
+                      "bytes":  26808,
+                      "sha256":  "411292fda61f22d9b0db5ae2b2b5a42e79535e152bfe95181585ef42c4da8950"
+                  },
+                  {
+                      "path":  "scripts/train_ppe_yolo26s_optimized_100e.py",
+                      "bytes":  12004,
+                      "sha256":  "1e542d0e08befdf65179547bb539a393a165f9ced10532b053542bf878d0a9e2"
+                  },
+                  {
+                      "path":  "scripts/train_ppo.py",
+                      "bytes":  11633,
+                      "sha256":  "a656097f4e07f2788bd459712abae9dcb3a78a82f418480b36dcf670f49b5b46"
+                  },
+                  {
+                      "path":  "scripts/train_ppo_research.py",
+                      "bytes":  4195,
+                      "sha256":  "972590c5488d6da8415ce2f555541837cc0822c3c7db5cfbcadd83f74ceaaeaf"
+                  },
+                  {
+                      "path":  "scripts/train_riskshield_ppo.py",
+                      "bytes":  5856,
+                      "sha256":  "5f3a4cbd2cfa7d1f44f038db0ad0d2f56286a5b200b40d9307812532a51bcf86"
+                  },
+                  {
+                      "path":  "scripts/train_sac.py",
+                      "bytes":  4388,
+                      "sha256":  "87ee614c956769f122a48f2b0e7b1fba4960334e9a729c59add52a079fd25f4a"
+                  },
+                  {
+                      "path":  "scripts/validate_final_evidence.py",
+                      "bytes":  1648,
+                      "sha256":  "867aac3ac441ede98588a716ec254fdebe561820a1cb85657286661a7d198452"
+                  },
+                  {
+                      "path":  "scripts/validate_final_perception.py",
+                      "bytes":  2778,
+                      "sha256":  "6fb23b152ef287746a6d8206e6fafbffbd518a49f0f0f2e5f3426633291bb378"
+                  },
+                  {
+                      "path":  "scripts/validate_final_world_visuals.py",
+                      "bytes":  2654,
+                      "sha256":  "e784b153a787b0f4fcaafd74a7b0426936d3deb7f1a7f8bf35c24a13059e4ccb"
+                  },
+                  {
+                      "path":  "scripts/validate_grid_environment.py",
+                      "bytes":  2861,
+                      "sha256":  "a10d3e7ef76b8ee70bc175c4db1ba403e0033de2bac2ead594aeea22df5587d2"
+                  },
+                  {
+                      "path":  "scripts/validate_ppe_dataset_integration.py",
+                      "bytes":  7713,
+                      "sha256":  "d075614f959e04e93b042d1f96ad2ecfa1c0c017022dce5998f2e22ab9b56944"
+                  },
+                  {
+                      "path":  "scripts/validate_semantic_shield.py",
+                      "bytes":  2798,
+                      "sha256":  "d8aa0a71d1c47baf225eed3c297ae9ded4ce4ca3fb84c9fde22ba0c8880e0693"
+                  },
+                  {
+                      "path":  "scripts/validate_stage4a_runtime.py",
+                      "bytes":  3293,
+                      "sha256":  "06034d9bb30076088687f7164ab8c93452179e30e8233b56e7b01d779ca9ad47"
+                  },
+                  {
+                      "path":  "scripts/validate_stage4b2_runtime.py",
+                      "bytes":  8417,
+                      "sha256":  "e9f6a339b8ef4d59819b563d0c819f5ba492753f7c0d7f759bfa6c49cb5d6b4b"
+                  },
+                  {
+                      "path":  "scripts/validate_stage4c_live_policy_runtime.py",
+                      "bytes":  7858,
+                      "sha256":  "9306cdae14a1d426ab2d9a845d64daf5756c6ce8ece0bc582adb65d758d9a60f"
+                  },
+                  {
+                      "path":  "scripts/validate_stage4c_policy_engine.py",
+                      "bytes":  4565,
+                      "sha256":  "ca38674d5d5198a66ac3cc69936fc3d9a10e3f9a7855a9084f053a028af4fdfa"
+                  },
+                  {
+                      "path":  "scripts/validate_stage5a3_closed_loop_mission.py",
+                      "bytes":  16036,
+                      "sha256":  "debf0e121c81d6ea4df386b7ccacd92c5fbca3f0a33eb3693d73266b95bdbcaa"
+                  },
+                  {
+                      "path":  "scripts/validate_stage5a_live_camera.py",
+                      "bytes":  10200,
+                      "sha256":  "77a0c17c91034106c728cadad73410a8d159290f4e691962f6a91c41b26380a3"
+                  },
+                  {
+                      "path":  "scripts/validate_stage5b3_live_perception_mission.py",
+                      "bytes":  5938,
+                      "sha256":  "938426cd19803f1e6aa0a07e91be1572c43b6ea7d35f0dd3263ab415eef4ac8c"
+                  },
+                  {
+                      "path":  "scripts/validate_stage5b_live_perception.py",
+                      "bytes":  4756,
+                      "sha256":  "6d86f24c2d9ee2f85f97c1afd57b94bc8f7195b6374b6b665ad7e0e161bd03e4"
+                  },
+                  {
+                      "path":  "scripts/validate_stage5b_visual_evidence.py",
+                      "bytes":  7348,
+                      "sha256":  "8c99df5cda9ee2a8192947b9befeadca5d180947fa4bf6d490b3d8173be34b7f"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/__init__.py",
+                      "bytes":  317,
+                      "sha256":  "2f84c9ee0915f12a1f359b5313812accd01c791465e4955cb6d11d2312e75d5f"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/algorithms/__init__.py",
+                      "bytes":  166,
+                      "sha256":  "1523fb6379355943e128b4d710ef9c3b8d5af52698373bbe0dbddc0e0353f673"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/algorithms/riskshield_ppo.py",
+                      "bytes":  4710,
+                      "sha256":  "8eb41cb9d98bee93b8ac6294df7b61aceb7d3ab44a10493f942cd6d129cd54ef"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/baselines/__init__.py",
+                      "bytes":  298,
+                      "sha256":  "8ab28523190655b01f4d880d9271c125f65ddac90176355d92342bf1fece57ba"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/baselines/planners.py",
+                      "bytes":  9590,
+                      "sha256":  "b06509f2ad6c484938f6c7fcb297768a7bfdcc3528d9712d116c11d4ed6cd4d1"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/benchmarking/__init__.py",
+                      "bytes":  336,
+                      "sha256":  "b68da63a62c92eb13d0edaca86e370bec682c3651a09863b14448601ebac5d68"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/benchmarking/harness.py",
+                      "bytes":  18155,
+                      "sha256":  "72901abcdb61b65e06952d7c6cecfd5e861b2f720b3db299aa8be2b34cdaf24c"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/callbacks/__init__.py",
+                      "bytes":  310,
+                      "sha256":  "607ea853c5e46f602ad49aac3e103c9e3703f9d55bc71500ea9ffef31190493b"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/callbacks/action_diagnostics.py",
+                      "bytes":  8340,
+                      "sha256":  "a304db462904658da869165682a0aaa64eb8d5824ce540f8f8463cdfef555fa8"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/callbacks/curriculum_progress.py",
+                      "bytes":  3762,
+                      "sha256":  "405d3577c3df16568d477c518e729560e28cf8068bca1942d27d249f87504dc7"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/callbacks/scenario_evaluation.py",
+                      "bytes":  4221,
+                      "sha256":  "3d426a8b1f8406d34f93c7fcf797623b7e487153a9c17e124531631cfab3362a"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/curriculum.py",
+                      "bytes":  9000,
+                      "sha256":  "e123728d9449af9080ddc88132360d93f8d41b1c81d26e7fc13c140f964840ef"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/domain_randomization.py",
+                      "bytes":  1145,
+                      "sha256":  "31979a84de854ec5136fc520b517f51fcbde3d1b64bc38df45ab4c01a25c787f"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/envs/__init__.py",
+                      "bytes":  340,
+                      "sha256":  "c9e2893e332371d36cbe01be8273785b3687d2701bab8611fc8b88720137b3c2"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/envs/construction_env.py",
+                      "bytes":  16976,
+                      "sha256":  "7ad03755dd99e0937f049e127d5521b425ba235d235041bca678b6d8df53a8c5"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/envs/curriculum_env.py",
+                      "bytes":  4245,
+                      "sha256":  "57cfff9d40af9f0999fc5b8f3bf9456c16581ae4bfbb6e96d137a8f1eb07f49b"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/envs/research_env.py",
+                      "bytes":  17967,
+                      "sha256":  "46fbc5ce518df248570a46f01ed6f64cf6b86701cae74c5db1932ce941d8e34b"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/evaluation/__init__.py",
+                      "bytes":  94,
+                      "sha256":  "56d5021de62872d54940aa4505fe76be55f55bede6e2a8a039e0be12119bf39f"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/evaluation/expert_baselines.py",
+                      "bytes":  5333,
+                      "sha256":  "a5c44216194db1c29471615569ab8edf28d6732836361c274136d9146accb0cd"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/evaluation/metrics.py",
+                      "bytes":  281,
+                      "sha256":  "9ae36bca4151c83aa8d1c2b752f15c57671b64dfea047bda2af862003a46a2fd"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/evaluation/reward_audit.py",
+                      "bytes":  2138,
+                      "sha256":  "0d6600f8cc48d3568bf5a7d0868f9401aecb7d252f5cb5de9fbf3635dcadf3e6"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/evaluation/scenario_evaluator.py",
+                      "bytes":  6448,
+                      "sha256":  "aa4a31e3aaa82cb59067b8779a065a370ae255a772e46ace32365a4ddefed148"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/inspection.py",
+                      "bytes":  3319,
+                      "sha256":  "a3fa7299d4722220bc2b79cbbfa4a09e87ae84f9d02b4161cd96004745e9319d"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/live_perception.py",
+                      "bytes":  13829,
+                      "sha256":  "60161f8eb4e3148869a92aded072e565217d46e4e404e5f41579f272ca62589f"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/live_perception_sidecar.py",
+                      "bytes":  10423,
+                      "sha256":  "06cd7bf7fb7a6983f63ac7eba4aad56aebe049cad75401f02156853df4e287c8"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/models/__init__.py",
+                      "bytes":  113,
+                      "sha256":  "1ed48d4592673ce151161c6ee069b1dc8a03138598f76bac031717a58da4ed0f"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/models/recurrent_policy.py",
+                      "bytes":  1516,
+                      "sha256":  "8baa2855a89bd418c669696cd6e87aaad4bb21790581461ac010bd34b05e1b5c"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/models/semantic_extractor.py",
+                      "bytes":  1542,
+                      "sha256":  "14bc89bf1cc00493b8131b6ace0fd2c338fea036a8ce9de65b898781366b4b73"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/perception.py",
+                      "bytes":  7726,
+                      "sha256":  "2892de8b4e2ec1907a8f1a9c536d93acf57ad673dd5002062aa65e0523277d98"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/perception_dataset.py",
+                      "bytes":  12303,
+                      "sha256":  "728e9528187b2cc30476600f262c6c32addc0fa6def07d2e5f63f69ad292a6c5"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/perception_mapping.py",
+                      "bytes":  6684,
+                      "sha256":  "e08eddac0154d077f7848f471f49fad0b9e26448758e0a523a853107d4f70ff0"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/planners/__init__.py",
+                      "bytes":  479,
+                      "sha256":  "301624959c364b70c3fc078c255e22edf04be89d5da41c62b36d405d7bfe28e3"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/planners/astar.py",
+                      "bytes":  3276,
+                      "sha256":  "06208383bf7fb4a4d5d392ca3a675af702255d1381f4a8ae05b103f68acb5dc1"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/planners/oracle_inspection.py",
+                      "bytes":  7513,
+                      "sha256":  "9e580627f3ee60ce5e767113423d9fda705497fb43043102a5c21c551db8fe2c"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/safety/__init__.py",
+                      "bytes":  424,
+                      "sha256":  "8d39718e930a57ab7776b6c58aa3178fba39750d66c933ac2f2e84f1ae2ba8f0"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/safety/lagrangian.py",
+                      "bytes":  577,
+                      "sha256":  "a8136be4a3168bde118df135f18a1c06673443ecf2055be55b21984aadcf0c04"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/safety/predictive_shield.py",
+                      "bytes":  5798,
+                      "sha256":  "3f7abfa7e1380e6c13f7684a8c160a68586207564ede1e1282dcad7e50d10773"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/safety/shield.py",
+                      "bytes":  6156,
+                      "sha256":  "f7d5abb140cf133d538cd772bae9c409c1a7a4a849c8bf2ec5cc92247fa91f95"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/scenario_dataset.py",
+                      "bytes":  4225,
+                      "sha256":  "c30fb527a0ec9188423bfd2244413ae8022fd45ba2a9306d3c80ae2f12067763"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/scenarios.py",
+                      "bytes":  11223,
+                      "sha256":  "ef1a8f2cb82c4053a9d3b1d85b027a331034f24bd284e3137947cb7f9db5532c"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/training/__init__.py",
+                      "bytes":  301,
+                      "sha256":  "5c5c831aaf2a4ebb71b1d08adf9b65eb1e8f92aac837693a1312af3b7720e88c"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/training/research.py",
+                      "bytes":  5933,
+                      "sha256":  "9adf16ba88272e2a57f488388a9f83dbed908eff80c426117bab1175ec040f5c"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/uncertainty/__init__.py",
+                      "bytes":  279,
+                      "sha256":  "759044fb2a7ac7081ef35d959dfff6ab104cefb0cfbf75fdb6a176efa5415fa6"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/uncertainty/injection.py",
+                      "bytes":  2927,
+                      "sha256":  "0fb949fc1e7fc4d17db0e4b1a80b3363f94cd0235d986d75e996c77787223c81"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/webots/__init__.py",
+                      "bytes":  888,
+                      "sha256":  "bbb0cdc4819e57577d86b3b9564a7363ef7d4f3b395280c8c36d8b0b9a3e485d"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/webots/bridge.py",
+                      "bytes":  14168,
+                      "sha256":  "3e2def23ca744acd0b16cf4507ce5d7c8d66b84411094a4592ee94cd3f887ab1"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/webots/live_bridge.py",
+                      "bytes":  8241,
+                      "sha256":  "7cf9186fe7a3a931e7e7bd8f24e78a15c6169fedb011f78c61d86a132866d75b"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/webots/motion_primitives.py",
+                      "bytes":  2007,
+                      "sha256":  "5843a917b495bf45e40ad38b01d67913739ca608010a80030dec4920d27baa5e"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/webots/policy_dry_run.py",
+                      "bytes":  11060,
+                      "sha256":  "1a5697695661da96d6688b2920a93ce1c41bcc0ea4a75ed3a526bb7c25bc063d"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/webots/runtime_control.py",
+                      "bytes":  1822,
+                      "sha256":  "fbe556c1029697861c95353d0f00d5b4bc334c3ee10f3dbc60ea1e83075f0615"
+                  },
+                  {
+                      "path":  "src/riskaware_saferrl/webots/safe_policy_pipeline.py",
+                      "bytes":  3773,
+                      "sha256":  "c2e9651fd7438a28d5bea275e0440bb953d7076dc33c2a8f3ee9ba78487789ee"
+                  },
+                  {
+                      "path":  "tests/algorithms/test_riskshield_ppo.py",
+                      "bytes":  2077,
+                      "sha256":  "23c21f9540e7524e3e831e853000264afd289b898eee04370216278b116a12fe"
+                  },
+                  {
+                      "path":  "tests/algorithms/test_rl_training_adapters.py",
+                      "bytes":  1358,
+                      "sha256":  "6cea17087472e480328d880d0fe3fc39a702b829b606a90060e37156b3ea62ef"
+                  },
+                  {
+                      "path":  "tests/baselines/test_final_planners.py",
+                      "bytes":  2766,
+                      "sha256":  "bd43ebbe3b3b3428ab025fc8e4dae396bd338b8c516b5fc388e858ba6e231a86"
+                  },
+                  {
+                      "path":  "tests/benchmarking/test_benchmark_harness.py",
+                      "bytes":  3847,
+                      "sha256":  "061d2fccfa9a234edadaa288b00c357b906cd13a727b366a3531eeee037c1c80"
+                  },
+                  {
+                      "path":  "tests/benchmarking/test_stage9_ablations.py",
+                      "bytes":  655,
+                      "sha256":  "552a887de319431d9eb7cdc1e013ca18ddb032b18b822a452290f561ce468784"
+                  },
+                  {
+                      "path":  "tests/envs/test_research_grid_environment.py",
+                      "bytes":  3872,
+                      "sha256":  "2c1d8868c05bc8cda695208bfed6ceebfcddd08211c6b4b6d3fe0a086429b69d"
+                  },
+                  {
+                      "path":  "tests/perception/test_semantic_risk_mapping.py",
+                      "bytes":  1987,
+                      "sha256":  "a22a4658dfb5ecc684c32d34aae202e35cad49b4f12710e5348252d09edb4f01"
+                  },
+                  {
+                      "path":  "tests/safety/test_predictive_safety_shield.py",
+                      "bytes":  2404,
+                      "sha256":  "c94283f5982fb67f93f8657342bbf26d6394bd0ff1a1d3e03a4105d5684db3a0"
+                  },
+                  {
+                      "path":  "tests/test_action_diagnostics.py",
+                      "bytes":  808,
+                      "sha256":  "d9ef971f09142d56dc7ab49cc8d2ca4648a0b9a48863bf57e4349ffa17387d97"
+                  },
+                  {
+                      "path":  "tests/test_action_masks.py",
+                      "bytes":  2696,
+                      "sha256":  "8ab094b32dacf83eaec686a152edc04a19e7c2383f69fa3b9b60e70aec51c48a"
+                  },
+                  {
+                      "path":  "tests/test_astar_planner.py",
+                      "bytes":  811,
+                      "sha256":  "32bf935815fc3a9d962223ef7381f45d6d467c799edd35d0b4784e89d22e1033"
+                  },
+                  {
+                      "path":  "tests/test_baseline_inspection_radius.py",
+                      "bytes":  1461,
+                      "sha256":  "bc4fdd4de6d7ddef3eecf51ec227adc0f776d6adb13f9372aa9f7b1409c37161"
+                  },
+                  {
+                      "path":  "tests/test_curriculum.py",
+                      "bytes":  3309,
+                      "sha256":  "ff9ff78cbfd74e8f45c7a87a0533a777b6675667226841bd97c427e7c3f6e586"
+                  },
+                  {
+                      "path":  "tests/test_curriculum_env.py",
+                      "bytes":  1765,
+                      "sha256":  "82a0a9cef4af3195ccc98937518305e4c86beeb25a78f1edd4114f685f8750cf"
+                  },
+                  {
+                      "path":  "tests/test_curriculum_progress.py",
+                      "bytes":  1208,
+                      "sha256":  "e02928109dd7bc92e54ee9006c5269e343eb253b6253edeaf4a636a838bf1385"
+                  },
+                  {
+                      "path":  "tests/test_domain_randomization.py",
+                      "bytes":  504,
+                      "sha256":  "051f141dc06e4222e0a1d02e006338bb104a2860749d72ddf544867c2b6409d7"
+                  },
+                  {
+                      "path":  "tests/test_env_api.py",
+                      "bytes":  1508,
+                      "sha256":  "217b1b21fef2aa28f65bbfaa9690ecc599d264da77c9768492bc7f2e5e94086d"
+                  },
+                  {
+                      "path":  "tests/test_expert_baseline_costs.py",
+                      "bytes":  808,
+                      "sha256":  "ea1facc778e90da63ec71d27c515088e8048397899d521b0f192df91db662bf4"
+                  },
+                  {
+                      "path":  "tests/test_inspection_geometry.py",
+                      "bytes":  1382,
+                      "sha256":  "1249c1c9325a8c81673d2a0a5018b78c72ecfb111ec2bb7bcfb5be6bb37b8fbd"
+                  },
+                  {
+                      "path":  "tests/test_lagrangian.py",
+                      "bytes":  519,
+                      "sha256":  "77bc81b26ff54620191a18a0ca49711b79f2bd5c9c671fc3da0cf72e51d43910"
+                  },
+                  {
+                      "path":  "tests/test_live_perception.py",
+                      "bytes":  2774,
+                      "sha256":  "745eb9867d41a3159855d1b3730a79e332899568be9924225d811bef9add976c"
+                  },
+                  {
+                      "path":  "tests/test_live_perception_sidecar.py",
+                      "bytes":  5282,
+                      "sha256":  "8cb97369b55d732b139ad51fb93de075f8d30354dc72883441742deebf394157"
+                  },
+                  {
+                      "path":  "tests/test_maskable_ppo_integration.py",
+                      "bytes":  1613,
+                      "sha256":  "68b653a589f677b4cffd7f36665689aa0de79b4835ac1d4c2b8bacd455236286"
+                  },
+                  {
+                      "path":  "tests/test_masked_scenario_evaluation.py",
+                      "bytes":  1797,
+                      "sha256":  "81255bab94aa41d764ca6c66d214d98df4adb24763a600f05b66aaf72e10eaf5"
+                  },
+                  {
+                      "path":  "tests/test_oracle_inspection.py",
+                      "bytes":  1101,
+                      "sha256":  "f3952e1ad6df15a99921e14ec113a6c7986cee4701f38d8729580a56f9b45a8d"
+                  },
+                  {
+                      "path":  "tests/test_perception.py",
+                      "bytes":  1614,
+                      "sha256":  "80b1aad300ff339e83c9ce58ac32320661eb1e3d38ca994eddeef69aa63f8b87"
+                  },
+                  {
+                      "path":  "tests/test_perception_dataset.py",
+                      "bytes":  2883,
+                      "sha256":  "6428026d1934551da32c430cd94ed7106dc8e90bdd8d538f61ad64d08003bb0b"
+                  },
+                  {
+                      "path":  "tests/test_perception_pilot_config.py",
+                      "bytes":  1844,
+                      "sha256":  "788ffafa82c6a0b5811acb5f26aeae9c93d534a3dc707cf8ce87a440734f9514"
+                  },
+                  {
+                      "path":  "tests/test_perception_production_training_config.py",
+                      "bytes":  2152,
+                      "sha256":  "95a4ce451ff2615330ec40f5d790584ceae86da651dc3a319d11f9c80924bba1"
+                  },
+                  {
+                      "path":  "tests/test_recurrent_policy.py",
+                      "bytes":  1089,
+                      "sha256":  "89f7baa99d347d39fd7a102a9390ada1d0c88b2f3d7e36995304d3bd34ada4e3"
+                  },
+                  {
+                      "path":  "tests/test_reward_audit.py",
+                      "bytes":  1827,
+                      "sha256":  "857455e89702093499d54d5985a51b14083c596f3b33ed078f5aacde25e3e1aa"
+                  },
+                  {
+                      "path":  "tests/test_safety_shield.py",
+                      "bytes":  686,
+                      "sha256":  "dc6d32ac4bc7a4578e0ce9923c70c6076a2f51614be2a2081ed69dbbc46731dc"
+                  },
+                  {
+                      "path":  "tests/test_scenario_dataset_integration.py",
+                      "bytes":  2167,
+                      "sha256":  "2a688c30149790e68fc1c47119f317c48e4ed48194a505c711a9c6f791644089"
+                  },
+                  {
+                      "path":  "tests/test_scenario_evaluator.py",
+                      "bytes":  1154,
+                      "sha256":  "6f5ab9b3ad7b4f3cb28e1689fa186e134efe172508db5a04f949fefe34fe7d4a"
+                  },
+                  {
+                      "path":  "tests/test_scenarios.py",
+                      "bytes":  1526,
+                      "sha256":  "4a27b81f2fddd64e08769ce5f0bcffdc69c892390513decb32d4ddc8fac4e8c4"
+                  },
+                  {
+                      "path":  "tests/test_semantic_extractor.py",
+                      "bytes":  1049,
+                      "sha256":  "1bd0d6912899c59aa8621173f1b77191d6d87465ca3fc58ea7ae5b63f5a2466c"
+                  },
+                  {
+                      "path":  "tests/test_semantic_safety_shield.py",
+                      "bytes":  6574,
+                      "sha256":  "1111860d923470b8956b2ae9134ed8698c822da21f8b39ec2c7bad3709f14aa0"
+                  },
+                  {
+                      "path":  "tests/test_viewpoint_environment.py",
+                      "bytes":  2189,
+                      "sha256":  "4c4a4b35106c2eec426218a7bc9f8a17039e66af08af6779fbb4f79acfebc2ae"
+                  },
+                  {
+                      "path":  "tests/test_viewpoint_planner.py",
+                      "bytes":  1417,
+                      "sha256":  "7ad7fdfca7a95b45d198c2bb09076cbb1d611d404d2bd9dcb2ab5a9dc15cff76"
+                  },
+                  {
+                      "path":  "tests/test_viewpoint_reward_audit.py",
+                      "bytes":  940,
+                      "sha256":  "b18d8ee851754008f39c5b04a8ca3c3c50abe30f38322f36ab299f7dbaf5c3ac"
+                  },
+                  {
+                      "path":  "tests/test_webots_motion_primitives.py",
+                      "bytes":  1350,
+                      "sha256":  "911d86ecbca540a408d07122065d1ebef4f45df37e9f0a3f56909e966ff7c068"
+                  },
+                  {
+                      "path":  "tests/uncertainty/test_uncertainty_injection.py",
+                      "bytes":  2247,
+                      "sha256":  "ad964fccc5c29bdf9731248e094ee1bb515f32a86c71de550f8c05b9b9ea4eda"
+                  },
+                  {
+                      "path":  "tests/webots/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "tests/webots/test_final_worlds.py",
+                      "bytes":  1781,
+                      "sha256":  "22d2b6ebd753e173bc18b2b8ba9ecb9f2a39a6130cde3073ad3b1776f5a6c940"
+                  },
+                  {
+                      "path":  "tests/webots/test_safe_policy_pipeline.py",
+                      "bytes":  1922,
+                      "sha256":  "a4f457e589540455f3ed5fa84644b6142b8562dbef6b328494e0b3f32082da42"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage4a_assets.py",
+                      "bytes":  1405,
+                      "sha256":  "dd90ecccb6424dbb2087050ecf9c69c932c38201d478e9eb3407199c1e63c544"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage4b_bridge.py",
+                      "bytes":  9168,
+                      "sha256":  "1d0dec2c06420cba7a7a0c1fcd346d68dd74acbd14791999389f66ed6fd0498e"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage4b_live_assets.py",
+                      "bytes":  2001,
+                      "sha256":  "db1f6295ab0e0ba830df968e2d188dce35e22c7ceee4214976d80358b4aad3f8"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage4b_live_telemetry.py",
+                      "bytes":  3770,
+                      "sha256":  "e067eec706ff7633e98f72ec1020619cddce6d7ec2108ec3c0ae75530e0f0277"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage4c_live_policy_runtime.py",
+                      "bytes":  3797,
+                      "sha256":  "1c688328dc0aacc5fbb6f859b30505ed3c8e6741198b870d4b8da036adfd858d"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage4c_policy_dry_run.py",
+                      "bytes":  4355,
+                      "sha256":  "926780600f32b8e7c941e6768087066a0cbc300f254192c666c6ca3a93b8e0af"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage4d_showcase.py",
+                      "bytes":  3712,
+                      "sha256":  "0a651ad4e3552e3ac44c0eb20636fd3d6c977f9740c393c85a0ee91bbd99ea7a"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5a3_closed_loop_mission.py",
+                      "bytes":  6087,
+                      "sha256":  "4fc73768af990c6e36ba4ba2be1cdea8529a1dc12b83031a85ae2e305a503c51"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5a3_launcher.py",
+                      "bytes":  1323,
+                      "sha256":  "02d29df7eaa8b20103bbf8b1849aea98ac089459c842c96385d2b3505880eaee"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5a3_navigation_conventions.py",
+                      "bytes":  2449,
+                      "sha256":  "a50e109a626a444907be7b2a3d502f9063f5c1c9071d266c758ce295c613c1a6"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5a3_physics_camera_view.py",
+                      "bytes":  2754,
+                      "sha256":  "5a2e597670bd2762993b5d3b0dc3cd0ea4e58265b090670bd5dfd8beb53d17ef"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5a3_stability_control.py",
+                      "bytes":  2073,
+                      "sha256":  "f36001a8f1995e7811d9401253c603252987b8fa92de39b6316fb8c9b3249a7d"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5a_live_camera.py",
+                      "bytes":  4404,
+                      "sha256":  "cb74920da0943d828a93fb24d0985d47dcb714de8b677f2d5549480685f317be"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5b3_human_first_person_runtime.py",
+                      "bytes":  4205,
+                      "sha256":  "ee4d88321411aafdc876238e240598d255fa5b3b7fc6fe42d1075101527ac512"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5b3_live_perception_validator.py",
+                      "bytes":  1965,
+                      "sha256":  "14f7fed371a21f2e616ba6ca4521d30370e286ddb778fb110ee07f971401591d"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5b_visual_evidence.py",
+                      "bytes":  1432,
+                      "sha256":  "600e5b300ec2f24652c3a9df43dc53126ef872c22779da106a4d15f5bdb3b6c2"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5c_rl_motor_assets.py",
+                      "bytes":  1822,
+                      "sha256":  "8dc04a91629a3262d31888a0b2241c78cb7ebf7ab8a32920b80c8dbdbc03b1db"
+                  },
+                  {
+                      "path":  "tests/webots/test_stage5c_runtime_control.py",
+                      "bytes":  1544,
+                      "sha256":  "35836814e374bea0b61138df71eca2cd319aeaa31f6f8dfc494d8d6f555afa69"
+                  },
+                  {
+                      "path":  "tests/webots/test_supervisor_pose_math.py",
+                      "bytes":  2394,
+                      "sha256":  "53276b4802085d89beb5031611b2ad02660ed3f8ba1b4656760b459ee72dd678"
+                  },
+                  {
+                      "path":  "webots/assets/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "webots/config/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "webots/config/environment_report.json",
+                      "bytes":  715,
+                      "sha256":  "eb4e3457ea2f387b54772e9ab2758272cc480f001ed1009ed0e73fa95671aeb8"
+                  },
+                  {
+                      "path":  "webots/config/stage4a_motion_test.json",
+                      "bytes":  732,
+                      "sha256":  "56f5be6544985195e53dd11ac16437d5861e0b663e6931a7c2a733b94358c629"
+                  },
+                  {
+                      "path":  "webots/controllers/README.md",
+                      "bytes":  93,
+                      "sha256":  "af9fcc82950c72a88ca695e433ed3284af422ef64ab14110aac58629e1c1dfe7"
+                  },
+                  {
+                      "path":  "webots/controllers/closed_loop_inspection_robot/closed_loop_inspection_robot.py",
+                      "bytes":  47960,
+                      "sha256":  "b9f8886c0bbc9878d97af7ea401022645a9868a596da29e8a6415b21b911d848"
+                  },
+                  {
+                      "path":  "webots/controllers/closed_loop_inspection_supervisor/closed_loop_inspection_supervisor.py",
+                      "bytes":  11500,
+                      "sha256":  "9856b7ee738baec32ec66675bf8ed05e4db6614113d31703fc8f39617acd4079"
+                  },
+                  {
+                      "path":  "webots/controllers/construction_robot/construction_robot.py",
+                      "bytes":  1158,
+                      "sha256":  "de5942ceb894e52a918aafe744d5388343a011b944c917aebb83ba807a2a429d"
+                  },
+                  {
+                      "path":  "webots/controllers/final_dynamic_worker/final_dynamic_worker.py",
+                      "bytes":  539,
+                      "sha256":  "f502dfc6c82598fa69d487de3a45955463710ff3a2efe5c4daa0ebafc778fe51"
+                  },
+                  {
+                      "path":  "webots/controllers/live_bridge_robot/live_bridge_robot.py",
+                      "bytes":  9282,
+                      "sha256":  "77b8c7ff2bfef09c3f77dc3c69c3295d608c548e4664e316f10cf1b439e297e6"
+                  },
+                  {
+                      "path":  "webots/controllers/live_bridge_supervisor/live_bridge_supervisor.py",
+                      "bytes":  3611,
+                      "sha256":  "05fe6fb279d2bce86b3bcd67693d18e637894ec453d870c4b637c2e5baa39bad"
+                  },
+                  {
+                      "path":  "webots/controllers/live_camera_robot/live_camera_robot.py",
+                      "bytes":  16480,
+                      "sha256":  "11063eee90b9b7b016884fce3cd238a72c558da23adf815151fa02fa7062d2db"
+                  },
+                  {
+                      "path":  "webots/controllers/live_camera_supervisor/live_camera_supervisor.py",
+                      "bytes":  3046,
+                      "sha256":  "71118b9b5dc58cf54c18bed0441a11dfa2c67b3d93250e5bb6fae5e0df470169"
+                  },
+                  {
+                      "path":  "webots/controllers/manual_robot_test/manual_robot_test.py",
+                      "bytes":  6039,
+                      "sha256":  "8be5697045a5c7243444b06f269db5c178d06d0564c5881d44dd15d6fd32be06"
+                  },
+                  {
+                      "path":  "webots/controllers/rl_autonomous_inspection_robot/rl_autonomous_inspection_robot.py",
+                      "bytes":  10447,
+                      "sha256":  "21f595171931cbc3b50f93fa528f7764f341d736e274ddea1136fcb99b9bccfa"
+                  },
+                  {
+                      "path":  "webots/controllers/rl_autonomous_inspection_supervisor/rl_autonomous_inspection_supervisor.py",
+                      "bytes":  3205,
+                      "sha256":  "e17c4e4f5817281ab3cdd3211a6601f53c67c4af688eb8126b49799cedf26eee"
+                  },
+                  {
+                      "path":  "webots/controllers/scenario_supervisor/scenario_supervisor.py",
+                      "bytes":  6831,
+                      "sha256":  "8d6a877d7075d92c16b7785ebf048b525989bd536636abfaaa8d9aa65493d439"
+                  },
+                  {
+                      "path":  "webots/controllers/showcase_robot/showcase_robot.py",
+                      "bytes":  2695,
+                      "sha256":  "0940a94f0bb2bb9ce5a10dfe39b875d022f75e1c232142292835bac7b8466f08"
+                  },
+                  {
+                      "path":  "webots/controllers/showcase_supervisor/showcase_supervisor.py",
+                      "bytes":  3189,
+                      "sha256":  "f640c4b69f769b043c75f2f07c4576f5643ae81310d91ecfa830596ceb46af3a"
+                  },
+                  {
+                      "path":  "webots/logs/.gitignore",
+                      "bytes":  27,
+                      "sha256":  "a70f8bc33129a62e67da3f139e240e6563a4d273c03d6fb7d5123efc926f36fa"
+                  },
+                  {
+                      "path":  "webots/logs/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "webots/protos/.gitkeep",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "webots/protos/README.md",
+                      "bytes":  98,
+                      "sha256":  "4e93af950a87b43ca6da2a6f64ea4703de89e7aa53234604140904b0ca1304d0"
+                  },
+                  {
+                      "path":  "webots/worlds/README.md",
+                      "bytes":  94,
+                      "sha256":  "d632694a91a0e19a2b3048f06cff59d2c03b7f3ac8751f5dfee774de19ed81e0"
+                  },
+                  {
+                      "path":  "webots/worlds/construction_site_stage4a.wbt",
+                      "bytes":  7388,
+                      "sha256":  "eb32abcda00e3194ea33e986c4a2aeec0edf3f63361e17a71fba906a83f18253"
+                  },
+                  {
+                      "path":  "webots/worlds/construction_site_stage4b_live_bridge.wbt",
+                      "bytes":  7870,
+                      "sha256":  "d0ca2e4e0e5fc485b1c4ce5a2c0974bc6a47f6dce7154e9d06dc5cede4390881"
+                  },
+                  {
+                      "path":  "webots/worlds/construction_site_stage4d_showcase.wbt",
+                      "bytes":  74855,
+                      "sha256":  "4a833ad9a2279c513062e922a7d55d27a3db813097dfd122322ae24f97094f56"
+                  },
+                  {
+                      "path":  "webots/worlds/construction_site_stage5a3_closed_loop_mission.wbt",
+                      "bytes":  79131,
+                      "sha256":  "641a9a813bba2559e9c102d2c1b1c352de992b868665e98526070111f5f39dd7"
+                  },
+                  {
+                      "path":  "webots/worlds/construction_site_stage5a_live_camera.wbt",
+                      "bytes":  76470,
+                      "sha256":  "a443596badd40dbc3a616bf33637a2d580d0e20d92bae27b287b2a6a9c3e5f08"
+                  },
+                  {
+                      "path":  "webots/worlds/construction_site_stage5c_rl_motor_runtime.wbt",
+                      "bytes":  72355,
+                      "sha256":  "3cf845eb235513cf1cfa3b3016679613b979086b6328707bb0f271dec88b88cf"
+                  },
+                  {
+                      "path":  "webots/worlds/site_dynamic.wbt",
+                      "bytes":  73695,
+                      "sha256":  "e28b407919bde31b8432abf0240e79fa83d90f5df2348dbaacc61235652f238d"
+                  },
+                  {
+                      "path":  "webots/worlds/site_medium.wbt",
+                      "bytes":  73328,
+                      "sha256":  "9d275ed1f4201af718367bf889fcf11da196c4533a018f99d56e5c1ddc050d7f"
+                  },
+                  {
+                      "path":  "webots/worlds/site_small.wbt",
+                      "bytes":  72797,
+                      "sha256":  "4428847b21b5836e4d8828e66278ba041bdcc89a0b33e2136c57e5633dbaee9a"
+                  }
+              ]
+}

@@ -22,7 +22,9 @@ dependencies = [
   "matplotlib>=3.9,<4",
   "PyYAML>=6,<7",
   "tensorboard>=2.18",
-  "rich>=13,<15"
+  "rich>=13,<15",
+  "pyarrow>=17,<22",
+  "scipy>=1.14,<2"
 ]
 
 [project.optional-dependencies]

@@ -1,0 +1,16 @@
+{
+  "algorithm": "PPO",
+  "created_at_utc": "2026-07-29T15:46:50.607915+00:00",
+  "git_commit": "1dd143c0fac65f653065b12940f2e92a43925c98",
+  "seed": 42,
+  "timesteps": 30208,
+  "device": "cuda",
+  "torch_version": "2.11.0+cu128",
+  "cuda_available": true,
+  "observation_space": "Box(0.0, 1.0, (2570,), float32)",
+  "action_space": "Discrete(5)",
+  "checkpoint": "artifacts\\final_submission\\ppo\\best_model.zip",
+  "checkpoint_sha256": "7c54226fc8927d7ef7fcdc7d5f3ff29b11fa8d1463293a9d8e3b6bebad84cc11",
+  "config": "configs\\training\\ppo.yaml",
+  "smoke_test": false
+}
