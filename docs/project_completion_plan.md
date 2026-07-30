@@ -1,19 +1,19 @@
 # Project Completion Plan
 
-Last updated: 2026-07-29
+Last updated: 2026-07-30
 
 ## Live checklist
 
 | Field | Current value |
 |---|---|
-| Current task | Strong-policy upgrade: RiskShield-HRMPPO v2 |
-| Current state | HRMPPO v2 replacement gate failed after four documented improvement families; v1 remains production |
-| Evidence collected | Causal/DAgger evidence plus HRMPPO separated reward-cost updates, PID state, CUDA checkpoint resume, shield repair, six-trial search, top-three 30k retraining, two 100k continuations, and risk-aware DAgger |
-| Files changed | Causal imitation/DAgger stack; recurrent HRMPPO algorithm and trainer/evaluator/optimizer; predictive shield; tests, reports, and docs |
-| Tests run | Repository Ruff and 316 tests; imitation/DAgger gates; CUDA HRMPPO smoke/resume; repeated 90-episode candidate evaluations |
-| Runtime result | Best 100k candidate: overall 76.67%, target 96.67%, hardest 70%, recall 94.25%, collision/invalid 0, but safety cost 35.64 > shielded-v1 17.13 |
-| Remaining work | A new safe-routing representation/objective must pass the unchanged v1 safety/constraint gates before final training, CV, Webots, benchmark, or paper replacement |
-| Blockers | Safety-success conflict: systematic labels meet mission gates but are costly; causal risk-A* labels disagree on 53.69% of visited states and repeated correction collapses mission performance |
+| Current task | Strong-policy upgrade: RiskShield-HRMPPO-Safe v3 |
+| Current state | Safety Contract v3, event audit, vector-cost policy/buffer, typed transition pipeline, and predictive shield v3 implemented; v1 remains production |
+| Evidence collected | Exact 5,460-count decomposition; immutable dataset/checkpoint hash verification; CUDA v3 smoke/resume; paired 90-episode initialization evaluation retained as negative evidence |
+| Files changed | Versioned safety contract and migration; five-critic recurrent constrained PPO; vector-cost buffer; event-aware observation-only shield; evaluator/trainer; regression tests |
+| Tests run | Repository Ruff and 338 tests before telemetry correction; focused safety/algorithm suite 27 tests after correction |
+| Runtime result | Existing v1 production regression is blocked by a reproducible Webots R2025a/Qt invalid-framebuffer geometry failure; no v3 production claim has been made |
+| Remaining work | Targeted safety DAgger, multi-strategy paired optimization, final RL acceptance, CV audit, Webots validation, benchmark v2, ablations, paper, release, and Git integration |
+| Blockers | The untrained v3 initialization loses task performance under shield distribution shift; Webots batch mode currently terminates after invalid multi-million-pixel GUI geometry allocation |
 
 ## Phase checklist
 
@@ -42,6 +42,12 @@ Last updated: 2026-07-29
 - [x] Pass three-seed causal Behavior Cloning and CUDA memory gates.
 - [x] Complete three genuine DAgger iterations.
 - [ ] Train and accept RiskShield-HRMPPO v2 against all replacement gates.
+- [x] Audit and decompose all 5,460 legacy constraint increments.
+- [x] Implement Safety Contract v3 and preserve the legacy inactivity-biased diagnostic.
+- [x] Implement typed vector-cost transitions and five independent recurrent cost critics.
+- [x] Implement and regression-test the predictive event-aware shield.
+- [ ] Generate and validate targeted safety DAgger corrections.
+- [ ] Train and accept RiskShield-HRMPPO-Safe v3 against paired task and safety gates.
 - [ ] Complete CV audit, three-world Webots validation, benchmark-v2, ablations, paper, and Git acceptance.
 
 ## Safety evidence

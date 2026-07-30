@@ -1,0 +1,20 @@
+{
+  "status": "PASSED",
+  "algorithm": "RiskShield-HRMPPO-Safe-v3",
+  "steps": 0,
+  "updates": 0,
+  "seed": 20260730,
+  "cuda_verified": true,
+  "initial_checkpoint": "artifacts/strong_policy_upgrade/hrmppo_v2_search/anchor_lr5e6_100k/final_checkpoint.pt",
+  "initial_checkpoint_sha256": "f296c5633ec6d3e9918474039ae079fb681e7dded02a4962c465010e2bf80436",
+  "final_checkpoint": "artifacts/strong_policy_upgrade/hrmppo_safe_v3/initialized/final_checkpoint.pt",
+  "final_checkpoint_sha256": "ae24c0c4cfebe28d7c36d02b70e7f6c42d6183e173848e95a2ebe7da43af9cc0",
+  "vector_cost_schema": [
+    "collision",
+    "restricted_zone",
+    "worker_near_miss",
+    "uncontrolled_semantic_risk",
+    "uncertainty"
+  ],
+  "update_metrics": []
+}

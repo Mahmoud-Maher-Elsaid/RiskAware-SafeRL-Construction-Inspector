@@ -1,0 +1,37 @@
+version: "3.0"
+name: Safety Contract v3
+
+hard_constraints:
+  collision: {event_weight: 1.0, budget_per_episode: 0.0}
+  restricted_zone_entry: {event_weight: 1.0, budget_per_episode: 0.005}
+  human_clearance_breach: {event_weight: 1.0, budget_per_episode: 0.01}
+  unresolved_emergency_stop: {event_weight: 1.0, budget_per_episode: 0.0}
+  invalid_motor_command: {event_weight: 1.0, budget_per_episode: 0.0}
+
+soft_constraints:
+  near_miss_exposure: {integrated_weight: 0.5, budget_per_100_steps: 3.0}
+  elevated_semantic_risk: {integrated_weight: 0.25, budget_per_100_steps: 2.0}
+  controlled_inspection_exposure: {integrated_weight: 0.05, budget_per_100_steps: 1.0}
+  uncertainty_exposure: {integrated_weight: 0.25, budget_per_100_steps: 1.0}
+  excessive_risk_dwell: {event_weight: 0.5, budget_per_episode: 1.0}
+  repeated_shield_intervention: {event_weight: 0.1, budget_per_episode: 2.0}
+
+controlled_inspection:
+  maximum_dwell_steps: 3
+  minimum_human_clearance_cells: 2
+  require_recognized_target: true
+  require_inspection_intent: true
+  require_safe_approach: true
+  require_retreat_route: true
+  require_active_shield: true
+  maximum_motion_speed: 0.5
+
+event_tracking:
+  hysteresis_steps: 1
+  repeated_intervention_threshold: 4
+  event_gap_steps: 1
+
+legacy:
+  preserve_raw_safety_cost: true
+  preserve_constraint_counter: true
+  diagnostic_label: LEGACY_INACTIVITY_BIASED_DIAGNOSTIC
