@@ -51,6 +51,10 @@ Controlled exposure receives a small operational cost and remains fully
 logged. Collision, restricted entry, and human-clearance breach are never
 waived.
 
+Human contact (clearance below one grid cell) is a hard clearance breach.
+One-cell separation remains a soft near-miss exposure with duration and
+integrated severity. The legacy per-step near-miss counter is preserved.
+
 ## Event schema and metrics
 
 Every event records its identifier, type, start and end steps, duration, peak

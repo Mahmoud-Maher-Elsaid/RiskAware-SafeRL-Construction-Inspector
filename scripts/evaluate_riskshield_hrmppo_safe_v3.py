@@ -87,6 +87,7 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
     policy.load_state_dict(checkpoint["model_state_dict"])
     policy.eval()
     rows = []
+    event_rows: list[dict[str, Any]] = []
     for seed in range(args.seed_start, args.seed_start + args.seeds):
         for world in WORLDS:
             for profile in PROFILES:
@@ -100,6 +101,7 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
                 hidden = policy.initial_state(1, device)
                 dwell = invalid_actions = interventions = unnecessary = 0
                 deadlock_recovery_observed = False
+                rejection_reason_counts: dict[str, int] = {}
                 emergency_stops = unresolved_emergencies = 0
                 while True:
                     maps = (
@@ -123,6 +125,11 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
                     inspection = inspection_state(observation, proposed, dwell)
                     decision = shield.decide(observation, proposed, inspection)
                     interventions += int(decision.shield_decision != "accept")
+                    if decision.shield_decision != "accept":
+                        for reason in decision.rejection_reasons:
+                            rejection_reason_counts[reason] = (
+                                rejection_reason_counts.get(reason, 0) + 1
+                            )
                     predicted = decision.proposed_vector_cost
                     proposed_hard = (
                         predicted.collision + predicted.restricted_zone + predicted.worker_near_miss
@@ -153,6 +160,15 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
                         break
                 safety = contract.summary()
                 events = safety["events"]
+                event_rows.extend(
+                    {
+                        "seed": seed,
+                        "world": world,
+                        "profile": profile,
+                        **event,
+                    }
+                    for event in events
+                )
                 hard_events = [event for event in events if event["severity"] == "hard"]
                 restricted_events = [
                     event for event in events if event["event_type"] == "restricted_zone_entry"
@@ -194,6 +210,9 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
                         ),
                         "emergency_stops": emergency_stops,
                         "unresolved_emergency_stops": unresolved_emergencies,
+                        "shield_rejection_reasons": json.dumps(
+                            rejection_reason_counts, sort_keys=True
+                        ),
                     }
                 )
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -201,11 +220,18 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         writer = csv.DictWriter(stream, fieldnames=rows[0].keys())
         writer.writeheader()
         writer.writerows(rows)
+    with (args.output_dir / "events.jsonl").open("w", encoding="utf-8") as stream:
+        for event in event_rows:
+            stream.write(json.dumps(event, sort_keys=True) + "\n")
     hardest = [row for row in rows if row["world"] == "site_dynamic" and row["profile"] == "high"]
     successful = [row for row in rows if row["success"]]
     total_steps = sum(row["steps"] for row in rows)
     episodes = len(rows)
     legacy_constraints = sum(row["legacy_constraint_count"] for row in rows)
+    rejection_reasons: dict[str, int] = {}
+    for row in rows:
+        for reason, count in json.loads(row["shield_rejection_reasons"]).items():
+            rejection_reasons[reason] = rejection_reasons.get(reason, 0) + int(count)
     summary = {
         "status": "PENDING",
         "algorithm": "RiskShield-HRMPPO-Safe-v3",
@@ -250,6 +276,7 @@ def evaluate(args: argparse.Namespace) -> dict[str, Any]:
         "unresolved_emergency_stops": sum(row["unresolved_emergency_stops"] for row in rows),
         "shield_intervention_rate": sum(row["shield_interventions"] for row in rows)
         / max(1, total_steps),
+        "shield_rejection_reasons": rejection_reasons,
         "shield_unnecessary_intervention_rate": sum(
             row["unnecessary_interventions"] for row in rows
         )

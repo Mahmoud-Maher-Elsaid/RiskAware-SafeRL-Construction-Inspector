@@ -103,9 +103,10 @@ class SafetyContractV3Wrapper(gym.Wrapper):
         position = environment.agent
         collision = environment.collisions > pre_collisions
         restricted = environment.restricted_violations > pre_restricted
-        human_clearance_breach = any(
+        near_miss_exposure = any(
             abs(position[0] - row) + abs(position[1] - column) <= 1 for row, column in pre_workers
         )
+        human_clearance_breach = any(position == worker for worker in pre_workers)
         semantic_risk = float(position in environment.ppe_risk)
         uncertainty = float(
             environment.config.perception_false_negative_rate
@@ -143,6 +144,8 @@ class SafetyContractV3Wrapper(gym.Wrapper):
                 actual_vector.worker_near_miss,
                 False,
             )
+        if near_miss_exposure and not human_clearance_breach:
+            active["near_miss_exposure"] = ("soft", 0.5, False)
         if semantic_risk:
             active[
                 "controlled_inspection_exposure" if controlled else "uncontrolled_semantic_risk"
@@ -168,7 +171,7 @@ class SafetyContractV3Wrapper(gym.Wrapper):
             shield_decision=shield_decision,
             inspection_intent=context.inspection.inspection_intent,
         )
-        legacy_constraint_delta = int(collision) + int(restricted) + int(human_clearance_breach)
+        legacy_constraint_delta = int(collision) + int(restricted) + int(near_miss_exposure)
         self.contract.add_legacy(
             raw_cost=float(info.get("cost", 0.0)),
             constraint_count=legacy_constraint_delta,

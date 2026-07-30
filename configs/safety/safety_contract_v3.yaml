@@ -18,6 +18,7 @@ soft_constraints:
 
 controlled_inspection:
   maximum_dwell_steps: 3
+  hard_human_clearance_cells: 1
   minimum_human_clearance_cells: 2
   require_recognized_target: true
   require_inspection_intent: true

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import asdict, dataclass
+from math import ceil, log
 
 import numpy as np
 
@@ -73,6 +74,8 @@ class EventAwarePredictiveShieldV3:
         self._recent_positions: list[Position] = []
         self._recent_interventions: list[bool] = []
         self._emergency_active = False
+        self._remembered_workers: set[Position] = set()
+        self._worker_clear_streak = np.zeros((16, 16), dtype=np.int16)
 
     @staticmethod
     def _robot_position(semantic_map: np.ndarray) -> Position:
@@ -122,20 +125,28 @@ class EventAwarePredictiveShieldV3:
         action: int,
         horizon: int,
         inspection: ControlledInspectionState,
+        perception_noise: float,
     ) -> tuple[tuple[Position, ...], SafetyVectorCost, float, tuple[str, ...]]:
         size = semantic_map.shape[-1]
         position = self._robot_position(semantic_map)
         trajectory = [position]
         collision = restricted = worker_breach = semantic_risk = uncertainty = 0.0
         reasons: list[str] = []
+        workers = np.asarray(semantic_map[2]).copy()
+        for remembered_worker in self._remembered_workers:
+            workers[remembered_worker] = 1
         if action == self.emergency_action:
             controlled = self.contract.controlled_inspection_valid(inspection)
             semantic_risk = 0.0 if controlled else float(semantic_map[8, position[0], position[1]])
-            clearance = self._clearance(position, semantic_map[2])
-            minimum_clearance = float(
-                self.contract.config["controlled_inspection"]["minimum_human_clearance_cells"]
+            clearance = self._clearance(position, workers)
+            hard_clearance = float(
+                self.contract.config["controlled_inspection"]["hard_human_clearance_cells"]
             )
-            worker_breach = float(clearance < minimum_clearance)
+            worker_breach = float(clearance < hard_clearance)
+            if clearance < float(
+                self.contract.config["controlled_inspection"]["minimum_human_clearance_cells"]
+            ):
+                semantic_risk = max(semantic_risk, 0.5)
             vector = self.contract.vector_cost(
                 collision=False,
                 restricted_zone=bool(semantic_map[3, position[0], position[1]]),
@@ -164,6 +175,14 @@ class EventAwarePredictiveShieldV3:
                 break
             position = candidate
             trajectory.append(position)
+            if (
+                prediction_step == 0
+                and perception_noise > 0.0
+                and self._worker_clear_streak[position]
+                < self._clearance_confirmations(perception_noise)
+            ):
+                worker_breach = max(worker_breach, 1.0)
+                reasons.append("unconfirmed_human_clearance")
             if semantic_map[3, position[0], position[1]] > 0:
                 if prediction_step == 0:
                     restricted = 1.0
@@ -171,17 +190,22 @@ class EventAwarePredictiveShieldV3:
                 else:
                     semantic_risk = max(semantic_risk, 1.0)
                     reasons.append("future_restricted_zone_risk")
-            clearance = self._clearance(position, semantic_map[2])
-            minimum_clearance = float(
-                self.contract.config["controlled_inspection"]["minimum_human_clearance_cells"]
+            clearance = self._clearance(position, workers)
+            hard_clearance = float(
+                self.contract.config["controlled_inspection"]["hard_human_clearance_cells"]
             )
-            if clearance < minimum_clearance:
+            if clearance < hard_clearance:
                 if prediction_step == 0:
                     worker_breach = max(worker_breach, 1.0)
                     reasons.append("human_clearance_breach")
                 else:
                     semantic_risk = max(semantic_risk, 0.9)
                     reasons.append("future_human_clearance_risk")
+            elif clearance < float(
+                self.contract.config["controlled_inspection"]["minimum_human_clearance_cells"]
+            ):
+                semantic_risk = max(semantic_risk, 0.5)
+                reasons.append("human_near_miss_exposure")
             dynamic_locations = np.argwhere(dynamic)
             if any(
                 abs(position[0] - int(row)) + abs(position[1] - int(column)) <= prediction_step + 1
@@ -219,6 +243,12 @@ class EventAwarePredictiveShieldV3:
     def _soft_cost(vector: SafetyVectorCost) -> float:
         return vector.uncontrolled_semantic_risk + vector.uncertainty
 
+    @staticmethod
+    def _clearance_confirmations(perception_noise: float) -> int:
+        if perception_noise <= 0.0:
+            return 0
+        return max(2, ceil(log(1e-6) / log(min(perception_noise, 0.999))))
+
     def decide(
         self,
         observation: dict[str, np.ndarray],
@@ -229,6 +259,18 @@ class EventAwarePredictiveShieldV3:
         semantic_map = np.asarray(observation["map"])
         action_mask = np.asarray(observation["action_mask"], dtype=np.bool_)
         position = self._robot_position(semantic_map)
+        observed_workers = {
+            (int(row), int(column)) for row, column in np.argwhere(semantic_map[2] > 0)
+        }
+        self._remembered_workers.update(observed_workers)
+        visible = semantic_map[9] > 0
+        worker_free = visible & (semantic_map[2] <= 0)
+        self._worker_clear_streak[worker_free] = np.minimum(
+            self._worker_clear_streak[worker_free] + 1, 32_767
+        )
+        for observed_worker in observed_workers:
+            self._worker_clear_streak[observed_worker] = 0
+        perception_noise = float(np.asarray(observation["state"])[8])
         self._recent_positions.append(position)
         self._recent_positions = self._recent_positions[-10:]
         deadlocked = (
@@ -248,6 +290,7 @@ class EventAwarePredictiveShieldV3:
             proposed_action,
             horizon,
             inspection,
+            perception_noise,
         )
         proposed_hard = self._hard_cost(proposed[1])
         requires_intervention = proposed_hard > 0.0
@@ -263,6 +306,7 @@ class EventAwarePredictiveShieldV3:
                 action,
                 horizon,
                 inspection,
+                perception_noise,
             )
             continuity = (
                 self.action_continuity_penalty
@@ -275,8 +319,8 @@ class EventAwarePredictiveShieldV3:
             candidates.append(
                 (
                     self._hard_cost(prediction[1]),
-                    self._soft_cost(prediction[1]),
                     progress_penalty + continuity + 0.01 * abs(action - proposed_action),
+                    self._soft_cost(prediction[1]),
                     action,
                     prediction,
                 )

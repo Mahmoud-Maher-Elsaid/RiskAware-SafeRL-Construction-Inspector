@@ -49,6 +49,15 @@ def test_avoidable_collision_is_replaced() -> None:
     assert "invalid_or_obstructed_action" in decision.rejection_reasons
 
 
+def test_safe_replacement_prefers_minimal_action_change_before_soft_risk() -> None:
+    value = observation()
+    value["map"][0, 4, 5] = 1.0
+    value["action_mask"][3] = 0
+    value["map"][8, 4, 3] = 0.25
+    decision = shield().decide(value, 3)
+    assert decision.final_action == 2
+
+
 def test_restricted_boundary_and_worker_clearance_are_hard() -> None:
     value = observation()
     value["map"][3, 4, 5] = 1.0
@@ -57,6 +66,28 @@ def test_restricted_boundary_and_worker_clearance_are_hard() -> None:
     worker = shield().decide(value, 0)
     assert restricted.final_action != 3
     assert worker.final_action != 0
+
+
+def test_observed_worker_memory_survives_a_false_negative() -> None:
+    instance = shield()
+    visible = observation()
+    visible["map"][2, 4, 5] = 1.0
+    instance.decide(visible, 0)
+    false_negative = observation()
+    decision = instance.decide(false_negative, 3)
+    assert decision.final_action != 3
+    assert "human_clearance_breach" in decision.rejection_reasons
+
+
+def test_noisy_human_clearance_requires_two_observations() -> None:
+    instance = shield()
+    noisy = observation()
+    noisy["state"][8] = 0.2
+    first = instance.decide(noisy, 3)
+    later = [instance.decide(noisy, 3) for _ in range(8)]
+    assert first.final_action != 3
+    assert "unconfirmed_human_clearance" in first.rejection_reasons
+    assert later[-1].final_action == 3
 
 
 def test_controlled_inspection_is_not_blocked_by_semantic_risk() -> None:

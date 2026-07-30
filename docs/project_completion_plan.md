@@ -7,13 +7,13 @@ Last updated: 2026-07-30
 | Field | Current value |
 |---|---|
 | Current task | Strong-policy upgrade: RiskShield-HRMPPO-Safe v3 |
-| Current state | Safety Contract v3, event audit, vector-cost policy/buffer, typed transition pipeline, and predictive shield v3 implemented; v1 remains production |
+| Current state | Safety Contract v3 and safety DAgger pass their integrity/task-initialization scopes, but all paired HRMPPO-Safe v3 candidates fail final task/hard-event gates; v1 remains production |
 | Evidence collected | Exact 5,460-count decomposition; immutable dataset/checkpoint hash verification; CUDA v3 smoke/resume; paired 90-episode initialization evaluation retained as negative evidence |
 | Files changed | Versioned safety contract and migration; five-critic recurrent constrained PPO; vector-cost buffer; event-aware observation-only shield; evaluator/trainer; regression tests |
 | Tests run | Repository Ruff and 338 tests before telemetry correction; focused safety/algorithm suite 27 tests after correction |
 | Runtime result | Existing v1 production regression is blocked by a reproducible Webots R2025a/Qt invalid-framebuffer geometry failure; no v3 production claim has been made |
-| Remaining work | Targeted safety DAgger, multi-strategy paired optimization, final RL acceptance, CV audit, Webots validation, benchmark v2, ablations, paper, release, and Git integration |
-| Blockers | The untrained v3 initialization loses task performance under shield distribution shift; Webots batch mode currently terminates after invalid multi-million-pixel GUI geometry allocation |
+| Remaining work | A future observation-consistent routing/uncertainty method must pass the unchanged paired RL contract before CV audit, Webots validation, benchmark v2, ablations, paper, release, or Git integration |
+| Blockers | Completed v3 strategies either collapse mission performance or retain hard event rates above contract; Webots batch mode also terminates after invalid multi-million-pixel GUI geometry allocation |
 
 ## Phase checklist
 

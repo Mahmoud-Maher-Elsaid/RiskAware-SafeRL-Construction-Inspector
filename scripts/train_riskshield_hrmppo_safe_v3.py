@@ -67,6 +67,7 @@ def make_environment(
     total_steps: int,
     rng: random.Random,
     safety_contract_path: Path,
+    shield_config: dict[str, Any],
 ) -> tuple[SafetyContractV3Wrapper, EventAwarePredictiveShieldV3, str, str, str]:
     fraction = step / max(1, total_steps)
     stage_index = 0 if fraction < 0.25 else 1 if fraction < 0.60 else 2
@@ -78,7 +79,11 @@ def make_environment(
         ResearchConstructionEnvV2(load_config(world, profile)),
         contract,
     )
-    shield = EventAwarePredictiveShieldV3(contract)
+    shield = EventAwarePredictiveShieldV3(
+        contract,
+        minimum_horizon=int(shield_config["minimum_horizon"]),
+        maximum_horizon=int(shield_config["maximum_horizon"]),
+    )
     return environment, shield, stage, world, profile
 
 
@@ -226,6 +231,8 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         cost_scales=config["cost_scales"],
         learning_rate=float(config["learning_rate"]),
         cost_critic_learning_rate=float(config["cost_critic_learning_rate"]),
+        clip_range=float(config["clip_range"]),
+        entropy_coefficient=float(config["entropy_coefficient"]),
         anchor_kl_coefficient=float(config["anchor_kl_coefficient"]),
         maximum_kl=float(config["maximum_kl"]),
         multiplier_warmup_updates=int(config["multiplier_warmup_updates"]),
@@ -244,6 +251,7 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         total_steps=args.total_steps,
         rng=rng,
         safety_contract_path=args.safety_contract,
+        shield_config=config["shield"],
     )
     observation, _ = environment.reset(seed=args.seed * 100_000 + step)
     hidden = policy.initial_state(1, device)
@@ -251,6 +259,7 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     inspection_dwell = 0
     completed_vector_costs: list[dict[str, float]] = []
     episode_vector = {name: 0.0 for name in VECTOR_COST_NAMES}
+    episode_steps = 0
     metrics = []
     process = psutil.Process()
     started = time.perf_counter()
@@ -267,7 +276,6 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
             with torch.no_grad():
                 output = policy(maps, states, masks, hidden)
                 proposed = output.distribution.sample()
-                log_probability = output.distribution.log_prob(proposed)
             proposed_action = int(proposed.item())
             inspection_dwell = inspection_dwell + 1 if proposed_action == 4 else 0
             inspection = inspection_state(
@@ -277,6 +285,9 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
                 dwell_steps=inspection_dwell,
             )
             decision = shield.decide(observation, proposed_action, inspection)
+            executed = torch.tensor([[decision.final_action]], dtype=torch.long, device=device)
+            with torch.no_grad():
+                log_probability = output.distribution.log_prob(executed)
             environment.prepare_step(
                 SafetyStepContext(
                     proposed_action=proposed_action,
@@ -300,7 +311,11 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
                 state=states[0, 0].detach(),
                 recurrent_state=hidden.detach(),
                 episode_start=torch.tensor(episode_start, device=device),
-                action=proposed[0, 0].detach(),
+                # The environment reward and vector costs result from the
+                # shield-executed action. Crediting the rejected proposal is
+                # an off-transition assignment that prevents the actor from
+                # learning the safe replacement.
+                action=executed[0, 0].detach(),
                 action_mask=masks[0, 0].detach(),
                 reward=torch.tensor(reward, dtype=torch.float32, device=device),
                 vector_cost=vector,
@@ -311,18 +326,21 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
             )
             for index, name in enumerate(VECTOR_COST_NAMES):
                 episode_vector[name] += float(vector[index].detach().cpu())
+            episode_steps += 1
             observation = next_observation
             hidden = output.recurrent_state.detach()
             episode_start = False
             step += 1
             if done:
-                completed_vector_costs.append(dict(episode_vector))
+                completed_vector_costs.append({**episode_vector, "_steps": float(episode_steps)})
                 episode_vector = {name: 0.0 for name in VECTOR_COST_NAMES}
+                episode_steps = 0
                 environment, shield, stage, world, profile = make_environment(
                     step=step,
                     total_steps=args.total_steps,
                     rng=rng,
                     safety_contract_path=args.safety_contract,
+                    shield_config=config["shield"],
                 )
                 observation, _ = environment.reset(seed=args.seed * 100_000 + step)
                 hidden = policy.initial_state(1, device)
@@ -339,9 +357,35 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         )
         observed = {
             name: (
-                float(np.mean([row[name] for row in completed_vector_costs[-10:]]))
+                float(
+                    np.mean(
+                        [
+                            (
+                                100.0 * row[name] / max(1.0, row["_steps"])
+                                if name
+                                in {
+                                    "uncontrolled_semantic_risk",
+                                    "uncertainty",
+                                }
+                                else row[name]
+                            )
+                            for row in completed_vector_costs[-10:]
+                        ]
+                    )
+                )
                 if completed_vector_costs
-                else float(batch.vector_costs[:, index].sum().detach().cpu())
+                else float(
+                    batch.vector_costs[:, index].sum().detach().cpu()
+                    * (
+                        100.0 / max(1, len(buffer.records))
+                        if name
+                        in {
+                            "uncontrolled_semantic_risk",
+                            "uncertainty",
+                        }
+                        else 1.0
+                    )
+                )
             )
             for index, name in enumerate(VECTOR_COST_NAMES)
         }
@@ -399,6 +443,7 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     summary = {
         "status": "PASSED",
         "algorithm": "RiskShield-HRMPPO-Safe-v3",
+        "strategy": args.strategy,
         "steps": step,
         "updates": update_index,
         "seed": args.seed,
@@ -420,6 +465,11 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--initial-checkpoint", type=Path, required=True)
+    parser.add_argument(
+        "--strategy",
+        choices=("pid_lagrange", "safety_dagger_pid", "shield_aware_kl"),
+        default="pid_lagrange",
+    )
     parser.add_argument("--resume", type=Path)
     parser.add_argument(
         "--config",
