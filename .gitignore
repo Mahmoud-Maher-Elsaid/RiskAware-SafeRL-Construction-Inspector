@@ -58,6 +58,10 @@ artifacts/checkpoints/*
 /artifacts/strong_policy_upgrade/dagger/
 /artifacts/strong_policy_upgrade/dagger_smoke/
 /reports/strong_policy_upgrade/dagger_smoke/
+/artifacts/strong_policy_upgrade/hrmppo_v2/
+/artifacts/strong_policy_upgrade/hrmppo_v2_smoke/
+/artifacts/strong_policy_upgrade/hrmppo_v2_search/
+/reports/strong_policy_upgrade/hrmppo_v2/smoke/
 /reports/strong_policy_upgrade/causal_behavior_cloning/*/
 /artifacts/strong_policy_upgrade/training_runs/
 /artifacts/strong_policy_upgrade/expert_demonstrations/chunks/

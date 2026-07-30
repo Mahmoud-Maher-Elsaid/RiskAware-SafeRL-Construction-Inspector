@@ -7,13 +7,13 @@ Last updated: 2026-07-29
 | Field | Current value |
 |---|---|
 | Current task | Strong-policy upgrade: RiskShield-HRMPPO v2 |
-| Current state | Causal imitation and three genuine policy-visited-state DAgger iterations passed |
-| Evidence collected | Preserved original hashes; causal manifests; expert evaluation; mixed-mode comparison; three-seed BC metrics; CUDA memory gate; DAgger corrections, disagreements, checkpoints, and held-out rollouts |
-| Files changed | Causal imitation stack, recurrent attention policy, memory-safe trainer, DAgger collector/retrainer, tests, manifests, reports, and docs |
-| Tests run | Repository Ruff/full pytest; causal expert/generator/mixer/cache tests; 1,440-episode expert evaluation; 1,000-batch CUDA memory gate; DAgger CUDA smoke and full 36,000-correction run |
-| Runtime result | Causal BC mean 91.07%; DAgger best held-out success 85.56%; final beta-zero success 76.67%, recall/coverage 95.94%, collision rate 0, invalid actions 0 |
-| Remaining work | HRMPPO v2; CV/Webots/benchmark/paper/final acceptance |
-| Blockers | None at the HRMPPO algorithm-smoke stage |
+| Current state | HRMPPO v2 algorithm, safe checkpoint/resume, and predictive-shield smoke gates passed |
+| Evidence collected | Causal/DAgger evidence plus HRMPPO separated reward-cost updates, PID state, CUDA checkpoint resume, shield-overintervention diagnosis, and corrected 90-episode shield baseline |
+| Files changed | Causal imitation/DAgger stack; recurrent HRMPPO algorithm and trainer/evaluator/optimizer; predictive shield; tests, reports, and docs |
+| Tests run | Repository Ruff and 316 tests; imitation/DAgger runtime gates; 1,024-step CUDA HRMPPO smoke; deterministic resume; 90-episode shield evaluation |
+| Runtime result | DAgger beta-zero success 76.67%; corrected shield baseline success 78.89%, target 100%, hardest 70%, recall/coverage 94.69%, collision/invalid rate 0 |
+| Remaining work | HRMPPO search/final training and statistical v1 comparison; CV/Webots/benchmark/paper/final acceptance |
+| Blockers | None at the HRMPPO optimization stage |
 
 ## Phase checklist
 

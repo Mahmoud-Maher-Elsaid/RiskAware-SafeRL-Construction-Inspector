@@ -86,14 +86,19 @@ class PredictiveSafetyShield:
         replacement: int | None = None
         decision = "accept"
         emergency_stop = False
-        if violations:
+        requires_intervention = "collision" in violations or proposed_cost > self.safety_budget
+        if requires_intervention:
             candidates = []
+            action_mask = environment.action_masks()
             for action in range(environment.action_space.n):
+                if not bool(action_mask[action]):
+                    continue
                 trajectory, cost, candidate_violations = self._predict(environment, action)
                 candidates.append(
                     (
                         cost,
                         len(candidate_violations),
+                        int(action == self.emergency_action),
                         abs(action - proposed_action),
                         action,
                         trajectory,
@@ -101,8 +106,15 @@ class PredictiveSafetyShield:
                     )
                 )
             best = min(candidates)
-            if best[0] <= self.safety_budget and not best[5]:
-                final_action = best[3]
+            if best[0] <= self.safety_budget and not best[6]:
+                final_action = best[4]
+                replacement = final_action
+                decision = "replace"
+            elif (best[0], best[1]) < (proposed_cost, len(violations)):
+                # Escape an already risky cell even when no candidate can make
+                # the entire prediction horizon cost-free. Stopping in place
+                # can otherwise create a permanent shield-induced deadlock.
+                final_action = best[4]
                 replacement = final_action
                 decision = "replace"
             else:
