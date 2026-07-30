@@ -109,6 +109,12 @@ def derive_option(
             else MissionOption.INSPECT_KNOWN_RISK
         )
         return option, target, "observed_target_in_inspection_range"
+    if target is not None:
+        return (
+            MissionOption.CONTINUE_CURRENT_TARGET,
+            target,
+            "remembered_observed_target_outside_inspection_range",
+        )
     if shield_intervened:
         return MissionOption.REPLAN_ROUTE, target, "observed_shield_intervention"
     if local_uncertainty > 0.9 and action == 4 and bool(action_mask[4]):
@@ -116,7 +122,11 @@ def derive_option(
     return MissionOption.EXPLORE_FRONTIER, None, "systematic_observed_exploration"
 
 
-def _vector_cost(semantic_map: np.ndarray, safety_cost: float) -> np.ndarray:
+def _vector_cost(
+    semantic_map: np.ndarray,
+    safety_cost: float,
+    state: np.ndarray | None = None,
+) -> np.ndarray:
     robot = _robot_position(semantic_map)
     restricted = float(semantic_map[3, robot[0], robot[1]] > 0)
     worker = float(
@@ -126,7 +136,11 @@ def _vector_cost(semantic_map: np.ndarray, safety_cost: float) -> np.ndarray:
         )
     )
     semantic = float(max(semantic_map[6, robot[0], robot[1]], semantic_map[8, robot[0], robot[1]]))
-    uncertainty = 1.0 - float(np.mean(semantic_map[9] > 0))
+    uncertainty = (
+        float(np.asarray(state)[8]) * semantic
+        if state is not None
+        else 1.0 - float(np.mean(semantic_map[9] > 0))
+    )
     return np.asarray(
         (0.0, restricted, worker, semantic, uncertainty, 0.0, 0.0),
         dtype=np.float32,
@@ -298,6 +312,7 @@ class HierarchicalDatasetBuilder:
                         _vector_cost(
                             semantic_map,
                             float(chunk_data["safety_costs"][index]),
+                            np.asarray(chunk_data["states"][index]),
                         )
                     )
                     records["terminated"].append(chunk_data["terminated"][index])

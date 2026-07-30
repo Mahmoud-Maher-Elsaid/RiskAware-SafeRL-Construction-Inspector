@@ -94,7 +94,8 @@ def causal_option_mask(
         if primitive_action_mask is None
         else np.asarray(primitive_action_mask, dtype=np.bool_)
     )
-    if nearest is not None and bool(primitive_mask[4]):
-        mask[MissionOption.INSPECT_KNOWN_RISK] = True
+    if nearest is not None:
         mask[MissionOption.CONTINUE_CURRENT_TARGET] = True
+        if bool(primitive_mask[4]):
+            mask[MissionOption.INSPECT_KNOWN_RISK] = True
     return mask

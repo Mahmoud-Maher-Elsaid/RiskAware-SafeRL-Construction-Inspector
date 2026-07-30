@@ -29,45 +29,45 @@
     {
       "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00000.npz",
       "rows": 10000,
-      "bytes": 721678,
-      "sha256": "33ef56187a313c3c9d53c55569ee03c9c6140e657d4c31a219e97135c631b150"
+      "bytes": 713062,
+      "sha256": "7146c48bb97a7d190d272d4db410ea52783a93eaf36ef0be7dac5667150ed528"
     },
     {
       "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00001.npz",
       "rows": 10000,
-      "bytes": 724766,
-      "sha256": "a6bacd286260d662abe07d8b2ddc36872d272c1258c5d532965f8c38de3dc584"
+      "bytes": 716225,
+      "sha256": "40720a249c24098e66994f21a4fd735e8119633a129fddf10e690767188f63c1"
     },
     {
       "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00002.npz",
       "rows": 10000,
-      "bytes": 726694,
-      "sha256": "75887971a7e053c8f997cbe62ebe7f1488dfc79f1560744f365ef27e6f20f498"
+      "bytes": 717938,
+      "sha256": "e06e41f060a83de2e3a8662ad8022bbda809e9c0fb79e436482b3cbeba5445a2"
     },
     {
       "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00003.npz",
       "rows": 10000,
-      "bytes": 724231,
-      "sha256": "2f5112ab0b20d2ed2c200a9ca281010b5cb7001163534b4d4b115a49e716d50c"
+      "bytes": 715641,
+      "sha256": "6c7dcdcbbe30893ebad35305fd11ca11f4b4394de2638c0c990439bb3b3b8245"
     },
     {
       "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00004.npz",
       "rows": 10000,
-      "bytes": 723963,
-      "sha256": "fa54b59281bfcd3582b1e315de1e3d7711e2f277a546da7155db029cec55090e"
+      "bytes": 715367,
+      "sha256": "21762c536fcc77bdf16cf0d67918d24231c35f22fbeec59279b5274eb4a444e2"
     },
     {
       "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00005.npz",
       "rows": 10000,
-      "bytes": 726161,
-      "sha256": "cfa7e60e0fed3d3f862f99fb1f13e2dd1eacf77146c1ff16662765a4d72dad17"
+      "bytes": 717704,
+      "sha256": "d4fb488e1e2739ee82a98e076fc55e7481490f4a50cd953e0fb8946b69cd6291"
     },
     {
       "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00006.npz",
       "rows": 3080,
-      "bytes": 232221,
-      "sha256": "2c5721b52ccd3a5efcf5a8c8cf627a888dfc6f9cc13238c067e95e66f6da9ba0"
+      "bytes": 229498,
+      "sha256": "d1def54a0435eb9c43ae234d6c6a835ae47391d0c4646613115015d47cc8357a"
     }
   ],
-  "dataset_sha256": "320d5b5043c7fc2833fb5e3a35042fc1b9f8d1018ac08e0ebf30c1c7dc07925d"
+  "dataset_sha256": "dd43de03f898e1657840877ebe127a370278f88d852ccafd2fc023519e50c978"
 }

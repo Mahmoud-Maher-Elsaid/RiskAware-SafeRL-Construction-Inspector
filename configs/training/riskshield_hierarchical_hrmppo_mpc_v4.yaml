@@ -1,39 +1,36 @@
 algorithm: RiskShield-Hierarchical-HRMPPO-MPC-v4
-seed: 42
 device: cuda
-semantic_map:
-  channels: 11
-  height: 16
-  width: 16
-structured_state_features: 32
-recurrent_hidden_size: 256
-options:
-  decision_interval: 4
-  duration_bins: 8
-  names:
-    - explore_frontier
-    - inspect_known_risk
-    - inspect_ppe_violation
-    - continue_current_target
-    - avoid_dynamic_worker
-    - retreat_to_safe_cell
-    - replan_route
-    - hold_for_uncertainty
-    - emergency_safe_stop
-planner:
-  implementation: incremental_risk_aware_astar
-  hidden_state_access: false
-controller:
-  implementation: discrete_predictive_local_controller
-  horizon: 3
-shield:
-  contract: configs/safety/safety_contract_v3.yaml
-  minimum_horizon: 1
-  maximum_horizon: 5
-training:
-  sequence_length: 32
-  batch_size: 16
-  checkpoint_interval: 100000
-  evaluation_interval: 100000
-  resumable: true
-  mixed_precision: true
+seed: 20260730
+rollout_options: 256
+ppo_epochs: 2
+option_decision_interval: 4
+learning_rate: 0.000003
+cost_critic_learning_rate: 0.00001
+reward_gamma: 0.99
+reward_gae_lambda: 0.95
+cost_gamma: 0.995
+cost_gae_lambda: 0.95
+clip_range: 0.15
+maximum_kl: 0.02
+anchor_kl_coefficient: 1.0
+entropy_coefficient: 0.002
+multiplier_warmup_updates: 10
+budgets:
+  collision: 0.0
+  restricted_zone: 0.0
+  human_clearance: 0.0
+  uncontrolled_semantic_risk: 2.0
+  uncertainty: 1.0
+  shield_dependence: 1.0
+  deadlock: 0.0
+cost_scales:
+  collision: 1.0
+  restricted_zone: 1.0
+  human_clearance: 1.0
+  uncontrolled_semantic_risk: 2.0
+  uncertainty: 1.0
+  shield_dependence: 1.0
+  deadlock: 1.0
+checkpoint_interval: 100000
+evaluation_interval: 100000
+maximum_memory_gb: 8.0

@@ -317,7 +317,9 @@ def collect(
                     "mission_progress": float(info["hazard_recall"]),
                     "rewards": float(reward),
                     "vector_costs": _vector_cost(
-                        np.asarray(observation["map"]), float(info["cost"])
+                        np.asarray(observation["map"]),
+                        float(info["cost"]),
+                        np.asarray(observation["state"]),
                     ),
                     "terminated": terminated,
                     "truncated": truncated,

@@ -83,7 +83,7 @@ def test_labels_use_only_observation_and_identify_inspection() -> None:
     assert causal_option_mask(value)[option]
 
 
-def test_hold_is_not_mislabeled_as_inspection_when_target_is_out_of_range() -> None:
+def test_out_of_range_observed_target_is_persisted_without_inspection_label() -> None:
     value = semantic_map()
     value[1, 12, 12] = 1
     option, _, reason = derive_option(
@@ -93,8 +93,8 @@ def test_hold_is_not_mislabeled_as_inspection_when_target_is_out_of_range() -> N
         previous_action=4,
         shield_intervened=False,
     )
-    assert option == MissionOption.EXPLORE_FRONTIER
-    assert reason == "systematic_observed_exploration"
+    assert option == MissionOption.CONTINUE_CURRENT_TARGET
+    assert reason == "remembered_observed_target_outside_inspection_range"
 
 
 def test_causal_option_mask_rejects_completed_targets_and_prioritizes_worker_safety() -> None:
