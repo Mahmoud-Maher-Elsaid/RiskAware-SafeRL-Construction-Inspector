@@ -55,6 +55,11 @@ class HierarchicalMissionPolicy(nn.Module):
         self.recurrent = nn.GRU(224, recurrent_hidden_size, batch_first=True)
         self.option_actor = nn.Linear(recurrent_hidden_size, option_count)
         self.target_selection_head = nn.Linear(recurrent_hidden_size, map_size * map_size + 1)
+        self.target_spatial_head = nn.Sequential(
+            nn.Conv2d(map_channels, 32, kernel_size=3, padding=1),
+            nn.GELU(),
+            nn.Conv2d(32, 1, kernel_size=1),
+        )
         self.option_duration_head = nn.Linear(recurrent_hidden_size, duration_bins)
         self.risk_budget_head = nn.Linear(recurrent_hidden_size, len(VECTOR_COST_NAMES))
         self.replanning_head = nn.Linear(recurrent_hidden_size, 1)
@@ -108,9 +113,20 @@ class HierarchicalMissionPolicy(nn.Module):
                 outputs.append(current)
             features = torch.cat(outputs, dim=1)
         option_logits = self.masked_logits(self.option_actor(features), option_masks)
+        target_logits = self.target_selection_head(features)
+        spatial_target_logits = self.target_spatial_head(flat_maps).reshape(
+            batch, sequence, self.map_size * self.map_size
+        )
+        target_logits = torch.cat(
+            (
+                target_logits[..., :-1] + spatial_target_logits,
+                target_logits[..., -1:],
+            ),
+            dim=-1,
+        )
         return HierarchicalPolicyOutput(
             option_distribution=Categorical(logits=option_logits),
-            target_logits=self.target_selection_head(features),
+            target_logits=target_logits,
             duration_logits=self.option_duration_head(features),
             risk_budgets=torch.sigmoid(self.risk_budget_head(features)),
             replanning_urgency=torch.sigmoid(self.replanning_head(features)).squeeze(-1),
