@@ -1,0 +1,39 @@
+algorithm: RiskShield-Hierarchical-HRMPPO-MPC-v4
+seed: 42
+device: cuda
+semantic_map:
+  channels: 11
+  height: 16
+  width: 16
+structured_state_features: 32
+recurrent_hidden_size: 256
+options:
+  decision_interval: 4
+  duration_bins: 8
+  names:
+    - explore_frontier
+    - inspect_known_risk
+    - inspect_ppe_violation
+    - continue_current_target
+    - avoid_dynamic_worker
+    - retreat_to_safe_cell
+    - replan_route
+    - hold_for_uncertainty
+    - emergency_safe_stop
+planner:
+  implementation: incremental_risk_aware_astar
+  hidden_state_access: false
+controller:
+  implementation: discrete_predictive_local_controller
+  horizon: 3
+shield:
+  contract: configs/safety/safety_contract_v3.yaml
+  minimum_horizon: 1
+  maximum_horizon: 5
+training:
+  sequence_length: 32
+  batch_size: 16
+  checkpoint_interval: 100000
+  evaluation_interval: 100000
+  resumable: true
+  mixed_precision: true

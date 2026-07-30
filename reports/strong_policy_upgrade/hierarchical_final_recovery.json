@@ -1,0 +1,50 @@
+{
+  "status": "PASSED",
+  "marker": "HIERARCHICAL_FINAL_RECOVERY=PASSED",
+  "verified_at": "2026-07-30",
+  "branch": "final/strong-policy-upgrade",
+  "head": "7bd5e656a9c52fce5e00ff826e1452223da15151",
+  "remote_head": "7bd5e656a9c52fce5e00ff826e1452223da15151",
+  "working_tree_clean": true,
+  "datasets": {
+    "privileged": {
+      "transitions": 120144,
+      "sha256": "06f872d819241563d3bf735d97c203d3de9633fbbc9cb3e5e99f95a1edbb1285",
+      "preserved": true
+    },
+    "systematic_causal": {
+      "transitions": 250128,
+      "sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f",
+      "preserved": true
+    }
+  },
+  "checkpoints": {
+    "hrmppo_v2_task_baseline": {
+      "path": "artifacts/strong_policy_upgrade/hrmppo_v2_search/anchor_lr5e6_100k/final_checkpoint.pt",
+      "sha256": "f296c5633ec6d3e9918474039ae079fb681e7dded02a4962c465010e2bf80436",
+      "preserved": true
+    },
+    "hrmppo_safe_v3_failed": {
+      "path": "artifacts/strong_policy_upgrade/hrmppo_safe_v3/strategy_executed_30k/final_checkpoint.pt",
+      "sha256": "4ccb08bad71c0772d55b8a0a6f379f8b1189c56cde2150daa579c205fba9c0c1",
+      "preserved": true
+    }
+  },
+  "validation": {
+    "python_compilation": "PASSED",
+    "ruff_check": "PASSED",
+    "ruff_format_check": "PASSED",
+    "pytest": "PASSED",
+    "tests_passed": 344
+  },
+  "production": {
+    "replacement_performed": false,
+    "current_policy_family": "RiskShield-PPO v1",
+    "configuration": "configs/webots/policy_control.json"
+  },
+  "recovery_decision": {
+    "primary_recovery": "RiskShield-Hierarchical-HRMPPO-MPC-v4",
+    "failed_flat_v3_will_not_be_primary": true,
+    "merge_authorized_before_acceptance": false
+  }
+}
