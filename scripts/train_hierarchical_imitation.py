@@ -47,6 +47,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-memory-gb", type=float, default=12.0)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--initialize", type=Path)
     return parser.parse_args()
 
 
@@ -167,6 +168,9 @@ def train_seed(args: argparse.Namespace, seed: int) -> dict[str, Any]:
         persistent_workers=False,
     )
     model = HierarchicalMissionPolicy().to(device)
+    if args.initialize is not None:
+        initialization = torch.load(args.initialize, map_location=device, weights_only=False)
+        model.load_state_dict(initialization["model"])
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate, weight_decay=1e-4)
     scaler = torch.amp.GradScaler("cuda", enabled=device.type == "cuda")
     weights = option_weights(train).to(device)

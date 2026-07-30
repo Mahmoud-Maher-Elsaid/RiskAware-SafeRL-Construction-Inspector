@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from riskaware_saferrl.hierarchical.schemas import MissionOption
+from riskaware_saferrl.hierarchical.schemas import MissionOption, causal_option_mask
 from riskaware_saferrl.training.hierarchical_dataset import (
     HierarchicalSequenceDataset,
     SequenceIndex,
@@ -70,7 +70,7 @@ def create_source(root: Path) -> Path:
 
 def test_labels_use_only_observation_and_identify_inspection() -> None:
     value = semantic_map()
-    value[8, 4, 5] = 1
+    value[1, 4, 5] = 1
     option, target, _ = derive_option(
         value,
         np.ones(5, dtype=np.uint8),
@@ -78,8 +78,39 @@ def test_labels_use_only_observation_and_identify_inspection() -> None:
         previous_action=3,
         shield_intervened=False,
     )
-    assert option == MissionOption.INSPECT_PPE_VIOLATION
+    assert option == MissionOption.INSPECT_KNOWN_RISK
     assert target == (4, 5)
+    assert causal_option_mask(value)[option]
+
+
+def test_hold_is_not_mislabeled_as_inspection_when_target_is_out_of_range() -> None:
+    value = semantic_map()
+    value[1, 12, 12] = 1
+    option, _, reason = derive_option(
+        value,
+        np.ones(5, dtype=np.uint8),
+        4,
+        previous_action=4,
+        shield_intervened=False,
+    )
+    assert option == MissionOption.EXPLORE_FRONTIER
+    assert reason == "systematic_observed_exploration"
+
+
+def test_causal_option_mask_rejects_completed_targets_and_prioritizes_worker_safety() -> None:
+    value = semantic_map()
+    value[8, 4, 5] = 1
+    value[10, 4, 5] = 1
+    completed = causal_option_mask(value)
+    assert not completed[MissionOption.INSPECT_PPE_VIOLATION]
+    value[2, 4, 5] = 1
+    worker = causal_option_mask(value, np.ones(5, dtype=np.uint8))
+    assert worker[MissionOption.AVOID_DYNAMIC_WORKER]
+    assert worker[MissionOption.RETREAT_TO_SAFE_CELL]
+    assert not worker[MissionOption.EXPLORE_FRONTIER]
+    trapped = causal_option_mask(value, np.asarray((0, 0, 0, 0, 1), dtype=np.uint8))
+    assert not trapped[MissionOption.AVOID_DYNAMIC_WORKER]
+    assert trapped[MissionOption.HOLD_FOR_UNCERTAINTY]
 
 
 def test_builder_is_deterministic_preserves_source_and_prevents_leakage(
@@ -111,6 +142,9 @@ def test_record_schema_has_valid_options_targets_and_primitives(tmp_path: Path) 
     manifest = HierarchicalDatasetBuilder(source, output).build()
     with np.load(Path(manifest["chunks"][0]["path"]), allow_pickle=False) as data:
         assert np.all((data["options"] >= 0) & (data["options"] < len(MissionOption)))
+        assert np.all(
+            data["option_masks"][np.arange(len(data["options"])), data["options"].astype(np.int64)]
+        )
         assert data["target_coordinates"].shape[1:] == (2,)
         assert data["executed_primitives"].shape[1:] == (4,)
         assert np.all(data["executed_primitives"][data["executed_primitive_masks"]] < 5)

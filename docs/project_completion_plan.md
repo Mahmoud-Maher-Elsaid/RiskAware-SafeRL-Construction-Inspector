@@ -7,12 +7,12 @@ Last updated: 2026-07-30
 | Field | Current value |
 |---|---|
 | Current task | Hierarchical recovery: RiskShield-Hierarchical-HRMPPO-MPC v4 |
-| Current state | Hierarchical v4 core, causal option dataset, and three-seed CUDA imitation gates passed; hierarchical DAgger is next and v1 remains production |
+| Current state | Hierarchical v4 core and corrected systematic causal option dataset pass three-seed CUDA imitation; H1 beta-zero evaluation is preserved as a task-gate failure and v1 remains production |
 | Evidence collected | Exact 5,460-count decomposition; immutable dataset/checkpoint hash verification; CUDA v3 smoke/resume; paired 90-episode initialization evaluation retained as negative evidence |
 | Files changed | Versioned safety contract and migration; five-critic recurrent constrained PPO; vector-cost buffer; event-aware observation-only shield; evaluator/trainer; regression tests |
-| Tests run | Python compilation, Ruff lint/format, and 355 complete pytest tests pass after hierarchical dataset and imitation implementation |
+| Tests run | Ruff lint/format and 356 complete pytest tests pass after causal option-feasibility, target-semantic, planner, controller, and DAgger acceptance repairs |
 | Runtime result | Existing v1 production regression is blocked by a reproducible Webots R2025a/Qt invalid-framebuffer geometry failure; no v3 production claim has been made |
-| Remaining work | Implement and validate hierarchical mission RL, causal local planning, predictive local control, hierarchical datasets/training, Webots launcher repairs, and every downstream acceptance gate |
+| Remaining work | Complete accepted hierarchical DAgger, constrained option-level RL recovery strategies, Webots launcher repairs, and every downstream acceptance gate |
 | Blockers | No external blocker is currently established; flat v3 is retained only as negative evidence while the hierarchical recovery is implemented |
 
 ## Phase checklist
@@ -54,7 +54,7 @@ Last updated: 2026-07-30
 - [x] Implement and test recurrent mission policy, causal planner, predictive local controller, and independent shield composition.
 - [x] Derive 63,080 causal hierarchical decisions without modifying the 250,128-transition source.
 - [x] Pass three-seed hierarchical imitation gates on held-out causal episodes.
-- [ ] Complete three genuine hierarchical DAgger iterations.
+- [ ] Complete three genuine hierarchical DAgger iterations (9,000 policy-visited corrections exist, but the H1 beta-zero mission gate failed and is not accepted).
 - [ ] Train and accept constrained option-level HRMPPO-MPC v4.
 
 ## Safety evidence

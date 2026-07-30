@@ -42,6 +42,17 @@ def test_policy_heads_shapes_and_exact_option_masking() -> None:
     assert output.recurrent_state.shape == (1, 2, 256)
 
 
+def test_target_prior_selects_nearest_observed_uninspected_risk() -> None:
+    policy = HierarchicalMissionPolicy()
+    maps = torch.zeros(1, 11, 16, 16)
+    maps[0, 5, 4, 4] = 1
+    maps[0, 1, 4, 5] = 1
+    maps[0, 1, 12, 12] = 1
+    prior = policy._causal_target_prior(maps)
+    assert prior[0, 4, 5] > prior[0, 12, 12]
+    assert prior[0, 0, 0] <= -32
+
+
 def test_policy_recurrent_reset_and_deterministic_cpu_inference() -> None:
     torch.manual_seed(7)
     policy = HierarchicalMissionPolicy().eval()
@@ -82,7 +93,7 @@ def test_planner_uses_only_public_observation_and_finds_frontier() -> None:
         ),
     )
     assert result.success
-    assert result.target_type == "frontier"
+    assert "frontier" in result.target_type
     assert all(value["map"][9, position[0], position[1]] > 0 for position in result.path)
 
 
@@ -97,6 +108,57 @@ def test_hidden_hazard_does_not_change_causal_plan_before_discovery() -> None:
 
     request = PlannerRequest(MissionOption.EXPLORE_FRONTIER, None, 0.2, False)
     assert planner_a.plan(first, request).path == planner_b.plan(second, request).path
+
+
+def test_worker_avoidance_retreats_instead_of_accepting_current_cell() -> None:
+    value = observation()
+    value["map"][2, 4, 5] = 1
+    planner = CausalRiskAwarePlanner()
+    from riskaware_saferrl.hierarchical import PlannerRequest
+
+    result = planner.plan(
+        value,
+        PlannerRequest(MissionOption.AVOID_DYNAMIC_WORKER, None, 0.1, False),
+    )
+    assert result.success
+    assert len(result.path) >= 2
+    worker = (4, 5)
+    assert sum(abs(a - b) for a, b in zip(result.path[-1], worker, strict=True)) >= 2
+
+
+def test_reached_risk_target_executes_controlled_inspection_instead_of_retreating() -> None:
+    value = observation()
+    value["map"][8, 4, 4] = 1
+    controller = PredictiveLocalController()
+    decision = controller.decide(value, ((4, 4),), inspection_intent=True)
+    assert decision.primitive == 4
+
+
+def test_known_target_without_discovered_corridor_advances_to_causal_frontier() -> None:
+    value = observation()
+    value["map"][1, 12, 12] = 1
+    planner = CausalRiskAwarePlanner()
+    from riskaware_saferrl.hierarchical import PlannerRequest
+
+    result = planner.plan(
+        value,
+        PlannerRequest(MissionOption.INSPECT_KNOWN_RISK, (12, 12), 0.2, True),
+    )
+    assert result.success
+    assert result.path[-1] != (4, 4)
+    assert result.target_type.endswith("route_frontier")
+
+
+def test_unobserved_dynamic_worker_belief_expires() -> None:
+    planner = CausalRiskAwarePlanner()
+    value = observation()
+    value["map"][2, 4, 5] = 1
+    planner.update(value)
+    hidden = observation()
+    hidden["map"][9, 4, 5] = 0
+    for _ in range(20):
+        planner.update(hidden)
+    assert planner._worker[4, 5] == 0
 
 
 def test_restricted_zone_is_never_in_planned_path() -> None:
@@ -116,6 +178,24 @@ def test_controller_uses_valid_primitive_and_avoids_observed_worker() -> None:
     decision = PredictiveLocalController().decide(value, ((4, 4), (4, 5)), inspection_intent=False)
     assert value["action_mask"][decision.primitive]
     assert decision.primitive != 3
+
+
+def test_inspection_intent_does_not_stop_before_reaching_approach_cell() -> None:
+    decision = PredictiveLocalController().decide(
+        observation(), ((4, 4), (4, 5), (4, 6)), inspection_intent=True
+    )
+    assert decision.primitive == 3
+
+
+def test_exploration_does_not_hold_at_current_frontier() -> None:
+    value = observation()
+    planner = CausalRiskAwarePlanner()
+    from riskaware_saferrl.hierarchical import PlannerRequest
+
+    route = planner.plan(value, PlannerRequest(MissionOption.EXPLORE_FRONTIER, None, 0.2, False))
+    decision = PredictiveLocalController().decide(value, route.path, inspection_intent=False)
+    assert len(route.path) > 1
+    assert decision.primitive != 4
 
 
 def test_four_layer_system_executes_shielded_primitive() -> None:

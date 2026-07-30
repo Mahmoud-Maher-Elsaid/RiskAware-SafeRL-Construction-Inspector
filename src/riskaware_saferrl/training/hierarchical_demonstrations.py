@@ -8,7 +8,7 @@ from typing import Any
 
 import numpy as np
 
-from riskaware_saferrl.hierarchical.schemas import MissionOption
+from riskaware_saferrl.hierarchical.schemas import MissionOption, causal_option_mask
 
 
 def sha256_file(path: Path) -> str:
@@ -34,7 +34,8 @@ def _robot_position(semantic_map: np.ndarray) -> tuple[int, int]:
 
 
 def _observed_target(semantic_map: np.ndarray) -> tuple[int, int] | None:
-    locations = np.argwhere((semantic_map[8] > 0) | (semantic_map[1] > 0))
+    uninspected = semantic_map[10] <= 0
+    locations = np.argwhere((semantic_map[1] > 0) & uninspected)
     if len(locations) == 0:
         return None
     robot = _robot_position(semantic_map)
@@ -84,38 +85,35 @@ def derive_option(
     """Derive an observation-consistent mission label from causal trajectory structure."""
     robot = _robot_position(semantic_map)
     target = _observed_target(semantic_map)
+    worker_locations = np.argwhere((semantic_map[2] > 0) | (semantic_map[7] > 0))
     worker_distance = min(
         (
             abs(robot[0] - int(row)) + abs(robot[1] - int(column))
-            for row, column in np.argwhere((semantic_map[2] > 0) | (semantic_map[7] > 0))
+            for row, column in worker_locations
         ),
         default=99,
     )
     local_uncertainty = 1.0 - float(np.mean(semantic_map[9] > 0))
-    if action == 4 and target is not None:
+    if worker_distance <= 1:
+        mask = causal_option_mask(semantic_map, action_mask)
+        if mask[MissionOption.AVOID_DYNAMIC_WORKER]:
+            return MissionOption.AVOID_DYNAMIC_WORKER, None, "observed_worker_safe_escape"
+        return MissionOption.HOLD_FOR_UNCERTAINTY, None, "observed_worker_safe_hold"
+    target_distance = (
+        abs(robot[0] - target[0]) + abs(robot[1] - target[1]) if target is not None else 99
+    )
+    if action == 4 and bool(action_mask[4]) and target is not None and target_distance <= 2:
         option = (
             MissionOption.INSPECT_PPE_VIOLATION
-            if semantic_map[8, target[0], target[1]] > 0
+            if semantic_map[1, target[0], target[1]] <= 0
             else MissionOption.INSPECT_KNOWN_RISK
         )
         return option, target, "observed_target_in_inspection_range"
-    if worker_distance <= 2:
-        return MissionOption.AVOID_DYNAMIC_WORKER, None, "observed_worker_clearance"
     if shield_intervened:
         return MissionOption.REPLAN_ROUTE, target, "observed_shield_intervention"
-    if target is not None:
-        return (
-            (
-                MissionOption.INSPECT_PPE_VIOLATION
-                if semantic_map[8, target[0], target[1]] > 0
-                else MissionOption.INSPECT_KNOWN_RISK
-            ),
-            target,
-            "observed_or_remembered_target",
-        )
     if local_uncertainty > 0.9 and action == 4 and bool(action_mask[4]):
         return MissionOption.HOLD_FOR_UNCERTAINTY, None, "high_observation_uncertainty"
-    return MissionOption.EXPLORE_FRONTIER, _frontier_target(semantic_map), "observed_frontier"
+    return MissionOption.EXPLORE_FRONTIER, None, "systematic_observed_exploration"
 
 
 def _vector_cost(semantic_map: np.ndarray, safety_cost: float) -> np.ndarray:
@@ -276,7 +274,15 @@ class HierarchicalDatasetBuilder:
                         )
                     records["maps"].append(semantic_map)
                     records["states"].append(chunk_data["states"][index])
-                    records["option_masks"].append(np.ones(len(MissionOption), dtype=np.uint8))
+                    option_mask = causal_option_mask(
+                        semantic_map,
+                        np.asarray(chunk_data["action_masks"][index]),
+                    )
+                    if not option_mask[int(option)]:
+                        raise ValueError(
+                            f"Derived option {option.name} violates its causal feasibility mask"
+                        )
+                    records["option_masks"].append(option_mask.astype(np.uint8))
                     records["options"].append(int(option))
                     records["target_coordinates"].append(target if target is not None else (-1, -1))
                     records["target_types"].append(reason)

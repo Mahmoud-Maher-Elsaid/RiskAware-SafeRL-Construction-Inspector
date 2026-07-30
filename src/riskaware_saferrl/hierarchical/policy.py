@@ -117,9 +117,12 @@ class HierarchicalMissionPolicy(nn.Module):
         spatial_target_logits = self.target_spatial_head(flat_maps).reshape(
             batch, sequence, self.map_size * self.map_size
         )
+        causal_target_prior = self._causal_target_prior(flat_maps).reshape(
+            batch, sequence, self.map_size * self.map_size
+        )
         target_logits = torch.cat(
             (
-                target_logits[..., :-1] + spatial_target_logits,
+                target_logits[..., :-1] + spatial_target_logits + causal_target_prior,
                 target_logits[..., -1:],
             ),
             dim=-1,
@@ -138,6 +141,23 @@ class HierarchicalMissionPolicy(nn.Module):
             ),
             recurrent_state=hidden,
         )
+
+    def _causal_target_prior(self, maps: Tensor) -> Tensor:
+        """Bias selection toward the nearest observed, uninspected risk cell."""
+        uninspected = maps[:, 10] <= 0
+        mission_hazards = (maps[:, 1] > 0) & uninspected
+        candidates = mission_hazards
+        robot = maps[:, 5] > 0
+        rows = torch.arange(self.map_size, device=maps.device, dtype=maps.dtype)
+        row_grid, column_grid = torch.meshgrid(rows, rows, indexing="ij")
+        robot_count = robot.sum(dim=(-2, -1), keepdim=True).clamp_min(1)
+        robot_row = (robot * row_grid).sum(dim=(-2, -1), keepdim=True) / robot_count
+        robot_column = (robot * column_grid).sum(dim=(-2, -1), keepdim=True) / robot_count
+        distance = (row_grid - robot_row).abs() + (column_grid - robot_column).abs()
+        prior = -distance
+        has_target = candidates.any(dim=(-2, -1), keepdim=True)
+        candidate_floor = torch.full_like(prior, -32.0)
+        return torch.where(has_target, torch.where(candidates, prior, candidate_floor), 0.0)
 
     @torch.no_grad()
     def predict(

@@ -80,16 +80,22 @@ class PredictiveLocalController:
                     )
                 )
             )
-            if inspection_intent and primitive == 4:
-                progress -= 1.0
+            if inspection_intent and len(path) <= 1 and primitive == 4:
+                # Reaching a recognized target changes semantic exposure from an
+                # uncontrolled navigation cost into a shield-validated inspection.
+                risk = 0.0
+                progress -= 10.0
+            if not inspection_intent and len(path) <= 1 and primitive == 4:
+                progress += 2.0
             continuity = (
                 self.continuity_weight
                 if self._previous_primitive is not None and primitive != self._previous_primitive
                 else 0.0
             )
+            semantic_risk_weight = 0.25 if inspection_intent else 1.0
             candidates.append(
                 (
-                    hard + float(progress) + 4.0 * risk + continuity,
+                    hard + float(progress) + semantic_risk_weight * risk + continuity,
                     primitive,
                     trajectory,
                     float(clearance),
