@@ -138,6 +138,9 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
         policy,
         learning_rate=args.learning_rate,
         safety_budget=args.safety_budget,
+        value_coefficient=args.value_coefficient,
+        cost_value_coefficient=args.cost_value_coefficient,
+        anchor_kl_coefficient=args.anchor_kl_coefficient,
     )
     step = update_index = 0
     if args.resume:
@@ -384,9 +387,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--total-steps", type=int, default=2_000_000)
     parser.add_argument("--rollout-steps", type=int, default=256)
-    parser.add_argument("--ppo-epochs", type=int, default=4)
+    parser.add_argument("--ppo-epochs", type=int, default=2)
     parser.add_argument("--checkpoint-interval", type=int, default=100_000)
-    parser.add_argument("--learning-rate", type=float, default=1e-4)
+    parser.add_argument("--learning-rate", type=float, default=1e-5)
+    parser.add_argument("--value-coefficient", type=float, default=0.1)
+    parser.add_argument("--cost-value-coefficient", type=float, default=0.1)
+    parser.add_argument("--anchor-kl-coefficient", type=float, default=1.0)
     parser.add_argument("--gamma", type=float, default=0.99)
     parser.add_argument("--gae-lambda", type=float, default=0.95)
     parser.add_argument("--safety-budget", type=float, default=20.0)

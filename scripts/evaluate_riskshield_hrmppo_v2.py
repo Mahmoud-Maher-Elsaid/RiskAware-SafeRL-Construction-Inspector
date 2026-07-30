@@ -174,13 +174,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--shield-horizon", type=int, default=1)
     parser.add_argument("--shield-step-budget", type=float, default=1.0)
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
+    parser.add_argument(
+        "--require-gate",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+    )
     return parser.parse_args()
 
 
 def main() -> None:
-    summary = evaluate(parse_args())
+    args = parse_args()
+    summary = evaluate(args)
     print(f"RISKSHIELD_HRMPPO_V2_EVALUATION={summary['status']}")
-    if summary["status"] != "PASSED":
+    if args.require_gate and summary["status"] != "PASSED":
         raise SystemExit(1)
 
 

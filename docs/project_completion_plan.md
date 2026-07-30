@@ -7,13 +7,13 @@ Last updated: 2026-07-29
 | Field | Current value |
 |---|---|
 | Current task | Strong-policy upgrade: RiskShield-HRMPPO v2 |
-| Current state | HRMPPO v2 algorithm, safe checkpoint/resume, and predictive-shield smoke gates passed |
-| Evidence collected | Causal/DAgger evidence plus HRMPPO separated reward-cost updates, PID state, CUDA checkpoint resume, shield-overintervention diagnosis, and corrected 90-episode shield baseline |
+| Current state | HRMPPO v2 replacement gate failed after four documented improvement families; v1 remains production |
+| Evidence collected | Causal/DAgger evidence plus HRMPPO separated reward-cost updates, PID state, CUDA checkpoint resume, shield repair, six-trial search, top-three 30k retraining, two 100k continuations, and risk-aware DAgger |
 | Files changed | Causal imitation/DAgger stack; recurrent HRMPPO algorithm and trainer/evaluator/optimizer; predictive shield; tests, reports, and docs |
-| Tests run | Repository Ruff and 316 tests; imitation/DAgger runtime gates; 1,024-step CUDA HRMPPO smoke; deterministic resume; 90-episode shield evaluation |
-| Runtime result | DAgger beta-zero success 76.67%; corrected shield baseline success 78.89%, target 100%, hardest 70%, recall/coverage 94.69%, collision/invalid rate 0 |
-| Remaining work | HRMPPO search/final training and statistical v1 comparison; CV/Webots/benchmark/paper/final acceptance |
-| Blockers | None at the HRMPPO optimization stage |
+| Tests run | Repository Ruff and 316 tests; imitation/DAgger gates; CUDA HRMPPO smoke/resume; repeated 90-episode candidate evaluations |
+| Runtime result | Best 100k candidate: overall 76.67%, target 96.67%, hardest 70%, recall 94.25%, collision/invalid 0, but safety cost 35.64 > shielded-v1 17.13 |
+| Remaining work | A new safe-routing representation/objective must pass the unchanged v1 safety/constraint gates before final training, CV, Webots, benchmark, or paper replacement |
+| Blockers | Safety-success conflict: systematic labels meet mission gates but are costly; causal risk-A* labels disagree on 53.69% of visited states and repeated correction collapses mission performance |
 
 ## Phase checklist
 

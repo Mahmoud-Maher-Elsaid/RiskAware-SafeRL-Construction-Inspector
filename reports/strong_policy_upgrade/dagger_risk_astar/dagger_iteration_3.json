@@ -1,0 +1,79 @@
+{
+  "iteration": 3,
+  "beta": 0.25,
+  "expert_strategy": "risk_astar",
+  "new_visited_state_transitions": 12000,
+  "episodes": 66,
+  "disagreement_count": 6878,
+  "disagreement_rate": 0.5731666666666667,
+  "corrected_deadlocks": 183,
+  "invalid_actions": 0,
+  "action_counts": [
+    3726,
+    3721,
+    1655,
+    2253,
+    645
+  ],
+  "chunks": [
+    {
+      "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/chunks/dagger_corrections_00000.npz",
+      "rows": 4000,
+      "bytes": 192876,
+      "sha256": "9c00fe558ad0a1e4ff3f1e7cf7625f9fafc1aabb6a5999c6514b67e17831cf1e"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/chunks/dagger_corrections_00001.npz",
+      "rows": 4000,
+      "bytes": 197768,
+      "sha256": "7fa537e532b57a04f986394b94b66ecdb5d54de5cbd3f83714bcb0f9c2da4577"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/chunks/dagger_corrections_00002.npz",
+      "rows": 4000,
+      "bytes": 195630,
+      "sha256": "6dd4eea4a558f4803f70cfeeea953356acd659a4f41494db62a923070943f1b6"
+    }
+  ],
+  "collection_success_rate": 0.8787878787878788,
+  "collection_hazard_recall": 0.9848484848484851,
+  "collection_coverage": 0.9848484848484851,
+  "collection_safety_cost": 29.276515151515152,
+  "collection_collision_rate": 0.0,
+  "cumulative_dataset_manifest": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/cumulative_dataset/manifest.json",
+  "cumulative_transitions": 286128,
+  "checkpoint_path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/training/best_behavior_cloning.pt",
+  "checkpoint_sha256": "94e19ed34beedf95c2b1e4757dfbceab067063da9cde1992f9fafaae6017cc0e",
+  "held_out_success": 0.2111111111111111,
+  "held_out_hazard_recall": 0.5068276972624799,
+  "held_out_coverage": 0.5068276972624799,
+  "held_out_safety_cost": 45.75277777777778,
+  "held_out_collision_rate": 0.0,
+  "held_out": {
+    "episodes": 90,
+    "held_out_seeds": [
+      3000,
+      3001,
+      3002,
+      3003,
+      3004,
+      3005,
+      3006,
+      3007,
+      3008,
+      3009
+    ],
+    "success_rate": 0.2111111111111111,
+    "world_success": {
+      "site_small": 0.23333333333333334,
+      "site_medium": 0.13333333333333333,
+      "site_dynamic": 0.26666666666666666
+    },
+    "hazard_recall": 0.5068276972624799,
+    "coverage": 0.5068276972624799,
+    "mean_safety_cost": 45.75277777777778,
+    "collision_rate": 0.0,
+    "constraint_violations": 6913,
+    "invalid_actions": 0
+  }
+}

@@ -128,6 +128,7 @@ def collect_iteration(
     seed: int,
     output_dir: Path,
     chunk_size: int,
+    expert_strategy: str = "systematic",
 ) -> dict[str, Any]:
     rng = random.Random(seed)
     writer = CorrectionWriter(output_dir / "chunks", chunk_size)
@@ -140,7 +141,7 @@ def collect_iteration(
         environment = ResearchConstructionEnvV2(load_config(world, profile))
         environment_seed = seed + episode_index
         observation, _ = environment.reset(seed=environment_seed)
-        expert = CausalObservationExpert(planning_strategy="systematic")
+        expert = CausalObservationExpert(planning_strategy=expert_strategy)
         hidden = None
         episode_id = f"dagger:{iteration}:{world}:{profile}:{environment_seed}"
         episode_disagreements = 0
@@ -203,6 +204,7 @@ def collect_iteration(
     return {
         "iteration": iteration,
         "beta": beta,
+        "expert_strategy": expert_strategy,
         "new_visited_state_transitions": transitions,
         "episodes": len(episodes),
         "disagreement_count": disagreements,
@@ -395,6 +397,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--held-out-seeds", type=int, default=10)
     parser.add_argument("--seed", type=int, default=20260730)
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
+    parser.add_argument(
+        "--expert-strategy",
+        choices=("systematic", "risk_astar"),
+        default="systematic",
+    )
     return parser.parse_args()
 
 
@@ -423,6 +430,7 @@ def main() -> None:
             seed=args.seed + iteration * 10_000,
             output_dir=iteration_artifacts,
             chunk_size=args.chunk_size,
+            expert_strategy=args.expert_strategy,
         )
         dataset_dir = iteration_artifacts / "cumulative_dataset"
         manifest_path = cumulative_manifest(
@@ -478,6 +486,7 @@ def main() -> None:
     summary = {
         "status": status,
         "genuine_policy_visited_states": True,
+        "expert_strategy": args.expert_strategy,
         "expert_mixing_schedule": [0.75, 0.50, 0.25],
         "final_evaluation_beta": 0.0,
         "iterations": results,

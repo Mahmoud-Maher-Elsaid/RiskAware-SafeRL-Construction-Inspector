@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass
 
 import torch
@@ -54,6 +55,7 @@ class HRMPPOUpdate:
     reward_value_loss: float
     cost_value_loss: float
     hierarchy_loss: float
+    anchor_kl: float
     entropy: float
     approximate_kl: float
     clip_fraction: float
@@ -72,6 +74,7 @@ class RiskShieldHRMPPOV2:
         value_coefficient: float = 0.5,
         cost_value_coefficient: float = 0.5,
         hierarchy_coefficient: float = 0.05,
+        anchor_kl_coefficient: float = 1.0,
         entropy_coefficient: float = 0.01,
         max_gradient_norm: float = 0.5,
         safety_budget: float = 20.0,
@@ -82,11 +85,17 @@ class RiskShieldHRMPPOV2:
         self.value_coefficient = value_coefficient
         self.cost_value_coefficient = cost_value_coefficient
         self.hierarchy_coefficient = hierarchy_coefficient
+        self.anchor_kl_coefficient = anchor_kl_coefficient
         self.entropy_coefficient = entropy_coefficient
         self.max_gradient_norm = max_gradient_norm
         self.safety_budget = safety_budget
         self.pid_lagrange = pid_lagrange or PIDLagrangeController()
         self.optimizer = torch.optim.Adam(policy.parameters(), lr=learning_rate)
+        self.anchor_policy = copy.deepcopy(policy).eval()
+        for parameter in self.anchor_policy.parameters():
+            parameter.requires_grad_(False)
+        self.policy.recurrent.flatten_parameters()
+        self.anchor_policy.recurrent.flatten_parameters()
 
     @staticmethod
     def _normalize(advantages: Tensor) -> Tensor:
@@ -117,6 +126,14 @@ class RiskShieldHRMPPOV2:
             max=self.policy.subgoal_count - 1,
         )
         latest: dict[str, Tensor] = {}
+        with torch.no_grad():
+            anchor_output = self.anchor_policy(
+                maps,
+                states,
+                masks,
+                initial_hidden,
+                episode_starts=episode_starts,
+            )
         for _ in range(epochs):
             output = self.policy(
                 maps,
@@ -144,11 +161,15 @@ class RiskShieldHRMPPOV2:
                 subgoal_targets.reshape(-1),
             )
             entropy = output.distribution.entropy().mean()
+            anchor_kl = torch.distributions.kl_divergence(
+                anchor_output.distribution, output.distribution
+            ).mean()
             loss = (
                 actor_loss
                 + self.value_coefficient * reward_value_loss
                 + self.cost_value_coefficient * cost_value_loss
                 + self.hierarchy_coefficient * hierarchy_loss
+                + self.anchor_kl_coefficient * anchor_kl
                 - self.entropy_coefficient * entropy
             )
             self.optimizer.zero_grad(set_to_none=True)
@@ -163,6 +184,7 @@ class RiskShieldHRMPPOV2:
                     "reward_value": reward_value_loss,
                     "cost_value": cost_value_loss,
                     "hierarchy": hierarchy_loss,
+                    "anchor_kl": anchor_kl,
                     "entropy": entropy,
                     "kl": ((torch.exp(log_ratio) - 1.0) - log_ratio).mean(),
                     "clip": ((ratio - 1.0).abs() > self.clip_range).float().mean(),
@@ -179,6 +201,7 @@ class RiskShieldHRMPPOV2:
             reward_value_loss=float(latest["reward_value"].detach().cpu()),
             cost_value_loss=float(latest["cost_value"].detach().cpu()),
             hierarchy_loss=float(latest["hierarchy"].detach().cpu()),
+            anchor_kl=float(latest["anchor_kl"].detach().cpu()),
             entropy=float(latest["entropy"].detach().cpu()),
             approximate_kl=float(latest["kl"].detach().cpu()),
             clip_fraction=float(latest["clip"].detach().cpu()),
@@ -190,6 +213,7 @@ class RiskShieldHRMPPOV2:
             "model_state_dict": self.policy.state_dict(),
             "optimizer_state_dict": self.optimizer.state_dict(),
             "pid_lagrange_state": self.pid_lagrange.state_dict(),
+            "anchor_policy_state_dict": self.anchor_policy.state_dict(),
             "safety_budget": self.safety_budget,
             "algorithm": "RiskShield-HRMPPO-v2",
         }
@@ -198,3 +222,6 @@ class RiskShieldHRMPPOV2:
         self.policy.load_state_dict(state["model_state_dict"])  # type: ignore[arg-type]
         self.optimizer.load_state_dict(state["optimizer_state_dict"])  # type: ignore[arg-type]
         self.pid_lagrange.load_state_dict(state["pid_lagrange_state"])  # type: ignore[arg-type]
+        self.anchor_policy.load_state_dict(state["anchor_policy_state_dict"])  # type: ignore[arg-type]
+        self.policy.recurrent.flatten_parameters()
+        self.anchor_policy.recurrent.flatten_parameters()
