@@ -575,6 +575,7 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     validation_loader = DataLoader(validation, shuffle=False, **evaluation_options)
     test_loader = DataLoader(held_out, shuffle=False, **evaluation_options)
     policy = RecurrentMaskedPolicy().to(device)
+    anchor_policy: RecurrentMaskedPolicy | None = None
     counts = training.action_counts.astype(np.float64)
     weights = counts.sum() / np.maximum(counts, 1.0)
     weights /= weights.mean()
@@ -600,6 +601,17 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
     elif args.initial_checkpoint is not None:
         checkpoint = torch.load(args.initial_checkpoint, map_location=device, weights_only=True)
         policy.load_state_dict(checkpoint["model_state_dict"])
+    if args.anchor_kl_coefficient > 0.0:
+        if args.initial_checkpoint is None:
+            raise ValueError("KL anchoring requires --initial-checkpoint")
+        anchor_checkpoint = torch.load(
+            args.initial_checkpoint, map_location=device, weights_only=True
+        )
+        anchor_policy = RecurrentMaskedPolicy().to(device)
+        anchor_policy.load_state_dict(anchor_checkpoint["model_state_dict"])
+        anchor_policy.eval()
+        for parameter in anchor_policy.parameters():
+            parameter.requires_grad_(False)
     guard = MemoryGuard(args.max_memory_gb, args.report_dir / "memory_profile.json")
     history: list[dict[str, Any]] = []
     best_score = -float("inf")
@@ -650,6 +662,26 @@ def train(args: argparse.Namespace) -> dict[str, Any]:
                 loss = (loss[selected] * sample_weights).sum() / sample_weights.sum().clamp_min(
                     1e-8
                 )
+                if anchor_policy is not None:
+                    with torch.no_grad():
+                        anchor_output = anchor_policy(
+                            maps,
+                            states,
+                            masks,
+                            recurrent_state,
+                        )
+                    current_logits = output.distribution.logits.masked_fill(~masks, -1e9)
+                    anchor_logits = anchor_output.distribution.logits.masked_fill(~masks, -1e9)
+                    current_log_probabilities = current_logits.log_softmax(dim=-1)
+                    anchor_log_probabilities = anchor_logits.log_softmax(dim=-1)
+                    anchor_probabilities = anchor_log_probabilities.exp()
+                    anchor_kl = (
+                        anchor_probabilities
+                        * (anchor_log_probabilities - current_log_probabilities)
+                    ).sum(dim=-1)
+                    kl_selected = batch["loss_mask"].to(device)
+                    anchor_kl_loss = anchor_kl[kl_selected].mean()
+                    loss = loss + args.anchor_kl_coefficient * anchor_kl_loss
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
             nn.utils.clip_grad_norm_(policy.parameters(), 1.0)
@@ -800,6 +832,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=20260729)
     parser.add_argument("--resume", type=str)
     parser.add_argument("--initial-checkpoint", type=Path)
+    parser.add_argument("--anchor-kl-coefficient", type=float, default=0.0)
     parser.add_argument("--sample-index", type=Path)
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
     parser.add_argument("--mixed-precision", action=argparse.BooleanOptionalAction, default=False)

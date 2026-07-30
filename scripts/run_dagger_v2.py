@@ -313,6 +313,7 @@ def train_iteration(
     batch_size: int,
     device: str,
     seed: int,
+    anchor_kl_coefficient: float = 0.0,
 ) -> Path:
     command = [
         sys.executable,
@@ -343,6 +344,8 @@ def train_iteration(
         device,
         "--recurrent-training-state",
     ]
+    if anchor_kl_coefficient > 0.0:
+        command.extend(["--anchor-kl-coefficient", str(anchor_kl_coefficient)])
     completed = subprocess.run(command, check=False)
     checkpoint = output_dir / "best_behavior_cloning.pt"
     if not checkpoint.is_file():

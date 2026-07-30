@@ -1,0 +1,166 @@
+{
+  "checkpoint_path": "artifacts/strong_policy_upgrade/safety_dagger/iteration_3/training/best_behavior_cloning.pt",
+  "checkpoint_sha256": "64764523db74dd7e814931379ef8013624dcc01c8b75952ab4cd6c37962bfaec",
+  "cuda_device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "dataset_sha256": "61dfd8bef2ffb0db570840f0dc5208f991a7c4201030a90044fbd7c61af26729",
+  "device": "cuda",
+  "epochs_completed": 3,
+  "held_out_test": {
+    "accuracy": 0.8670959484861817,
+    "examples": 25003,
+    "invalid_action_predictions": 0,
+    "loss": 0.36657085735659006,
+    "per_action_precision": [
+      0.680658993455202,
+      0.7882281553398058,
+      0.931897330065781,
+      0.917323311916596,
+      1.0
+    ],
+    "per_action_recall": [
+      0.8519774011299435,
+      0.800369685767098,
+      0.851803819853808,
+      0.8944444444444445,
+      0.9992156862745099
+    ],
+    "per_action_support": [
+      3540,
+      3246,
+      8482,
+      8460,
+      1275
+    ]
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "selection_score": 0.8173791037303616,
+      "training_loss": 0.13376160749475843,
+      "validation": {
+        "accuracy": 0.6879544492748048,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.7366974818525371,
+        "per_action_precision": [
+          0.36365655892480286,
+          0.7292837078651685,
+          0.9392456676860347,
+          0.8335868187579214,
+          1.0
+        ],
+        "per_action_recall": [
+          0.9140145170295924,
+          0.6422387136672851,
+          0.5176986178222273,
+          0.7364236927555705,
+          1.0
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    },
+    {
+      "epoch": 2,
+      "selection_score": 1.0345898660314354,
+      "training_loss": 0.10675073972565326,
+      "validation": {
+        "accuracy": 0.8437271573115839,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.4116073416266167,
+        "per_action_precision": [
+          0.5916666666666667,
+          0.7766593268323372,
+          0.9379784611392241,
+          0.9153401721495107,
+          1.0
+        ],
+        "per_action_recall": [
+          0.8721384701284198,
+          0.7634508348794063,
+          0.812338464996067,
+          0.8692195722763408,
+          0.9992576095025983
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    },
+    {
+      "epoch": 3,
+      "selection_score": 1.0720270122437465,
+      "training_loss": 0.08928501501082464,
+      "validation": {
+        "accuracy": 0.8720424729734929,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.35585016755992027,
+        "per_action_precision": [
+          0.6877714285714286,
+          0.7818071925052886,
+          0.9377919842635849,
+          0.9170914033299354,
+          1.0
+        ],
+        "per_action_recall": [
+          0.8400335008375209,
+          0.7999381570810142,
+          0.8571749634790425,
+          0.9066174000671817,
+          0.9992576095025983
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    }
+  ],
+  "sequence_length": 32,
+  "split_leakage": 0,
+  "status": "PASSED",
+  "test_sequences": 848,
+  "training_sequences": 8368,
+  "validation": {
+    "accuracy": 0.8720424729734929,
+    "examples": 25993,
+    "invalid_action_predictions": 0,
+    "loss": 0.35585016755992027,
+    "per_action_precision": [
+      0.6877714285714286,
+      0.7818071925052886,
+      0.9377919842635849,
+      0.9170914033299354,
+      1.0
+    ],
+    "per_action_recall": [
+      0.8400335008375209,
+      0.7999381570810142,
+      0.8571749634790425,
+      0.9066174000671817,
+      0.9992576095025983
+    ],
+    "per_action_support": [
+      3582,
+      3234,
+      8899,
+      8931,
+      1347
+    ]
+  },
+  "validation_sequences": 882
+}

@@ -46,7 +46,8 @@ Last updated: 2026-07-30
 - [x] Implement Safety Contract v3 and preserve the legacy inactivity-biased diagnostic.
 - [x] Implement typed vector-cost transitions and five independent recurrent cost critics.
 - [x] Implement and regression-test the predictive event-aware shield.
-- [ ] Generate and validate targeted safety DAgger corrections.
+- [x] Generate and validate 51,000 targeted safety DAgger corrections with
+  contiguous recurrent context and KL task anchoring.
 - [ ] Train and accept RiskShield-HRMPPO-Safe v3 against paired task and safety gates.
 - [ ] Complete CV audit, three-world Webots validation, benchmark-v2, ablations, paper, and Git acceptance.
 

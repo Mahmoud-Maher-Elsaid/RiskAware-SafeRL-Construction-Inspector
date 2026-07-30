@@ -64,6 +64,8 @@ artifacts/checkpoints/*
 /artifacts/strong_policy_upgrade/hrmppo_v2_smoke_resume/
 /artifacts/strong_policy_upgrade/hrmppo_v2_search/
 /artifacts/strong_policy_upgrade/hrmppo_safe_v3/
+/artifacts/strong_policy_upgrade/safety_dagger/
+/artifacts/strong_policy_upgrade/safety_dagger_repair_*/
 /reports/strong_policy_upgrade/hrmppo_safe_v3/smoke/
 /reports/strong_policy_upgrade/hrmppo_v2/smoke/
 /reports/strong_policy_upgrade/hrmppo_v2/smoke_evaluation/
