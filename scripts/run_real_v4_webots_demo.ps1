@@ -45,7 +45,7 @@ $stdout = Join-Path $out 'demo_stdout.log'
 $stderr = Join-Path $out 'demo_stderr.log'
 Write-Output "VISIBLE_WEBOTS_DEMO_OUTPUT=$out"
 Write-Output "VISIBLE_WEBOTS_DEMO_CHECKPOINT=$checkpoint"
-$proc = Start-Process -FilePath $webots -ArgumentList @('--mode=realtime', '--stdout', '--stderr', $tmpWorld) -WorkingDirectory $repo -RedirectStandardOutput $stdout -RedirectStandardError $stderr -PassThru
+$proc = Start-Process -FilePath $webots -ArgumentList @('--mode=realtime', $tmpWorld) -WorkingDirectory $repo -RedirectStandardOutput $stdout -RedirectStandardError $stderr -PassThru
 $deadline = (Get-Date).AddSeconds($DurationSeconds + 60)
 try {
     while ((Get-Date) -lt $deadline) {
