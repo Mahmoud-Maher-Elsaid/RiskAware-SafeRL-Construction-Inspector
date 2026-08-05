@@ -1,0 +1,21 @@
+{
+  "baseline": "RiskShield-HRMPPO-Safe-v3-failed",
+  "implementation_or_checkpoint": "artifacts/strong_policy_upgrade/hrmppo_safe_v3/strategy_executed_30k/final_checkpoint.pt",
+  "sha256": "4ccb08bad71c0772d55b8a0a6f379f8b1189c56cde2150daa579c205fba9c0c1",
+  "observation_schema": "causal semantic map(11x16x16), state(17), action mask(5)",
+  "action_schema": "five masked discrete primitives",
+  "environment_schema": "research-grid-v2 with Safety Contract v3",
+  "evaluation_seeds": "paired 90-episode held-out protocol",
+  "software_versions": "PyTorch environment recorded by training summary",
+  "git_commit": "7bd5e656a9c52fce5e00ff826e1452223da15151",
+  "metrics": {
+    "mission_success": 0.4667,
+    "hardest_success": 0.1,
+    "mean_raw_safety_cost": 26.3889,
+    "legacy_constraint_increments": 2928,
+    "collision_rate": 0.0,
+    "shield_intervention_rate": 0.2158
+  },
+  "known_limitations": ["task performance collapsed", "hard-event and deadlock gates failed"],
+  "production_status": "rejected and preserved as negative evidence"
+}

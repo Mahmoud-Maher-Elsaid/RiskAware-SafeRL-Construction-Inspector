@@ -1,0 +1,428 @@
+{
+  "status": "PASSED",
+  "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "batches": 1000,
+  "batch_size": 8,
+  "sequence_length": 32,
+  "num_workers": 0,
+  "pin_memory": false,
+  "initial_rss_bytes": 715595776,
+  "peak_rss_bytes": 1586741248,
+  "final_rss_bytes": 1587351552,
+  "rss_growth_bytes": 871145472,
+  "rss_growth_limit_bytes": 1073741824,
+  "second_half_rss_growth_bytes": 14663680,
+  "second_half_rss_growth_limit_bytes": 67108864,
+  "rss_samples": [
+    {
+      "batch": 10,
+      "rss_bytes": 1570922496
+    },
+    {
+      "batch": 20,
+      "rss_bytes": 1570934784
+    },
+    {
+      "batch": 30,
+      "rss_bytes": 1570955264
+    },
+    {
+      "batch": 40,
+      "rss_bytes": 1570979840
+    },
+    {
+      "batch": 50,
+      "rss_bytes": 1571016704
+    },
+    {
+      "batch": 60,
+      "rss_bytes": 1571049472
+    },
+    {
+      "batch": 70,
+      "rss_bytes": 1571074048
+    },
+    {
+      "batch": 80,
+      "rss_bytes": 1571115008
+    },
+    {
+      "batch": 90,
+      "rss_bytes": 1571438592
+    },
+    {
+      "batch": 100,
+      "rss_bytes": 1571446784
+    },
+    {
+      "batch": 110,
+      "rss_bytes": 1571467264
+    },
+    {
+      "batch": 120,
+      "rss_bytes": 1571487744
+    },
+    {
+      "batch": 130,
+      "rss_bytes": 1571512320
+    },
+    {
+      "batch": 140,
+      "rss_bytes": 1571512320
+    },
+    {
+      "batch": 150,
+      "rss_bytes": 1571520512
+    },
+    {
+      "batch": 160,
+      "rss_bytes": 1571524608
+    },
+    {
+      "batch": 170,
+      "rss_bytes": 1571532800
+    },
+    {
+      "batch": 180,
+      "rss_bytes": 1571545088
+    },
+    {
+      "batch": 190,
+      "rss_bytes": 1571553280
+    },
+    {
+      "batch": 200,
+      "rss_bytes": 1571557376
+    },
+    {
+      "batch": 210,
+      "rss_bytes": 1571561472
+    },
+    {
+      "batch": 220,
+      "rss_bytes": 1571573760
+    },
+    {
+      "batch": 230,
+      "rss_bytes": 1571581952
+    },
+    {
+      "batch": 240,
+      "rss_bytes": 1571586048
+    },
+    {
+      "batch": 250,
+      "rss_bytes": 1571594240
+    },
+    {
+      "batch": 260,
+      "rss_bytes": 1571606528
+    },
+    {
+      "batch": 270,
+      "rss_bytes": 1571614720
+    },
+    {
+      "batch": 280,
+      "rss_bytes": 1571610624
+    },
+    {
+      "batch": 290,
+      "rss_bytes": 1571717120
+    },
+    {
+      "batch": 300,
+      "rss_bytes": 1571610624
+    },
+    {
+      "batch": 310,
+      "rss_bytes": 1571606528
+    },
+    {
+      "batch": 320,
+      "rss_bytes": 1571606528
+    },
+    {
+      "batch": 330,
+      "rss_bytes": 1571610624
+    },
+    {
+      "batch": 340,
+      "rss_bytes": 1571606528
+    },
+    {
+      "batch": 350,
+      "rss_bytes": 1571610624
+    },
+    {
+      "batch": 360,
+      "rss_bytes": 1571610624
+    },
+    {
+      "batch": 370,
+      "rss_bytes": 1571614720
+    },
+    {
+      "batch": 380,
+      "rss_bytes": 1571614720
+    },
+    {
+      "batch": 390,
+      "rss_bytes": 1571622912
+    },
+    {
+      "batch": 400,
+      "rss_bytes": 1571725312
+    },
+    {
+      "batch": 410,
+      "rss_bytes": 1571737600
+    },
+    {
+      "batch": 420,
+      "rss_bytes": 1571622912
+    },
+    {
+      "batch": 430,
+      "rss_bytes": 1571733504
+    },
+    {
+      "batch": 440,
+      "rss_bytes": 1571733504
+    },
+    {
+      "batch": 450,
+      "rss_bytes": 1571971072
+    },
+    {
+      "batch": 460,
+      "rss_bytes": 1571975168
+    },
+    {
+      "batch": 470,
+      "rss_bytes": 1571979264
+    },
+    {
+      "batch": 480,
+      "rss_bytes": 1572077568
+    },
+    {
+      "batch": 490,
+      "rss_bytes": 1571975168
+    },
+    {
+      "batch": 500,
+      "rss_bytes": 1571979264
+    },
+    {
+      "batch": 510,
+      "rss_bytes": 1572077568
+    },
+    {
+      "batch": 520,
+      "rss_bytes": 1571987456
+    },
+    {
+      "batch": 530,
+      "rss_bytes": 1571979264
+    },
+    {
+      "batch": 540,
+      "rss_bytes": 1571983360
+    },
+    {
+      "batch": 550,
+      "rss_bytes": 1571983360
+    },
+    {
+      "batch": 560,
+      "rss_bytes": 1572196352
+    },
+    {
+      "batch": 570,
+      "rss_bytes": 1572093952
+    },
+    {
+      "batch": 580,
+      "rss_bytes": 1571979264
+    },
+    {
+      "batch": 590,
+      "rss_bytes": 1571979264
+    },
+    {
+      "batch": 600,
+      "rss_bytes": 1571979264
+    },
+    {
+      "batch": 610,
+      "rss_bytes": 1571983360
+    },
+    {
+      "batch": 620,
+      "rss_bytes": 1571991552
+    },
+    {
+      "batch": 630,
+      "rss_bytes": 1572093952
+    },
+    {
+      "batch": 640,
+      "rss_bytes": 1572102144
+    },
+    {
+      "batch": 650,
+      "rss_bytes": 1572089856
+    },
+    {
+      "batch": 660,
+      "rss_bytes": 1571991552
+    },
+    {
+      "batch": 670,
+      "rss_bytes": 1571999744
+    },
+    {
+      "batch": 680,
+      "rss_bytes": 1571991552
+    },
+    {
+      "batch": 690,
+      "rss_bytes": 1572102144
+    },
+    {
+      "batch": 700,
+      "rss_bytes": 1571995648
+    },
+    {
+      "batch": 710,
+      "rss_bytes": 1571999744
+    },
+    {
+      "batch": 720,
+      "rss_bytes": 1571995648
+    },
+    {
+      "batch": 730,
+      "rss_bytes": 1572003840
+    },
+    {
+      "batch": 740,
+      "rss_bytes": 1571999744
+    },
+    {
+      "batch": 750,
+      "rss_bytes": 1572003840
+    },
+    {
+      "batch": 760,
+      "rss_bytes": 1572003840
+    },
+    {
+      "batch": 770,
+      "rss_bytes": 1571999744
+    },
+    {
+      "batch": 780,
+      "rss_bytes": 1572007936
+    },
+    {
+      "batch": 790,
+      "rss_bytes": 1572012032
+    },
+    {
+      "batch": 800,
+      "rss_bytes": 1572012032
+    },
+    {
+      "batch": 810,
+      "rss_bytes": 1572012032
+    },
+    {
+      "batch": 820,
+      "rss_bytes": 1572012032
+    },
+    {
+      "batch": 830,
+      "rss_bytes": 1572016128
+    },
+    {
+      "batch": 840,
+      "rss_bytes": 1586241536
+    },
+    {
+      "batch": 850,
+      "rss_bytes": 1586442240
+    },
+    {
+      "batch": 860,
+      "rss_bytes": 1586233344
+    },
+    {
+      "batch": 870,
+      "rss_bytes": 1586446336
+    },
+    {
+      "batch": 880,
+      "rss_bytes": 1586741248
+    },
+    {
+      "batch": 890,
+      "rss_bytes": 1586630656
+    },
+    {
+      "batch": 900,
+      "rss_bytes": 1586638848
+    },
+    {
+      "batch": 910,
+      "rss_bytes": 1586642944
+    },
+    {
+      "batch": 920,
+      "rss_bytes": 1586638848
+    },
+    {
+      "batch": 930,
+      "rss_bytes": 1586642944
+    },
+    {
+      "batch": 940,
+      "rss_bytes": 1586675712
+    },
+    {
+      "batch": 950,
+      "rss_bytes": 1586675712
+    },
+    {
+      "batch": 960,
+      "rss_bytes": 1586675712
+    },
+    {
+      "batch": 970,
+      "rss_bytes": 1586671616
+    },
+    {
+      "batch": 980,
+      "rss_bytes": 1586671616
+    },
+    {
+      "batch": 990,
+      "rss_bytes": 1586671616
+    },
+    {
+      "batch": 1000,
+      "rss_bytes": 1586671616
+    }
+  ],
+  "minimum_available_physical_bytes": 17007935488,
+  "gpu_allocated_bytes": 38028800,
+  "gpu_reserved_bytes": 136314880,
+  "elapsed_seconds": 28.984432900000684,
+  "sequences_per_second": 276.01022173494823,
+  "checkpoint_path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/final_memory_gate/memory_smoke_checkpoint.pt",
+  "checkpoint_sha256": "a349a90adebc217ba929bd3038a242c7b48c4b56df2c3c7bf3314c21fe64ddc5",
+  "checkpoint_round_trip_verified": true,
+  "source_dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f",
+  "active_mmap_chunks": 2
+}

@@ -1,0 +1,14 @@
+{
+  "baseline": "RiskShield-PPO-v1",
+  "implementation_or_checkpoint": "artifacts/final_submission/riskshield_ppo/best_model.zip",
+  "sha256": "d6c91caeb9bb10db866cbfe947ef1cc3db0ea8dc7470d098c9af6298ab75c812",
+  "observation_schema": "legacy map(1008 float32), state(4 float32)",
+  "action_schema": "five discrete task-valid primitives",
+  "environment_schema": "research-grid-v1 paired benchmark",
+  "evaluation_seeds": "original immutable 1350-row benchmark matrix",
+  "software_versions": "recorded by artifacts/final_submission manifest",
+  "git_commit": "7bd5e656a9c52fce5e00ff826e1452223da15151",
+  "metrics": {"mission_success": 0.0, "mean_raw_safety_cost": 17.13},
+  "known_limitations": ["zero full-mission success", "raw cost is inactivity-biased"],
+  "production_status": "current production baseline; not a v4 acceptance result"
+}

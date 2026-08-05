@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "status": "audited_checkpoint_retained",
+  "production_replacement": false,
+  "config": "configs/webots/live_perception.json",
+  "checkpoint": "artifacts/runs/perception_production_100e/yolo26s_100e_seed42_20260722_214549/weights/best.pt",
+  "checkpoint_sha256": "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550",
+  "class_count": 14,
+  "cuda_verified": true,
+  "device": "cuda:0",
+  "mean_latency_ms_runtime": 21.924263637629338,
+  "p95_latency_ms_runtime": 45.75005000806412,
+  "mean_latency_ms_selection_benchmark": 12.082222727423703,
+  "p95_latency_ms_selection_benchmark": 18.440760014345866,
+  "labeled_validation_metrics_available": false,
+  "unavailable_metrics": ["precision", "recall", "mAP50", "mAP50-95", "critical_class_false_negative_rates"],
+  "limitation": "No complete independent labeled validation artifact was available for recomputation.",
+  "absence_of_detection_is_not_a_safety_claim": true,
+  "class_schema": ["Fall-Detected", "Gloves", "Goggles", "Hardhat", "Ladder", "Mask", "NO-Gloves", "NO-Goggles", "NO-Hardhat", "NO-Mask", "NO-Safety Vest", "Person", "Safety Cone", "Safety Vest"]
+}

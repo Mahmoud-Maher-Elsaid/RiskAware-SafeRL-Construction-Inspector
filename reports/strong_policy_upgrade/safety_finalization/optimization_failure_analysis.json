@@ -1,0 +1,35 @@
+{
+  "status": "FAILED",
+  "production_replacement_authorized": false,
+  "best_task_baseline_sha256": "f296c5633ec6d3e9918474039ae079fb681e7dded02a4962c465010e2bf80436",
+  "accepted_safety_dagger_sha256": "151d34908f14f29408c982dd2eece38efbc2c4df7af08747c73f67ea17efe0b5",
+  "safety_dagger_corrections": 51000,
+  "best_completed_v3_candidate": {
+    "path": "artifacts/strong_policy_upgrade/hrmppo_safe_v3/strategy_executed_30k/final_checkpoint.pt",
+    "sha256": "4ccb08bad71c0772d55b8a0a6f379f8b1189c56cde2150daa579c205fba9c0c1",
+    "steps": 30000,
+    "overall_success": 0.4666666666666667,
+    "hardest_success": 0.1,
+    "hazard_recall": 0.807642051989878,
+    "coverage": 0.807642051989878,
+    "legacy_constraint_count": 2928,
+    "legacy_constraint_reduction": 0.46373626373626375,
+    "mean_raw_safety_cost": 26.38888888888889,
+    "restricted_zone_event_rate": 0.8666666666666667,
+    "human_clearance_breach_rate": 1.1444444444444444,
+    "collision_rate": 0.0,
+    "invalid_actions": 0,
+    "accepted": false
+  },
+  "downstream_phases_blocked": [
+    "CV final audit",
+    "Webots v3 acceptance",
+    "production replacement",
+    "Benchmark v2",
+    "final ablations",
+    "paper result update",
+    "release",
+    "integration merge",
+    "main merge"
+  ]
+}

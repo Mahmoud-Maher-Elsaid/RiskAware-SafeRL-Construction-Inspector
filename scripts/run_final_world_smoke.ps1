@@ -5,6 +5,17 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+
+function Stop-WebotsTree {
+    foreach ($Process in @(Get-Process -Name webots, webotsw, webots-bin -ErrorAction SilentlyContinue)) {
+        try {
+            & taskkill.exe /PID $Process.Id /T /F *> $null
+        }
+        catch {
+            Write-Warning "Could not terminate Webots process $($Process.Id): $($_.Exception.Message)"
+        }
+    }
+}
 $Python = Join-Path $RepoRoot ".venv\Scripts\python.exe"
 $Builder = Join-Path $RepoRoot "scripts\build_final_webots_worlds.py"
 $WebotsHome = "C:\Program Files\Webots"
@@ -19,17 +30,29 @@ if ($LASTEXITCODE -ne 0) { throw "Final Webots world generation failed." }
 $env:WEBOTS_HOME = $WebotsHome
 $env:WEBOTS_PYTHON_COMMAND = $Python
 $env:RISK_AWARE_PROJECT_ROOT = $RepoRoot
+$env:YOLO_CONFIG_DIR = Join-Path $RepoRoot ".runtime\ultralytics"
 $env:PYTHONUNBUFFERED = "1"
 $env:PYTHONIOENCODING = "utf-8"
 $env:PYTHONPATH = Join-Path $WebotsHome "lib\controller\python"
+# Windows environment keys are case-insensitive, but inherited PowerShell
+# sessions can contain both Path and PATH. Normalize only this process before
+# Start-Process materializes the child environment dictionary.
+$InheritedPath = $env:Path
+[Environment]::SetEnvironmentVariable("PATH", $null, [EnvironmentVariableTarget]::Process)
+[Environment]::SetEnvironmentVariable("Path", $InheritedPath, [EnvironmentVariableTarget]::Process)
+$env:QT_AUTO_SCREEN_SCALE_FACTOR = "0"
+$env:QT_SCALE_FACTOR = "1"
+$env:QT_SCREEN_SCALE_FACTORS = "1"
+$env:QT_QPA_PLATFORM = "windows"
 $env:Path = [string]::Join(
     [IO.Path]::PathSeparator,
     @((Join-Path $RepoRoot ".venv\Scripts"), (Join-Path $WebotsHome "msys64\mingw64\bin"), $env:Path)
 )
+New-Item -ItemType Directory -Path $env:YOLO_CONFIG_DIR -Force | Out-Null
 
 $Results = @()
 foreach ($Name in @("site_small", "site_medium", "site_dynamic")) {
-    Get-Process -Name webots, webotsw, webots-bin -ErrorAction SilentlyContinue | Stop-Process -Force
+    Stop-WebotsTree
     if (Test-Path -LiteralPath $RuntimeOutput) {
         Remove-Item -LiteralPath $RuntimeOutput -Recurse -Force
     }
@@ -39,7 +62,7 @@ foreach ($Name in @("site_small", "site_medium", "site_dynamic")) {
     $Stdout = Join-Path $RuntimeOutput "webots_stdout.log"
     $Stderr = Join-Path $RuntimeOutput "webots_stderr.log"
     $Process = Start-Process -FilePath $Webots `
-        -ArgumentList @("--batch", "--mode=fast", "--stdout", "--stderr", $World) `
+        -ArgumentList @("--batch", "--no-rendering", "--minimize", "--mode=fast", "--stdout", "--stderr", $World) `
         -WorkingDirectory $RepoRoot -RedirectStandardOutput $Stdout `
         -RedirectStandardError $Stderr -WindowStyle Hidden -PassThru
     $Marker = Join-Path $RuntimeOutput "stage5c_complete.marker"
@@ -65,7 +88,7 @@ foreach ($Name in @("site_small", "site_medium", "site_dynamic")) {
         }
     }
     finally {
-        Get-Process -Name webots, webotsw, webots-bin -ErrorAction SilentlyContinue | Stop-Process -Force
+        Stop-WebotsTree
     }
     $Destination = Join-Path $EvidenceRoot $Name
     if (Test-Path -LiteralPath $Destination) { Remove-Item -LiteralPath $Destination -Recurse -Force }

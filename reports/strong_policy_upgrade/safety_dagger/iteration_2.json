@@ -1,0 +1,96 @@
+{
+  "iteration": 2,
+  "beta": 0.5,
+  "policy_visited_transitions": 17934,
+  "new_visited_state_transitions": 17000,
+  "episodes": 75,
+  "disagreement_count": 4235,
+  "disagreement_rate": 0.23614363778298206,
+  "invalid_actions": 0,
+  "selection_reason_counts": {
+    "teacher_disagreement": 4235,
+    "uncertainty_exposure": 9658,
+    "task_anchor": 243,
+    "deadlock": 11008,
+    "shield_intervention": 993,
+    "pre_worker_near_miss": 739,
+    "semantic_risk_exposure": 8842,
+    "pre_restricted_zone_risk": 182,
+    "emergency_stop": 1
+  },
+  "action_counts": [
+    6504,
+    6045,
+    2252,
+    2016,
+    183
+  ],
+  "chunks": [
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger/iteration_2/chunks/safety_corrections_00000.npz",
+      "rows": 4000,
+      "bytes": 177918,
+      "sha256": "7153372a87c9567fd579253571342ca20cc5d663dd34865bca769c1e0ff11c06"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger/iteration_2/chunks/safety_corrections_00001.npz",
+      "rows": 4000,
+      "bytes": 177608,
+      "sha256": "c43ab19d653dedd82d2d6fb55de62b0257d543d097440990675fea92bcd6b09c"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger/iteration_2/chunks/safety_corrections_00002.npz",
+      "rows": 4000,
+      "bytes": 185487,
+      "sha256": "2bfea51b64e7c5ae5be830c9de15a2ba4dcf08a8147da80ff62a91727c54b80d"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger/iteration_2/chunks/safety_corrections_00003.npz",
+      "rows": 4000,
+      "bytes": 189209,
+      "sha256": "2abbc242520bb773142b99387b7d5fa110f31aa71aa5c1108b739d903b299c9b"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger/iteration_2/chunks/safety_corrections_00004.npz",
+      "rows": 1000,
+      "bytes": 54154,
+      "sha256": "1361d14f2adb2fecdae962eea5a27fb2c864b1c82739c2aaa7a970e66a3de5fb"
+    }
+  ],
+  "collection_success_rate": 0.32,
+  "collection_hazard_recall": 0.6659130434782607,
+  "collection_coverage": 0.6659130434782607,
+  "collection_safety_cost": 15.466666666666667,
+  "collection_collision_rate": 0.0,
+  "observation_only_teacher": true,
+  "cumulative_dataset_manifest": "artifacts/strong_policy_upgrade/safety_dagger/iteration_2/cumulative_dataset/manifest.json",
+  "checkpoint_path": "artifacts/strong_policy_upgrade/safety_dagger/iteration_2/training/best_behavior_cloning.pt",
+  "checkpoint_sha256": "a5762159dc54e3f26b4d0e81da4560e5bf9cde1ef872bd872e2153207707e965",
+  "held_out": {
+    "episodes": 90,
+    "held_out_seeds": [
+      5000,
+      5001,
+      5002,
+      5003,
+      5004,
+      5005,
+      5006,
+      5007,
+      5008,
+      5009
+    ],
+    "success_rate": 0.07777777777777778,
+    "world_success": {
+      "site_small": 0.13333333333333333,
+      "site_medium": 0.03333333333333333,
+      "site_dynamic": 0.06666666666666667
+    },
+    "hazard_recall": 0.2675339314469749,
+    "coverage": 0.2675339314469749,
+    "mean_safety_cost": 47.9,
+    "collision_rate": 0.0,
+    "constraint_violations": 7477,
+    "invalid_actions": 0
+  }
+}

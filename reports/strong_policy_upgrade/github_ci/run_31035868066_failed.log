@@ -1,0 +1,6 @@
+GitHub Actions run 31035868066 failed during pytest collection on head 90384499bced4f8d006260195bd9ce090ed0ff90.
+
+Proven cause:
+ModuleNotFoundError: No module named 'scripts' in five tests importing scripts.*. The repository scripts directory lacked scripts/__init__.py on the Linux runner. Ruff and formatting completed before the test step.
+
+Repair: add scripts/__init__.py. No test was disabled and no dependency was changed.

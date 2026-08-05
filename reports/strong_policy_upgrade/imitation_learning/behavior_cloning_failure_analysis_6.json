@@ -1,0 +1,22 @@
+{
+  "status": "FAILED_GATE",
+  "held_out_accuracy": 0.8020,
+  "required_accuracy": 0.85,
+  "invalid_action_predictions": 0,
+  "training_transition_coverage_before_tail_repair": 79456,
+  "training_transition_coverage_after_tail_repair": 90087,
+  "accepted_training_split_transitions": 97812,
+  "observation_only_astar_test_accuracy": 0.5229115262601339,
+  "diagnosis": "Tail-window repair recovered 10,631 additional unique training transitions, but the retrained policy remained below the gate. An A* adviser reconstructed only from stored observable semantics reaches 52.3% because the dataset teacher plans against privileged complete environment hazards, whereas the stored policy observation contains only detected persistent semantics and does not encode the teacher's selected target or hidden layout. More training and causal observation-only planning have both failed to close the remaining gap.",
+  "constraints_preserved": [
+    "The original 120,144 transitions and all NPZ chunks remain unchanged.",
+    "No held-out labels, next observations, episode seeds, or hidden environment layouts are used as policy inputs.",
+    "The 0.85 accuracy and 0.70 per-action recall gates are unchanged.",
+    "DAgger and RL training remain gated until Behavior Cloning passes."
+  ],
+  "remaining_research_options": [
+    "Train a substantially different causal planning architecture against the same observations.",
+    "Demonstrate a statistically defensible observability ceiling for the privileged-label dataset.",
+    "Create a new non-privileged expert dataset only with explicit authorization; the current task forbids regenerating the accepted dataset."
+  ]
+}

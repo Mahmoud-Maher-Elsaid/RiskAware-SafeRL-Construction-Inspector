@@ -1,0 +1,16 @@
+{
+  "workflow_file": ".github/workflows/ci.yml",
+  "workflow_name": "CI",
+  "workflow_refs_verified": ["HEAD", "origin/main"],
+  "known_failed_run_id": 31030581950,
+  "known_failed_job_id": 92389966770,
+  "known_failed_commit": "07cc6b7b2d530f5451d932d28eefb35012e3d128",
+  "known_direct_failure": "ruff format --check .",
+  "known_unformatted_file": "scripts/train_hierarchical_hrmppo_mpc_v4.py",
+  "node_deprecation_direct_cause": false,
+  "local_gh_cli_available": false,
+  "current_remote_run_query": "unavailable: unauthenticated Actions endpoint returned 404",
+  "local_ruff_check": "passed",
+  "local_ruff_format_check": "passed",
+  "local_pytest": "passed"
+}

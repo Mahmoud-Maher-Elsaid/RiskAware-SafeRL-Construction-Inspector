@@ -1,19 +1,19 @@
 # Project Completion Plan
 
-Last updated: 2026-07-29
+Last updated: 2026-07-30
 
 ## Live checklist
 
 | Field | Current value |
 |---|---|
-| Current task | Final acceptance, reporting, and Git integration |
-| Current state | Stage 5B first-person CUDA perception and Stage 5C RL motor-control runtime passed |
-| Evidence collected | Webots R2025a; PyTorch `2.11.0+cu128`; CUDA 12.8; RTX 3070 Ti; verified RL/CV hashes; curated visual, action, shield, motor, and perception evidence |
-| Files changed | Stage 5 builders, worlds, controllers, launcher, validators, tests, configs, perception, policy gate, recurrent/domain modules, CI, README, paper, and docs |
-| Tests run | Ruff lint/format; 228-test full pytest suite; Python compilation; real Stage 5B and Stage 5C Webots/CUDA runs; exact production launcher |
-| Runtime result | Stage 5B: 8/8 deterministic waypoints, 22/22 CV frames, valid first-person views. Stage 5C: 10 RL decisions, three shield interventions, 14 motor-command changes, 10/10 CUDA CV inferences |
-| Remaining work | Trained recurrent-policy comparison, comprehensive all-policy publication benchmark, and paper completion |
-| Blockers | No trained recurrent checkpoint or approved publication experiment budget/protocol exists; these are research expansions beyond the named Stage 5C runtime gate |
+| Current task | Hierarchical recovery: RiskShield-Hierarchical-HRMPPO-MPC v4 |
+| Current state | Hierarchical v4 core and corrected systematic causal option dataset pass three-seed CUDA imitation; H1 beta-zero evaluation is preserved as a task-gate failure and v1 remains production |
+| Evidence collected | Exact 5,460-count decomposition; immutable dataset/checkpoint hash verification; CUDA v3 smoke/resume; paired 90-episode initialization evaluation retained as negative evidence |
+| Files changed | Versioned safety contract and migration; five-critic recurrent constrained PPO; vector-cost buffer; event-aware observation-only shield; evaluator/trainer; regression tests |
+| Tests run | Ruff lint/format and 356 complete pytest tests pass after causal option-feasibility, target-semantic, planner, controller, and DAgger acceptance repairs |
+| Runtime result | Existing v1 production regression is blocked by a reproducible Webots R2025a/Qt invalid-framebuffer geometry failure; no v3 production claim has been made |
+| Remaining work | Complete accepted hierarchical DAgger, constrained option-level RL recovery strategies, Webots launcher repairs, and every downstream acceptance gate |
+| Blockers | No external blocker is currently established; flat v3 is retained only as negative evidence while the hierarchical recovery is implemented |
 
 ## Phase checklist
 
@@ -30,6 +30,32 @@ Last updated: 2026-07-29
 - [x] Preserve existing reproducible benchmark JSON/CSV artifacts and migrate the Stage 5B benchmark into the repository.
 - [x] Complete Ruff, full pytest, CI/test markers, documentation, and paper alignment.
 - [x] Commit and push stage-specific completion work.
+- [x] Recover and externally back up the interrupted strong-policy working tree.
+- [x] Preserve and hash-verify the accepted 120,144 expert transitions.
+- [x] Replace copied in-memory sequences with a two-chunk LRU mmap cache and compact index.
+- [x] Pass the 1,000-batch CUDA Behavior Cloning memory regression gate.
+- [ ] Pass Behavior Cloning held-out accuracy and per-action recall gates.
+- [x] Implement and validate a policy-observation-only causal expert.
+- [x] Pass causal expert solvability gates across 1,440 environment episodes.
+- [x] Generate and hash-validate the separate causal correction dataset.
+- [x] Compare causal-only, privileged-pretraining, and confidence-filtered modes.
+- [x] Pass three-seed causal Behavior Cloning and CUDA memory gates.
+- [x] Complete three genuine DAgger iterations.
+- [ ] Train and accept RiskShield-HRMPPO v2 against all replacement gates.
+- [x] Audit and decompose all 5,460 legacy constraint increments.
+- [x] Implement Safety Contract v3 and preserve the legacy inactivity-biased diagnostic.
+- [x] Implement typed vector-cost transitions and five independent recurrent cost critics.
+- [x] Implement and regression-test the predictive event-aware shield.
+- [x] Generate and validate 51,000 targeted safety DAgger corrections with
+  contiguous recurrent context and KL task anchoring.
+- [ ] Train and accept RiskShield-HRMPPO-Safe v3 against paired task and safety gates.
+- [ ] Complete CV audit, three-world Webots validation, benchmark-v2, ablations, paper, and Git acceptance.
+- [x] Recover exact hierarchical-v4 starting state and freeze six baseline manifests.
+- [x] Implement and test recurrent mission policy, causal planner, predictive local controller, and independent shield composition.
+- [x] Derive 63,080 causal hierarchical decisions without modifying the 250,128-transition source.
+- [x] Pass three-seed hierarchical imitation gates on held-out causal episodes.
+- [ ] Complete three genuine hierarchical DAgger iterations (9,000 policy-visited corrections exist, but the H1 beta-zero mission gate failed and is not accepted).
+- [ ] Train and accept constrained option-level HRMPPO-MPC v4.
 
 ## Safety evidence
 

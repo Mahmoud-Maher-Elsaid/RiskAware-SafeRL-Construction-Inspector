@@ -1,3 +1,8 @@
+from riskaware_saferrl.training.causal_demonstration_mixer import (
+    CausalDemonstrationMixer,
+    TrainingStage,
+    WeightedSampleReference,
+)
 from riskaware_saferrl.training.research import (
     ContinuousActionAdapter,
     EpisodeMetricsCallback,
@@ -7,7 +12,10 @@ from riskaware_saferrl.training.research import (
 
 __all__ = [
     "ContinuousActionAdapter",
+    "CausalDemonstrationMixer",
     "EpisodeMetricsCallback",
     "flatten_research_environment",
     "load_grid_config",
+    "TrainingStage",
+    "WeightedSampleReference",
 ]

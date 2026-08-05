@@ -1,0 +1,6 @@
+{
+    "world":  "site_dynamic",
+    "controller":  "hierarchical_experimental_robot",
+    "supervisor":  "hierarchical_experimental_supervisor",
+    "runtime_mode":  "experimental"
+}

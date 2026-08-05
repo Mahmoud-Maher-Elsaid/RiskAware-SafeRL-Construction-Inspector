@@ -1,27 +1,35 @@
-* dbb9b50 (HEAD -> final/research-benchmark-release, origin/final/research-benchmark-release) Record accepted production runtime
-* b4c5f81 Record final acceptance and submission reports
-* c4bd2a9 Format final evidence validator
-* 24d25fa Validate historical Webots evidence schema
-* ea88ca5 Harden final evidence validation
-* 0b019a1 Exclude local environments from hygiene scan
-* 0da4db2 Finalize release documentation and acceptance tooling
-* 2c122e6 Complete research paper and release documentation
-* dae0b28 Complete full research benchmark and statistical analysis
-* a56c34b Measure planner timeout per episode
-* 0625a34 Add resumable full benchmark harness
-* 1059a4e Run controlled perception uncertainty experiments
-* 55162bd Complete semantic perception risk mapping
-* 476d180 Add and validate three final Webots environments
-* c76b178 Benchmark the predictive Safety Shield
-* ddc16f8 Implement and evaluate RiskShield-PPO
-* 692f4c7 Add reproducible PPO and SAC research baselines
-* 1dd143c Stabilize cross-site research observations
-* f4515ae Complete expert planner research baselines
-* 57bb72a Complete reproducible grid research environment
-* 6fc814c Audit final research roadmap and baseline
-*   40dee1e (origin/main, origin/HEAD, main) Merge completed autonomous inspection runtime
+*   dfbedb8 (HEAD -> main, origin/main, origin/HEAD) Merge final research benchmark release
 |\
-| *   70ca001 (origin/stage-5b-live-perception-integration, stage-5b-live-perception-integration) Merge final project completion
+| * 1dc8d7c (origin/stage-5b-live-perception-integration, stage-5b-live-perception-integration) Record integration acceptance runtime
+| *   78ceca3 Merge final research benchmark release
+| |\
+| | * 02abf1d (origin/final/research-benchmark-release, final/research-benchmark-release) Normalize final submission metadata
+| | * dbb9b50 Record accepted production runtime
+| | * b4c5f81 Record final acceptance and submission reports
+| | * c4bd2a9 Format final evidence validator
+| | * 24d25fa Validate historical Webots evidence schema
+| | * ea88ca5 Harden final evidence validation
+| | * 0b019a1 Exclude local environments from hygiene scan
+| | * 0da4db2 Finalize release documentation and acceptance tooling
+| | * 2c122e6 Complete research paper and release documentation
+| | * dae0b28 Complete full research benchmark and statistical analysis
+| | * a56c34b Measure planner timeout per episode
+| | * 0625a34 Add resumable full benchmark harness
+| | * 1059a4e Run controlled perception uncertainty experiments
+| | * 55162bd Complete semantic perception risk mapping
+| | * 476d180 Add and validate three final Webots environments
+| | * c76b178 Benchmark the predictive Safety Shield
+| | * ddc16f8 Implement and evaluate RiskShield-PPO
+| | * 692f4c7 Add reproducible PPO and SAC research baselines
+| | * 1dd143c Stabilize cross-site research observations
+| | * f4515ae Complete expert planner research baselines
+| | * 57bb72a Complete reproducible grid research environment
+| | * 6fc814c Audit final research roadmap and baseline
+| |/
+|/|
+* | 40dee1e Merge completed autonomous inspection runtime
+|\|
+| *   70ca001 Merge final project completion
 | |\
 | | * 18cdbb1 (origin/final/project-completion, final/project-completion) Normalize final completion reports
 | | * 54be495 Finalize production integration and completion reports
@@ -63,10 +71,3 @@
 |/
 *   cd57e4f Merge pull request #5 from Mahmoud-Maher-Elsaid/stage-3c-safe-curriculum-training
 |\
-| * 062c360 (origin/stage-3c-safe-curriculum-training, stage-3c-safe-curriculum-training) Document unmasked PPO action collapse
-| * bfc2a99 Add safe curriculum PPO training pipeline
-|/
-*   e6b1b2f Merge pull request #4 from Mahmoud-Maher-Elsaid/stage-3b-safe-viewpoint-inspection
-|\
-| * 8127e80 (origin/stage-3b-safe-viewpoint-inspection, stage-3b-safe-viewpoint-inspection) Add safe viewpoint inspection and feasibility analysis
-|/

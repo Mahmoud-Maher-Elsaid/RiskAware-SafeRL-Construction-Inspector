@@ -1,0 +1,141 @@
+{
+  "status": "FAILED",
+  "seeds": [
+    {
+      "seed": 43,
+      "option_accuracy": 0.8004807692307693,
+      "per_option_recall": [
+        0.3125,
+        0.5856201975850713,
+        0.0,
+        0.7801418439716312,
+        0.9838008692216516,
+        null,
+        null,
+        0.0,
+        null
+      ],
+      "minimum_supported_option_recall": 0.0,
+      "target_selection_accuracy": 0.5412087912087912,
+      "duration_accuracy": 0.9974244505494505,
+      "invalid_options": 0,
+      "checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_smoke_balanced/seed_43/best_checkpoint.pt",
+      "checkpoint_sha256": "4462d79158d7b7a3417f3e8a2996d13d1da90472d29ec4d8226e89b66814a310",
+      "cuda_verified": true,
+      "history": [
+        {
+          "epoch": 0,
+          "loss": 4.3786127556819,
+          "seconds": 48.14943979999225,
+          "option_accuracy": 0.7302028795811518,
+          "per_option_recall": [
+            0.0,
+            0.4811267605633803,
+            0.0,
+            0.757516339869281,
+            0.8984231756508985,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.0,
+          "target_selection_accuracy": 0.450098167539267,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 1,
+          "loss": 3.1672479661282473,
+          "seconds": 49.92369340000732,
+          "option_accuracy": 0.8025196335078534,
+          "per_option_recall": [
+            0.0,
+            0.5678873239436619,
+            0.0,
+            0.8235294117647058,
+            0.966996699669967,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.0,
+          "target_selection_accuracy": 0.468913612565445,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 2,
+          "loss": 2.689071657716966,
+          "seconds": 49.7049388000014,
+          "option_accuracy": 0.8164267015706806,
+          "per_option_recall": [
+            0.0,
+            0.6411267605633802,
+            0.0,
+            0.7450980392156863,
+            0.9944994499449945,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.0,
+          "target_selection_accuracy": 0.4839659685863874,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 3,
+          "loss": 2.3826760809383143,
+          "seconds": 49.63062569999602,
+          "option_accuracy": 0.81217277486911,
+          "per_option_recall": [
+            0.0,
+            0.6394366197183099,
+            0.0,
+            0.7261437908496732,
+            0.9966996699669967,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.0,
+          "target_selection_accuracy": 0.5212696335078534,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 4,
+          "loss": 2.0865267632122793,
+          "seconds": 49.52540559999761,
+          "option_accuracy": 0.8097185863874345,
+          "per_option_recall": [
+            0.5714285714285714,
+            0.5983098591549296,
+            0.0,
+            0.7784313725490196,
+            0.9856985698569857,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.0,
+          "target_selection_accuracy": 0.5538285340314136,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        }
+      ]
+    }
+  ],
+  "mean_option_accuracy": 0.8004807692307693,
+  "best_option_accuracy": 0.8004807692307693,
+  "minimum_important_option_recall": 0.0,
+  "mean_target_selection_accuracy": 0.5412087912087912,
+  "invalid_options": 0,
+  "split_leakage": 0,
+  "memory_regression": "PASSED"
+}

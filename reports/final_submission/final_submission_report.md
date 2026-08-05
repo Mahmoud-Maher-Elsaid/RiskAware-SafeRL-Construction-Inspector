@@ -2,8 +2,8 @@
 
 Status: **PASSED**
 
-- Branch: `final/research-benchmark-release`
-- Commit at report generation: `dbb9b50ef5e1bec9a4ed2827997cbafde432b67f`
+- Branch: `main`
+- Commit at report generation: `dfbedb880ea18d29dfa922941fe498187f3411c7`
 - Stages 0--10: `VERIFIED_COMPLETE`
 - Tests: 272 passed, 0 failed
 - Primary benchmark: 1,350 unique runs, 0 missing, 0 unresolved failures

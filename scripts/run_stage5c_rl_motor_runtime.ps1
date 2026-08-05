@@ -15,7 +15,7 @@ $CompleteMarker = Join-Path $Output "stage5c_complete.marker"
 $FailureReport = Join-Path $Output "stage5c_failure.json"
 $Summary = Join-Path $Output "stage5c_runtime_summary.json"
 $WebotsHome = "C:\Program Files\Webots"
-$Webots = Join-Path $WebotsHome "msys64\mingw64\bin\webots.exe"
+$Webots = Join-Path $WebotsHome "msys64\mingw64\bin\webotsw.exe"
 
 foreach ($Required in @($Python, $Builder, $Webots)) {
     if (-not (Test-Path -LiteralPath $Required -PathType Leaf)) {
@@ -29,8 +29,18 @@ if ($LASTEXITCODE -ne 0) {
     throw "Stage 5C world generation failed."
 }
 
-Get-Process -Name webots, webotsw, webots-bin -ErrorAction SilentlyContinue |
-    Stop-Process -Force
+function Stop-WebotsTree {
+    foreach ($Candidate in @(Get-Process -Name webots, webotsw, webots-bin -ErrorAction SilentlyContinue)) {
+        try {
+            & taskkill.exe /PID $Candidate.Id /T /F *> $null
+        }
+        catch {
+            Write-Warning "Could not terminate Webots process $($Candidate.Id): $($_.Exception.Message)"
+        }
+    }
+}
+
+Stop-WebotsTree
 
 if (Test-Path -LiteralPath $Output) {
     Remove-Item -LiteralPath $Output -Recurse -Force
@@ -41,26 +51,66 @@ Remove-Item -LiteralPath $WorldProject -Force -ErrorAction SilentlyContinue
 $env:WEBOTS_HOME = $WebotsHome
 $env:WEBOTS_PYTHON_COMMAND = $Python
 $env:RISK_AWARE_PROJECT_ROOT = $RepoRoot
+$env:YOLO_CONFIG_DIR = Join-Path $RepoRoot ".runtime\ultralytics"
+$env:QT_AUTO_SCREEN_SCALE_FACTOR = "0"
+$env:QT_SCALE_FACTOR = "1"
+$env:QT_SCREEN_SCALE_FACTORS = "1"
+# Use the Windows Qt backend with bounded geometry.  The offscreen backend
+# avoids the framebuffer allocation but can prevent the R2025a controller
+# process from advancing in this world on Windows.
+$env:QT_QPA_PLATFORM = "windows"
+$env:QT_SCALE_FACTOR_ROUNDING_POLICY = "Round"
 $env:PYTHONUNBUFFERED = "1"
 $env:PYTHONIOENCODING = "utf-8"
 $env:PYTHONPATH = Join-Path $WebotsHome "lib\controller\python"
 $VenvScripts = Join-Path $RepoRoot ".venv\Scripts"
 $WebotsBin = Join-Path $WebotsHome "msys64\mingw64\bin"
+$InheritedPath = $env:Path
+# Some Windows launch contexts contain both Path and PATH. Start-Process
+# materializes a case-insensitive dictionary and fails before Webots starts.
+[Environment]::SetEnvironmentVariable(
+    "PATH",
+    $null,
+    [EnvironmentVariableTarget]::Process
+)
+[Environment]::SetEnvironmentVariable(
+    "Path",
+    $InheritedPath,
+    [EnvironmentVariableTarget]::Process
+)
 $env:Path = [string]::Join(
     [IO.Path]::PathSeparator,
     @($VenvScripts, $WebotsBin, $env:Path)
 )
+New-Item -ItemType Directory -Path $env:YOLO_CONFIG_DIR -Force | Out-Null
 
 $Stdout = Join-Path $Output "webots_stdout.log"
 $Stderr = Join-Path $Output "webots_stderr.log"
+# Rendering is performed by the robot camera controller. Disabling the
+# desktop 3-D view prevents stale Windows GUI geometry from allocating an
+# invalid framebuffer in unattended runs.
 $Process = Start-Process `
     -FilePath $Webots `
-    -ArgumentList @("--batch", "--mode=fast", "--stdout", "--stderr", $World) `
+    -ArgumentList @("--batch", "--no-rendering", "--minimize", "--mode=fast", "--stdout", "--stderr", $World) `
     -WorkingDirectory $RepoRoot `
     -RedirectStandardOutput $Stdout `
     -RedirectStandardError $Stderr `
     -WindowStyle Hidden `
     -PassThru
+
+# The MSYS launcher can hand execution to webots-bin.exe and exit before the
+# simulation. Follow that concrete process so early-exit and timeout checks
+# describe the simulator rather than the short-lived launcher.
+Start-Sleep -Milliseconds 750
+$Process.Refresh()
+if ($Process.HasExited) {
+    $Simulator = Get-Process -Name webots-bin -ErrorAction SilentlyContinue |
+        Sort-Object StartTime -Descending |
+        Select-Object -First 1
+    if ($null -ne $Simulator) {
+        $Process = $Simulator
+    }
+}
 
 $Deadline = (Get-Date).AddSeconds($TimeoutSeconds)
 try {
@@ -85,8 +135,7 @@ try {
     }
 }
 finally {
-    Get-Process -Name webots, webotsw, webots-bin -ErrorAction SilentlyContinue |
-        Stop-Process -Force
+    Stop-WebotsTree
 }
 
 if (-not (Test-Path -LiteralPath $Summary -PathType Leaf)) {

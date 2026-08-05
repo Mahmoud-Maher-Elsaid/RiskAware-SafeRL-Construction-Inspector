@@ -1,0 +1,12 @@
+{
+  "status": "ANALYZED",
+  "held_out_accuracy": 0.7542763157894737,
+  "invalid_action_predictions": 0,
+  "diagnosis": "Coordinate channels did not resolve the compact encoder's spatial underfitting. The prior 4x4 candidate had sufficient spatial resolution but overfit. A regularized middle-capacity spatial representation is required.",
+  "changes_for_next_iteration": [
+    "Combine coordinate channels with 4x4 spatial features.",
+    "Keep the projection at 128 features and GRU at 256 units.",
+    "Add LayerNorm and 0.15 dropout to control layout overfitting.",
+    "Keep all acceptance thresholds unchanged."
+  ]
+}

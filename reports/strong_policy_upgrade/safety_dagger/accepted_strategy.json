@@ -1,0 +1,20 @@
+{
+  "status": "PASSED",
+  "strategy": "contiguous systematic causal safety DAgger with KL task anchoring",
+  "report": "reports/strong_policy_upgrade/safety_dagger_repair_2/summary.json",
+  "failed_strategy_preserved": "reports/strong_policy_upgrade/safety_dagger/summary.json",
+  "corrections": 51000,
+  "iterations": 3,
+  "final_checkpoint": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_3/training/best_behavior_cloning.pt",
+  "final_checkpoint_sha256": "151d34908f14f29408c982dd2eece38efbc2c4df7af08747c73f67ea17efe0b5",
+  "held_out_success": 0.8333333333333334,
+  "dynamic_world_success": 0.6666666666666666,
+  "hazard_recall": 0.9794432942259029,
+  "coverage": 0.9794432942259029,
+  "mean_legacy_raw_safety_cost": 36.766666666666666,
+  "legacy_constraint_count": 5475,
+  "collision_rate": 0.0,
+  "invalid_actions": 0,
+  "accepted_scope": "task-preserving initialization only",
+  "final_safety_policy_accepted": false
+}

@@ -1,0 +1,65 @@
+{
+  "primary_causal_dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f",
+  "modes": {
+    "causal_only": [
+      {
+        "source": "causal",
+        "dataset_dir": "artifacts/strong_policy_upgrade/causal_expert_demonstrations_systematic",
+        "split": "train",
+        "base_weight": 1.0,
+        "confidence_filter": false
+      }
+    ],
+    "causal_plus_privileged_pretraining": [
+      {
+        "source": "privileged",
+        "dataset_dir": "artifacts/strong_policy_upgrade/expert_demonstrations",
+        "split": "train",
+        "base_weight": 0.25,
+        "confidence_filter": false
+      },
+      {
+        "source": "causal",
+        "dataset_dir": "artifacts/strong_policy_upgrade/causal_expert_demonstrations_systematic",
+        "split": "train",
+        "base_weight": 1.0,
+        "confidence_filter": false
+      }
+    ],
+    "causal_plus_privileged_distillation_with_confidence_filter": [
+      {
+        "source": "privileged",
+        "dataset_dir": "artifacts/strong_policy_upgrade/expert_demonstrations",
+        "split": "train",
+        "base_weight": 0.25,
+        "confidence_filter": true
+      },
+      {
+        "source": "causal",
+        "dataset_dir": "artifacts/strong_policy_upgrade/causal_expert_demonstrations_systematic",
+        "split": "train",
+        "base_weight": 1.0,
+        "confidence_filter": false
+      }
+    ]
+  },
+  "distillation": {
+    "status": "PASSED",
+    "accepted_privileged_samples": 96892,
+    "rejected_low_confidence": 0,
+    "rejected_conflict": 920,
+    "rejected_invalid": 0,
+    "causal_internal_conflicts": 0,
+    "confidence_threshold": 0.6,
+    "privileged_weight": 0.25,
+    "index_path": "artifacts/strong_policy_upgrade/imitation_mixes/systematic_confidence_filtered_privileged.jsonl",
+    "index_sha256": "c8f4082c95d3757189e74948370616424eb6b98274da9abea60152a0f870f0a1",
+    "evaluation_sources": {
+      "validation": "causal",
+      "test": "causal"
+    },
+    "source_hashes_unchanged": true,
+    "rss_growth_bytes": 10579968,
+    "elapsed_seconds": 4.81418610000037
+  }
+}

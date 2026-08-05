@@ -1,0 +1,10 @@
+﻿{
+    "repository_software":  true,
+    "production_v1":  true,
+    "benchmark_v2":  true,
+    "paper":  true,
+    "cv_audit":  true,
+    "experimental_v4_webots":  true,
+    "v4_production_replacement":  false,
+    "status":  "PROJECT_COMPLETED_WITH_PRODUCTION_V1_RETAINED_AND_V4_EXPERIMENTAL"
+}

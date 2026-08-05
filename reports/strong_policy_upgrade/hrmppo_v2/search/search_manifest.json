@@ -1,0 +1,46 @@
+{
+  "trials": [
+    {
+      "trial": "trial_00",
+      "learning_rate": 5e-05,
+      "safety_budget": 15.0,
+      "seed": 20260730,
+      "return_code": 0
+    },
+    {
+      "trial": "trial_01",
+      "learning_rate": 5e-05,
+      "safety_budget": 20.0,
+      "seed": 20260731,
+      "return_code": 0
+    },
+    {
+      "trial": "trial_02",
+      "learning_rate": 0.0001,
+      "safety_budget": 15.0,
+      "seed": 20260732,
+      "return_code": 0
+    },
+    {
+      "trial": "trial_03",
+      "learning_rate": 0.0001,
+      "safety_budget": 20.0,
+      "seed": 20260733,
+      "return_code": 0
+    },
+    {
+      "trial": "trial_04",
+      "learning_rate": 0.0002,
+      "safety_budget": 15.0,
+      "seed": 20260734,
+      "return_code": 0
+    },
+    {
+      "trial": "trial_05",
+      "learning_rate": 0.0002,
+      "safety_budget": 20.0,
+      "seed": 20260735,
+      "return_code": 0
+    }
+  ]
+}

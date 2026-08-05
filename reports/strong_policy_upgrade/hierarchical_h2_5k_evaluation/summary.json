@@ -1,0 +1,405 @@
+{
+  "status": "FAILED",
+  "genuine_policy_visited_states": true,
+  "iterations": [],
+  "beta_zero_evaluation": {
+    "iteration": 1,
+    "beta": 0.0,
+    "policy_visited_transitions": 3000,
+    "episodes": 12,
+    "option_disagreement_rate": 0.08666666666666667,
+    "target_disagreement_rate": 0.08966666666666667,
+    "unsafe_option_choices": 77,
+    "option_counts": [
+      2558,
+      85,
+      0,
+      0,
+      353,
+      0,
+      0,
+      4,
+      0
+    ],
+    "primitive_counts": [
+      578,
+      584,
+      879,
+      867,
+      92
+    ],
+    "planner_failure_rate": 0.0,
+    "shield_intervention_rate": 0.034666666666666665,
+    "invalid_options": 0,
+    "mission_success": 0.5454545454545454,
+    "hazard_recall": 0.9391210239036326,
+    "coverage": 0.9391210239036326,
+    "mean_safety_cost": 21.795454545454547,
+    "episode_results": [
+      {
+        "world": "site_small",
+        "profile": "low",
+        "seed": 18800,
+        "steps": 39,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 0.25,
+        "option_counts": [
+          36,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          1,
+          9,
+          13,
+          14,
+          2
+        ],
+        "unique_visited_cells": 38
+      },
+      {
+        "world": "site_medium",
+        "profile": "low",
+        "seed": 18801,
+        "steps": 300,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.8571428571428571,
+        "inspection_coverage": 0.8571428571428571,
+        "safety_cost": 20.5,
+        "option_counts": [
+          261,
+          5,
+          0,
+          0,
+          32,
+          0,
+          0,
+          2,
+          0
+        ],
+        "primitive_counts": [
+          60,
+          60,
+          89,
+          86,
+          5
+        ],
+        "unique_visited_cells": 146
+      },
+      {
+        "world": "site_dynamic",
+        "profile": "low",
+        "seed": 18802,
+        "steps": 400,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.9166666666666666,
+        "inspection_coverage": 0.9166666666666666,
+        "safety_cost": 32.25,
+        "option_counts": [
+          328,
+          10,
+          0,
+          0,
+          62,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          80,
+          73,
+          120,
+          117,
+          10
+        ],
+        "unique_visited_cells": 177
+      },
+      {
+        "world": "site_small",
+        "profile": "medium",
+        "seed": 18803,
+        "steps": 73,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 2.0,
+        "option_counts": [
+          66,
+          1,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          12,
+          9,
+          25,
+          25,
+          2
+        ],
+        "unique_visited_cells": 58
+      },
+      {
+        "world": "site_medium",
+        "profile": "medium",
+        "seed": 18804,
+        "steps": 300,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.8,
+        "inspection_coverage": 0.8,
+        "safety_cost": 31.25,
+        "option_counts": [
+          270,
+          5,
+          0,
+          0,
+          25,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          63,
+          58,
+          89,
+          85,
+          5
+        ],
+        "unique_visited_cells": 138
+      },
+      {
+        "world": "site_dynamic",
+        "profile": "medium",
+        "seed": 18805,
+        "steps": 392,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 28.75,
+        "option_counts": [
+          327,
+          13,
+          0,
+          0,
+          51,
+          0,
+          0,
+          1,
+          0
+        ],
+        "primitive_counts": [
+          81,
+          86,
+          105,
+          107,
+          13
+        ],
+        "unique_visited_cells": 184
+      },
+      {
+        "world": "site_small",
+        "profile": "high",
+        "seed": 18806,
+        "steps": 46,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 3.0,
+        "option_counts": [
+          34,
+          3,
+          0,
+          0,
+          9,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          13,
+          9,
+          10,
+          9,
+          5
+        ],
+        "unique_visited_cells": 26
+      },
+      {
+        "world": "site_medium",
+        "profile": "high",
+        "seed": 18807,
+        "steps": 300,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.8,
+        "inspection_coverage": 0.8,
+        "safety_cost": 35.0,
+        "option_counts": [
+          270,
+          8,
+          0,
+          0,
+          22,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          58,
+          55,
+          93,
+          84,
+          10
+        ],
+        "unique_visited_cells": 130
+      },
+      {
+        "world": "site_dynamic",
+        "profile": "high",
+        "seed": 18808,
+        "steps": 400,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.9565217391304348,
+        "inspection_coverage": 0.9565217391304348,
+        "safety_cost": 68.0,
+        "option_counts": [
+          297,
+          18,
+          0,
+          0,
+          84,
+          0,
+          0,
+          1,
+          0
+        ],
+        "primitive_counts": [
+          80,
+          95,
+          99,
+          106,
+          20
+        ],
+        "unique_visited_cells": 164
+      },
+      {
+        "world": "site_small",
+        "profile": "low",
+        "seed": 18809,
+        "steps": 176,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 3.5,
+        "option_counts": [
+          172,
+          3,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          29,
+          24,
+          63,
+          57,
+          3
+        ],
+        "unique_visited_cells": 74
+      },
+      {
+        "world": "site_medium",
+        "profile": "low",
+        "seed": 18810,
+        "steps": 221,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 15.25,
+        "option_counts": [
+          191,
+          7,
+          0,
+          0,
+          23,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          39,
+          38,
+          68,
+          69,
+          7
+        ],
+        "unique_visited_cells": 134
+      }
+    ],
+    "chunks": [
+      {
+        "path": "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/iteration_1/chunks/hierarchical_corrections_00000.npz",
+        "rows": 1000,
+        "bytes": 68341,
+        "sha256": "70f5ddd6a52cb22105ea04e963b23e1e5873056a9711ccdea3ffe2e82f943714"
+      },
+      {
+        "path": "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/iteration_1/chunks/hierarchical_corrections_00001.npz",
+        "rows": 1000,
+        "bytes": 65109,
+        "sha256": "531be5e844269dc87fefb3fd66ef106273952e5c0cc63997094726a71eca8f83"
+      },
+      {
+        "path": "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/iteration_1/chunks/hierarchical_corrections_00002.npz",
+        "rows": 1000,
+        "bytes": 67000,
+        "sha256": "59ea4c010b85d2b41da757b7a1acb7ca6d51181c60a32a7e3894dfeea6cf201b"
+      }
+    ]
+  },
+  "total_corrections": 0,
+  "final_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h2_5k/final_checkpoint.pt",
+  "final_checkpoint_sha256": "9a1b9cc5406709d4271600b24727bd70e790b34089b2ec5757d69c258fb6e9ec"
+}

@@ -1,0 +1,33 @@
+algorithm: RiskShield-HRMPPO-Safe-v3
+device: cuda
+seed: 20260730
+rollout_steps: 256
+ppo_epochs: 2
+learning_rate: 0.000003
+cost_critic_learning_rate: 0.000015
+reward_gamma: 0.99
+reward_gae_lambda: 0.95
+cost_gamma: 0.995
+cost_gae_lambda: 0.95
+clip_range: 0.15
+maximum_kl: 0.02
+anchor_kl_coefficient: 2.0
+entropy_coefficient: 0.003
+multiplier_warmup_updates: 8
+budgets:
+  collision: 0.0
+  restricted_zone: 0.003
+  worker_near_miss: 0.008
+  uncontrolled_semantic_risk: 2.5
+  uncertainty: 12.0
+cost_scales:
+  collision: 1.0
+  restricted_zone: 1.0
+  worker_near_miss: 1.0
+  uncontrolled_semantic_risk: 3.0
+  uncertainty: 1.0
+shield:
+  minimum_horizon: 1
+  maximum_horizon: 3
+  controlled_exposure_dwell_limit: 3
+  human_clearance_cells: 2

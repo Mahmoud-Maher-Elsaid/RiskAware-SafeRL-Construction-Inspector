@@ -2,11 +2,29 @@ name: CI
 
 on:
   push:
+    branches:
+      - main
+      - stage-5b-live-perception-integration
+      - final/strong-policy-upgrade
   pull_request:
+    branches:
+      - main
+      - stage-5b-live-perception-integration
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONPATH: ${{ github.workspace }}
 
     steps:
       - uses: actions/checkout@v4
@@ -28,3 +46,14 @@ jobs:
 
       - name: Tests
         run: pytest
+
+      - name: Upload failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-failure-diagnostics-${{ github.run_id }}
+          if-no-files-found: ignore
+          path: |
+            .pytest_cache/
+            .ruff_cache/
+            **/pytest-report.xml

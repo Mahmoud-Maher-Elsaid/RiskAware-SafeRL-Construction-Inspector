@@ -1,0 +1,121 @@
+{
+  "status": "PASSED",
+  "primary_mode": "causal_only",
+  "primary_seeds": [
+    20260730,
+    20260731,
+    20260732
+  ],
+  "mean_held_out_accuracy": 0.9106907171139462,
+  "best_held_out_accuracy": 0.9139303283605967,
+  "best_mode": "causal_only",
+  "best_seed": 20260732,
+  "minimum_primary_per_action_recall": 0.8413431916204559,
+  "invalid_action_predictions": 0,
+  "split_leakage": 0,
+  "memory_gate": "PASSED",
+  "gates": {
+    "mean_accuracy": {
+      "required": 0.85,
+      "observed": 0.9106907171139462
+    },
+    "best_accuracy": {
+      "required": 0.87,
+      "observed": 0.9139303283605967
+    },
+    "per_action_recall": {
+      "required": 0.7,
+      "observed": 0.8413431916204559
+    },
+    "invalid_actions": {
+      "required": 0,
+      "observed": 0
+    },
+    "split_leakage": {
+      "required": 0,
+      "observed": 0
+    }
+  },
+  "mode_results": [
+    {
+      "mode": "causal_only",
+      "seed": 20260730,
+      "status": "PASSED",
+      "accuracy": 0.9087709474863016,
+      "recall_action_0": 0.8480225988700565,
+      "recall_action_1": 0.8505853357979051,
+      "recall_action_2": 0.9214807828342372,
+      "recall_action_3": 0.9300236406619385,
+      "recall_action_4": 1.0,
+      "invalid_action_predictions": 0,
+      "split_leakage": 0,
+      "checkpoint_sha256": "ba33d7463f7f2ace3f95f81a7c0197ba9d2c39da46f60ba84cd2738a5249fca9",
+      "checkpoint_path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/systematic_causal_only_attention_seed_20260730/best_behavior_cloning.pt",
+      "dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f"
+    },
+    {
+      "mode": "causal_only",
+      "seed": 20260731,
+      "status": "PASSED",
+      "accuracy": 0.9093708754949406,
+      "recall_action_0": 0.8519774011299435,
+      "recall_action_1": 0.8730745532963647,
+      "recall_action_2": 0.9313841075218109,
+      "recall_action_3": 0.9115839243498818,
+      "recall_action_4": 1.0,
+      "invalid_action_predictions": 0,
+      "split_leakage": 0,
+      "checkpoint_sha256": "b50100ec3bcaac41737092eddb21538b1e6c54a680dcf0db598462c6a53170c7",
+      "checkpoint_path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/systematic_causal_only_attention_seed_20260731/best_behavior_cloning.pt",
+      "dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f"
+    },
+    {
+      "mode": "causal_only",
+      "seed": 20260732,
+      "status": "PASSED",
+      "accuracy": 0.9139303283605967,
+      "recall_action_0": 0.85,
+      "recall_action_1": 0.8413431916204559,
+      "recall_action_2": 0.9368073567554822,
+      "recall_action_3": 0.9326241134751773,
+      "recall_action_4": 1.0,
+      "invalid_action_predictions": 0,
+      "split_leakage": 0,
+      "checkpoint_sha256": "574643a8323bc5d394fb9df2ee905da48dfa0ff99bbe56a1efef46bca3901475",
+      "checkpoint_path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/systematic_causal_only_attention_seed_20260732/best_behavior_cloning.pt",
+      "dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f"
+    },
+    {
+      "mode": "causal_plus_privileged_pretraining",
+      "seed": 20260730,
+      "status": "PASSED",
+      "accuracy": 0.907371115466144,
+      "recall_action_0": 0.86045197740113,
+      "recall_action_1": 0.8579790511398645,
+      "recall_action_2": 0.9141711860410281,
+      "recall_action_3": 0.925177304964539,
+      "recall_action_4": 1.0,
+      "invalid_action_predictions": 0,
+      "split_leakage": 0,
+      "checkpoint_sha256": "86ef2860233735fc6ffb4b8ac5af25cd8842e85b72b70c57cfc890d3f654bcb8",
+      "checkpoint_path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/mode_privileged_pretraining_seed_20260730/best_behavior_cloning.pt",
+      "dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f"
+    },
+    {
+      "mode": "causal_plus_privileged_distillation_with_confidence_filter",
+      "seed": 20260730,
+      "status": "PASSED",
+      "accuracy": 0.9006519217693877,
+      "recall_action_0": 0.8779661016949153,
+      "recall_action_1": 0.8434996919285275,
+      "recall_action_2": 0.8999056826220231,
+      "recall_action_3": 0.9178486997635934,
+      "recall_action_4": 1.0,
+      "invalid_action_predictions": 0,
+      "split_leakage": 0,
+      "checkpoint_sha256": "30372fc525a1cabd9cdf93c8ded1e5bb56ae306fe78123245d7d79111ba6448b",
+      "checkpoint_path": "artifacts/strong_policy_upgrade/causal_behavior_cloning/mode_systematic_confidence_distillation_seed_20260730/best_behavior_cloning.pt",
+      "dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f"
+    }
+  ]
+}

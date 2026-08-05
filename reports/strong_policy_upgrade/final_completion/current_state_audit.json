@@ -1,0 +1,24 @@
+{
+  "branch": "final/strong-policy-upgrade",
+  "head": "6efc3f737777bfca6e3cb4d9f8b6195ffa1dd8b3",
+  "remote_head": "6efc3f737777bfca6e3cb4d9f8b6195ffa1dd8b3",
+  "source_worktree": "tracked_source_clean",
+  "tracked_generated_changes": [
+    "reports/final_project_completion/final_runtime_summary.json",
+    "reports/final_submission/stage6_webots/*",
+    "webots/worlds/site_small.wbt",
+    "webots/worlds/site_medium.wbt",
+    "webots/worlds/site_dynamic.wbt"
+  ],
+  "untracked_artifact_classification": {
+    "hierarchical_checkpoints_and_runs": "preserved_local_experiment_artifact",
+    "hierarchical_reports": "preserved_release_evidence",
+    "mmap_caches": "preserved_generated_cache",
+    "source_files": "none_found_in_inspected_listing",
+    "temporary_files": "none_identified"
+  },
+  "production_v1": "validated",
+  "historical_benchmark": "1350_rows_validated",
+  "v4_benchmark_extension": "not_generated",
+  "integration_merges": "not_performed"
+}

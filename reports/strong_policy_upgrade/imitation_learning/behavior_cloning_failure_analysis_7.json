@@ -1,0 +1,17 @@
+{
+  "status": "BLOCKED",
+  "candidate": "CNN spatial tokens with two-layer positional self-attention",
+  "memory_gate": "PASSED",
+  "architecture_tests": "PASSED",
+  "held_out_accuracy": 0.7140,
+  "required_accuracy": 0.85,
+  "result": "REJECTED",
+  "blocking_condition": "The accepted immutable demonstrations are labeled by a privileged A* expert using complete environment hazards. The stored causal policy observation contains detected persistent semantics but not the hidden layout or the teacher's selected target. Seven analyzed architecture/data/training attempts, restored transition coverage, deterministic rotations, recurrent evaluation, fine-tuning, an observation-only A* adviser, and global spatial attention have not cleared the unchanged 85% held-out gate.",
+  "downstream_status": {
+    "dagger": "NOT_STARTED_GATE_ENFORCED",
+    "riskshield_hrmppo_v2": "NOT_STARTED_GATE_ENFORCED",
+    "production_replacement": "NOT_PERMITTED",
+    "benchmark_v2": "NOT_PERMITTED"
+  },
+  "required_external_decision": "Authorize creation of an additional observation-consistent expert correction dataset, or revise the causal observation contract so the teacher target is available. The existing 120,144-transition dataset can and should remain preserved as immutable evidence."
+}

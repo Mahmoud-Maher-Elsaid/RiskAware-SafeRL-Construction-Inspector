@@ -1,0 +1,99 @@
+{
+  "iteration": 3,
+  "beta": 0.25,
+  "policy_visited_transitions": 17000,
+  "new_visited_state_transitions": 17000,
+  "episodes": 84,
+  "disagreement_count": 4980,
+  "disagreement_rate": 0.29294117647058826,
+  "invalid_actions": 0,
+  "selection_reason_counts": {
+    "mission_context": 2897,
+    "task_anchor": 776,
+    "uncertainty_exposure": 9658,
+    "teacher_disagreement": 4980,
+    "shield_intervention": 2933,
+    "pre_worker_near_miss": 2284,
+    "semantic_risk_exposure": 7247,
+    "pre_restricted_zone_risk": 732,
+    "emergency_stop": 23,
+    "deadlock": 26
+  },
+  "action_counts": [
+    2913,
+    2993,
+    5189,
+    5195,
+    710
+  ],
+  "chunks": [
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_3/chunks/safety_corrections_00000.npz",
+      "rows": 4000,
+      "bytes": 234368,
+      "sha256": "1b2f1932063a71668045076881305cd24493e669b88174c8990d4259887ef013"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_3/chunks/safety_corrections_00001.npz",
+      "rows": 4000,
+      "bytes": 233177,
+      "sha256": "5e4fbc508b069e46cf074f0d2d253e9f53fa349cd6950e6109b27cacc479ead5"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_3/chunks/safety_corrections_00002.npz",
+      "rows": 4000,
+      "bytes": 234116,
+      "sha256": "d6b61b19b02c30a4c04429ea8b15618469f943d45e29d37e4ffab3d36a277593"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_3/chunks/safety_corrections_00003.npz",
+      "rows": 4000,
+      "bytes": 235017,
+      "sha256": "12a78abe8593532dbce9d9e3e59d9370f1247a8bd52749e020eb6fe76a9b75a1"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_3/chunks/safety_corrections_00004.npz",
+      "rows": 1000,
+      "bytes": 59191,
+      "sha256": "7375468ce46d8640b05ca016795be43a13e993838f50a6d442c67e37d5ce3f10"
+    }
+  ],
+  "collection_success_rate": 0.7976190476190477,
+  "collection_hazard_recall": 0.9667245883860792,
+  "collection_coverage": 0.9667245883860792,
+  "collection_safety_cost": 30.18452380952381,
+  "collection_collision_rate": 0.0,
+  "observation_only_teacher": true,
+  "expert_strategy": "systematic",
+  "contiguous_trajectories": true,
+  "cumulative_dataset_manifest": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_3/cumulative_dataset/manifest.json",
+  "checkpoint_path": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_3/training/best_behavior_cloning.pt",
+  "checkpoint_sha256": "151d34908f14f29408c982dd2eece38efbc2c4df7af08747c73f67ea17efe0b5",
+  "held_out": {
+    "episodes": 90,
+    "held_out_seeds": [
+      5000,
+      5001,
+      5002,
+      5003,
+      5004,
+      5005,
+      5006,
+      5007,
+      5008,
+      5009
+    ],
+    "success_rate": 0.7555555555555555,
+    "world_success": {
+      "site_small": 0.9666666666666667,
+      "site_medium": 0.7333333333333333,
+      "site_dynamic": 0.5666666666666667
+    },
+    "hazard_recall": 0.956299746951921,
+    "coverage": 0.956299746951921,
+    "mean_safety_cost": 37.208333333333336,
+    "collision_rate": 0.0,
+    "constraint_violations": 5496,
+    "invalid_actions": 0
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "heuristic_option_selector": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_recurrent_memory": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_target_persistence": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_causal_imitation": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_constrained_option_ppo": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_target_head": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "fixed_duration": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "static_planner": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_worker_prediction": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_predictive_controller": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_safety_shield": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "one_step_shield": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_cv_risk": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  },
+  "no_kl_anchoring": {
+    "status": "technically_infeasible",
+    "reason": "No validated alternate checkpoint or inference-time toggle exists; generating metrics would fabricate an experiment."
+  }
+}

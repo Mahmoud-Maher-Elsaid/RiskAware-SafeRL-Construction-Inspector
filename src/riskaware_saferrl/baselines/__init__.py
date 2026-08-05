@@ -1,3 +1,7 @@
+from riskaware_saferrl.baselines.causal_expert import (
+    CausalExpertDecision,
+    CausalObservationExpert,
+)
 from riskaware_saferrl.baselines.planners import (
     FrontierExplorationPlanner,
     NearestRiskRevisitPlanner,
@@ -7,6 +11,8 @@ from riskaware_saferrl.baselines.planners import (
 
 __all__ = [
     "FrontierExplorationPlanner",
+    "CausalExpertDecision",
+    "CausalObservationExpert",
     "NearestRiskRevisitPlanner",
     "PlannerDecision",
     "RiskAwareAStarPlanner",

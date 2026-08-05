@@ -1,0 +1,1242 @@
+{
+  "status": "PASSED",
+  "algorithm": "RiskShield-HRMPPO-Safe-v3",
+  "strategy": "safety_dagger_pid",
+  "steps": 5000,
+  "updates": 20,
+  "seed": 7302,
+  "cuda_verified": true,
+  "initial_checkpoint": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_3/training/best_behavior_cloning.pt",
+  "initial_checkpoint_sha256": "151d34908f14f29408c982dd2eece38efbc2c4df7af08747c73f67ea17efe0b5",
+  "final_checkpoint": "artifacts/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_5k/final_checkpoint.pt",
+  "final_checkpoint_sha256": "6e3183f83ad6854c710be83f0372013d868038c371d0689bcf956e56e56b93fd",
+  "vector_cost_schema": [
+    "collision",
+    "restricted_zone",
+    "worker_near_miss",
+    "uncontrolled_semantic_risk",
+    "uncertainty"
+  ],
+  "update_metrics": [
+    {
+      "step": 256,
+      "update": 1,
+      "curriculum_stage": "easy",
+      "world": "site_small",
+      "profile": "low",
+      "total_loss": 4.8377909660339355,
+      "policy_loss": -0.000255802646279335,
+      "reward_value_loss": 46.501556396484375,
+      "cost_value_losses": {
+        "collision": 0.11189529299736023,
+        "restricted_zone": 0.11189529299736023,
+        "worker_near_miss": 0.11189529299736023,
+        "uncontrolled_semantic_risk": 0.47081005573272705,
+        "uncertainty": 0.11189529299736023
+      },
+      "cost_advantage_means": {
+        "collision": -0.07348567992448807,
+        "restricted_zone": -0.07348567992448807,
+        "worker_near_miss": -0.07348567992448807,
+        "uncontrolled_semantic_risk": 0.3561539053916931,
+        "uncertainty": -0.07348567992448807
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 0.0,
+        "uncertainty": 0.0
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": -0.003,
+        "worker_near_miss": -0.008,
+        "uncontrolled_semantic_risk": -0.75,
+        "uncertainty": -0.8
+      },
+      "hierarchy_loss": 1.9536769390106201,
+      "entropy": 0.5445594787597656,
+      "anchor_kl": 5.995557330606971e-07,
+      "approximate_kl": 7.163616828620434e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 9.377772331237793,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 1.75,
+        "uncertainty": 0.0
+      },
+      "process_rss_bytes": 1826840576,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 121.10318568580709
+    },
+    {
+      "step": 512,
+      "update": 2,
+      "curriculum_stage": "easy",
+      "world": "site_small",
+      "profile": "low",
+      "total_loss": 5.200204372406006,
+      "policy_loss": -0.00012714602053165436,
+      "reward_value_loss": 50.39140319824219,
+      "cost_value_losses": {
+        "collision": 0.115097776055336,
+        "restricted_zone": 0.115097776055336,
+        "worker_near_miss": 0.115097776055336,
+        "uncontrolled_semantic_risk": 0.237835094332695,
+        "uncertainty": 0.115097776055336
+      },
+      "cost_advantage_means": {
+        "collision": -0.10646235942840576,
+        "restricted_zone": -0.10646235942840576,
+        "worker_near_miss": -0.10646235942840576,
+        "uncontrolled_semantic_risk": 0.12379996478557587,
+        "uncertainty": -0.10646235942840576
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 0.0,
+        "uncertainty": 0.0
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": -0.003,
+        "worker_near_miss": -0.008,
+        "uncontrolled_semantic_risk": -1.0,
+        "uncertainty": -0.8
+      },
+      "hierarchy_loss": 1.8627567291259766,
+      "entropy": 0.5910366773605347,
+      "anchor_kl": 1.9460160274320515e-06,
+      "approximate_kl": 2.9406510293483734e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 10.94135856628418,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 1.5,
+        "uncertainty": 0.0
+      },
+      "process_rss_bytes": 1827307520,
+      "gpu_allocated_bytes": 43772416,
+      "steps_per_second": 133.34762305886485
+    },
+    {
+      "step": 768,
+      "update": 3,
+      "curriculum_stage": "easy",
+      "world": "site_small",
+      "profile": "low",
+      "total_loss": 2.6014204025268555,
+      "policy_loss": -0.0001358911395072937,
+      "reward_value_loss": 24.20258331298828,
+      "cost_value_losses": {
+        "collision": 0.11989020556211472,
+        "restricted_zone": 0.11989020556211472,
+        "worker_near_miss": 0.11989020556211472,
+        "uncontrolled_semantic_risk": 0.45066148042678833,
+        "uncertainty": 0.11989020556211472
+      },
+      "cost_advantage_means": {
+        "collision": -0.11259859800338745,
+        "restricted_zone": -0.11259859800338745,
+        "worker_near_miss": -0.11259859800338745,
+        "uncontrolled_semantic_risk": 0.10735028982162476,
+        "uncertainty": -0.11259859800338745
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 0.0,
+        "uncertainty": 0.0
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": -0.003,
+        "worker_near_miss": -0.008,
+        "uncontrolled_semantic_risk": -1.5,
+        "uncertainty": -0.8
+      },
+      "hierarchy_loss": 1.8074287176132202,
+      "entropy": 0.7042182683944702,
+      "anchor_kl": 8.599557986599393e-06,
+      "approximate_kl": 5.102192517369986e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 5.749762058258057,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 1.0,
+        "uncertainty": 0.0
+      },
+      "process_rss_bytes": 1827549184,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 140.52254479313987
+    },
+    {
+      "step": 1024,
+      "update": 4,
+      "curriculum_stage": "easy",
+      "world": "site_small",
+      "profile": "low",
+      "total_loss": 0.3435567319393158,
+      "policy_loss": -0.00018008612096309662,
+      "reward_value_loss": 1.6470693349838257,
+      "cost_value_losses": {
+        "collision": 0.08278319984674454,
+        "restricted_zone": 0.08278319984674454,
+        "worker_near_miss": 0.08278319984674454,
+        "uncontrolled_semantic_risk": 0.5950198173522949,
+        "uncertainty": 0.08278319984674454
+      },
+      "cost_advantage_means": {
+        "collision": -0.07250792533159256,
+        "restricted_zone": -0.07250792533159256,
+        "worker_near_miss": -0.07250792533159256,
+        "uncontrolled_semantic_risk": 0.4137154817581177,
+        "uncertainty": -0.07250792533159256
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 0.0,
+        "uncertainty": 0.0
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": -0.003,
+        "worker_near_miss": -0.008,
+        "uncontrolled_semantic_risk": -1.3,
+        "uncertainty": -0.8
+      },
+      "hierarchy_loss": 1.7754089832305908,
+      "entropy": 0.793148398399353,
+      "anchor_kl": 1.1797181286965497e-05,
+      "approximate_kl": 2.78581865131855e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 1.4379068613052368,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 1.2,
+        "uncertainty": 0.0
+      },
+      "process_rss_bytes": 1827688448,
+      "gpu_allocated_bytes": 43772416,
+      "steps_per_second": 147.23232347624162
+    },
+    {
+      "step": 1280,
+      "update": 5,
+      "curriculum_stage": "easy",
+      "world": "site_small",
+      "profile": "low",
+      "total_loss": 1.3761612176895142,
+      "policy_loss": -7.92238861322403e-05,
+      "reward_value_loss": 12.121923446655273,
+      "cost_value_losses": {
+        "collision": 0.0941782295703888,
+        "restricted_zone": 0.0941782295703888,
+        "worker_near_miss": 0.0941782295703888,
+        "uncontrolled_semantic_risk": 0.3996419906616211,
+        "uncertainty": 0.0941782295703888
+      },
+      "cost_advantage_means": {
+        "collision": -0.0928906723856926,
+        "restricted_zone": -0.0928906723856926,
+        "worker_near_miss": -0.0928906723856926,
+        "uncontrolled_semantic_risk": 0.30102747678756714,
+        "uncertainty": -0.0928906723856926
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 0.0,
+        "uncertainty": 0.0
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": -0.003,
+        "worker_near_miss": -0.008,
+        "uncontrolled_semantic_risk": -0.2999999999999998,
+        "uncertainty": -0.8
+      },
+      "hierarchy_loss": 1.7675917148590088,
+      "entropy": 0.6682735681533813,
+      "anchor_kl": 1.8866754544433206e-05,
+      "approximate_kl": 1.7095590010285378e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 3.359055280685425,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 2.2,
+        "uncertainty": 0.0
+      },
+      "process_rss_bytes": 1827741696,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 153.0445480754709
+    },
+    {
+      "step": 1536,
+      "update": 6,
+      "curriculum_stage": "medium",
+      "world": "site_medium",
+      "profile": "low",
+      "total_loss": 1.2856615781784058,
+      "policy_loss": -6.179511547088623e-05,
+      "reward_value_loss": 10.841044425964355,
+      "cost_value_losses": {
+        "collision": 0.07568460702896118,
+        "restricted_zone": 0.07568460702896118,
+        "worker_near_miss": 0.07568460702896118,
+        "uncontrolled_semantic_risk": 0.7622060775756836,
+        "uncertainty": 0.07568460702896118
+      },
+      "cost_advantage_means": {
+        "collision": -0.01648484356701374,
+        "restricted_zone": -0.01648484356701374,
+        "worker_near_miss": -0.01648484356701374,
+        "uncontrolled_semantic_risk": 0.6735275983810425,
+        "uncertainty": -0.01648484356701374
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 0.0,
+        "uncertainty": 0.0
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": -0.003,
+        "worker_near_miss": -0.008,
+        "uncontrolled_semantic_risk": -0.3999999999999999,
+        "uncertainty": -0.8
+      },
+      "hierarchy_loss": 1.942665696144104,
+      "entropy": 0.6830028295516968,
+      "anchor_kl": 2.0077384760952555e-05,
+      "approximate_kl": 1.807347871363163e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 3.3744516372680664,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 2.1,
+        "uncertainty": 0.0
+      },
+      "process_rss_bytes": 1827995648,
+      "gpu_allocated_bytes": 43772416,
+      "steps_per_second": 156.61085783688563
+    },
+    {
+      "step": 1792,
+      "update": 7,
+      "curriculum_stage": "medium",
+      "world": "site_medium",
+      "profile": "low",
+      "total_loss": 1.8307124376296997,
+      "policy_loss": -4.8099085688591003e-05,
+      "reward_value_loss": 15.044919967651367,
+      "cost_value_losses": {
+        "collision": 0.10214942693710327,
+        "restricted_zone": 0.12122983485460281,
+        "worker_near_miss": 0.10214942693710327,
+        "uncontrolled_semantic_risk": 0.23326796293258667,
+        "uncertainty": 1.7104723453521729
+      },
+      "cost_advantage_means": {
+        "collision": -0.10759051144123077,
+        "restricted_zone": -0.03626382350921631,
+        "worker_near_miss": -0.10759051144123077,
+        "uncontrolled_semantic_risk": 0.0630594789981842,
+        "uncertainty": 0.8822622299194336
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 0.0,
+        "uncertainty": 0.0
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.097,
+        "worker_near_miss": -0.008,
+        "uncontrolled_semantic_risk": 0.6000000000000001,
+        "uncertainty": 0.7600000232458115
+      },
+      "hierarchy_loss": 2.027308464050293,
+      "entropy": 0.6908707022666931,
+      "anchor_kl": 2.4315986593137495e-05,
+      "approximate_kl": 1.153675839304924e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 4.868317604064941,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.1,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 3.1,
+        "uncertainty": 1.5600000232458116
+      },
+      "process_rss_bytes": 1828167680,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 159.7943147553854
+    },
+    {
+      "step": 2048,
+      "update": 8,
+      "curriculum_stage": "medium",
+      "world": "site_medium",
+      "profile": "medium",
+      "total_loss": 1.6037464141845703,
+      "policy_loss": -6.467662751674652e-05,
+      "reward_value_loss": 14.328880310058594,
+      "cost_value_losses": {
+        "collision": 0.083245649933815,
+        "restricted_zone": 0.08327886462211609,
+        "worker_near_miss": 0.083245649933815,
+        "uncontrolled_semantic_risk": 0.476928174495697,
+        "uncertainty": 0.09133543074131012
+      },
+      "cost_advantage_means": {
+        "collision": -0.0723056048154831,
+        "restricted_zone": -0.07235172390937805,
+        "worker_near_miss": -0.0723056048154831,
+        "uncontrolled_semantic_risk": 0.32425743341445923,
+        "uncertainty": -0.060446448624134064
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.0,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 0.0,
+        "uncertainty": 0.0
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.097,
+        "worker_near_miss": -0.008,
+        "uncontrolled_semantic_risk": 1.4,
+        "uncertainty": 0.7600000232458115
+      },
+      "hierarchy_loss": 1.82579505443573,
+      "entropy": 0.7511897683143616,
+      "anchor_kl": 4.1775569115998223e-05,
+      "approximate_kl": 1.3742828741669655e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 3.9043946266174316,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.1,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 3.9,
+        "uncertainty": 1.5600000232458116
+      },
+      "process_rss_bytes": 1828233216,
+      "gpu_allocated_bytes": 43772416,
+      "steps_per_second": 161.71253830750592
+    },
+    {
+      "step": 2304,
+      "update": 9,
+      "curriculum_stage": "medium",
+      "world": "site_medium",
+      "profile": "medium",
+      "total_loss": 1.5571625232696533,
+      "policy_loss": -0.00014827167615294456,
+      "reward_value_loss": 8.487725257873535,
+      "cost_value_losses": {
+        "collision": 0.06581895798444748,
+        "restricted_zone": 0.2603851556777954,
+        "worker_near_miss": 2.228086233139038,
+        "uncontrolled_semantic_risk": 0.6915631294250488,
+        "uncertainty": 2.931502342224121
+      },
+      "cost_advantage_means": {
+        "collision": -0.02715574949979782,
+        "restricted_zone": 0.18680430948734283,
+        "worker_near_miss": 0.6149212121963501,
+        "uncontrolled_semantic_risk": 0.6488478183746338,
+        "uncertainty": 1.6754264831542969
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.007857000000000001,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 0.014466666666666666,
+        "uncertainty": 0.023560000720620155
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": true,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.097,
+        "worker_near_miss": -0.008,
+        "uncontrolled_semantic_risk": 1.4,
+        "uncertainty": 0.7600000232458115
+      },
+      "hierarchy_loss": 1.858647346496582,
+      "entropy": 0.7404025793075562,
+      "anchor_kl": 4.5788368879584596e-05,
+      "approximate_kl": 1.043954398483038e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 5.699958801269531,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.1,
+        "worker_near_miss": 0.0,
+        "uncontrolled_semantic_risk": 3.9,
+        "uncertainty": 1.5600000232458116
+      },
+      "process_rss_bytes": 1828319232,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 163.28965493337407
+    },
+    {
+      "step": 2560,
+      "update": 10,
+      "curriculum_stage": "medium",
+      "world": "site_medium",
+      "profile": "low",
+      "total_loss": 1.3998183012008667,
+      "policy_loss": -1.978408545255661e-05,
+      "reward_value_loss": 12.305152893066406,
+      "cost_value_losses": {
+        "collision": 0.10404205322265625,
+        "restricted_zone": 0.104342520236969,
+        "worker_near_miss": 0.10456728935241699,
+        "uncontrolled_semantic_risk": 0.26267582178115845,
+        "uncertainty": 0.21519304811954498
+      },
+      "cost_advantage_means": {
+        "collision": -0.10218764841556549,
+        "restricted_zone": -0.10254625231027603,
+        "worker_near_miss": -0.10265441238880157,
+        "uncontrolled_semantic_risk": 0.09238012880086899,
+        "uncertainty": 0.045254699885845184
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.04311100000000001,
+        "worker_near_miss": 0.036652000000000004,
+        "uncontrolled_semantic_risk": 0.045799999999999993,
+        "uncertainty": 0.17088000329732891
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.397,
+        "worker_near_miss": 0.892,
+        "uncontrolled_semantic_risk": 2.5999999999999996,
+        "uncertainty": 3.760000067949295
+      },
+      "hierarchy_loss": 1.843027114868164,
+      "entropy": 0.668198823928833,
+      "anchor_kl": 4.6887787902960554e-05,
+      "approximate_kl": 1.3326643966138363e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 4.20512580871582,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.4,
+        "worker_near_miss": 0.9,
+        "uncontrolled_semantic_risk": 5.1,
+        "uncertainty": 4.560000067949295
+      },
+      "process_rss_bytes": 1828376576,
+      "gpu_allocated_bytes": 43772416,
+      "steps_per_second": 164.90662130354633
+    },
+    {
+      "step": 2816,
+      "update": 11,
+      "curriculum_stage": "medium",
+      "world": "site_medium",
+      "profile": "medium",
+      "total_loss": 2.8612043857574463,
+      "policy_loss": -6.377045065164566e-05,
+      "reward_value_loss": 24.399703979492188,
+      "cost_value_losses": {
+        "collision": 0.08573715388774872,
+        "restricted_zone": 0.08590906858444214,
+        "worker_near_miss": 0.08608496934175491,
+        "uncontrolled_semantic_risk": 0.22589027881622314,
+        "uncertainty": 2.7069144248962402
+      },
+      "cost_advantage_means": {
+        "collision": -0.03693608194589615,
+        "restricted_zone": -0.037329837679862976,
+        "worker_near_miss": -0.03759904205799103,
+        "uncontrolled_semantic_risk": 0.1920788586139679,
+        "uncertainty": 1.4927160739898682
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.07576200000000002,
+        "worker_near_miss": 0.065196,
+        "uncontrolled_semantic_risk": 0.0781,
+        "uncertainty": 0.29196000549495216
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.397,
+        "worker_near_miss": 0.892,
+        "uncontrolled_semantic_risk": 2.9000000000000004,
+        "uncertainty": 3.760000067949295
+      },
+      "hierarchy_loss": 2.0810556411743164,
+      "entropy": 0.6504602432250977,
+      "anchor_kl": 7.132733298931271e-05,
+      "approximate_kl": 1.0666553862392902e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 5.976302623748779,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.4,
+        "worker_near_miss": 0.9,
+        "uncontrolled_semantic_risk": 5.4,
+        "uncertainty": 4.560000067949295
+      },
+      "process_rss_bytes": 1828503552,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 165.99826134508334
+    },
+    {
+      "step": 3072,
+      "update": 12,
+      "curriculum_stage": "medium",
+      "world": "site_medium",
+      "profile": "low",
+      "total_loss": 1.0324933528900146,
+      "policy_loss": -0.00010292138904333115,
+      "reward_value_loss": 8.476907730102539,
+      "cost_value_losses": {
+        "collision": 0.07484345138072968,
+        "restricted_zone": 0.07509481906890869,
+        "worker_near_miss": 0.07533620297908783,
+        "uncontrolled_semantic_risk": 0.0801958441734314,
+        "uncertainty": 0.5243991613388062
+      },
+      "cost_advantage_means": {
+        "collision": -0.04538548365235329,
+        "restricted_zone": -0.045956917107105255,
+        "worker_near_miss": -0.04635946452617645,
+        "uncontrolled_semantic_risk": -0.054472632706165314,
+        "uncertainty": 0.3160851001739502
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.10881000000000002,
+        "worker_near_miss": 0.09463200000000001,
+        "uncontrolled_semantic_risk": 0.10763333333333333,
+        "uncertainty": 0.5398000095933675
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.397,
+        "worker_near_miss": 0.892,
+        "uncontrolled_semantic_risk": 2.7,
+        "uncertainty": 6.7600001126527784
+      },
+      "hierarchy_loss": 2.079362392425537,
+      "entropy": 0.7301641702651978,
+      "anchor_kl": 7.047677354421467e-05,
+      "approximate_kl": 1.84372765943408e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 2.8709702491760254,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.4,
+        "worker_near_miss": 0.9,
+        "uncontrolled_semantic_risk": 5.2,
+        "uncertainty": 7.560000112652778
+      },
+      "process_rss_bytes": 1828511744,
+      "gpu_allocated_bytes": 43772416,
+      "steps_per_second": 166.63499408426196
+    },
+    {
+      "step": 3328,
+      "update": 13,
+      "curriculum_stage": "full",
+      "world": "site_medium",
+      "profile": "high",
+      "total_loss": 2.964632987976074,
+      "policy_loss": -0.00010643526911735535,
+      "reward_value_loss": 25.569921493530273,
+      "cost_value_losses": {
+        "collision": 0.08070521056652069,
+        "restricted_zone": 0.11015858501195908,
+        "worker_near_miss": 0.08177103102207184,
+        "uncontrolled_semantic_risk": 0.3442479372024536,
+        "uncertainty": 2.5974619388580322
+      },
+      "cost_advantage_means": {
+        "collision": -0.10816691815853119,
+        "restricted_zone": -0.06373962014913559,
+        "worker_near_miss": -0.11006700992584229,
+        "uncontrolled_semantic_risk": 0.20789489150047302,
+        "uncertainty": 0.987877607345581
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.14225500000000002,
+        "worker_near_miss": 0.12496000000000002,
+        "uncontrolled_semantic_risk": 0.1319,
+        "uncertainty": 0.7984300138644873
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.397,
+        "worker_near_miss": 0.892,
+        "uncontrolled_semantic_risk": 2.2,
+        "uncertainty": 7.590000125020743
+      },
+      "hierarchy_loss": 1.764328122138977,
+      "entropy": 0.6902003884315491,
+      "anchor_kl": 8.341411012224853e-05,
+      "approximate_kl": 1.8638093024492264e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 7.231789588928223,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.4,
+        "worker_near_miss": 0.9,
+        "uncontrolled_semantic_risk": 4.7,
+        "uncertainty": 8.390000125020743
+      },
+      "process_rss_bytes": 1828593664,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 167.63315981350428
+    },
+    {
+      "step": 3584,
+      "update": 14,
+      "curriculum_stage": "full",
+      "world": "site_dynamic",
+      "profile": "medium",
+      "total_loss": 1.9979115724563599,
+      "policy_loss": -6.394088268280029e-05,
+      "reward_value_loss": 6.103867530822754,
+      "cost_value_losses": {
+        "collision": 0.09299591183662415,
+        "restricted_zone": 0.4064667522907257,
+        "worker_near_miss": 0.9426552057266235,
+        "uncontrolled_semantic_risk": 0.6587069630622864,
+        "uncertainty": 10.805296897888184
+      },
+      "cost_advantage_means": {
+        "collision": -0.06634923815727234,
+        "restricted_zone": 0.21700000762939453,
+        "worker_near_miss": 0.28875523805618286,
+        "uncontrolled_semantic_risk": 0.23997721076011658,
+        "uncertainty": 3.1380832195281982
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.22159700000000004,
+        "worker_near_miss": 0.17668,
+        "uncontrolled_semantic_risk": 0.16813333333333333,
+        "uncertainty": 1.302350021802634
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.897,
+        "worker_near_miss": 1.392,
+        "uncontrolled_semantic_risk": 2.9000000000000004,
+        "uncertainty": 13.59000021442771
+      },
+      "hierarchy_loss": 1.9829418659210205,
+      "entropy": 0.7876014709472656,
+      "anchor_kl": 9.613120346330106e-05,
+      "approximate_kl": 1.6641570255160332e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 7.054440021514893,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.9,
+        "worker_near_miss": 1.4,
+        "uncontrolled_semantic_risk": 5.4,
+        "uncertainty": 14.39000021442771
+      },
+      "process_rss_bytes": 1828597760,
+      "gpu_allocated_bytes": 43772416,
+      "steps_per_second": 168.21189205233097
+    },
+    {
+      "step": 3840,
+      "update": 15,
+      "curriculum_stage": "full",
+      "world": "site_dynamic",
+      "profile": "medium",
+      "total_loss": 1.2702888250350952,
+      "policy_loss": -0.00027452409267425537,
+      "reward_value_loss": 6.972011089324951,
+      "cost_value_losses": {
+        "collision": 0.08897506445646286,
+        "restricted_zone": 0.08902685344219208,
+        "worker_near_miss": 0.08925624936819077,
+        "uncontrolled_semantic_risk": 1.4696459770202637,
+        "uncertainty": 3.019102096557617
+      },
+      "cost_advantage_means": {
+        "collision": 0.001773020951077342,
+        "restricted_zone": 0.0010348886717110872,
+        "worker_near_miss": 0.0004654189106076956,
+        "uncontrolled_semantic_risk": 0.8903617858886719,
+        "uncertainty": 1.700874924659729
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.29683600000000004,
+        "worker_near_miss": 0.224792,
+        "uncontrolled_semantic_risk": 0.203,
+        "uncertainty": 1.7598600290611386
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.897,
+        "worker_near_miss": 1.392,
+        "uncontrolled_semantic_risk": 2.9000000000000004,
+        "uncertainty": 13.59000021442771
+      },
+      "hierarchy_loss": 1.9948533773422241,
+      "entropy": 0.7249763011932373,
+      "anchor_kl": 9.700151713332161e-05,
+      "approximate_kl": 2.0557490643113852e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 5.511035442352295,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.9,
+        "worker_near_miss": 1.4,
+        "uncontrolled_semantic_risk": 5.4,
+        "uncertainty": 14.39000021442771
+      },
+      "process_rss_bytes": 1828601856,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 168.84597426129582
+    },
+    {
+      "step": 4096,
+      "update": 16,
+      "curriculum_stage": "full",
+      "world": "site_medium",
+      "profile": "high",
+      "total_loss": 3.1636199951171875,
+      "policy_loss": -9.11317765712738e-05,
+      "reward_value_loss": 23.18210792541504,
+      "cost_value_losses": {
+        "collision": 0.1065341979265213,
+        "restricted_zone": 0.16607140004634857,
+        "worker_near_miss": 0.10765897482633591,
+        "uncontrolled_semantic_risk": 0.5287749767303467,
+        "uncertainty": 6.623305320739746
+      },
+      "cost_advantage_means": {
+        "collision": -0.04377615451812744,
+        "restricted_zone": 0.026122968643903732,
+        "worker_near_miss": -0.046026330441236496,
+        "uncontrolled_semantic_risk": 0.2920166552066803,
+        "uncertainty": 2.327275037765503
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.3729720000000001,
+        "worker_near_miss": 0.274296,
+        "uncontrolled_semantic_risk": 0.2484,
+        "uncertainty": 2.394960038977861
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.897,
+        "worker_near_miss": 1.392,
+        "uncontrolled_semantic_risk": 3.5999999999999996,
+        "uncertainty": 17.590000274032352
+      },
+      "hierarchy_loss": 1.8800545930862427,
+      "entropy": 0.6614099740982056,
+      "anchor_kl": 0.00012347413576208055,
+      "approximate_kl": 1.5972182154655457e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 8.12994384765625,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.9,
+        "worker_near_miss": 1.4,
+        "uncontrolled_semantic_risk": 6.1,
+        "uncertainty": 18.390000274032353
+      },
+      "process_rss_bytes": 1828671488,
+      "gpu_allocated_bytes": 43772416,
+      "steps_per_second": 169.29873780309865
+    },
+    {
+      "step": 4352,
+      "update": 17,
+      "curriculum_stage": "full",
+      "world": "site_medium",
+      "profile": "high",
+      "total_loss": 1.546441674232483,
+      "policy_loss": -0.0003690999001264572,
+      "reward_value_loss": 3.3185667991638184,
+      "cost_value_losses": {
+        "collision": 0.07139111310243607,
+        "restricted_zone": 0.07214770466089249,
+        "worker_near_miss": 0.07267215847969055,
+        "uncontrolled_semantic_risk": 0.7329548597335815,
+        "uncertainty": 10.348567962646484
+      },
+      "cost_advantage_means": {
+        "collision": -0.06396808475255966,
+        "restricted_zone": -0.0655483677983284,
+        "worker_near_miss": -0.0664275735616684,
+        "uncontrolled_semantic_risk": 0.4988862872123718,
+        "uncertainty": 3.090655565261841
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.4500050000000001,
+        "worker_near_miss": 0.325192,
+        "uncontrolled_semantic_risk": 0.30770000000000003,
+        "uncertainty": 3.189690051285177
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.897,
+        "worker_near_miss": 1.392,
+        "uncontrolled_semantic_risk": 4.7,
+        "uncertainty": 22.03000034019351
+      },
+      "hierarchy_loss": 1.7513034343719482,
+      "entropy": 0.872055172920227,
+      "anchor_kl": 0.0001158345548901707,
+      "approximate_kl": 1.2521923054009676e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 7.31464958190918,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.9,
+        "worker_near_miss": 1.4,
+        "uncontrolled_semantic_risk": 7.2,
+        "uncertainty": 22.83000034019351
+      },
+      "process_rss_bytes": 1828675584,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 169.75902375021377
+    },
+    {
+      "step": 4608,
+      "update": 18,
+      "curriculum_stage": "full",
+      "world": "site_dynamic",
+      "profile": "high",
+      "total_loss": 3.427605390548706,
+      "policy_loss": -0.0003154352307319641,
+      "reward_value_loss": 21.71103858947754,
+      "cost_value_losses": {
+        "collision": 0.08037000149488449,
+        "restricted_zone": 0.0814599022269249,
+        "worker_near_miss": 1.129109263420105,
+        "uncontrolled_semantic_risk": 0.09115183353424072,
+        "uncertainty": 10.394701957702637
+      },
+      "cost_advantage_means": {
+        "collision": -0.08404886722564697,
+        "restricted_zone": -0.08659318834543228,
+        "worker_near_miss": 0.2505539357662201,
+        "uncontrolled_semantic_risk": -0.10203012824058533,
+        "uncertainty": 3.0887370109558105
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.500635,
+        "worker_near_miss": 0.36928,
+        "uncontrolled_semantic_risk": 0.33620000000000005,
+        "uncertainty": 4.10339006376788
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.597,
+        "worker_near_miss": 1.192,
+        "uncontrolled_semantic_risk": 2.5999999999999996,
+        "uncertainty": 25.850000397115945
+      },
+      "hierarchy_loss": 1.627460241317749,
+      "entropy": 0.8271663188934326,
+      "anchor_kl": 0.00012302851246204227,
+      "approximate_kl": 1.4656689018011093e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 8.160758972167969,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.6,
+        "worker_near_miss": 1.2,
+        "uncontrolled_semantic_risk": 5.1,
+        "uncertainty": 26.650000397115946
+      },
+      "process_rss_bytes": 1829785600,
+      "gpu_allocated_bytes": 43773440,
+      "steps_per_second": 170.03928280134247
+    },
+    {
+      "step": 4864,
+      "update": 19,
+      "curriculum_stage": "full",
+      "world": "site_dynamic",
+      "profile": "high",
+      "total_loss": 3.9658210277557373,
+      "policy_loss": -0.0006314702332019806,
+      "reward_value_loss": 26.1426944732666,
+      "cost_value_losses": {
+        "collision": 0.08178561925888062,
+        "restricted_zone": 0.1109849214553833,
+        "worker_near_miss": 0.08237661421298981,
+        "uncontrolled_semantic_risk": 0.5297166109085083,
+        "uncertainty": 11.730155944824219
+      },
+      "cost_advantage_means": {
+        "collision": -0.04185622185468674,
+        "restricted_zone": 0.02833658456802368,
+        "worker_near_miss": -0.04368001967668533,
+        "uncontrolled_semantic_risk": 0.37706995010375977,
+        "uncertainty": 3.358595848083496
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.5548620000000001,
+        "worker_near_miss": 0.41656,
+        "uncontrolled_semantic_risk": 0.3725666666666667,
+        "uncertainty": 4.978890075681358
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": false
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.597,
+        "worker_near_miss": 1.192,
+        "uncontrolled_semantic_risk": 2.5999999999999996,
+        "uncertainty": 25.850000397115945
+      },
+      "hierarchy_loss": 2.010127544403076,
+      "entropy": 0.7189812064170837,
+      "anchor_kl": 0.0001658810069784522,
+      "approximate_kl": 1.262087607756257e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 10.276139259338379,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.6,
+        "worker_near_miss": 1.2,
+        "uncontrolled_semantic_risk": 5.1,
+        "uncertainty": 26.650000397115946
+      },
+      "process_rss_bytes": 1829998592,
+      "gpu_allocated_bytes": 43313664,
+      "steps_per_second": 170.4774833171474
+    },
+    {
+      "step": 5000,
+      "update": 20,
+      "curriculum_stage": "full",
+      "world": "site_dynamic",
+      "profile": "high",
+      "total_loss": 1.264756202697754,
+      "policy_loss": -0.0009883011225610971,
+      "reward_value_loss": 0.3361704349517822,
+      "cost_value_losses": {
+        "collision": 0.07025424391031265,
+        "restricted_zone": 0.2765990197658539,
+        "worker_near_miss": 0.07065802812576294,
+        "uncontrolled_semantic_risk": 0.13581489026546478,
+        "uncertainty": 10.858787536621094
+      },
+      "cost_advantage_means": {
+        "collision": 0.03137519210577011,
+        "restricted_zone": 0.2975730001926422,
+        "worker_near_miss": 0.029744800180196762,
+        "uncontrolled_semantic_risk": 0.15263798832893372,
+        "uncertainty": 3.2158167362213135
+      },
+      "multipliers": {
+        "collision": 0.0,
+        "restricted_zone": 0.6096860000000001,
+        "worker_near_miss": 0.465032,
+        "uncontrolled_semantic_risk": 0.40980000000000005,
+        "uncertainty": 5.0
+      },
+      "multiplier_saturation": {
+        "collision": false,
+        "restricted_zone": false,
+        "worker_near_miss": false,
+        "uncontrolled_semantic_risk": false,
+        "uncertainty": true
+      },
+      "constraint_residuals": {
+        "collision": 0.0,
+        "restricted_zone": 0.597,
+        "worker_near_miss": 1.192,
+        "uncontrolled_semantic_risk": 2.5999999999999996,
+        "uncertainty": 25.850000397115945
+      },
+      "hierarchy_loss": 1.8654084205627441,
+      "entropy": 0.8997966051101685,
+      "anchor_kl": 0.00017249578377231956,
+      "approximate_kl": 1.660493325061907e-07,
+      "clip_fraction": 0.0,
+      "gradient_norm": 10.760787963867188,
+      "observed_episode_costs": {
+        "collision": 0.0,
+        "restricted_zone": 0.6,
+        "worker_near_miss": 1.2,
+        "uncontrolled_semantic_risk": 5.1,
+        "uncertainty": 26.650000397115946
+      },
+      "process_rss_bytes": 1840635904,
+      "gpu_allocated_bytes": 39730688,
+      "steps_per_second": 170.47452371271584
+    }
+  ]
+}

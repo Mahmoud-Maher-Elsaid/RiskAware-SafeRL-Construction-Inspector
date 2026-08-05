@@ -1,0 +1,16 @@
+{
+  "status": "FAILED",
+  "corrections": 51000,
+  "integrity_gate": true,
+  "task_competence_gate": false,
+  "final_success": 0.16666666666666666,
+  "final_hazard_recall": 0.4008155049459397,
+  "final_coverage": 0.4008155049459397,
+  "root_causes": [
+    "Selected non-contiguous states shared episode identifiers and were interpreted as recurrently adjacent.",
+    "Risk-aware A* disagreement overwhelmed the task policy without an explicit KL anchor.",
+    "Level-triggered deadlock oversampling dominated the correction set.",
+    "Persistent risk reasons suppressed probabilistic task-anchor examples."
+  ],
+  "accepted": false
+}

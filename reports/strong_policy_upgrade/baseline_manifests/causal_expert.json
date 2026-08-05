@@ -1,0 +1,21 @@
+{
+  "baseline": "systematic-causal-expert",
+  "implementation_or_checkpoint": "src/riskaware_saferrl/baselines/causal_expert.py",
+  "sha256": "5272c9a7bd062ba55f9aa5bdff88668e764693f281bec36bb71f0603c28b1f68",
+  "observation_schema": "exactly map, state, action_mask; persistent observation-derived memory",
+  "action_schema": "five valid discrete primitives",
+  "environment_schema": "research-grid-v2 partial observation",
+  "evaluation_seeds": {"train": "0..99", "validation": "1000..1029", "test": "2000..2029"},
+  "software_versions": "repository Python/PyTorch lock",
+  "git_commit": "7bd5e656a9c52fce5e00ff826e1452223da15151",
+  "metrics": {
+    "episodes": 1440,
+    "mission_success": 0.8215277778,
+    "hazard_recall": 0.9754622441,
+    "coverage": 0.9754622441,
+    "collision_rate": 0.0,
+    "invalid_actions": 0
+  },
+  "known_limitations": ["systematic sweep can be path-inefficient", "not a learned policy"],
+  "production_status": "teacher and planner baseline only"
+}

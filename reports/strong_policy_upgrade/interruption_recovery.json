@@ -1,0 +1,53 @@
+{
+  "status": "PASSED",
+  "current_branch": "final/strong-policy-upgrade",
+  "head": "2c345f8462ba19e65b976981f26445790343adad",
+  "remote_head": "7e2d7c86adcd0533f59a020bfd40dfe7c30684f6",
+  "staged_files": [],
+  "unstaged_files": [],
+  "untracked_files_at_recovery": [
+    "reports/strong_policy_upgrade/imitation_learning/behavior_cloning_summary.json",
+    "scripts/train_behavior_cloning_v2.py",
+    "src/riskaware_saferrl/buffers/__init__.py",
+    "src/riskaware_saferrl/buffers/recurrent_cost_rollout_buffer.py",
+    "src/riskaware_saferrl/policies/__init__.py",
+    "src/riskaware_saferrl/policies/recurrent_masked_policy.py",
+    "tests/algorithms/test_recurrent_cost_rollout_buffer.py",
+    "tests/policies/test_recurrent_masked_policy.py"
+  ],
+  "preserved_commits": {
+    "32457f7": "Introduce memory-ready research environment v2",
+    "2c345f8": "Build validated expert demonstration dataset"
+  },
+  "expert_dataset_transition_count": 120144,
+  "expert_dataset_sha256": "06f872d819241563d3bf735d97c203d3de9633fbbc9cb3e5e99f95a1edbb1285",
+  "expert_chunk_count": 13,
+  "expert_chunk_total_bytes": 11165922,
+  "partial_checkpoint": {
+    "path": "artifacts/strong_policy_upgrade/imitation_learning/best_behavior_cloning.pt",
+    "bytes": 1775646,
+    "observed_sha256": "45735bc53fd26e37411e2d238bd523a4dcdcb6de16ef114e0b6d4c5aba68072a",
+    "reported_sha256": "eb14dc40a527b513a4c0ae06c54be77066f80e9c0603748931e361a86b51799e",
+    "accepted": false,
+    "reason": "The interrupted checkpoint hash does not match the failed summary and has not passed held-out gates."
+  },
+  "files_implemented_but_not_committed": [
+    "scripts/train_behavior_cloning_v2.py",
+    "src/riskaware_saferrl/buffers/recurrent_cost_rollout_buffer.py",
+    "src/riskaware_saferrl/policies/recurrent_masked_policy.py",
+    "tests/algorithms/test_recurrent_cost_rollout_buffer.py",
+    "tests/policies/test_recurrent_masked_policy.py"
+  ],
+  "exact_recovery_point": "Expert demonstrations and recurrent architecture existed; Behavior Cloning had completed two epochs but failed accuracy/recall acceptance before DAgger.",
+  "memory_exhaustion_cause": "DemonstrationSequences copied every selected 32-step maps, states, masks, and actions array into self.sequences. Compressed NPZ chunks were expanded repeatedly and retained in process RAM until the Windows commit limit and 2 GiB page file were exhausted.",
+  "memory_at_recovery": {
+    "total_physical_bytes": 34011373568,
+    "available_physical_bytes": 18767794176,
+    "page_file_bytes": 2147483648,
+    "page_file_used_bytes": 12902400
+  },
+  "external_backup": {
+    "path": "C:/Users/maher/AppData/Local/Temp/RiskAware_strong_policy_recovery_20260729_225938",
+    "manifest": "backup_manifest.json"
+  }
+}

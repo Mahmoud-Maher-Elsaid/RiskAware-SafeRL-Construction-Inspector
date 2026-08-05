@@ -1,0 +1,14 @@
+{
+  "baseline": "causal-risk-aware-A-star",
+  "implementation_or_checkpoint": "src/riskaware_saferrl/baselines/causal_expert.py:planning_strategy=risk_astar",
+  "sha256": "5272c9a7bd062ba55f9aa5bdff88668e764693f281bec36bb71f0603c28b1f68",
+  "observation_schema": "discovered map and current observations only",
+  "action_schema": "five valid discrete primitives",
+  "environment_schema": "research-grid-v2 partial observation",
+  "evaluation_seeds": "paired baseline protocol in DAgger risk-A-star reports",
+  "software_versions": "repository Python/PyTorch lock",
+  "git_commit": "7bd5e656a9c52fce5e00ff826e1452223da15151",
+  "metrics": {"mean_raw_safety_cost": 8.7},
+  "known_limitations": ["not an RL policy", "substantial disagreement with task-success policy"],
+  "production_status": "planner baseline only"
+}

@@ -1,0 +1,134 @@
+{
+  "checkpoint_path": "artifacts/strong_policy_upgrade/safety_dagger_repair_2/iteration_2/training/best_behavior_cloning.pt",
+  "checkpoint_sha256": "cc0ca2190fa77f99fc78cce6fe9e9a3d9f90c989204d62c69b645860520cb119",
+  "cuda_device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "dataset_sha256": "c7714aa7cd2a766af4e9c0b94aafecbf46fb16aa655323cc3c64b6a9791f2406",
+  "device": "cuda",
+  "epochs_completed": 2,
+  "held_out_test": {
+    "accuracy": 0.8899332080150382,
+    "examples": 25003,
+    "invalid_action_predictions": 0,
+    "loss": 0.28561308217836967,
+    "per_action_precision": [
+      0.7082860385925085,
+      0.7784303256807261,
+      0.9592282958199357,
+      0.9589848756729044,
+      1.0
+    ],
+    "per_action_recall": [
+      0.8813559322033898,
+      0.8983364140480592,
+      0.8792737561895779,
+      0.8843971631205674,
+      1.0
+    ],
+    "per_action_support": [
+      3540,
+      3246,
+      8482,
+      8460,
+      1275
+    ]
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "selection_score": 1.102530095344357,
+      "training_loss": 0.21216192765565908,
+      "validation": {
+        "accuracy": 0.8870080406263224,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.296846406477367,
+        "per_action_precision": [
+          0.7089072543617998,
+          0.7449494949494949,
+          0.9639706795875264,
+          0.955440164231373,
+          1.0
+        ],
+        "per_action_recall": [
+          0.8620882188721385,
+          0.9121830550401979,
+          0.8718957186200696,
+          0.8859030343746501,
+          1.0
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    },
+    {
+      "epoch": 2,
+      "selection_score": 1.1076056656622946,
+      "training_loss": 0.2019301368398686,
+      "validation": {
+        "accuracy": 0.8924325780017697,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.28229207469911527,
+        "per_action_precision": [
+          0.7174773097509891,
+          0.7711640211640212,
+          0.9586716761604654,
+          0.9548022598870056,
+          1.0
+        ],
+        "per_action_recall": [
+          0.8606923506420994,
+          0.9013605442176871,
+          0.888863917294078,
+          0.8893740902474527,
+          0.9992576095025983
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    }
+  ],
+  "sequence_length": 32,
+  "split_leakage": 0,
+  "status": "PASSED",
+  "test_sequences": 848,
+  "training_sequences": 7832,
+  "validation": {
+    "accuracy": 0.8924325780017697,
+    "examples": 25993,
+    "invalid_action_predictions": 0,
+    "loss": 0.28229207469911527,
+    "per_action_precision": [
+      0.7174773097509891,
+      0.7711640211640212,
+      0.9586716761604654,
+      0.9548022598870056,
+      1.0
+    ],
+    "per_action_recall": [
+      0.8606923506420994,
+      0.9013605442176871,
+      0.888863917294078,
+      0.8893740902474527,
+      0.9992576095025983
+    ],
+    "per_action_support": [
+      3582,
+      3234,
+      8899,
+      8931,
+      1347
+    ]
+  },
+  "validation_sequences": 882
+}
