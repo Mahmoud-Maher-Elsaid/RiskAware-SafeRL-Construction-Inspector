@@ -1,0 +1,12 @@
+{
+    "policy_decisions":  100,
+    "synthetic_observation_fallback":  false,
+    "structured_state_validated":  true,
+    "causal_option_mask_active":  true,
+    "recurrent_state_updated":  true,
+    "target_persistence_validated":  true,
+    "perception_affects_policy":  false,
+    "invalid_option_count":  0,
+    "invalid_primitive_count":  0,
+    "invalid_motor_command_count":  0
+}

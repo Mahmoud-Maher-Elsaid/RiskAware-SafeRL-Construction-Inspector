@@ -1,19 +1,9 @@
 ﻿{
-    "status":  "PROJECT_COMPLETED_WITH_PRODUCTION_V1_RETAINED_AND_V4_EXPERIMENTAL",
-    "gates":  {
-                  "repository_software":  true,
-                  "github_ci":  true,
-                  "production_v1":  true,
-                  "experimental_v4_webots":  true,
-                  "benchmark_v2":  true,
-                  "cv_audit":  true,
-                  "ablations_statistics":  true,
-                  "paper":  true,
-                  "documentation_release":  true,
-                  "production_replacement_approved":  false,
-                  "production_policy":  "RiskShield-PPO v1",
-                  "status":  "PROJECT_COMPLETED_WITH_PRODUCTION_V1_RETAINED_AND_V4_EXPERIMENTAL"
-              },
+    "status":  "PASSED",
+    "runtime_mode":  "experimental",
+    "production_replacement_approved":  false,
+    "synthetic_observation_fallback":  false,
+    "recurrent_state_reset_between_episodes":  true,
     "worlds":  [
                    {
                        "runtime_mode":  "experimental",
@@ -162,26 +152,5 @@
                        "checkpoint_sha256":  "1b193f429d8411c30232b60c63260b2df0d112559a6a68139915cc402be14888",
                        "cv_checkpoint_sha256":  "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550"
                    }
-               ],
-    "benchmark":  {
-                      "status":  "PASSED",
-                      "historical_rows":  1350,
-                      "hierarchical_rows":  270,
-                      "total_rows":  1620,
-                      "unique_run_ids":  1620,
-                      "duplicate_rows":  0,
-                      "missing_rows":  0,
-                      "unresolved_execution_failures":  0,
-                      "historical_rows_changed":  false,
-                      "metric_availability":  {
-                                                  "near_miss_rate":  false,
-                                                  "near_miss_count":  false,
-                                                  "restricted_zone_violations":  false,
-                                                  "energy_usage":  false,
-                                                  "path_length":  false,
-                                                  "emergency_stops":  false,
-                                                  "inference_latency_ms":  false,
-                                                  "policy_latency_ms":  false
-                                              }
-                  }
+               ]
 }

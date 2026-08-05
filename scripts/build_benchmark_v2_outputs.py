@@ -45,22 +45,30 @@ def main() -> int:
             "inspection_coverage": hierarchical.inspection_coverage,
             "collision_rate": hierarchical.collision_count,
             "collision_count": hierarchical.collision_count,
-            "near_miss_rate": 0.0,
-            "near_miss_count": 0,
+            "near_miss_rate": None,
+            "near_miss_count": None,
             "constraint_violations": hierarchical.planner_failures,
-            "restricted_zone_violations": 0,
+            "restricted_zone_violations": None,
             "time_to_inspect": hierarchical.episode_steps,
             "mission_duration": hierarchical.episode_steps,
-            "energy_usage": 0.0,
+            "energy_usage": None,
             "robustness_score": hierarchical.hazard_recall,
             "success": hierarchical.success,
             "success_rate": hierarchical.success,
             "safety_cost": hierarchical.safety_cost,
-            "path_length": hierarchical.episode_steps,
+            "path_length": None,
             "shield_interventions": hierarchical.shield_interventions,
-            "emergency_stops": 0,
-            "inference_latency_ms": 0.0,
-            "policy_latency_ms": 0.0,
+            "emergency_stops": None,
+            "inference_latency_ms": None,
+            "policy_latency_ms": None,
+            "metric_available_near_miss_rate": False,
+            "metric_available_near_miss_count": False,
+            "metric_available_restricted_zone_violations": False,
+            "metric_available_energy_usage": False,
+            "metric_available_path_length": False,
+            "metric_available_emergency_stops": False,
+            "metric_available_inference_latency_ms": False,
+            "metric_available_policy_latency_ms": False,
             "episode_steps": hierarchical.episode_steps,
             "terminated": True,
             "truncated": False,
@@ -71,6 +79,11 @@ def main() -> int:
         }
     )
     combined = pd.concat([historical, converted], ignore_index=True, sort=False)
+    availability_columns = [
+        column for column in combined.columns if column.startswith("metric_available_")
+    ]
+    for column in availability_columns:
+        combined[column] = combined[column].fillna(False).astype(bool)
     if len(combined) != 1620 or combined.run_id.nunique() != 1620:
         raise RuntimeError("Combined benchmark does not contain exactly 1620 unique rows.")
     combined.to_csv(output / "raw_results.csv", index=False)
@@ -94,8 +107,14 @@ def main() -> int:
             "shield_mode",
         }
     ]
-    if combined[numeric].isna().any().any():
-        raise RuntimeError("Combined benchmark contains NaN values.")
+    for column in numeric:
+        availability = f"metric_available_{column}"
+        if availability in combined.columns:
+            measured = combined[combined[availability]]
+            if measured[column].isna().any():
+                raise RuntimeError(f"Measured benchmark metric contains NaN values: {column}")
+        elif combined[column].isna().any():
+            raise RuntimeError(f"Combined benchmark contains NaN values: {column}")
     aggregate = (
         combined.groupby(
             ["algorithm", "environment_size_name", "hazard_density_name", "perception_noise"],
@@ -124,6 +143,16 @@ def main() -> int:
         "missing_rows": 0,
         "unresolved_execution_failures": 0,
         "historical_rows_changed": False,
+        "metric_availability": {
+            "near_miss_rate": False,
+            "near_miss_count": False,
+            "restricted_zone_violations": False,
+            "energy_usage": False,
+            "path_length": False,
+            "emergency_stops": False,
+            "inference_latency_ms": False,
+            "policy_latency_ms": False,
+        },
     }
     (output / "benchmark_summary.json").write_text(
         json.dumps(summary, indent=2) + "\n", encoding="utf-8"

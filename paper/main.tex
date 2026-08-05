@@ -159,8 +159,11 @@ typed detections $\rightarrow$ temporal filtering $\rightarrow$ semantic risk
 state $\rightarrow$ policy and shield. The production checkpoint has 14
 declared classes and a recorded SHA-256 hash. Unsupported concepts use
 explicitly labeled simulator ground truth rather than fabricated detections.
-Live evidence records ten successful CUDA inferences, annotations, and a
-perception-driven state change.
+The corrected hierarchical Webots runtime records 100 policy decisions per
+world with real camera timestamps, recurrent-state hashes, target persistence,
+planner/controller/shield traces, and wheel commands. In the tested worlds the
+detector produced no valid detections, so the v4 report truthfully leaves
+perception-driven semantic change false; no CV metric is fabricated.
 
 \section{Experimental Setup}
 The primary matrix is $3$ site sizes $\times3$ hazard densities $\times3$
@@ -174,6 +177,14 @@ cell. Friedman tests compare all algorithms because bounded, zero-inflated
 metrics need not be normal. A planned paired Wilcoxon comparison contrasts
 RiskShield-PPO and PPO, with Holm correction over six metrics. Standardized
 paired mean difference is the effect size.
+
+The corrected Webots integration was validated headlessly in the small,
+medium, and dynamic worlds. Each run reached 100 hierarchical decisions and
+used the H4 target-persistence checkpoint, while RiskShield-PPO v1 remained
+the production policy. The earlier three-step adapter is retained only as
+superseded startup evidence. A visible real-time demo was attempted with the
+same controller; desktop Qt startup is environment-dependent and is reported
+separately from the accepted headless runtime evidence.
 
 \section{Main Results}
 \begin{table*}[t]

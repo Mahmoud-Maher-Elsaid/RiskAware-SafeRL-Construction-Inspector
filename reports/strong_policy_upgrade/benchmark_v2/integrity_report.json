@@ -7,5 +7,15 @@
   "duplicate_rows": 0,
   "missing_rows": 0,
   "unresolved_execution_failures": 0,
-  "historical_rows_changed": false
+  "historical_rows_changed": false,
+  "metric_availability": {
+    "near_miss_rate": false,
+    "near_miss_count": false,
+    "restricted_zone_violations": false,
+    "energy_usage": false,
+    "path_length": false,
+    "emergency_stops": false,
+    "inference_latency_ms": false,
+    "policy_latency_ms": false
+  }
 }
