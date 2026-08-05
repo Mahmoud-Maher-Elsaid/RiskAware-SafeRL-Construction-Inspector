@@ -20,6 +20,12 @@ try {
     if (-not $p.mission_completed -or $p.manual_control_used -or $p.fallback_controller_used) { throw 'Production v1 gate failed.' }
     $paper = Join-Path $repo 'reports\strong_policy_upgrade\paper_validation\summary.json'
     if (-not (Test-Path -LiteralPath $paper)) { throw 'Paper validation report missing.' }
+    $webots = Join-Path $repo 'reports\strong_policy_upgrade\webots_v4_final\summary.json'
+    if (-not (Test-Path -LiteralPath $webots)) { throw 'Experimental v4 Webots summary missing.' }
+    $w = Get-Content $webots -Raw | ConvertFrom-Json
+    if ($w.status -ne 'PASSED' -or @($w.worlds).Count -ne 3) { throw 'Experimental v4 Webots gate failed.' }
+    $ablation = Join-Path $repo 'reports\strong_policy_upgrade\ablations_v4\summary.json'
+    if (-not (Test-Path -LiteralPath $ablation)) { throw 'v4 ablation summary missing.' }
     $accept = Join-Path $repo 'reports\strong_policy_upgrade\final_acceptance_v2'
     New-Item -ItemType Directory -Force -Path $accept | Out-Null
     $gates = [ordered]@{
@@ -28,12 +34,12 @@ try {
         benchmark_v2 = $true
         paper = $true
         cv_audit = $true
-        experimental_v4_webots = $false
+        experimental_v4_webots = $true
         v4_production_replacement = $false
-        status = 'RESEARCH_RELEASE_BLOCKED_BY_MISSING_EXPERIMENTAL_WEBOTS_ADAPTER'
+        status = 'PROJECT_COMPLETED_WITH_PRODUCTION_V1_RETAINED_AND_V4_EXPERIMENTAL'
     }
     $gates | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $accept 'gates.json') -Encoding UTF8
     $gates | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $accept 'summary.json') -Encoding UTF8
-    'Experimental v4 Webots adapter remains unimplemented; v1 production is retained and no v4 replacement is approved.' | Set-Content (Join-Path $accept 'summary.md') -Encoding UTF8
-    throw 'Final acceptance is blocked by the missing experimental v4 Webots adapter.'
+    'Repository/software, production v1, experimental v4 runtime, benchmark v2, CV audit, paper, and release gates passed. RiskShield-PPO v1 remains production; v4 replacement remains rejected.' | Set-Content (Join-Path $accept 'summary.md') -Encoding UTF8
+    Write-Output 'FINAL_ACCEPTANCE_V2=PASSED'
 } finally { Pop-Location }

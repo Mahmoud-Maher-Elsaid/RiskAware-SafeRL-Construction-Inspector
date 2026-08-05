@@ -1,0 +1,5 @@
+{
+    "checkpoint_path":  "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\artifacts\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence\\seed_105\\best_checkpoint.pt",
+    "checkpoint_sha256":  "1b193f429d8411c30232b60c63260b2df0d112559a6a68139915cc402be14888",
+    "cv_checkpoint_sha256":  "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550"
+}

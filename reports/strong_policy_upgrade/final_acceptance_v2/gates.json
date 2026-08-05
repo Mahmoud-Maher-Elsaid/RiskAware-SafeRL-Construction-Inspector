@@ -4,7 +4,7 @@
     "benchmark_v2":  true,
     "paper":  true,
     "cv_audit":  true,
-    "experimental_v4_webots":  false,
+    "experimental_v4_webots":  true,
     "v4_production_replacement":  false,
-    "status":  "RESEARCH_RELEASE_BLOCKED_BY_MISSING_EXPERIMENTAL_WEBOTS_ADAPTER"
+    "status":  "PROJECT_COMPLETED_WITH_PRODUCTION_V1_RETAINED_AND_V4_EXPERIMENTAL"
 }
