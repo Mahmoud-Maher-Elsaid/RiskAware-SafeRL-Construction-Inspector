@@ -11,8 +11,8 @@
     "H4 target-persistence derivation"
   ],
   "active_strategy": "H4 target-persistence option-level HRMPPO recovery",
-  "active_process": null,
-  "exact_resume_command": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\.venv\\Scripts\\python.exe scripts\\train_hierarchical_imitation.py --dataset artifacts\\strong_policy_upgrade\\hierarchical_demonstrations_h4_target_persistence --output artifacts\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence --report-dir reports\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence --seeds 105 106 107 --epochs 2 --batch-size 16 --sequence-length 32 --device cuda --resume",
+  "active_process": "H4 recovery 30000-option run (resumable)",
+  "exact_resume_command": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\.venv\\Scripts\\python.exe scripts\\train_hierarchical_hrmppo_mpc_v4.py --initialize artifacts\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence\\seed_105\\best_checkpoint.pt --option-steps 30000 --rollout-options 128 --seed 20260805 --output artifacts\\strong_policy_upgrade\\hierarchical_hrmppo_v4_h4_recovery_30k --device cuda --resume",
   "initialization_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/seed_105/best_checkpoint.pt",
   "initialization_sha256": "1b193f429d8411c30232b60c63260b2df0d112559a6a68139915cc402be14888",
   "latest_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h3_5k/final_checkpoint.pt",
@@ -50,7 +50,8 @@
     "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h2_5k/",
     "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h3_5k/",
     "artifacts/strong_policy_upgrade/hierarchical_demonstrations_h4_target_persistence/",
-    "artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/"
+    "artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/",
+    "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h4_recovery_30k/"
   ],
   "untracked_evidence_paths": "Existing generated artifacts under artifacts/ and reports/ are preserved locally and are not source changes; no generated checkpoint or raw dataset is staged.",
   "validation_status": {
