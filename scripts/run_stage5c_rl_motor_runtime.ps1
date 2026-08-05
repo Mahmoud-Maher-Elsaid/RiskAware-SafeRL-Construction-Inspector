@@ -45,6 +45,11 @@ $env:YOLO_CONFIG_DIR = Join-Path $RepoRoot ".runtime\ultralytics"
 $env:QT_AUTO_SCREEN_SCALE_FACTOR = "0"
 $env:QT_SCALE_FACTOR = "1"
 $env:QT_SCREEN_SCALE_FACTORS = "1"
+# Force the unattended Webots child onto Qt's offscreen backend.  Without
+# this, inherited desktop geometry can be expanded into a multi-million-pixel
+# framebuffer before --no-rendering is applied.
+$env:QT_QPA_PLATFORM = "offscreen"
+$env:QT_SCALE_FACTOR_ROUNDING_POLICY = "Round"
 $env:PYTHONUNBUFFERED = "1"
 $env:PYTHONIOENCODING = "utf-8"
 $env:PYTHONPATH = Join-Path $WebotsHome "lib\controller\python"

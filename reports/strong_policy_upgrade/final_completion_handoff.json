@@ -2,7 +2,7 @@
   "branch": "final/strong-policy-upgrade",
   "local_commit": "6fb3f7cf91647c52b2626b4271e35b6d536ca7f4",
   "remote_commit": "6fb3f7cf91647c52b2626b4271e35b6d536ca7f4",
-  "current_phase": "hierarchical_v4_recovery_evaluation",
+  "current_phase": "webots_launcher_repair",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",
@@ -50,7 +50,7 @@
     "hierarchical recovery training and final grid acceptance",
     "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
   ],
-  "next_exact_action": "Complete the paired final grid evaluation/reporting for H4 imitation and H3 baselines; keep RiskShield-PPO v1 in production unless a candidate passes the declared task and safety gates.",
+  "next_exact_action": "Diagnose the post-Qt Webots controller timeout and process/marker path, then rerun the bounded production regression before any v4 installation.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
@@ -74,6 +74,9 @@
     "full_ruff": "PASSED",
     "full_pytest": "PASSED",
     "github_actions": "No check run is exposed for 8d1f7ab; public API returned 404 and repository has no local workflow file",
+    "webots_launcher_parse": "PASSED",
+    "webots_qt_framebuffer_repair": "applied; fatal geometry allocation no longer observed",
+    "webots_production_regression": "FAILED timeout before completion marker after offscreen Qt repair",
     "production_replacement": "not attempted"
   }
 }
