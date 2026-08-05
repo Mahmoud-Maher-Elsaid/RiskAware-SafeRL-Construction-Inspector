@@ -1,0 +1,27 @@
+{
+  "status": "incomplete",
+  "production_v1_retained": true,
+  "v4_production_replacement": false,
+  "gates": {
+    "repository_software": "passed",
+    "github_actions": "passed",
+    "production_v1": "passed",
+    "cv_audit": "passed_with_labeled_metrics_unavailable",
+    "historical_benchmark": "passed_1350",
+    "experimental_v4_runtime": "incomplete",
+    "benchmark_v2_1620": "incomplete",
+    "ablations_v4": "incomplete",
+    "paper": "historical_pdf_present_but_final_update_incomplete",
+    "release": "manifest_generated",
+    "integration": "not_performed",
+    "main": "not_performed"
+  },
+  "blocking_deliverables": [
+    "experimental hierarchical Webots runtime",
+    "270 real hierarchical benchmark rows",
+    "v4 ablations and statistics",
+    "final paper update and visual validation",
+    "final acceptance script v2",
+    "integration and main merges"
+  ]
+}

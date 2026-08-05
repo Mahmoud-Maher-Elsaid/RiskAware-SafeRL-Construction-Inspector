@@ -1,0 +1,14 @@
+{
+  "repository_software": true,
+  "github_actions": true,
+  "production_v1": true,
+  "cv_audit": true,
+  "historical_benchmark_1350": true,
+  "experimental_v4_runtime": false,
+  "benchmark_v2_1620": false,
+  "ablations_v4": false,
+  "paper_final": false,
+  "release_manifest": true,
+  "integration": false,
+  "main": false
+}
