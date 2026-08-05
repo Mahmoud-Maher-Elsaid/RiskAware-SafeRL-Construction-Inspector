@@ -7,6 +7,7 @@
   "undefined_citations": false,
   "undefined_references": false,
   "missing_figures": false,
-  "visual_rasterizer": "not available in the repository environment; PDF metadata and compiler output validated",
+  "visual_rasterizer": "Poppler pdftoppm 25.07.0",
+  "visual_inspection": "PASSED; all 4 rendered pages inspected",
   "warnings": ["underfull hbox warnings", "MiKTeX update check advisory"]
 }

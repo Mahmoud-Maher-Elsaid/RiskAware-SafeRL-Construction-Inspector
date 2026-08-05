@@ -1,8 +1,8 @@
 {
   "branch": "final/strong-policy-upgrade",
-  "local_commit": "b804ea87604ba1df369e13f6212177d17e369206",
-  "remote_commit": "b804ea87604ba1df369e13f6212177d17e369206",
-  "current_phase": "local_release_acceptance_completed_ci_green",
+  "local_commit": "0a529c0f4b7a87f3e58fe18acf998922315f0eda",
+  "remote_commit": "0a529c0f4b7a87f3e58fe18acf998922315f0eda",
+  "current_phase": "benchmark_v2_paper_release_wrappers_completed",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",
@@ -79,11 +79,15 @@
     "webots_production_regression": "PASSED; production command exit code 0 and mission_completed=true after child-local Qt and Ultralytics environment repair",
     "webots_three_world_smoke": "PASSED; three generated worlds completed bounded smoke validation",
     "cv_final_audit": "PASSED schema/CUDA/latency audit; checkpoint retained because independent labeled mAP evidence is unavailable",
-    "benchmark_configuration_validation": "PASSED; 1350 historical rows unique; v4 270-row extension not generated",
+    "benchmark_configuration_validation": "PASSED; 1350 historical rows preserved and 270 real hierarchical rows combined into 1620 unique rows",
+    "benchmark_v2_integrity": "PASSED; 1620 rows, 1620 unique IDs, zero duplicates, zero missing, zero unresolved execution failures",
+    "paper_validation": "PASSED; two MiKTeX passes, four-page PDF, Poppler rasterization and visual inspection passed",
+    "release_package": "PASSED; release/manifest.json, release/SHA256SUMS.txt, release/README.md generated",
+    "experimental_v4_webots": "BLOCKED; no validated hierarchical Webots adapter exists; v1 smoke was not relabeled",
     "grid_environment_validation": "PASSED; 3 configurations",
     "github_ci_repair_commit": "0469c57e481659b523935a92b355f48c67ca3828",
-    "github_ci_remote_green_run": "PASSED; run 31038640148, exact head b804ea87604ba1df369e13f6212177d17e369206",
+    "github_ci_remote_green_run": "PASSED; run 31046291564, exact head 0a529c0f4b7a87f3e58fe18acf998922315f0eda",
     "production_replacement": "rejected; v1 remains production",
-    "local_acceptance": "PASSED; existing final acceptance completed 367 tests, historical benchmark, cached ablations, evidence, and production runtime"
+    "local_acceptance": "PARTIAL; software, production, benchmark, CV, and paper gates pass; experimental v4 Webots adapter remains unresolved"
   }
 }
