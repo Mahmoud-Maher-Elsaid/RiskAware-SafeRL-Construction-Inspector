@@ -233,7 +233,7 @@ def main() -> int:
         "motor_command_changes": motor_changes,
         "checkpoint_sha256": CHECKPOINT_SHA,
         "cv_checkpoint_sha256": detector.model_sha256,
-        "steps": 30,
+        "steps": 3,
     }
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     (OUT / "complete.marker").write_text("complete\n", encoding="utf-8")
