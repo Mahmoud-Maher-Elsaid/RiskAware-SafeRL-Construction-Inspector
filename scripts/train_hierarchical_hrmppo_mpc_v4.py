@@ -167,9 +167,13 @@ def main() -> int:
         history = list(saved["history"])
         random.setstate(saved["python_random_state"])
         np.random.set_state(saved["numpy_random_state"])
-        torch.random.set_rng_state(saved["torch_random_state"])
+        # Checkpoints loaded with map_location=cuda move the CPU RNG tensor to
+        # CUDA; torch.random.set_rng_state requires the CPU byte tensor.
+        torch.random.set_rng_state(saved["torch_random_state"].detach().cpu())
         if device.type == "cuda" and saved["cuda_random_state"] is not None:
-            torch.cuda.set_rng_state_all(saved["cuda_random_state"])
+            torch.cuda.set_rng_state_all(
+                [state.detach().cpu() for state in saved["cuda_random_state"]]
+            )
     process = psutil.Process()
     contract = SafetyContractV3.from_yaml(Path("configs/safety/safety_contract_v3.yaml"))
     context = np.zeros((4, 3), dtype=np.float32)
@@ -351,9 +355,7 @@ def main() -> int:
             else:
                 denominator = max(1, completed_primitive_steps)
                 scale = 100.0
-            observed_costs[name] = float(
-                episode_cost_totals[index] * scale / denominator
-            )
+            observed_costs[name] = float(episode_cost_totals[index] * scale / denominator)
         started = time.perf_counter()
         update = algorithm.update(
             batch,
