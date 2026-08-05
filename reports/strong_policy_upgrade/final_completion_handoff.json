@@ -26,6 +26,11 @@
     "h4_compatibility_smoke_memory_guard": "passed",
     "h4_recovery_partial_option_steps": 3200,
     "h4_recovery_resume_fix": "passed; CPU and CUDA RNG state restoration corrected"
+    ,"h4_recovery_30k_option_steps": 30000,
+    "h4_recovery_30k_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h4_recovery_30k/final_checkpoint.pt",
+    "h4_recovery_30k_checkpoint_sha256": "b155a26d238f004a7fbd61bbf6e083fab4f0b9d98418bba19d72834fe349176c",
+    "h4_recovery_30k_evaluation_success": 0.5625,
+    "h4_recovery_30k_evaluation_mean_safety_cost": 17.140625
   },
   "evaluation_progress": {
     "h2_mission_success": 0.5454545454545454,
@@ -45,7 +50,7 @@
     "hierarchical recovery training and final grid acceptance",
     "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
   ],
-  "next_exact_action": "Resume H4 recovery from artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h4_recovery_30k/resume_checkpoint.pt with the recorded 30000-option command after committing the RNG restoration repair.",
+  "next_exact_action": "Preserve H4 30k as failed evidence, select the H4 imitation checkpoint for any future recovery, and complete the bounded final grid evaluation/reporting without installing a rejected production checkpoint.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
