@@ -1,0 +1,15 @@
+{
+  "workflow": "CI",
+  "branch": "final/strong-policy-upgrade",
+  "head_sha": "0469c57e481659b523935a92b355f48c67ca3828",
+  "run_id": 31037826395,
+  "job_id": 92414389303,
+  "status": "completed",
+  "conclusion": "success",
+  "install_passed": true,
+  "ruff_passed": true,
+  "format_passed": true,
+  "tests_passed": true,
+  "node_deprecation_annotation": true,
+  "url": "https://github.com/Mahmoud-Maher-Elsaid/RiskAware-SafeRL-Construction-Inspector/actions/runs/31037826395"
+}

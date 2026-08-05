@@ -1,8 +1,8 @@
 {
   "branch": "final/strong-policy-upgrade",
-  "local_commit": "460ae0118c35e39e738d85f912b093036dfd21b1",
-  "remote_commit": "460ae0118c35e39e738d85f912b093036dfd21b1",
-  "current_phase": "github_ci_repair_after_authenticated_failure",
+  "local_commit": "0469c57e481659b523935a92b355f48c67ca3828",
+  "remote_commit": "0469c57e481659b523935a92b355f48c67ca3828",
+  "current_phase": "github_ci_green_release_validation",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",
@@ -50,7 +50,7 @@
     "hierarchical recovery training and final grid acceptance",
     "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
   ],
-  "next_exact_action": "Commit the proven CI fixture repair for absent local-only checkpoints, push, and watch the exact-head run for success.",
+  "next_exact_action": "Continue release validation from the green CI head while retaining RiskShield-PPO v1 as production.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
@@ -73,7 +73,7 @@
     "full_compile": "PASSED",
     "full_ruff": "PASSED",
     "full_pytest": "PASSED",
-    "github_actions": "Workflow committed in .github/workflows/ci.yml; authenticated gh unavailable in this execution environment, so exact remote conclusion remains unresolved",
+    "github_actions": "PASSED; run 31037826395 on head 0469c57e481659b523935a92b355f48c67ca3828, install/Ruff/format/pytest all passed",
     "webots_launcher_parse": "PASSED",
     "webots_qt_framebuffer_repair": "applied; fatal geometry allocation no longer observed",
     "webots_production_regression": "PASSED; production command exit code 0 and mission_completed=true after child-local Qt and Ultralytics environment repair",
@@ -81,8 +81,8 @@
     "cv_final_audit": "PASSED schema/CUDA/latency audit; checkpoint retained because independent labeled mAP evidence is unavailable",
     "benchmark_configuration_validation": "PASSED; 1350 historical rows unique",
     "grid_environment_validation": "PASSED; 3 configurations",
-    "github_ci_repair_commit": "78b4d45eb0f373899628da5c04429866d84cee4c",
-    "github_ci_remote_green_run": "run 31037460885 reached pytest and failed five benchmark schema tests because local-only PPO/SAC checkpoints are absent; deterministic manifest sentinel repair prepared, rerun required",
+    "github_ci_repair_commit": "0469c57e481659b523935a92b355f48c67ca3828",
+    "github_ci_remote_green_run": "PASSED; run 31037826395, exact head 0469c57e481659b523935a92b355f48c67ca3828",
     "production_replacement": "not attempted"
   }
 }
