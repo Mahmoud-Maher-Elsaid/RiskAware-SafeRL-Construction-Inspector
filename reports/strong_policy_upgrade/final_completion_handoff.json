@@ -10,7 +10,7 @@
     "H2 and H3 preliminary paired evaluations",
     "H4 target-persistence derivation"
   ],
-  "active_strategy": "H4 target-persistence imitation compatibility validation",
+  "active_strategy": "H4 target-persistence option-level HRMPPO recovery",
   "active_process": null,
   "exact_resume_command": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\.venv\\Scripts\\python.exe scripts\\train_hierarchical_imitation.py --dataset artifacts\\strong_policy_upgrade\\hierarchical_demonstrations_h4_target_persistence --output artifacts\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence --report-dir reports\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence --seeds 105 106 107 --epochs 2 --batch-size 16 --sequence-length 32 --device cuda --resume",
   "initialization_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/seed_105/best_checkpoint.pt",
@@ -20,7 +20,10 @@
   "training_progress": {
     "h3_option_steps": 5000,
     "h3_episodes": 76,
-    "h4_imitation_run": "interrupted by command timeout before a new validated summary"
+    "h4_imitation_run": "interrupted by command timeout before a new validated summary",
+    "h4_compatibility_smoke_option_steps": 1000,
+    "h4_compatibility_smoke_cuda": true,
+    "h4_compatibility_smoke_memory_guard": "passed"
   },
   "evaluation_progress": {
     "h2_mission_success": 0.5454545454545454,
@@ -40,7 +43,7 @@
     "hierarchical recovery training and final grid acceptance",
     "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
   ],
-  "next_exact_action": "Select H4 target-persistence imitation as the strongest valid initialization on the paired short protocol, preserve H3 as task baseline, and run a bounded resumable H4 recovery smoke before any longer training.",
+  "next_exact_action": "Run the bounded resumable H4 target-persistence recovery experiment from the verified H4 checkpoint, preserving H3 as the task baseline.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
