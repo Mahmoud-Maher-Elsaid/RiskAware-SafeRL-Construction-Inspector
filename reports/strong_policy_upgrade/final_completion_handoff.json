@@ -1,8 +1,8 @@
 {
   "branch": "final/strong-policy-upgrade",
-  "local_commit": "0a529c0f4b7a87f3e58fe18acf998922315f0eda",
-  "remote_commit": "0a529c0f4b7a87f3e58fe18acf998922315f0eda",
-  "current_phase": "benchmark_v2_paper_release_wrappers_completed",
+  "local_commit": "c751c248dcd2d06480c4656663b215144c7582ed",
+  "remote_commit": "c751c248dcd2d06480c4656663b215144c7582ed",
+  "current_phase": "research_release_validated_ci_green_experimental_webots_blocked",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",

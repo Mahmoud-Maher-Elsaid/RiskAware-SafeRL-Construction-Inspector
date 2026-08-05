@@ -1,6 +1,5 @@
-CI run 31038640148 completed successfully for head b804ea87604ba1df369e13f6212177d17e369206.
-Install project: passed
+CI run 31047755293 completed successfully for c751c248dcd2d06480c4656663b215144c7582ed.
+Install: passed
 Ruff: passed
-Ruff format: passed
+Format: passed
 Pytest: passed
-Annotation: Node.js 20 deprecation informational only
