@@ -1,0 +1,55 @@
+{
+  "branch": "final/strong-policy-upgrade",
+  "local_commit": "8d609fa0fdc234651fc66246951f9279fef65678",
+  "remote_commit": "8d609fa0fdc234651fc66246951f9279fef65678",
+  "current_phase": "hierarchical_v4_recovery",
+  "completed_phases": [
+    "causal hierarchical mission semantics",
+    "option-level HRMPPO v4 implementation",
+    "focused hierarchical validation",
+    "H2 and H3 preliminary paired evaluations",
+    "H4 target-persistence derivation"
+  ],
+  "active_strategy": "H4 target-persistence imitation compatibility validation",
+  "active_process": null,
+  "exact_resume_command": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\.venv\\Scripts\\python.exe scripts\\train_hierarchical_imitation.py --dataset artifacts\\strong_policy_upgrade\\hierarchical_demonstrations_h4_target_persistence --output artifacts\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence --report-dir reports\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence --seeds 105 106 107 --epochs 2 --batch-size 16 --sequence-length 32 --device cuda --resume",
+  "initialization_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/seed_105/best_checkpoint.pt",
+  "initialization_sha256": "1b193f429d8411c30232b60c63260b2df0d112559a6a68139915cc402be14888",
+  "latest_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h3_5k/final_checkpoint.pt",
+  "latest_checkpoint_sha256": "e23784174a4ad9768b2b4175bac5afb0bd59a2bdf111710659adc982507285e8",
+  "training_progress": {
+    "h3_option_steps": 5000,
+    "h3_episodes": 76,
+    "h4_imitation_run": "interrupted by command timeout before a new validated summary"
+  },
+  "evaluation_progress": {
+    "h2_mission_success": 0.5454545454545454,
+    "h3_mission_success": 0.6153846153846154,
+    "h3_hazard_recall": 0.9550724637681159,
+    "h3_inspection_coverage": 0.9550724637681159,
+    "h3_mean_safety_cost": 20.365384615384617,
+    "h4_evaluation": "pending"
+  },
+  "remaining_blockers": [
+    "paired H4 evaluation",
+    "hierarchical recovery training and final grid acceptance",
+    "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
+  ],
+  "next_exact_action": "Evaluate the H4 target-persistence checkpoint on the exact H2/H3 paired protocol, then select initialization using the declared lexicographic contract.",
+  "local_only_artifact_paths": [
+    "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
+    "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
+    "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h2_5k/",
+    "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h3_5k/",
+    "artifacts/strong_policy_upgrade/hierarchical_demonstrations_h4_target_persistence/",
+    "artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/"
+  ],
+  "untracked_evidence_paths": "Existing generated artifacts under artifacts/ and reports/ are preserved locally and are not source changes; no generated checkpoint or raw dataset is staged.",
+  "validation_status": {
+    "focused_hierarchical_tests": "PASSED",
+    "python_compilation": "PASSED",
+    "source_changes_committed": true,
+    "remote_synchronized": true,
+    "production_replacement": "not attempted"
+  }
+}
