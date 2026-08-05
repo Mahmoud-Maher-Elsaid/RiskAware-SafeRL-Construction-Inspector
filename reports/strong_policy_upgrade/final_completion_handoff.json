@@ -2,7 +2,7 @@
   "branch": "final/strong-policy-upgrade",
   "local_commit": "460ae0118c35e39e738d85f912b093036dfd21b1",
   "remote_commit": "460ae0118c35e39e738d85f912b093036dfd21b1",
-  "current_phase": "release_validation_after_webots_repair",
+  "current_phase": "github_ci_repair_after_authenticated_failure",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",
@@ -50,7 +50,7 @@
     "hierarchical recovery training and final grid acceptance",
     "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
   ],
-  "next_exact_action": "Verify the exact 460ae01 research-branch CI run with authenticated gh on the Windows host; if green, continue benchmark, paper, and final acceptance validation without changing production v1.",
+  "next_exact_action": "Commit scripts/__init__.py and the exact CI failure evidence, push, then watch the CI run for the new head SHA before continuing release validation.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
@@ -82,7 +82,7 @@
     "benchmark_configuration_validation": "PASSED; 1350 historical rows unique",
     "grid_environment_validation": "PASSED; 3 configurations",
     "github_ci_repair_commit": "78b4d45eb0f373899628da5c04429866d84cee4c",
-    "github_ci_remote_green_run": "unresolved; gh executable is unavailable and unauthenticated private-repository API returns 404",
+    "github_ci_remote_green_run": "run 31035868066 failed pytest collection because scripts was not a package; repair prepared, rerun required",
     "production_replacement": "not attempted"
   }
 }
