@@ -1,0 +1,166 @@
+{
+  "checkpoint_path": "artifacts/strong_policy_upgrade/safety_dagger_repair_1/iteration_2/training/best_behavior_cloning.pt",
+  "checkpoint_sha256": "eb19e7a3cde6a8a9ecdec84a40bf8f2760bc555d6e3013bc8a8fcdb900bf55ff",
+  "cuda_device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "dataset_sha256": "430b00f12d6593fb8c4cca67c7dc21f18194c98576634b1d299f36edba592671",
+  "device": "cuda",
+  "epochs_completed": 3,
+  "held_out_test": {
+    "accuracy": 0.8247410310762708,
+    "examples": 25003,
+    "invalid_action_predictions": 0,
+    "loss": 0.46201327324495917,
+    "per_action_precision": [
+      0.6424543198736747,
+      0.583828045035824,
+      0.9418003807451727,
+      0.9524348810872028,
+      1.0
+    ],
+    "per_action_recall": [
+      0.8045197740112995,
+      0.8786198398028343,
+      0.8165526998349446,
+      0.7952718676122932,
+      0.9937254901960785
+    ],
+    "per_action_support": [
+      3540,
+      3246,
+      8482,
+      8460,
+      1275
+    ]
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "selection_score": 0.9999921702924657,
+      "training_loss": 0.18276999569566,
+      "validation": {
+        "accuracy": 0.8065248336090486,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.5284888497347429,
+        "per_action_precision": [
+          0.581986143187067,
+          0.550302571860817,
+          0.9538948527387834,
+          0.9556677124539626,
+          1.0
+        ],
+        "per_action_recall": [
+          0.7738693467336684,
+          0.8998144712430427,
+          0.7788515563546465,
+          0.7844586272533871,
+          0.9985152190051967
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    },
+    {
+      "epoch": 2,
+      "selection_score": 1.0090223790602815,
+      "training_loss": 0.16348098229297062,
+      "validation": {
+        "accuracy": 0.8127957527026507,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.5049427152828224,
+        "per_action_precision": [
+          0.6137105549510338,
+          0.5481099656357389,
+          0.9468411913984239,
+          0.9555616139585605,
+          1.0
+        ],
+        "per_action_recall": [
+          0.7872696817420436,
+          0.8877551020408163,
+          0.7966063602651984,
+          0.7849065054305229,
+          0.9925760950259837
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    },
+    {
+      "epoch": 3,
+      "selection_score": 1.0188342299046582,
+      "training_loss": 0.15087457333057405,
+      "validation": {
+        "accuracy": 0.8275304889778017,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.46180287090766725,
+        "per_action_precision": [
+          0.6495260663507109,
+          0.5701492537313433,
+          0.9378402329408786,
+          0.9530085197018104,
+          1.0
+        ],
+        "per_action_recall": [
+          0.765214963707426,
+          0.885899814471243,
+          0.832453084616249,
+          0.8015899675288322,
+          0.9925760950259837
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    }
+  ],
+  "sequence_length": 32,
+  "split_leakage": 0,
+  "status": "FAILED",
+  "test_sequences": 848,
+  "training_sequences": 7840,
+  "validation": {
+    "accuracy": 0.8275304889778017,
+    "examples": 25993,
+    "invalid_action_predictions": 0,
+    "loss": 0.46180287090766725,
+    "per_action_precision": [
+      0.6495260663507109,
+      0.5701492537313433,
+      0.9378402329408786,
+      0.9530085197018104,
+      1.0
+    ],
+    "per_action_recall": [
+      0.765214963707426,
+      0.885899814471243,
+      0.832453084616249,
+      0.8015899675288322,
+      0.9925760950259837
+    ],
+    "per_action_support": [
+      3582,
+      3234,
+      8899,
+      8931,
+      1347
+    ]
+  },
+  "validation_sequences": 882
+}

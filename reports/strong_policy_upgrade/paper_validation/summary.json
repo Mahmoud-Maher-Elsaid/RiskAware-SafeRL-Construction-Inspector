@@ -1,0 +1,13 @@
+{
+  "status": "compiled",
+  "compiler": "MiKTeX pdfTeX 25.12",
+  "passes": 2,
+  "pdf": "paper/main.pdf",
+  "page_count": 4,
+  "undefined_citations": false,
+  "undefined_references": false,
+  "missing_figures": false,
+  "visual_rasterizer": "Poppler pdftoppm 25.07.0",
+  "visual_inspection": "PASSED; all 4 rendered pages inspected",
+  "warnings": ["underfull hbox warnings", "MiKTeX update check advisory"]
+}

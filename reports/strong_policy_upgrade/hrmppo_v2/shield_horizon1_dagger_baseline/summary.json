@@ -1,0 +1,21 @@
+{
+  "status": "FAILED",
+  "algorithm": "RiskShield-HRMPPO-v2",
+  "checkpoint": "artifacts/strong_policy_upgrade/dagger/iteration_2/training/best_behavior_cloning.pt",
+  "checkpoint_sha256": "397a786c185e3a086297a41b2393e4cf473eb81d864d31668690e5fa3ae1a6da",
+  "cuda_inference_verified": true,
+  "episodes": 90,
+  "seeds": 10,
+  "overall_mission_success": 0.15555555555555556,
+  "target_mission_success": 0.43333333333333335,
+  "hardest_condition_success": 0.0,
+  "hazard_recall": 0.48602139406487227,
+  "inspection_coverage": 0.48602139406487227,
+  "collision_rate": 0.0,
+  "invalid_actions": 0,
+  "mean_safety_cost": 7.019444444444445,
+  "constraint_violations": 1241,
+  "shield_interventions": 12515,
+  "replacement_gate_partial": false,
+  "statistical_v1_comparison_complete": false
+}

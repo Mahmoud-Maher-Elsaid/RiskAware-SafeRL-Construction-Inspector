@@ -1,0 +1,467 @@
+{
+  "status": "FAILED",
+  "genuine_policy_visited_states": true,
+  "iterations": [],
+  "beta_zero_evaluation": {
+    "iteration": 1,
+    "beta": 0.0,
+    "policy_visited_transitions": 3000,
+    "episodes": 14,
+    "option_disagreement_rate": 0.088,
+    "target_disagreement_rate": 0.09033333333333333,
+    "unsafe_option_choices": 99,
+    "option_counts": [
+      2490,
+      88,
+      0,
+      0,
+      416,
+      0,
+      0,
+      6,
+      0
+    ],
+    "primitive_counts": [
+      589,
+      596,
+      863,
+      856,
+      96
+    ],
+    "planner_failure_rate": 0.0,
+    "shield_intervention_rate": 0.044333333333333336,
+    "invalid_options": 0,
+    "mission_success": 0.6153846153846154,
+    "hazard_recall": 0.9550724637681159,
+    "coverage": 0.9550724637681159,
+    "mean_safety_cost": 20.365384615384617,
+    "episode_results": [
+      {
+        "world": "site_small",
+        "profile": "low",
+        "seed": 18900,
+        "steps": 6,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 0.0,
+        "option_counts": [
+          4,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          0,
+          1,
+          0,
+          3,
+          2
+        ],
+        "unique_visited_cells": 5
+      },
+      {
+        "world": "site_medium",
+        "profile": "low",
+        "seed": 18901,
+        "steps": 269,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 18.25,
+        "option_counts": [
+          213,
+          6,
+          0,
+          0,
+          47,
+          0,
+          0,
+          3,
+          0
+        ],
+        "primitive_counts": [
+          56,
+          52,
+          79,
+          76,
+          6
+        ],
+        "unique_visited_cells": 137
+      },
+      {
+        "world": "site_dynamic",
+        "profile": "low",
+        "seed": 18902,
+        "steps": 400,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.9166666666666666,
+        "inspection_coverage": 0.9166666666666666,
+        "safety_cost": 34.75,
+        "option_counts": [
+          321,
+          8,
+          0,
+          0,
+          70,
+          0,
+          0,
+          1,
+          0
+        ],
+        "primitive_counts": [
+          85,
+          81,
+          114,
+          112,
+          8
+        ],
+        "unique_visited_cells": 181
+      },
+      {
+        "world": "site_small",
+        "profile": "medium",
+        "seed": 18903,
+        "steps": 62,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 4.5,
+        "option_counts": [
+          52,
+          3,
+          0,
+          0,
+          7,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          7,
+          13,
+          17,
+          21,
+          4
+        ],
+        "unique_visited_cells": 42
+      },
+      {
+        "world": "site_medium",
+        "profile": "medium",
+        "seed": 18904,
+        "steps": 196,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 14.5,
+        "option_counts": [
+          159,
+          8,
+          0,
+          0,
+          29,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          33,
+          42,
+          61,
+          52,
+          8
+        ],
+        "unique_visited_cells": 123
+      },
+      {
+        "world": "site_dynamic",
+        "profile": "medium",
+        "seed": 18905,
+        "steps": 400,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.9333333333333333,
+        "inspection_coverage": 0.9333333333333333,
+        "safety_cost": 49.75,
+        "option_counts": [
+          325,
+          12,
+          0,
+          0,
+          63,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          85,
+          88,
+          111,
+          104,
+          12
+        ],
+        "unique_visited_cells": 183
+      },
+      {
+        "world": "site_small",
+        "profile": "high",
+        "seed": 18906,
+        "steps": 79,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 5.25,
+        "option_counts": [
+          67,
+          2,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          15,
+          17,
+          25,
+          20,
+          2
+        ],
+        "unique_visited_cells": 46
+      },
+      {
+        "world": "site_medium",
+        "profile": "high",
+        "seed": 18907,
+        "steps": 300,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.8666666666666667,
+        "inspection_coverage": 0.8666666666666667,
+        "safety_cost": 31.0,
+        "option_counts": [
+          266,
+          8,
+          0,
+          0,
+          26,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          52,
+          55,
+          95,
+          88,
+          10
+        ],
+        "unique_visited_cells": 145
+      },
+      {
+        "world": "site_dynamic",
+        "profile": "high",
+        "seed": 18908,
+        "steps": 400,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.782608695652174,
+        "inspection_coverage": 0.782608695652174,
+        "safety_cost": 56.5,
+        "option_counts": [
+          325,
+          14,
+          0,
+          0,
+          61,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          89,
+          83,
+          99,
+          113,
+          16
+        ],
+        "unique_visited_cells": 167
+      },
+      {
+        "world": "site_small",
+        "profile": "low",
+        "seed": 18909,
+        "steps": 50,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 1.25,
+        "option_counts": [
+          45,
+          3,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          5,
+          10,
+          14,
+          18,
+          3
+        ],
+        "unique_visited_cells": 38
+      },
+      {
+        "world": "site_medium",
+        "profile": "low",
+        "seed": 18910,
+        "steps": 289,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 13.25,
+        "option_counts": [
+          257,
+          6,
+          0,
+          0,
+          26,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          58,
+          46,
+          88,
+          91,
+          6
+        ],
+        "unique_visited_cells": 142
+      },
+      {
+        "world": "site_dynamic",
+        "profile": "low",
+        "seed": 18911,
+        "steps": 400,
+        "terminated": false,
+        "truncated": true,
+        "success": false,
+        "hazard_recall": 0.9166666666666666,
+        "inspection_coverage": 0.9166666666666666,
+        "safety_cost": 34.25,
+        "option_counts": [
+          327,
+          10,
+          0,
+          0,
+          61,
+          0,
+          0,
+          2,
+          0
+        ],
+        "primitive_counts": [
+          77,
+          84,
+          114,
+          115,
+          10
+        ],
+        "unique_visited_cells": 162
+      },
+      {
+        "world": "site_small",
+        "profile": "medium",
+        "seed": 18912,
+        "steps": 51,
+        "terminated": true,
+        "truncated": false,
+        "success": true,
+        "hazard_recall": 1.0,
+        "inspection_coverage": 1.0,
+        "safety_cost": 1.5,
+        "option_counts": [
+          47,
+          2,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "primitive_counts": [
+          9,
+          8,
+          18,
+          12,
+          4
+        ],
+        "unique_visited_cells": 41
+      }
+    ],
+    "chunks": [
+      {
+        "path": "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/iteration_1/chunks/hierarchical_corrections_00000.npz",
+        "rows": 1000,
+        "bytes": 66407,
+        "sha256": "ff9ec763c06a47fc998e5f24f476776cca0025b368f93e755e6f673198548d10"
+      },
+      {
+        "path": "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/iteration_1/chunks/hierarchical_corrections_00001.npz",
+        "rows": 1000,
+        "bytes": 65972,
+        "sha256": "d10abaecc4a6e5db58121812283fece685924ce68e6d53b8a249375038452154"
+      },
+      {
+        "path": "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/iteration_1/chunks/hierarchical_corrections_00002.npz",
+        "rows": 1000,
+        "bytes": 65254,
+        "sha256": "454f9d4abf3b3ec26225532219aae04099f77a281a971da3ae5e712cabf03560"
+      }
+    ]
+  },
+  "total_corrections": 0,
+  "final_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h3_5k/final_checkpoint.pt",
+  "final_checkpoint_sha256": "e23784174a4ad9768b2b4175bac5afb0bd59a2bdf111710659adc982507285e8"
+}

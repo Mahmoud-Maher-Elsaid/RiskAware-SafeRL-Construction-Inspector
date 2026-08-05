@@ -1,0 +1,36 @@
+{
+  "status": "ANALYZED",
+  "candidate_checkpoint_sha256": "461cb7161a00db6abac048c8593ce3ce18457b3d4bd88fbefeaa8c855e3468f8",
+  "epochs_completed": 26,
+  "held_out_accuracy": 0.762719298245614,
+  "held_out_per_action_recall": [
+    0.7731160896130346,
+    0.7853061224489796,
+    0.7230406599882145,
+    0.6422668240850059,
+    1.0
+  ],
+  "invalid_action_predictions": 0,
+  "training_transition_class_counts": [
+    23543,
+    23408,
+    20652,
+    20736,
+    9473
+  ],
+  "training_transition_class_fraction": [
+    0.24069643806485913,
+    0.23931623931623933,
+    0.21113973745552692,
+    0.21199852778800146,
+    0.09684905737537317
+  ],
+  "exact_state_mask_ambiguous_fraction": 0.000368052999631947,
+  "diagnosis": "Training and validation plateaued together. Most held-out confusion occurred among the four directional actions, especially action 3. The 2x2 adaptive pooling stage discarded spatial detail needed to distinguish directional expert actions; full inverse-frequency weighting also overemphasized the already perfectly recalled rare stop action.",
+  "changes_for_next_iteration": [
+    "Retain a 4x4 spatial CNN representation before the recurrent layer.",
+    "Increase the map embedding from 128 to 256 features while preserving the 256-unit GRU.",
+    "Use square-root inverse-frequency class balancing.",
+    "Keep all acceptance thresholds unchanged."
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "status": "PASSED",
+  "regression_baseline": {
+    "production": "PASSED",
+    "final_acceptance": "PASSED",
+    "pytest_count": 272
+  },
+  "expert_solvability": {
+    "episodes": 900,
+    "best_success_rate": {
+      "site_small": 1.0,
+      "site_medium": 1.0,
+      "site_dynamic": 1.0
+    },
+    "required": {
+      "site_small": 0.95,
+      "site_medium": 0.9,
+      "site_dynamic": 0.8
+    },
+    "gate": "PASSED"
+  },
+  "v1_benchmark": {
+    "PPO": {
+      "success_rate": 0.0,
+      "hazard_recall": 0.08343214398769952,
+      "coverage": 0.009048280423280411,
+      "safety_cost": 49.385185185185186,
+      "truncation_rate": 1.0
+    },
+    "RiskShield-PPO": {
+      "success_rate": 0.0,
+      "hazard_recall": 0.14660527743861074,
+      "coverage": 0.027538536942554787,
+      "safety_cost": 17.12962962962963,
+      "truncation_rate": 1.0
+    },
+    "SAC": {
+      "success_rate": 0.0,
+      "hazard_recall": 0.13391432641432638,
+      "coverage": 0.07437842498110354,
+      "safety_cost": 150.85555555555555,
+      "truncation_rate": 1.0
+    }
+  },
+  "diagnostic_evaluation_episodes": 180,
+  "action_totals": {
+    "PPO": {
+      "0": 386,
+      "1": 733,
+      "3": 403,
+      "4": 16078
+    },
+    "SAC": {
+      "0": 2660,
+      "1": 1850,
+      "2": 2776,
+      "3": 3227,
+      "4": 7087
+    },
+    "RiskShield-PPO v1": {
+      "0": 249,
+      "1": 1004,
+      "2": 307,
+      "4": 16040
+    }
+  },
+  "invalid_mask_proposals": {
+    "PPO": 17542,
+    "SAC": 13382,
+    "RiskShield-PPO v1": 15979
+  },
+  "root_causes": [
+    {
+      "id": "insufficient_training_budget",
+      "evidence": "PPO used 30,208 steps, SAC 10,000, and v1 stopped at 15,300; every learned benchmark episode truncated."
+    },
+    {
+      "id": "spatial_structure_destroyed",
+      "evidence": "A 10x16x16 semantic tensor plus state was flattened to 2,570 scalars for an MLP."
+    },
+    {
+      "id": "memory_missing",
+      "evidence": "The environment is partially observed, but v1 uses feed-forward MlpPolicy with no recurrent state."
+    },
+    {
+      "id": "mask_train_inference_mismatch",
+      "evidence": "The environment exposes masks, but standard PPO/SAC training does not consume them."
+    },
+    {
+      "id": "constraint_scale_failure",
+      "evidence": "The safety budget is 5 while v1 training episodes commonly cost 90-160; lambda reached its cap of 100."
+    },
+    {
+      "id": "objective_double_penalty",
+      "evidence": "Collision, near-miss, restricted, and PPE events reduce reward and separately add safety cost before Lagrangian penalization."
+    },
+    {
+      "id": "premature_early_stopping",
+      "evidence": "Patience is 50 episodes and selection uses reward-cost rather than mission success/recall/coverage composite."
+    },
+    {
+      "id": "planner_information_advantage",
+      "evidence": "Planner risk cost reads full restricted/worker/dynamic sets; learned policies receive partial noisy observations."
+    },
+    {
+      "id": "observation_noise_inconsistency",
+      "evidence": "Detection channels resample false negatives on each observation, while the risk channel exposes visible ground-truth risks."
+    },
+    {
+      "id": "all_or_nothing_checkpoint_selection",
+      "evidence": "Success requires all hazards, but early stopping does not prioritize success and v1 checkpoints are final rather than best held-out composite."
+    }
+  ]
+}

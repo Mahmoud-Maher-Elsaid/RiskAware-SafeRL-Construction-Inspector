@@ -1,0 +1,246 @@
+{
+  "status": "PASSED",
+  "seeds": [
+    {
+      "seed": 44,
+      "option_accuracy": 0.9737293956043956,
+      "per_option_recall": [
+        0.75,
+        0.9814356435643564,
+        0.09090909090909091,
+        null,
+        0.9810351639668116,
+        null,
+        null,
+        0.0,
+        null
+      ],
+      "minimum_supported_option_recall": 0.9810351639668116,
+      "target_selection_accuracy": 0.9091689560439561,
+      "duration_accuracy": 0.9974244505494505,
+      "invalid_options": 0,
+      "checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_smoke_repaired/seed_44/best_checkpoint.pt",
+      "checkpoint_sha256": "ff452704cd1fec49b82d13bf1287a0c3595b1eb9dac53cbc9280e3bdea648964",
+      "cuda_verified": true,
+      "history": [
+        {
+          "epoch": 0,
+          "loss": 3.115666439557669,
+          "seconds": 48.736699000000954,
+          "option_accuracy": 0.8920157068062827,
+          "per_option_recall": [
+            0.7142857142857143,
+            0.8711043872919818,
+            0.0,
+            null,
+            0.9398606527319399,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.8711043872919818,
+          "target_selection_accuracy": 0.6906086387434555,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 1,
+          "loss": 1.362746683387072,
+          "seconds": 48.00103990000207,
+          "option_accuracy": 0.9345549738219895,
+          "per_option_recall": [
+            0.6428571428571429,
+            0.9540090771558245,
+            0.0,
+            null,
+            0.935093509350935,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.935093509350935,
+          "target_selection_accuracy": 0.8046465968586387,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 2,
+          "loss": 0.860673957172983,
+          "seconds": 47.64741179998964,
+          "option_accuracy": 0.9599149214659686,
+          "per_option_recall": [
+            0.9285714285714286,
+            0.9518910741301059,
+            0.030303030303030304,
+            null,
+            0.9922992299229924,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9518910741301059,
+          "target_selection_accuracy": 0.8702552356020943,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 3,
+          "loss": 0.6485666153546134,
+          "seconds": 47.71311369999603,
+          "option_accuracy": 0.9551701570680629,
+          "per_option_recall": [
+            0.8571428571428571,
+            0.9470499243570348,
+            0.16666666666666666,
+            null,
+            0.9845984598459846,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9470499243570348,
+          "target_selection_accuracy": 0.8854712041884817,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 4,
+          "loss": 0.5300500695518658,
+          "seconds": 48.76933250000002,
+          "option_accuracy": 0.961878272251309,
+          "per_option_recall": [
+            0.9285714285714286,
+            0.9585476550680787,
+            0.18181818181818182,
+            null,
+            0.984965163182985,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9585476550680787,
+          "target_selection_accuracy": 0.8967604712041884,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 5,
+          "loss": 0.4430377140183051,
+          "seconds": 50.36245030000282,
+          "option_accuracy": 0.9641688481675392,
+          "per_option_recall": [
+            0.7142857142857143,
+            0.9543116490166415,
+            0.2727272727272727,
+            null,
+            0.9941327466079941,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9543116490166415,
+          "target_selection_accuracy": 0.9029777486910995,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 6,
+          "loss": 0.377935614475045,
+          "seconds": 48.51592869999877,
+          "option_accuracy": 0.9659685863874345,
+          "per_option_recall": [
+            0.42857142857142855,
+            0.9591527987897126,
+            0.22727272727272727,
+            null,
+            0.9948661532819949,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9591527987897126,
+          "target_selection_accuracy": 0.9118128272251309,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 7,
+          "loss": 0.3288544287269671,
+          "seconds": 50.825398400003905,
+          "option_accuracy": 0.9646596858638743,
+          "per_option_recall": [
+            0.35714285714285715,
+            0.9685325264750378,
+            0.3333333333333333,
+            null,
+            0.9783645031169783,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9685325264750378,
+          "target_selection_accuracy": 0.912467277486911,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 8,
+          "loss": 0.28891372933743814,
+          "seconds": 50.94615299999714,
+          "option_accuracy": 0.9654777486910995,
+          "per_option_recall": [
+            1.0,
+            0.9612708018154311,
+            0.18181818181818182,
+            null,
+            0.9893656032269894,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9612708018154311,
+          "target_selection_accuracy": 0.918520942408377,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 9,
+          "loss": 0.25555742211301713,
+          "seconds": 50.57243520001066,
+          "option_accuracy": 0.9703861256544503,
+          "per_option_recall": [
+            0.35714285714285715,
+            0.9851739788199697,
+            0.10606060606060606,
+            null,
+            0.9765309864319766,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9765309864319766,
+          "target_selection_accuracy": 0.9139397905759162,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        }
+      ]
+    }
+  ],
+  "mean_option_accuracy": 0.9737293956043956,
+  "best_option_accuracy": 0.9737293956043956,
+  "minimum_important_option_recall": 0.9810351639668116,
+  "mean_target_selection_accuracy": 0.9091689560439561,
+  "invalid_options": 0,
+  "split_leakage": 0,
+  "memory_regression": "PASSED"
+}

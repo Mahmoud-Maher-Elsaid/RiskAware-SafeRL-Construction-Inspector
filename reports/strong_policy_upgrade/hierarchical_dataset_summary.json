@@ -1,0 +1,19 @@
+{
+  "status": "PASSED",
+  "dataset_path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations",
+  "dataset_sha256": "2854395706b7194f4463fac62a738a391c7a5c108bc63dd85b1dee9f38d5482a",
+  "records": 63080,
+  "episodes": 1450,
+  "split_counts": {
+    "train": 50095,
+    "validation": 6605,
+    "test": 6380
+  },
+  "source_dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f",
+  "source_chunk_hashes_unchanged": true,
+  "observation_only_derivation": true,
+  "hidden_state_consumed": false,
+  "episode_split_integrity": true,
+  "memory_mapped_training_cache": true,
+  "maximum_active_mmap_chunks": 2
+}

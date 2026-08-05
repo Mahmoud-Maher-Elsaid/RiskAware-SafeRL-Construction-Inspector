@@ -1,0 +1,166 @@
+{
+  "checkpoint_path": "artifacts/strong_policy_upgrade/safety_dagger_repair_1/iteration_1/training/best_behavior_cloning.pt",
+  "checkpoint_sha256": "03462cf3e1cf94106bb3551f0375a69fc41f0c9f859565b675d3edf5a3feabeb",
+  "cuda_device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "dataset_sha256": "04b46f859d4633e89319768663fb02b577a59284aeca06909631f3987684b369",
+  "device": "cuda",
+  "epochs_completed": 3,
+  "held_out_test": {
+    "accuracy": 0.857057153141623,
+    "examples": 25003,
+    "invalid_action_predictions": 0,
+    "loss": 0.34753833241574933,
+    "per_action_precision": [
+      0.7741411955639708,
+      0.6176948051948052,
+      0.9560989163656571,
+      0.9318153067678684,
+      1.0
+    ],
+    "per_action_recall": [
+      0.8084745762711865,
+      0.937769562538509,
+      0.8113652440462155,
+      0.8706855791962175,
+      1.0
+    ],
+    "per_action_support": [
+      3540,
+      3246,
+      8482,
+      8460,
+      1275
+    ]
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "selection_score": 1.0541673586130424,
+      "training_loss": 0.17670507656042642,
+      "validation": {
+        "accuracy": 0.8558842765359904,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.3474043887802273,
+        "per_action_precision": [
+          0.7749590834697218,
+          0.5984609313338595,
+          0.9565620447622831,
+          0.9332615715823466,
+          1.0
+        ],
+        "per_action_recall": [
+          0.7931323283082077,
+          0.937847866419295,
+          0.8116642319361727,
+          0.873698354047699,
+          1.0
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    },
+    {
+      "epoch": 2,
+      "selection_score": 1.0253681139882818,
+      "training_loss": 0.15106875069485215,
+      "validation": {
+        "accuracy": 0.8380717885584581,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.3811128107971584,
+        "per_action_precision": [
+          0.7129446640316206,
+          0.5742911153119092,
+          0.9628827267475448,
+          0.9358301526717557,
+          1.0
+        ],
+        "per_action_recall": [
+          0.8056951423785594,
+          0.9393939393939394,
+          0.7491853017192943,
+          0.878513044451909,
+          1.0
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    },
+    {
+      "epoch": 3,
+      "selection_score": 1.0391549388808063,
+      "training_loss": 0.13798249790806302,
+      "validation": {
+        "accuracy": 0.846689493325126,
+        "examples": 25993,
+        "invalid_action_predictions": 0,
+        "loss": 0.36845679138910675,
+        "per_action_precision": [
+          0.6832830976118711,
+          0.6197066721751704,
+          0.9657457005920497,
+          0.9362943557989998,
+          1.0
+        ],
+        "per_action_recall": [
+          0.8227247347850363,
+          0.9276437847866419,
+          0.7698617822227216,
+          0.8804165267047364,
+          1.0
+        ],
+        "per_action_support": [
+          3582,
+          3234,
+          8899,
+          8931,
+          1347
+        ]
+      }
+    }
+  ],
+  "sequence_length": 32,
+  "split_leakage": 0,
+  "status": "PASSED",
+  "test_sequences": 848,
+  "training_sequences": 7272,
+  "validation": {
+    "accuracy": 0.8558842765359904,
+    "examples": 25993,
+    "invalid_action_predictions": 0,
+    "loss": 0.3474043887802273,
+    "per_action_precision": [
+      0.7749590834697218,
+      0.5984609313338595,
+      0.9565620447622831,
+      0.9332615715823466,
+      1.0
+    ],
+    "per_action_recall": [
+      0.7931323283082077,
+      0.937847866419295,
+      0.8116642319361727,
+      0.873698354047699,
+      1.0
+    ],
+    "per_action_support": [
+      3582,
+      3234,
+      8899,
+      8931,
+      1347
+    ]
+  },
+  "validation_sequences": 882
+}

@@ -1,0 +1,23 @@
+{
+  "baseline": "RiskShield-HRMPPO-v2-task-baseline",
+  "implementation_or_checkpoint": "artifacts/strong_policy_upgrade/hrmppo_v2_search/anchor_lr5e6_100k/final_checkpoint.pt",
+  "sha256": "f296c5633ec6d3e9918474039ae079fb681e7dded02a4962c465010e2bf80436",
+  "observation_schema": "causal semantic map(11x16x16), state(17), action mask(5)",
+  "action_schema": "five masked discrete primitives",
+  "environment_schema": "research-grid-v2 paired 90-episode protocol",
+  "evaluation_seeds": "held-out 90-episode paired protocol recorded in the v2 report",
+  "software_versions": "PyTorch environment recorded by the checkpoint manifest",
+  "git_commit": "7bd5e656a9c52fce5e00ff826e1452223da15151",
+  "metrics": {
+    "mission_success": 0.7667,
+    "hardest_success": 0.7,
+    "hazard_recall": 0.9425,
+    "coverage": 0.9425,
+    "collision_rate": 0.0,
+    "invalid_actions": 0,
+    "mean_raw_safety_cost": 35.64,
+    "legacy_constraint_increments": 5460
+  },
+  "known_limitations": ["high repeated exposure and constraint increments"],
+  "production_status": "preserved task-performance baseline; never production"
+}

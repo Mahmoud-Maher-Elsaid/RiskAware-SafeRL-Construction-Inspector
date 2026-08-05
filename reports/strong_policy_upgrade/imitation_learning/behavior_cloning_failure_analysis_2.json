@@ -1,0 +1,19 @@
+{
+  "status": "ANALYZED",
+  "held_out_accuracy": 0.719188596491228,
+  "held_out_per_action_recall": [
+    0.7046843177189409,
+    0.7363265306122448,
+    0.6912197996464349,
+    0.6139315230224321,
+    1.0
+  ],
+  "invalid_action_predictions": 0,
+  "diagnosis": "The 4x4 256-feature spatial encoder reduced training loss but validation peaked and then degraded, demonstrating layout overfitting. Exact map/state/mask observations are unique in the training data, so duplicate-label disagreement is zero. The privileged A* teacher can use unrevealed layout information, but the dominant learnable error remains directional geometry.",
+  "changes_for_next_iteration": [
+    "Reject and revert the overfitting 4x4 encoder.",
+    "Restore the compact 2x2 128-feature map encoder and original inverse-frequency class balancing.",
+    "Add normalized row and column coordinate channels before convolution to expose directional geometry with few additional parameters.",
+    "Keep all acceptance thresholds unchanged."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+    "status":  "RECOVERED",
+    "created_at_utc":  "2026-07-30T22:50:29.9043893Z",
+    "branch":  "final/strong-policy-upgrade",
+    "local_head":  "22a3739e0c9a4a504446cb1fee5ed3bb1354e06f",
+    "remote_head":  "22a3739e0c9a4a504446cb1fee5ed3bb1354e06f",
+    "interrupted_by":  "Codex usage limit",
+    "running_repository_python_processes":  0,
+    "production_replacement_authorized":  false,
+    "checkpoint_inventory":  [
+                                 {
+                                     "path":  "artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/seed_105/best_checkpoint.pt",
+                                     "sha256":  "1b193f429d8411c30232b60c63260b2df0d112559a6a68139915cc402be14888",
+                                     "size_bytes":  7424973,
+                                     "last_write_utc":  "2026-07-30T19:25:52.1459428Z"
+                                 },
+                                 {
+                                     "path":  "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h3_5k/final_checkpoint.pt",
+                                     "sha256":  "e23784174a4ad9768b2b4175bac5afb0bd59a2bdf111710659adc982507285e8",
+                                     "size_bytes":  9363086,
+                                     "last_write_utc":  "2026-07-30T19:21:18.4411401Z"
+                                 },
+                                 {
+                                     "path":  "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h2_5k/final_checkpoint.pt",
+                                     "sha256":  "9a1b9cc5406709d4271600b24727bd70e790b34089b2ec5757d69c258fb6e9ec",
+                                     "size_bytes":  9363022,
+                                     "last_write_utc":  "2026-07-30T19:17:00.5468158Z"
+                                 },
+                                 {
+                                     "path":  "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_smoke/final_checkpoint.pt",
+                                     "sha256":  "f5371fab71cfd0b2f6f3d76036e6bdbc361e73ee7ae15a5e02ce29cccc226ccd",
+                                     "size_bytes":  9343694,
+                                     "last_write_utc":  "2026-07-30T19:15:17.3007785Z"
+                                 },
+                                 {
+                                     "path":  "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_3/training/seed_7303/best_checkpoint.pt",
+                                     "sha256":  "f191f80dd79087dec710e7ae233539dda37d9b23b697aa1335931c256ed78f97",
+                                     "size_bytes":  7424973,
+                                     "last_write_utc":  "2026-07-30T18:33:46.8112796Z"
+                                 }
+                             ],
+    "preserved_local_artifacts":  true,
+    "notes":  [
+                  "Generated NPZ, NPY, mmap cache, and experimental checkpoint files remain local.",
+                  "Only source code, configuration, tests, compact reports, and recovery metadata are staged.",
+                  "No generated experiment directory is accepted as production evidence by this recovery commit."
+              ]
+}

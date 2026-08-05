@@ -1,0 +1,21 @@
+{
+  "baseline": "best-recurrent-DAgger",
+  "implementation_or_checkpoint": "artifacts/strong_policy_upgrade/dagger/iteration_2/training/best_behavior_cloning.pt",
+  "sha256": "397a786c185e3a086297a41b2393e4cf473eb81d864d31668690e5fa3ae1a6da",
+  "observation_schema": "causal semantic map(11x16x16), state(17), action mask(5)",
+  "action_schema": "five masked discrete primitives",
+  "environment_schema": "research-grid-v2 partial observation",
+  "evaluation_seeds": "3000..3009 across the paired 90-episode protocol",
+  "software_versions": "PyTorch environment recorded by training summary",
+  "git_commit": "7bd5e656a9c52fce5e00ff826e1452223da15151",
+  "metrics": {
+    "mission_success": 0.8555555556,
+    "dynamic_success": 0.7333333333,
+    "hazard_recall": 0.9697412008,
+    "coverage": 0.9697412008,
+    "collision_rate": 0.0,
+    "invalid_actions": 0
+  },
+  "known_limitations": ["primitive-level imitation retains high exposure cost"],
+  "production_status": "best held-out DAgger task baseline; not production"
+}

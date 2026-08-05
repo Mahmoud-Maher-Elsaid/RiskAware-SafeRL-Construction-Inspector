@@ -1,0 +1,12 @@
+{
+  "status": "REJECTED",
+  "held_out_accuracy": 0.6979,
+  "architecture_test_status": "FAILED",
+  "diagnosis": "The dropout-regularized 4x4 candidate reduced held-out accuracy and made default-state prediction nondeterministic. It is not eligible for a checkpoint.",
+  "changes_for_next_iteration": [
+    "Remove dropout and restore the compact coordinate-aware CNN.",
+    "Add causal per-semantic-channel presence and row/column centroid features.",
+    "Retain the CNN, state encoder, 256-unit GRU, masking, hierarchy head, and independent critics.",
+    "Keep all acceptance thresholds unchanged."
+  ]
+}

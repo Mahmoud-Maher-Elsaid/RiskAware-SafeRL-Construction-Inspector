@@ -1,0 +1,210 @@
+{
+  "status": "PASSED",
+  "seeds": [
+    {
+      "seed": 101,
+      "option_accuracy": 0.9974244505494505,
+      "per_option_recall": [
+        0.9992954438703616,
+        0.9821428571428571,
+        null,
+        null,
+        1.0,
+        null,
+        null,
+        0.8709677419354839,
+        null
+      ],
+      "minimum_supported_option_recall": 0.9821428571428571,
+      "target_selection_accuracy": 0.9908997252747253,
+      "duration_accuracy": 0.9974244505494505,
+      "invalid_options": 0,
+      "checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_systematic_final/seed_101/best_checkpoint.pt",
+      "checkpoint_sha256": "33e9c8b84a57f9a3cba2fef643bf1083b7a93d08d44654dea68870ad98f7bf11",
+      "cuda_verified": true,
+      "history": [
+        {
+          "epoch": 0,
+          "loss": 0.6148680301971341,
+          "seconds": 41.14967179999803,
+          "option_accuracy": 0.9977094240837696,
+          "per_option_recall": [
+            0.9995585963363496,
+            0.9863013698630136,
+            null,
+            null,
+            1.0,
+            null,
+            null,
+            0.8676470588235294,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9863013698630136,
+          "target_selection_accuracy": 0.9903468586387435,
+          "duration_accuracy": 0.9965641361256544,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 1,
+          "loss": 0.034670927629898686,
+          "seconds": 41.66490620000695,
+          "option_accuracy": 0.9972185863874345,
+          "per_option_recall": [
+            0.9997792981681748,
+            0.9680365296803652,
+            null,
+            null,
+            1.0,
+            null,
+            null,
+            0.8676470588235294,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9680365296803652,
+          "target_selection_accuracy": 0.9919829842931938,
+          "duration_accuracy": 0.9967277486910995,
+          "invalid_options": 0
+        }
+      ]
+    },
+    {
+      "seed": 102,
+      "option_accuracy": 0.9979395604395604,
+      "per_option_recall": [
+        0.9992954438703616,
+        0.9955357142857143,
+        null,
+        null,
+        1.0,
+        null,
+        null,
+        0.8709677419354839,
+        null
+      ],
+      "minimum_supported_option_recall": 0.9955357142857143,
+      "target_selection_accuracy": 0.9898695054945055,
+      "duration_accuracy": 0.9974244505494505,
+      "invalid_options": 0,
+      "checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_systematic_final/seed_102/best_checkpoint.pt",
+      "checkpoint_sha256": "e9ffad6d8bef8cedf108997b83684d53f3ea23e17b2de1f4512a5bce8fc829cd",
+      "cuda_verified": true,
+      "history": [
+        {
+          "epoch": 0,
+          "loss": 0.6250939370549627,
+          "seconds": 41.571795299998485,
+          "option_accuracy": 0.9978730366492147,
+          "per_option_recall": [
+            0.9993378945045244,
+            0.9954337899543378,
+            null,
+            null,
+            1.0,
+            null,
+            null,
+            0.8676470588235294,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9954337899543378,
+          "target_selection_accuracy": 0.9901832460732984,
+          "duration_accuracy": 0.9965641361256544,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 1,
+          "loss": 0.03567833900424428,
+          "seconds": 41.51790479999909,
+          "option_accuracy": 0.9975458115183246,
+          "per_option_recall": [
+            0.9997792981681748,
+            0.9771689497716894,
+            null,
+            null,
+            1.0,
+            null,
+            null,
+            0.8676470588235294,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9771689497716894,
+          "target_selection_accuracy": 0.9914921465968587,
+          "duration_accuracy": 0.9965641361256544,
+          "invalid_options": 0
+        }
+      ]
+    },
+    {
+      "seed": 103,
+      "option_accuracy": 0.9977678571428571,
+      "per_option_recall": [
+        0.9997651479567872,
+        0.9821428571428571,
+        null,
+        null,
+        1.0,
+        null,
+        null,
+        0.8709677419354839,
+        null
+      ],
+      "minimum_supported_option_recall": 0.9821428571428571,
+      "target_selection_accuracy": 0.9921016483516484,
+      "duration_accuracy": 0.9974244505494505,
+      "invalid_options": 0,
+      "checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_systematic_final/seed_103/best_checkpoint.pt",
+      "checkpoint_sha256": "ac6bb8cf448f34d9bc0f5e5bfcc6884e74b228d3714de253e646739cb17376c0",
+      "cuda_verified": true,
+      "history": [
+        {
+          "epoch": 0,
+          "loss": 0.6082420736327985,
+          "seconds": 41.40640920000442,
+          "option_accuracy": 0.9973821989528796,
+          "per_option_recall": [
+            0.998896490840874,
+            0.9908675799086758,
+            null,
+            null,
+            1.0,
+            null,
+            null,
+            0.8676470588235294,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9908675799086758,
+          "target_selection_accuracy": 0.9905104712041884,
+          "duration_accuracy": 0.9967277486910995,
+          "invalid_options": 0
+        },
+        {
+          "epoch": 1,
+          "loss": 0.03545213423053903,
+          "seconds": 41.98306620000221,
+          "option_accuracy": 0.9977094240837696,
+          "per_option_recall": [
+            0.9991171926726992,
+            0.9954337899543378,
+            null,
+            null,
+            1.0,
+            null,
+            null,
+            0.8676470588235294,
+            null
+          ],
+          "minimum_supported_option_recall": 0.9954337899543378,
+          "target_selection_accuracy": 0.9919829842931938,
+          "duration_accuracy": 0.9965641361256544,
+          "invalid_options": 0
+        }
+      ]
+    }
+  ],
+  "mean_option_accuracy": 0.9977106227106227,
+  "best_option_accuracy": 0.9979395604395604,
+  "minimum_important_option_recall": 0.9821428571428571,
+  "mean_target_selection_accuracy": 0.9909569597069597,
+  "invalid_options": 0,
+  "split_leakage": 0,
+  "memory_regression": "PASSED"
+}

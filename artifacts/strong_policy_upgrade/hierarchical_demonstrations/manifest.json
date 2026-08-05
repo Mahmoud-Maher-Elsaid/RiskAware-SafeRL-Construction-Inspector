@@ -1,0 +1,73 @@
+{
+  "status": "PASSED",
+  "observation_only_derivation": true,
+  "hidden_state_consumed": false,
+  "source_manifest": "artifacts/strong_policy_upgrade/causal_expert_demonstrations_systematic/manifest.json",
+  "source_dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f",
+  "source_chunk_hashes_unchanged": true,
+  "decision_interval": 4,
+  "transitions": 63080,
+  "episodes": 1450,
+  "split_counts": {
+    "train": 50095,
+    "validation": 6605,
+    "test": 6380
+  },
+  "episode_split_integrity": true,
+  "option_counts": [
+    46396,
+    2567,
+    0,
+    0,
+    13576,
+    0,
+    0,
+    541,
+    0
+  ],
+  "chunks": [
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00000.npz",
+      "rows": 10000,
+      "bytes": 713062,
+      "sha256": "7146c48bb97a7d190d272d4db410ea52783a93eaf36ef0be7dac5667150ed528"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00001.npz",
+      "rows": 10000,
+      "bytes": 716225,
+      "sha256": "40720a249c24098e66994f21a4fd735e8119633a129fddf10e690767188f63c1"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00002.npz",
+      "rows": 10000,
+      "bytes": 717938,
+      "sha256": "e06e41f060a83de2e3a8662ad8022bbda809e9c0fb79e436482b3cbeba5445a2"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00003.npz",
+      "rows": 10000,
+      "bytes": 715641,
+      "sha256": "6c7dcdcbbe30893ebad35305fd11ca11f4b4394de2638c0c990439bb3b3b8245"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00004.npz",
+      "rows": 10000,
+      "bytes": 715367,
+      "sha256": "21762c536fcc77bdf16cf0d67918d24231c35f22fbeec59279b5274eb4a444e2"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00005.npz",
+      "rows": 10000,
+      "bytes": 717704,
+      "sha256": "d4fb488e1e2739ee82a98e076fc55e7481490f4a50cd953e0fb8946b69cd6291"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/chunks/hierarchical_demonstrations_00006.npz",
+      "rows": 3080,
+      "bytes": 229498,
+      "sha256": "d1def54a0435eb9c43ae234d6c6a835ae47391d0c4646613115015d47cc8357a"
+    }
+  ],
+  "dataset_sha256": "dd43de03f898e1657840877ebe127a370278f88d852ccafd2fc023519e50c978"
+}

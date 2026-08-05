@@ -1,0 +1,62 @@
+{
+  "status": "PASSED",
+  "audit_date": "2026-07-30",
+  "project_path": "F:/AI/My_Project/RiskAware-SafeRL-Construction-Inspector",
+  "branch": "final/strong-policy-upgrade",
+  "local_head": "c0e81771ecc418804c0f3ab205ae82bd52c40899",
+  "remote_head": "c0e81771ecc418804c0f3ab205ae82bd52c40899",
+  "working_tree_initially_clean": true,
+  "original_dataset": {
+    "transitions": 120144,
+    "dataset_sha256": "06f872d819241563d3bf735d97c203d3de9633fbbc9cb3e5e99f95a1edbb1285",
+    "manifest_sha256": "00114b71a6e95f38fd396e3b100eea1cc158c7f3eaf5ce3ba016119bf42463d0",
+    "preserved": true
+  },
+  "systematic_causal_dataset": {
+    "transitions": 250128,
+    "dataset_sha256": "5278452907ed0f7a3ad1c4381caad643d9c03b74b3bff32747735223f6c7756f",
+    "manifest_sha256": "15826fcb309839a51bce0983f8b83d34169fa7792d970b697288ff42cee66d7d",
+    "preserved": true
+  },
+  "v2_task_baseline_checkpoint": {
+    "path": "artifacts/strong_policy_upgrade/hrmppo_v2_search/anchor_lr5e6_100k/final_checkpoint.pt",
+    "bytes": 8129361,
+    "sha256": "f296c5633ec6d3e9918474039ae079fb681e7dded02a4962c465010e2bf80436",
+    "verified": true
+  },
+  "software_validation": {
+    "python_compileall": "PASSED",
+    "ruff_check": "PASSED",
+    "ruff_format_check": "PASSED",
+    "pytest": "PASSED",
+    "pytest_count": 316
+  },
+  "pre_modification_production_regression": {
+    "status": "FAILED",
+    "cuda_device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "webots_version": "R2025a",
+    "failure_stage": "PowerShell Start-Process before Webots controller execution",
+    "failure": "Item has already been added. Key in dictionary: 'Path' Key being added: 'PATH'",
+    "root_cause": "The inherited Windows environment contains case variants of PATH that Start-Process attempts to insert into a case-insensitive dictionary.",
+    "rl_or_safety_result_produced": false
+  },
+  "production_regression_repair_followup": {
+    "status": "FAILED",
+    "path_environment_collision_repaired": true,
+    "ultralytics_config_redirected_to_repository_runtime_directory": true,
+    "controllers_reached": true,
+    "failure_stage": "Webots R2025a Qt desktop view initialization",
+    "failure": "Invalid multi-million-pixel framebuffer geometry and early simulator termination",
+    "attempted_headless_controls": [
+      "--batch",
+      "--minimize",
+      "--no-rendering",
+      "QT_AUTO_SCREEN_SCALE_FACTOR=0",
+      "QT_SCALE_FACTOR=1",
+      "QT_SCREEN_SCALE_FACTORS=1"
+    ],
+    "rl_or_safety_result_produced": false
+  },
+  "preserved_negative_evidence": true,
+  "recovery_gate": "PASSED"
+}

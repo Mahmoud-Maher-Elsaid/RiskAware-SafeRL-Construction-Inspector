@@ -1,0 +1,7 @@
+{
+    "observation":  "11x16x16 + 32",
+    "option_count":  9,
+    "recurrent_hidden":  256,
+    "planner":  "causal risk-aware A*",
+    "shield":  "Safety Contract v3 predictive shield"
+}

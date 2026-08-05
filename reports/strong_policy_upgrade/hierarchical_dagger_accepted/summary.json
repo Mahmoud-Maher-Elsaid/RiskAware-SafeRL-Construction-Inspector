@@ -1,0 +1,180 @@
+{
+  "status": "PASSED",
+  "genuine_policy_visited_states": true,
+  "iterations": [
+    {
+      "iteration": 1,
+      "beta": 0.75,
+      "policy_visited_transitions": 3000,
+      "episodes": 11,
+      "option_disagreement_rate": 0.018666666666666668,
+      "target_disagreement_rate": 0.07333333333333333,
+      "unsafe_option_choices": 48,
+      "option_counts": [
+        27,
+        177,
+        1186,
+        0,
+        1365,
+        0,
+        37,
+        208,
+        0
+      ],
+      "primitive_counts": [
+        1136,
+        1120,
+        355,
+        338,
+        51
+      ],
+      "planner_failure_rate": 0.0013333333333333333,
+      "shield_intervention_rate": 0.027,
+      "invalid_options": 0,
+      "mission_success": 0.0,
+      "hazard_recall": 0.5497722567287784,
+      "coverage": 0.5497722567287784,
+      "mean_safety_cost": 39.825,
+      "chunks": [
+        {
+          "path": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_1/chunks/hierarchical_corrections_00000.npz",
+          "rows": 1000,
+          "bytes": 58765,
+          "sha256": "d0f8a8facab108b9c7712529b10789e4774d45777a9708a31c504998f0bc9367"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_1/chunks/hierarchical_corrections_00001.npz",
+          "rows": 1000,
+          "bytes": 58784,
+          "sha256": "a3b3fb4ee71c68d0df9b9a7523e3cb06179a9cc4d681091cc5a8544c1f327e00"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_1/chunks/hierarchical_corrections_00002.npz",
+          "rows": 1000,
+          "bytes": 57842,
+          "sha256": "692da2bf876c9ce85f70ba798f2e47928c149d281534ea7e8c259c4d27abf0d1"
+        }
+      ],
+      "checkpoint": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_1/training/seed_7301/best_checkpoint.pt",
+      "checkpoint_sha256": "991a0f32c09b8c728781405621045ee230ee9455583255887e07bcec081ceaa1",
+      "retraining_exit_code": 0
+    },
+    {
+      "iteration": 2,
+      "beta": 0.5,
+      "policy_visited_transitions": 3000,
+      "episodes": 11,
+      "option_disagreement_rate": 0.013666666666666667,
+      "target_disagreement_rate": 0.096,
+      "unsafe_option_choices": 40,
+      "option_counts": [
+        14,
+        293,
+        1067,
+        0,
+        1311,
+        0,
+        22,
+        293,
+        0
+      ],
+      "primitive_counts": [
+        1243,
+        1226,
+        238,
+        259,
+        34
+      ],
+      "planner_failure_rate": 0.0,
+      "shield_intervention_rate": 0.026333333333333334,
+      "invalid_options": 0,
+      "mission_success": 0.1,
+      "hazard_recall": 0.4850724637681159,
+      "coverage": 0.4850724637681159,
+      "mean_safety_cost": 35.125,
+      "chunks": [
+        {
+          "path": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_2/chunks/hierarchical_corrections_00000.npz",
+          "rows": 1000,
+          "bytes": 52881,
+          "sha256": "dc9972eb65ac8ceecb928a53cf312f3eb4c713491c0750d318b56ee04b87e9f7"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_2/chunks/hierarchical_corrections_00001.npz",
+          "rows": 1000,
+          "bytes": 55101,
+          "sha256": "99420c4d3dbca0b656a79ce457b984471de8e14254017d8ea8611cef5388cadf"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_2/chunks/hierarchical_corrections_00002.npz",
+          "rows": 1000,
+          "bytes": 53153,
+          "sha256": "f2df834ff18293380618c540211874ce1ee4e44c79e9280eca989c1db4fd3632"
+        }
+      ],
+      "checkpoint": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_2/training/seed_7302/best_checkpoint.pt",
+      "checkpoint_sha256": "81883fc818d1e5d9a55dae3e9ec88023ec0d72a26d1a8a1f61f9a02284e9ddcd",
+      "retraining_exit_code": 0
+    },
+    {
+      "iteration": 3,
+      "beta": 0.25,
+      "policy_visited_transitions": 3000,
+      "episodes": 12,
+      "option_disagreement_rate": 0.019666666666666666,
+      "target_disagreement_rate": 0.04066666666666666,
+      "unsafe_option_choices": 50,
+      "option_counts": [
+        5,
+        183,
+        1069,
+        0,
+        1525,
+        0,
+        12,
+        206,
+        0
+      ],
+      "primitive_counts": [
+        1219,
+        1264,
+        240,
+        237,
+        40
+      ],
+      "planner_failure_rate": 0.0023333333333333335,
+      "shield_intervention_rate": 0.023333333333333334,
+      "invalid_options": 0,
+      "mission_success": 0.09090909090909091,
+      "hazard_recall": 0.47486354225484656,
+      "coverage": 0.47486354225484656,
+      "mean_safety_cost": 38.31818181818182,
+      "chunks": [
+        {
+          "path": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_3/chunks/hierarchical_corrections_00000.npz",
+          "rows": 1000,
+          "bytes": 51492,
+          "sha256": "7a40b787375ac35697b4bef15ada989ee56e8bd7eef5bc64a0a9eb078ac1d24a"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_3/chunks/hierarchical_corrections_00001.npz",
+          "rows": 1000,
+          "bytes": 57740,
+          "sha256": "50a4237861496a8c60ab0d844857c41d26eab828fba35238ee28d18af9c212ef"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_3/chunks/hierarchical_corrections_00002.npz",
+          "rows": 1000,
+          "bytes": 57415,
+          "sha256": "bb5216815df9922dcc3131b6ee32bee2cbedb9a918faa72f0471db2621458d5b"
+        }
+      ],
+      "checkpoint": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_3/training/seed_7303/best_checkpoint.pt",
+      "checkpoint_sha256": "f191f80dd79087dec710e7ae233539dda37d9b23b697aa1335931c256ed78f97",
+      "retraining_exit_code": 0
+    }
+  ],
+  "total_corrections": 9000,
+  "final_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/iteration_3/training/seed_7303/best_checkpoint.pt",
+  "final_checkpoint_sha256": "f191f80dd79087dec710e7ae233539dda37d9b23b697aa1335931c256ed78f97"
+}

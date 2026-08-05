@@ -1,0 +1,55 @@
+{
+  "status": "PASSED",
+  "runs": [
+    {
+      "mode": "causal_only",
+      "seed": 20260730,
+      "status": "PASSED",
+      "max_process_rss_bytes": 1844252672,
+      "minimum_available_physical_bytes": 16785559552,
+      "max_committed_bytes": 17301237760,
+      "max_gpu_allocated_bytes": 47182336,
+      "max_gpu_reserved_bytes": 402653184
+    },
+    {
+      "mode": "causal_only",
+      "seed": 20260731,
+      "status": "PASSED",
+      "max_process_rss_bytes": 1844580352,
+      "minimum_available_physical_bytes": 16790425600,
+      "max_committed_bytes": 17293934592,
+      "max_gpu_allocated_bytes": 47182336,
+      "max_gpu_reserved_bytes": 402653184
+    },
+    {
+      "mode": "causal_only",
+      "seed": 20260732,
+      "status": "PASSED",
+      "max_process_rss_bytes": 1850449920,
+      "minimum_available_physical_bytes": 16570957824,
+      "max_committed_bytes": 17513402368,
+      "max_gpu_allocated_bytes": 47182336,
+      "max_gpu_reserved_bytes": 402653184
+    },
+    {
+      "mode": "causal_plus_privileged_pretraining",
+      "seed": 20260730,
+      "status": "PASSED",
+      "max_process_rss_bytes": 1848008704,
+      "minimum_available_physical_bytes": 16802463744,
+      "max_committed_bytes": 17282154496,
+      "max_gpu_allocated_bytes": 53308416,
+      "max_gpu_reserved_bytes": 408944640
+    },
+    {
+      "mode": "causal_plus_privileged_distillation_with_confidence_filter",
+      "seed": 20260730,
+      "status": "PASSED",
+      "max_process_rss_bytes": 1844953088,
+      "minimum_available_physical_bytes": 16775823360,
+      "max_committed_bytes": 17307377664,
+      "max_gpu_allocated_bytes": 53308416,
+      "max_gpu_reserved_bytes": 408944640
+    }
+  ]
+}

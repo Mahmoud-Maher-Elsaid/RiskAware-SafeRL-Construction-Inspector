@@ -1,0 +1,33 @@
+{
+  "status": "PASSED",
+  "branch": "final/strong-policy-upgrade",
+  "head": "230c00e83ca3e7f079f435facb8907de473edbe7",
+  "remote_head": "230c00e83ca3e7f079f435facb8907de473edbe7",
+  "working_tree_at_recovery": "clean",
+  "original_dataset_path": "artifacts/strong_policy_upgrade/expert_demonstrations",
+  "original_transitions": 120144,
+  "original_chunks": 13,
+  "original_chunk_bytes": 11165922,
+  "original_dataset_sha256": "06f872d819241563d3bf735d97c203d3de9633fbbc9cb3e5e99f95a1edbb1285",
+  "original_chunk_hashes_verified": true,
+  "memory_gate": {
+    "status": "PASSED",
+    "batches": 1000,
+    "batch_size": 8,
+    "sequence_length": 32,
+    "second_half_rss_growth_bytes": 1241088
+  },
+  "full_test_count": 292,
+  "full_tests_status": "PASSED",
+  "ruff_status": "PASSED",
+  "best_previous_held_out_accuracy": 0.8205,
+  "best_previous_invalid_predictions": 0,
+  "preserved_checkpoint": {
+    "path": "artifacts/strong_policy_upgrade/imitation_learning/candidate_tail_rotation_80pct.pt",
+    "sha256": "621a8a54ff8488ea06d43f654033b07d4187ca252b0adab2c66dd201f423ed98",
+    "epoch": 21,
+    "accepted": false
+  },
+  "failure_analyses": 7,
+  "authorization": "Create a separate observation-consistent causal correction dataset without modifying the original accepted demonstrations."
+}

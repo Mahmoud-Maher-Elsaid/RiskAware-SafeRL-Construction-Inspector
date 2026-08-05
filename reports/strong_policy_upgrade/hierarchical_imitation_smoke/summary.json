@@ -1,0 +1,57 @@
+{
+  "status": "FAILED",
+  "seeds": [
+    {
+      "seed": 42,
+      "option_accuracy": 0.7290521978021978,
+      "per_option_recall": [
+        0.25,
+        0.44127332601536773,
+        0.0,
+        0.775886524822695,
+        0.9261161596207033,
+        null,
+        null,
+        0.0,
+        null
+      ],
+      "minimum_supported_option_recall": 0.0,
+      "target_selection_accuracy": 0.4362980769230769,
+      "duration_accuracy": 0.9974244505494505,
+      "invalid_options": 0,
+      "checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_smoke/seed_42/best_checkpoint.pt",
+      "checkpoint_sha256": "17bce1679a6f0d3c4072168f14ce5d1f746613c7ba81be073050b8cd6e0344f3",
+      "cuda_verified": true,
+      "history": [
+        {
+          "epoch": 0,
+          "loss": 4.5333063581502975,
+          "seconds": 60.798665499998606,
+          "option_accuracy": 0.743619109947644,
+          "per_option_recall": [
+            0.42857142857142855,
+            0.4692957746478873,
+            0.0,
+            0.7810457516339869,
+            0.9207920792079208,
+            null,
+            null,
+            null,
+            null
+          ],
+          "minimum_supported_option_recall": 0.0,
+          "target_selection_accuracy": 0.4492801047120419,
+          "duration_accuracy": 0.9964005235602095,
+          "invalid_options": 0
+        }
+      ]
+    }
+  ],
+  "mean_option_accuracy": 0.7290521978021978,
+  "best_option_accuracy": 0.7290521978021978,
+  "minimum_important_option_recall": 0.0,
+  "mean_target_selection_accuracy": 0.4362980769230769,
+  "invalid_options": 0,
+  "split_leakage": 0,
+  "memory_regression": "PASSED"
+}

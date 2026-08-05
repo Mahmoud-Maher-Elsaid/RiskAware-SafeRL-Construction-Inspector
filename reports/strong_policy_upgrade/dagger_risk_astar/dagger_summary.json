@@ -1,0 +1,279 @@
+{
+  "status": "PASSED",
+  "genuine_policy_visited_states": true,
+  "expert_strategy": "risk_astar",
+  "expert_mixing_schedule": [
+    0.75,
+    0.5,
+    0.25
+  ],
+  "final_evaluation_beta": 0.0,
+  "iterations": [
+    {
+      "iteration": 1,
+      "beta": 0.75,
+      "expert_strategy": "risk_astar",
+      "new_visited_state_transitions": 12000,
+      "episodes": 153,
+      "disagreement_count": 6443,
+      "disagreement_rate": 0.5369166666666667,
+      "corrected_deadlocks": 2,
+      "invalid_actions": 0,
+      "action_counts": [
+        3428,
+        3000,
+        2041,
+        2044,
+        1487
+      ],
+      "chunks": [
+        {
+          "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_1/chunks/dagger_corrections_00000.npz",
+          "rows": 4000,
+          "bytes": 213023,
+          "sha256": "9b28f61849b63078ec90bfc57b0159e48be258218de6cd558e482fcc17c057c2"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_1/chunks/dagger_corrections_00001.npz",
+          "rows": 4000,
+          "bytes": 204103,
+          "sha256": "2203406fea41e81fb1d8ceff2407d489764c735dc90efb244dd454eb5a384fda"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_1/chunks/dagger_corrections_00002.npz",
+          "rows": 4000,
+          "bytes": 212550,
+          "sha256": "8af7124f5107cbbe8799e4336ba90b54479960bc342ce0f06c1271280b2415a6"
+        }
+      ],
+      "collection_success_rate": 0.9803921568627451,
+      "collection_hazard_recall": 0.9890499194847021,
+      "collection_coverage": 0.9890499194847021,
+      "collection_safety_cost": 11.004901960784315,
+      "collection_collision_rate": 0.0,
+      "cumulative_dataset_manifest": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_1/cumulative_dataset/manifest.json",
+      "cumulative_transitions": 262128,
+      "checkpoint_path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_1/training/best_behavior_cloning.pt",
+      "checkpoint_sha256": "4bfdb843bb705beb7ff9a3f2f735a9f8e22fccc86e841eb4a2cdacf73ae33666",
+      "held_out_success": 0.8555555555555555,
+      "held_out_hazard_recall": 0.9859638831377963,
+      "held_out_coverage": 0.9859638831377963,
+      "held_out_safety_cost": 37.91111111111111,
+      "held_out_collision_rate": 0.0,
+      "held_out": {
+        "episodes": 90,
+        "held_out_seeds": [
+          3000,
+          3001,
+          3002,
+          3003,
+          3004,
+          3005,
+          3006,
+          3007,
+          3008,
+          3009
+        ],
+        "success_rate": 0.8555555555555555,
+        "world_success": {
+          "site_small": 1.0,
+          "site_medium": 0.8333333333333334,
+          "site_dynamic": 0.7333333333333333
+        },
+        "hazard_recall": 0.9859638831377963,
+        "coverage": 0.9859638831377963,
+        "mean_safety_cost": 37.91111111111111,
+        "collision_rate": 0.0,
+        "constraint_violations": 5574,
+        "invalid_actions": 0
+      }
+    },
+    {
+      "iteration": 2,
+      "beta": 0.5,
+      "expert_strategy": "risk_astar",
+      "new_visited_state_transitions": 12000,
+      "episodes": 131,
+      "disagreement_count": 7001,
+      "disagreement_rate": 0.5834166666666667,
+      "corrected_deadlocks": 0,
+      "invalid_actions": 0,
+      "action_counts": [
+        4105,
+        2656,
+        2150,
+        1812,
+        1277
+      ],
+      "chunks": [
+        {
+          "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_2/chunks/dagger_corrections_00000.npz",
+          "rows": 4000,
+          "bytes": 212435,
+          "sha256": "bc5c709c887fe68f5911462e29531763cf83098f0a08d6b01d2c2f7f1bc5e317"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_2/chunks/dagger_corrections_00001.npz",
+          "rows": 4000,
+          "bytes": 209427,
+          "sha256": "8a988abc0b9683fee480ddd56d8de77125b5ed8799395d0bac77f736bb69089b"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_2/chunks/dagger_corrections_00002.npz",
+          "rows": 4000,
+          "bytes": 212146,
+          "sha256": "e0af1be6417f7ce8b7a1bb676f8151e27b197aaa5a2d348865e163a2ea0e036d"
+        }
+      ],
+      "collection_success_rate": 0.9847328244274809,
+      "collection_hazard_recall": 0.9958015267175572,
+      "collection_coverage": 0.9958015267175572,
+      "collection_safety_cost": 14.356870229007633,
+      "collection_collision_rate": 0.0,
+      "cumulative_dataset_manifest": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_2/cumulative_dataset/manifest.json",
+      "cumulative_transitions": 274128,
+      "checkpoint_path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_2/training/best_behavior_cloning.pt",
+      "checkpoint_sha256": "618b1d75b91dcd3ba046dda7b08b4ad03fcd5f83a318b023abd9963200595fef",
+      "held_out_success": 0.17777777777777778,
+      "held_out_hazard_recall": 0.5886139866574649,
+      "held_out_coverage": 0.5886139866574649,
+      "held_out_safety_cost": 38.827777777777776,
+      "held_out_collision_rate": 0.0,
+      "held_out": {
+        "episodes": 90,
+        "held_out_seeds": [
+          3000,
+          3001,
+          3002,
+          3003,
+          3004,
+          3005,
+          3006,
+          3007,
+          3008,
+          3009
+        ],
+        "success_rate": 0.17777777777777778,
+        "world_success": {
+          "site_small": 0.36666666666666664,
+          "site_medium": 0.13333333333333333,
+          "site_dynamic": 0.03333333333333333
+        },
+        "hazard_recall": 0.5886139866574649,
+        "coverage": 0.5886139866574649,
+        "mean_safety_cost": 38.827777777777776,
+        "collision_rate": 0.0,
+        "constraint_violations": 5791,
+        "invalid_actions": 0
+      }
+    },
+    {
+      "iteration": 3,
+      "beta": 0.25,
+      "expert_strategy": "risk_astar",
+      "new_visited_state_transitions": 12000,
+      "episodes": 66,
+      "disagreement_count": 6878,
+      "disagreement_rate": 0.5731666666666667,
+      "corrected_deadlocks": 183,
+      "invalid_actions": 0,
+      "action_counts": [
+        3726,
+        3721,
+        1655,
+        2253,
+        645
+      ],
+      "chunks": [
+        {
+          "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/chunks/dagger_corrections_00000.npz",
+          "rows": 4000,
+          "bytes": 192876,
+          "sha256": "9c00fe558ad0a1e4ff3f1e7cf7625f9fafc1aabb6a5999c6514b67e17831cf1e"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/chunks/dagger_corrections_00001.npz",
+          "rows": 4000,
+          "bytes": 197768,
+          "sha256": "7fa537e532b57a04f986394b94b66ecdb5d54de5cbd3f83714bcb0f9c2da4577"
+        },
+        {
+          "path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/chunks/dagger_corrections_00002.npz",
+          "rows": 4000,
+          "bytes": 195630,
+          "sha256": "6dd4eea4a558f4803f70cfeeea953356acd659a4f41494db62a923070943f1b6"
+        }
+      ],
+      "collection_success_rate": 0.8787878787878788,
+      "collection_hazard_recall": 0.9848484848484851,
+      "collection_coverage": 0.9848484848484851,
+      "collection_safety_cost": 29.276515151515152,
+      "collection_collision_rate": 0.0,
+      "cumulative_dataset_manifest": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/cumulative_dataset/manifest.json",
+      "cumulative_transitions": 286128,
+      "checkpoint_path": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/training/best_behavior_cloning.pt",
+      "checkpoint_sha256": "94e19ed34beedf95c2b1e4757dfbceab067063da9cde1992f9fafaae6017cc0e",
+      "held_out_success": 0.2111111111111111,
+      "held_out_hazard_recall": 0.5068276972624799,
+      "held_out_coverage": 0.5068276972624799,
+      "held_out_safety_cost": 45.75277777777778,
+      "held_out_collision_rate": 0.0,
+      "held_out": {
+        "episodes": 90,
+        "held_out_seeds": [
+          3000,
+          3001,
+          3002,
+          3003,
+          3004,
+          3005,
+          3006,
+          3007,
+          3008,
+          3009
+        ],
+        "success_rate": 0.2111111111111111,
+        "world_success": {
+          "site_small": 0.23333333333333334,
+          "site_medium": 0.13333333333333333,
+          "site_dynamic": 0.26666666666666666
+        },
+        "hazard_recall": 0.5068276972624799,
+        "coverage": 0.5068276972624799,
+        "mean_safety_cost": 45.75277777777778,
+        "collision_rate": 0.0,
+        "constraint_violations": 6913,
+        "invalid_actions": 0
+      }
+    }
+  ],
+  "final_checkpoint": "artifacts/strong_policy_upgrade/dagger_risk_astar/iteration_3/training/best_behavior_cloning.pt",
+  "final_checkpoint_sha256": "94e19ed34beedf95c2b1e4757dfbceab067063da9cde1992f9fafaae6017cc0e",
+  "final_evaluation": {
+    "episodes": 90,
+    "held_out_seeds": [
+      4000,
+      4001,
+      4002,
+      4003,
+      4004,
+      4005,
+      4006,
+      4007,
+      4008,
+      4009
+    ],
+    "success_rate": 0.23333333333333334,
+    "world_success": {
+      "site_small": 0.36666666666666664,
+      "site_medium": 0.2,
+      "site_dynamic": 0.13333333333333333
+    },
+    "hazard_recall": 0.5174718196457326,
+    "coverage": 0.5174718196457326,
+    "mean_safety_cost": 39.37777777777778,
+    "collision_rate": 0.0,
+    "constraint_violations": 5825,
+    "invalid_actions": 0
+  }
+}

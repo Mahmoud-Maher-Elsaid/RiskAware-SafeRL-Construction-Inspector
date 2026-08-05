@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "repaired_and_validated",
+  "causes": [
+    {
+      "cause": "case_variant_path_environment",
+      "evidence": "Start-Process failed with duplicate Path/PATH dictionary key",
+      "repair": "process-local case-insensitive normalization before child launch"
+    },
+    {
+      "cause": "ultralytics_profile_permission",
+      "evidence": "PermissionError WinError 5 writing AppData Roaming Ultralytics settings.json",
+      "repair": "repository-local YOLO_CONFIG_DIR"
+    },
+    {
+      "cause": "offscreen_qt_controller_stall",
+      "evidence": "controller started but completion marker was absent until Windows Qt backend was restored",
+      "repair": "Windows Qt child backend, bounded scaling, --batch --no-rendering --minimize"
+    }
+  ],
+  "smoke_validation": {
+    "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/run_final_world_smoke.ps1 -TimeoutSeconds 60",
+    "status": "passed",
+    "world_count": 3
+  },
+  "production_validation": {
+    "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/run_complete_autonomous_inspection.ps1",
+    "status": "passed",
+    "exit_code": 0,
+    "mission_completed": true,
+    "summary": "reports/final_project_completion/final_runtime_summary.json"
+  },
+  "machine_wide_settings_modified": false,
+  "historical_failures_preserved": true
+}

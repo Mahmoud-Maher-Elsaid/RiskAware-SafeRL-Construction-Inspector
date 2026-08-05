@@ -1,0 +1,48 @@
+model:
+  name: RiskShield-HRMPPO-v2
+  semantic_channels: 11
+  state_features: 17
+  cnn_features: 128
+  state_features_hidden: 64
+  recurrent_type: gru
+  recurrent_hidden_size: 256
+  recurrent_layers: 1
+  action_count: 5
+  hierarchy_enabled: true
+  subgoal_count: 6
+
+objective:
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  entropy_coefficient: 0.01
+  reward_value_coefficient: 0.5
+  cost_value_coefficient: 0.5
+  maximum_kl: 0.02
+  safety_budget: 20.0
+  lagrange_learning_rate: 0.001
+  lagrange_maximum: 20.0
+  normalize_reward_advantage: true
+  normalize_cost_advantage: true
+
+training:
+  total_steps: 2000000
+  maximum_steps: 5000000
+  parallel_environments: 8
+  rollout_steps: 256
+  sequence_length: 32
+  batch_size: 256
+  epochs: 10
+  learning_rate: 0.0003
+  gradient_clip_norm: 0.5
+  checkpoint_interval: 100000
+  evaluation_interval: 100000
+  seeds: [11, 23, 37, 53, 71]
+  device: cuda
+  resume: true
+
+shield:
+  enabled: true
+  horizon: 5
+  emergency_stop: true
+
