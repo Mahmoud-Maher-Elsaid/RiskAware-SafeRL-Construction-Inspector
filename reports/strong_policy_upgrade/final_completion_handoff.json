@@ -2,7 +2,7 @@
   "branch": "final/strong-policy-upgrade",
   "local_commit": "b804ea87604ba1df369e13f6212177d17e369206",
   "remote_commit": "b804ea87604ba1df369e13f6212177d17e369206",
-  "current_phase": "github_ci_green_release_validation",
+  "current_phase": "local_release_acceptance_completed_ci_green",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",
@@ -50,7 +50,7 @@
     "hierarchical recovery training and final grid acceptance",
     "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
   ],
-  "next_exact_action": "Continue release validation from the green CI head while retaining RiskShield-PPO v1 as production.",
+  "next_exact_action": "Complete the remaining v4-specific benchmark, ablation, paper, and integration work; retain v1 production because v4 replacement gates remain rejected.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
@@ -79,10 +79,11 @@
     "webots_production_regression": "PASSED; production command exit code 0 and mission_completed=true after child-local Qt and Ultralytics environment repair",
     "webots_three_world_smoke": "PASSED; three generated worlds completed bounded smoke validation",
     "cv_final_audit": "PASSED schema/CUDA/latency audit; checkpoint retained because independent labeled mAP evidence is unavailable",
-    "benchmark_configuration_validation": "PASSED; 1350 historical rows unique",
+    "benchmark_configuration_validation": "PASSED; 1350 historical rows unique; v4 270-row extension not generated",
     "grid_environment_validation": "PASSED; 3 configurations",
     "github_ci_repair_commit": "0469c57e481659b523935a92b355f48c67ca3828",
     "github_ci_remote_green_run": "PASSED; run 31038640148, exact head b804ea87604ba1df369e13f6212177d17e369206",
-    "production_replacement": "not attempted"
+    "production_replacement": "rejected; v1 remains production",
+    "local_acceptance": "PASSED; existing final acceptance completed 367 tests, historical benchmark, cached ablations, evidence, and production runtime"
   }
 }
