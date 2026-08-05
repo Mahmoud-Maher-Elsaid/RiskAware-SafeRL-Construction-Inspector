@@ -1,7 +1,7 @@
 {
   "branch": "final/strong-policy-upgrade",
-  "local_commit": "8d609fa0fdc234651fc66246951f9279fef65678",
-  "remote_commit": "8d609fa0fdc234651fc66246951f9279fef65678",
+  "local_commit": "8d1f7abb1e3238dc8553bbc5be0658cae11385a0",
+  "remote_commit": "8d1f7abb1e3238dc8553bbc5be0658cae11385a0",
   "current_phase": "hierarchical_v4_recovery",
   "completed_phases": [
     "causal hierarchical mission semantics",
@@ -61,6 +61,11 @@
     "python_compilation": "PASSED",
     "source_changes_committed": true,
     "remote_synchronized": true,
+    "ruff_check": "PASSED",
+    "ruff_format_check": "PASSED",
+    "focused_resume_and_algorithm_tests": "PASSED",
+    "git_diff_check": "PASSED",
+    "github_actions": "No check run is exposed for 8d1f7ab; public API returned 404 and repository has no local workflow file",
     "production_replacement": "not attempted"
   }
 }
