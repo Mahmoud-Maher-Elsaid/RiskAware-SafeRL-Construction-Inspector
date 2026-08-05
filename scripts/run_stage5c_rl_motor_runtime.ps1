@@ -29,8 +29,18 @@ if ($LASTEXITCODE -ne 0) {
     throw "Stage 5C world generation failed."
 }
 
-Get-Process -Name webots, webotsw, webots-bin -ErrorAction SilentlyContinue |
-    Stop-Process -Force
+function Stop-WebotsTree {
+    foreach ($Candidate in @(Get-Process -Name webots, webotsw, webots-bin -ErrorAction SilentlyContinue)) {
+        try {
+            & taskkill.exe /PID $Candidate.Id /T /F *> $null
+        }
+        catch {
+            Write-Warning "Could not terminate Webots process $($Candidate.Id): $($_.Exception.Message)"
+        }
+    }
+}
+
+Stop-WebotsTree
 
 if (Test-Path -LiteralPath $Output) {
     Remove-Item -LiteralPath $Output -Recurse -Force
@@ -45,10 +55,10 @@ $env:YOLO_CONFIG_DIR = Join-Path $RepoRoot ".runtime\ultralytics"
 $env:QT_AUTO_SCREEN_SCALE_FACTOR = "0"
 $env:QT_SCALE_FACTOR = "1"
 $env:QT_SCREEN_SCALE_FACTORS = "1"
-# Force the unattended Webots child onto Qt's offscreen backend.  Without
-# this, inherited desktop geometry can be expanded into a multi-million-pixel
-# framebuffer before --no-rendering is applied.
-$env:QT_QPA_PLATFORM = "offscreen"
+# Use the Windows Qt backend with bounded geometry.  The offscreen backend
+# avoids the framebuffer allocation but can prevent the R2025a controller
+# process from advancing in this world on Windows.
+$env:QT_QPA_PLATFORM = "windows"
 $env:QT_SCALE_FACTOR_ROUNDING_POLICY = "Round"
 $env:PYTHONUNBUFFERED = "1"
 $env:PYTHONIOENCODING = "utf-8"
@@ -81,7 +91,7 @@ $Stderr = Join-Path $Output "webots_stderr.log"
 # invalid framebuffer in unattended runs.
 $Process = Start-Process `
     -FilePath $Webots `
-    -ArgumentList @("--batch", "--no-rendering", "--mode=fast", "--stdout", "--stderr", $World) `
+    -ArgumentList @("--batch", "--no-rendering", "--minimize", "--mode=fast", "--stdout", "--stderr", $World) `
     -WorkingDirectory $RepoRoot `
     -RedirectStandardOutput $Stdout `
     -RedirectStandardError $Stderr `
@@ -125,8 +135,7 @@ try {
     }
 }
 finally {
-    Get-Process -Name webots, webotsw, webots-bin -ErrorAction SilentlyContinue |
-        Stop-Process -Force
+    Stop-WebotsTree
 }
 
 if (-not (Test-Path -LiteralPath $Summary -PathType Leaf)) {
