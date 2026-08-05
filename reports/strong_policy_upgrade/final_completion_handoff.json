@@ -1,7 +1,7 @@
 {
   "branch": "final/strong-policy-upgrade",
-  "local_commit": "6fb3f7cf91647c52b2626b4271e35b6d536ca7f4",
-  "remote_commit": "6fb3f7cf91647c52b2626b4271e35b6d536ca7f4",
+  "local_commit": "810809560f789ec3fbf599132cba5c5822f3b0e8",
+  "remote_commit": "810809560f789ec3fbf599132cba5c5822f3b0e8",
   "current_phase": "webots_launcher_repair",
   "completed_phases": [
     "causal hierarchical mission semantics",
