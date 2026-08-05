@@ -1,0 +1,7 @@
+﻿{
+    "webots_root":  "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\reports\\strong_policy_upgrade\\webots_v4_real",
+    "world_count":  3,
+    "benchmark_rows":  1620,
+    "paper":  "paper/main.pdf",
+    "release":  "release/manifest.json"
+}

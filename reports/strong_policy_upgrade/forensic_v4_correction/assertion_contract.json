@@ -1,0 +1,12 @@
+{
+  "checkpoint_sha256_verified": "exact_digest_match",
+  "observation_schema_verified": "shape_dtype_finite_and_per_decision_record",
+  "causal_option_mask_active": "validated_mask_per_decision",
+  "recurrent_state_updated": "hidden_hash_changes_between_decisions",
+  "target_persistence_validated": "retention_or_observed_invalidation_event",
+  "perception_affects_policy": "frame_to_detection_to_map_to_observation_record",
+  "option_changes_affect_planner": "option_or_target_change_followed_by_planner_input",
+  "planner_output_affects_motor_commands": "planner_controller_shield_motor_trace",
+  "minimum_policy_decisions": 100,
+  "production_replacement_approved": false
+}

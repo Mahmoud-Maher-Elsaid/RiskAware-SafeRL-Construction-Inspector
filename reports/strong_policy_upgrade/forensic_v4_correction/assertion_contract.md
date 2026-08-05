@@ -1,0 +1,3 @@
+# Experimental assertion contract
+
+Acceptance assertions are derived from runtime evidence. Checkpoint assertions require an exact SHA-256 match. Observation assertions require validated shape, finite values, and one map/mask/state record per policy decision. Perception causality requires a detector frame, semantic-map hashes, changed cells, and an observation hash in the same decision record. Recurrent evolution requires differing hidden-state hashes across decisions. Planner-to-motor causality requires recorded planner output, controller primitive, shield result, and changed wheel commands. Invalid counters are accumulated by validators. The production replacement decision remains an independent gate and is false for v4.

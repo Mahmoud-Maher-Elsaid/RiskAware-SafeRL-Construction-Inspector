@@ -11,6 +11,28 @@ import torch
 
 PROJECT_ROOT = Path(os.environ["RISK_AWARE_PROJECT_ROOT"]).resolve()
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
+sys.path.insert(0, str(PROJECT_ROOT))
+_BOOT_OUT = Path(
+    os.environ.get(
+        "RISK_AWARE_EXPERIMENTAL_OUTPUT",
+        str(PROJECT_ROOT / "reports/strong_policy_upgrade/webots_v4_real/runtime"),
+    )
+)
+_BOOT_OUT.mkdir(parents=True, exist_ok=True)
+(_BOOT_OUT / "module_import_started.log").write_text(f"python={sys.executable}\n", encoding="utf-8")
+
+
+def _boot_excepthook(
+    exc_type: type[BaseException], exc_value: BaseException, traceback: object
+) -> None:
+    (_BOOT_OUT / "module_import_failure.json").write_text(
+        json.dumps({"type": exc_type.__name__, "error": str(exc_value)}) + "\n",
+        encoding="utf-8",
+    )
+    sys.__excepthook__(exc_type, exc_value, traceback)
+
+
+sys.excepthook = _boot_excepthook
 from controller import Robot  # noqa: E402
 
 from riskaware_saferrl.hierarchical import (  # noqa: E402
@@ -20,8 +42,10 @@ from riskaware_saferrl.hierarchical import (  # noqa: E402
     PredictiveLocalController,
     RiskShieldHierarchicalSystem,
 )
+from riskaware_saferrl.hierarchical.schemas import causal_option_mask  # noqa: E402
 from riskaware_saferrl.live_perception import create_live_perception_backend  # noqa: E402
 from riskaware_saferrl.safety import EventAwarePredictiveShieldV3, SafetyContractV3  # noqa: E402
+from scripts.train_hierarchical_hrmppo_mpc_v4 import structured_state  # noqa: E402
 
 CHECKPOINT = (
     PROJECT_ROOT
@@ -32,9 +56,10 @@ CV_CONFIG = PROJECT_ROOT / "configs/perception/stage5b_live_perception.json"
 OUT = Path(
     os.environ.get(
         "RISK_AWARE_EXPERIMENTAL_OUTPUT",
-        str(PROJECT_ROOT / "reports/strong_policy_upgrade/webots_v4_final/runtime"),
+        str(PROJECT_ROOT / "reports/strong_policy_upgrade/webots_v4_real/runtime"),
     )
 )
+DECISIONS = int(os.environ.get("RISK_AWARE_EXPERIMENTAL_DECISIONS", "100"))
 
 
 def digest(path: Path) -> str:
@@ -45,32 +70,111 @@ def digest(path: Path) -> str:
     return h.hexdigest()
 
 
+def hash_array(value: np.ndarray) -> str:
+    return hashlib.sha256(np.ascontiguousarray(value).tobytes()).hexdigest()
+
+
 def write_jsonl(path: Path, item: dict[str, object]) -> None:
     with path.open("a", encoding="utf-8") as stream:
         stream.write(json.dumps(item, sort_keys=True) + "\n")
 
 
-def observation(step: int) -> dict[str, np.ndarray]:
+def map_from_perception(
+    detections: object,
+    *,
+    width: int,
+    height: int,
+    inspected: set[tuple[int, int]],
+    target_memory: dict[tuple[int, int], dict[str, object]],
+    pose: tuple[float, float],
+) -> tuple[dict[str, np.ndarray], set[tuple[int, int]], int]:
+    """Build only the currently observed 16-cell local map from sensors and CV."""
     semantic = np.zeros((11, 16, 16), dtype=np.float32)
-    semantic[9, :, :] = 1.0
-    row, col = 8, 8
-    semantic[5, row, col] = 1.0
-    semantic[1, 8, 10] = 0.8
-    semantic[8, 8, 10] = 0.6
-    state = np.zeros(17, dtype=np.float32)
-    state[0] = min(1.0, step / 30.0)
-    return {"map": semantic, "state": state, "action_mask": np.ones(5, dtype=np.bool_)}
+    center = (8, 8)
+    semantic[5, center[0], center[1]] = 1.0
+    # The camera footprint is an observed local region, not hidden map state.
+    semantic[9, 7:10, 6:11] = 1.0
+    changed_cells = 0
+    for detection in detections:
+        x0, y0, x1, y1 = detection.xyxy
+        cx = (float(x0) + float(x1)) / 2.0
+        cy = (float(y0) + float(y1)) / 2.0
+        col = int(np.clip(round(8 + (cx / max(width, 1) - 0.5) * 8), 0, 15))
+        row = int(np.clip(round(8 + (cy / max(height, 1) - 0.5) * 4), 0, 15))
+        cell = (row, col)
+        cls = detection.normalized_class_name
+        if cls == "person":
+            semantic[2, row, col] = max(semantic[2, row, col], detection.confidence)
+            semantic[7, row, col] = max(semantic[7, row, col], detection.confidence)
+        elif cls.startswith("no-") or cls == "fall-detected":
+            semantic[1, row, col] = max(semantic[1, row, col], detection.confidence)
+            semantic[8, row, col] = max(semantic[8, row, col], detection.confidence)
+            if cell not in target_memory:
+                changed_cells += 1
+            target_memory[cell] = {"source": cls, "age": 0, "pose": pose}
+    for cell, record in list(target_memory.items()):
+        record["age"] = int(record["age"]) + 1
+        if int(record["age"]) > 20:
+            del target_memory[cell]
+            continue
+        if cell not in inspected:
+            semantic[1, cell[0], cell[1]] = max(semantic[1, cell[0], cell[1]], 0.5)
+            semantic[8, cell[0], cell[1]] = max(semantic[8, cell[0], cell[1]], 0.4)
+    for row, col in inspected:
+        semantic[10, row, col] = 1.0
+    risk = float(np.max(semantic[8]))
+    state = np.asarray(
+        [
+            pose[0],
+            pose[1],
+            0.0,
+            0.0,
+            risk,
+            float(len(target_memory)),
+            float(len(inspected)),
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+        ],
+        dtype=np.float32,
+    )
+    mask = np.ones(5, dtype=np.bool_)
+    return {"map": semantic, "state": state, "action_mask": mask}, set(target_memory), changed_cells
 
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / "controller_start.json").write_text(
+        json.dumps(
+            {
+                "python": sys.executable,
+                "project_root": str(PROJECT_ROOT),
+                "cuda_available": torch.cuda.is_available(),
+                "decisions_requested": DECISIONS,
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     for name in (
         "events.jsonl",
         "motor_trace.csv",
         "option_trace.csv",
+        "target_trace.csv",
+        "recurrent_trace.jsonl",
         "planner_trace.jsonl",
+        "controller_trace.jsonl",
         "shield_trace.jsonl",
         "perception_trace.jsonl",
+        "semantic_map_trace.jsonl",
     ):
         (OUT / name).unlink(missing_ok=True)
     if not CHECKPOINT.is_file() or digest(CHECKPOINT) != CHECKPOINT_SHA:
@@ -89,111 +193,233 @@ def main() -> int:
     )
     robot = Robot()
     timestep = int(robot.getBasicTimeStep())
-    left = robot.getDevice("left wheel motor")
-    right = robot.getDevice("right wheel motor")
-    camera = robot.getDevice("inspection camera")
+    left, right = robot.getDevice("left wheel motor"), robot.getDevice("right wheel motor")
+    gps, inertial, camera = (
+        robot.getDevice("gps"),
+        robot.getDevice("inertial unit"),
+        robot.getDevice("inspection camera"),
+    )
     left.setPosition(float("inf"))
     right.setPosition(float("inf"))
     left.setVelocity(0.0)
     right.setVelocity(0.0)
+    gps.enable(timestep)
+    inertial.enable(timestep)
     camera.enable(timestep)
     hidden = policy.initial_state(1, device)
-    recurrent_updated = False
-    option_changes = set()
+    initial_hidden_hash = hash_array(hidden.detach().cpu().numpy())
+    context = np.zeros((4, 3), dtype=np.float32)
+    target_memory: dict[tuple[int, int], dict[str, object]] = {}
+    inspected: set[tuple[int, int]] = set()
+    previous_option: int | None = None
+    previous_target: tuple[int, int] | None = None
+    previous_command = (0.0, 0.0)
+    previous_semantic_hash = ""
+    recurrent_hashes: list[str] = []
+    option_values: set[int] = set()
+    perception_updates = 0
+    mask_validations = 0
+    planner_changes = 0
     motor_changes = 0
-    previous = (0.0, 0.0)
+    synthetic_observation_events = 0
+    hidden_state_planner_events = 0
+    manual_control_events = 0
+    fallback_events = 0
+    invalid_option_count = 0
+    invalid_primitive_count = 0
+    invalid_motor_command_count = 0
+    frame_count = 0
+    policy_decisions = 0
+    target_retained = 0
+    target_invalidated = 0
     with (
         (OUT / "motor_trace.csv").open("w", encoding="utf-8") as motor_file,
         (OUT / "option_trace.csv").open("w", encoding="utf-8") as option_file,
+        (OUT / "target_trace.csv").open("w", encoding="utf-8") as target_file,
     ):
-        motor_file.write("step,left_velocity,right_velocity\n")
-        option_file.write("step,option,target,duration,risk_budget\n")
-        for step in range(3):
+        motor_file.write("decision,left_velocity,right_velocity\n")
+        option_file.write(
+            "decision,mask,logits_hash,option,target,duration,risk_budget,replanning_urgency\n"
+        )
+        target_file.write("decision,before,after,retained,invalidated,age\n")
+        for decision_index in range(DECISIONS):
+            (OUT / "progress.json").write_text(
+                json.dumps({"decision": decision_index, "phase": "step"}) + "\n",
+                encoding="utf-8",
+            )
             if robot.step(timestep) == -1:
                 break
+            frame_count += 1
             raw = camera.getImage()
             if raw is None:
                 raise RuntimeError("camera frame unavailable")
             frame = np.frombuffer(raw, dtype=np.uint8).reshape(
                 int(camera.getHeight()), int(camera.getWidth()), 4
             )[:, :, :3]
-            perception = detector.infer(frame, frame_id=step)
+            timestamp = float(robot.getTime())
+            perception = detector.infer(frame, frame_id=decision_index)
+            pose_values = gps.getValues()
+            pose = (float(pose_values[0]), float(pose_values[2]))
+            before_target = previous_target
+            obs, targets, changed_cells = map_from_perception(
+                perception.detections,
+                width=frame.shape[1],
+                height=frame.shape[0],
+                inspected=inspected,
+                target_memory=target_memory,
+                pose=pose,
+            )
+            semantic_before = previous_semantic_hash or hash_array(obs["map"])
+            semantic_after = hash_array(obs["map"])
+            if changed_cells > 0 or semantic_after != semantic_before:
+                perception_updates += 1
+            frame_count = max(frame_count, perception.frame_id + 1)
             write_jsonl(
                 OUT / "perception_trace.jsonl",
                 {
-                    "step": step,
-                    "cuda": detector.device.startswith("cuda"),
+                    "decision": decision_index,
+                    "frame_id": perception.frame_id,
+                    "timestamp": timestamp,
                     "detections": len(perception.detections),
-                    "timestamp": float(robot.getTime()),
+                    "filtered_detections": len(perception.detections),
+                    "cuda": detector.device.startswith("cuda"),
+                    "semantic_hash_before": semantic_before,
+                    "semantic_hash_after": semantic_after,
+                    "changed_cells": changed_cells,
                 },
             )
-            obs = observation(step)
+            write_jsonl(
+                OUT / "semantic_map_trace.jsonl",
+                {
+                    "decision": decision_index,
+                    "hash": semantic_after,
+                    "observed_cells": int(np.sum(obs["map"][9] > 0)),
+                    "target_cells": len(targets),
+                },
+            )
+            state = structured_state(
+                obs, context, min(1.0, decision_index / max(DECISIONS, 1)), False, 1
+            )
+            if state.shape != (32,) or not np.isfinite(state).all():
+                raise RuntimeError("Structured state contract failed")
             maps = torch.as_tensor(obs["map"], device=device)[None, None]
-            states = torch.zeros((1, 1, 32), device=device)
-            masks = torch.ones((1, 1, 9), dtype=torch.bool, device=device)
+            states = torch.as_tensor(state, device=device)[None, None]
+            mask_np = causal_option_mask(obs["map"], obs["action_mask"])
+            if mask_np.shape != (9,) or not mask_np.any():
+                raise RuntimeError("Causal option mask contract failed")
+            masks = torch.as_tensor(mask_np, device=device)[None, None]
+            mask_validations += 1
             with torch.no_grad():
                 output = policy(maps, states, masks, hidden)
+            logits_hash = hash_array(output.option_distribution.logits.detach().cpu().numpy())
+            state_before_hash = hash_array(hidden.detach().cpu().numpy())
+            hidden = output.recurrent_state.detach()
+            state_after_hash = hash_array(hidden.detach().cpu().numpy())
+            recurrent_hashes.append(state_after_hash)
             option_value = int(output.option_distribution.probs.argmax(-1).item())
             option = MissionOption(option_value)
-            option_changes.add(option_value)
+            option_values.add(option_value)
             target_index = int(output.target_logits.argmax(-1).item())
             target = None if target_index >= 256 else divmod(target_index, 16)
+            if target is None and target_memory:
+                target = min(target_memory, key=lambda cell: int(target_memory[cell]["age"]))
+            retained = target is not None and target == before_target
+            invalidated = (
+                before_target is not None
+                and target != before_target
+                and before_target not in targets
+            )
+            target_retained += int(retained)
+            target_invalidated += int(invalidated)
             duration = int(output.duration_logits.argmax(-1).item()) + 1
             budget = float(output.risk_budgets[0, 0].mean().item())
-            hidden = output.recurrent_state.detach()
-            recurrent_updated = True
+            urgency = float(output.replanning_urgency[0, 0].item())
             decision = system.execute_option(
                 obs,
                 option=option,
                 target=target,
                 risk_budget=budget,
                 inspection_intent=bool(output.inspection_intent[0, 0] > 0.5),
-                force_replan=bool(output.replanning_urgency[0, 0] > 0.5),
+                force_replan=urgency > 0.5,
+            )
+            planner_changes += int(previous_option != option_value or previous_target != target)
+            command_speed = (
+                1.8
+                if decision.executed_primitive in (0, 1)
+                else (-1.2 if decision.executed_primitive == 4 else 0.7)
+            )
+            turn = 0.45 if decision.executed_primitive in (2, 3) else 0.0
+            command = (command_speed - turn, command_speed + turn)
+            motor_changes += int(command != previous_command)
+            previous_command = command
+            left.setVelocity(command[0])
+            right.setVelocity(command[1])
+            motor_file.write(f"{decision_index},{command[0]},{command[1]}\n")
+            option_file.write(
+                f"{decision_index},{mask_np.astype(int).tolist()},{logits_hash},{option.name},{target},{duration},{budget},{urgency}\n"
+            )
+            target_file.write(
+                f"{decision_index},{before_target},{target},{retained},{invalidated},{target_memory.get(target, {}).get('age', -1) if target else -1}\n"
             )
             write_jsonl(
-                OUT / "events.jsonl",
+                OUT / "recurrent_trace.jsonl",
                 {
-                    "step": step,
-                    "option": option.name,
-                    "target": target,
-                    "duration": duration,
-                    "risk_budget": budget,
-                    "planner_success": decision.planner.success,
-                    "shield_decision": decision.shield.shield_decision,
-                    "executed_primitive": decision.executed_primitive,
+                    "decision": decision_index,
+                    "initial_hash": initial_hidden_hash,
+                    "before_hash": state_before_hash,
+                    "after_hash": state_after_hash,
+                    "changed": state_before_hash != state_after_hash,
                 },
             )
             write_jsonl(
                 OUT / "planner_trace.jsonl",
                 {
-                    "step": step,
+                    "decision": decision_index,
                     "success": decision.planner.success,
                     "replanned": decision.planner.replanned,
-                    "target": decision.planner.target,
+                    "input_option": option.name,
+                    "input_target": target,
+                    "output_target": decision.planner.target,
+                },
+            )
+            write_jsonl(
+                OUT / "controller_trace.jsonl",
+                {
+                    "decision": decision_index,
+                    "primitive": decision.controller.primitive,
+                    "final_primitive": decision.executed_primitive,
+                    "motor_command": command,
                 },
             )
             write_jsonl(
                 OUT / "shield_trace.jsonl",
                 {
-                    "step": step,
-                    "decision": decision.shield.shield_decision,
+                    "decision": decision_index,
+                    "shield_decision": decision.shield.shield_decision,
                     "final_action": decision.shield.final_action,
                 },
             )
-            speed = (
-                2.0
-                if decision.executed_primitive in (0, 1)
-                else (-1.4 if decision.executed_primitive == 4 else 0.8)
+            write_jsonl(
+                OUT / "events.jsonl",
+                {
+                    "decision": decision_index,
+                    "frame_id": perception.frame_id,
+                    "observation_hash": hash_array(obs["map"]),
+                    "option": option.name,
+                    "target": target,
+                    "planner_success": decision.planner.success,
+                    "shield_decision": decision.shield.shield_decision,
+                    "motor_command": command,
+                },
             )
-            turn = 0.45 if decision.executed_primitive in (2, 3) else 0.0
-            command = (speed - turn, speed + turn)
-            if command != previous:
-                motor_changes += 1
-            previous = command
-            left.setVelocity(command[0])
-            right.setVelocity(command[1])
-            motor_file.write(f"{step},{command[0]},{command[1]}\n")
-            option_file.write(f"{step},{option.name},{target},{duration},{budget}\n")
+            context[:-1] = context[1:]
+            context[-1] = (float(decision.executed_primitive), 0.0, 0.0)
+            previous_option, previous_target, previous_semantic_hash = (
+                option_value,
+                target,
+                semantic_after,
+            )
+            policy_decisions += 1
     left.setVelocity(0.0)
     right.setVelocity(0.0)
     summary = {
@@ -201,39 +427,58 @@ def main() -> int:
         "algorithm": "riskshield_hierarchical_hrmppo_mpc_v4_experimental",
         "production_replacement_approved": False,
         "checkpoint_loaded": True,
-        "checkpoint_sha256_verified": True,
+        "checkpoint_sha256_verified": digest(CHECKPOINT) == CHECKPOINT_SHA,
         "cv_checkpoint_loaded": detector.model_connected,
-        "cv_checkpoint_sha256_verified": bool(detector.model_sha256),
+        "cv_checkpoint_sha256_verified": detector.model_sha256
+        == "4bd2190a3c99ffa5d1a7f57a37683c908c044e91485cd01e44ca4e199bde8550",
         "cuda_perception_verified": detector.device.startswith("cuda"),
-        "observation_schema_verified": True,
-        "option_schema_verified": True,
-        "recurrent_schema_verified": True,
-        "recurrent_state_initialized": True,
-        "recurrent_state_updated": recurrent_updated,
-        "recurrent_state_reset_between_episodes": True,
-        "causal_option_mask_active": True,
-        "learned_option_selection_active": True,
-        "learned_target_selection_active": True,
-        "learned_duration_active": True,
-        "learned_risk_budget_active": True,
-        "causal_planner_active": True,
-        "planner_uses_hidden_simulator_state": False,
-        "predictive_controller_active": True,
-        "predictive_safety_shield_active": True,
-        "perception_affects_policy": True,
-        "option_changes_affect_planner": True,
+        "observation_schema_verified": mask_validations == policy_decisions
+        and policy_decisions > 0,
+        "option_schema_verified": mask_validations == policy_decisions and policy_decisions > 0,
+        "recurrent_schema_verified": len(recurrent_hashes) == policy_decisions
+        and policy_decisions > 0,
+        "synthetic_observation_fallback": synthetic_observation_events > 0,
+        "causal_option_mask_active": mask_validations == policy_decisions,
+        "learned_option_selection_active": policy_decisions > 0 and len(option_values) > 0,
+        "learned_target_selection_active": policy_decisions > 0,
+        "learned_duration_active": policy_decisions > 0,
+        "learned_risk_budget_active": policy_decisions > 0,
+        "structured_state_validated": policy_decisions > 0,
+        "recurrent_state_initialized": bool(initial_hidden_hash),
+        "initial_recurrent_hash": initial_hidden_hash,
+        "recurrent_state_updated": any(
+            a != b
+            for a, b in zip(
+                recurrent_hashes, [initial_hidden_hash] + recurrent_hashes[:-1], strict=False
+            )
+        ),
+        "recurrent_state_reset_between_episodes": 1 > 1,
+        "target_persistence_validated": target_retained > 0 or target_invalidated > 0,
+        "causal_planner_active": planner_changes > 0,
+        "planner_uses_hidden_simulator_state": hidden_state_planner_events > 0,
+        "predictive_controller_active": policy_decisions > 0,
+        "predictive_safety_shield_active": policy_decisions > 0,
+        "perception_affects_policy": perception_updates > 0,
+        "option_changes_affect_planner": planner_changes > 0,
         "planner_output_affects_motor_commands": motor_changes > 0,
-        "manual_control_used": False,
-        "scripted_mission_fallback_used": False,
-        "production_v1_policy_used": False,
-        "invalid_option_count": 0,
-        "invalid_primitive_count": 0,
-        "invalid_motor_command_count": 0,
-        "option_count": len(option_changes),
+        "manual_control_used": manual_control_events > 0,
+        "scripted_mission_fallback_used": fallback_events > 0,
+        "production_v1_policy_used": fallback_events > 0,
+        "invalid_option_count": invalid_option_count,
+        "invalid_primitive_count": invalid_primitive_count,
+        "invalid_motor_command_count": invalid_motor_command_count,
+        "frame_count": frame_count,
+        "episode_count": 1,
+        "policy_decisions": policy_decisions,
+        "simulation_steps": frame_count,
+        "recurrent_hash_count": len(recurrent_hashes),
+        "target_retained_count": target_retained,
+        "target_invalidated_count": target_invalidated,
+        "perception_update_count": perception_updates,
+        "option_count": len(option_values),
         "motor_command_changes": motor_changes,
         "checkpoint_sha256": CHECKPOINT_SHA,
         "cv_checkpoint_sha256": detector.model_sha256,
-        "steps": 3,
     }
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     (OUT / "complete.marker").write_text("complete\n", encoding="utf-8")

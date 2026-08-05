@@ -1,0 +1,10 @@
+{
+  "synthetic_observation": true,
+  "fixed_semantic_map": true,
+  "all_ones_option_mask": true,
+  "zero_structured_state": true,
+  "decision_count": 3,
+  "hardcoded_assertions": true,
+  "superseded_evidence_root": "reports/strong_policy_upgrade/webots_v4_final",
+  "correction_branch": "fix/real-v4-webots-integration"
+}

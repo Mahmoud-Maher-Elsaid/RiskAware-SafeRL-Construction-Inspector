@@ -5,7 +5,7 @@ $python = Join-Path $repo '.venv\Scripts\python.exe'
 if (-not (Test-Path -LiteralPath $python)) { throw "Repository Python not found: $python" }
 Push-Location $repo
 try {
-    & $python -m compileall -q src scripts tests
+    & $python -m compileall -q src scripts tests webots/controllers
     if ($LASTEXITCODE -ne 0) { throw 'Compilation failed.' }
     & $python -m ruff check .
     if ($LASTEXITCODE -ne 0) { throw 'Ruff check failed.' }
@@ -14,32 +14,41 @@ try {
     & $python -m pytest -q
     if ($LASTEXITCODE -ne 0) { throw 'Pytest failed.' }
     & (Join-Path $repo 'scripts\run_benchmark_v2.ps1')
-    $production = Join-Path $repo 'reports\final_project_completion\final_runtime_summary.json'
-    if (-not (Test-Path -LiteralPath $production)) { throw 'Production runtime summary missing.' }
-    $p = Get-Content $production -Raw | ConvertFrom-Json
-    if (-not $p.mission_completed -or $p.manual_control_used -or $p.fallback_controller_used) { throw 'Production v1 gate failed.' }
-    $paper = Join-Path $repo 'reports\strong_policy_upgrade\paper_validation\summary.json'
-    if (-not (Test-Path -LiteralPath $paper)) { throw 'Paper validation report missing.' }
-    $webots = Join-Path $repo 'reports\strong_policy_upgrade\webots_v4_final\summary.json'
-    if (-not (Test-Path -LiteralPath $webots)) { throw 'Experimental v4 Webots summary missing.' }
-    $w = Get-Content $webots -Raw | ConvertFrom-Json
-    if ($w.status -ne 'PASSED' -or @($w.worlds).Count -ne 3) { throw 'Experimental v4 Webots gate failed.' }
-    $ablation = Join-Path $repo 'reports\strong_policy_upgrade\ablations_v4\summary.json'
-    if (-not (Test-Path -LiteralPath $ablation)) { throw 'v4 ablation summary missing.' }
-    $accept = Join-Path $repo 'reports\strong_policy_upgrade\final_acceptance_v2'
-    New-Item -ItemType Directory -Force -Path $accept | Out-Null
+
+    $productionPath = Join-Path $repo 'reports\final_project_completion\final_runtime_summary.json'
+    $production = Get-Content -LiteralPath $productionPath -Raw | ConvertFrom-Json
+    $productionGate = [bool]$production.mission_completed -and -not [bool]$production.manual_control_used -and -not [bool]$production.fallback_controller_used
+    $webotsRoot = Join-Path $repo 'reports\strong_policy_upgrade\webots_v4_real'
+    $worlds = @('site_small', 'site_medium', 'site_dynamic')
+    $worldSummaries = @($worlds | ForEach-Object { Get-Content (Join-Path (Join-Path $webotsRoot $_) 'summary.json') -Raw | ConvertFrom-Json })
+    $experimentalGate = ($worldSummaries.Count -eq 3) -and (($worldSummaries | Where-Object { [int]$_.policy_decisions -ge 100 -and $_.synthetic_observation_fallback -eq $false -and $_.observation_schema_verified -and $_.structured_state_validated -and $_.causal_option_mask_active -and $_.recurrent_state_updated -and $_.learned_option_selection_active -and $_.causal_planner_active -and $_.planner_output_affects_motor_commands -and $_.invalid_option_count -eq 0 -and $_.invalid_primitive_count -eq 0 -and $_.invalid_motor_command_count -eq 0 }).Count -eq 3)
+    $benchmark = Get-Content (Join-Path $repo 'reports\strong_policy_upgrade\benchmark_v2\integrity_report.json') -Raw | ConvertFrom-Json
+    $benchmarkGate = $benchmark.total_rows -eq 1620 -and $benchmark.unique_run_ids -eq 1620 -and $benchmark.duplicate_rows -eq 0 -and $benchmark.missing_rows -eq 0 -and $benchmark.unresolved_execution_failures -eq 0 -and -not $benchmark.historical_rows_changed
+    $paperGate = (Test-Path -LiteralPath (Join-Path $repo 'paper\main.pdf')) -and (Test-Path -LiteralPath (Join-Path $repo 'reports\strong_policy_upgrade\paper_validation\summary.json'))
+    $cvGate = Test-Path -LiteralPath (Join-Path $repo 'reports\strong_policy_upgrade\cv_final_audit\summary.json')
+    $ablationGate = Test-Path -LiteralPath (Join-Path $repo 'reports\strong_policy_upgrade\ablations_v4\summary.json')
+    $releaseGate = Test-Path -LiteralPath (Join-Path $repo 'release\manifest.json')
     $gates = [ordered]@{
         repository_software = $true
-        production_v1 = $true
-        benchmark_v2 = $true
-        paper = $true
-        cv_audit = $true
-        experimental_v4_webots = $true
-        v4_production_replacement = $false
+        github_ci = (Test-Path -LiteralPath (Join-Path $repo '.github\workflows\ci.yml'))
+        production_v1 = $productionGate
+        experimental_v4_webots = $experimentalGate
+        benchmark_v2 = $benchmarkGate
+        cv_audit = $cvGate
+        ablations_statistics = $ablationGate
+        paper = $paperGate
+        documentation_release = $releaseGate
+        production_replacement_approved = $false
+        production_policy = 'RiskShield-PPO v1'
         status = 'PROJECT_COMPLETED_WITH_PRODUCTION_V1_RETAINED_AND_V4_EXPERIMENTAL'
     }
-    $gates | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $accept 'gates.json') -Encoding UTF8
-    $gates | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $accept 'summary.json') -Encoding UTF8
-    'Repository/software, production v1, experimental v4 runtime, benchmark v2, CV audit, paper, and release gates passed. RiskShield-PPO v1 remains production; v4 replacement remains rejected.' | Set-Content (Join-Path $accept 'summary.md') -Encoding UTF8
+    $accept = Join-Path $repo 'reports\strong_policy_upgrade\final_acceptance_v2'
+    New-Item -ItemType Directory -Force -Path $accept | Out-Null
+    $gates | ConvertTo-Json -Depth 8 | Set-Content (Join-Path $accept 'gates.json') -Encoding UTF8
+    [ordered]@{ status=$gates.status; gates=$gates; worlds=$worldSummaries; benchmark=$benchmark } | ConvertTo-Json -Depth 12 | Set-Content (Join-Path $accept 'summary.json') -Encoding UTF8
+    [ordered]@{ webots_root=$webotsRoot; world_count=$worldSummaries.Count; benchmark_rows=$benchmark.total_rows; paper='paper/main.pdf'; release='release/manifest.json' } | ConvertTo-Json | Set-Content (Join-Path $accept 'artifact_manifest.json') -Encoding UTF8
+    $failed = @($gates.GetEnumerator() | Where-Object { $_.Value -is [bool] -and $_.Value -eq $false -and $_.Key -ne 'production_replacement_approved' })
+    if ($failed.Count -gt 0) { throw 'One or more final acceptance gates failed.' }
+    'Repository/software, production v1, corrected experimental v4 runtime, benchmark v2, CV audit, ablations, paper, and release gates passed. RiskShield-PPO v1 remains production; v4 replacement remains rejected.' | Set-Content (Join-Path $accept 'summary.md') -Encoding UTF8
     Write-Output 'FINAL_ACCEPTANCE_V2=PASSED'
 } finally { Pop-Location }

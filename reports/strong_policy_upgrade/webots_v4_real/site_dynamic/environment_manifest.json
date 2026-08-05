@@ -1,0 +1,8 @@
+{
+    "world":  "site_dynamic",
+    "source_world":  "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\webots\\worlds\\site_dynamic.wbt",
+    "controller":  "hierarchical_experimental_robot",
+    "supervisor":  "hierarchical_experimental_supervisor",
+    "runtime_mode":  "experimental",
+    "decisions":  100
+}

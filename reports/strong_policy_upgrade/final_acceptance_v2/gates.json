@@ -1,10 +1,14 @@
 ﻿{
     "repository_software":  true,
+    "github_ci":  true,
     "production_v1":  true,
-    "benchmark_v2":  true,
-    "paper":  true,
-    "cv_audit":  true,
     "experimental_v4_webots":  true,
-    "v4_production_replacement":  false,
+    "benchmark_v2":  true,
+    "cv_audit":  true,
+    "ablations_statistics":  true,
+    "paper":  true,
+    "documentation_release":  true,
+    "production_replacement_approved":  false,
+    "production_policy":  "RiskShield-PPO v1",
     "status":  "PROJECT_COMPLETED_WITH_PRODUCTION_V1_RETAINED_AND_V4_EXPERIMENTAL"
 }

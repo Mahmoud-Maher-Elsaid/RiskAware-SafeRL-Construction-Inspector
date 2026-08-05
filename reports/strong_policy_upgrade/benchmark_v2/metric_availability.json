@@ -1,0 +1,17 @@
+{
+  "status": "AUDITED",
+  "unavailable_metrics": {
+    "near_miss_rate": "not recorded by the hierarchical runtime",
+    "near_miss_count": "not recorded by the hierarchical runtime",
+    "restricted_zone_violations": "not recorded by the hierarchical runtime",
+    "energy_usage": "not recorded by the hierarchical runtime",
+    "path_length": "not recorded; episode_steps is retained separately",
+    "emergency_stops": "not recorded by the hierarchical runtime",
+    "inference_latency_ms": "not recorded by the hierarchical runtime",
+    "policy_latency_ms": "not recorded by the hierarchical runtime"
+  },
+  "representation": "null values with metric_available_<name>=false; no unavailable metric is encoded as measured zero",
+  "historical_rows": 1350,
+  "hierarchical_rows": 270,
+  "total_rows": 1620
+}
