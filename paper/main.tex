@@ -7,7 +7,7 @@
 \usepackage{algpseudocode}
 \usepackage{url}
 
-\title{RiskShield-PPO: Risk-Aware Safe Reinforcement Learning for Autonomous Construction-Site Inspection under Perception Uncertainty}
+\title{RiskShield-Hierarchical HRMPPO-MPC: Causal Hierarchical Safe Reinforcement Learning for Construction-Site Inspection under Perception Uncertainty}
 \author{\IEEEauthorblockN{Mahmoud Maher}}
 
 \begin{document}
@@ -25,8 +25,12 @@ from PPO's 49.39 to 17.13 and eliminated observed collisions, but neither
 learned method completed a full mission. Frontier exploration achieved 96.67\%
 success and 0.998 hazard recall, exposing a substantial learning gap. A
 separate Webots runtime verifies CUDA perception, shielded policy-to-motor
-control, and first-person rendering. The evidence is simulation-only and does
-not establish real-world safety.
+control, and first-person rendering. The project also evaluates an
+experimental hierarchical v4 policy on 270
+paired held-out grid episodes. It achieved 58.89\% mission success and
+92.14\% hazard recall in that protocol; production remains RiskShield-PPO v1
+because the v4 replacement gates were rejected. The evidence is simulation-only
+and does not establish real-world safety.
 \end{abstract}
 
 \section{Introduction}
@@ -113,6 +117,18 @@ The resulting penalized reward actually reaches PPO training. Telemetry records
 policy/value diagnostics, cost-value loss, cost, budget, and multiplier.
 Training stopped after 15,300 steps without improvement; the multiplier
 saturated, a negative result reported rather than hidden.
+
+\section{Hierarchical Experimental System}
+The experimental v4 system separates learned mission decisions from local
+execution. A recurrent option policy selects exploration, inspection, retreat,
+and replanning intentions and a target in the causal observed map. An
+incremental risk-aware planner proposes a local route; a predictive controller
+and Safety Shield validate the resulting primitive before wheel commands. The
+policy never receives hidden map state or future worker motion. This is not
+end-to-end wheel-velocity reinforcement learning. H3 reached 61.54\% success
+with 95.51\% recall; H4 imitation reached 62.50\% success with mean cost
+16.31, while H4 30k fell to 56.25\%. These negative results motivate retaining
+v1 in production.
 
 \section{Predictive Safety Shield}
 For proposed action $a_t$, the shield rolls forward a deterministic local model
