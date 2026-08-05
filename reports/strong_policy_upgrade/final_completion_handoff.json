@@ -28,14 +28,19 @@
     "h3_hazard_recall": 0.9550724637681159,
     "h3_inspection_coverage": 0.9550724637681159,
     "h3_mean_safety_cost": 20.365384615384617,
-    "h4_evaluation": "pending"
+    "h4_mission_success": 0.625,
+    "h4_hazard_recall": 0.922463768115942,
+    "h4_inspection_coverage": 0.922463768115942,
+    "h4_mean_safety_cost": 16.3125,
+    "h4_shield_intervention_rate": 0.065,
+    "h4_evaluation": "FAILED declared gate; valid paired evaluation completed"
   },
   "remaining_blockers": [
     "paired H4 evaluation",
     "hierarchical recovery training and final grid acceptance",
     "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
   ],
-  "next_exact_action": "Evaluate the H4 target-persistence checkpoint on the exact H2/H3 paired protocol, then select initialization using the declared lexicographic contract.",
+  "next_exact_action": "Select H4 target-persistence imitation as the strongest valid initialization on the paired short protocol, preserve H3 as task baseline, and run a bounded resumable H4 recovery smoke before any longer training.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
