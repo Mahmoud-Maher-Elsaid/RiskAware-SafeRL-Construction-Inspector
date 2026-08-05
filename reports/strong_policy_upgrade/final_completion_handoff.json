@@ -70,6 +70,9 @@
     "ruff_format_check": "PASSED",
     "focused_resume_and_algorithm_tests": "PASSED",
     "git_diff_check": "PASSED",
+    "full_compile": "PASSED",
+    "full_ruff": "PASSED",
+    "full_pytest": "PASSED",
     "github_actions": "No check run is exposed for 8d1f7ab; public API returned 404 and repository has no local workflow file",
     "production_replacement": "not attempted"
   }
