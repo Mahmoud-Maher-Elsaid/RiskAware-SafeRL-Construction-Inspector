@@ -1,8 +1,8 @@
 {
   "branch": "final/strong-policy-upgrade",
-  "local_commit": "0156dc30bfbd1250a7130989993526bc708c3648",
-  "remote_commit": "0156dc30bfbd1250a7130989993526bc708c3648",
-  "current_phase": "webots_production_regression_and_release_validation",
+  "local_commit": "460ae0118c35e39e738d85f912b093036dfd21b1",
+  "remote_commit": "460ae0118c35e39e738d85f912b093036dfd21b1",
+  "current_phase": "release_validation_after_webots_repair",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",
@@ -50,7 +50,7 @@
     "hierarchical recovery training and final grid acceptance",
     "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
   ],
-  "next_exact_action": "Use authenticated gh on the Windows host to verify CI for 0156dc3, then commit and push the validated Webots launcher and root-cause evidence before continuing release validation.",
+  "next_exact_action": "Verify the exact 460ae01 research-branch CI run with authenticated gh on the Windows host; if green, continue benchmark, paper, and final acceptance validation without changing production v1.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
@@ -77,6 +77,8 @@
     "webots_launcher_parse": "PASSED",
     "webots_qt_framebuffer_repair": "applied; fatal geometry allocation no longer observed",
     "webots_production_regression": "PASSED; production command exit code 0 and mission_completed=true after child-local Qt and Ultralytics environment repair",
+    "webots_three_world_smoke": "PASSED; three generated worlds completed bounded smoke validation",
+    "cv_final_audit": "PASSED schema/CUDA/latency audit; checkpoint retained because independent labeled mAP evidence is unavailable",
     "benchmark_configuration_validation": "PASSED; 1350 historical rows unique",
     "grid_environment_validation": "PASSED; 3 configurations",
     "github_ci_repair_commit": "78b4d45eb0f373899628da5c04429866d84cee4c",
