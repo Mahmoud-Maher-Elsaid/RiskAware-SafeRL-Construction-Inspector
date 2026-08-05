@@ -1,0 +1,12 @@
+{
+  "status": "BLOCKED_BY_HOST_GUI_STARTUP",
+  "world": "site_dynamic",
+  "requested_duration_seconds": 90,
+  "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/run_real_v4_webots_demo.ps1 -World site_dynamic -DurationSeconds 90",
+  "webots_process_started": true,
+  "controller_started": false,
+  "summary_generated": false,
+  "headless_real_runtime_remains_valid": true,
+  "reason": "Webots R2025a GUI process remained in startup with no controller process or runtime output until the bounded launcher timeout. The process was cleaned up. No screenshot or success metric is claimed.",
+  "attempts": 2
+}
