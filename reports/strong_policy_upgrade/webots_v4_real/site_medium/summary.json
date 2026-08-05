@@ -36,6 +36,7 @@
   "invalid_primitive_count": 0,
   "invalid_motor_command_count": 0,
   "frame_count": 100,
+  "episode_count": 1,
   "policy_decisions": 100,
   "simulation_steps": 100,
   "recurrent_hash_count": 100,
