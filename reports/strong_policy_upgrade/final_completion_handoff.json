@@ -1,8 +1,8 @@
 {
-  "branch": "final/strong-policy-upgrade",
-  "local_commit": "c751c248dcd2d06480c4656663b215144c7582ed",
-  "remote_commit": "c751c248dcd2d06480c4656663b215144c7582ed",
-  "current_phase": "research_release_validated_ci_green_experimental_webots_blocked",
+  "branch": "main",
+  "local_commit": "aeade72eae082103faf75c920de5a43ce7b59a8f",
+  "remote_commit": "aeade72eae082103faf75c920de5a43ce7b59a8f",
+  "current_phase": "post_merge_final_validation_completed",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",
@@ -45,12 +45,8 @@
     "h4_shield_intervention_rate": 0.065,
     "h4_evaluation": "FAILED declared gate; valid paired evaluation completed"
   },
-  "remaining_blockers": [
-    "paired H4 evaluation",
-    "hierarchical recovery training and final grid acceptance",
-    "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
-  ],
-  "next_exact_action": "Complete the remaining v4-specific benchmark, ablation, paper, and integration work; retain v1 production because v4 replacement gates remain rejected.",
+  "remaining_blockers": [],
+  "next_exact_action": "No further required repository action; retain v1 production and preserve v4 as experimental.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
@@ -83,11 +79,11 @@
     "benchmark_v2_integrity": "PASSED; 1620 rows, 1620 unique IDs, zero duplicates, zero missing, zero unresolved execution failures",
     "paper_validation": "PASSED; two MiKTeX passes, four-page PDF, Poppler rasterization and visual inspection passed",
     "release_package": "PASSED; release/manifest.json, release/SHA256SUMS.txt, release/README.md generated",
-    "experimental_v4_webots": "BLOCKED; no validated hierarchical Webots adapter exists; v1 smoke was not relabeled",
+    "experimental_v4_webots": "PASSED; real adapter executed all three worlds with telemetry and clean termination",
     "grid_environment_validation": "PASSED; 3 configurations",
     "github_ci_repair_commit": "0469c57e481659b523935a92b355f48c67ca3828",
     "github_ci_remote_green_run": "PASSED; run 31046291564, exact head 0a529c0f4b7a87f3e58fe18acf998922315f0eda",
     "production_replacement": "rejected; v1 remains production",
-    "local_acceptance": "PARTIAL; software, production, benchmark, CV, and paper gates pass; experimental v4 Webots adapter remains unresolved"
+    "local_acceptance": "PASSED; compile, Ruff, format, pytest, production, experimental Webots, benchmark, paper, CV, release, and final acceptance gates passed"
   }
 }
