@@ -1,7 +1,7 @@
 {
   "branch": "final/strong-policy-upgrade",
-  "local_commit": "0469c57e481659b523935a92b355f48c67ca3828",
-  "remote_commit": "0469c57e481659b523935a92b355f48c67ca3828",
+  "local_commit": "821a9d2987ba34835b267bd0cba2d36f1ac590f5",
+  "remote_commit": "821a9d2987ba34835b267bd0cba2d36f1ac590f5",
   "current_phase": "github_ci_green_release_validation",
   "completed_phases": [
     "causal hierarchical mission semantics",
@@ -73,7 +73,7 @@
     "full_compile": "PASSED",
     "full_ruff": "PASSED",
     "full_pytest": "PASSED",
-    "github_actions": "PASSED; run 31037826395 on head 0469c57e481659b523935a92b355f48c67ca3828, install/Ruff/format/pytest all passed",
+    "github_actions": "PASSED; run 31038258065 on head 821a9d2987ba34835b267bd0cba2d36f1ac590f5, install/Ruff/format/pytest all passed",
     "webots_launcher_parse": "PASSED",
     "webots_qt_framebuffer_repair": "applied; fatal geometry allocation no longer observed",
     "webots_production_regression": "PASSED; production command exit code 0 and mission_completed=true after child-local Qt and Ultralytics environment repair",
@@ -82,7 +82,7 @@
     "benchmark_configuration_validation": "PASSED; 1350 historical rows unique",
     "grid_environment_validation": "PASSED; 3 configurations",
     "github_ci_repair_commit": "0469c57e481659b523935a92b355f48c67ca3828",
-    "github_ci_remote_green_run": "PASSED; run 31037826395, exact head 0469c57e481659b523935a92b355f48c67ca3828",
+    "github_ci_remote_green_run": "PASSED; run 31038258065, exact head 821a9d2987ba34835b267bd0cba2d36f1ac590f5",
     "production_replacement": "not attempted"
   }
 }

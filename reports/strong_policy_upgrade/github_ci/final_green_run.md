@@ -2,9 +2,9 @@
 
 - Workflow: CI
 - Branch: `final/strong-policy-upgrade`
-- Head SHA: `0469c57e481659b523935a92b355f48c67ca3828`
-- Run ID: `31037826395`
-- Job ID: `92414389303`
+- Head SHA: `821a9d2987ba34835b267bd0cba2d36f1ac590f5`
+- Run ID: `31038258065`
+- Job ID: `92415882254`
 - Conclusion: success
 - Installation: passed
 - Ruff check: passed
