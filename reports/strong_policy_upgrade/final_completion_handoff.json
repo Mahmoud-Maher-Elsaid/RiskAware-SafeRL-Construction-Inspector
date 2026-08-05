@@ -1,8 +1,8 @@
 {
   "branch": "final/strong-policy-upgrade",
-  "local_commit": "8d1f7abb1e3238dc8553bbc5be0658cae11385a0",
-  "remote_commit": "8d1f7abb1e3238dc8553bbc5be0658cae11385a0",
-  "current_phase": "hierarchical_v4_recovery",
+  "local_commit": "6fb3f7cf91647c52b2626b4271e35b6d536ca7f4",
+  "remote_commit": "6fb3f7cf91647c52b2626b4271e35b6d536ca7f4",
+  "current_phase": "hierarchical_v4_recovery_evaluation",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",
@@ -10,13 +10,13 @@
     "H2 and H3 preliminary paired evaluations",
     "H4 target-persistence derivation"
   ],
-  "active_strategy": "H4 target-persistence option-level HRMPPO recovery",
+  "active_strategy": "H4 recovery evidence preserved; no accepted production replacement",
   "active_process": null,
   "exact_resume_command": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\.venv\\Scripts\\python.exe scripts\\train_hierarchical_hrmppo_mpc_v4.py --initialize artifacts\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence\\seed_105\\best_checkpoint.pt --option-steps 30000 --rollout-options 128 --seed 20260805 --output artifacts\\strong_policy_upgrade\\hierarchical_hrmppo_v4_h4_recovery_30k --device cuda --resume",
   "initialization_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/seed_105/best_checkpoint.pt",
   "initialization_sha256": "1b193f429d8411c30232b60c63260b2df0d112559a6a68139915cc402be14888",
-  "latest_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h3_5k/final_checkpoint.pt",
-  "latest_checkpoint_sha256": "e23784174a4ad9768b2b4175bac5afb0bd59a2bdf111710659adc982507285e8",
+  "latest_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h4_recovery_30k/final_checkpoint.pt",
+  "latest_checkpoint_sha256": "b155a26d238f004a7fbd61bbf6e083fab4f0b9d98418bba19d72834fe349176c",
   "training_progress": {
     "h3_option_steps": 5000,
     "h3_episodes": 76,
@@ -50,7 +50,7 @@
     "hierarchical recovery training and final grid acceptance",
     "Webots, CV, benchmark, ablation, paper, release, and post-merge acceptance"
   ],
-  "next_exact_action": "Preserve H4 30k as failed evidence, select the H4 imitation checkpoint for any future recovery, and complete the bounded final grid evaluation/reporting without installing a rejected production checkpoint.",
+  "next_exact_action": "Complete the paired final grid evaluation/reporting for H4 imitation and H3 baselines; keep RiskShield-PPO v1 in production unless a candidate passes the declared task and safety gates.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
