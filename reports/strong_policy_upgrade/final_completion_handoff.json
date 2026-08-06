@@ -1,18 +1,29 @@
 {
   "branch": "main",
-  "local_commit": "aeade72eae082103faf75c920de5a43ce7b59a8f",
-  "remote_commit": "aeade72eae082103faf75c920de5a43ce7b59a8f",
-  "current_phase": "post_merge_final_validation_completed",
+  "local_commit": "63a6a411f1741ac7f0615a35fbf2f9539c9e47ec",
+  "remote_commit": "63a6a411f1741ac7f0615a35fbf2f9539c9e47ec",
+  "current_phase": "legacy_gate_audit_and_final_release_validation",
   "completed_phases": [
     "causal hierarchical mission semantics",
     "option-level HRMPPO v4 implementation",
     "focused hierarchical validation",
     "H2 and H3 preliminary paired evaluations",
-    "H4 target-persistence derivation"
+    "H4 target-persistence derivation",
+    "production v1 Webots regression",
+    "experimental v4 three-world Webots validation",
+    "visible v4 Webots demonstration",
+    "CV audit",
+    "benchmark v2 integrity",
+    "v4 ablation and statistical evidence",
+    "paper rebuild and visual validation",
+    "release package",
+    "final acceptance v2",
+    "integration merge",
+    "main merge and exact-head CI"
   ],
   "active_strategy": "H4 recovery evidence preserved; no accepted production replacement",
   "active_process": null,
-  "exact_resume_command": "F:\\AI\\My_Project\\RiskAware-SafeRL-Construction-Inspector\\.venv\\Scripts\\python.exe scripts\\train_hierarchical_hrmppo_mpc_v4.py --initialize artifacts\\strong_policy_upgrade\\hierarchical_imitation_h4_target_persistence\\seed_105\\best_checkpoint.pt --option-steps 30000 --rollout-options 128 --seed 20260805 --output artifacts\\strong_policy_upgrade\\hierarchical_hrmppo_v4_h4_recovery_30k --device cuda --resume",
+  "exact_resume_command": "No further long training is justified; resume with the final acceptance and release validation commands.",
   "initialization_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/seed_105/best_checkpoint.pt",
   "initialization_sha256": "1b193f429d8411c30232b60c63260b2df0d112559a6a68139915cc402be14888",
   "latest_checkpoint": "artifacts/strong_policy_upgrade/hierarchical_hrmppo_v4_h4_recovery_30k/final_checkpoint.pt",
@@ -46,7 +57,7 @@
     "h4_evaluation": "FAILED declared gate; valid paired evaluation completed"
   },
   "remaining_blockers": [],
-  "next_exact_action": "No further required repository action; retain v1 production and preserve v4 as experimental.",
+  "next_exact_action": "Commit the evidence-backed plan and legacy-gate audit, push main, and verify exact-head CI; do not rerun rejected replacement training.",
   "local_only_artifact_paths": [
     "artifacts/strong_policy_upgrade/hierarchical_h2_5k_evaluation/",
     "artifacts/strong_policy_upgrade/hierarchical_h3_5k_evaluation/",
@@ -69,7 +80,7 @@
     "full_compile": "PASSED",
     "full_ruff": "PASSED",
     "full_pytest": "PASSED",
-    "github_actions": "PASSED; run 31038640148 on head b804ea87604ba1df369e13f6212177d17e369206, install/Ruff/format/pytest all passed",
+    "github_actions": "PASSED; run 31061592167 on exact main head 63a6a411f1741ac7f0615a35fbf2f9539c9e47ec, install/Ruff/format/pytest all passed",
     "webots_launcher_parse": "PASSED",
     "webots_qt_framebuffer_repair": "applied; fatal geometry allocation no longer observed",
     "webots_production_regression": "PASSED; production command exit code 0 and mission_completed=true after child-local Qt and Ultralytics environment repair",
@@ -82,7 +93,8 @@
     "experimental_v4_webots": "PASSED; real adapter executed all three worlds with telemetry and clean termination",
     "grid_environment_validation": "PASSED; 3 configurations",
     "github_ci_repair_commit": "0469c57e481659b523935a92b355f48c67ca3828",
-    "github_ci_remote_green_run": "PASSED; run 31046291564, exact head 0a529c0f4b7a87f3e58fe18acf998922315f0eda",
+    "github_ci_remote_green_run": "PASSED; run 31061592167, exact head 63a6a411f1741ac7f0615a35fbf2f9539c9e47ec",
+    "legacy_gate_audit": "PASSED; causal BC and flat DAgger gates passed; HRMPPO v2/v3 and hierarchical beta-zero replacement gates remain rejected with preserved evidence",
     "production_replacement": "rejected; v1 remains production",
     "local_acceptance": "PASSED; compile, Ruff, format, pytest, production, experimental Webots, benchmark, paper, CV, release, and final acceptance gates passed"
   }

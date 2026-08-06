@@ -1,7 +1,7 @@
 ﻿{
     "schema_version":  1,
-    "generated_at":  "2026-08-06T04:02:21.3719726+03:00",
-    "git_commit":  "4cd9e6fbd3b49ff74f4a9da4bf6b85730fac8e2b",
+    "generated_at":  "2026-08-06T04:20:18.4191970+03:00",
+    "git_commit":  "63a6a411f1741ac7f0615a35fbf2f9539c9e47ec",
     "tracked_file_count":  861,
     "files":  [
                   {
@@ -441,8 +441,8 @@
                   },
                   {
                       "path":  "docs/project_completion_plan.md",
-                      "bytes":  5597,
-                      "sha256":  "0559e8d27efea64370aa5f633cd4389b9718c3ea88ed82bf842194c34b41023f"
+                      "bytes":  5664,
+                      "sha256":  "6955a6f8b2c0d553ccd37811f05448cdb4b1b29bc033fc54d5248d52d6b18af3"
                   },
                   {
                       "path":  "docs/reproducibility.md",
@@ -686,13 +686,13 @@
                   },
                   {
                       "path":  "release/SHA256SUMS.txt",
-                      "bytes":  106609,
-                      "sha256":  "3d952140e0365fd5f12b7e883729ba7b9d9e032b8ab617efb8398b51e99d4459"
+                      "bytes":  106856,
+                      "sha256":  "765764f6e07c80395ae504dbad8e1247b04149fa916f0f646c662c526716819a"
                   },
                   {
                       "path":  "release/manifest.json",
-                      "bytes":  232186,
-                      "sha256":  "0f5926cac0f580e3e6263f58addb8edfe0ab98ab2d642a8700effdaf7a5c1e2b"
+                      "bytes":  237039,
+                      "sha256":  "ae57319558d9b760acd77304a235ba97867d858de06ee05e723964d0ad23e9a7"
                   },
                   {
                       "path":  "reports/final_project_completion/baseline_audit.json",
@@ -901,8 +901,8 @@
                   },
                   {
                       "path":  "reports/final_submission/release_manifest.json",
-                      "bytes":  232186,
-                      "sha256":  "0f5926cac0f580e3e6263f58addb8edfe0ab98ab2d642a8700effdaf7a5c1e2b"
+                      "bytes":  237039,
+                      "sha256":  "ae57319558d9b760acd77304a235ba97867d858de06ee05e723964d0ad23e9a7"
                   },
                   {
                       "path":  "reports/final_submission/stage1_grid_environment/validation.json",
@@ -1811,8 +1811,8 @@
                   },
                   {
                       "path":  "reports/strong_policy_upgrade/final_completion_handoff.json",
-                      "bytes":  5946,
-                      "sha256":  "873eafa6aacaf5d175a1b42bf7265d2e127ab8ce95a24630c28e860dc62b6159"
+                      "bytes":  6244,
+                      "sha256":  "e1c593e58c0bc23c040c817346bc16b11178f9a178d355bb35337e2fec5279d6"
                   },
                   {
                       "path":  "reports/strong_policy_upgrade/final_resume_audit.json",

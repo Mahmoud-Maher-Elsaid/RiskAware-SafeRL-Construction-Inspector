@@ -1,19 +1,18 @@
 # Project Completion Plan
 
-Last updated: 2026-07-30
+Last updated: 2026-08-06
 
 ## Live checklist
 
 | Field | Current value |
 |---|---|
-| Current task | Hierarchical recovery: RiskShield-Hierarchical-HRMPPO-MPC v4 |
-| Current state | Hierarchical v4 core and corrected systematic causal option dataset pass three-seed CUDA imitation; H1 beta-zero evaluation is preserved as a task-gate failure and v1 remains production |
-| Evidence collected | Exact 5,460-count decomposition; immutable dataset/checkpoint hash verification; CUDA v3 smoke/resume; paired 90-episode initialization evaluation retained as negative evidence |
-| Files changed | Versioned safety contract and migration; five-critic recurrent constrained PPO; vector-cost buffer; event-aware observation-only shield; evaluator/trainer; regression tests |
-| Tests run | Ruff lint/format and 356 complete pytest tests pass after causal option-feasibility, target-semantic, planner, controller, and DAgger acceptance repairs |
-| Runtime result | Existing v1 production regression is blocked by a reproducible Webots R2025a/Qt invalid-framebuffer geometry failure; no v3 production claim has been made |
-| Remaining work | Complete accepted hierarchical DAgger, constrained option-level RL recovery strategies, Webots launcher repairs, and every downstream acceptance gate |
-| Blockers | No external blocker is currently established; flat v3 is retained only as negative evidence while the hierarchical recovery is implemented |
+| Current task | Final research release with RiskShield-PPO v1 production and hierarchical v4 experimental |
+| Current state | The v4 experimental runtime, three-world validation, benchmark v2, ablations, paper, release package, final acceptance, integration merge, and main CI are complete. v4 replacement remains rejected by paired evidence. |
+| Evidence collected | Causal BC summary and memory gate pass; three flat DAgger iterations pass; H2/H3/H4 paired evidence; real v4 Webots telemetry; 1,620-row benchmark integrity; CV audit; rebuilt four-page paper; release SHA-256 manifest |
+| Files changed | Safety contract and migration; recurrent constrained PPO; vector-cost buffer; causal shield; hierarchical policy/planner/controller; experimental Webots bridge; benchmark/acceptance/release tooling; documentation and paper |
+| Tests run | Compileall, Ruff lint/format, full pytest (369 tests), production Webots, three-world v4 Webots, benchmark integrity, paper validation, release validation, and GitHub Actions all pass |
+| Remaining work | No further justified production replacement is available. Preserve rejected v2/v3 and hierarchical-Dagger evidence as negative research results; retain v1 production and v4 experimental. |
+| Blockers | None for the accepted research release. Independent labeled CV metrics and a v4 production replacement remain unavailable/rejected and are documented limitations. |
 
 ## Phase checklist
 
@@ -34,7 +33,7 @@ Last updated: 2026-07-30
 - [x] Preserve and hash-verify the accepted 120,144 expert transitions.
 - [x] Replace copied in-memory sequences with a two-chunk LRU mmap cache and compact index.
 - [x] Pass the 1,000-batch CUDA Behavior Cloning memory regression gate.
-- [ ] Pass Behavior Cloning held-out accuracy and per-action recall gates.
+- [x] Pass Behavior Cloning held-out accuracy and per-action recall gates.
 - [x] Implement and validate a policy-observation-only causal expert.
 - [x] Pass causal expert solvability gates across 1,440 environment episodes.
 - [x] Generate and hash-validate the separate causal correction dataset.
@@ -49,7 +48,7 @@ Last updated: 2026-07-30
 - [x] Generate and validate 51,000 targeted safety DAgger corrections with
   contiguous recurrent context and KL task anchoring.
 - [ ] Train and accept RiskShield-HRMPPO-Safe v3 against paired task and safety gates.
-- [ ] Complete CV audit, three-world Webots validation, benchmark-v2, ablations, paper, and Git acceptance.
+- [x] Complete CV audit, three-world Webots validation, benchmark-v2, ablations, paper, and Git acceptance.
 - [x] Recover exact hierarchical-v4 starting state and freeze six baseline manifests.
 - [x] Implement and test recurrent mission policy, causal planner, predictive local controller, and independent shield composition.
 - [x] Derive 63,080 causal hierarchical decisions without modifying the 250,128-transition source.

@@ -1,0 +1,47 @@
+{
+  "audit_date": "2026-08-06",
+  "repository_head": "63a6a411f1741ac7f0615a35fbf2f9539c9e47ec",
+  "production_policy": "RiskShield-PPO v1",
+  "accepted_release_status": "PROJECT_COMPLETED_WITH_PRODUCTION_V1_RETAINED_AND_V4_EXPERIMENTAL",
+  "causal_behavior_cloning": {
+    "status": "PASSED",
+    "mean_held_out_accuracy": 0.9106907171139462,
+    "best_held_out_accuracy": 0.9139303283605967,
+    "minimum_primary_per_action_recall": 0.8413431916204559,
+    "memory_gate": "PASSED",
+    "source": "reports/strong_policy_upgrade/causal_behavior_cloning/behavior_cloning_summary.json"
+  },
+  "flat_dagger": {
+    "status": "PASSED",
+    "iterations": 3,
+    "final_held_out_success": 0.7666666666666667,
+    "final_held_out_hazard_recall": 0.9594007361398665,
+    "final_held_out_mean_safety_cost": 37.475,
+    "source": "reports/strong_policy_upgrade/dagger/dagger_summary.json"
+  },
+  "hrmppo_v2": {
+    "status": "REJECTED",
+    "reason": "The selected preliminary candidate passed the partial task gate but exceeded the declared safety-cost replacement criterion; no production authorization was issued.",
+    "overall_mission_success": 0.7666666666666667,
+    "target_mission_success": 0.9666666666666667,
+    "hardest_condition_success": 0.7,
+    "hazard_recall": 0.9425431331953071,
+    "mean_safety_cost": 35.63611111111111,
+    "source": "reports/strong_policy_upgrade/hrmppo_v2/optimization_summary.json"
+  },
+  "hrmppo_safe_v3": {
+    "status": "REJECTED",
+    "reason": "Existing paired evaluations do not satisfy the declared replacement gates; evidence is retained as a negative result.",
+    "source": "reports/strong_policy_upgrade/hrmppo_safe_v3/"
+  },
+  "hierarchical_dagger": {
+    "status": "REJECTED_AS_INITIALIZATION",
+    "reason": "Three policy-visited correction datasets exist, but the beta-zero mission gate failed; the checkpoints remain experimental evidence.",
+    "source": "reports/strong_policy_upgrade/hierarchical_dagger_accepted/"
+  },
+  "v4_release": {
+    "status": "PASSED_AS_EXPERIMENTAL",
+    "production_replacement": false,
+    "source": "reports/strong_policy_upgrade/final_acceptance_v2/summary.json"
+  }
+}
