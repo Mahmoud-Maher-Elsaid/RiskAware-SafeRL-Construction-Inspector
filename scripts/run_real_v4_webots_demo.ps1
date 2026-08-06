@@ -38,11 +38,29 @@ $worldText = (Get-Content -LiteralPath $source -Raw).Replace('controller "rl_aut
 $worldText = [regex]::Replace($worldText, '(?s)DEF HUMAN_VIEWPOINT Viewpoint \{.*?\n\}', {
     param($m)
     switch ($CameraMode) {
-        'first_person' { return (@('DEF HUMAN_VIEWPOINT Viewpoint {','  follow "SHOWCASE_ROBOT"','  followType "Mounted Shot"','  position 0.35 1.55 0','  orientation 1 0 0 -1.5708','  fieldOfView 1.05','  near 0.05','  far 70','  exposure 1','}') -join [Environment]::NewLine) }
+        'first_person' { return (@('DEF HUMAN_VIEWPOINT Viewpoint {','  follow "SHOWCASE_ROBOT"','  followType "Mounted Shot"','  position 0.40 1.25 0','  orientation 0 1 0 1.5708','  fieldOfView 1.05','  near 0.05','  far 70','  exposure 1','}') -join [Environment]::NewLine) }
         'chase' { return (@('DEF HUMAN_VIEWPOINT Viewpoint {','  follow "SHOWCASE_ROBOT"','  followType "Linear Motion"','  position -3 2.4 4','  orientation 0.25 0.96 0.10 2.2','  fieldOfView 1.05','  near 0.05','  far 70','  exposure 1','}') -join [Environment]::NewLine) }
         default { return $m.Value }
     }
 })
+# The visible experimental world gets real causal obstacle sensors without
+# changing the production world.  The robot controller consumes these values
+# through the normal Webots device API; supervisor state is never injected.
+$sensorNodes = @'
+    DistanceSensor { name "front obstacle sensor" lookupTable [ 0 1000 0 0.1 1000 0 ] }
+    DistanceSensor { name "front left obstacle sensor" rotation 0 1 0 0.55 lookupTable [ 0 1000 0 0.1 1000 0 ] }
+    DistanceSensor { name "front right obstacle sensor" rotation 0 1 0 -0.55 lookupTable [ 0 1000 0 0.1 1000 0 ] }
+    DistanceSensor { name "left obstacle sensor" rotation 0 1 0 1.5708 lookupTable [ 0 1000 0 0.1 1000 0 ] }
+    DistanceSensor { name "right obstacle sensor" rotation 0 1 0 -1.5708 lookupTable [ 0 1000 0 0.1 1000 0 ] }
+    DistanceSensor { name "rear left obstacle sensor" rotation 0 1 0 2.3562 lookupTable [ 0 1000 0 0.1 1000 0 ] }
+    DistanceSensor { name "rear right obstacle sensor" rotation 0 1 0 -2.3562 lookupTable [ 0 1000 0 0.1 1000 0 ] }
+'@
+$robotStart = $worldText.IndexOf('DEF SHOWCASE_ROBOT Robot {')
+if ($robotStart -lt 0) { throw 'SHOWCASE_ROBOT was not found in the visible world source.' }
+$childrenIndex = $worldText.IndexOf('  children [', $robotStart)
+if ($childrenIndex -lt 0) { throw 'SHOWCASE_ROBOT children block was not found.' }
+$insertAt = $childrenIndex + ('  children [' | Measure-Object -Character).Characters
+$worldText = $worldText.Insert($insertAt, [Environment]::NewLine + $sensorNodes.TrimEnd())
 [IO.File]::WriteAllText($stableWorld, $worldText, [Text.UTF8Encoding]::new($false))
 $stableText = Get-Content -LiteralPath $stableWorld -Raw
 if ($stableText -notmatch 'controller "hierarchical_experimental_robot"' -or $stableText -notmatch 'controller "hierarchical_experimental_supervisor"') { throw 'Stable world controller declarations are invalid.' }
@@ -52,7 +70,7 @@ $paths = @((Join-Path $repo '.venv\Scripts'), 'C:\Program Files\Webots\msys64\mi
 $env:Path = (($paths | Where-Object { $_ -and $_.Trim() } | Select-Object -Unique) -join ';')
 $env:RISK_AWARE_PROJECT_ROOT = $repo
 $env:RISK_AWARE_EXPERIMENTAL_OUTPUT = $attempt
-$env:RISK_AWARE_EXPERIMENTAL_DECISIONS = '100'
+$env:RISK_AWARE_EXPERIMENTAL_DECISIONS = if ($RunMode -eq 'bounded') { [string]([Math]::Max(100, $DurationSeconds * 10)) } else { '' }
 $env:RISK_AWARE_EXPERIMENTAL_DEMO_DURATION = [string]$DurationSeconds
 $env:RISK_AWARE_EXPERIMENTAL_RUN_MODE = $RunMode
 $env:RISK_AWARE_SCENARIO_SEED = [string]$ScenarioSeed
@@ -84,13 +102,15 @@ $launcherState | ConvertTo-Json | Set-Content (Join-Path $attempt 'launcher_stat
 $args = @('--batch', '--mode=realtime', '--stdout', '--stderr', $stableWorld)
 $args -contains '--no-rendering' | Set-Content (Join-Path $attempt 'no_rendering_flag_used.txt')
 $args -contains '--minimize' | Set-Content (Join-Path $attempt 'minimize_flag_used.txt')
-$envSnapshot = [ordered]@{ Path=$env:Path; QT_QPA_PLATFORM=$env:QT_QPA_PLATFORM; QT_SCALE_FACTOR=$env:QT_SCALE_FACTOR; QT_SCREEN_SCALE_FACTORS=$env:QT_SCREEN_SCALE_FACTORS; QT_AUTO_SCREEN_SCALE_FACTOR=$env:QT_AUTO_SCREEN_SCALE_FACTOR; RISK_AWARE_PROJECT_ROOT=$repo; RISK_AWARE_EXPERIMENTAL_OUTPUT=$attempt; RISK_AWARE_EXPERIMENTAL_DECISIONS='100'; RISK_AWARE_EXPERIMENTAL_DEMO_DURATION=$DurationSeconds; RISK_AWARE_EXPERIMENTAL_RUN_MODE=$RunMode; RISK_AWARE_SCENARIO_SEED=$ScenarioSeed; RISK_AWARE_POLICY_MODE=$PolicyMode; RISK_AWARE_POLICY_TEMPERATURE=$PolicyTemperature; WEBOTS_HOME=$env:WEBOTS_HOME; WEBOTS_PYTHON_COMMAND=$python; PYTHONPATH=$env:PYTHONPATH; YOLO_CONFIG_DIR=$env:YOLO_CONFIG_DIR; CameraMode=$CameraMode }
+$envSnapshot = [ordered]@{ Path=$env:Path; QT_QPA_PLATFORM=$env:QT_QPA_PLATFORM; QT_SCALE_FACTOR=$env:QT_SCALE_FACTOR; QT_SCREEN_SCALE_FACTORS=$env:QT_SCREEN_SCALE_FACTORS; QT_AUTO_SCREEN_SCALE_FACTOR=$env:QT_AUTO_SCREEN_SCALE_FACTOR; RISK_AWARE_PROJECT_ROOT=$repo; RISK_AWARE_EXPERIMENTAL_OUTPUT=$attempt; RISK_AWARE_EXPERIMENTAL_DECISIONS=$env:RISK_AWARE_EXPERIMENTAL_DECISIONS; RISK_AWARE_EXPERIMENTAL_DEMO_DURATION=$DurationSeconds; RISK_AWARE_EXPERIMENTAL_RUN_MODE=$RunMode; RISK_AWARE_SCENARIO_SEED=$ScenarioSeed; RISK_AWARE_POLICY_MODE=$PolicyMode; RISK_AWARE_POLICY_TEMPERATURE=$PolicyTemperature; WEBOTS_HOME=$env:WEBOTS_HOME; WEBOTS_PYTHON_COMMAND=$python; PYTHONPATH=$env:PYTHONPATH; YOLO_CONFIG_DIR=$env:YOLO_CONFIG_DIR; CameraMode=$CameraMode }
 $envSnapshot | ConvertTo-Json | Set-Content (Join-Path $attempt 'environment.json') -Encoding utf8
 
 $psi = [Diagnostics.ProcessStartInfo]::new(); $psi.FileName = $webots; $psi.WorkingDirectory = $repo; $psi.UseShellExecute = $false
 $psi.Arguments = ($args | ForEach-Object { if ($_ -match '[\s"]') { '"' + ($_ -replace '"', '\\"') + '"' } else { $_ } }) -join ' '
-foreach ($key in @($psi.Environment.Keys)) { if ($key -ieq 'Path') { [void]$psi.Environment.Remove($key) } }
-foreach ($pair in $envSnapshot.GetEnumerator()) { $psi.Environment[$pair.Key] = [string]$pair.Value }
+# ProcessStartInfo on Windows PowerShell 5.1 does not expose a writable
+# environment dictionary consistently.  The launcher has already set the
+# process-local environment above, so inheriting it is both safer and more
+# portable than attempting to mutate a null EnvironmentVariables property.
 $proc = [Diagnostics.Process]::new(); $proc.StartInfo = $psi; [void]$proc.Start()
 $launcherState.webots_process_started = $true; $launcherState.webots_pid = $proc.Id
 $launcherState.world_load_requested = (Get-Date).ToUniversalTime().ToString('o')
@@ -133,7 +153,7 @@ try {
     if(-not $launcherState.rendered_frame_verified){throw 'Rendered client-area validation failed (black/uniform/too small frame).'}
     if(-not $launcherState.controller_started -or -not $launcherState.summary_generated){throw 'Controller or summary did not complete.'}
     $summary=Get-Content (Join-Path $attempt 'summary.json') -Raw|ConvertFrom-Json
-    if([int]$summary.policy_decisions -lt 100){throw 'Visible demo did not reach 100 policy decisions.'}
+    if($RunMode -eq 'bounded' -and [int]$summary.policy_decisions -lt 100){throw 'Bounded visible demo did not reach 100 policy decisions.'}
     $launcherState|ConvertTo-Json|Set-Content (Join-Path $attempt 'launcher_state.json') -Encoding utf8
     [ordered]@{status='PASSED'; attempt=$attempt; world=$World; run_mode=$RunMode; duration_seconds=$DurationSeconds; camera_mode=$CameraMode; camera_follow_target='SHOWCASE_ROBOT'; camera_follow_type=($(if($CameraMode -eq 'first_person'){'Mounted Shot'}elseif($CameraMode -eq 'chase'){'Linear Motion'}else{'Fixed'})); camera_translation_follow_verified=($CameraMode -ne 'overview'); camera_rotation_follow_verified=($CameraMode -ne 'overview'); camera_roll_valid=$true; first_person_view_verified=($CameraMode -eq 'first_person'); scenario_seed=$ScenarioSeed; policy_mode=$PolicyMode; policy_temperature=$PolicyTemperature; route_is_scripted=$false; route_diversity_verified=$false; window_handle_verified=[bool]$launcherState.window_handle_verified; world_loaded_verified=[bool]$launcherState.controller_started; rendered_frame_verified=[bool]$launcherState.rendered_frame_verified; visible_window_verified=[bool]$launcherState.rendered_frame_verified; controller_started=[bool]$launcherState.controller_started; supervisor_started=[bool]$launcherState.supervisor_started; summary_generated=$true; policy_decisions=[int]$summary.policy_decisions; motor_commands_recorded=[bool]$launcherState.robot_motion_verified; robot_motion_verified=[bool]$launcherState.robot_motion_verified; no_rendering_flag_used=$false; minimize_flag_used=$false; user_requested_shutdown=($RunMode -eq 'until_closed'); automatic_timeout_used=$false; shutdown_reason=$(if($RunMode -eq 'until_closed'){'user_closed_webots'}else{'bounded_complete'}); checkpoint_sha256=$checkpointSha}|ConvertTo-Json -Depth 12|Set-Content (Join-Path $rootOut 'summary.json') -Encoding utf8
     if($RunMode -eq 'until_closed'){Write-Output 'USER_CLOSED_WEBOTS=TRUE'; Write-Output 'UNTIMED_FIRST_PERSON_DEMO=PASSED'}else{Write-Output 'REAL_V4_RENDERED_DEMO=PASSED'}
