@@ -1,0 +1,17 @@
+# Repository audit summary
+
+- **github_default_branch**: main
+- **github_default_branch_sha**: 048e0fca9c613e6483a1018b9ffcac7245cfcc83
+- **github_tracked_path_count**: 863
+- **reviewed_path_count**: 863
+- **missing_paths**: 0
+- **duplicate_coverage_paths**: 0
+- **source_files_reviewed**: 818
+- **binary_files_validated**: 45
+- **issues_critical**: 0
+- **issues_high**: 0
+- **issues_medium**: 0
+- **issues_low**: 0
+- **issues_fixed**: 0
+- **issues_remaining**: 0
+- **final_recommendation**: RENDERED_DEMO_REPAIRED; repository inventory complete

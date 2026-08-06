@@ -1,0 +1,4321 @@
+{
+  "default_branch": "main",
+  "default_sha": "048e0fca9c613e6483a1018b9ffcac7245cfcc83",
+  "entries": [
+    {
+      "path": ".gitattributes",
+      "size": 142,
+      "git_blob": "4a195914f3cc1bb19b17c0afd1b4d17b34ac361e"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "size": 1216,
+      "git_blob": "46b86f77078bee438cc18c82ea4dea31c8d91c70"
+    },
+    {
+      "path": ".gitignore",
+      "size": 3985,
+      "git_blob": "7e77b860507e3e0db78a0fb57579956b0426782d"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "size": 158,
+      "git_blob": "7f6a8aab1a0e9f21268848837a3dd09bbb339b7a"
+    },
+    {
+      "path": "BENCHMARK_CARD.md",
+      "size": 627,
+      "git_blob": "272ec9cf597d53b33ad83867dc0051b8e8675598"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "size": 533,
+      "git_blob": "c760ef811138d67a752dcb7cdb798a3926589a92"
+    },
+    {
+      "path": "CITATION.cff",
+      "size": 262,
+      "git_blob": "1d18933680177a543552af5d4d575bc42053e727"
+    },
+    {
+      "path": "DATA_CARD.md",
+      "size": 686,
+      "git_blob": "2f1936552593fa4bf5ff14eeb8141e18698fd4e2"
+    },
+    {
+      "path": "LICENSE",
+      "size": 672,
+      "git_blob": "acf58752c40724463128bccbd950d1d5e5eb61c1"
+    },
+    {
+      "path": "MODEL_CARD.md",
+      "size": 1373,
+      "git_blob": "685f14de96190aa95e48e655f657b9d96b9b36d4"
+    },
+    {
+      "path": "README.md",
+      "size": 4892,
+      "git_blob": "1e9a4611c1bd8f27235ef35d05383c67f5991fdd"
+    },
+    {
+      "path": "RELEASE_NOTES.md",
+      "size": 465,
+      "git_blob": "13a6057d6a6ffe1edf0c13fe66e0223314bd91b5"
+    },
+    {
+      "path": "SECURITY.md",
+      "size": 483,
+      "git_blob": "ec1805ad423274f7de78540f387192198c6afeed"
+    },
+    {
+      "path": "artifacts/checkpoints/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "artifacts/results/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/causal_expert_demonstrations/manifest.json",
+      "size": 7642,
+      "git_blob": "1dbcc8b51ea70568c1f9e74d137dd9f44bf59a9a"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/causal_expert_demonstrations_systematic/manifest.json",
+      "size": 7968,
+      "git_blob": "9492b874d8d419fad38f23536f88696725af2c7a"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/expert_demonstrations/manifest.json",
+      "size": 3518,
+      "git_blob": "3d1e59904a3455e0a5734240b672f69c104e3c49"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations/manifest.json",
+      "size": 2575,
+      "git_blob": "c5a339a98d6c487f18a67644b3018ed2512a947c"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations_attempt_1/manifest.json",
+      "size": 2578,
+      "git_blob": "1b0a5497ba76082e7a926e78dbea7777093401bb"
+    },
+    {
+      "path": "artifacts/strong_policy_upgrade/hierarchical_demonstrations_attempt_2/manifest.json",
+      "size": 2574,
+      "git_blob": "e594ac652a297a1a1e5ae553e95da0a610b016ac"
+    },
+    {
+      "path": "configs/baselines/frontier_exploration.yaml",
+      "size": 106,
+      "git_blob": "b3fe0a633521cd4149ed4a36f0df78137ceff0bf"
+    },
+    {
+      "path": "configs/baselines/nearest_risk_revisit.yaml",
+      "size": 106,
+      "git_blob": "6ab42023b7c93789466ff67e3ae7f8be4d78fe18"
+    },
+    {
+      "path": "configs/baselines/risk_aware_astar.yaml",
+      "size": 102,
+      "git_blob": "e1e25727fa333ed9d0bb90e9c8097ca0c8473f94"
+    },
+    {
+      "path": "configs/benchmarks/full_matrix.yaml",
+      "size": 613,
+      "git_blob": "a6e96a8b184ab6547a6a5ae273af37dd0144c3e5"
+    },
+    {
+      "path": "configs/curriculum/safe_viewpoint_radius2.json",
+      "size": 601774,
+      "git_blob": "145c9d37d800ae7ab46ffa78ac3b3c962cfb501a"
+    },
+    {
+      "path": "configs/env/grid.yaml",
+      "size": 98,
+      "git_blob": "b6e08cb4ef0adfcb69f6999e69bafed240539f5f"
+    },
+    {
+      "path": "configs/grid/site_dynamic.yaml",
+      "size": 283,
+      "git_blob": "d1e4bf2ee84be545e77d8b4abddb7c947f83c489"
+    },
+    {
+      "path": "configs/grid/site_medium.yaml",
+      "size": 283,
+      "git_blob": "ad116e45dceb8e2329520c9bad64d7e761e86002"
+    },
+    {
+      "path": "configs/grid/site_small.yaml",
+      "size": 281,
+      "git_blob": "e8cf6df02b4d4b93867c34d90a2575041843e08c"
+    },
+    {
+      "path": "configs/perception/class_schema.json",
+      "size": 6191,
+      "git_blob": "fcefc32fb55f35312489640347612d3abfaef6e0"
+    },
+    {
+      "path": "configs/perception/fast_balanced_continuation.json",
+      "size": 1707,
+      "git_blob": "cd8c86a9fad01f72e561b73bafdcea9ab68eb610"
+    },
+    {
+      "path": "configs/perception/pilot_training.json",
+      "size": 1009,
+      "git_blob": "f6f0b6f5e1a8205976ad6bfae16f6c8c09d0462a"
+    },
+    {
+      "path": "configs/perception/ppe_dataset.yaml",
+      "size": 638,
+      "git_blob": "77378afd32334876ba58ab2270add6fc05d739a1"
+    },
+    {
+      "path": "configs/perception/production_candidate_100e.json",
+      "size": 1581,
+      "git_blob": "920af570f219523cf8dc77e8d60b75d3efdc53d8"
+    },
+    {
+      "path": "configs/perception/stage5b_live_perception.json",
+      "size": 1870,
+      "git_blob": "fdf52a050ce9372d7ecf2b92b8076999f3859abc"
+    },
+    {
+      "path": "configs/safety/safety_contract_v3.yaml",
+      "size": 1420,
+      "git_blob": "0ac4beafb9efd7ac34908b7b59ab26e3ca5155a5"
+    },
+    {
+      "path": "configs/train/ppo.yaml",
+      "size": 181,
+      "git_blob": "5c95669a25fa0c323ffca325b99fc1a297287ddb"
+    },
+    {
+      "path": "configs/training/ppo.yaml",
+      "size": 360,
+      "git_blob": "718dddd285701c2722cbfdbd44db7abbd0e16506"
+    },
+    {
+      "path": "configs/training/riskshield_hierarchical_hrmppo_mpc_v4.yaml",
+      "size": 815,
+      "git_blob": "92e594798c90cedc41e856e84f49d3ada13c7e26"
+    },
+    {
+      "path": "configs/training/riskshield_hrmppo_safe_v3.yaml",
+      "size": 809,
+      "git_blob": "3d8e30dd9fd2af73d11bba10f63cb2c821f4b5cb"
+    },
+    {
+      "path": "configs/training/riskshield_hrmppo_safe_v3_strategy_a.yaml",
+      "size": 730,
+      "git_blob": "3b234b925d2f8ae1181a502c25c6a6a1740c80da"
+    },
+    {
+      "path": "configs/training/riskshield_hrmppo_safe_v3_strategy_b.yaml",
+      "size": 733,
+      "git_blob": "9e57c0056ce94f989832f51d1988f2bfe22e878e"
+    },
+    {
+      "path": "configs/training/riskshield_hrmppo_safe_v3_strategy_c.yaml",
+      "size": 734,
+      "git_blob": "5631270b175ae974a8ed322ff8d3f46bbb292eaf"
+    },
+    {
+      "path": "configs/training/riskshield_hrmppo_v2.yaml",
+      "size": 976,
+      "git_blob": "fc4d99634b0ad5a5883b11d1f161d928c7d643f6"
+    },
+    {
+      "path": "configs/training/riskshield_ppo.yaml",
+      "size": 559,
+      "git_blob": "f4e14465783f9a05ad1f357a5954f6cbeed9b291"
+    },
+    {
+      "path": "configs/training/sac.yaml",
+      "size": 406,
+      "git_blob": "e793cd59395b9714f86b626c2d14415ff8ef2ee0"
+    },
+    {
+      "path": "configs/uncertainty/protocol.yaml",
+      "size": 493,
+      "git_blob": "fd47021e0f75116bbbbedbba68de3d32e8180b43"
+    },
+    {
+      "path": "configs/webots/policy_control.json",
+      "size": 610,
+      "git_blob": "5e88aeecb8f6f3951022a6b4ad2144a87fc53ecd"
+    },
+    {
+      "path": "configs/webots/semantic_perception.json",
+      "size": 357,
+      "git_blob": "3fc8def8931834d8f17afb3223b4ee51fb922858"
+    },
+    {
+      "path": "configs/webots/site_dynamic.yaml",
+      "size": 269,
+      "git_blob": "260bb55574b6e3d040aa5c70ec88e2712673cc7b"
+    },
+    {
+      "path": "configs/webots/site_medium.yaml",
+      "size": 268,
+      "git_blob": "e064f8b8a4f6c4dc17941ca08c13124b23c9f074"
+    },
+    {
+      "path": "configs/webots/site_small.yaml",
+      "size": 266,
+      "git_blob": "39dd44174839d447fdfe4cbb543d606e9e7858d4"
+    },
+    {
+      "path": "configs/webots/stage5a3_closed_loop_route.json",
+      "size": 1509,
+      "git_blob": "d0d46dc0ced7788eda804e98e90fa71fa9e5943e"
+    },
+    {
+      "path": "data/expert/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "data/manifests/ppe_class_counts.csv",
+      "size": 355,
+      "git_blob": "3e05bfb5e07b494cd95ca37e34f8d3c1a1aa63c4"
+    },
+    {
+      "path": "data/manifests/ppe_dataset_audit.json",
+      "size": 4217,
+      "git_blob": "5fe3ea5eb8f15bdbb11bd5aba4c3e2390c332716"
+    },
+    {
+      "path": "data/manifests/ppe_dataset_integration_validation.json",
+      "size": 2343,
+      "git_blob": "1aa643724ec4383e3acad522b5657a467310cc92"
+    },
+    {
+      "path": "data/manifests/ppe_dataset_manifest.json",
+      "size": 2413,
+      "git_blob": "76017df7c4cb64f9e4135b4f6d928c465a495ad9"
+    },
+    {
+      "path": "data/processed/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "data/raw/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "data/scenarios/README.md",
+      "size": 657,
+      "git_blob": "edcda4dcb3fa9aec6a6034ae9800f2a1028a302b"
+    },
+    {
+      "path": "data/scenarios/manifest.json",
+      "size": 2942,
+      "git_blob": "716e3372c678228ac2cb76c3e68a76ce0c8ab99e"
+    },
+    {
+      "path": "data/scenarios/stress/stress.jsonl",
+      "size": 170115,
+      "git_blob": "7a68d5e2ef6f3e1d5cccda8343c70fa961418b11"
+    },
+    {
+      "path": "data/scenarios/test_seen/test_seen.jsonl",
+      "size": 81157,
+      "git_blob": "8be2f8764850540d5509941f9d1f328aabe69d93"
+    },
+    {
+      "path": "data/scenarios/test_unseen/test_unseen.jsonl",
+      "size": 101203,
+      "git_blob": "93deed02f71b5d5decd756415265810400ed8bdb"
+    },
+    {
+      "path": "data/scenarios/train/train.jsonl",
+      "size": 398046,
+      "git_blob": "285db069702a4c5be385d4964f568951f542c332"
+    },
+    {
+      "path": "data/scenarios/validation/validation.jsonl",
+      "size": 80938,
+      "git_blob": "954aabee319a1a60e239b9fd167db64f552a44fb"
+    },
+    {
+      "path": "docs/architecture/final_system_architecture.md",
+      "size": 642,
+      "git_blob": "9a94025ab440edcb37e4b66fbe5cbd664acc0c51"
+    },
+    {
+      "path": "docs/assets/stage5b4_final_live_perception.gif",
+      "size": 513061,
+      "git_blob": "95c85e08af9233970d3c1e383c093d2eb42063fb"
+    },
+    {
+      "path": "docs/baselines/expert_planners.md",
+      "size": 1279,
+      "git_blob": "251f12caf62541ba90be20cb9f06c4f9957fa06f"
+    },
+    {
+      "path": "docs/benchmarks/full_research_benchmark.md",
+      "size": 1670,
+      "git_blob": "5fdfe3e6423b92705df2634f0033f589d0d40654"
+    },
+    {
+      "path": "docs/benchmarks/grid_environment.md",
+      "size": 1959,
+      "git_blob": "b01712a685e7635fb3771705b0e7dc19ebe64e2b"
+    },
+    {
+      "path": "docs/experiment_protocol.md",
+      "size": 510,
+      "git_blob": "375f4dcd0f67571aa7f13159f96424cc240ce867"
+    },
+    {
+      "path": "docs/experiments/uncertainty_protocol.md",
+      "size": 1316,
+      "git_blob": "ad030b2e50eeea0d7045b200a027e098d1411290"
+    },
+    {
+      "path": "docs/final_demo.md",
+      "size": 484,
+      "git_blob": "76dd351545e253b646466992b4e09909d2cf605b"
+    },
+    {
+      "path": "docs/final_safe_rl_system.md",
+      "size": 6300,
+      "git_blob": "80c0e99e1dd01536806cdc2313a0ae7323e8de92"
+    },
+    {
+      "path": "docs/final_stage_completion_matrix.md",
+      "size": 2101,
+      "git_blob": "ff641b05cbc5761d1070034521e1b35e3d4b9bf2"
+    },
+    {
+      "path": "docs/methods/causal_expert_policy.md",
+      "size": 1483,
+      "git_blob": "2709145e52a330679c053620f1d8cccda85c197b"
+    },
+    {
+      "path": "docs/methods/reward_and_cost_v2.md",
+      "size": 1384,
+      "git_blob": "91410f162da903802dd8152ce1a7745567f60ae1"
+    },
+    {
+      "path": "docs/methods/riskshield_ppo.md",
+      "size": 1389,
+      "git_blob": "67c2f948ecdc29bdd093cc56912fd837f4e6fc54"
+    },
+    {
+      "path": "docs/perception/final_perception_pipeline.md",
+      "size": 1343,
+      "git_blob": "7164c1990ffa4d40055910bc2f52c52e6ab60fae"
+    },
+    {
+      "path": "docs/perception/model_card.md",
+      "size": 1067,
+      "git_blob": "5030b87fd806b8e818a405da4d8baeac99f07328"
+    },
+    {
+      "path": "docs/perception_dataset.md",
+      "size": 1765,
+      "git_blob": "7a96ccf401c03d5d858a9cf3ee16b9ab110e3a66"
+    },
+    {
+      "path": "docs/perception_production_training.md",
+      "size": 1998,
+      "git_blob": "a9ba0db50e649650376a4c1d11359ca46f5b351b"
+    },
+    {
+      "path": "docs/perception_training.md",
+      "size": 1483,
+      "git_blob": "68d7eecade459e90e9d424ff78de3537f664fd3f"
+    },
+    {
+      "path": "docs/problem_formulation.md",
+      "size": 640,
+      "git_blob": "afdfb2b92d79953b18bd5c4c49ebd7b530b25a0b"
+    },
+    {
+      "path": "docs/project_completion_plan.md",
+      "size": 5664,
+      "git_blob": "19e1195d2e26fdb534a854227b4a64c002c606aa"
+    },
+    {
+      "path": "docs/reproducibility.md",
+      "size": 516,
+      "git_blob": "061629344ee2777de386f5dca2c5e65cd0781d7c"
+    },
+    {
+      "path": "docs/research_methodology.md",
+      "size": 625,
+      "git_blob": "2fcac2af4f61db6202372c66fcfb06183b0d718b"
+    },
+    {
+      "path": "docs/safety/predictive_safety_shield.md",
+      "size": 1415,
+      "git_blob": "30886817ccf1ed2eaf200d68c4b88f45df27a1c7"
+    },
+    {
+      "path": "docs/safety/safety_contract_v3.md",
+      "size": 2736,
+      "git_blob": "002d0df14a388fbc5ed26348d34b9ceb32f4150d"
+    },
+    {
+      "path": "docs/stage_2c_scenario_integration.md",
+      "size": 1164,
+      "git_blob": "f7492867b3a4a1acd972051459cfc6f91335429d"
+    },
+    {
+      "path": "docs/stage_2d_training_diagnostics.md",
+      "size": 1311,
+      "git_blob": "78069c85a2d219f54eede9513a4787b35f3d35d2"
+    },
+    {
+      "path": "docs/stage_3a_expert_baselines.md",
+      "size": 1145,
+      "git_blob": "7a18b074c7a9482f2ef8c1bf106fd5132b7a27f4"
+    },
+    {
+      "path": "docs/stage_3a_results.md",
+      "size": 1192,
+      "git_blob": "680c7c601cad20539afe3958eef35102e8847137"
+    },
+    {
+      "path": "docs/stage_3b_results.md",
+      "size": 1544,
+      "git_blob": "dc6254af1175526b12545be737e0b2a862514015"
+    },
+    {
+      "path": "docs/stage_3b_safe_viewpoint_inspection.md",
+      "size": 1475,
+      "git_blob": "f654f8d88f0a03e914ff2460584f107688ec4a82"
+    },
+    {
+      "path": "docs/stage_3c_results.md",
+      "size": 2204,
+      "git_blob": "0f7adaf78697898103054ddd5bcc3188929e7c7c"
+    },
+    {
+      "path": "docs/stage_3c_safe_curriculum_training.md",
+      "size": 1878,
+      "git_blob": "07f11e7c44fc7e1e02b63624e118cfcc97aea3e6"
+    },
+    {
+      "path": "docs/stage_3d_maskable_ppo.md",
+      "size": 1632,
+      "git_blob": "74e4cd2b707a253f326bb95af7f23d4c4bf89466"
+    },
+    {
+      "path": "docs/stage_3d_results.md",
+      "size": 2058,
+      "git_blob": "d0adc0aa1bfdf14621d5114205c55c68533d6450"
+    },
+    {
+      "path": "docs/stage_3d_smoke_results.md",
+      "size": 1696,
+      "git_blob": "d03285901204214e0ccf080357d0c32b3f5428bd"
+    },
+    {
+      "path": "docs/stage_3e_a_checkpoint_audit.md",
+      "size": 2347,
+      "git_blob": "de6686f3fa34c48844285f324cfecd40968befe4"
+    },
+    {
+      "path": "docs/stage_3e_a_deadlock_validation.md",
+      "size": 1440,
+      "git_blob": "321d68373d787a0b213f7b64723577926b0e2f97"
+    },
+    {
+      "path": "docs/stage_3e_a_smoke_results.md",
+      "size": 1459,
+      "git_blob": "e0496e388c85955746ff372d799215cd776c7d73"
+    },
+    {
+      "path": "docs/stage_3e_semantic_safety_shield.md",
+      "size": 2413,
+      "git_blob": "6967ce1e31f9c02115c89e979440afe6895bbebb"
+    },
+    {
+      "path": "docs/stage_4_webots_integration.md",
+      "size": 4858,
+      "git_blob": "19415cdff33d4a39c6bae70f70d2209e19c01c44"
+    },
+    {
+      "path": "docs/stage_4a_runtime_validation.md",
+      "size": 1739,
+      "git_blob": "0720251ae38986f724af1c8c45b920d47b9ee23d"
+    },
+    {
+      "path": "docs/stage_4b2_live_webots_sensors.md",
+      "size": 2177,
+      "git_blob": "fd7f1431cf2d9b286a5f3b38066c3fc5e8c741dc"
+    },
+    {
+      "path": "docs/stage_4b2_runtime_evidence.md",
+      "size": 1653,
+      "git_blob": "7d72049449d6646ac3ffa97e11e3953bf4edd026"
+    },
+    {
+      "path": "docs/stage_4b_observation_action_bridge.md",
+      "size": 1807,
+      "git_blob": "b2819965e8e559ff3833ae553ffd2bbd9eaedd6f"
+    },
+    {
+      "path": "docs/stage_4c1b_runtime_evidence.md",
+      "size": 1775,
+      "git_blob": "d3f77169b9d45d9a86a3dda0c80c71b8fd6f185a"
+    },
+    {
+      "path": "docs/stage_4c_policy_inference_dry_run.md",
+      "size": 2451,
+      "git_blob": "f473ad089e45014e26972125e4158a904a9993c5"
+    },
+    {
+      "path": "docs/stage_4d_professional_showcase.md",
+      "size": 1608,
+      "git_blob": "28ea3544768b7cf7e228f6a7c44964f09ee1685e"
+    },
+    {
+      "path": "docs/stage_5a3_closed_loop_inspection_mission.md",
+      "size": 5955,
+      "git_blob": "789c767f3f8f4361344aebc97ca0e5592cb267a9"
+    },
+    {
+      "path": "docs/stage_5a_live_camera_acquisition.md",
+      "size": 2427,
+      "git_blob": "960b433ce08c09695e92706a980d4bb2637ed31f"
+    },
+    {
+      "path": "docs/stage_5b3_controller_synchronized_perception.md",
+      "size": 1026,
+      "git_blob": "59101c6aabc04a1b9901cabe96d934e2d900833b"
+    },
+    {
+      "path": "docs/stage_5b4_final_camera_showcase.md",
+      "size": 1070,
+      "git_blob": "f943cf800f56cca922d90cac020286496601d69a"
+    },
+    {
+      "path": "docs/stage_5b_live_perception_integration.md",
+      "size": 1979,
+      "git_blob": "68d4394d472dd1cfafa4d0b94ed34a47478d42ee"
+    },
+    {
+      "path": "docs/stage_5c_rl_motor_control.md",
+      "size": 1144,
+      "git_blob": "c2af74916b345687ca1d66d27eb24609e73e7155"
+    },
+    {
+      "path": "docs/training/ppo_sac_baselines.md",
+      "size": 1482,
+      "git_blob": "58570ea1bffb352242d33d0126359eef5709d670"
+    },
+    {
+      "path": "docs/troubleshooting.md",
+      "size": 646,
+      "git_blob": "13d31a20154e540bbcc479539965764ed55475da"
+    },
+    {
+      "path": "docs/webots/environments.md",
+      "size": 1538,
+      "git_blob": "be2943e830b59e67649bbcb1936da3c53f08e64f"
+    },
+    {
+      "path": "paper/README.md",
+      "size": 414,
+      "git_blob": "90ac884415f680c51e8cec52d1fdbe2530eca004"
+    },
+    {
+      "path": "paper/figures/learning_curves.png",
+      "size": 61307,
+      "git_blob": "ae793ab17c9ad5db6c7bd863ab0214d22b1fc662"
+    },
+    {
+      "path": "paper/figures/safety_cost_curves.png",
+      "size": 123898,
+      "git_blob": "7709c8e384dc18e7c2a741552ac0e23c5322f2e5"
+    },
+    {
+      "path": "paper/figures/safety_performance_pareto.png",
+      "size": 61345,
+      "git_blob": "3116f7145913a673c886b63be044a55780d59a39"
+    },
+    {
+      "path": "paper/figures/uncertainty_degradation.png",
+      "size": 57420,
+      "git_blob": "77d6692ee3dcd537d9222719e1cb1303f956de3e"
+    },
+    {
+      "path": "paper/main.pdf",
+      "size": 254829,
+      "git_blob": "712080872c321ae4cb5b55a1d59f04a56c3b1ec4"
+    },
+    {
+      "path": "paper/main.tex",
+      "size": 13923,
+      "git_blob": "3943c5dfc81bd61fe63cc18996c19c2d2a9d59e7"
+    },
+    {
+      "path": "paper/references.bib",
+      "size": 2429,
+      "git_blob": "dbf144f6ef9c07c46a7b47e9484a7aaf175f55f5"
+    },
+    {
+      "path": "paper/tables/ablation_summary.tex",
+      "size": 595,
+      "git_blob": "70eddc440ef7a6c31607b916dd4fbed0007ca1a8"
+    },
+    {
+      "path": "paper/tables/algorithm_summary.tex",
+      "size": 541,
+      "git_blob": "090fd502280f42be8b8ea1554e28e1b0c3e98fec"
+    },
+    {
+      "path": "pyproject.toml",
+      "size": 1100,
+      "git_blob": "6809ab0f75c2d5fc00a5a8d0a053127ba9a09b61"
+    },
+    {
+      "path": "release/README.md",
+      "size": 513,
+      "git_blob": "a3b56716f75fced6c98e6e9df565bf13c6cac397"
+    },
+    {
+      "path": "release/SHA256SUMS.txt",
+      "size": 105995,
+      "git_blob": "9c36b75d8cf1af9c704eb192beb12e5f47c5997d"
+    },
+    {
+      "path": "release/manifest.json",
+      "size": 232726,
+      "git_blob": "9af699a2c04febf1bd327593c6d096c4545da616"
+    },
+    {
+      "path": "reports/final_project_completion/baseline_audit.json",
+      "size": 3454,
+      "git_blob": "7c5b837e54e7d6a8e9178c577caf31bad2ca737c"
+    },
+    {
+      "path": "reports/final_project_completion/baseline_audit.md",
+      "size": 2318,
+      "git_blob": "f803172a303780e90d1601491c402461f510ed43"
+    },
+    {
+      "path": "reports/final_project_completion/execution_log.md",
+      "size": 9616,
+      "git_blob": "23d2499c8aa04294e4f6729453519e9958aaf359"
+    },
+    {
+      "path": "reports/final_project_completion/final_completion_report.json",
+      "size": 9161,
+      "git_blob": "01cd048fb2c61fc498221667843c9a774a17f502"
+    },
+    {
+      "path": "reports/final_project_completion/final_completion_report.md",
+      "size": 3064,
+      "git_blob": "071d7ccfac8c50f4ecd1e506835fed14640c774d"
+    },
+    {
+      "path": "reports/final_project_completion/final_file_inventory.txt",
+      "size": 13390,
+      "git_blob": "732fb09910ed96c245689b65da3e3d1361e4c068"
+    },
+    {
+      "path": "reports/final_project_completion/final_git_history.txt",
+      "size": 4958,
+      "git_blob": "fbd231ade46e110d77da5f2c2c60828642caa894"
+    },
+    {
+      "path": "reports/final_project_completion/final_runtime_summary.json",
+      "size": 1138,
+      "git_blob": "f707ce7275f4d95cdc1efce0b41438bc4e5ae08b"
+    },
+    {
+      "path": "reports/final_project_completion/final_test_results.txt",
+      "size": 322,
+      "git_blob": "b2a6a8218b3734d28ede88317bb7f1262d72e3c4"
+    },
+    {
+      "path": "reports/final_project_completion/stage5b_visual_evidence/final_first_person.png",
+      "size": 536103,
+      "git_blob": "ab375d4011a33d6d3cf2ed09c6742aed6df8c14f"
+    },
+    {
+      "path": "reports/final_project_completion/stage5b_visual_evidence/initial_first_person.png",
+      "size": 585116,
+      "git_blob": "92c404818e2837b759916cb684e7c81a02b826af"
+    },
+    {
+      "path": "reports/final_project_completion/stage5b_visual_evidence/left_turn_first_person.png",
+      "size": 507004,
+      "git_blob": "0790a0ed59bb74f6d6e975443bc1a7574569f13d"
+    },
+    {
+      "path": "reports/final_project_completion/stage5b_visual_evidence/middle_first_person.png",
+      "size": 661745,
+      "git_blob": "5c1c3ce4b3a37602ebbd64cc5042c1e5fa84e5b5"
+    },
+    {
+      "path": "reports/final_project_completion/stage5b_visual_evidence/right_turn_first_person.png",
+      "size": 917406,
+      "git_blob": "cf9bd5b51ca91ac1eaebc586e4af95189424c69f"
+    },
+    {
+      "path": "reports/final_project_completion/stage5b_visual_evidence/selected_cv_annotated_frame.png",
+      "size": 39521,
+      "git_blob": "56bed776a919b7c45d5e415b954c5eb47f2faeca"
+    },
+    {
+      "path": "reports/final_project_completion/stage5b_visual_evidence/stage5b_runtime_summary.json",
+      "size": 4235,
+      "git_blob": "665aec7548be74afb12746fd9728315d90ba63e8"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5b-live-perception-integration/plan.md",
+      "size": 546,
+      "git_blob": "524897de578bcdfb595068f95d3cd4ba989cbff0"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5b-live-perception-integration/result.json",
+      "size": 924,
+      "git_blob": "662e5b705d23f9a613f5edf36a18d82f6ea73a37"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5b-live-perception-integration/result.md",
+      "size": 1108,
+      "git_blob": "f22a8b22c3c99cd0cef4c2d8dd85c163c6b3dbbd"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/action_trace.jsonl",
+      "size": 7596,
+      "git_blob": "a1265005cfba7a918ef32377ec1808d941d5531f"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/annotated_000.png",
+      "size": 58918,
+      "git_blob": "687511e114fe666f956e867d8df4d52d8300268b"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/first_person_final.png",
+      "size": 6242463,
+      "git_blob": "5abc4bd2546689163b24df3d419b89e18f249a68"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/first_person_initial.png",
+      "size": 6242463,
+      "git_blob": "1e7c651846e4fff008f1ace44515390c5c138cd9"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/motor_commands.jsonl",
+      "size": 47746,
+      "git_blob": "80073db75f306a22bd22f2a0ffecba6ca61d494f"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/evidence/stage5c_runtime_summary.json",
+      "size": 1139,
+      "git_blob": "d4ff3cff843df0aab84bacb6c3eda4f31babc2dc"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/plan.md",
+      "size": 810,
+      "git_blob": "52fc4299184d8420dd4d22cd7977a7a6ec94f645"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/result.json",
+      "size": 966,
+      "git_blob": "124c887e9b020267a99129fe5aa30a4fc5aacc5a"
+    },
+    {
+      "path": "reports/final_project_completion/stages/stage-5c-rl-motor-control/result.md",
+      "size": 1177,
+      "git_blob": "935d63e5b2849c579d8420c7bb2bb4362e6414a8"
+    },
+    {
+      "path": "reports/final_submission/execution_log.md",
+      "size": 17608,
+      "git_blob": "df2edfacde98a30e071878d0c7e65199dd5d401f"
+    },
+    {
+      "path": "reports/final_submission/final_artifact_manifest.json",
+      "size": 1471,
+      "git_blob": "1a4b4ccf7b4824f787d7fd743440e19e6d99ed98"
+    },
+    {
+      "path": "reports/final_submission/final_benchmark_summary.json",
+      "size": 1282,
+      "git_blob": "63ab542699a58ab83f0254b2e4237b793ebbadee"
+    },
+    {
+      "path": "reports/final_submission/final_file_inventory.txt",
+      "size": 23847,
+      "git_blob": "41513dc467dc242d9b70f064959cc8670c3c1706"
+    },
+    {
+      "path": "reports/final_submission/final_git_history.txt",
+      "size": 4464,
+      "git_blob": "8cc05e11725a2ec8cf2f121ba1cefab8cc7a6b90"
+    },
+    {
+      "path": "reports/final_submission/final_limitations.md",
+      "size": 673,
+      "git_blob": "8a53ffa91dc8dd91516ae2c2f953ed091d96927b"
+    },
+    {
+      "path": "reports/final_submission/final_runtime_summary.json",
+      "size": 1138,
+      "git_blob": "fddc4066181666ec1b4c21509c903794e79e822f"
+    },
+    {
+      "path": "reports/final_submission/final_submission_report.json",
+      "size": 4058,
+      "git_blob": "09c1eedce84a8f1d98fb46796303421c6befcb2b"
+    },
+    {
+      "path": "reports/final_submission/final_submission_report.md",
+      "size": 754,
+      "git_blob": "55fc5279ec92638dacb467aa532d6eaa15aa5968"
+    },
+    {
+      "path": "reports/final_submission/final_test_results.txt",
+      "size": 380,
+      "git_blob": "2c27694c4da78b84358915a70d196d179c428f01"
+    },
+    {
+      "path": "reports/final_submission/interruption_recovery.json",
+      "size": 3067,
+      "git_blob": "ee3d3a19191903576a3746570f210f600d0affd6"
+    },
+    {
+      "path": "reports/final_submission/paper_result.json",
+      "size": 1120,
+      "git_blob": "0a20b5c5d9531ea94c551beecaea12aa1f784594"
+    },
+    {
+      "path": "reports/final_submission/paper_result.md",
+      "size": 720,
+      "git_blob": "c516dbe74ae6fe91eec3c2b229dd568a2649f034"
+    },
+    {
+      "path": "reports/final_submission/release_manifest.json",
+      "size": 232726,
+      "git_blob": "9af699a2c04febf1bd327593c6d096c4545da616"
+    },
+    {
+      "path": "reports/final_submission/stage1_grid_environment/validation.json",
+      "size": 881,
+      "git_blob": "d257f13b1c615a21f986470fc755aa55163ee8a9"
+    },
+    {
+      "path": "reports/final_submission/stage2_planner_baselines/raw_results.csv",
+      "size": 16934,
+      "git_blob": "59ba296a8fee6cd5a76fb97df9594b6ec5a852b6"
+    },
+    {
+      "path": "reports/final_submission/stage2_planner_baselines/summary.json",
+      "size": 893,
+      "git_blob": "a59d64037ba8e4c09b263f20bc94afefbe6fc7ba"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/collisions.png",
+      "size": 81929,
+      "git_blob": "06729b7db8c62b91d8d688ee8628337c68ab9c23"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/constraint_violations.png",
+      "size": 113259,
+      "git_blob": "5661a5ca663b6dd7312b15648e2bebb6caa0a16f"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/coverage.png",
+      "size": 95966,
+      "git_blob": "8a4a68a934bfba7b823dd840e85397648b226db5"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/episodic_return.png",
+      "size": 103701,
+      "git_blob": "5236cf7ab4c07eefd6f94217bbc2882571ead87b"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/evaluation_results.csv",
+      "size": 7921,
+      "git_blob": "f1c2b7debdb6c26bdda0addec5878a789e9c0ebf"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/hazard_recall.png",
+      "size": 103824,
+      "git_blob": "53132bfd799f0d068e37a4127b710b59dd6e99d4"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/ppo_checkpoint_metadata.json",
+      "size": 574,
+      "git_blob": "740357ef1ea67d1036e192f4ebbf74c2801ea91d"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/sac_checkpoint_metadata.json",
+      "size": 655,
+      "git_blob": "56ef691cfd6456fda1c4cc6fc27d91dbd601d4f9"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/safety_cost.png",
+      "size": 98948,
+      "git_blob": "39ed1887ff338df70f5c5998d6bf43fd5525bfd5"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/success.png",
+      "size": 28621,
+      "git_blob": "d6f3c18bb14f68bec68d578a61f0811186250f1f"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/summary.json",
+      "size": 646,
+      "git_blob": "c64d996262c392ec6ab3c0918a489a5dec205c79"
+    },
+    {
+      "path": "reports/final_submission/stage3_rl_baselines/training_metrics.csv",
+      "size": 10277,
+      "git_blob": "bbc16410c21c564b9d2e17a51897abefc0b156e6"
+    },
+    {
+      "path": "reports/final_submission/stage4_riskshield_ppo/checkpoint_metadata.json",
+      "size": 923,
+      "git_blob": "019be1317adaa3b7beaa8932ba9c16491245ad21"
+    },
+    {
+      "path": "reports/final_submission/stage4_riskshield_ppo/comparison_results.csv",
+      "size": 17615,
+      "git_blob": "8ec4108ed4dca9f13accf72bbd98e5a4b3672c93"
+    },
+    {
+      "path": "reports/final_submission/stage4_riskshield_ppo/comparison_summary.json",
+      "size": 1229,
+      "git_blob": "a97d64f3b5020b0e80478f5ad46ef6b4b4bd5e12"
+    },
+    {
+      "path": "reports/final_submission/stage4_riskshield_ppo/constraint_training_metrics.csv",
+      "size": 5589,
+      "git_blob": "90b325020c40fcbfde987cc2719e28807224be0e"
+    },
+    {
+      "path": "reports/final_submission/stage4_riskshield_ppo/ppo_training_diagnostics.csv",
+      "size": 5908,
+      "git_blob": "58737ca27f4518e3ac36f2c763db94893408c2c5"
+    },
+    {
+      "path": "reports/final_submission/stage5_safety_shield/raw_results.csv",
+      "size": 9540,
+      "git_blob": "7c8004bbc60fb45dabc9745e97b9589485f4261a"
+    },
+    {
+      "path": "reports/final_submission/stage5_safety_shield/summary.json",
+      "size": 1236,
+      "git_blob": "402249dcbe6b9ec6a2275c76f884a7d130f0fd47"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_dynamic/first_person_final.png",
+      "size": 4345,
+      "git_blob": "21e8df69191398154dc604ab1d6a97995aeb6e5e"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_dynamic/first_person_initial.png",
+      "size": 131364,
+      "git_blob": "4492f96870b694632cd03ce005dd7b41b82c7c7d"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_dynamic/stage5c_runtime_summary.json",
+      "size": 1139,
+      "git_blob": "e21c73529e779f3d2693f8126aa2e405e0f60486"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_dynamic/webots_stderr.log",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_dynamic/webots_stdout.log",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_medium/first_person_final.png",
+      "size": 4345,
+      "git_blob": "19890e2816a704b65e4cd05e25acbd6158c74448"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_medium/first_person_initial.png",
+      "size": 131364,
+      "git_blob": "d3369e9741fc9e5511864b56cb79083f8338e876"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_medium/stage5c_runtime_summary.json",
+      "size": 1139,
+      "git_blob": "e13fef049daa0d9217db199fe50756eaeb08e24c"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_medium/webots_stderr.log",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_medium/webots_stdout.log",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_small/first_person_final.png",
+      "size": 4345,
+      "git_blob": "26557e07a18c3a7f3400b6dc057228191aeccd5f"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_small/first_person_initial.png",
+      "size": 131364,
+      "git_blob": "89a2e22d3760a17441403789f94cf683a5ac10f9"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_small/stage5c_runtime_summary.json",
+      "size": 1139,
+      "git_blob": "99c6ce99e3b33a133c992b48e1864fced487bce6"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_small/webots_stderr.log",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/site_small/webots_stdout.log",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/visual_validation.json",
+      "size": 2605,
+      "git_blob": "8183cf34f0947593a5d1a8d8b4eaf742f8d3b5d0"
+    },
+    {
+      "path": "reports/final_submission/stage6_webots/world_smoke_summary.json",
+      "size": 903,
+      "git_blob": "641897ea0fd08e02ebcd001faba40b466ce2b37d"
+    },
+    {
+      "path": "reports/final_submission/stage7_perception/selected_runtime_annotation.png",
+      "size": 58918,
+      "git_blob": "687511e114fe666f956e867d8df4d52d8300268b"
+    },
+    {
+      "path": "reports/final_submission/stage7_perception/validation.json",
+      "size": 780,
+      "git_blob": "4c7631831abf509738a4aa42fbfda2301f3b3adf"
+    },
+    {
+      "path": "reports/final_submission/stage8_uncertainty/aggregated_results.csv",
+      "size": 6890,
+      "git_blob": "41db3db2b252ba6d78f71645d73468f0f0bf2669"
+    },
+    {
+      "path": "reports/final_submission/stage8_uncertainty/raw_results.csv",
+      "size": 35289,
+      "git_blob": "0b3ae85d673fff6f51143bc41455677be7762da3"
+    },
+    {
+      "path": "reports/final_submission/stage8_uncertainty/summary.json",
+      "size": 522,
+      "git_blob": "dc9cebba7fc637354854f7d5361edb7a99f88216"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/ablation_manifest.json",
+      "size": 2253,
+      "git_blob": "b75c37928c6d2b3be521364c2ad1c0d5b5b31f4e"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/ablation_results.csv",
+      "size": 51705,
+      "git_blob": "ed0ff933d8023a6f36d003d2194b5fc318d6cc4b"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/ablation_summary.json",
+      "size": 4197,
+      "git_blob": "e0f38064c7aad8760568e124c99fbaa91850c9f9"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/aggregated_results.csv",
+      "size": 258892,
+      "git_blob": "9c63aff3013e1a3fbc57e2e9209aad28930c9783"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/benchmark_summary.json",
+      "size": 1282,
+      "git_blob": "63ab542699a58ab83f0254b2e4237b793ebbadee"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/failed_runs.jsonl",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/collision_comparison.png",
+      "size": 45983,
+      "git_blob": "3777f58088344c0cf58edcb39c4489492fcbf605"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/constraint_violation_comparison.png",
+      "size": 46220,
+      "git_blob": "e506dbbe09628ed5e915efc3f790af1d7ff88aaf"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/energy_comparison.png",
+      "size": 46175,
+      "git_blob": "75e7489d096edd34d946c812fdc3b958bbc01f92"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/hazard_recall_comparison.png",
+      "size": 44617,
+      "git_blob": "aa7b173efba995f5db95f61a5f1b1a726e603f6b"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/inspection_coverage_comparison.png",
+      "size": 48397,
+      "git_blob": "791f31de1d94b158288e34f3ebf6c66a16bbf332"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/learning_curves.png",
+      "size": 61307,
+      "git_blob": "ae793ab17c9ad5db6c7bd863ab0214d22b1fc662"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/robustness_comparison.png",
+      "size": 47068,
+      "git_blob": "5acaa695a166560fe0bca65e8396101ff9d15351"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/safety_cost_curves.png",
+      "size": 123898,
+      "git_blob": "7709c8e384dc18e7c2a741552ac0e23c5322f2e5"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/safety_performance_pareto.png",
+      "size": 61345,
+      "git_blob": "3116f7145913a673c886b63be044a55780d59a39"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/safety_shield_interventions.png",
+      "size": 43890,
+      "git_blob": "9c9ea295883ac5df6b6df6c2949aa40a669db9b7"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/collision_comparison.csv",
+      "size": 198,
+      "git_blob": "65c554e807d7e51555cb12ea30c2db480c2d2ab6"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/constraint_violation_comparison.csv",
+      "size": 278,
+      "git_blob": "b58fcc58e8c6357fef087f8f6309f52f7d53d65a"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/energy_comparison.csv",
+      "size": 269,
+      "git_blob": "039d0df9bedc252e5521c180bb68e4f81be0c1ac"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/hazard_recall_comparison.csv",
+      "size": 262,
+      "git_blob": "17a0e0f6c6f73f7873fd1c0739f89af3428aedec"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/inspection_coverage_comparison.csv",
+      "size": 298,
+      "git_blob": "d3e71a1ada823a60576f8f759880dc226f62e4aa"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/learning_curves.csv",
+      "size": 5847,
+      "git_blob": "bbc02cb245d6d1e8c016393b98eb77d1d62079f5"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/robustness_comparison.csv",
+      "size": 292,
+      "git_blob": "00c7cc33df00f95b21a4ad8b74a7146bca83dec4"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/safety_cost_curves.csv",
+      "size": 3352,
+      "git_blob": "9a2927cafc0950177eb8f4f4452bb0f1d609fe9b"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/safety_performance_pareto.csv",
+      "size": 283,
+      "git_blob": "1d8ed5cb7e459636a8ffaec21079fc55e35dd6c7"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/safety_shield_interventions.csv",
+      "size": 165,
+      "git_blob": "20643f122dbb164f7c6fafcb2aed865a9b6e545d"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/success_rate_comparison.csv",
+      "size": 166,
+      "git_blob": "871b7353f95846e977f6be0a1b4ad54df5b80b02"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/time_to_inspect_comparison.csv",
+      "size": 278,
+      "git_blob": "97de5bef704647f7eff6f3b99eb4c866d5a6be89"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/source_data/uncertainty_degradation.csv",
+      "size": 836,
+      "git_blob": "de46a0b9b71369f19ad8c35f640bb5f3563db2c0"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/success_rate_comparison.png",
+      "size": 44211,
+      "git_blob": "0d5cae957b57dbbb03c1f8e90df3b18d8d79aa15"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/time_to_inspect_comparison.png",
+      "size": 45861,
+      "git_blob": "6e5d0d0c2c4c8d334f44e83d931f9fb36f8fc4eb"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/figures/uncertainty_degradation.png",
+      "size": 57420,
+      "git_blob": "77d6692ee3dcd537d9222719e1cb1303f956de3e"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/raw_results.csv",
+      "size": 714031,
+      "git_blob": "6fb41fe2d26f189466cea602d8c34463bd7eb770"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/raw_results.parquet",
+      "size": 222937,
+      "git_blob": "612a784699c222c8704ca8a781ab582b8aa83326"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/resume_state.json",
+      "size": 75,
+      "git_blob": "289a63755da7c129cfcf2959eb126e920e2cd155"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/run_manifest.json",
+      "size": 862563,
+      "git_blob": "f04262ae1cd333f7a0436f4a37d93bfe6814decb"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/statistical_analysis.json",
+      "size": 2839,
+      "git_blob": "d7a50d5344087c5422defaa2c98a09d7ae9b388b"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/statistical_analysis.md",
+      "size": 1246,
+      "git_blob": "7ab4e1af9264c3b4d8aaf8d52082a74537d5b139"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/tables/ablation_summary.csv",
+      "size": 645,
+      "git_blob": "d10b68b6bb083ae3f78b1da62d23cc97914ab016"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/tables/ablation_summary.tex",
+      "size": 647,
+      "git_blob": "b44c2c3d755b78256b262ed9948ef7617ec5660b"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/tables/algorithm_summary.csv",
+      "size": 631,
+      "git_blob": "f96fcdc040285e142c4c5565007c3b5c9a200740"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/tables/algorithm_summary.tex",
+      "size": 573,
+      "git_blob": "b2db29b2a7fadc40da7b458a89afd9c0cfc56e8b"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/aggregated_results.csv",
+      "size": 7026,
+      "git_blob": "d4936e62a40c6c92b4e0396629a9144ad24b7e6a"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/benchmark_summary.json",
+      "size": 1078,
+      "git_blob": "d0899eabe26dc19a75bca27deaefc7c3be57dc9c"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/failed_runs.jsonl",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/raw_results.csv",
+      "size": 3191,
+      "git_blob": "a08fb8796346171af53830b0bbda68915cb88a65"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/raw_results.parquet",
+      "size": 26507,
+      "git_blob": "377b7eee9432b0df361062669847c44cf02f127b"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/resume_state.json",
+      "size": 69,
+      "git_blob": "a8711a4336237c672cafb5dc6351404bed830b9e"
+    },
+    {
+      "path": "reports/final_submission/stage9_benchmark/validation/five_algorithm_gate/statistical_analysis.json",
+      "size": 3,
+      "git_blob": "0967ef424bce6791893e9a57bb952f80fd536e93"
+    },
+    {
+      "path": "reports/final_submission/stage_audit.json",
+      "size": 7518,
+      "git_blob": "53418038d9e45ed5b24cfbd8bdaed402cef0d51c"
+    },
+    {
+      "path": "reports/final_submission/stage_audit.md",
+      "size": 3419,
+      "git_blob": "c1573b0dc6d6737fac315cf636375f6c7ea78887"
+    },
+    {
+      "path": "reports/perception/pilot_runs/latest_pilot_summary.json",
+      "size": 9317,
+      "git_blob": "4e3a051ddb51ac19b0b784e5ee56316c35b7506f"
+    },
+    {
+      "path": "reports/perception/pilot_runs/pilot_summary_20260722_211614.csv",
+      "size": 1311,
+      "git_blob": "8cde7bd6dfc1aab3572a9c932a665d9dfe0d7a04"
+    },
+    {
+      "path": "reports/perception/pilot_runs/pilot_summary_20260722_211614.json",
+      "size": 9317,
+      "git_blob": "4e3a051ddb51ac19b0b784e5ee56316c35b7506f"
+    },
+    {
+      "path": "reports/perception/pilot_runs/pilot_viability_decision.json",
+      "size": 3249,
+      "git_blob": "fa0bd910f8b086d92acce5798b20be60fa3a2a30"
+    },
+    {
+      "path": "reports/perception/production_training_optimized/latest_summary.json",
+      "size": 2246,
+      "git_blob": "45fde097096ed9a9f0d54b1f438754d1eb7ac585"
+    },
+    {
+      "path": "reports/perception/production_training_optimized/summary_20260723_003324.json",
+      "size": 2246,
+      "git_blob": "45fde097096ed9a9f0d54b1f438754d1eb7ac585"
+    },
+    {
+      "path": "reports/perception/stage5b/benchmark_20260726/benchmark_stage5b_models.py",
+      "size": 20224,
+      "git_blob": "36f6d25b72a67e545f3963a007ef066662832b39"
+    },
+    {
+      "path": "reports/perception/stage5b/benchmark_20260726/stage5b1_console_output.txt",
+      "size": 5253,
+      "git_blob": "b6e6644d3b106a474b38c9b06e066f0150c3113b"
+    },
+    {
+      "path": "reports/perception/stage5b/benchmark_20260726/stage5b1_model_benchmark.csv",
+      "size": 2453,
+      "git_blob": "67f5f86e06c191a296819d9428f9e7ed79639423"
+    },
+    {
+      "path": "reports/perception/stage5b/benchmark_20260726/stage5b1_model_benchmark.json",
+      "size": 76519,
+      "git_blob": "da9727db29d9c9b6f5306e63eb9ab73db207e75f"
+    },
+    {
+      "path": "reports/perception/stage5b/benchmark_20260726/stage5b1_selected_model.json",
+      "size": 929,
+      "git_blob": "dd0e7d8c285e9dd762738a6298c988329821c313"
+    },
+    {
+      "path": "reports/perception/stage5b/model_selection.json",
+      "size": 996,
+      "git_blob": "fc3a5ea6c454766585363270705cf3972f261bca"
+    },
+    {
+      "path": "reports/perception/stage5b/stage5b3_runtime_validation.json",
+      "size": 2121,
+      "git_blob": "2e2662e0d6df88f3a3e1103d3a9a964d44707f1c"
+    },
+    {
+      "path": "reports/perception/stage5b/stage5b4_final_showcase.json",
+      "size": 1312,
+      "git_blob": "516fa86ea795be200b846049dd7dcbb7082d1885"
+    },
+    {
+      "path": "reports/perception/training_environment.json",
+      "size": 3768,
+      "git_blob": "3cc55440775deef894569d3a07ae17f85553f390"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/ablations_v4/infeasible_variants.json",
+      "size": 2858,
+      "git_blob": "ed020708a54135d1c130b0916778ea620583d021"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/ablations_v4/protocol.md",
+      "size": 189,
+      "git_blob": "202b15a59b1219b97cc9d3581c55ce0123e5ccc1"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/ablations_v4/statistics.json",
+      "size": 96,
+      "git_blob": "2ca6c2dbf607fdcc9ad1015226f2f5cff996ea02"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/ablations_v4/statistics.md",
+      "size": 171,
+      "git_blob": "0ba11cd855d0e2ced60b36b954d021eabcdf3b08"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/ablations_v4/summary.csv",
+      "size": 224,
+      "git_blob": "98aab63845d66a23401fabeff20ac2638c23bfaa"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/ablations_v4/summary.json",
+      "size": 3096,
+      "git_blob": "5fc45763e57c1e7752903653a4e8f84f936a36d8"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/baseline_manifests/best_recurrent_dagger.json",
+      "size": 1024,
+      "git_blob": "a086d7e72853e195fb2085fb182aad18eec510fa"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/baseline_manifests/causal_expert.json",
+      "size": 984,
+      "git_blob": "e7135be3c7272f100a7ac88791bf5ee1f2996d0a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/baseline_manifests/causal_risk_aware_astar.json",
+      "size": 816,
+      "git_blob": "653a09e372da902df69cc05e754898c89afc8b97"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/baseline_manifests/hrmppo_safe_v3_failed.json",
+      "size": 1050,
+      "git_blob": "bbfaf19130179841753d48b32ba3430e1933e70b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/baseline_manifests/hrmppo_v2_task_baseline.json",
+      "size": 1115,
+      "git_blob": "cb53c5c4d3cb3293d673698e505a4d36b9b17b3e"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/baseline_manifests/riskshield_ppo_v1.json",
+      "size": 844,
+      "git_blob": "ffb6eb390f2b0e571a5834fd333f636192654eb9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/aggregated_results.csv",
+      "size": 12466,
+      "git_blob": "60291df13ff2dc75c13d4253ef49a2b9d4e54002"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/benchmark_summary.json",
+      "size": 527,
+      "git_blob": "7d4690b84f4968647dc60d8b9b4309602d47e25e"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/benchmark_summary.md",
+      "size": 118,
+      "git_blob": "d621e655d84eecd08431503c36b78d7ea775a538"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/hierarchical_v4_rows.csv",
+      "size": 71974,
+      "git_blob": "e630781d114691d3780cb71a63a4a3dd16414b74"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/integrity_report.json",
+      "size": 527,
+      "git_blob": "7d4690b84f4968647dc60d8b9b4309602d47e25e"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/integrity_report.md",
+      "size": 127,
+      "git_blob": "1755c83242bf0be448f015df4918a3e421948df0"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/metric_availability.json",
+      "size": 811,
+      "git_blob": "77c4386be2821db79779c377f70adac803fa23c9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/raw_results.csv",
+      "size": 946548,
+      "git_blob": "2702c40b6d17b96165279e6a51794d3a5e96d926"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/raw_results.parquet",
+      "size": 240344,
+      "git_blob": "3be6d9340bb73bf67370dab2952e039dedadb178"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/benchmark_v2/resume_state.json",
+      "size": 42,
+      "git_blob": "f6f7b058823bf26acfdb0e05fba8b31748ab3d69"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_behavior_cloning/behavior_cloning_results.csv",
+      "size": 2195,
+      "git_blob": "5c5f4c6cc51f6d50184084026c655359c4311d06"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_behavior_cloning/behavior_cloning_summary.json",
+      "size": 4669,
+      "git_blob": "9aba5740c02ec511445dd5a35f20c0ab0ca472e1"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_behavior_cloning/checkpoint_manifest.json",
+      "size": 1830,
+      "git_blob": "3e8c3a56b10456e4c65e914f5b0018ee2da4344d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_behavior_cloning/confusion_matrix_seed_20260730.csv",
+      "size": 173,
+      "git_blob": "685c013726b2185fa26df2ab0e7904b70394df64"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_behavior_cloning/confusion_matrix_seed_20260731.csv",
+      "size": 172,
+      "git_blob": "41b3d0f010dd25d74386b56a3061f504d22a7a97"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_behavior_cloning/confusion_matrix_seed_20260732.csv",
+      "size": 173,
+      "git_blob": "c27576e544a20bff6dccb0ccdd9b30fca580b351"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_behavior_cloning/memory_profile.json",
+      "size": 1696,
+      "git_blob": "c44c2d9d41aeea1bcb3a52c7af75219c2cfd2be9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_behavior_cloning/memory_smoke_test.json",
+      "size": 7353,
+      "git_blob": "c763cd8c193cf027dd311b0ad81af01320aa8c84"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_behavior_cloning/mix_summary.json",
+      "size": 2093,
+      "git_blob": "7e5482b74b8e0e807a1642c15c126988ab5a1b16"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_dataset_recovery.json",
+      "size": 1297,
+      "git_blob": "1d90d0fdfba4b79314e62ea9183eb7098bde9beb"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_expert/evaluation.csv",
+      "size": 163903,
+      "git_blob": "d109d48111bb55b57702aa4587fda11d54295c1d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_expert/summary.json",
+      "size": 8196,
+      "git_blob": "b43008532b7f5d4171369c19093833c7f2b7399c"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_expert_dataset/summary.json",
+      "size": 1300522,
+      "git_blob": "f524eee4513cd142d963b91132f2643678386cbe"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/causal_expert_dataset_systematic/summary.json",
+      "size": 655800,
+      "git_blob": "3d57f50584aad3c23a9140d516011fa6799368ed"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/cv_final_audit/summary.json",
+      "size": 1158,
+      "git_blob": "bc2609a1993411acc03f4ddb1ed3b99c2f02877f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/cv_final_audit/summary.md",
+      "size": 1132,
+      "git_blob": "bf636bd73f1be2dfa98c3beb7b47f3a123573fa1"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/dagger_iteration_1.json",
+      "size": 2387,
+      "git_blob": "172456e90c7e2b1832dc0fbad06c9e31b8bcefc9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/dagger_iteration_2.json",
+      "size": 2387,
+      "git_blob": "0fe50782edb4e359f63f7b7f8ad6bcb02640c697"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/dagger_iteration_3.json",
+      "size": 2354,
+      "git_blob": "e2d94e1a7a0c3c8f9406314aa1297cbc4a779e19"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/dagger_results.csv",
+      "size": 521,
+      "git_blob": "02ccbf75e0ac9377ceabb3e4ffa7ee01cb678de5"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/dagger_summary.json",
+      "size": 9029,
+      "git_blob": "087c149e2f63aef7e7ea28d296983448212ff236"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/iteration_1_training/behavior_cloning_summary.json",
+      "size": 5500,
+      "git_blob": "04cf63234928e1640cc92d10dc63695ad766abff"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/iteration_1_training/confusion_matrix.csv",
+      "size": 171,
+      "git_blob": "6a0b769676087888351f5c3b25fe7d68c78686ae"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/iteration_1_training/memory_profile.json",
+      "size": 1682335,
+      "git_blob": "f7413ac42c020fc9e48e171fc7fe0f6803e9e7db"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/iteration_2_training/behavior_cloning_summary.json",
+      "size": 5508,
+      "git_blob": "72e7131bb9559454de09e0227df4d892cc8b7bac"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/iteration_2_training/confusion_matrix.csv",
+      "size": 173,
+      "git_blob": "f006f8171e68e7a67e3374e2df34e7f3be2fd901"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/iteration_2_training/memory_profile.json",
+      "size": 1778314,
+      "git_blob": "aa56d0ae9fa9fa1da8a349e499dd0db91bca9f71"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/iteration_3_training/behavior_cloning_summary.json",
+      "size": 5499,
+      "git_blob": "45efaac130fda9c20a6b178c28fd0961151d4d13"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/iteration_3_training/confusion_matrix.csv",
+      "size": 173,
+      "git_blob": "e0927a91bf3607cab530637f91f941b3a3b6e59a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger/iteration_3_training/memory_profile.json",
+      "size": 1893262,
+      "git_blob": "718f53607317c3cf9d62a3bd42c0743b5ddc811e"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger_risk_astar/dagger_iteration_1.json",
+      "size": 2506,
+      "git_blob": "f0fb0cdd3670a5292467cf1b3492d8eb7dc28db7"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger_risk_astar/dagger_iteration_2.json",
+      "size": 2527,
+      "git_blob": "ad5f127ec16a306577644cb6725f76e0491a0def"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger_risk_astar/dagger_iteration_3.json",
+      "size": 2524,
+      "git_blob": "e22c0b0779709566202154448579e9e6ccdfc2dd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger_risk_astar/dagger_results.csv",
+      "size": 550,
+      "git_blob": "43ac203d1041961902f79296050db18d93b8b249"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/dagger_risk_astar/dagger_summary.json",
+      "size": 9530,
+      "git_blob": "728976211ba94ca55bd7882a1c79332cafa640ce"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/diagnosis_planners/raw_results.csv",
+      "size": 168774,
+      "git_blob": "0fe679a51c7b95c4503bfc5e956d0f85e54f97b7"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/diagnosis_planners/summary.json",
+      "size": 1603,
+      "git_blob": "301c029899ed01fea452dc8934eea00ebc7a4ef9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/execution_log.md",
+      "size": 2767,
+      "git_blob": "6ac6d868a0b790d11411b3f2f641e6d211891a64"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/expert_dataset_failed_attempt_2.json",
+      "size": 156481,
+      "git_blob": "b85f66c45112d0bd82efb670514a3270e89edb26"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/expert_dataset_failed_attempt_3.json",
+      "size": 174805,
+      "git_blob": "51ee08c2d26ad5ca63261ec5dc9e9b6ef147aada"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/expert_dataset_summary.json",
+      "size": 423961,
+      "git_blob": "aff405a99b6e7a1c39b34b64f861a3bfdd368b4e"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/failure_diagnosis.json",
+      "size": 3389,
+      "git_blob": "bf53584c9db934d8892b49ce66135d3ecd1b9e08"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/failure_diagnosis.md",
+      "size": 1903,
+      "git_blob": "e1cc5633d218a4d7ff327619ab03d8b7caf3660d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_acceptance_v2/artifact_manifest.json",
+      "size": 262,
+      "git_blob": "8c115421d1fe46b9f7abff48f5f1ced9f532b3ca"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_acceptance_v2/gates.json",
+      "size": 478,
+      "git_blob": "8ed990c7927008084cd93949a47743e78d141506"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_acceptance_v2/summary.json",
+      "size": 16669,
+      "git_blob": "641de7e1635229b191f991e878fce9ff852bf784"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_acceptance_v2/summary.md",
+      "size": 213,
+      "git_blob": "6bd91a61cec0dd779617c7116a3d1d5e3f868942"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_completion/current_state_audit.json",
+      "size": 964,
+      "git_blob": "135530591806ac40c3157c4c7f828df0cc9d7b9d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_completion/current_state_audit.md",
+      "size": 854,
+      "git_blob": "895768c82f1c4a67a2c2b2dfacf022568d01dab6"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_completion/legacy_gate_audit.json",
+      "size": 2151,
+      "git_blob": "2474d60d0724fb551bcb8538f544b4ee3d6f1bc0"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_completion/legacy_gate_audit.md",
+      "size": 1792,
+      "git_blob": "0d4e1d25a02ec9e62ce7c8044d2abec20b2097c1"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_completion_handoff.json",
+      "size": 6244,
+      "git_blob": "4b8c890a2db2e457e6712785c727712462c9aff8"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_resume_audit.json",
+      "size": 2573,
+      "git_blob": "0559c61e0491598509661a921ecfef039ce99e00"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/final_resume_audit.md",
+      "size": 2379,
+      "git_blob": "59eec6b780107dcd66e70bafd13656b7f6e1ab5b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/forensic_v4_correction/assertion_contract.json",
+      "size": 679,
+      "git_blob": "e54da7fe5fb63c410ead45caf88114072b04ef38"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/forensic_v4_correction/assertion_contract.md",
+      "size": 733,
+      "git_blob": "1106a7aca02e2691bc7cbf96a73275a77c80ba24"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/forensic_v4_correction/pre_correction_findings.json",
+      "size": 322,
+      "git_blob": "c245dd2d46ef3216e26fed4b121cba1cf5432190"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/forensic_v4_correction/pre_correction_findings.md",
+      "size": 956,
+      "git_blob": "e2342f6a748e6cd43f0c900557ee9acd32ec137a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/github_ci/ci_discovery.json",
+      "size": 667,
+      "git_blob": "ed36d5564a226742e39c8f0c6dca385d442febb9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/github_ci/ci_discovery.md",
+      "size": 828,
+      "git_blob": "61a3df1c2253885a8063c069397c765907333d0f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/github_ci/final_green_run.json",
+      "size": 257,
+      "git_blob": "c2a9ec9922196a1dc689b33e5e500524bc6872c8"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/github_ci/final_green_run.log",
+      "size": 147,
+      "git_blob": "68e61d809c197eb56739070325fa3dc061bc5d0f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/github_ci/final_green_run.md",
+      "size": 191,
+      "git_blob": "0521918998a45a75026ef392299ae380b4d803dc"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/github_ci/run_31035868066_failed.log",
+      "size": 429,
+      "git_blob": "599a448bbe45af29de2862b3016d60422d93eba3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/github_ci/run_31035868066_summary.md",
+      "size": 970,
+      "git_blob": "a4b735061c02166e251954594d165f4b88fc2556"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_beta_zero_systematic_final/summary.json",
+      "size": 9274,
+      "git_blob": "92daadef1373405fc7d4fc8fecfb9879e91fc20f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_dagger_accepted/summary.json",
+      "size": 6216,
+      "git_blob": "aa34b92cd943a8e555feb1757e121426f57efe8b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_dataset_summary.json",
+      "size": 639,
+      "git_blob": "09043bbad57b61e0f000981e34ec95c2ef46c04b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_final_recovery.json",
+      "size": 1704,
+      "git_blob": "316962272776670ac14a19b5aab8c53d86220e8d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_final_recovery.md",
+      "size": 1473,
+      "git_blob": "2959f89bc20be053b52880adf2628d49e0f3717a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_h2_5k_evaluation/summary.json",
+      "size": 8642,
+      "git_blob": "96ec6220af2f7fe60ed97ef6b866a16f05e2686a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_h3_5k_evaluation/summary.json",
+      "size": 9877,
+      "git_blob": "3ee100042928ca48426660b06a7336ae8b31842f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation/confusion_matrix_seed_42.csv",
+      "size": 177,
+      "git_blob": "018919617f12d9e020b251bcd66677eed0f1e268"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation/confusion_matrix_seed_43.csv",
+      "size": 177,
+      "git_blob": "754e224077ce4b76c6aaf6ff074e8291b7d28ea1"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation/confusion_matrix_seed_44.csv",
+      "size": 176,
+      "git_blob": "61e0c9a8adb3abfffe9dfea2850c479abf0e168b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation/summary.json",
+      "size": 31087,
+      "git_blob": "fc4aaa9f710b0fbc22d23fe81737dcd15887b330"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_smoke/confusion_matrix_seed_42.csv",
+      "size": 183,
+      "git_blob": "19178cbd6d34d993a2cfa5ae6dcc21d44161981b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_smoke/summary.json",
+      "size": 1651,
+      "git_blob": "2110ad28ce54bfe380fd8848a3a9108b973997fb"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_smoke_balanced/confusion_matrix_seed_43.csv",
+      "size": 180,
+      "git_blob": "d95128bbe8297648c66f894e812fabf4f31bdc72"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_smoke_balanced/summary.json",
+      "size": 4082,
+      "git_blob": "af2159be09a960907c7127c04b30ce26ea00a937"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_smoke_repaired/confusion_matrix_seed_44.csv",
+      "size": 174,
+      "git_blob": "0538120d09000c2168fa72f6b035bb546919250c"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_smoke_repaired/summary.json",
+      "size": 7417,
+      "git_blob": "f4cbe512d53ce260be9f43eee8bcecc96c27eb04"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_systematic_final/confusion_matrix_seed_101.csv",
+      "size": 171,
+      "git_blob": "5585c8baa6ba9a648e38fe4f6ade620604768641"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_systematic_final/confusion_matrix_seed_102.csv",
+      "size": 171,
+      "git_blob": "47cecbcf768acf53de6750a12619173a2f042d5d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_systematic_final/confusion_matrix_seed_103.csv",
+      "size": 171,
+      "git_blob": "96c738e8728ae099c32f0d8fcfecd52d6bac4618"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_imitation_systematic_final/summary.json",
+      "size": 6309,
+      "git_blob": "d2ca7171e8d9fddb2bd933e79080961f9d2615c2"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hierarchical_v4_recovery/interruption_recovery.json",
+      "size": 3240,
+      "git_blob": "b49bc15c4611b7969435d8f28d4452f4b57afabb"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/clearance_confirmation_5_diagnostic/evaluation.csv",
+      "size": 3522,
+      "git_blob": "9c48d6ba526dda1f16aabbe29f4762b4570fdbaa"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/clearance_confirmation_5_diagnostic/summary.json",
+      "size": 2022,
+      "git_blob": "c1151cf639286161f9c0ceea48d36cfd0f7fb4cd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/clearance_confirmation_diagnostic/evaluation.csv",
+      "size": 3519,
+      "git_blob": "07531ad0f71aa436c10969aefcb1bb474e2c9c14"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/clearance_confirmation_diagnostic/summary.json",
+      "size": 2024,
+      "git_blob": "595fc83353817c7fdec958e8687da25069550e81"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/clearance_probability_diagnostic/evaluation.csv",
+      "size": 3635,
+      "git_blob": "001478d202503806d2c8b691a0050252e529bc85"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/clearance_probability_diagnostic/events.jsonl",
+      "size": 105058,
+      "git_blob": "221bda823b6944b36d4ec9f6b86bd312e71603c3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/clearance_probability_diagnostic/summary.json",
+      "size": 2042,
+      "git_blob": "3ee184c4890bd0234abb1fc0fa5601b7bb79bf61"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/event_trace_diagnostic/evaluation.csv",
+      "size": 3522,
+      "git_blob": "9c48d6ba526dda1f16aabbe29f4762b4570fdbaa"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/event_trace_diagnostic/events.jsonl",
+      "size": 126662,
+      "git_blob": "3aaa8befc53420e5ab8ce2a19e584f45e88a608a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/event_trace_diagnostic/summary.json",
+      "size": 2022,
+      "git_blob": "c1151cf639286161f9c0ceea48d36cfd0f7fb4cd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/initialized/training_summary.json",
+      "size": 729,
+      "git_blob": "1d30f76b4004bfd0d9ce86e77d177be10a7b9786"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/initialized_evaluation/evaluation.csv",
+      "size": 12796,
+      "git_blob": "bdc1fa5aa97044dcd24e3e743211d9e7a431ca86"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/initialized_evaluation/summary.json",
+      "size": 1674,
+      "git_blob": "6c7ce48530be0e2f8bb10e81d726a3d62b2882a8"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/initialized_evaluation_v2/evaluation.csv",
+      "size": 12609,
+      "git_blob": "d22d7c74700ea7d4b63b5c5531bb282cf0419fb0"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/initialized_evaluation_v2/summary.json",
+      "size": 1672,
+      "git_blob": "e47400eaf72a836aa4371238b1b09be4e6e05237"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/safety_dagger_initialized_v2/training_summary.json",
+      "size": 791,
+      "git_blob": "28e100896bfbc175f6b36e39d2c452a4e385a092"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/safety_dagger_initialized_v2_evaluation/evaluation.csv",
+      "size": 13574,
+      "git_blob": "29d31161ebb07f25deeea930ef5636fe714161d3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/safety_dagger_initialized_v2_evaluation/summary.json",
+      "size": 1753,
+      "git_blob": "0138bb447ab79aa5a4012a4d846dfb89d91307c0"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/safety_dagger_initialized_v3_contract_fix/evaluation.csv",
+      "size": 13347,
+      "git_blob": "701fd9c7a1021225d87e1a2334a2090d00a4abc8"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/safety_dagger_initialized_v3_contract_fix/summary.json",
+      "size": 1737,
+      "git_blob": "e3fdfc4b68e4bc8cfb196cf42810209e5630cda8"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/shield_reason_diagnostic/evaluation.csv",
+      "size": 3360,
+      "git_blob": "07c90195edd94fe2cc6230ad64a501191cd83410"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/shield_reason_diagnostic/summary.json",
+      "size": 1988,
+      "git_blob": "e41be37f80c5607c1f143597023170f1918b42f9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/smoke_evaluation/evaluation.csv",
+      "size": 4107,
+      "git_blob": "771c8f8af9821cb164244454c6bc019233224a28"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/smoke_evaluation/summary.json",
+      "size": 1665,
+      "git_blob": "4accbb34d049526cd11329f4c60a1aff31dbe0df"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/smoke_resume/training_summary.json",
+      "size": 2776,
+      "git_blob": "bb135f2f83b942a99c26a105a5867e8991a634e4"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_a_5k/training_summary.json",
+      "size": 42041,
+      "git_blob": "2c4a6aa8e142dc4e6cd4d802a55fb5cf964c7e0f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_a_5k_evaluation/evaluation.csv",
+      "size": 13491,
+      "git_blob": "5f2d2b6b285565fe963563ef2bbd41ff70dfb5d8"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_a_5k_evaluation/summary.json",
+      "size": 1721,
+      "git_blob": "c311df84f9dc12f2b680291447d23fa03c705986"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_100k/training_summary.json",
+      "size": 561655,
+      "git_blob": "60a5f5a4786b17da1d67876752c1c19db7f4330b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_100k_evaluation/evaluation.csv",
+      "size": 32541,
+      "git_blob": "a8decbb41bd3cf84308f750fa4deb3ff57784d55"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_100k_evaluation/events.jsonl",
+      "size": 1587937,
+      "git_blob": "e5567929bc2c6109e97e70df2dbd54d9062fa546"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_100k_evaluation/summary.json",
+      "size": 2075,
+      "git_blob": "043cad4a7b29883d2cd16f23d73c14eef67a4ce3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_30k/training_summary.json",
+      "size": 204462,
+      "git_blob": "2af78a13ad734eedeb7492e5f97a6a8e2cad9a2f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_30k_evaluation/evaluation.csv",
+      "size": 28423,
+      "git_blob": "08665738f71cecf4cee9d44b35f2c5e75c6f6786"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_30k_evaluation/summary.json",
+      "size": 2017,
+      "git_blob": "b0826402f92dc223494c944a76089c10a1e20b5f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_5k/training_summary.json",
+      "size": 42200,
+      "git_blob": "a38a8e7947956d2ac2b92459cd4921534a28cfae"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_5k_evaluation/evaluation.csv",
+      "size": 13413,
+      "git_blob": "35bf06e40696c464a12c7b84cee26bec4393a958"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_5k_evaluation/summary.json",
+      "size": 1719,
+      "git_blob": "68f4156a09da763281f6ddd7cdcc6b0f1f9c84f4"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_units_30k/training_summary.json",
+      "size": 248449,
+      "git_blob": "2a8c76f997087aabbe22d660a0535eebdd1b1aec"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_units_30k_evaluation/evaluation.csv",
+      "size": 32360,
+      "git_blob": "262a7193ef0470b05a30b49dafb0b2f5bf276e25"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_units_30k_evaluation/events.jsonl",
+      "size": 1723483,
+      "git_blob": "72fa57e5df911075e02ac9af186eae7894800bf7"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_b_units_30k_evaluation/summary.json",
+      "size": 2076,
+      "git_blob": "8aca0b2427f1bb94b5438396cb448db78cb24d14"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_c_5k/training_summary.json",
+      "size": 42005,
+      "git_blob": "20d1c746a08893047bf6378a1e84f19453ec0ced"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_c_5k_evaluation/evaluation.csv",
+      "size": 13546,
+      "git_blob": "681147fe9443b27417a53540894f2b4e4081a382"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_c_5k_evaluation/summary.json",
+      "size": 1720,
+      "git_blob": "fec30c94d141fb0abed5f483e8162390d023fa35"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_executed_30k/training_summary.json",
+      "size": 248443,
+      "git_blob": "a69da776f6c0430a8af30655bdc404f154b24bb3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_executed_30k_evaluation/evaluation.csv",
+      "size": 32356,
+      "git_blob": "b6b247995907e965852f6749a427362c246a12dd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_executed_30k_evaluation/events.jsonl",
+      "size": 1738015,
+      "git_blob": "7d1bdb5ce13e2923874d748f1f61f505f8a1f8bb"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/strategy_executed_30k_evaluation/summary.json",
+      "size": 2063,
+      "git_blob": "6600f4e5852fa969591fe467026126a48c93bffe"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/worker_memory_diagnostic/evaluation.csv",
+      "size": 3302,
+      "git_blob": "471151d141f4f8e2185a082458693d05dbd000d8"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_safe_v3/worker_memory_diagnostic/summary.json",
+      "size": 1984,
+      "git_blob": "e458e8f6a994384d8c5a0363ebde121f7200f3c8"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_v2/optimization_summary.json",
+      "size": 13580,
+      "git_blob": "79fb9972eee121f7b31bf3b00c3cd3661b4ecd52"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_v2/risk_dagger_iteration1_evaluation/evaluation.csv",
+      "size": 6047,
+      "git_blob": "adf95c2338ca763ede6c6df830d6fee7daae6cf0"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_v2/risk_dagger_iteration1_evaluation/summary.json",
+      "size": 767,
+      "git_blob": "0c1530379dd406e7ca1d6debaf467ab255ee3ce9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_v2/search/search_manifest.json",
+      "size": 901,
+      "git_blob": "f758cbf8626f1b106811006b66b9d73b43993027"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_v2/shield_budget1_dagger_baseline/evaluation.csv",
+      "size": 5832,
+      "git_blob": "91502edb024171d045e26e214c4bc4110441be35"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_v2/shield_budget1_dagger_baseline/summary.json",
+      "size": 766,
+      "git_blob": "6dd5a78a12b4c202da66081f46b03f990a90cf21"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_v2/shield_horizon1_dagger_baseline/evaluation.csv",
+      "size": 6676,
+      "git_blob": "6d6c6d29f5ad0b57c7997d3adba074f021db5e77"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/hrmppo_v2/shield_horizon1_dagger_baseline/summary.json",
+      "size": 788,
+      "git_blob": "cceb6c948e404ced5d126f5f85a99c467c549523"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/behavior_cloning_failure_analysis_1.json",
+      "size": 1380,
+      "git_blob": "2a81437daaa519b99970dfac0466a95f298f2e4b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/behavior_cloning_failure_analysis_2.json",
+      "size": 1017,
+      "git_blob": "9f400ead6fd9bc89fc3f82d46f5edfd6593df9a5"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/behavior_cloning_failure_analysis_3.json",
+      "size": 623,
+      "git_blob": "b9fbc6de7c2884e4196f325784e97b0ea19c6d5f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/behavior_cloning_failure_analysis_4.json",
+      "size": 608,
+      "git_blob": "df5c164ac1b4fd6872c87a1feee20695ee26d83f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/behavior_cloning_failure_analysis_5.json",
+      "size": 632,
+      "git_blob": "d960e5c1cb01a3e4e1079a3bc411431e4965d859"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/behavior_cloning_failure_analysis_6.json",
+      "size": 1665,
+      "git_blob": "29b4a360def24c556df4ecf43246eddbf833313f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/behavior_cloning_failure_analysis_7.json",
+      "size": 1284,
+      "git_blob": "c36f8bccf415b1edbc603b0361b348f4ae5ea3a6"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/behavior_cloning_summary.json",
+      "size": 15217,
+      "git_blob": "18b2234007951be6a121eaa4b409c449f8cd916c"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/confusion_matrix.csv",
+      "size": 175,
+      "git_blob": "de90411ffea2d1d83658bf6fcf577d6d2e55b2df"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/memory_profile.json",
+      "size": 632479,
+      "git_blob": "3a1bee466330db24662dfa16db5c591976f68e49"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/imitation_learning/memory_smoke_test.json",
+      "size": 7357,
+      "git_blob": "2233b4733a24887bde05680f5fa534bd9f922122"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/interruption_recovery.json",
+      "size": 2752,
+      "git_blob": "8c6aefa1259f83581f6e7186b47085e57055c178"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/paper_validation/summary.json",
+      "size": 475,
+      "git_blob": "fb66fe1f6bd319aad130ff6675198fc8c588518e"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/paper_validation/summary.md",
+      "size": 245,
+      "git_blob": "fe3e4d121b97e1aa49a47ab54dfe81a988c02d2f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/accepted_strategy.json",
+      "size": 945,
+      "git_blob": "76e5cf1c51cebbbbc9d6c44d8e015b0805aa9300"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/failure_analysis.json",
+      "size": 634,
+      "git_blob": "5f10ac4221f1706818db82b4fb67aafe98dc8763"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/failure_analysis.md",
+      "size": 1365,
+      "git_blob": "184d028b648197059a4b2078ed93d0d2d68904a7"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_1.json",
+      "size": 3080,
+      "git_blob": "6616b2e05a66fee307a9f8f4b2f4c60b3e189d6b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_1_training/behavior_cloning_summary.json",
+      "size": 4016,
+      "git_blob": "9a3e0963e0aa304f07bad9a79c5f25fc6923a2ba"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_1_training/confusion_matrix.csv",
+      "size": 173,
+      "git_blob": "cd96e4460665d590c5baa52d138c25e748604991"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_1_training/memory_profile.json",
+      "size": 1032630,
+      "git_blob": "979597235dbe5fa5b689918e2556851001e8e474"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_2.json",
+      "size": 3052,
+      "git_blob": "4e514f2d9b7685538e8cc55e0f2596ec85f977a9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_2_training/behavior_cloning_summary.json",
+      "size": 3967,
+      "git_blob": "4b1792d9917484c78cfc425688a845475ab6a056"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_2_training/confusion_matrix.csv",
+      "size": 172,
+      "git_blob": "84ea7112a356bcf0180b17ed195f7893bba319c9"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_2_training/memory_profile.json",
+      "size": 1119556,
+      "git_blob": "01df2521bd4607c4072742348482ddb832f660d2"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_3.json",
+      "size": 3065,
+      "git_blob": "d1c6e06086f7d06aeb5a4cd7f335fe6b0e4b3f83"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_3_training/behavior_cloning_summary.json",
+      "size": 4032,
+      "git_blob": "3415263aa9fd923862957e90e9816ef6a5c13876"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_3_training/confusion_matrix.csv",
+      "size": 173,
+      "git_blob": "7aa2d8469fd84b6b01bdb3c999a7b7b7d468ebf4"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/iteration_3_training/memory_profile.json",
+      "size": 1199983,
+      "git_blob": "5028038cda0e9285ca2629b971f06a7006c78e5c"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger/summary.json",
+      "size": 11348,
+      "git_blob": "e4afd9aa34b63deb6f32303afcc0bbd526d3ea1a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_1/iteration_1.json",
+      "size": 3197,
+      "git_blob": "9e4d8b78f96f19fe42c1b70dc2d7ed36cf017366"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_1/iteration_1_training/behavior_cloning_summary.json",
+      "size": 3977,
+      "git_blob": "ac8e38eee2a33abeaeb98064e9ab6692ea9ac90c"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_1/iteration_1_training/confusion_matrix.csv",
+      "size": 170,
+      "git_blob": "0b69fc28e918d30bdce5351a053feda7effb6a2f"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_1/iteration_1_training/memory_profile.json",
+      "size": 1031545,
+      "git_blob": "a5552805e7c7c9fe3561f07c0429d63492ec6015"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_1/iteration_2.json",
+      "size": 3226,
+      "git_blob": "53424ab6fc1a37a596b821e5789009970e00f835"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_1/iteration_2_training/behavior_cloning_summary.json",
+      "size": 4049,
+      "git_blob": "9d0350514c80599618a2275b2541cb5b8d057c0d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_1/iteration_2_training/confusion_matrix.csv",
+      "size": 171,
+      "git_blob": "89f19256f5bfa493849bb7d4162b7ddc30c33a2c"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_1/iteration_2_training/memory_profile.json",
+      "size": 1119572,
+      "git_blob": "164ff483d14a3fb5b5d54f770085b44cbb2d617a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_1.json",
+      "size": 3197,
+      "git_blob": "b8582856e6796f58cda8246049b435bcc3828a29"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_1_training/behavior_cloning_summary.json",
+      "size": 3206,
+      "git_blob": "1206abce08ceb219371d7672a75e97eaed7c6d2b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_1_training/confusion_matrix.csv",
+      "size": 171,
+      "git_blob": "ea9f8460ff8dc3828e75f5180c12527a4f94a8b4"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_1_training/memory_profile.json",
+      "size": 687236,
+      "git_blob": "e9aef67e8cdf5fb478b3797a11d05c4e2447b2d2"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_2.json",
+      "size": 3235,
+      "git_blob": "59052ef49d696c21d04848b336e6c46b0784e8ad"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_2_training/behavior_cloning_summary.json",
+      "size": 3240,
+      "git_blob": "8748f03c27e426c8e8c109ec30fd74527561f0ba"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_2_training/confusion_matrix.csv",
+      "size": 170,
+      "git_blob": "d485efbf24170fd034dbfc8e9fce343bfc0ac34b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_2_training/memory_profile.json",
+      "size": 743635,
+      "git_blob": "428570c6c2010efa2bcf2ef9bcf1754a56c2776c"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_3.json",
+      "size": 3236,
+      "git_blob": "a33c4c782730096f5d00a526591e59bbb69204eb"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_3_training/behavior_cloning_summary.json",
+      "size": 3212,
+      "git_blob": "d8b8feb3f48b8dccb874d1235c50645af96ff8fd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_3_training/confusion_matrix.csv",
+      "size": 170,
+      "git_blob": "b8d73beb2493baf78630a700db83489f2c556ade"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/iteration_3_training/memory_profile.json",
+      "size": 803280,
+      "git_blob": "823c17787c90efd81782c5e2557baaf8ff9ba592"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_dagger_repair_2/summary.json",
+      "size": 11892,
+      "git_blob": "14196d68920a19d6225afd498952a19167fd8a4a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_finalization/optimization_failure_analysis.json",
+      "size": 1272,
+      "git_blob": "013acdf704438c4d9d98714b6f56f106f78b4920"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_finalization/optimization_failure_analysis.md",
+      "size": 2843,
+      "git_blob": "b17579e3d15b1d8fca1ee3582cd52a368ab71958"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_finalization/violation_audit.csv",
+      "size": 7500,
+      "git_blob": "f58321476a6e6d48100c939325e4653f1fd479da"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_finalization/violation_audit.json",
+      "size": 2356809,
+      "git_blob": "52369046f13cf260443940fc2475bf1b473f8211"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/safety_finalization/violation_audit.md",
+      "size": 2520,
+      "git_blob": "22c0b3cee5f5eb4264ee182cde63fbe831f472af"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/v1_diagnostic_traces.json",
+      "size": 54037,
+      "git_blob": "be3aa69b235c51195ee7c779137035971946d52a"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_timeout/root_cause.json",
+      "size": 1378,
+      "git_blob": "1a9a7f0bacde8e82c70da56efb1f0a706dee8683"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_timeout/root_cause.md",
+      "size": 1476,
+      "git_blob": "76050d997bbab4d381fe172f735e6f1ad752924c"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_dynamic/checkpoint_manifest.json",
+      "size": 391,
+      "git_blob": "6e76f4857313e401d06076b95d7b6f557c9958a3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_dynamic/environment_manifest.json",
+      "size": 183,
+      "git_blob": "38c8d1a39201066f27a2f50dff17a4dec257dcba"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_dynamic/process_manifest.json",
+      "size": 93,
+      "git_blob": "238f90da10339f4fad85fc0c9784034d48d7dbfd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_dynamic/schema_manifest.json",
+      "size": 189,
+      "git_blob": "f8b3108dcd50cee73c08e749df703d52a1895a8d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_dynamic/summary.json",
+      "size": 1508,
+      "git_blob": "025d1022531eb0349d76245ff629773c575c68aa"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_medium/checkpoint_manifest.json",
+      "size": 391,
+      "git_blob": "6e76f4857313e401d06076b95d7b6f557c9958a3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_medium/environment_manifest.json",
+      "size": 182,
+      "git_blob": "f953e3fa3b82904d5efdaddfb40d045fe51a5872"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_medium/process_manifest.json",
+      "size": 93,
+      "git_blob": "238f90da10339f4fad85fc0c9784034d48d7dbfd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_medium/schema_manifest.json",
+      "size": 189,
+      "git_blob": "f8b3108dcd50cee73c08e749df703d52a1895a8d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_medium/summary.json",
+      "size": 1508,
+      "git_blob": "025d1022531eb0349d76245ff629773c575c68aa"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_small/checkpoint_manifest.json",
+      "size": 391,
+      "git_blob": "6e76f4857313e401d06076b95d7b6f557c9958a3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_small/environment_manifest.json",
+      "size": 181,
+      "git_blob": "8ea45527d9f57f9391be9206cb51a233697252d2"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_small/process_manifest.json",
+      "size": 93,
+      "git_blob": "238f90da10339f4fad85fc0c9784034d48d7dbfd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_small/schema_manifest.json",
+      "size": 189,
+      "git_blob": "f8b3108dcd50cee73c08e749df703d52a1895a8d"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/site_small/summary.json",
+      "size": 1508,
+      "git_blob": "025d1022531eb0349d76245ff629773c575c68aa"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/summary.json",
+      "size": 7232,
+      "git_blob": "339cd41adebe5d8af2e01d983197b37a6928d720"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_final/summary.md",
+      "size": 7232,
+      "git_blob": "339cd41adebe5d8af2e01d983197b37a6928d720"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_dynamic/assertion_report.json",
+      "size": 388,
+      "git_blob": "c95cb6d467f3bbc1b5a24697a58b5c40c181e21b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_dynamic/checkpoint_manifest.json",
+      "size": 391,
+      "git_blob": "6e76f4857313e401d06076b95d7b6f557c9958a3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_dynamic/environment_manifest.json",
+      "size": 324,
+      "git_blob": "20431e928bf455039b2debc699d52cf90f8b9776"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_dynamic/process_manifest.json",
+      "size": 93,
+      "git_blob": "238f90da10339f4fad85fc0c9784034d48d7dbfd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_dynamic/schema_manifest.json",
+      "size": 194,
+      "git_blob": "abd41e645df57b50c08cbb1d2d393c07d404e0a1"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_dynamic/summary.json",
+      "size": 1937,
+      "git_blob": "c4e0f95c97b83141a8a15f71fb564b5dd411ca01"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_medium/assertion_report.json",
+      "size": 388,
+      "git_blob": "c95cb6d467f3bbc1b5a24697a58b5c40c181e21b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_medium/checkpoint_manifest.json",
+      "size": 391,
+      "git_blob": "6e76f4857313e401d06076b95d7b6f557c9958a3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_medium/environment_manifest.json",
+      "size": 322,
+      "git_blob": "0396c9b5b3871508c9db135e3f75d8947107c9ed"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_medium/process_manifest.json",
+      "size": 93,
+      "git_blob": "238f90da10339f4fad85fc0c9784034d48d7dbfd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_medium/schema_manifest.json",
+      "size": 194,
+      "git_blob": "abd41e645df57b50c08cbb1d2d393c07d404e0a1"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_medium/summary.json",
+      "size": 1937,
+      "git_blob": "c4e0f95c97b83141a8a15f71fb564b5dd411ca01"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_small/assertion_report.json",
+      "size": 388,
+      "git_blob": "c95cb6d467f3bbc1b5a24697a58b5c40c181e21b"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_small/checkpoint_manifest.json",
+      "size": 391,
+      "git_blob": "6e76f4857313e401d06076b95d7b6f557c9958a3"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_small/environment_manifest.json",
+      "size": 320,
+      "git_blob": "a24ec0b3ee827f16c94248f10a1063a39a483dc4"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_small/process_manifest.json",
+      "size": 93,
+      "git_blob": "238f90da10339f4fad85fc0c9784034d48d7dbfd"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_small/schema_manifest.json",
+      "size": 194,
+      "git_blob": "abd41e645df57b50c08cbb1d2d393c07d404e0a1"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/site_small/summary.json",
+      "size": 1937,
+      "git_blob": "c4e0f95c97b83141a8a15f71fb564b5dd411ca01"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/summary.json",
+      "size": 9344,
+      "git_blob": "6c97395753a03ffd8378ba07b3095b6f8c29b774"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_real/summary.md",
+      "size": 9344,
+      "git_blob": "6c97395753a03ffd8378ba07b3095b6f8c29b774"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_visible_demo/summary.json",
+      "size": 3396,
+      "git_blob": "fa569b21d7ebe89677e430cc7cf0bbbe77a96287"
+    },
+    {
+      "path": "reports/strong_policy_upgrade/webots_v4_visible_demo/visible_demo_attempt.json",
+      "size": 630,
+      "git_blob": "bbaf0a6eebd0b77dfa5fd49ed150548b9a2ef861"
+    },
+    {
+      "path": "reports/webots/stage5c_rl_motor_readiness.json",
+      "size": 902,
+      "git_blob": "031016bac0a1408fc53f7143c88009881477851f"
+    },
+    {
+      "path": "scripts/__init__.py",
+      "size": 76,
+      "git_blob": "e065bb1791f26412e774881a0473047cbf69071d"
+    },
+    {
+      "path": "scripts/audit_hrmppo_v2_violations.py",
+      "size": 22874,
+      "git_blob": "3642594a214f3744f4116d44fbc441d00a1ee8fb"
+    },
+    {
+      "path": "scripts/audit_ppe_dataset.py",
+      "size": 19770,
+      "git_blob": "1d0cc52474fcb670622676b98fb329b7df6972f7"
+    },
+    {
+      "path": "scripts/audit_viewpoint_feasibility.py",
+      "size": 3098,
+      "git_blob": "7ba050c4179d073e7d0e0c7d50228ab575114d68"
+    },
+    {
+      "path": "scripts/benchmark_predictive_shield.py",
+      "size": 5064,
+      "git_blob": "ff5a249657746d3201892c03eff0432e6cccd314"
+    },
+    {
+      "path": "scripts/build_benchmark_v2_outputs.py",
+      "size": 7291,
+      "git_blob": "ca8dc5a6133baa3d59c80f0f55c416c6b45a6117"
+    },
+    {
+      "path": "scripts/build_final_release.ps1",
+      "size": 2059,
+      "git_blob": "1a41ece99c784052a9025a53a08275232fd752bd"
+    },
+    {
+      "path": "scripts/build_final_webots_worlds.py",
+      "size": 3715,
+      "git_blob": "a1d30f0367a8704aa33b4636f926a831248956d4"
+    },
+    {
+      "path": "scripts/build_safe_curriculum.py",
+      "size": 2458,
+      "git_blob": "d8e9912b17344c733668e3da7ffc471e834a240c"
+    },
+    {
+      "path": "scripts/build_stage4b_live_world.py",
+      "size": 5243,
+      "git_blob": "d868e435c9da74242e8b650f3b81b3ec72a394f6"
+    },
+    {
+      "path": "scripts/build_stage4d_showcase.py",
+      "size": 22411,
+      "git_blob": "5f35f2ba6a82a4858d0440978b1dcbc240a170ce"
+    },
+    {
+      "path": "scripts/build_stage5a3_closed_loop_world.py",
+      "size": 4797,
+      "git_blob": "0818928fbbd053967ca60e0b995f6ac7a99bd4cf"
+    },
+    {
+      "path": "scripts/build_stage5a_live_camera_world.py",
+      "size": 11600,
+      "git_blob": "e93fbf2b4bca1a9dc5318e32ec0f8684c945a376"
+    },
+    {
+      "path": "scripts/build_stage5c_rl_motor_world.py",
+      "size": 1467,
+      "git_blob": "d498bb33abcbe12fbac8f0e04f4e413820c35b6d"
+    },
+    {
+      "path": "scripts/build_v4_ablation_report.py",
+      "size": 3096,
+      "git_blob": "2356a04c01b9909ed593226d193c49f9b66355f9"
+    },
+    {
+      "path": "scripts/check_env.py",
+      "size": 926,
+      "git_blob": "5fa1e51de6027d088109c2da7a16761b832fcfae"
+    },
+    {
+      "path": "scripts/check_perception_training_environment.py",
+      "size": 6157,
+      "git_blob": "168b7a81ad256a1c685cf70d9e0bc1d22098c81b"
+    },
+    {
+      "path": "scripts/configure_ppe_dataset.py",
+      "size": 5608,
+      "git_blob": "1721dca1ee433fb3370e6fe6fc6a19a6ed864a16"
+    },
+    {
+      "path": "scripts/create_stage5b4_final_showcase.py",
+      "size": 6040,
+      "git_blob": "73a9ecfbc6012c78e0d5750bec8ccedfc4084301"
+    },
+    {
+      "path": "scripts/diagnose_policy_v1.py",
+      "size": 8896,
+      "git_blob": "ceaa31482fc73f7e5ff5b6ebcd3d99b76365a47e"
+    },
+    {
+      "path": "scripts/evaluate_causal_expert.py",
+      "size": 9845,
+      "git_blob": "ec71c826970175e2b79d1f1ecaf67467c21cf8b0"
+    },
+    {
+      "path": "scripts/evaluate_expert_baselines.py",
+      "size": 3858,
+      "git_blob": "674a201935824fc9effcd882b75821e4f84ff185"
+    },
+    {
+      "path": "scripts/evaluate_model.py",
+      "size": 1693,
+      "git_blob": "6f96c4472155bd3c44bf972016d2593b77e2c89c"
+    },
+    {
+      "path": "scripts/evaluate_planner_baselines.py",
+      "size": 4818,
+      "git_blob": "0fd5598041e0b1df95f568a7629d610c87c644d2"
+    },
+    {
+      "path": "scripts/evaluate_random.py",
+      "size": 2047,
+      "git_blob": "dfde2a0d1f2c1cbeeb49dd46c4988a069a5ddfe4"
+    },
+    {
+      "path": "scripts/evaluate_riskshield_hrmppo_safe_v3.py",
+      "size": 16203,
+      "git_blob": "3f358203aed530d25108fc6cb8e7ef7c1c34cbac"
+    },
+    {
+      "path": "scripts/evaluate_riskshield_hrmppo_v2.py",
+      "size": 8344,
+      "git_blob": "a3c37f2b855599165d5b76debb637c08dbda431a"
+    },
+    {
+      "path": "scripts/evaluate_riskshield_ppo.py",
+      "size": 6499,
+      "git_blob": "f30462192180aac9c322b3f053ee6eee9cf0d312"
+    },
+    {
+      "path": "scripts/evaluate_rl_baselines.py",
+      "size": 6304,
+      "git_blob": "db98f338bfffc737f441f2d0b3d5a3b78fc2d6d8"
+    },
+    {
+      "path": "scripts/evaluate_scenarios.py",
+      "size": 3818,
+      "git_blob": "65a226a4d8a9033c6a4bf6d54899b7c818208133"
+    },
+    {
+      "path": "scripts/fine_tune_ppe_weak_classes.py",
+      "size": 16877,
+      "git_blob": "b909b650f79a1b04b5896d18278b4b3fb873aa0f"
+    },
+    {
+      "path": "scripts/generate_causal_expert_demonstrations.py",
+      "size": 13564,
+      "git_blob": "cb677b52ee99102624ef0ff2112767ef28e13c5c"
+    },
+    {
+      "path": "scripts/generate_expert_demonstrations.py",
+      "size": 13188,
+      "git_blob": "9396b0fe66c35a86d4423c9a5a066da6089d3f4e"
+    },
+    {
+      "path": "scripts/generate_expert_plans.py",
+      "size": 2872,
+      "git_blob": "a343a470298b43950128f3a9faa45db217753f38"
+    },
+    {
+      "path": "scripts/generate_final_completion_reports.py",
+      "size": 9843,
+      "git_blob": "c62c2090020b888b26112e14ee26f3ce81f211a6"
+    },
+    {
+      "path": "scripts/generate_final_figures.py",
+      "size": 7145,
+      "git_blob": "d2ff3288abb962d6537e1e1eb7614b990f758f1b"
+    },
+    {
+      "path": "scripts/generate_final_submission_reports.py",
+      "size": 6818,
+      "git_blob": "49b47a8e511325be7c9582bb5638c06131fd8c58"
+    },
+    {
+      "path": "scripts/generate_hierarchical_demonstrations.py",
+      "size": 1357,
+      "git_blob": "a7c1686805278449f757f858614a52f24f9e3f91"
+    },
+    {
+      "path": "scripts/generate_scenarios.py",
+      "size": 799,
+      "git_blob": "707eab85912a00209f52adf5434dd44fa70a3844"
+    },
+    {
+      "path": "scripts/get_final_completion_status.ps1",
+      "size": 240,
+      "git_blob": "c7814f56eba39dfb555ca1c07a6368054a0eaace"
+    },
+    {
+      "path": "scripts/migrate_safety_contract_v3.py",
+      "size": 3182,
+      "git_blob": "97022bfbc31faf58d37f3e8f9a61e44517f30323"
+    },
+    {
+      "path": "scripts/optimize_riskshield_hrmppo_v2.py",
+      "size": 2068,
+      "git_blob": "b4cd10a0a71ef55d987ccf1628fdbfdbc915aab6"
+    },
+    {
+      "path": "scripts/plot_benchmark_results.py",
+      "size": 1321,
+      "git_blob": "603aab14d9eb96f70622a426639ce88f5274a827"
+    },
+    {
+      "path": "scripts/run_benchmark_v2.ps1",
+      "size": 899,
+      "git_blob": "88deaf93704a3b39b18bf1d8f7f30ade9585cc56"
+    },
+    {
+      "path": "scripts/run_complete_autonomous_inspection.ps1",
+      "size": 2778,
+      "git_blob": "c49b6cf34fddb38612722183196f46b0b6d300ac"
+    },
+    {
+      "path": "scripts/run_dagger_v2.py",
+      "size": 20204,
+      "git_blob": "f0ffa280c4f36510c2e940efcfc768a955f15ca0"
+    },
+    {
+      "path": "scripts/run_final_acceptance.ps1",
+      "size": 3026,
+      "git_blob": "6a168f8abb0c637099733993cc2f6ea6be25dcc7"
+    },
+    {
+      "path": "scripts/run_final_completion_orchestrator.ps1",
+      "size": 1568,
+      "git_blob": "a0ddd807b2041e2e33ab3be87e4f5b6d19d379a4"
+    },
+    {
+      "path": "scripts/run_final_world_smoke.ps1",
+      "size": 5697,
+      "git_blob": "deadf66e7aebef4d49590c241c5af8da5d0e66df"
+    },
+    {
+      "path": "scripts/run_full_research_benchmark.ps1",
+      "size": 2039,
+      "git_blob": "541d60fa21535712bfc7d632f3d96b0f7fbdd106"
+    },
+    {
+      "path": "scripts/run_full_research_benchmark.py",
+      "size": 10644,
+      "git_blob": "ec6b799912800c61685efa430a38f46d65d9f75c"
+    },
+    {
+      "path": "scripts/run_hierarchical_benchmark_v2.py",
+      "size": 8960,
+      "git_blob": "4e80f7686c60eb8254449a7a2cbcc1f5cbaea49d"
+    },
+    {
+      "path": "scripts/run_hierarchical_dagger.py",
+      "size": 20504,
+      "git_blob": "bdc8b94d42c078cdb04cf64f248cc15b0171c092"
+    },
+    {
+      "path": "scripts/run_hierarchical_evaluation.ps1",
+      "size": 555,
+      "git_blob": "592835bc2dc68088a99d8daae628a3dffc2fa7d3"
+    },
+    {
+      "path": "scripts/run_hierarchical_webots_validation.ps1",
+      "size": 7247,
+      "git_blob": "dd42c48d650bedf9791fcd53755bb6da68751cec"
+    },
+    {
+      "path": "scripts/run_ppe_detector_pilots.py",
+      "size": 30344,
+      "git_blob": "03a866bc58e5386b2aeadec656439ec62a5532a2"
+    },
+    {
+      "path": "scripts/run_real_v4_webots_demo.ps1",
+      "size": 9839,
+      "git_blob": "2284b9f288c71f92e685dfd01113e9196515ba79"
+    },
+    {
+      "path": "scripts/run_safety_dagger_v3.py",
+      "size": 14711,
+      "git_blob": "4636efcde1c644546a9116079ebda9d64276106c"
+    },
+    {
+      "path": "scripts/run_stage4b2_runtime.ps1",
+      "size": 10299,
+      "git_blob": "d61b464b357d288686ece7f35b6f266d01190378"
+    },
+    {
+      "path": "scripts/run_stage4c_live_policy_dry_run.ps1",
+      "size": 9940,
+      "git_blob": "f66bddef53b4a2e4d38bcce1419f58364119af6e"
+    },
+    {
+      "path": "scripts/run_stage4d_showcase.ps1",
+      "size": 6083,
+      "git_blob": "153b40dda1ff687dcb6a749cf39118326e87f8f5"
+    },
+    {
+      "path": "scripts/run_stage5a3_closed_loop_mission.ps1",
+      "size": 787,
+      "git_blob": "eb5ce4364f93f4909eac78391f572ad0fb7a8db1"
+    },
+    {
+      "path": "scripts/run_stage5a3_closed_loop_mission.py",
+      "size": 9402,
+      "git_blob": "fb865d157ca182e33bca882ee1043404d4227c9e"
+    },
+    {
+      "path": "scripts/run_stage5a_live_camera.ps1",
+      "size": 6439,
+      "git_blob": "164c37842696aa123b5e8ea7ac06eec315c623d5"
+    },
+    {
+      "path": "scripts/run_stage5b3_live_perception_mission.ps1",
+      "size": 6589,
+      "git_blob": "921a4b534f8896052e5c7d9eaff757ef1a983156"
+    },
+    {
+      "path": "scripts/run_stage5b3_live_perception_sidecar.py",
+      "size": 3482,
+      "git_blob": "2a94f14b1b94f98aca365b8c74b4fab081433dda"
+    },
+    {
+      "path": "scripts/run_stage5c_rl_motor_runtime.ps1",
+      "size": 6539,
+      "git_blob": "503464173388b8449906b8a6a063a21bf0d4e5a9"
+    },
+    {
+      "path": "scripts/run_stage9_ablations.py",
+      "size": 8738,
+      "git_blob": "a2d0bf1d75dc75ad34af4a0580962ff214c8b189"
+    },
+    {
+      "path": "scripts/run_strong_policy_evaluation.ps1",
+      "size": 380,
+      "git_blob": "cee229899f0e44ca915ca27f251a8d5022968456"
+    },
+    {
+      "path": "scripts/run_strong_policy_final_acceptance.ps1",
+      "size": 5632,
+      "git_blob": "a4200234c81fc5df3e6d3b46f3b59ed412fb16b7"
+    },
+    {
+      "path": "scripts/run_strong_policy_training.ps1",
+      "size": 489,
+      "git_blob": "b72f5e41db6a0b0c937c9967e4e40242fa9c015a"
+    },
+    {
+      "path": "scripts/run_uncertainty_experiments.py",
+      "size": 6679,
+      "git_blob": "9dd7c4fe033dc56e2070ad924215459635fe2f95"
+    },
+    {
+      "path": "scripts/run_verified_human_first_person_stage5b3.ps1",
+      "size": 723,
+      "git_blob": "03f8e93b713113a5d52f7a580d2b65af7fa91c90"
+    },
+    {
+      "path": "scripts/stage4c_live_policy_sidecar.py",
+      "size": 10783,
+      "git_blob": "c934781f836d46441b46dd939c30396bd9c8245f"
+    },
+    {
+      "path": "scripts/stop_final_completion_processes.ps1",
+      "size": 403,
+      "git_blob": "e85b902b83304982e47d1a62dee6468f3a877aee"
+    },
+    {
+      "path": "scripts/summarize_causal_behavior_cloning.py",
+      "size": 6633,
+      "git_blob": "cef69a125bf9b291b4b640037075ba241783b425"
+    },
+    {
+      "path": "scripts/summarize_hrmppo_search.py",
+      "size": 4955,
+      "git_blob": "b3fc2485da4b83e9789d781f7983feb6bad409d1"
+    },
+    {
+      "path": "scripts/summarize_training_run.py",
+      "size": 6153,
+      "git_blob": "3cf71ea85e7b6b5c87b8a157de22ef71ba436a92"
+    },
+    {
+      "path": "scripts/train_behavior_cloning_v2.py",
+      "size": 35693,
+      "git_blob": "7e791689ffa7bf17a882ddf31b5b8051879fe275"
+    },
+    {
+      "path": "scripts/train_curriculum_ppo.py",
+      "size": 17355,
+      "git_blob": "d4db063b187411d28403ae9decf4a2a882ab38b4"
+    },
+    {
+      "path": "scripts/train_hierarchical_hrmppo_mpc_v4.py",
+      "size": 16861,
+      "git_blob": "7c3b438eb5ddb098a071a7b6bf2091fefe20efda"
+    },
+    {
+      "path": "scripts/train_hierarchical_imitation.py",
+      "size": 13728,
+      "git_blob": "88819b9f10352383d66b9f501d03da6fc6db1bf5"
+    },
+    {
+      "path": "scripts/train_ppe_fast_balanced.py",
+      "size": 9461,
+      "git_blob": "774ca124f8aa946eb55e5825f525640d345731ab"
+    },
+    {
+      "path": "scripts/train_ppe_targeted_fast_100e.py",
+      "size": 22779,
+      "git_blob": "f0c0892f791e144ef71009c3dd9bb70de5adaa50"
+    },
+    {
+      "path": "scripts/train_ppe_yolo26s_100e.py",
+      "size": 26808,
+      "git_blob": "ec97f1b9794ddab295224af0f0cb3d1b1e0bba45"
+    },
+    {
+      "path": "scripts/train_ppe_yolo26s_optimized_100e.py",
+      "size": 12004,
+      "git_blob": "54e1d0c70fdde5207b935c1875a8ffff28897a3f"
+    },
+    {
+      "path": "scripts/train_ppo.py",
+      "size": 11633,
+      "git_blob": "cc50582cc453d0de41f4d9c07d7750cd7006e518"
+    },
+    {
+      "path": "scripts/train_ppo_research.py",
+      "size": 4195,
+      "git_blob": "d76afd3bb3e3998921236ef66f2eb82c650edf0b"
+    },
+    {
+      "path": "scripts/train_riskshield_hrmppo_safe_v3.py",
+      "size": 18904,
+      "git_blob": "d68c1e4b861332e69b95b55d7f5d4b6e7842ae2a"
+    },
+    {
+      "path": "scripts/train_riskshield_hrmppo_v2.py",
+      "size": 16899,
+      "git_blob": "974c80bbbc17f2c80aaba52985acea4dbaecdf56"
+    },
+    {
+      "path": "scripts/train_riskshield_ppo.py",
+      "size": 5856,
+      "git_blob": "af7a25e5c5bf531280f1350a6d5e115c37f98d83"
+    },
+    {
+      "path": "scripts/train_sac.py",
+      "size": 4388,
+      "git_blob": "2b246775d8cccc1080910178f07dfa81518abe4b"
+    },
+    {
+      "path": "scripts/validate_behavior_cloning_memory.py",
+      "size": 6451,
+      "git_blob": "dd2ce42cc94a830507d194b539101f7df04f9a75"
+    },
+    {
+      "path": "scripts/validate_final_evidence.py",
+      "size": 1648,
+      "git_blob": "7101b6590b6f110f7aa512a56d7de12931396b1a"
+    },
+    {
+      "path": "scripts/validate_final_perception.py",
+      "size": 2778,
+      "git_blob": "bede60da832fcdde1ffffa12c855e6427408365c"
+    },
+    {
+      "path": "scripts/validate_final_world_visuals.py",
+      "size": 2654,
+      "git_blob": "b36415c685877e7dc3ebf8905975bb41ec700a56"
+    },
+    {
+      "path": "scripts/validate_grid_environment.py",
+      "size": 2861,
+      "git_blob": "c900a637e4ca268788b5cea79b87d1feb2212b5b"
+    },
+    {
+      "path": "scripts/validate_ppe_dataset_integration.py",
+      "size": 7713,
+      "git_blob": "474dd770de7857db0acfd2b220ace02aa181fdac"
+    },
+    {
+      "path": "scripts/validate_semantic_shield.py",
+      "size": 2798,
+      "git_blob": "4b9c647f6f77bf41aeb776fcdde9bbd137ca4228"
+    },
+    {
+      "path": "scripts/validate_stage4a_runtime.py",
+      "size": 3293,
+      "git_blob": "24b0e681fd111788ba66bb02c7f27d44f2fd36af"
+    },
+    {
+      "path": "scripts/validate_stage4b2_runtime.py",
+      "size": 8417,
+      "git_blob": "2ee70f8ba2e04c20431438561083557cc32cf6e5"
+    },
+    {
+      "path": "scripts/validate_stage4c_live_policy_runtime.py",
+      "size": 7858,
+      "git_blob": "47bd61a17d43f39856c6d44de4ad593d9706b69b"
+    },
+    {
+      "path": "scripts/validate_stage4c_policy_engine.py",
+      "size": 4565,
+      "git_blob": "a612bc8fcc8f9c4e1c7a461f2f1a207b83c1974e"
+    },
+    {
+      "path": "scripts/validate_stage5a3_closed_loop_mission.py",
+      "size": 16036,
+      "git_blob": "4c6c8510ae8eb45cf49a32268587edce8e9fa753"
+    },
+    {
+      "path": "scripts/validate_stage5a_live_camera.py",
+      "size": 10200,
+      "git_blob": "18e8d61b8f7c4cf50ddec0add4cbe869df0c180c"
+    },
+    {
+      "path": "scripts/validate_stage5b3_live_perception_mission.py",
+      "size": 5938,
+      "git_blob": "b170ae2305bd79f5612015170676b4524a575afd"
+    },
+    {
+      "path": "scripts/validate_stage5b_live_perception.py",
+      "size": 4756,
+      "git_blob": "74738b516e7fffe5e8d75387b8a7cb6ef04ffed5"
+    },
+    {
+      "path": "scripts/validate_stage5b_visual_evidence.py",
+      "size": 7348,
+      "git_blob": "72f440f3cc26892c00528816d4a1a4bce25206f4"
+    },
+    {
+      "path": "src/riskaware_saferrl/__init__.py",
+      "size": 317,
+      "git_blob": "6cab26fc96c09a6258ac0d0ed0b1da8207b0c84f"
+    },
+    {
+      "path": "src/riskaware_saferrl/algorithms/__init__.py",
+      "size": 660,
+      "git_blob": "20e431f0bdce99e5205fd012bb3540e4844f45aa"
+    },
+    {
+      "path": "src/riskaware_saferrl/algorithms/hierarchical_v4/__init__.py",
+      "size": 203,
+      "git_blob": "44da8c3606932826308dddfe0222f6bab9730045"
+    },
+    {
+      "path": "src/riskaware_saferrl/algorithms/hierarchical_v4/algorithm.py",
+      "size": 10019,
+      "git_blob": "9c439a6024d37119b2ed4104c61d6064af651a18"
+    },
+    {
+      "path": "src/riskaware_saferrl/algorithms/hrmppo_safe_v3/__init__.py",
+      "size": 490,
+      "git_blob": "7606e7eecb98b84bb3018b822921f2c25c10c337"
+    },
+    {
+      "path": "src/riskaware_saferrl/algorithms/hrmppo_safe_v3/algorithm.py",
+      "size": 11800,
+      "git_blob": "13191a0e6f7354b549d94b2c29a6fae4a169e887"
+    },
+    {
+      "path": "src/riskaware_saferrl/algorithms/hrmppo_safe_v3/pid.py",
+      "size": 2333,
+      "git_blob": "b0a7f4cc98671a1d5bcec6d33dcb9f566bc9c528"
+    },
+    {
+      "path": "src/riskaware_saferrl/algorithms/hrmppo_safe_v3/policy.py",
+      "size": 5644,
+      "git_blob": "682f17a3e9cdb2d74dd0576747f32e8b58ce044c"
+    },
+    {
+      "path": "src/riskaware_saferrl/algorithms/hrmppo_v2.py",
+      "size": 9391,
+      "git_blob": "8427194d90e2300695312b95cd49da1d65727e71"
+    },
+    {
+      "path": "src/riskaware_saferrl/algorithms/riskshield_ppo.py",
+      "size": 4710,
+      "git_blob": "e10edb0164f02b21d8b4d31712e0297d374a59c6"
+    },
+    {
+      "path": "src/riskaware_saferrl/baselines/__init__.py",
+      "size": 470,
+      "git_blob": "e80842714f62aa1e4194c400e956bfdfc935451f"
+    },
+    {
+      "path": "src/riskaware_saferrl/baselines/causal_expert.py",
+      "size": 13970,
+      "git_blob": "04ffb1553555f8f264450e42dc9d1afbf7ef7a43"
+    },
+    {
+      "path": "src/riskaware_saferrl/baselines/planners.py",
+      "size": 9590,
+      "git_blob": "7b380449dbb72e6feb39bf17acae2d98464bd896"
+    },
+    {
+      "path": "src/riskaware_saferrl/benchmarking/__init__.py",
+      "size": 336,
+      "git_blob": "4551f8b80d8e8b37ba56877929d9d83f0b232a51"
+    },
+    {
+      "path": "src/riskaware_saferrl/benchmarking/harness.py",
+      "size": 18566,
+      "git_blob": "ebd6b20d4a9c032543e4b7064c421b5077c40742"
+    },
+    {
+      "path": "src/riskaware_saferrl/buffers/__init__.py",
+      "size": 384,
+      "git_blob": "6f6d766e8c640300b32f4a29b8cbf4d176fbe01a"
+    },
+    {
+      "path": "src/riskaware_saferrl/buffers/recurrent_cost_rollout_buffer.py",
+      "size": 3575,
+      "git_blob": "668ba29f4e1e51358a75eee52da4a1a27f9b3fc6"
+    },
+    {
+      "path": "src/riskaware_saferrl/buffers/recurrent_vector_cost_buffer.py",
+      "size": 4455,
+      "git_blob": "bcf925dfbe87cf94f3c0e9807fde5a6f0ae4148f"
+    },
+    {
+      "path": "src/riskaware_saferrl/callbacks/__init__.py",
+      "size": 310,
+      "git_blob": "0af00021a5889a32871018696739334fa7564b9c"
+    },
+    {
+      "path": "src/riskaware_saferrl/callbacks/action_diagnostics.py",
+      "size": 8340,
+      "git_blob": "6e96c2dc477b260aca0379ebc5ab9d41d7273a76"
+    },
+    {
+      "path": "src/riskaware_saferrl/callbacks/curriculum_progress.py",
+      "size": 3762,
+      "git_blob": "51d99f90b8bbd8a44f5e690acd1c48a7a38dbe5c"
+    },
+    {
+      "path": "src/riskaware_saferrl/callbacks/scenario_evaluation.py",
+      "size": 4221,
+      "git_blob": "22b38910296a5d31a1f48d5b8090f77c012d8f95"
+    },
+    {
+      "path": "src/riskaware_saferrl/curriculum.py",
+      "size": 9000,
+      "git_blob": "e09c703cd4609c6c7f4b8c79afbdc88d7557b8f3"
+    },
+    {
+      "path": "src/riskaware_saferrl/domain_randomization.py",
+      "size": 1145,
+      "git_blob": "e0217ceeb0c4c98e0be8ef2d526dc9976a6d3d03"
+    },
+    {
+      "path": "src/riskaware_saferrl/envs/__init__.py",
+      "size": 509,
+      "git_blob": "5e801e350d702586214366d7c7cd513dc663cda4"
+    },
+    {
+      "path": "src/riskaware_saferrl/envs/construction_env.py",
+      "size": 16976,
+      "git_blob": "eacbbe987a7afd560da1b556dca2fbcccd035914"
+    },
+    {
+      "path": "src/riskaware_saferrl/envs/curriculum_env.py",
+      "size": 4245,
+      "git_blob": "6fe6665ff0c44b0741baf1dacc3c01ae4e1a0c39"
+    },
+    {
+      "path": "src/riskaware_saferrl/envs/research_env.py",
+      "size": 17967,
+      "git_blob": "b0449afcb1ad1426e2c085838a2a7d99e4c66520"
+    },
+    {
+      "path": "src/riskaware_saferrl/envs/research_env_v2.py",
+      "size": 11519,
+      "git_blob": "d5fe5b2e9320faa8d4c9c79feba1be55c1ec6bab"
+    },
+    {
+      "path": "src/riskaware_saferrl/evaluation/__init__.py",
+      "size": 94,
+      "git_blob": "ddc39ffdd19b7d148f904041960275ff3961ba31"
+    },
+    {
+      "path": "src/riskaware_saferrl/evaluation/expert_baselines.py",
+      "size": 5333,
+      "git_blob": "7d2d1bd0e93dd9c64d221090279c84ac5f3e64e6"
+    },
+    {
+      "path": "src/riskaware_saferrl/evaluation/metrics.py",
+      "size": 281,
+      "git_blob": "0943efc9108bb9b14b2f4f3160d39e19238a1140"
+    },
+    {
+      "path": "src/riskaware_saferrl/evaluation/reward_audit.py",
+      "size": 2138,
+      "git_blob": "f34db4a552a3db30eedce8c664a05cd8d5e76a40"
+    },
+    {
+      "path": "src/riskaware_saferrl/evaluation/scenario_evaluator.py",
+      "size": 6448,
+      "git_blob": "32d571cb3ac1808674fb110e4902636e40b5c2f2"
+    },
+    {
+      "path": "src/riskaware_saferrl/hierarchical/__init__.py",
+      "size": 919,
+      "git_blob": "1dd9526e817dbb53e88d775fbfc4371b0f2c9c7e"
+    },
+    {
+      "path": "src/riskaware_saferrl/hierarchical/controller.py",
+      "size": 4496,
+      "git_blob": "080f4e3c5785b8dcafb53ca3a87266b5ee85cf1f"
+    },
+    {
+      "path": "src/riskaware_saferrl/hierarchical/planner.py",
+      "size": 14886,
+      "git_blob": "72299c94e0b2a105b59eba4dd2a8f1a36f42faa8"
+    },
+    {
+      "path": "src/riskaware_saferrl/hierarchical/policy.py",
+      "size": 7738,
+      "git_blob": "a60ca489d2b895aa68012c09cb1cff237d3ac586"
+    },
+    {
+      "path": "src/riskaware_saferrl/hierarchical/schemas.py",
+      "size": 3382,
+      "git_blob": "b6196e784c4324fde1116c30edbb122064097f86"
+    },
+    {
+      "path": "src/riskaware_saferrl/hierarchical/system.py",
+      "size": 2942,
+      "git_blob": "77617968d779934a4e16776da887147a34cf9f04"
+    },
+    {
+      "path": "src/riskaware_saferrl/inspection.py",
+      "size": 3319,
+      "git_blob": "4cbb9d1780c1ab70b4fd4b65f88b6bda25a7598a"
+    },
+    {
+      "path": "src/riskaware_saferrl/live_perception.py",
+      "size": 13829,
+      "git_blob": "26d30b99e71315dc93a53a8d4e682356b43694bd"
+    },
+    {
+      "path": "src/riskaware_saferrl/live_perception_sidecar.py",
+      "size": 10423,
+      "git_blob": "996eee910538ce8869668bc45c5fdc12da4a0166"
+    },
+    {
+      "path": "src/riskaware_saferrl/models/__init__.py",
+      "size": 113,
+      "git_blob": "45f02127ba852a59cd689c54b4e59179fc909192"
+    },
+    {
+      "path": "src/riskaware_saferrl/models/recurrent_policy.py",
+      "size": 1516,
+      "git_blob": "7eb77cf40708e5698af4686e3da1aedff5e44280"
+    },
+    {
+      "path": "src/riskaware_saferrl/models/semantic_extractor.py",
+      "size": 1542,
+      "git_blob": "98dc1d2167bc2c9bbd93e310c97d56a39ab7ef8b"
+    },
+    {
+      "path": "src/riskaware_saferrl/perception.py",
+      "size": 7726,
+      "git_blob": "e7710e52322bc06df48b5606ceb0c42d50ee0ddb"
+    },
+    {
+      "path": "src/riskaware_saferrl/perception_dataset.py",
+      "size": 12303,
+      "git_blob": "d6fbf38bc407cece64a33a41493b0bbee9cf5ba3"
+    },
+    {
+      "path": "src/riskaware_saferrl/perception_mapping.py",
+      "size": 6684,
+      "git_blob": "b30526c9211d588d604af5ca92fb2ec090b65926"
+    },
+    {
+      "path": "src/riskaware_saferrl/planners/__init__.py",
+      "size": 479,
+      "git_blob": "2b39f6209150d5bf75262bbd24d44101c28262bc"
+    },
+    {
+      "path": "src/riskaware_saferrl/planners/astar.py",
+      "size": 3276,
+      "git_blob": "4e08c54fb028e1b9fed03081f850e3fba2810102"
+    },
+    {
+      "path": "src/riskaware_saferrl/planners/oracle_inspection.py",
+      "size": 7513,
+      "git_blob": "e746284b2d068ea6613fbf2e8f9c3b65c594e4f8"
+    },
+    {
+      "path": "src/riskaware_saferrl/policies/__init__.py",
+      "size": 165,
+      "git_blob": "c4e61c9f84b075f09a7ca6b5d0b5e47fc8f80de2"
+    },
+    {
+      "path": "src/riskaware_saferrl/policies/recurrent_masked_policy.py",
+      "size": 6308,
+      "git_blob": "5221bc5fdb1edd7160a30b52adc236ad7a039255"
+    },
+    {
+      "path": "src/riskaware_saferrl/safety/__init__.py",
+      "size": 1158,
+      "git_blob": "2aae09f46f9bfaa8fbab9c381b5d16ba16408f01"
+    },
+    {
+      "path": "src/riskaware_saferrl/safety/lagrangian.py",
+      "size": 577,
+      "git_blob": "1ffac294040ce9d3b246ae6afe5064d25b439738"
+    },
+    {
+      "path": "src/riskaware_saferrl/safety/predictive_shield.py",
+      "size": 6522,
+      "git_blob": "5ef23c75e820738e03100fb91d1b07e5f5421af9"
+    },
+    {
+      "path": "src/riskaware_saferrl/safety/predictive_shield_v3.py",
+      "size": 14741,
+      "git_blob": "04ca8a3c716be35223cedf9fd4fe4f77e8cef228"
+    },
+    {
+      "path": "src/riskaware_saferrl/safety/safety_contract_v3.py",
+      "size": 10662,
+      "git_blob": "55b1c94770092aa9910390443eabec01ae44c928"
+    },
+    {
+      "path": "src/riskaware_saferrl/safety/shield.py",
+      "size": 6156,
+      "git_blob": "df589586b4ae7defeb4f020f55ee1fd636a947ba"
+    },
+    {
+      "path": "src/riskaware_saferrl/safety/transition_pipeline_v3.py",
+      "size": 8472,
+      "git_blob": "716d29368b6ead79d78cb6259b0c1e7a5fd28093"
+    },
+    {
+      "path": "src/riskaware_saferrl/scenario_dataset.py",
+      "size": 4225,
+      "git_blob": "3517b2d96043e4f34d231d8d06db0dc118972e9a"
+    },
+    {
+      "path": "src/riskaware_saferrl/scenarios.py",
+      "size": 11223,
+      "git_blob": "e5185ebb02db6c7f4a05040b135e9fdf25d9b923"
+    },
+    {
+      "path": "src/riskaware_saferrl/training/__init__.py",
+      "size": 533,
+      "git_blob": "25fb7ccb2f4d3e63ac5ab1209376dcaf8c8dfa32"
+    },
+    {
+      "path": "src/riskaware_saferrl/training/causal_demonstration_mixer.py",
+      "size": 11026,
+      "git_blob": "96d2718a7c23d646eba7fd0b90661d73018ff8ce"
+    },
+    {
+      "path": "src/riskaware_saferrl/training/hierarchical_dataset.py",
+      "size": 7322,
+      "git_blob": "2057e85ef9481f8705d31516b060fc591175d5b6"
+    },
+    {
+      "path": "src/riskaware_saferrl/training/hierarchical_demonstrations.py",
+      "size": 15632,
+      "git_blob": "48f9d3d7d6ece1c966630a986c292143e10d1891"
+    },
+    {
+      "path": "src/riskaware_saferrl/training/research.py",
+      "size": 5933,
+      "git_blob": "9c0b0d4d0799c7ef3a167029fee3405927e767ae"
+    },
+    {
+      "path": "src/riskaware_saferrl/training/safety_dagger.py",
+      "size": 5268,
+      "git_blob": "cd67fb827c72430e26001481daf59ec637b5ae61"
+    },
+    {
+      "path": "src/riskaware_saferrl/uncertainty/__init__.py",
+      "size": 279,
+      "git_blob": "c1974770451e70f7a46b893c296b60bbb332e41b"
+    },
+    {
+      "path": "src/riskaware_saferrl/uncertainty/injection.py",
+      "size": 2927,
+      "git_blob": "265780a688c4299db0b6dc199b264fc7dc882120"
+    },
+    {
+      "path": "src/riskaware_saferrl/webots/__init__.py",
+      "size": 888,
+      "git_blob": "7bd2886fb00c17156ac158098c22ce45342421cb"
+    },
+    {
+      "path": "src/riskaware_saferrl/webots/bridge.py",
+      "size": 14168,
+      "git_blob": "f898a5e4c0f553428193548830c0ba57a776ba60"
+    },
+    {
+      "path": "src/riskaware_saferrl/webots/live_bridge.py",
+      "size": 8241,
+      "git_blob": "2d10fbf56e7a31191f7ca748d457b502ad374bb0"
+    },
+    {
+      "path": "src/riskaware_saferrl/webots/motion_primitives.py",
+      "size": 2007,
+      "git_blob": "3da8b4cc9f8d7621cce15caadfac832402506244"
+    },
+    {
+      "path": "src/riskaware_saferrl/webots/policy_dry_run.py",
+      "size": 11060,
+      "git_blob": "5ea42d31671fad59ca34b1d451f207ed6505f81f"
+    },
+    {
+      "path": "src/riskaware_saferrl/webots/runtime_control.py",
+      "size": 1822,
+      "git_blob": "3a5feff400cb4ce4bc0827f8fff6e6183a2a0518"
+    },
+    {
+      "path": "src/riskaware_saferrl/webots/safe_policy_pipeline.py",
+      "size": 3773,
+      "git_blob": "86769e029cb0d3b87b4c2ea5beaa0b2515822434"
+    },
+    {
+      "path": "tests/algorithms/test_hierarchical_hrmppo_v4.py",
+      "size": 3797,
+      "git_blob": "a889190180e24ca1c27c89be65bef6544688e963"
+    },
+    {
+      "path": "tests/algorithms/test_hrmppo_safe_v3.py",
+      "size": 4708,
+      "git_blob": "8947f2737539415069bd186756e23d3f04cc8d3e"
+    },
+    {
+      "path": "tests/algorithms/test_hrmppo_v2.py",
+      "size": 2783,
+      "git_blob": "a94e107085eb8cc66ec5de4411d464915acdda3b"
+    },
+    {
+      "path": "tests/algorithms/test_recurrent_cost_rollout_buffer.py",
+      "size": 1148,
+      "git_blob": "d7144d8d91c1b8a0d6498491b051e79e7fb24e0f"
+    },
+    {
+      "path": "tests/algorithms/test_riskshield_ppo.py",
+      "size": 2077,
+      "git_blob": "7b7512ed36f4dfcce3d66a923ff5b773e7a335f3"
+    },
+    {
+      "path": "tests/algorithms/test_rl_training_adapters.py",
+      "size": 1358,
+      "git_blob": "82565339daa5277598c3d045a9e15c519257f84f"
+    },
+    {
+      "path": "tests/baselines/test_causal_expert.py",
+      "size": 4380,
+      "git_blob": "f366ddbe6e7c291e0c13994e27dcd55cb9a69d2d"
+    },
+    {
+      "path": "tests/baselines/test_final_planners.py",
+      "size": 2766,
+      "git_blob": "50568383c43eae16c949b09a4d93d938fe789ab7"
+    },
+    {
+      "path": "tests/benchmarking/test_benchmark_harness.py",
+      "size": 3847,
+      "git_blob": "218a9f9e43f69e08d603cb4b7ffb332b8880325b"
+    },
+    {
+      "path": "tests/benchmarking/test_stage9_ablations.py",
+      "size": 655,
+      "git_blob": "f83ef993786bc6acc0fc22eb71187bf863b3813d"
+    },
+    {
+      "path": "tests/envs/test_research_grid_environment.py",
+      "size": 3872,
+      "git_blob": "2e486df5bd86be7cd1b3b194fbd4c9c432b7bd7e"
+    },
+    {
+      "path": "tests/envs/test_research_grid_environment_v2.py",
+      "size": 3476,
+      "git_blob": "da4ae1a37ab18a7c99120254a29bdf7bde4a3a1e"
+    },
+    {
+      "path": "tests/hierarchical/test_hierarchical_v4.py",
+      "size": 7351,
+      "git_blob": "cd88b4eece0339e165221408855cd2d81b920c42"
+    },
+    {
+      "path": "tests/perception/test_semantic_risk_mapping.py",
+      "size": 1987,
+      "git_blob": "3a0495aeeb0432285a7b30ed24760e1c5f7d5958"
+    },
+    {
+      "path": "tests/policies/test_recurrent_masked_policy.py",
+      "size": 2493,
+      "git_blob": "604f9c4f7d77e20807104bb231ed6d887a9f338f"
+    },
+    {
+      "path": "tests/safety/test_predictive_safety_shield.py",
+      "size": 2404,
+      "git_blob": "fa3b14f01675f959e17c6b2888d7c793f8bba2e5"
+    },
+    {
+      "path": "tests/safety/test_predictive_shield_v3.py",
+      "size": 4709,
+      "git_blob": "675d17c69b9dc8e67e4efcd99b482469fc67032e"
+    },
+    {
+      "path": "tests/safety/test_safety_contract_v3.py",
+      "size": 3598,
+      "git_blob": "7bd078a12487685b300ef7f89ebbb447ffaaec27"
+    },
+    {
+      "path": "tests/safety/test_safety_contract_v3_migration.py",
+      "size": 1184,
+      "git_blob": "6b066b214fbc5d38077ec1712ee13782bdee0b28"
+    },
+    {
+      "path": "tests/safety/test_transition_pipeline_v3.py",
+      "size": 2573,
+      "git_blob": "7a13c77d35658bf7bd5c27139264fbdd0e7f1af2"
+    },
+    {
+      "path": "tests/test_action_diagnostics.py",
+      "size": 808,
+      "git_blob": "baf37e9557da8b400674518a7d66df38d37545e0"
+    },
+    {
+      "path": "tests/test_action_masks.py",
+      "size": 2696,
+      "git_blob": "1c346d92e461997ca26b0c3c5ae40f8ab0339401"
+    },
+    {
+      "path": "tests/test_astar_planner.py",
+      "size": 811,
+      "git_blob": "49f814767b6c2999b7d69e68307983d0627250b0"
+    },
+    {
+      "path": "tests/test_baseline_inspection_radius.py",
+      "size": 1461,
+      "git_blob": "b113c09ffc8bde93132180a896bb37fdf6816919"
+    },
+    {
+      "path": "tests/test_curriculum.py",
+      "size": 3309,
+      "git_blob": "1cfeb1ce2fa13bd0cae455c6384b4d90f6421323"
+    },
+    {
+      "path": "tests/test_curriculum_env.py",
+      "size": 1765,
+      "git_blob": "62408ad307baf77d64f9c5ed0160bf6b362b3734"
+    },
+    {
+      "path": "tests/test_curriculum_progress.py",
+      "size": 1208,
+      "git_blob": "f340eb4d192ae708e4cce6f0defa5be2b92b1ee1"
+    },
+    {
+      "path": "tests/test_domain_randomization.py",
+      "size": 504,
+      "git_blob": "1e08036244f79d625d99129487dbfd7f54a335e1"
+    },
+    {
+      "path": "tests/test_env_api.py",
+      "size": 1508,
+      "git_blob": "589b38e061f8cf2c4bfed5a7ace66af216005c86"
+    },
+    {
+      "path": "tests/test_expert_baseline_costs.py",
+      "size": 808,
+      "git_blob": "3affde8df8f95d4f448b471b0ee52301cf3e3b2e"
+    },
+    {
+      "path": "tests/test_inspection_geometry.py",
+      "size": 1382,
+      "git_blob": "e82074c1941a51c242bcba38f1d8f1ce4e9711db"
+    },
+    {
+      "path": "tests/test_lagrangian.py",
+      "size": 519,
+      "git_blob": "2c620da047ce4dd64522a84807e3891911b8e095"
+    },
+    {
+      "path": "tests/test_live_perception.py",
+      "size": 2774,
+      "git_blob": "54286322da80c5421dbc9d8ff9c7b5662cb56634"
+    },
+    {
+      "path": "tests/test_live_perception_sidecar.py",
+      "size": 5282,
+      "git_blob": "efd047f728e52ce9f36d88527f8703ae9282d28b"
+    },
+    {
+      "path": "tests/test_maskable_ppo_integration.py",
+      "size": 1613,
+      "git_blob": "16ffb26e945b6783d7b8b08213a2269b279baa68"
+    },
+    {
+      "path": "tests/test_masked_scenario_evaluation.py",
+      "size": 1797,
+      "git_blob": "480660eb506fd0bf159e812e73bced8801cf310b"
+    },
+    {
+      "path": "tests/test_oracle_inspection.py",
+      "size": 1101,
+      "git_blob": "72c0bac5ad62ffb55681afccb0a51f85773f1641"
+    },
+    {
+      "path": "tests/test_perception.py",
+      "size": 1614,
+      "git_blob": "e699ad2141323ed2ba75c65307ea208fa63eee39"
+    },
+    {
+      "path": "tests/test_perception_dataset.py",
+      "size": 2883,
+      "git_blob": "c8624fff792aaaf7667e94d182310cbd7b5a0db7"
+    },
+    {
+      "path": "tests/test_perception_pilot_config.py",
+      "size": 1844,
+      "git_blob": "84ce4e83d5d3e6ca5d4d65bfbffd4f259562ad5b"
+    },
+    {
+      "path": "tests/test_perception_production_training_config.py",
+      "size": 2152,
+      "git_blob": "8b997be5d3d5d0dc8cd7618813d4d933159fb163"
+    },
+    {
+      "path": "tests/test_recurrent_policy.py",
+      "size": 1089,
+      "git_blob": "2a115feb1f716d44de29c2d9e17393fbdd06bc27"
+    },
+    {
+      "path": "tests/test_reward_audit.py",
+      "size": 1827,
+      "git_blob": "53e1b32f235f2c94b739325379e26c36bd8ae296"
+    },
+    {
+      "path": "tests/test_safety_shield.py",
+      "size": 686,
+      "git_blob": "59bea10d842e33f6c13313a0f6a83a247d2705b1"
+    },
+    {
+      "path": "tests/test_scenario_dataset_integration.py",
+      "size": 2167,
+      "git_blob": "471af26b40bf3d72b0a2336f5756885841e94206"
+    },
+    {
+      "path": "tests/test_scenario_evaluator.py",
+      "size": 1154,
+      "git_blob": "8b784b89bd267c8bda403f426c57a4c801233dd0"
+    },
+    {
+      "path": "tests/test_scenarios.py",
+      "size": 1526,
+      "git_blob": "ec3c28d3e3699855275b048f5901bbbd4d9a162d"
+    },
+    {
+      "path": "tests/test_semantic_extractor.py",
+      "size": 1049,
+      "git_blob": "de273b9e9b629f22a74ef0c646fb1ae06d7e0474"
+    },
+    {
+      "path": "tests/test_semantic_safety_shield.py",
+      "size": 6574,
+      "git_blob": "a74f1dd225d46f6d69327e30d7ee80bb2db855bb"
+    },
+    {
+      "path": "tests/test_viewpoint_environment.py",
+      "size": 2189,
+      "git_blob": "fe63fcd8448440a6d2fd5862f4fe31bbb896234f"
+    },
+    {
+      "path": "tests/test_viewpoint_planner.py",
+      "size": 1417,
+      "git_blob": "1f330efa2c14915237e63f118a5cbcff0d321d81"
+    },
+    {
+      "path": "tests/test_viewpoint_reward_audit.py",
+      "size": 940,
+      "git_blob": "8cd29783e918c195f63dc820fce46dd635da7dad"
+    },
+    {
+      "path": "tests/test_webots_motion_primitives.py",
+      "size": 1350,
+      "git_blob": "21150082f55990f337b4ed489a03aba725ec9609"
+    },
+    {
+      "path": "tests/training/test_causal_demonstration_mixer.py",
+      "size": 5268,
+      "git_blob": "b5a23e78dbe2b50fd8809c0d265d4984ee34b6f9"
+    },
+    {
+      "path": "tests/training/test_causal_expert_demonstrations.py",
+      "size": 3259,
+      "git_blob": "f6e2d2bcdc9359c90d527ddc59ab018cbefdef48"
+    },
+    {
+      "path": "tests/training/test_dagger_v2.py",
+      "size": 2727,
+      "git_blob": "2eee4ecba2416db6516178ef43615f36e3611c9c"
+    },
+    {
+      "path": "tests/training/test_expert_demonstrations.py",
+      "size": 1008,
+      "git_blob": "446f86ee65c2bb314d0d70d7056a0f534c1ec3a5"
+    },
+    {
+      "path": "tests/training/test_hierarchical_demonstrations.py",
+      "size": 6300,
+      "git_blob": "b81397667cab57d67757403622ad4143b852954f"
+    },
+    {
+      "path": "tests/training/test_memory_bounded_demonstrations.py",
+      "size": 6375,
+      "git_blob": "f6453f13a306198ef05aa67b0bf7077caa942c86"
+    },
+    {
+      "path": "tests/training/test_safety_dagger.py",
+      "size": 3059,
+      "git_blob": "6f1a15325ea5ec055273484fc3b72192cf579e56"
+    },
+    {
+      "path": "tests/uncertainty/test_uncertainty_injection.py",
+      "size": 2247,
+      "git_blob": "f075f14547163662607fb3f268e6d00a31bdb874"
+    },
+    {
+      "path": "tests/webots/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "tests/webots/test_experimental_controller_contract.py",
+      "size": 784,
+      "git_blob": "593271dc72d87575c34711ec6427eb22aa4d0d98"
+    },
+    {
+      "path": "tests/webots/test_final_worlds.py",
+      "size": 1781,
+      "git_blob": "d162534703f614975057269e80c2385e46d2ca7b"
+    },
+    {
+      "path": "tests/webots/test_safe_policy_pipeline.py",
+      "size": 1922,
+      "git_blob": "2adc0b97ab7efc070ab00a70ef95aaa24a55136d"
+    },
+    {
+      "path": "tests/webots/test_stage4a_assets.py",
+      "size": 1405,
+      "git_blob": "18eb28165e15f300df83cc2eaf73958ecbfb645c"
+    },
+    {
+      "path": "tests/webots/test_stage4b_bridge.py",
+      "size": 9168,
+      "git_blob": "e2b527d234d5bb2f04f8cc5e2cafca87a88194f4"
+    },
+    {
+      "path": "tests/webots/test_stage4b_live_assets.py",
+      "size": 2001,
+      "git_blob": "f445a028e89f130a53acc4ffcd76844a7522eeea"
+    },
+    {
+      "path": "tests/webots/test_stage4b_live_telemetry.py",
+      "size": 3770,
+      "git_blob": "cc613dc1774d41e257f923043fdd8de926cdfb9c"
+    },
+    {
+      "path": "tests/webots/test_stage4c_live_policy_runtime.py",
+      "size": 3797,
+      "git_blob": "7b9090d9edb18ff0ecbfcadbd2ebe282fee2b1c5"
+    },
+    {
+      "path": "tests/webots/test_stage4c_policy_dry_run.py",
+      "size": 4355,
+      "git_blob": "b99cd201f49634259ccbb23adf83042cbc91d135"
+    },
+    {
+      "path": "tests/webots/test_stage4d_showcase.py",
+      "size": 3712,
+      "git_blob": "244c39a404c189b5a3ae13e207dab2a4149fcec7"
+    },
+    {
+      "path": "tests/webots/test_stage5a3_closed_loop_mission.py",
+      "size": 6087,
+      "git_blob": "54a0769cf93b131379f68fc25b10f9b9af13012e"
+    },
+    {
+      "path": "tests/webots/test_stage5a3_launcher.py",
+      "size": 1323,
+      "git_blob": "e9cb2680cab95f391b3593cc94f98ad1f5139263"
+    },
+    {
+      "path": "tests/webots/test_stage5a3_navigation_conventions.py",
+      "size": 2449,
+      "git_blob": "290738928b3d226eb4e47568897259e100622b12"
+    },
+    {
+      "path": "tests/webots/test_stage5a3_physics_camera_view.py",
+      "size": 2754,
+      "git_blob": "87c3ef5aeaf119d150690269a96ece9e79a437b4"
+    },
+    {
+      "path": "tests/webots/test_stage5a3_stability_control.py",
+      "size": 2073,
+      "git_blob": "12123cdb98585fb6c265fc49d0ff6b8b8c0edf6b"
+    },
+    {
+      "path": "tests/webots/test_stage5a_live_camera.py",
+      "size": 4404,
+      "git_blob": "6f1200b7a6c6fac408276734d5f1a610ee75294f"
+    },
+    {
+      "path": "tests/webots/test_stage5b3_human_first_person_runtime.py",
+      "size": 4205,
+      "git_blob": "f59f04da261e2eb5f714f856b2ed78d73ebd9daa"
+    },
+    {
+      "path": "tests/webots/test_stage5b3_live_perception_validator.py",
+      "size": 1965,
+      "git_blob": "5d7e4febef30edf3b38deb6d9ac549873ef244e6"
+    },
+    {
+      "path": "tests/webots/test_stage5b_visual_evidence.py",
+      "size": 1432,
+      "git_blob": "79eea9e91fe852f8da0a35b0144e24a0ffbcb1dd"
+    },
+    {
+      "path": "tests/webots/test_stage5c_rl_motor_assets.py",
+      "size": 1822,
+      "git_blob": "05d2f468cb9c412785544600b1a8fcfc0eaaa27d"
+    },
+    {
+      "path": "tests/webots/test_stage5c_runtime_control.py",
+      "size": 1544,
+      "git_blob": "b056e5e37dde9863d95f44307eb81929db9a4bc8"
+    },
+    {
+      "path": "tests/webots/test_supervisor_pose_math.py",
+      "size": 2394,
+      "git_blob": "08c7b19ecc875eb6e998af78f0935e597c481a96"
+    },
+    {
+      "path": "webots/assets/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "webots/config/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "webots/config/environment_report.json",
+      "size": 715,
+      "git_blob": "de2b638e8eee93f209cc870292964b09b85619bb"
+    },
+    {
+      "path": "webots/config/stage4a_motion_test.json",
+      "size": 732,
+      "git_blob": "a5dca3f81b14827d6a6ddfa7225520c0959e284a"
+    },
+    {
+      "path": "webots/controllers/README.md",
+      "size": 93,
+      "git_blob": "f9eafd0304894ccd5e9166420d91c8ea0e3e0172"
+    },
+    {
+      "path": "webots/controllers/closed_loop_inspection_robot/closed_loop_inspection_robot.py",
+      "size": 47960,
+      "git_blob": "905707d28e66b72385ef3cefb149012a02fba404"
+    },
+    {
+      "path": "webots/controllers/closed_loop_inspection_supervisor/closed_loop_inspection_supervisor.py",
+      "size": 11500,
+      "git_blob": "bf3fea7b4c2ec7c11537933c16e628f671f780c6"
+    },
+    {
+      "path": "webots/controllers/construction_robot/construction_robot.py",
+      "size": 1158,
+      "git_blob": "e4594d4814c85c2f55462324a65cdcc2c1bb5bfa"
+    },
+    {
+      "path": "webots/controllers/final_dynamic_worker/final_dynamic_worker.py",
+      "size": 539,
+      "git_blob": "7fb7d38760e67de7a3668e52ec67ddda59ed03a7"
+    },
+    {
+      "path": "webots/controllers/hierarchical_experimental_robot/hierarchical_experimental_robot.py",
+      "size": 22626,
+      "git_blob": "455a57a0602401ef3ff9046aabd239c08bb514ee"
+    },
+    {
+      "path": "webots/controllers/hierarchical_experimental_supervisor/hierarchical_experimental_supervisor.py",
+      "size": 2163,
+      "git_blob": "50f35714fccd3c2e0f0aaa9d8229301f873e2ae1"
+    },
+    {
+      "path": "webots/controllers/live_bridge_robot/live_bridge_robot.py",
+      "size": 9282,
+      "git_blob": "5beb9dacc9fc324f881e1077ba0c873c5bd879b9"
+    },
+    {
+      "path": "webots/controllers/live_bridge_supervisor/live_bridge_supervisor.py",
+      "size": 3611,
+      "git_blob": "e3590bdd93893c99960ff3d10bec85ea16f52b30"
+    },
+    {
+      "path": "webots/controllers/live_camera_robot/live_camera_robot.py",
+      "size": 16480,
+      "git_blob": "0274108d38c8f5da7ea125fe40564700127425cf"
+    },
+    {
+      "path": "webots/controllers/live_camera_supervisor/live_camera_supervisor.py",
+      "size": 3046,
+      "git_blob": "96d241d6ee5d33b03ea3a2ae768f5770c106cb79"
+    },
+    {
+      "path": "webots/controllers/manual_robot_test/manual_robot_test.py",
+      "size": 6039,
+      "git_blob": "03148986c8f4e685d137ff531e8611f76b68bec3"
+    },
+    {
+      "path": "webots/controllers/rl_autonomous_inspection_robot/rl_autonomous_inspection_robot.py",
+      "size": 10447,
+      "git_blob": "1b3f2d822a372b2139f00bece9fd9d79bdfef97b"
+    },
+    {
+      "path": "webots/controllers/rl_autonomous_inspection_supervisor/rl_autonomous_inspection_supervisor.py",
+      "size": 3205,
+      "git_blob": "be1bab46bb762b83567134a49451ced3fabc062f"
+    },
+    {
+      "path": "webots/controllers/scenario_supervisor/scenario_supervisor.py",
+      "size": 6831,
+      "git_blob": "d70a7340335bcaaf93abb97f4247832b7f42bc34"
+    },
+    {
+      "path": "webots/controllers/showcase_robot/showcase_robot.py",
+      "size": 2695,
+      "git_blob": "da169c745d0545118bb5ef4916bb6f868dc775c9"
+    },
+    {
+      "path": "webots/controllers/showcase_supervisor/showcase_supervisor.py",
+      "size": 3189,
+      "git_blob": "1dbd3f74294a62bbbddb06c22345d8858662869e"
+    },
+    {
+      "path": "webots/logs/.gitignore",
+      "size": 24,
+      "git_blob": "bf27f3114d40d874758159d4b2c6d89ade48bceb"
+    },
+    {
+      "path": "webots/logs/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "webots/protos/.gitkeep",
+      "size": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "webots/protos/README.md",
+      "size": 98,
+      "git_blob": "6c60dc6526ce09a8b5add62557f2a8cd245c1789"
+    },
+    {
+      "path": "webots/worlds/README.md",
+      "size": 94,
+      "git_blob": "3234966d63d7a47725be9295fccf4b1773471910"
+    },
+    {
+      "path": "webots/worlds/construction_site_stage4a.wbt",
+      "size": 7020,
+      "git_blob": "6a57057909d97910a23bc7a6efae3b1a9d3d7b53"
+    },
+    {
+      "path": "webots/worlds/construction_site_stage4b_live_bridge.wbt",
+      "size": 7464,
+      "git_blob": "bc03cc90f71775913f5f215a3b245e20ad5ca2bb"
+    },
+    {
+      "path": "webots/worlds/construction_site_stage4d_showcase.wbt",
+      "size": 70789,
+      "git_blob": "ff3c3cf33c25411d626041a3d0d733b1f7fee3ad"
+    },
+    {
+      "path": "webots/worlds/construction_site_stage5a3_closed_loop_mission.wbt",
+      "size": 74852,
+      "git_blob": "c31a9ebd53c0e684a1e87843ad4117116c0d29d5"
+    },
+    {
+      "path": "webots/worlds/construction_site_stage5a_live_camera.wbt",
+      "size": 72336,
+      "git_blob": "a1f611f4b7862917465974bd545b47127f6de2e8"
+    },
+    {
+      "path": "webots/worlds/construction_site_stage5c_rl_motor_runtime.wbt",
+      "size": 72355,
+      "git_blob": "565aa97750368c9bb51c639c5d515f31ce36a593"
+    },
+    {
+      "path": "webots/worlds/site_dynamic.wbt",
+      "size": 73695,
+      "git_blob": "7e57b7bab6b921f3ca65c22c356265e413621203"
+    },
+    {
+      "path": "webots/worlds/site_dynamic_v4_visible_demo.wbt",
+      "size": 73697,
+      "git_blob": "d31882fa2109f88d6ef4449c260732256a8a1704"
+    },
+    {
+      "path": "webots/worlds/site_medium.wbt",
+      "size": 73328,
+      "git_blob": "4a2525dd487d79ef0dcfbf6de699995083219a56"
+    },
+    {
+      "path": "webots/worlds/site_small.wbt",
+      "size": 72797,
+      "git_blob": "232f3f143380c3005e30705afa5d3361684bff75"
+    }
+  ]
+}
