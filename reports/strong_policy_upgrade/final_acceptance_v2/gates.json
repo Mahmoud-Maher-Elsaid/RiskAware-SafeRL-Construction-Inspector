@@ -3,6 +3,7 @@
     "github_ci":  true,
     "production_v1":  true,
     "experimental_v4_webots":  true,
+    "visible_v4_demo":  true,
     "benchmark_v2":  true,
     "cv_audit":  true,
     "ablations_statistics":  true,

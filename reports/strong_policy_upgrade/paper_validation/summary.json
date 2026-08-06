@@ -1,13 +1,16 @@
-{
-  "status": "compiled",
-  "compiler": "MiKTeX pdfTeX 25.12",
-  "passes": 2,
-  "pdf": "paper/main.pdf",
-  "page_count": 4,
-  "undefined_citations": false,
-  "undefined_references": false,
-  "missing_figures": false,
-  "visual_rasterizer": "Poppler pdftoppm 25.07.0",
-  "visual_inspection": "PASSED; all 4 rendered pages inspected",
-  "warnings": ["underfull hbox warnings", "MiKTeX update check advisory"]
+﻿{
+    "source_timestamp":  "2026-08-05T23:43:33.7363835Z",
+    "pdf_timestamp":  "2026-08-06T00:49:25.3583691Z",
+    "rebuilt_from_latest_source":  true,
+    "compile_passes":  3,
+    "bibliography_pass":  true,
+    "page_count":  4,
+    "pages_rendered":  4,
+    "pages_inspected":  4,
+    "fatal_errors":  0,
+    "undefined_citations":  0,
+    "undefined_references":  0,
+    "missing_figures":  0,
+    "visual_inspection":  "PASSED",
+    "log_underfull_warnings":  3
 }
