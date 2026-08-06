@@ -1,8 +1,8 @@
 ﻿{
     "schema_version":  1,
-    "generated_at":  "2026-08-06T02:49:26.9160342+03:00",
-    "git_commit":  "7061b25caa67a2d2f72e3738161ad9cd30d9f785",
-    "tracked_file_count":  858,
+    "generated_at":  "2026-08-06T04:00:27.0886452+03:00",
+    "git_commit":  "d561beb76111696ec98b0c262592a2ff0d0f7d73",
+    "tracked_file_count":  859,
     "files":  [
                   {
                       "path":  ".gitattributes",
@@ -651,8 +651,8 @@
                   },
                   {
                       "path":  "paper/main.pdf",
-                      "bytes":  254458,
-                      "sha256":  "a13cc5575e669195bb4ec482dc1040b7a7ec6982f8e12ed4ecbdbcc2a4db40cb"
+                      "bytes":  254829,
+                      "sha256":  "56df0901e8f194a0672b6fe8c256c8ed1c447218beb44789fd322319a4b83945"
                   },
                   {
                       "path":  "paper/main.tex",
@@ -686,13 +686,13 @@
                   },
                   {
                       "path":  "release/SHA256SUMS.txt",
-                      "bytes":  102515,
-                      "sha256":  "06798c9caa129824875300cbc40645a060b910bc6b1f9c585885708c77b3fa38"
+                      "bytes":  106463,
+                      "sha256":  "a4519d7d2fda28f300f90cb79def026e9b6bd640be802479fbe9f93bc47a4b3f"
                   },
                   {
                       "path":  "release/manifest.json",
-                      "bytes":  228039,
-                      "sha256":  "07385bfe684b9fb2168ed9d706485bc63b825532186dabc38bfa08fcd2410f29"
+                      "bytes":  236193,
+                      "sha256":  "ff1aef5ac20615fb32466d536d475641a96adae98af066769f69ced4852fb675"
                   },
                   {
                       "path":  "reports/final_project_completion/baseline_audit.json",
@@ -901,8 +901,8 @@
                   },
                   {
                       "path":  "reports/final_submission/release_manifest.json",
-                      "bytes":  228039,
-                      "sha256":  "07385bfe684b9fb2168ed9d706485bc63b825532186dabc38bfa08fcd2410f29"
+                      "bytes":  236193,
+                      "sha256":  "ff1aef5ac20615fb32466d536d475641a96adae98af066769f69ced4852fb675"
                   },
                   {
                       "path":  "reports/final_submission/stage1_grid_environment/validation.json",
@@ -1786,13 +1786,13 @@
                   },
                   {
                       "path":  "reports/strong_policy_upgrade/final_acceptance_v2/gates.json",
-                      "bytes":  462,
-                      "sha256":  "3b1849dbfce20c444bb6b28fc774e2962ae66bc70ac9d16d5a1122240b358e73"
+                      "bytes":  493,
+                      "sha256":  "bc95f1c8e8a984f9bd263bc83b39be1b794106eedd9dea59b76fa4d0b23381fb"
                   },
                   {
                       "path":  "reports/strong_policy_upgrade/final_acceptance_v2/summary.json",
-                      "bytes":  11246,
-                      "sha256":  "2833c8b5a5833f39e7716510ed5ee0bbdfb7784d687b273a680eb68836f58689"
+                      "bytes":  16938,
+                      "sha256":  "88eb4bda8db78774e7f29f709d045a6a441a4496ea61aa5b900eb8a99c7a889e"
                   },
                   {
                       "path":  "reports/strong_policy_upgrade/final_acceptance_v2/summary.md",
@@ -2346,13 +2346,13 @@
                   },
                   {
                       "path":  "reports/strong_policy_upgrade/paper_validation/summary.json",
-                      "bytes":  409,
-                      "sha256":  "e3e16b2566b8214268ae7d4450c794e1d6b0549db54c36ec65266db44dc10f99"
+                      "bytes":  491,
+                      "sha256":  "cfb941aaf8c29288c0e9d073fa5520cf3e237862192199e46fdec5367e8f9cc4"
                   },
                   {
                       "path":  "reports/strong_policy_upgrade/paper_validation/summary.md",
-                      "bytes":  478,
-                      "sha256":  "5c1c5ec926f04e5b78ac0956e29fa604f4482128d656562f30c67451f8701ca2"
+                      "bytes":  251,
+                      "sha256":  "343f8ae76f25294b32ab54b8ac6b4901492e3935bc415c1ce21814568d989879"
                   },
                   {
                       "path":  "reports/strong_policy_upgrade/safety_dagger/accepted_strategy.json",
@@ -2765,6 +2765,11 @@
                       "sha256":  "06eeb09c831f0a341dfca638ae570787101f4658e70d5c49d93d5111af1bb16a"
                   },
                   {
+                      "path":  "reports/strong_policy_upgrade/webots_v4_visible_demo/visible_demo_attempt.json",
+                      "bytes":  630,
+                      "sha256":  "ff790bd195443c793669563cab128418295ddbab21f0dbb277911ebb1a1501d9"
+                  },
+                  {
                       "path":  "reports/webots/stage5c_rl_motor_readiness.json",
                       "bytes":  902,
                       "sha256":  "fd506e0f40f241919129c6cdd2dba65d7386a743164b0008451b583276204523"
@@ -3051,8 +3056,8 @@
                   },
                   {
                       "path":  "scripts/run_real_v4_webots_demo.ps1",
-                      "bytes":  4914,
-                      "sha256":  "8b615d6c839bc8c8e8032190b9cbab66f491d10218f3b9b8825f0d2974e829a7"
+                      "bytes":  9839,
+                      "sha256":  "a70a38c8dfb9fc4479854a4d5c358996799cf79ccdacff584421ae950d2ef221"
                   },
                   {
                       "path":  "scripts/run_safety_dagger_v3.py",
@@ -3116,8 +3121,8 @@
                   },
                   {
                       "path":  "scripts/run_strong_policy_final_acceptance.ps1",
-                      "bytes":  4804,
-                      "sha256":  "59481fe0164b95974e48be5e8e2a02b178f5ab3f252fc6c91dc7846ebf38a540"
+                      "bytes":  5682,
+                      "sha256":  "0ce892e8a09df263b6eee3dbcefb85bc71cd8cdfbb22301edf22a88ebf7520e3"
                   },
                   {
                       "path":  "scripts/run_strong_policy_training.ps1",
@@ -4166,13 +4171,13 @@
                   },
                   {
                       "path":  "webots/controllers/hierarchical_experimental_robot/hierarchical_experimental_robot.py",
-                      "bytes":  21072,
-                      "sha256":  "7af150f73587900e968a9bfaf67fcdc2f8d94318ca09d8d483db62b4a6b05711"
+                      "bytes":  22626,
+                      "sha256":  "5a59648101eec4aeaa87515be464df1578b53322984b832f92a7e8c7c2595da2"
                   },
                   {
                       "path":  "webots/controllers/hierarchical_experimental_supervisor/hierarchical_experimental_supervisor.py",
-                      "bytes":  1682,
-                      "sha256":  "ade2430cd3e1f118542d59d80f818befd7f1d667001d808c97301e34e947ff9a"
+                      "bytes":  2163,
+                      "sha256":  "8aebe9a800adab57dcc4b4b910d538a64f7cdd0ec4cf472b7d555b21006524b9"
                   },
                   {
                       "path":  "webots/controllers/live_bridge_robot/live_bridge_robot.py",

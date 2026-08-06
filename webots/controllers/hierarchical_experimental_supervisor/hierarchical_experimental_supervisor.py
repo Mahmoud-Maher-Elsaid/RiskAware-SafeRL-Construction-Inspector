@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 import time
 from pathlib import Path
@@ -10,7 +11,13 @@ from controller import Supervisor
 def main() -> int:
     out = Path(os.environ["RISK_AWARE_EXPERIMENTAL_OUTPUT"])
     out.mkdir(parents=True, exist_ok=True)
+    (out / "marker_supervisor_module_imported.json").write_text(
+        json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+    )
     supervisor = Supervisor()
+    (out / "marker_supervisor_main_started.json").write_text(
+        json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+    )
     demo_duration = float(os.environ.get("RISK_AWARE_EXPERIMENTAL_DEMO_DURATION", "0"))
     demo_started = time.monotonic()
     timestep = int(supervisor.getBasicTimeStep())
@@ -23,6 +30,10 @@ def main() -> int:
     for _ in range(2000000):
         if supervisor.step(timestep) == -1:
             break
+        if not initial:
+            (out / "marker_first_supervisor_step.json").write_text(
+                json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+            )
         if not initial and supervisor.getTime() >= 1.0:
             supervisor.exportImage(str(out / "first_person_initial.png"), 80)
             initial = True

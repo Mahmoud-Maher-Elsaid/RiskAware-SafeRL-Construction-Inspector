@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 from pathlib import Path
 
 import numpy as np
@@ -20,6 +21,9 @@ _BOOT_OUT = Path(
 )
 _BOOT_OUT.mkdir(parents=True, exist_ok=True)
 (_BOOT_OUT / "module_import_started.log").write_text(f"python={sys.executable}\n", encoding="utf-8")
+(_BOOT_OUT / "marker_robot_module_imported.json").write_text(
+    json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+)
 
 
 def _boot_excepthook(
@@ -151,6 +155,9 @@ def map_from_perception(
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / "marker_robot_main_started.json").write_text(
+        json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+    )
     (OUT / "controller_start.json").write_text(
         json.dumps(
             {
@@ -184,7 +191,13 @@ def main() -> int:
     policy = HierarchicalMissionPolicy().to(device)
     policy.load_state_dict(saved["model"])
     policy.eval()
+    (OUT / "marker_checkpoint_loaded.json").write_text(
+        json.dumps({"timestamp": time.time(), "sha256": CHECKPOINT_SHA}) + "\n", encoding="utf-8"
+    )
     detector = create_live_perception_backend(project_root=PROJECT_ROOT, config_path=CV_CONFIG)
+    (OUT / "marker_detector_created.json").write_text(
+        json.dumps({"timestamp": time.time(), "device": detector.device}) + "\n", encoding="utf-8"
+    )
     contract = SafetyContractV3.from_yaml(PROJECT_ROOT / "configs/safety/safety_contract_v3.yaml")
     system = RiskShieldHierarchicalSystem(
         CausalRiskAwarePlanner(),
@@ -192,12 +205,18 @@ def main() -> int:
         EventAwarePredictiveShieldV3(contract),
     )
     robot = Robot()
+    (OUT / "marker_webots_robot_created.json").write_text(
+        json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+    )
     timestep = int(robot.getBasicTimeStep())
     left, right = robot.getDevice("left wheel motor"), robot.getDevice("right wheel motor")
     gps, inertial, camera = (
         robot.getDevice("gps"),
         robot.getDevice("inertial unit"),
         robot.getDevice("inspection camera"),
+    )
+    (OUT / "marker_devices_resolved.json").write_text(
+        json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
     )
     left.setPosition(float("inf"))
     right.setPosition(float("inf"))
@@ -206,6 +225,9 @@ def main() -> int:
     gps.enable(timestep)
     inertial.enable(timestep)
     camera.enable(timestep)
+    (OUT / "marker_camera_enabled.json").write_text(
+        json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+    )
     hidden = policy.initial_state(1, device)
     initial_hidden_hash = hash_array(hidden.detach().cpu().numpy())
     context = np.zeros((4, 3), dtype=np.float32)
@@ -249,6 +271,10 @@ def main() -> int:
             )
             if robot.step(timestep) == -1:
                 break
+            if decision_index == 0:
+                (OUT / "marker_first_simulation_step.json").write_text(
+                    json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+                )
             frame_count += 1
             raw = camera.getImage()
             if raw is None:
@@ -311,6 +337,10 @@ def main() -> int:
             mask_validations += 1
             with torch.no_grad():
                 output = policy(maps, states, masks, hidden)
+            if decision_index == 0:
+                (OUT / "marker_first_policy_decision.json").write_text(
+                    json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+                )
             logits_hash = hash_array(output.option_distribution.logits.detach().cpu().numpy())
             state_before_hash = hash_array(hidden.detach().cpu().numpy())
             hidden = output.recurrent_state.detach()
@@ -481,6 +511,9 @@ def main() -> int:
         "cv_checkpoint_sha256": detector.model_sha256,
     }
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    (OUT / "marker_summary_generated.json").write_text(
+        json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+    )
     (OUT / "complete.marker").write_text("complete\n", encoding="utf-8")
     print("HIERARCHICAL_EXPERIMENTAL_RUNTIME_COMPLETE", flush=True)
     return 0
