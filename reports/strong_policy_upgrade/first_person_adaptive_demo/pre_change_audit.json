@@ -1,0 +1,16 @@
+﻿{
+    "robot_def":  "SHOWCASE_ROBOT",
+    "robot_name":  "professional construction inspection robot",
+    "forward_axis":  "-Z",
+    "body_translation":  "-8.3 0.12 -5.4",
+    "viewpoint_before":  "fixed HUMAN_VIEWPOINT position -7.95 1.67 -5.4 orientation 0 0 1 0",
+    "controller_policy_before":  "masked argmax option and target; fixed primitive-to-wheel map",
+    "worker_before":  "origin plus fixed sine phase",
+    "defects":  [
+                    "external static viewpoint",
+                    "no launcher scenario seed/policy mode",
+                    "argmax-only policy selection",
+                    "no pose/route/replanning traces",
+                    "worker phase not scenario-controlled"
+                ]
+}

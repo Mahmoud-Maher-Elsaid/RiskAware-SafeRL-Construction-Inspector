@@ -24,8 +24,10 @@ WorldInfo {
 }
 
 DEF HUMAN_VIEWPOINT Viewpoint {
-  orientation 0 0 1 0
-  position -7.95 1.67 -5.4
+  follow "SHOWCASE_ROBOT"
+  followType "Mounted Shot"
+  position 0.35 1.55 0
+  orientation 1 0 0 -1.5708
   fieldOfView 1.05
   near 0.05
   far 70
