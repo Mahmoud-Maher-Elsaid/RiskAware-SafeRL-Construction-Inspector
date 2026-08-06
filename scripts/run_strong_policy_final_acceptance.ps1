@@ -26,7 +26,7 @@ try {
     $benchmarkGate = $benchmark.total_rows -eq 1620 -and $benchmark.unique_run_ids -eq 1620 -and $benchmark.duplicate_rows -eq 0 -and $benchmark.missing_rows -eq 0 -and $benchmark.unresolved_execution_failures -eq 0 -and -not $benchmark.historical_rows_changed
     $visiblePath = Join-Path $repo 'reports\strong_policy_upgrade\webots_v4_visible_demo\summary.json'
     $visible = Get-Content -LiteralPath $visiblePath -Raw | ConvertFrom-Json
-    $visibleGate = $visible.status -eq 'PASSED' -and [bool]$visible.visible_window_verified -and [bool]$visible.controller_started -and [bool]$visible.supervisor_started -and [bool]$visible.summary_generated -and [int]$visible.policy_decisions -ge 100
+$visibleGate = $visible.status -eq 'PASSED' -and [bool]$visible.window_handle_verified -and [bool]$visible.rendered_frame_verified -and [bool]$visible.visible_window_verified -and [bool]$visible.controller_started -and [bool]$visible.supervisor_started -and [bool]$visible.summary_generated -and [bool]$visible.motor_commands_recorded -and [bool]$visible.robot_motion_verified -and [int]$visible.policy_decisions -ge 100 -and -not [bool]$visible.no_rendering_flag_used -and -not [bool]$visible.minimize_flag_used
     $paperValidationPath = Join-Path $repo 'reports\strong_policy_upgrade\paper_validation\summary.json'
     $paperValidation = Get-Content -LiteralPath $paperValidationPath -Raw | ConvertFrom-Json
     $paperGate = (Test-Path -LiteralPath (Join-Path $repo 'paper\main.pdf')) -and $paperValidation.rebuilt_from_latest_source -eq $true -and $paperValidation.visual_inspection -eq 'PASSED' -and [int]$paperValidation.fatal_errors -eq 0 -and [int]$paperValidation.undefined_citations -eq 0 -and [int]$paperValidation.undefined_references -eq 0
