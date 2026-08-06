@@ -1,0 +1,50 @@
+{
+  "audit_date": "2026-08-06",
+  "objective": "Complete the strong-policy upgrade without regenerating preserved demonstrations or lowering gates.",
+  "research_branch": "final/strong-policy-upgrade",
+  "research_head_at_audit": "4a217da72788fd78febec958060be579c92e30ea",
+  "completed_with_authoritative_evidence": {
+    "memory_safe_behavior_cloning": true,
+    "flat_dagger_three_iterations": true,
+    "cv_audit": true,
+    "production_v1_three_world_webots": true,
+    "experimental_v4_three_world_webots": true,
+    "benchmark_v2": true,
+    "v4_ablations": true,
+    "paper_and_pdf_validation": true,
+    "release_package": true,
+    "final_acceptance": true,
+    "main_integration": true,
+    "research_branch_ci": true
+  },
+  "replacement_gate_status": {
+    "riskshield_hrmppo_v2": {
+      "status": "REJECTED_AFTER_PROTOCOL_CORRECTION",
+      "recovery_families_attempted": [
+        "unanchored PPO search",
+        "KL-anchored learning-rate search",
+        "30k continuation",
+        "100k continuation",
+        "risk-aware policy-visited DAgger"
+      ],
+      "best_overall_success": 0.8111111111111111,
+      "best_mean_safety_cost": 33.18333333333333,
+      "reason": "No candidate simultaneously satisfies the declared task and safety replacement gates. The historical search used shield horizon 1 instead of the declared horizon 5; a corrected 30,000-step horizon-5 recovery collapsed mission performance and also failed the gate."
+    },
+    "riskshield_hrmppo_safe_v3": {
+      "status": "REJECTED",
+      "reason": "Preserved paired evidence does not satisfy the declared replacement gates."
+    },
+    "hierarchical_dagger_beta_zero": {
+      "status": "REJECTED_AS_INITIALIZATION",
+      "reason": "Policy-visited corrections exist, but the beta-zero mission gate failed."
+    },
+    "hierarchical_v4": {
+      "status": "EXPERIMENTAL_ONLY",
+      "reason": "Real runtime and release gates pass; paired production-replacement evidence does not."
+    }
+  },
+  "production_policy": "RiskShield-PPO v1",
+  "gate_policy": "No gate was lowered and no failed candidate was relabeled.",
+  "preservation": "All preserved demonstrations, checkpoints, benchmark rows, failed evaluations, and runtime artifacts remain untouched."
+}

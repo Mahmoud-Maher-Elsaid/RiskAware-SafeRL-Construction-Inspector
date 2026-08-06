@@ -28,5 +28,19 @@
     "shield_horizon": 5,
     "memory_guard": "PASSED",
     "source_summary": "reports/strong_policy_upgrade/hrmppo_v2/horizon5_smoke_resume/training_summary.json"
+  },
+  "horizon5_recovery_30k": {
+    "status": "FAILED_REPLACEMENT_GATE",
+    "checkpoint": "artifacts/strong_policy_upgrade/hrmppo_v2_horizon5_recovery_30k/final_checkpoint.pt",
+    "checkpoint_sha256": "2c6fe12621dc02b3357db363f43ed9bb5cc380854379a18a990278853979d033",
+    "training_steps": 30000,
+    "episodes": 270,
+    "overall_mission_success": 0.0,
+    "hazard_recall": 0.20261943102522814,
+    "inspection_coverage": 0.20261943102522814,
+    "mean_safety_cost": 10.974074074074075,
+    "invalid_actions": 0,
+    "shield_interventions": 76802,
+    "source_summary": "reports/strong_policy_upgrade/hrmppo_v2/horizon5_recovery_30k_evaluation/summary.json"
   }
 }
