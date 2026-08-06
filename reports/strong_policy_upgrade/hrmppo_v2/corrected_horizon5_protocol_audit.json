@@ -1,0 +1,23 @@
+{
+  "status": "PASSED_AS_PROTOCOL_CORRECTION",
+  "declared_config_horizon": 5,
+  "historical_search_horizon": 1,
+  "corrected_evaluation": {
+    "checkpoint": "artifacts/strong_policy_upgrade/hrmppo_v2_search/anchor_lr5e6_100k/final_checkpoint.pt",
+    "checkpoint_sha256": "f296c5633ec6d3e9918474039ae079fb681e7dded02a4962c465010e2bf80436",
+    "episodes": 270,
+    "seeds": 30,
+    "shield_horizon": 5,
+    "shield_step_budget": 1.0,
+    "cuda_inference_verified": true,
+    "overall_mission_success": 0.0,
+    "hazard_recall": 0.20587761674718194,
+    "inspection_coverage": 0.20587761674718194,
+    "mean_safety_cost": 12.289814814814815,
+    "invalid_actions": 0,
+    "shield_interventions": 76633,
+    "replacement_gate": "FAILED"
+  },
+  "finding": "The historical v2 search did not use the horizon declared by the v2 configuration. Corrected evaluation lowers cost but collapses mission performance, so it does not authorize replacement.",
+  "source_summary": "reports/strong_policy_upgrade/hrmppo_v2/corrected_horizon5_evaluation/summary.json"
+}

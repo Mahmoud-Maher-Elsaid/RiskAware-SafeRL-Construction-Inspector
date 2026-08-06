@@ -171,7 +171,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--seed-start", type=int, default=5000)
     parser.add_argument("--seeds", type=int, default=30)
-    parser.add_argument("--shield-horizon", type=int, default=1)
+    # Keep held-out evaluation aligned with the declared v2 predictive-shield contract.
+    parser.add_argument("--shield-horizon", type=int, default=5)
     parser.add_argument("--shield-step-budget", type=float, default=1.0)
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
     parser.add_argument(

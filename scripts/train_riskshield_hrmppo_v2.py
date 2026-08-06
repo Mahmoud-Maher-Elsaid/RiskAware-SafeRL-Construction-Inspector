@@ -396,7 +396,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--gamma", type=float, default=0.99)
     parser.add_argument("--gae-lambda", type=float, default=0.95)
     parser.add_argument("--safety-budget", type=float, default=20.0)
-    parser.add_argument("--shield-horizon", type=int, default=1)
+    # Keep the executable default aligned with configs/training/riskshield_hrmppo_v2.yaml.
+    # Earlier search runs used horizon=1 despite the declared horizon-5 contract.
+    parser.add_argument("--shield-horizon", type=int, default=5)
     parser.add_argument("--shield-step-budget", type=float, default=1.0)
     parser.add_argument("--max-memory-gb", type=float, default=8.0)
     parser.add_argument("--minimum-available-gb", type=float, default=1.0)
