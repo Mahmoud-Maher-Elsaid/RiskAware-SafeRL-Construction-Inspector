@@ -1,6 +1,6 @@
 {
   "default_branch": "main",
-  "default_sha": "048e0fca9c613e6483a1018b9ffcac7245cfcc83",
+  "default_sha": "56608f0858e51fd2e8119a906a3d33a521aef481",
   "entries": [
     {
       "path": ".gitattributes",
@@ -1453,6 +1453,56 @@
       "git_blob": "3cc55440775deef894569d3a07ae17f85553f390"
     },
     {
+      "path": "reports/repository_audit/branch_comparison.md",
+      "size": 386,
+      "git_blob": "1b44e0af35025ae93a15594f2214f152b6b1f6a3"
+    },
+    {
+      "path": "reports/repository_audit/documentation_review.md",
+      "size": 187,
+      "git_blob": "c94af0fb9cf619e3c885e9f7af1a1110b95dd79c"
+    },
+    {
+      "path": "reports/repository_audit/file_coverage.csv",
+      "size": 211380,
+      "git_blob": "d506a1790d72454b611b49439bd3f17e921b04eb"
+    },
+    {
+      "path": "reports/repository_audit/github_tree.json",
+      "size": 145156,
+      "git_blob": "8e4b8b4d76c4daf40335345ecdce792517f8e960"
+    },
+    {
+      "path": "reports/repository_audit/issues.csv",
+      "size": 30,
+      "git_blob": "ca439e6dc6b43a6dd39e61a86d129ea20574fb4b"
+    },
+    {
+      "path": "reports/repository_audit/rendering_root_cause.md",
+      "size": 301,
+      "git_blob": "47b0612067c0bb6536a0031f34bc43b2033d1170"
+    },
+    {
+      "path": "reports/repository_audit/security_review.md",
+      "size": 161,
+      "git_blob": "2c0dc27f6c604bc726a41486fc1e89a4c118a067"
+    },
+    {
+      "path": "reports/repository_audit/summary.json",
+      "size": 511,
+      "git_blob": "0ee4e7c5946a44791b11d7623cdba460dc3a85f3"
+    },
+    {
+      "path": "reports/repository_audit/summary.md",
+      "size": 546,
+      "git_blob": "09201f8daa8416439439aa0f2edfaabb11fdd82a"
+    },
+    {
+      "path": "reports/repository_audit/tracked_files.txt",
+      "size": 49304,
+      "git_blob": "66de3196ba3c7260a64bd3c9888622aaa4090841"
+    },
+    {
       "path": "reports/strong_policy_upgrade/ablations_v4/infeasible_variants.json",
       "size": 2858,
       "git_blob": "ed020708a54135d1c130b0916778ea620583d021"
@@ -1789,8 +1839,8 @@
     },
     {
       "path": "reports/strong_policy_upgrade/final_acceptance_v2/summary.json",
-      "size": 16669,
-      "git_blob": "641de7e1635229b191f991e878fce9ff852bf784"
+      "size": 13141,
+      "git_blob": "43ddb411e40a42ff4d7c41bb1d9349fdfe72f3ee"
     },
     {
       "path": "reports/strong_policy_upgrade/final_acceptance_v2/summary.md",
@@ -2774,8 +2824,8 @@
     },
     {
       "path": "reports/strong_policy_upgrade/webots_v4_visible_demo/summary.json",
-      "size": 3396,
-      "git_blob": "fa569b21d7ebe89677e430cc7cf0bbbe77a96287"
+      "size": 771,
+      "git_blob": "71990e544becf4011a19e252595bd1b65e4a573f"
     },
     {
       "path": "reports/strong_policy_upgrade/webots_v4_visible_demo/visible_demo_attempt.json",
@@ -2791,6 +2841,11 @@
       "path": "scripts/__init__.py",
       "size": 76,
       "git_blob": "e065bb1791f26412e774881a0473047cbf69071d"
+    },
+    {
+      "path": "scripts/audit_github_repository.py",
+      "size": 6850,
+      "git_blob": "b3224c749e831cf1a1b90e0913d1af0d23089cb7"
     },
     {
       "path": "scripts/audit_hrmppo_v2_violations.py",
@@ -3069,8 +3124,8 @@
     },
     {
       "path": "scripts/run_real_v4_webots_demo.ps1",
-      "size": 9839,
-      "git_blob": "2284b9f288c71f92e685dfd01113e9196515ba79"
+      "size": 11701,
+      "git_blob": "ea6b6811909ff3f43977f12cc70c87a99d7e05ad"
     },
     {
       "path": "scripts/run_safety_dagger_v3.py",
@@ -3134,8 +3189,8 @@
     },
     {
       "path": "scripts/run_strong_policy_final_acceptance.ps1",
-      "size": 5632,
-      "git_blob": "a4200234c81fc5df3e6d3b46f3b59ed412fb16b7"
+      "size": 5893,
+      "git_blob": "7add9ab787535d65457cd07e37a9dc893a0905fa"
     },
     {
       "path": "scripts/run_strong_policy_training.ps1",

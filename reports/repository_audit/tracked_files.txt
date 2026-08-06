@@ -288,6 +288,16 @@ reports/perception/stage5b/model_selection.json
 reports/perception/stage5b/stage5b3_runtime_validation.json
 reports/perception/stage5b/stage5b4_final_showcase.json
 reports/perception/training_environment.json
+reports/repository_audit/branch_comparison.md
+reports/repository_audit/documentation_review.md
+reports/repository_audit/file_coverage.csv
+reports/repository_audit/github_tree.json
+reports/repository_audit/issues.csv
+reports/repository_audit/rendering_root_cause.md
+reports/repository_audit/security_review.md
+reports/repository_audit/summary.json
+reports/repository_audit/summary.md
+reports/repository_audit/tracked_files.txt
 reports/strong_policy_upgrade/ablations_v4/infeasible_variants.json
 reports/strong_policy_upgrade/ablations_v4/protocol.md
 reports/strong_policy_upgrade/ablations_v4/statistics.json
@@ -556,6 +566,7 @@ reports/strong_policy_upgrade/webots_v4_visible_demo/summary.json
 reports/strong_policy_upgrade/webots_v4_visible_demo/visible_demo_attempt.json
 reports/webots/stage5c_rl_motor_readiness.json
 scripts/__init__.py
+scripts/audit_github_repository.py
 scripts/audit_hrmppo_v2_violations.py
 scripts/audit_ppe_dataset.py
 scripts/audit_viewpoint_feasibility.py
