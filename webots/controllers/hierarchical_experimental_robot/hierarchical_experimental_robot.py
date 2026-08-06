@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import sys
 import time
+from collections import deque
 from pathlib import Path
 
 import numpy as np
@@ -64,6 +66,10 @@ OUT = Path(
     )
 )
 DECISIONS = int(os.environ.get("RISK_AWARE_EXPERIMENTAL_DECISIONS", "100"))
+RUN_MODE = os.environ.get("RISK_AWARE_EXPERIMENTAL_RUN_MODE", "bounded")
+SCENARIO_SEED = int(os.environ.get("RISK_AWARE_SCENARIO_SEED", "42"))
+POLICY_MODE = os.environ.get("RISK_AWARE_POLICY_MODE", "deterministic")
+POLICY_TEMPERATURE = float(os.environ.get("RISK_AWARE_POLICY_TEMPERATURE", "0.70"))
 
 
 def digest(path: Path) -> str:
@@ -254,17 +260,35 @@ def main() -> int:
     policy_decisions = 0
     target_retained = 0
     target_invalidated = 0
+    recent_positions: deque[tuple[float, float]] = deque(maxlen=128)
+    first_pose: tuple[float, float] | None = None
+    last_pose: tuple[float, float] | None = None
+    trajectory_hasher = hashlib.sha256()
+    option_hasher = hashlib.sha256()
+    target_hasher = hashlib.sha256()
+    replanning_count = 0
+    stuck_recovery_count = 0
+    visited_cells: set[tuple[int, int]] = set()
+    previous_yaw = None
+    heading_changes = 0
+    path_length = 0.0
+    generator = torch.Generator(device=device).manual_seed(SCENARIO_SEED)
     with (
         (OUT / "motor_trace.csv").open("w", encoding="utf-8") as motor_file,
         (OUT / "option_trace.csv").open("w", encoding="utf-8") as option_file,
         (OUT / "target_trace.csv").open("w", encoding="utf-8") as target_file,
+        (OUT / "pose_trace.csv").open("w", encoding="utf-8") as pose_file,
+        (OUT / "route_trace.jsonl").open("w", encoding="utf-8") as route_file,
+        (OUT / "replanning_trace.jsonl").open("w", encoding="utf-8") as replanning_file,
     ):
         motor_file.write("decision,left_velocity,right_velocity\n")
         option_file.write(
             "decision,mask,logits_hash,option,target,duration,risk_budget,replanning_urgency\n"
         )
         target_file.write("decision,before,after,retained,invalidated,age\n")
-        for decision_index in range(DECISIONS):
+        pose_file.write("decision,time,x,y,yaw,worker_seed\n")
+        decision_index = 0
+        while RUN_MODE == "until_closed" or decision_index < DECISIONS:
             (OUT / "progress.json").write_text(
                 json.dumps({"decision": decision_index, "phase": "step"}) + "\n",
                 encoding="utf-8",
@@ -286,6 +310,21 @@ def main() -> int:
             perception = detector.infer(frame, frame_id=decision_index)
             pose_values = gps.getValues()
             pose = (float(pose_values[0]), float(pose_values[2]))
+            yaw = float(inertial.getRollPitchYaw()[2])
+            if last_pose is not None:
+                path_length += math.hypot(pose[0] - last_pose[0], pose[1] - last_pose[1])
+            if previous_yaw is not None and abs(yaw - previous_yaw) > 0.04:
+                heading_changes += 1
+            previous_yaw = yaw
+            if first_pose is None:
+                first_pose = pose
+            last_pose = pose
+            recent_positions.append(pose)
+            visited_cells.add((int(round(pose[0] * 2)), int(round(pose[1] * 2))))
+            trajectory_hasher.update(f"{pose[0]:.6f},{pose[1]:.6f};".encode())
+            pose_file.write(
+                f"{decision_index},{timestamp:.6f},{pose[0]:.6f},{pose[1]:.6f},{yaw:.6f},{SCENARIO_SEED}\n"
+            )
             before_target = previous_target
             obs, targets, changed_cells = map_from_perception(
                 perception.detections,
@@ -346,10 +385,35 @@ def main() -> int:
             hidden = output.recurrent_state.detach()
             state_after_hash = hash_array(hidden.detach().cpu().numpy())
             recurrent_hashes.append(state_after_hash)
-            option_value = int(output.option_distribution.probs.argmax(-1).item())
+            probabilities = output.option_distribution.probs[0, 0].clamp_min(0)
+            if POLICY_MODE == "stochastic":
+                scaled = torch.softmax(
+                    torch.log(probabilities.clamp_min(1e-8)) / max(POLICY_TEMPERATURE, 0.1), dim=-1
+                )
+                option_value = int(torch.multinomial(scaled, 1, generator=generator).item())
+            else:
+                option_value = int(probabilities.argmax().item())
             option = MissionOption(option_value)
             option_values.add(option_value)
-            target_index = int(output.target_logits.argmax(-1).item())
+            target_logits = output.target_logits[0, 0]
+            if target_memory:
+                valid_target_indices = [
+                    cell[0] * 16 + cell[1]
+                    for cell in target_memory
+                    if 0 <= cell[0] < 16 and 0 <= cell[1] < 16
+                ]
+                valid_target_indices = sorted(set(valid_target_indices))
+            else:
+                valid_target_indices = []
+            if POLICY_MODE == "stochastic" and valid_target_indices:
+                target_probs = torch.softmax(
+                    target_logits[valid_target_indices] / max(POLICY_TEMPERATURE, 0.1), dim=-1
+                )
+                target_index = valid_target_indices[
+                    int(torch.multinomial(target_probs, 1, generator=generator).item())
+                ]
+            else:
+                target_index = int(target_logits.argmax().item())
             target = None if target_index >= 256 else divmod(target_index, 16)
             if target is None and target_memory:
                 target = min(target_memory, key=lambda cell: int(target_memory[cell]["age"]))
@@ -364,15 +428,23 @@ def main() -> int:
             duration = int(output.duration_logits.argmax(-1).item()) + 1
             budget = float(output.risk_budgets[0, 0].mean().item())
             urgency = float(output.replanning_urgency[0, 0].item())
+            stuck_event = (
+                len(recent_positions) >= 16
+                and math.hypot(pose[0] - recent_positions[0][0], pose[1] - recent_positions[0][1])
+                < 0.005
+                and any(abs(v) > 0.05 for v in previous_command)
+            )
+            stuck_recovery_count += int(stuck_event)
             decision = system.execute_option(
                 obs,
                 option=option,
                 target=target,
                 risk_budget=budget,
                 inspection_intent=bool(output.inspection_intent[0, 0] > 0.5),
-                force_replan=urgency > 0.5,
+                force_replan=urgency > 0.5 or stuck_event,
             )
             planner_changes += int(previous_option != option_value or previous_target != target)
+            replanning_count += int(decision.planner.replanned)
             command_speed = (
                 1.8
                 if decision.executed_primitive in (0, 1)
@@ -387,6 +459,37 @@ def main() -> int:
             motor_file.write(f"{decision_index},{command[0]},{command[1]}\n")
             option_file.write(
                 f"{decision_index},{mask_np.astype(int).tolist()},{logits_hash},{option.name},{target},{duration},{budget},{urgency}\n"
+            )
+            option_hasher.update(f"{option.name};".encode())
+            target_hasher.update(f"{target!s};".encode())
+            route_file.write(
+                json.dumps(
+                    {
+                        "decision": decision_index,
+                        "seed": SCENARIO_SEED,
+                        "pose": pose,
+                        "yaw": yaw,
+                        "option": option.name,
+                        "target": target,
+                        "planner_target": decision.planner.target,
+                        "primitive": decision.executed_primitive,
+                    },
+                    sort_keys=True,
+                )
+                + "\n"
+            )
+            replanning_file.write(
+                json.dumps(
+                    {
+                        "decision": decision_index,
+                        "replanned": bool(decision.planner.replanned),
+                        "reason": "policy_urgency_or_observed_change",
+                        "semantic_changed": changed_cells > 0,
+                        "shield": decision.shield.shield_decision,
+                    },
+                    sort_keys=True,
+                )
+                + "\n"
             )
             target_file.write(
                 f"{decision_index},{before_target},{target},{retained},{invalidated},{target_memory.get(target, {}).get('age', -1) if target else -1}\n"
@@ -450,6 +553,7 @@ def main() -> int:
                 semantic_after,
             )
             policy_decisions += 1
+            decision_index += 1
     left.setVelocity(0.0)
     right.setVelocity(0.0)
     summary = {
@@ -509,6 +613,28 @@ def main() -> int:
         "motor_command_changes": motor_changes,
         "checkpoint_sha256": CHECKPOINT_SHA,
         "cv_checkpoint_sha256": detector.model_sha256,
+        "scenario_seed": SCENARIO_SEED,
+        "policy_mode": POLICY_MODE,
+        "policy_temperature": POLICY_TEMPERATURE,
+        "path_length": path_length,
+        "displacement": math.hypot(last_pose[0] - first_pose[0], last_pose[1] - first_pose[1])
+        if first_pose and last_pose
+        else 0.0,
+        "heading_changes": heading_changes,
+        "replanning_count": replanning_count,
+        "stuck_recovery_count": stuck_recovery_count,
+        "visited_cell_count": len(visited_cells),
+        "trajectory_hash": trajectory_hasher.hexdigest(),
+        "option_sequence_hash": option_hasher.hexdigest(),
+        "target_sequence_hash": target_hasher.hexdigest(),
+        "route_is_scripted": False,
+        "run_mode": RUN_MODE,
+        "user_requested_shutdown": RUN_MODE == "until_closed",
+        "automatic_timeout_used": False,
+        "shutdown_reason": "user_closed_webots"
+        if RUN_MODE == "until_closed"
+        else "bounded_complete",
+        "random_motor_noise_used": False,
     }
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     (OUT / "marker_summary_generated.json").write_text(

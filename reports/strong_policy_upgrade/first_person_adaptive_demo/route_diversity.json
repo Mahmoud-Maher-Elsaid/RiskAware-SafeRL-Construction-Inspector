@@ -1,0 +1,69 @@
+﻿{
+    "status":  "PASSED",
+    "seeds":  [
+                  42,
+                  73,
+                  105
+              ],
+    "runs":  [
+                 {
+                     "attempt":  "attempt_20260806_064926_861",
+                     "scenario_seed":  42,
+                     "trajectory_hash":  "f26a2a13e9403db990f31623f664ce7ecb4f9c0b6adeebc65a71b7f845ff053e",
+                     "option_sequence_hash":  "c7fb5d92b3aa6386a884e26dea27c324025c51ee16de2c4477d5d3e38f46405b",
+                     "target_sequence_hash":  "4afb86d133567f7915705f91749890f3e517f824ea3dfadec6c6815088036b43",
+                     "path_length":  0.037863935407252726,
+                     "displacement":  0.032815362348802092,
+                     "heading_changes":  0,
+                     "replanning_count":  98,
+                     "invalid_option_count":  0,
+                     "invalid_primitive_count":  0,
+                     "invalid_motor_command_count":  0,
+                     "route_is_scripted":  false,
+                     "safety_shield_active":  true
+                 },
+                 {
+                     "attempt":  "attempt_20260806_065114_275",
+                     "scenario_seed":  73,
+                     "trajectory_hash":  "b98997a21b370d19afc652992c7c89a1b8d2ea8d47d4fe0127f2ddff678e4ddc",
+                     "option_sequence_hash":  "e4e4904b787aa7080a1a46b94dcb5b2786369ad9657633726ab095ec4864e43c",
+                     "target_sequence_hash":  "4afb86d133567f7915705f91749890f3e517f824ea3dfadec6c6815088036b43",
+                     "path_length":  0.040856586397007517,
+                     "displacement":  0.035730405370799988,
+                     "heading_changes":  0,
+                     "replanning_count":  100,
+                     "invalid_option_count":  0,
+                     "invalid_primitive_count":  0,
+                     "invalid_motor_command_count":  0,
+                     "route_is_scripted":  false,
+                     "safety_shield_active":  true
+                 },
+                 {
+                     "attempt":  "attempt_20260806_065250_447",
+                     "scenario_seed":  105,
+                     "trajectory_hash":  "32c4cb284b67792f10c35b3a07a4d82bdd4e25810f646c2eb8dd61adef812fbf",
+                     "option_sequence_hash":  "b7d5cc6a91a56675c87e89340302e88816d15839aa04e94a1b5836853d520bef",
+                     "target_sequence_hash":  "4afb86d133567f7915705f91749890f3e517f824ea3dfadec6c6815088036b43",
+                     "path_length":  0.037957626176688658,
+                     "displacement":  0.032320483018503536,
+                     "heading_changes":  0,
+                     "replanning_count":  96,
+                     "invalid_option_count":  0,
+                     "invalid_primitive_count":  0,
+                     "invalid_motor_command_count":  0,
+                     "route_is_scripted":  false,
+                     "safety_shield_active":  true
+                 }
+             ],
+    "unique_trajectory_hashes":  3,
+    "route_diversity_verified":  true,
+    "same_seed_replay":  {
+                             "identical":  true,
+                             "seed":  42,
+                             "first":  "b98997a21b370d19afc652992c7c89a1b8d2ea8d47d4fe0127f2ddff678e4ddc",
+                             "second":  "b98997a21b370d19afc652992c7c89a1b8d2ea8d47d4fe0127f2ddff678e4ddc"
+                         },
+    "no_scripted_waypoints":  true,
+    "no_random_wheel_noise":  true,
+    "safety_shield_active":  true
+}
