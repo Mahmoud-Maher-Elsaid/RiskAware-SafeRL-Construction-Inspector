@@ -1,7 +1,7 @@
 {
   "branch": "final/strong-policy-upgrade",
-  "local_commit": "517cfdf9045f867bc0e13ceba36268c58504f3d4",
-  "remote_commit": "517cfdf9045f867bc0e13ceba36268c58504f3d4",
+  "local_commit": "7aa9d9af9cac8e545a777d5d57062dd51c5a4e25",
+  "remote_commit": "7aa9d9af9cac8e545a777d5d57062dd51c5a4e25",
   "current_phase": "legacy_gate_audit_and_final_release_validation",
   "completed_phases": [
     "causal hierarchical mission semantics",
@@ -94,7 +94,7 @@
     "grid_environment_validation": "PASSED; 3 configurations",
     "github_ci_repair_commit": "0469c57e481659b523935a92b355f48c67ca3828",
     "github_ci_remote_green_run": "PASSED; run 31063425789, exact head 517cfdf9045f867bc0e13ceba36268c58504f3d4",
-    "hrmppo_v2_protocol_correction": "PASSED; declared horizon-5 contract restored, corrected held-out evaluation preserved as negative evidence, CUDA smoke/resume passed",
+    "hrmppo_v2_protocol_correction": "PASSED; declared horizon-5 contract restored, corrected held-out evaluation and 30k recovery preserved as negative evidence, CUDA smoke/resume passed",
     "legacy_gate_audit": "PASSED; causal BC and flat DAgger gates passed; HRMPPO v2/v3 and hierarchical beta-zero replacement gates remain rejected with preserved evidence",
     "production_replacement": "rejected; v1 remains production",
     "local_acceptance": "PASSED; compile, Ruff, format, pytest, production, experimental Webots, benchmark, paper, CV, release, and final acceptance gates passed"
