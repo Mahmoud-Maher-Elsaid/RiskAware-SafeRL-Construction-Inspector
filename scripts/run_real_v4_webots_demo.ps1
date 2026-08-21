@@ -71,7 +71,7 @@ $env:Path = (($paths | Where-Object { $_ -and $_.Trim() } | Select-Object -Uniqu
 $env:RISK_AWARE_PROJECT_ROOT = $repo
 $env:RISK_AWARE_EXPERIMENTAL_OUTPUT = $attempt
 $env:RISK_AWARE_EXPERIMENTAL_DECISIONS = if ($RunMode -eq 'bounded') { [string]([Math]::Max(100, $DurationSeconds * 10)) } else { '' }
-$env:RISK_AWARE_EXPERIMENTAL_DEMO_DURATION = [string]$DurationSeconds
+$env:RISK_AWARE_EXPERIMENTAL_DEMO_DURATION = [string]($DurationSeconds + 120)
 $env:RISK_AWARE_EXPERIMENTAL_RUN_MODE = $RunMode
 $env:RISK_AWARE_SCENARIO_SEED = [string]$ScenarioSeed
 $env:RISK_AWARE_POLICY_MODE = $PolicyMode
@@ -99,10 +99,11 @@ $launcherState = [ordered]@{
 }
 $launcherState | ConvertTo-Json | Set-Content (Join-Path $attempt 'launcher_state.json') -Encoding utf8
 
-$args = @('--batch', '--mode=realtime', '--stdout', '--stderr', $stableWorld)
+$args = @('--mode=realtime', '--stdout', '--stderr', $stableWorld)
+if ($RunMode -eq 'bounded') { $args = @('--batch', '--mode=realtime', '--stdout', '--stderr', $stableWorld) }
 $args -contains '--no-rendering' | Set-Content (Join-Path $attempt 'no_rendering_flag_used.txt')
 $args -contains '--minimize' | Set-Content (Join-Path $attempt 'minimize_flag_used.txt')
-$envSnapshot = [ordered]@{ Path=$env:Path; QT_QPA_PLATFORM=$env:QT_QPA_PLATFORM; QT_SCALE_FACTOR=$env:QT_SCALE_FACTOR; QT_SCREEN_SCALE_FACTORS=$env:QT_SCREEN_SCALE_FACTORS; QT_AUTO_SCREEN_SCALE_FACTOR=$env:QT_AUTO_SCREEN_SCALE_FACTOR; RISK_AWARE_PROJECT_ROOT=$repo; RISK_AWARE_EXPERIMENTAL_OUTPUT=$attempt; RISK_AWARE_EXPERIMENTAL_DECISIONS=$env:RISK_AWARE_EXPERIMENTAL_DECISIONS; RISK_AWARE_EXPERIMENTAL_DEMO_DURATION=$DurationSeconds; RISK_AWARE_EXPERIMENTAL_RUN_MODE=$RunMode; RISK_AWARE_SCENARIO_SEED=$ScenarioSeed; RISK_AWARE_POLICY_MODE=$PolicyMode; RISK_AWARE_POLICY_TEMPERATURE=$PolicyTemperature; WEBOTS_HOME=$env:WEBOTS_HOME; WEBOTS_PYTHON_COMMAND=$python; PYTHONPATH=$env:PYTHONPATH; YOLO_CONFIG_DIR=$env:YOLO_CONFIG_DIR; CameraMode=$CameraMode }
+$envSnapshot = [ordered]@{ Path=$env:Path; QT_QPA_PLATFORM=$env:QT_QPA_PLATFORM; QT_SCALE_FACTOR=$env:QT_SCALE_FACTOR; QT_SCREEN_SCALE_FACTORS=$env:QT_SCREEN_SCALE_FACTORS; QT_AUTO_SCREEN_SCALE_FACTOR=$env:QT_AUTO_SCREEN_SCALE_FACTOR; RISK_AWARE_PROJECT_ROOT=$repo; RISK_AWARE_EXPERIMENTAL_OUTPUT=$attempt; RISK_AWARE_EXPERIMENTAL_DECISIONS=$env:RISK_AWARE_EXPERIMENTAL_DECISIONS; RISK_AWARE_EXPERIMENTAL_DEMO_DURATION=$env:RISK_AWARE_EXPERIMENTAL_DEMO_DURATION; RISK_AWARE_EXPERIMENTAL_RUN_MODE=$RunMode; RISK_AWARE_SCENARIO_SEED=$ScenarioSeed; RISK_AWARE_POLICY_MODE=$PolicyMode; RISK_AWARE_POLICY_TEMPERATURE=$PolicyTemperature; WEBOTS_HOME=$env:WEBOTS_HOME; WEBOTS_PYTHON_COMMAND=$python; PYTHONPATH=$env:PYTHONPATH; YOLO_CONFIG_DIR=$env:YOLO_CONFIG_DIR; CameraMode=$CameraMode }
 $envSnapshot | ConvertTo-Json | Set-Content (Join-Path $attempt 'environment.json') -Encoding utf8
 
 $psi = [Diagnostics.ProcessStartInfo]::new(); $psi.FileName = $webots; $psi.WorkingDirectory = $repo; $psi.UseShellExecute = $false
@@ -119,10 +120,12 @@ Write-Output "VISIBLE_WEBOTS_ATTEMPT=$attempt"
 Write-Output "VISIBLE_WEBOTS_WORLD=$stableWorld"
 
 Add-Type -AssemblyName System.Drawing
+$shell = New-Object -ComObject WScript.Shell
 Add-Type -TypeDefinition @'
 using System; using System.Runtime.InteropServices;
 public static class RenderCapture {
  [DllImport("user32.dll")] public static extern bool GetClientRect(IntPtr h, out RECT r);
+ [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr h, out RECT r);
  [DllImport("user32.dll")] public static extern bool ClientToScreen(IntPtr h, ref POINT p);
  [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr h, int c);
  [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr h);
@@ -143,8 +146,8 @@ $deadline = if($RunMode -eq 'bounded'){(Get-Date).AddSeconds($DurationSeconds+90
 try {
     while($true) {
         $live=Get-Process -Id $proc.Id -ErrorAction SilentlyContinue
-        $wins=Get-Process webots,webots-bin -ErrorAction SilentlyContinue | Where-Object {$_.MainWindowHandle -ne 0} | Select-Object -First 1
-        if($wins){$launcherState.window_handle_verified=$true; [RenderCapture]::ShowWindow($wins.MainWindowHandle,5)|Out-Null; [RenderCapture]::SetForegroundWindow($wins.MainWindowHandle)|Out-Null; $launcherState.visible_window_verified=$true; if($captured -lt 3){$name=Join-Path $attempt $captures[$captured]; $rect=New-Object RenderCapture+RECT; $pt=New-Object RenderCapture+POINT; if([RenderCapture]::GetClientRect($wins.MainWindowHandle,[ref]$rect)){[RenderCapture]::ClientToScreen($wins.MainWindowHandle,[ref]$pt)|Out-Null; $cw=$rect.r-$rect.l; $ch=$rect.b-$rect.t; if($cw -gt 0 -and $ch -gt 0){$bmp=[Drawing.Bitmap]::new($cw,$ch); $g=[Drawing.Graphics]::FromImage($bmp); $g.CopyFromScreen($pt.x,$pt.y,0,0,[Drawing.Size]::new($cw,$ch)); $bmp.Save($name); $g.Dispose(); $bmp.Dispose(); $m=Get-RenderMetrics $name; $m|ConvertTo-Json|Set-Content (Join-Path $attempt ("render_validation_{0}.json" -f $captured)) -Encoding utf8; if($m.black_pixel_ratio -le .95 -and $m.grayscale_standard_deviation -ge 3 -and $m.unique_color_count -ge 100){$launcherState.rendered_frame_verified=$true}; $captured++}}}}
+        $wins=Get-Process webots-bin -ErrorAction SilentlyContinue | Where-Object {$_.MainWindowHandle -ne 0} | Select-Object -First 1
+        if($wins){$launcherState.window_handle_verified=$true; [RenderCapture]::ShowWindow($wins.MainWindowHandle,5)|Out-Null; [void]$shell.AppActivate($wins.Id); [RenderCapture]::SetForegroundWindow($wins.MainWindowHandle)|Out-Null; Start-Sleep -Milliseconds 250; $launcherState.visible_window_verified=$true; if($captured -lt 3){$name=Join-Path $attempt $captures[$captured]; $rect=New-Object RenderCapture+RECT; if([RenderCapture]::GetWindowRect($wins.MainWindowHandle,[ref]$rect)){ $cw=$rect.r-$rect.l; $ch=$rect.b-$rect.t; if($cw -gt 0 -and $ch -gt 0){$bmp=[Drawing.Bitmap]::new($cw,$ch); $g=[Drawing.Graphics]::FromImage($bmp); try {$g.CopyFromScreen($rect.l,$rect.t,0,0,[Drawing.Size]::new($cw,$ch)); $bmp.Save($name)} catch { $launcherState.render_capture_error=$_.Exception.Message }; $g.Dispose(); $bmp.Dispose(); if(Test-Path $name){$m=Get-RenderMetrics $name; $m|ConvertTo-Json|Set-Content (Join-Path $attempt ("render_validation_{0}.json" -f $captured)) -Encoding utf8; if($m.black_pixel_ratio -le .95 -and $m.grayscale_standard_deviation -ge 3 -and $m.unique_color_count -ge 100){$launcherState.rendered_frame_verified=$true}; $captured++}}}}}
         if(Test-Path (Join-Path $attempt 'controller_start.json')){$launcherState.controller_started=$true}; if(Test-Path (Join-Path $attempt 'marker_supervisor_main_started.json')){$launcherState.supervisor_started=$true}; if(Test-Path (Join-Path $attempt 'marker_first_simulation_step.json')){$launcherState.first_simulation_step=$true}; if(Test-Path (Join-Path $attempt 'marker_first_policy_decision.json')){$launcherState.first_policy_decision=$true}; if(Test-Path (Join-Path $attempt 'failure.json')){throw 'Experimental controller reported failure.'}
         if(Test-Path (Join-Path $attempt 'summary.json')){ $s=Get-Content (Join-Path $attempt 'summary.json') -Raw|ConvertFrom-Json; $launcherState.summary_generated=$true; if([int]$s.policy_decisions -ge 100){$launcherState.first_policy_decision=$true}; if(Test-Path (Join-Path $attempt 'motor_trace.csv')){ $launcherState.robot_motion_verified=((Get-Content (Join-Path $attempt 'motor_trace.csv')|Measure-Object -Line).Lines -gt 2) } }
         $launcherState|ConvertTo-Json|Set-Content (Join-Path $attempt 'launcher_state.json') -Encoding utf8
