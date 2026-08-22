@@ -7,30 +7,34 @@
 \usepackage{algpseudocode}
 \usepackage{url}
 
-\title{RiskShield-Hierarchical HRMPPO-MPC: Causal Hierarchical Safe Reinforcement Learning for Construction-Site Inspection under Perception Uncertainty}
+\title{RiskShield-PPO: Safe Reinforcement Learning for Construction-Site Inspection under Perception Uncertainty, with an Experimental Hierarchical Extension}
 \author{\IEEEauthorblockN{Mahmoud Maher}}
 
 \begin{document}
 \maketitle
+
+\begin{IEEEkeywords}
+safe reinforcement learning, construction robotics, predictive safety
+shielding, autonomous inspection, perception uncertainty, Webots
+\end{IEEEkeywords}
 
 \begin{abstract}
 Autonomous construction inspection couples sparse coverage objectives with
 collisions, worker proximity, restricted areas, and imperfect visual
 perception. We present a reproducible Gymnasium benchmark, RiskShield-PPO
 (PPO-Lagrangian with an auxiliary cost-value estimator), and a predictive
-action shield. A five-algorithm matrix evaluates 1,350 episodes over three site
+action shield. A five-algorithm matrix contains 1,350 episodes over three site
 sizes, three hazard densities, three perception-noise levels, and ten paired
 seeds; six ablations add 180 episodes. RiskShield-PPO reduced mean safety cost
-from PPO's 49.39 to 17.13 and eliminated observed collisions, but neither
-learned method completed a full mission. Frontier exploration achieved 96.67\%
-success and 0.998 hazard recall, exposing a substantial learning gap. A
-separate Webots runtime verifies CUDA perception, shielded policy-to-motor
-control, and rendered Webots operation. The project also evaluates an
-experimental hierarchical v4 policy on 270
-paired held-out grid episodes. It achieved 58.89\% mission success and
-92.14\% hazard recall in that protocol; production remains RiskShield-PPO v1
-because the v4 replacement gates were rejected. The evidence is simulation-only
-and does not establish real-world safety.
+from 49.3852 for PPO to 17.1296 and reduced collision rate from 0.0741 to zero,
+but both learned methods had zero complete-mission success. Frontier
+exploration reached 0.9667 success and 0.9978 hazard recall, while risk-aware
+A* reached 1.0 for both metrics. A separate 320-episode uncertainty suite
+across 64 conditions had mean robustness 0.8893. We additionally report an
+experimental hierarchical v4 protocol over 270 held-out episodes, with 0.5889
+mission success and 0.9214 hazard recall; v4 does not replace production
+RiskShield-PPO v1. The evidence is simulation-only and does not establish
+real-world safety.
 \end{abstract}
 
 \section{Introduction}
@@ -42,12 +46,14 @@ exploration \cite{garcia2015safe}; constrained policy optimization formalizes
 cost limits \cite{achiam2017cpo}, while shields can replace actions before
 execution \cite{alshiekh2018shielding}.
 
-This project contributes (i) a typed, deterministic construction-inspection
-benchmark; (ii) genuine PPO, SAC, planner, and constrained baselines; (iii)
-RiskShield-PPO and a separable $k$-step shield; (iv) controlled perception
-uncertainty; and (v) an integrated Webots demonstration. We make no claim of
-learned-policy task mastery: the complete matrix shows zero mission success
-for all three learned policies.
+The contributions are: (1) a typed, deterministic construction-inspection
+benchmark with expert, PPO, SAC, and constrained-policy baselines; (2)
+RiskShield-PPO, which separates the learned cost signal from a predictive
+runtime shield; (3) a controlled perception-uncertainty protocol; (4) an
+integrated Webots execution path with traceable shield-to-motor commands; and
+(5) an experimental hierarchical extension with persistent targets and local
+planning. We make no claim of learned-policy task mastery: the complete
+primary matrix shows zero mission success for all three learned policies.
 
 \section{Related Work}
 PPO optimizes a clipped policy-ratio surrogate \cite{schulman2017ppo}. SAC is
@@ -125,10 +131,38 @@ and replanning intentions and a target in the causal observed map. An
 incremental risk-aware planner proposes a local route; a predictive controller
 and Safety Shield validate the resulting primitive before wheel commands. The
 policy never receives hidden map state or future worker motion. This is not
-end-to-end wheel-velocity reinforcement learning. H3 reached 61.54\% success
-with 95.51\% recall; H4 imitation reached 62.50\% success with mean cost
-16.31, while H4 30k fell to 56.25\%. These negative results motivate retaining
-v1 in production.
+end-to-end wheel-velocity reinforcement learning. The protocol-specific
+results and their denominators are reported in Table~I.
+These results motivate retaining v1 in production.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.86\textwidth]{figures/system_architecture.pdf}
+\caption{Runtime architecture derived from the implemented benchmark and
+Webots paths. The primary RiskShield-PPO v1 policy and the experimental
+hierarchical v4 option/planner path both pass proposed actions through the same
+predictive Safety Shield and typed actuator boundary.}
+\label{fig:architecture}
+\end{figure*}
+
+\begin{table}[t]
+\centering
+\caption{Protocol-specific hierarchical-v4 evidence. Dashes indicate metrics
+not recorded by the corresponding canonical report; rows are not directly
+comparable because training steps, checkpoints, and evaluation protocols differ.}
+\label{tab:hierarchical}
+\scriptsize
+\begin{tabular}{lrrrr}
+\toprule
+Variant / protocol & Success & Recall & Cost & Evidence scale\\
+\midrule
+H3 preliminary & 0.6154 & 0.9551 & 20.3654 & 76 train episodes\\
+H4 imitation & 0.6250 & 0.9225 & 16.3125 & paired eval; $n$ unreported\\
+H4 recovery 30k & 0.5625 & -- & 17.1406 & 30k option steps\\
+Final held-out v4 & 0.5889 & 0.9214 & 0.0667 & 270 episodes\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Predictive Safety Shield}
 For proposed action $a_t$, the shield rolls forward a deterministic local model
@@ -174,7 +208,7 @@ is serialized. No missing run is imputed.
 
 We report mean, standard deviation, median, IQR, and 95\% $t$ intervals per
 cell. Friedman tests compare all algorithms because bounded, zero-inflated
-metrics need not be normal. A planned paired Wilcoxon comparison contrasts
+metrics need not be normal. A paired Wilcoxon comparison contrasts
 RiskShield-PPO and PPO, with Holm correction over six metrics. Standardized
 paired mean difference is the effect size.
 
@@ -186,7 +220,38 @@ superseded startup evidence. A visible real-time demo was attempted with the
 same controller; desktop Qt startup is environment-dependent and is reported
 separately from the accepted headless runtime evidence. Final user-facing
 visual demonstrations use a site-centered overview view so robot motion,
-obstacles, workers, and construction structures remain visible together.
+obstacles, workers, and construction structures remain visible together. The
+final interactive Windows/Webots demonstration was manually run and visually
+verified using that overview configuration; this is separate from the
+environment-limited non-interactive Qt smoke.
+
+The complete paired statistical analysis is summarized in
+Table~II. The Friedman test is omnibus across the five
+algorithms; the paired Wilcoxon comparison is RiskShield-PPO versus PPO, with
+Holm correction across the six planned metrics. These tests describe the
+primary benchmark only and do not turn the experimental v4 rows into a
+production claim.
+
+\begin{table*}[t]
+\centering
+\caption{Primary benchmark statistical results ($n=270$ paired episodes per
+metric). Effect size is the standardized paired mean difference for
+RiskShield-PPO minus PPO.}
+\label{tab:statistics}
+\scriptsize
+\begin{tabular}{lrrrr}
+\toprule
+Metric & Friedman statistic & Friedman $p$ & Holm-adjusted Wilcoxon $p$ & Effect size\\
+\midrule
+Hazard recall & 959.1985 & $2.48\times10^{-206}$ & $2.95\times10^{-16}$ & 0.5533\\
+Inspection coverage & 977.0342 & $3.38\times10^{-210}$ & $3.13\times10^{-28}$ & 0.7716\\
+Collision rate & 783.7004 & $2.61\times10^{-168}$ & $1.55\times10^{-5}$ & -0.2823\\
+Constraint violations & 488.3545 & $2.21\times10^{-104}$ & $8.43\times10^{-14}$ & -0.3444\\
+Safety cost & 622.1118 & $2.54\times10^{-133}$ & $8.31\times10^{-18}$ & -0.4183\\
+Success rate & 1056.5393 & $1.99\times10^{-227}$ & 1.0000 & 0.0000\\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 \section{Main Results}
 \begin{table*}[t]
@@ -209,17 +274,23 @@ exploration achieved 0.967 success and 0.998 recall; risk-aware A* reached
 \end{figure}
 
 \section{Uncertainty Experiments}
-False-negative probabilities are 0, 0.1, 0.2, and 0.3 in the dedicated
-uncertainty suite. Lighting, blur, camera noise, moving-obstacle density, and
-unseen layout are seeded. Clean truth, perturbed perception, and observation
-are separate. Across 320 episodes and 64 conditions, mean robustness was
-0.8893. Because baseline learned-policy mission success was zero, its ratio is
-neutral rather than replaced by an invented improvement.
+The dedicated uncertainty suite evaluates false-negative probabilities
+$\{0,0.1,0.2,0.3\}$ under four environment perturbation levels and four visual
+conditions, with five seeds per condition (320 episodes across 64 conditions).
+Clean truth, perturbed perception, and observation are kept separate. The
+canonical summary reports mean robustness 0.8893, with zero mission success in
+this learned-policy protocol. Figure~3 shows the measured
+hazard recall by environment perturbation; it is distinct from the primary
+benchmark's perception-noise aggregation.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/uncertainty_degradation.png}
-\caption{Hazard-recall degradation derived from primary raw results.}
+\includegraphics[width=\columnwidth]{figures/uncertainty_suite.pdf}
+\caption{Hazard recall in the dedicated 320-episode uncertainty suite. Each
+curve averages the four visual conditions at each measured false-negative
+probability; source data are in
+\texttt{reports/final\_submission/stage8\_uncertainty}.}
+\label{fig:uncertainty}
 \end{figure}
 
 \section{Ablation Study}
@@ -268,15 +339,21 @@ This work provides a reproducible construction Safe RL benchmark and truthful
 evidence spanning planning, learned policies, constrained optimization,
 shielding, uncertainty, CUDA perception, and Webots motor control.
 RiskShield-PPO reduced cost but did not solve inspection; expert planners
-remained substantially stronger. The negative result defines a clear research
-target rather than a deployment claim.
+remained substantially stronger. The hierarchical v4 extension demonstrates
+an additional target-and-planning protocol but does not replace v1. The
+negative result defines a clear research target rather than a deployment claim,
+and no real-world safety guarantee is established.
 
 \section*{Reproducibility Statement}
 The repository records configuration files, seeds, checkpoint hashes, atomic
 per-run caches, raw CSV and Parquet data, statistical scripts, figure source
-data, tests, and PowerShell entry points. The complete benchmark command resumes
-only missing runs. The production command separately reproduces the Webots
-integration evidence.
+data, tests, Webots R2025a metadata, and PowerShell entry points. The Python
+dependency contract is declared in \texttt{pyproject.toml}; the validated
+runtime uses Python 3.11. The complete benchmark command resumes only missing
+runs. The production command separately reproduces the Webots integration
+evidence. Large local checkpoints, datasets, and generated runtime workspaces
+are intentionally not mirrored in the public Git tree, so workflows requiring
+those artifacts must obtain them from the documented local manifests.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
