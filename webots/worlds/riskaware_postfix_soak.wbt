@@ -1,4 +1,4 @@
-#VRML_SIM R2025a utf8
+﻿#VRML_SIM R2025a utf8
 
 WorldInfo {
   info ["final_world=site_dynamic", "hazard_density=0.45", "worker_density=0.3", "dynamic_obstacles=true", "expected_inspection_targets=8"]
@@ -22,14 +22,13 @@ WorldInfo {
     }
   ]
 }
-
 DEF HUMAN_VIEWPOINT Viewpoint {
-  position 0 40 18
-  fieldOfView 1.10
+  orientation 0 0 1 0
+  position -7.95 1.67 -5.4
+  fieldOfView 1.05
   near 0.05
-  far 100
-  follow "main reinforced concrete construction slab"
-  followType "Pan and Tilt Shot"
+  far 70
+  exposure 1
 }
 
 Background {
@@ -3886,17 +3885,6 @@ DEF SHOWCASE_ROBOT Robot {
   name "professional construction inspection robot"
   controller "hierarchical_experimental_robot"
   children [
-    DEF FPV_MOUNT Transform {
-      translation 0.28 1.15 0
-      rotation 0 1 0 -1.5708
-    }
-    DistanceSensor { name "front obstacle sensor" rotation 0 1 0 3.14159 lookupTable [ 0 0 0 1 1 0 ] }
-    DistanceSensor { name "front left obstacle sensor" rotation 0 1 0 3.69159 lookupTable [ 0 0 0 1 1 0 ] }
-    DistanceSensor { name "front right obstacle sensor" rotation 0 1 0 2.59159 lookupTable [ 0 0 0 1 1 0 ] }
-    DistanceSensor { name "left obstacle sensor" rotation 0 1 0 -1.5708 lookupTable [ 0 0 0 1 1 0 ] }
-    DistanceSensor { name "right obstacle sensor" rotation 0 1 0 1.5708 lookupTable [ 0 0 0 1 1 0 ] }
-    DistanceSensor { name "rear left obstacle sensor" rotation 0 1 0 -0.7854 lookupTable [ 0 0 0 1 1 0 ] }
-    DistanceSensor { name "rear right obstacle sensor" rotation 0 1 0 0.7854 lookupTable [ 0 0 0 1 1 0 ] }
     GPS {
       name "gps"
     }

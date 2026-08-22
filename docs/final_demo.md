@@ -1,10 +1,11 @@
 # Final Demonstration
 
-Run `scripts/run_complete_autonomous_inspection.ps1`. The launcher validates
-Python, CUDA, Webots, RL and CV checkpoints, then starts the integrated
-autonomous mission. The accepted report must show policy motor control,
-Safety Shield activity, live perception, perception state effects, no manual
-control, and no fallback controller.
+For the production integration path, run
+`scripts/run_complete_autonomous_inspection.ps1`. For the experimental v4
+visible demonstration, use `scripts/run_real_v4_webots_demo.ps1` with its
+default `CameraMode=overview`. The launchers validate the configured runtime
+and preserve the production-v1 versus experimental-v4 boundary.
 
-The Webots main viewport is a level human-height first-person view. No external
-camera viewer or manual overlay is required.
+The v4 Webots main viewport is a static, site-centered overview. The robot
+moves autonomously inside the construction scene; no external camera viewer,
+follow camera, or manual overlay is required.

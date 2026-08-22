@@ -1,0 +1,23 @@
+#VRML_SIM R2025a utf8
+WorldInfo { basicTimeStep 32 }
+Viewpoint { position 0 2 3 orientation 1 0 0 -0.5 }
+DEF FIXTURE_OBSTACLE Solid {
+  translation 0 0 0.825
+  children [ Shape { geometry Box { size 1 1 0.05 } } ]
+  boundingObject Box { size 1 1 0.05 }
+}
+Robot {
+  name "sensor_fixture_robot"
+  controller "sensor_fixture_robot"
+  children [
+    DistanceSensor { name "probe" aperture 1 lookupTable [ 0 0 0 1 1 0 ] }
+    DistanceSensor { name "probe_flip" rotation 0 1 0 3.14159 aperture 1 lookupTable [ 0 0 0 1 1 0 ] }
+    DistanceSensor { name "probe_x" rotation 0 1 0 1.5708 aperture 1 lookupTable [ 0 0 0 1 1 0 ] }
+    DistanceSensor { name "probe_x_flip" rotation 0 1 0 -1.5708 aperture 1 lookupTable [ 0 0 0 1 1 0 ] }
+  ]
+}
+Robot {
+  name "sensor_fixture_supervisor"
+  controller "sensor_fixture_supervisor"
+  supervisor TRUE
+}

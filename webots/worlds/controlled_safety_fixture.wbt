@@ -23,13 +23,17 @@ WorldInfo {
   ]
 }
 
-DEF HUMAN_VIEWPOINT Viewpoint {
-  position 0 40 18
-  fieldOfView 1.10
+DEF CONTROLLED_SAFETY_OBSTACLE Solid {
+  translation -8.95 0.50 -5.40
+  children [ Shape { geometry Box { size 0.40 0.80 1.20 } } ]
+  boundingObject Box { size 0.40 0.80 1.20 }
+}DEF HUMAN_VIEWPOINT Viewpoint {
+  orientation 0 0 1 0
+  position -7.95 1.67 -5.4
+  fieldOfView 1.05
   near 0.05
-  far 100
-  follow "main reinforced concrete construction slab"
-  followType "Pan and Tilt Shot"
+  far 70
+  exposure 1
 }
 
 Background {

@@ -67,3 +67,23 @@ class DifferentialDriveMapper:
             )
 
         raise AssertionError(f"Unhandled motion primitive: {resolved}")
+
+
+def demo_primitive_to_wheels(primitive: MotionPrimitive | int) -> WheelCommand:
+    """Calibrated bounded commands for the verified experimental Webots demo."""
+    commands = {
+        MotionPrimitive.STOP: (0.0, 0.0),
+        MotionPrimitive.MOVE_FORWARD: (-1.10, -1.10),
+        MotionPrimitive.TURN_LEFT: (-1.35, -0.25),
+        MotionPrimitive.TURN_RIGHT: (-0.25, -1.35),
+        MotionPrimitive.INSPECT: (0.0, 0.0),
+    }
+    try:
+        resolved = MotionPrimitive(int(primitive))
+    except (TypeError, ValueError) as error:
+        raise ValueError(f"Unsupported motion primitive: {primitive!r}") from error
+    left, right = commands[resolved]
+    return WheelCommand(
+        float(max(-1.35, min(1.35, left))),
+        float(max(-1.35, min(1.35, right))),
+    )

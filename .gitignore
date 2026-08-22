@@ -6,8 +6,10 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+.mypy_cache/
 .coverage
 htmlcov/
+*.tmp
 
 # Environments
 .venv/
@@ -19,6 +21,16 @@ htmlcov/
 # IDE
 .vscode/
 .idea/
+
+# Operating-system metadata
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Local audit backups and disposable runtime directories
+/.local-audit-backup/
+/tmp/
+/temp/
 
 # Models and experiment outputs
 artifacts/models/*
@@ -120,3 +132,51 @@ artifacts/checkpoints/*
 /artifacts/perception/targeted_fast_100e/
 /artifacts/runs/perception_targeted_fast_100e/
 reports/perception/**/active_run.json
+
+# Generated Webots worlds and runtime markers (canonical source worlds remain tracked)
+/webots/worlds/riskaware_v4_*.wbt
+/webots/worlds/riskaware_site_small_*.wbt
+/webots/worlds/site_dynamic_v4_test_prodrobot.wbt
+/webots/worlds/*.camera_backup_*
+/webots/worlds/.site_dynamic_v4_visible_demo.jpg
+/webots/controllers/final_dynamic_worker/marker_worker_main_started.json
+
+# Disposable visible-demo attempt folders; curated evidence is kept separately.
+/reports/strong_policy_upgrade/webots_v4_visible_demo/attempt_*/
+/reports/strong_policy_upgrade/webots_v4_visible_demo/headless_motion_*/
+
+# Local-only accepted experimental checkpoints and datasets (provenance retained
+# in manifests; the active H4 checkpoint path remains documented in the runtime).
+/artifacts/strong_policy_upgrade/hierarchical_dagger_accepted/
+/artifacts/strong_policy_upgrade/hierarchical_imitation_accepted_v2/
+/artifacts/strong_policy_upgrade/hierarchical_imitation_final/
+/artifacts/strong_policy_upgrade/hierarchical_imitation_h4_target_persistence/
+/artifacts/strong_policy_upgrade/hierarchical_imitation_systematic_final/
+/artifacts/strong_policy_upgrade/hrmppo_safe_v3/
+/artifacts/strong_policy_upgrade/expert_demonstrations/
+/artifacts/strong_policy_upgrade/causal_behavior_cloning/
+
+# Intermediate strong-policy diagnostics retained locally for provenance.
+/reports/strong_policy_upgrade/hierarchical_*/
+/reports/strong_policy_upgrade/dagger*/
+/reports/strong_policy_upgrade/safety_dagger*/
+/reports/strong_policy_upgrade/hrmppo_v2*/
+/reports/strong_policy_upgrade/imitation_learning/
+/reports/strong_policy_upgrade/untimed_exploration/
+/reports/strong_policy_upgrade/first_person_adaptive_demo/
+/reports/final_refactor_backup/
+
+# Raw/intermediate evidence workspaces are retained locally; release summaries
+# are curated under reports/final/ and the root-level audit documents below.
+/reports/strong_policy_upgrade/
+/reports/final_refactor/*
+!/reports/final_refactor/*.md
+/reports/final_refactor/controlled_safety_fixture.wbt
+/reports/final_runtime_forensic_audit/*
+!/reports/final_runtime_forensic_audit/*.md
+!/reports/final_runtime_forensic_audit/*.json
+/reports/final/direct_webots_smoke_20260822/
+
+# Repository-local LaTeX build products; the canonical source and PDF remain
+# tracked separately.
+/paper/build/

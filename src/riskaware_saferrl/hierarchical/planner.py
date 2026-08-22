@@ -251,26 +251,33 @@ class CausalRiskAwarePlanner:
         target_type = "requested"
         targets: set[Position]
         if request.option == MissionOption.EXPLORE_FRONTIER:
-            systematic_target = self._systematic_exploration_step(
-                start, action_mask, request.risk_budget
-            )
-            if systematic_target is not None:
-                path = (start, systematic_target)
-                self._last_path = path
-                self._last_target = systematic_target
-                return PlannerResult(
-                    path=path,
-                    target=systematic_target,
-                    target_type="systematic_observed_frontier",
-                    success=True,
-                    replanned=True,
-                    reason="causal_systematic_frontier_priority",
-                    expanded_nodes=1,
-                    observed_map_revision=self._revision,
+            if request.target is not None:
+                requested = (int(request.target[0]), int(request.target[1]))
+                targets = (
+                    {requested} if self._inside(requested) and self._free[requested] else set()
                 )
-            targets = self._frontiers()
-            targets.discard(start)
-            target_type = "frontier"
+                target_type = "observed_requested_frontier"
+            else:
+                systematic_target = self._systematic_exploration_step(
+                    start, action_mask, request.risk_budget
+                )
+                if systematic_target is not None:
+                    path = (start, systematic_target)
+                    self._last_path = path
+                    self._last_target = systematic_target
+                    return PlannerResult(
+                        path=path,
+                        target=systematic_target,
+                        target_type="systematic_observed_frontier",
+                        success=True,
+                        replanned=True,
+                        reason="causal_systematic_frontier_priority",
+                        expanded_nodes=1,
+                        observed_map_revision=self._revision,
+                    )
+                targets = self._frontiers()
+                targets.discard(start)
+                target_type = "frontier"
         elif request.option == MissionOption.INSPECT_PPE_VIOLATION:
             targets = self._observed_targets(semantic_map, True)
             target_type = "observed_ppe_risk"
@@ -346,6 +353,28 @@ class CausalRiskAwarePlanner:
             if frontier_path:
                 path = frontier_path
                 target_type = f"{target_type}_route_frontier"
+        if not path and request.option == MissionOption.EXPLORE_FRONTIER:
+            # A requested frontier can become unreachable as the observed map
+            # grows.  Returning ``(start,)`` makes the local controller emit
+            # STOP/INSPECT indefinitely.  Fall back to one currently observed
+            # safe adjacent cell so exploration remains a navigation state;
+            # this is still derived solely from the causal observation.
+            fallback = self._systematic_exploration_step(start, action_mask, request.risk_budget)
+            if fallback is not None:
+                path = (start, fallback)
+                target_type = "systematic_recovery_frontier"
+                expanded = max(expanded, 1)
+            else:
+                safe = sorted(self._safe_cells())
+                safe = [cell for cell in safe if cell != start]
+                if safe:
+                    fallback_path, fallback_expanded = self._search(
+                        start, {safe[0]}, request.risk_budget
+                    )
+                    if fallback_path:
+                        path = fallback_path
+                        target_type = "safe_recovery_frontier"
+                        expanded += fallback_expanded
         if not path:
             return PlannerResult(
                 path=(start,),

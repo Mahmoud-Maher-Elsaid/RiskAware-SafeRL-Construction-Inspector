@@ -1,0 +1,3 @@
+# Runtime-mode difference audit
+
+Both modes enter the same robot loop, but the historical run exposed a semantic difference: `DECISIONS` is empty/zero in `until_closed`, so `structured_state` saturates its progress feature at 1.0, while bounded mode receives a finite denominator. The launcher also gives bounded mode a deadline and minimum decision check, while until-closed mode exits on process death/user close and unconditionally prints a PASS marker. The navigation loop itself currently has no explicit long-run freshness, physical spin, or actuator-clearance gate, so bounded tests can pass before the late stop/spin/collision states emerge.

@@ -5,7 +5,16 @@ from dataclasses import dataclass
 import numpy as np
 
 Position = tuple[int, int]
-ACTION_DELTAS = {0: (-1, 0), 1: (1, 0), 2: (0, -1), 3: (0, 1), 4: (0, 0)}
+# The observation grid is robot-relative: row -1 is forward, column -1 is
+# the robot's physical left, and column +1 is its physical right.  These are
+# deliberately separate from the canonical MotionPrimitive ids (STOP=0,
+# MOVE_FORWARD=1, TURN_LEFT=2, TURN_RIGHT=3, INSPECT=4).
+GRID_MOTION = (
+    (1, (-1, 0)),  # MOVE_FORWARD
+    (2, (0, -1)),  # TURN_LEFT
+    (3, (0, 1)),  # TURN_RIGHT
+    (0, (0, 0)),  # STOP when the path is exhausted
+)
 
 
 @dataclass(frozen=True)
@@ -47,11 +56,49 @@ class PredictiveLocalController:
         semantic_map = np.asarray(observation["map"])
         mask = np.asarray(observation["action_mask"], dtype=np.bool_)
         position = self._position(semantic_map)
+        # A hold/emergency planner result is represented by an exhausted
+        # one-cell path.  It must be an actual STOP; scoring lateral motions
+        # here can turn a safety hold into an in-place spin.
+        if len(path) <= 1 and not inspection_intent:
+            self._previous_primitive = 0
+            return LocalControllerDecision(
+                primitive=0,
+                predicted_trajectory=(position, position),
+                objective=0.0,
+                human_clearance_margin=99.0,
+                reason="exhausted_path_requires_stop",
+            )
         desired = path[min(1, len(path) - 1)] if path else position
         workers = np.argwhere((semantic_map[2] > 0) | (semantic_map[7] > 0))
         candidates: list[tuple[float, int, tuple[Position, ...], float]] = []
-        for primitive, delta in ACTION_DELTAS.items():
-            if not mask[primitive]:
+        # The action mask is expressed in sensor/grid directions (forward,
+        # reverse, left, right, stop), while the controller output is the
+        # canonical primitive enum.  Do not index the mask with the primitive
+        # id: that was the source of forward requests becoming STOP/INSPECT.
+        mask_for_primitive = {
+            1: bool(mask[0]),
+            2: bool(mask[2]),
+            3: bool(mask[3]),
+            0: bool(mask[4]),
+        }
+        desired_delta = (
+            (
+                path[1][0] - position[0],
+                path[1][1] - position[1],
+            )
+            if len(path) > 1
+            else (0, 0)
+        )
+        # Reverse grid progress is handled as a bounded heading correction:
+        # turn toward the open side rather than issuing an unsupported reverse
+        # wheel primitive.  This keeps the canonical primitive enum intact.
+        if desired_delta == (1, 0):
+            desired_delta = (0, 1)
+        motion_choices = list(GRID_MOTION)
+        if inspection_intent and len(path) <= 1:
+            motion_choices.append((4, (0, 0)))
+        for primitive, delta in motion_choices:
+            if primitive != 4 and not mask_for_primitive[primitive]:
                 continue
             candidate = position[0] + delta[0], position[1] + delta[1]
             trajectory = (position, candidate)
@@ -70,6 +117,13 @@ class PredictiveLocalController:
             restricted = not collision and semantic_map[3, candidate[0], candidate[1]] > 0
             hard = 1_000.0 * float(collision or restricted or clearance < 1)
             progress = abs(candidate[0] - desired[0]) + abs(candidate[1] - desired[1])
+            # Prefer the primitive that realizes the next path delta.  A
+            # forward path step must remain MOVE_FORWARD; lateral steps map to
+            # opposite physical arcs and never to STOP/INSPECT.
+            if desired_delta == delta:
+                progress -= 10.0
+            if primitive == 0 and desired_delta != (0, 0):
+                progress += 10.0
             risk = (
                 0.0
                 if collision

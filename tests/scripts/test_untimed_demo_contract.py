@@ -30,7 +30,15 @@ def test_indefinite_supervisor_does_not_use_normal_timeout_quit() -> None:
     assert "while True:" in text
 
 
-def test_mounted_first_person_view_is_robot_follow_target() -> None:
+def test_visible_demo_uses_static_overview_view() -> None:
     text = (ROOT / "webots/worlds/site_dynamic_v4_visible_demo.wbt").read_text(encoding="utf-8")
-    assert 'follow "SHOWCASE_ROBOT"' in text
-    assert 'followType "Mounted Shot"' in text
+    assert "DEF HUMAN_VIEWPOINT Viewpoint" in text
+    assert 'follow "main reinforced concrete construction slab"' in text
+    assert 'followType "Pan and Tilt Shot"' in text
+    assert "Mounted Shot" not in text
+    supervisor = (
+        ROOT
+        / "webots/controllers/hierarchical_experimental_supervisor/hierarchical_experimental_supervisor.py"
+    ).read_text(encoding="utf-8")
+    assert "HUMAN_VIEWPOINT" not in supervisor
+    assert "FPV_ANCHOR" not in supervisor

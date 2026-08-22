@@ -16,11 +16,13 @@ from riskaware_saferrl.webots.motion_primitives import (
     DifferentialDriveMapper,
     MotionPrimitive,
     WheelCommand,
+    demo_primitive_to_wheels,
 )
 from riskaware_saferrl.webots.policy_dry_run import (
     PolicyDryRunEngine,
     PolicyProposal,
 )
+from riskaware_saferrl.webots.sensors import clearance_meters
 
 __all__ = [
     "ACTION_TO_DELTA",
@@ -36,6 +38,8 @@ __all__ = [
     "SemanticScene",
     "WebotsSensorSnapshot",
     "WheelCommand",
+    "demo_primitive_to_wheels",
+    "clearance_meters",
     "PolicyDryRunEngine",
     "PolicyProposal",
 ]

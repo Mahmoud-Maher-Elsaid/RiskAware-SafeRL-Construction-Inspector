@@ -1,12 +1,20 @@
 from __future__ import annotations
 
+import json
 import math
 import os
+import time
+from pathlib import Path
 
 from controller import Supervisor
 
 
 def main() -> None:
+    output = Path(os.environ.get("RISK_AWARE_EXPERIMENTAL_OUTPUT", "."))
+    output.mkdir(parents=True, exist_ok=True)
+    (output / "marker_worker_main_started.json").write_text(
+        json.dumps({"timestamp": time.time()}) + "\n", encoding="utf-8"
+    )
     supervisor = Supervisor()
     timestep = int(supervisor.getBasicTimeStep())
     node = supervisor.getSelf()

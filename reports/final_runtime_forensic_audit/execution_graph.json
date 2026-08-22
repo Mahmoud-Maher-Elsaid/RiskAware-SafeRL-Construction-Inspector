@@ -1,0 +1,14 @@
+﻿{
+    "robot_controller":  "webots/controllers/hierarchical_experimental_robot/hierarchical_experimental_robot.py",
+    "mode_termination":  [
+                             "robot.step == -1",
+                             "bounded decision/deadline",
+                             "supervisor simulationQuit bounded only"
+                         ],
+    "policy":  "src/riskaware_saferrl/hierarchical/policy.py",
+    "supervisor":  "webots/controllers/hierarchical_experimental_supervisor/hierarchical_experimental_supervisor.py",
+    "safety":  "src/riskaware_saferrl/safety",
+    "planner":  "src/riskaware_saferrl/hierarchical/planner.py",
+    "world":  "webots/worlds/site_dynamic_v4_visible_demo.wbt",
+    "launcher":  "scripts/run_real_v4_webots_demo.ps1"
+}

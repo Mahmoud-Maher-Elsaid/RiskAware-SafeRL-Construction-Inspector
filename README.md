@@ -30,7 +30,8 @@ flowchart LR
   hazards, workers, restricted zones, PPE risks, masks, reward, and safety cost.
 - Risk-aware A*, frontier exploration, and nearest-risk revisit planners.
 - Genuine PPO, SAC, and RiskShield-PPO checkpoints with hashes and metadata.
-- Three validated Webots R2025a worlds with level first-person rendering.
+- Three validated Webots R2025a worlds with reproducible rendered evidence; the
+  experimental v4 visible demo uses a static site-centered overview camera.
 - Live 14-class CV checkpoint inference on CUDA and semantic state changes.
 - 320 uncertainty episodes across 64 controlled conditions.
 - 1,350 unique primary benchmark episodes, 180 ablations, statistics, figures,
