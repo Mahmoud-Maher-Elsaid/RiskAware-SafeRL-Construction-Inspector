@@ -65,6 +65,7 @@ Audit date: 2026-08-22
 ## Final disposition
 
 Canonical research outputs, fixtures, audit reports, and required runtime files
-are explicitly staged. Local datasets, checkpoints, caches, and runtime
-workspaces remain ignored with narrow rules. Release integration and push are
-performed only after the staged diff and final static gates pass.
+are tracked on `main`. Local datasets, checkpoints, caches, and runtime
+workspaces remain ignored with narrow rules. Release integration and push
+completed normally after the staged diff and final static gates passed; `main`
+and `origin/main` match.
